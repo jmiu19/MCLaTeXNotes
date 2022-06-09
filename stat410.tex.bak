@@ -1,0 +1,376 @@
+\documentclass[11pt,oneside]{book}
+
+%%%%%%%%%%%%%%Include Packages%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[legalpaper, margin=1in]{geometry}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{mathtools}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{rsfso}
+\usepackage{amsthm}
+\usepackage{wasysym}
+\usepackage[inline]{enumitem}   
+\usepackage{hyperref}
+\usepackage{tocloft}
+\usepackage{titlesec}
+\usepackage{colortbl}
+\usepackage{stackengine}
+\usepackage{afterpage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%Chapter Setting%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{gray75}{gray}{0.75}
+\newcommand{\hsp}{\hspace{20pt}}
+\titleformat{\chapter}[hang]{\Huge\bfseries}{\thechapter\hsp\textcolor{gray75}{$\mid$}\hsp}{0pt}{\Huge\bfseries}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%Theorem environments%%%%%%%%%%%%%%%%%%%
+\newtheoremstyle{break}
+  {\topsep}{\topsep}%
+  {\itshape}{}%
+  {\bfseries}{}%
+  {\newline}{}%
+\theoremstyle{break}
+\theoremstyle{break}
+\newtheorem{axiom}{Axiom}
+\newtheorem{thm}{Theorem}[section]
+\renewcommand{\thethm}{\arabic{section}.\arabic{thm}}
+\newtheorem{lem}{Lemma}[thm]
+\newtheorem{prop}[lem]{Proposition}
+\newtheorem{corL}{Corollary}[lem]
+\newtheorem{corT}[lem]{Corollary}
+\newtheorem{defn}{Definition}[corL]
+\newenvironment{indEnv}[1][Proof]
+  {\proof[#1]\leftskip=1cm\rightskip=1cm}
+  {\endproof}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%Integral%%%%%%%%%%%%%%%%%%%%%%%
+\def\upint{\mathchoice%
+    {\mkern13mu\overline{\vphantom{\intop}\mkern7mu}\mkern-20mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+  \int}
+\def\lowint{\mkern3mu\underline{\vphantom{\intop}\mkern7mu}\mkern-10mu\int}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\D}{\mathcal{D}}
+\newcommand{\J}{\mathcal{J}}
+\newcommand{\T}{\mathcal{T}}
+\newcommand{\C}{\mathcal{C}}
+\newcommand{\M}{\mathcal{M}}
+\newcommand{\Lt}{\mathcal{L}}
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\Complex}{\mathbb{C}}
+\newcommand{\Power}{\mathcal{P}}
+\newcommand{\Symm}{\text{Symm}}
+\newcommand{\Alt}{\text{Alt}}
+\newcommand{\Int}{\text{Int}}
+\newcommand{\spa}{\text{span}}
+\newcommand{\supp}{\text{supp}}
+\newcommand{\sgn}{\text{sgn}}
+\newcommand{\degr}{\text{deg}}
+\newcommand{\Bd}{\text{Bd}}
+\newcommand{\ee}{\cdot 10}
+\newcommand{\pd}{\partial}
+\newcommand{\that}[1]{\widetilde{#1}}
+\newcommand{\lr}[1]{\left(#1\right)}
+\newcommand{\vmat}[1]{\begin{vmatrix} #1 \end{vmatrix}}
+\newcommand{\bmat}[1]{\begin{bmatrix} #1 \end{bmatrix}}
+\newcommand{\pmat}[1]{\begin{pmatrix} #1 \end{pmatrix}}
+\newcommand{\rref}{\xrightarrow{\text{row\ reduce}}}
+\newcommand{\txtarrow}[1]{\xrightarrow{\text{#1}}}
+\newcommand\oast{\stackMath\mathbin{\stackinset{c}{0ex}{c}{0ex}{\ast}{\Circle}}}
+\newcommand*{\Perm}[2]{{}^{#1}\!P_{#2}}
+\newcommand*{\Comb}[2]{{}^{#1}C_{#2}}
+
+\newcommand{\note}{\color{red}Note: \color{black}}
+\newcommand{\remark}{\color{blue}Remark: \color{black}}
+\newcommand{\example}{\color{green}Example: \color{black}}
+\newcommand{\exercise}{\color{green}Exercise: \color{black}}
+
+%%%%%%%%%%%%%%%%%%%%%%Roman Number%%%%%%%%%%%%%%%%%%%%%%%
+\makeatletter
+\newcommand*{\rom}[1]{\expandafter\@slowromancap\romannumeral #1@}
+\makeatother
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%table of contents%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setlength{\cftchapindent}{0em}
+\setlength{\cftsecindent}{2em}
+\renewcommand\cfttoctitlefont{\hfill\huge\bfseries}
+\renewcommand\cftaftertoctitle{\hfill\mbox{}}
+\setcounter{tocdepth}{2}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%Footnotes%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand\blfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%Hide Section Number%%%%%%%%%%%%%%%%%%%
+\makeatletter
+\def\@seccntformat#1{%
+  \expandafter\ifx\csname c@#1\endcsname\c@section\else
+  \csname the#1\endcsname\quad
+  \fi}
+\makeatother
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Enumerate%%%%%%%%%%%%%
+\makeatletter
+% This command ignores the optional argument 
+% for itemize and enumerate lists
+\newcommand{\inlineitem}[1][]{%
+\ifnum\enit@type=\tw@
+    {\descriptionlabel{#1}}
+  \hspace{\labelsep}%
+\else
+  \ifnum\enit@type=\z@
+       \refstepcounter{\@listctr}\fi
+    \quad\@itemlabel\hspace{\labelsep}%
+\fi}
+\makeatother
+\parindent=0pt
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\definecolor{DarkBlue}{RGB}{19,15,50}
+
+
+\begin{document}
+%	\pagecolor{DarkBlue}
+	\begin{titlepage}
+		\begin{center}
+			\topskip0pt
+			\vspace*{\fill}
+			\Huge \color{red}
+				\textbf{Class Notes}\\
+				\color{black}
+			\vspace{0.5cm}			
+			\Large 
+				STAT410
+			\vspace{3cm}
+
+			
+			
+			\vspace{5cm}
+			\LARGE
+				\textbf{Wenyu Chen}\\
+				\hfill\break
+				\LARGE Summer 2022\\
+				\color{black}
+			\vspace{5cm}
+
+		\vspace*{\fill}
+		\author{Wenyu Chen} \date{Summer 2022}
+		\end{center}			
+%		\afterpage{\nopagecolor}
+	\end{titlepage}
+	\newpage
+	\chapter[Axioms of Probabilities]{Axioms of Probabilities}
+	\begin{defn}
+	\textbf{Experiment:} is repeatable task with well defined outcomes.\\
+	\textbf{Sample Space:} is a xollection of all possible outcomes of the experiment.\\
+	\textbf{Event:} is a subset of the sample space.
+	\end{defn}
+	\hfill\\
+	\example Suppose we toss a coin three times, assume coins lands on H or T.\\
+	\textbf{Experiment: }tossing the coin three times, noting the outcomes.\\
+	\textbf{Sample Space:} $\{$HHH, HHT,HTH, THH, HTT,THT,TTH, TTT $\}$\\
+	\textbf{Example of events:} $E_1=$ getting all heads $=\{HHH\}\subseteq S$\\ 
+	$E_2=$ getting exactly one H and one T $=\{\}\subseteq S$\\
+	$E_3=$ getting at least two heads $=\{HHH, HHT, HTH, THH\}\subseteq S$\\
+	\hfill\\
+	We want to assign a number to each event, which is a measure of the chance or probabilities that this event happened. Our goal is to understand the process of assigning probabilities to events.\\
+	\hfill\\
+	\example \textbf{Die Roll}\\
+	\textbf{Experiment:} Roll a six sided dice two times\\
+	\textbf{Sample Space:}$\{(1,1),(1,2)...(1,6),(2,1)...(2,6)...(6,6)\}$\\
+	\textbf{Example of events:} \\
+	$E_1=$ at least one six = $\{(1,6),(2,6),(3,6),(4,6),(5,6),(6,6),(6,1),(6,2),(6,3),(6,4),(6,5)\}$\\
+	$|E_2|=10$\\
+	$E_2=$ same numbers on both rolls = $\{(1,1),(2,2),(3,3),(4,4),(5,5),(6,6)\}$\\
+	$E_4=\{(1,5),(3,4)\}$\\
+	\hfill\\
+	\note\\ 
+	\textbf{Simple Event:} is the event with exactly one outcomes. It is the cardinality of the sample space. \\
+	\textbf{Number of events:} Assume the sample space is finite of size n, the number of events is the cardinality of all possible outcomes of S $=2^n$\\
+	\hfill\\
+	\textbf{Set in context}\\
+	Let an event E be describes as a subset of the sample space S.\\
+	Let E, F two events be given.\\
+	$E\cap F$ is a new event that corresponds to outcomes in both E and F\\
+	$E\cup F$ is a outcome a new event include outcomes in E or F\\
+	$E^c$ is a new event that include outcomes where E doesn't happen.\\
+	\hfill\\
+	When we say an event E has happened, we means that the outcome $\omega$ of the experiment lies inside E\\
+	\example Tossed a coin three times. In one run of the experiment, the result is HHT.\\
+	HHT $\in E_1=$ at least two heads, we said $E_1$ has happened.\\
+	\begin{defn}
+	A sigma algebra $\mathcal{B}$ for a set s is a collection of subset of S that satisfies:\begin{enumerate}
+	\item $\emptyset \in \mathcal{B}$
+	\item If $A\in \mathcal{B}$ then $A^c\in \mathcal{B}$ (closed under complement)
+	\item If $\{A_i\}_{i=1}^{\infty} \in \mathcal{B}$ then $\cap_{i=1}^{\infty} A_i \in \mathcal{B}$ (closed under)
+	\end{enumerate}
+	\end{defn}
+	\newpage
+	Sigma algebera is a collection of events to which we want to assign the probabilities.
+	\section[Axioms for a probability function]{Axioms for a probability function}
+	Suppose we are given the pair $(S,\mathcal{B})$ which S represents the sample space and $\mathcal{B}$ is a sigma algebra S.\\
+	\begin{defn}
+	A probability function P satisfies the following:\begin{align*}
+	P:\mathcal{B}\rightarrow \mathbb{R}\\
+	E \mapsto P(E)
+	\end{align*}
+	\begin{enumerate}
+	\item $P(A)\geq 0$ for all $A\in \mathcal{B}$
+	\item $P(S)=1$
+	\item If $A_1,A_2,A_3,...$ are mutually disjiont sets in $\mathcal{B}$ then $P(\cup_{i=1}^{\infty}A_i)=\sum_{i=1}^{\infty}P(A_i)$
+	\end{enumerate}
+	\end{defn}
+	\begin{thm}
+	Suppose the sample space S is countable. To define a probability function on $(S,\mathcal{B}=P(S))$, we do the following \begin{enumerate}
+	\item Find a seq $\{p_i\}_{i=1}^{\infty}$ such that (i) $0\leq p_i\leq 1$ and (ii) $\sum_{i=1}^{\infty}p_i=1$
+	\item Define $P(\{s_i\})=p_i$
+	\item For any $E\in \mathcal{B}, E=\{s_{i1},s_{i2},...s_{ij}\}$
+	\end{enumerate}
+	\end{thm}
+	\example Probability Functions Examples\\
+\text{\quad} Coin Tosseo: \\
+\text{\quad} \textbf{Experiment: }tossing the coin three times, noting the outcomes.\\
+\text{\quad} \textbf{Sample Space:} $\{$HHH, HHT,HTH, THH, HTT,THT,TTH, TTT $\}$\\
+	To get a probability function, we will need to work with a sigma algebra. Suppose $\mathcal{B}_1=\mathcal{P}(S)$, note that the cardinality of $\mathcal{B}_1$ is 256.\\
+	There are infinitely many ways to choose the sequence ${p_i}$. One way is to choose $p_i=\frac{1}{8}$ for all i. Another way is to set $p_1=1$ and rest to 0.\\
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	% Try to do the graphs and proofs %
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\hfill\\
+	\hfill\\
+	\textbf{Tree Diagram} is a graph that describes the flow of the outcomes of each steps in an experiment. 
+	\begin{defn}
+	\textbf{Conditional Probability} is $P(A\mid B)$= P(A happens given that B has already happened)\begin{align*}
+	=\frac{P(A\cap B)}{P(B)}
+	\end{align*}
+	And by \textbf{Multiplication Principle}, \begin{align*}
+	P(A\cap B) & = P(A\mid B) \times P(B)\\
+	&= P(B\mid A)\times P(A)
+	\end{align*}
+	\end{defn}
+	
+	\newpage
+	Assumption: 1) Probability of events when all outcomes in the sample space are equally likely. 2) Sample space is finite.
+	\begin{prop}
+	If every outcome in the sample space is equally likely, we can calculate the probability of $E\subseteq S$ as follow: \begin{align*}
+	P(E)=\frac{n(E)}{n(S)}
+	\end{align*}
+	where $n(E)$ is the number of outcomes in E. 
+	\end{prop}
+	\example Suppose we toss a coin that $p(H)\in (0,1)$ two times. The sample space is S = $\{$HH, HT, TH, TT$\}$. If the coin is fair, then $P(HH)=P(HT)=P(TH)=P(TT)=0.25$\\
+	\hfill\\
+	\begin{thm}
+	\textbf{Fundmental Theorem of Counting:} Suppose a task T can be performed as a sequence of subtasks: $T_1,T_2,T_3,...,T_k$. And each $n_1,...,n_2,n_3,...,n_k$ is number of ways to perform $T_i$\\
+	Then the total number ways to perform the task T is  \begin{align*}
+	n_1\times n_2 \times n_3 \times \cdots \times n_k
+	\end{align*}
+	\end{thm} 
+	Typically we will have to select k objects from n distinct objects.\\
+	\example $\{0,1,2,3,4,5,6,7,8,9\}$, we might be interested in knowing the total number of ways one can choose 4 digits from this 10 digits.\\
+	\hfill\\
+\begin{tabular}{l|l|l|}
+\cline{2-3}
+                                                                                       & Without Replacement                                                                                    & With Replacement                                                                                   \\ \hline
+\multicolumn{1}{|l|}{Order Matters}                                                    & \begin{tabular}[c]{@{}l@{}}(1,2,4,5) different from (1,5,2,4)\\ (1,1,2,5) is not possible\end{tabular} & \begin{tabular}[c]{@{}l@{}}(1,2,4,5) different from (1,5,2,4)\\ (1,1,2,5) is possible\end{tabular} \\ \hline
+\multicolumn{1}{|l|}{\begin{tabular}[c]{@{}l@{}}Order Does Not\\ Matters\end{tabular}} & \begin{tabular}[c]{@{}l@{}}(1,2,3,4) is same as (4,3,2,1)\\ (1,1,2,5) not possible\end{tabular}        & \begin{tabular}[c]{@{}l@{}}(1,2,3,4) is same as (4,3,2,1)\\ (1,1,2,4) is possible\end{tabular}     \\ \hline
+\end{tabular}\\
+\hfill\\
+\hfill\\
+\textbf{1. Without replacement and order matters}\\
+Use the fundamental theorem of counting, we divide T, which is select k digits from a set of n distinct objects divide into \begin{align*}
+T:T_1\rightarrow T_2\rightarrow T_3 \rightarrow \cdots \rightarrow T_k
+\end{align*}
+where $T_i$ is select ith object. Then, we will got \begin{align*}
+n\times (n-1)\times (n-2) \times (n-3) \times \cdots \times (n-k+1)
+\end{align*}
+Then, we got \begin{align*}
+\Perm{n}{k}=\frac{n!}{(n-k)!}
+\end{align*}
+\hfill\\
+\hfill\\
+\textbf{2. Without replacement and order does not matter}\\
+T = choose k objects from n distinct objects where order does not matter and without replacement. \begin{align*}
+T:T_1\rightarrow T_2
+\end{align*}
+$T_1$ is choose k objects where order matters and without replacement \\
+$T_2$ is to get rid of all the times we have double counted.\\
+\hfill\\
+$\#$ ways to do $T_1=\Perm{n}{k}=\frac{n!}{(n-k)!}$\\
+$\#$ ways to do $T_2=$ number of arrangements of k objects $=k!$\\
+Then we got \begin{align*}
+\Comb{n}{k}=\binom nk =\frac{n!}{(n-k)!k!}
+\end{align*}
+\textbf{3. With replacement and order does not matter}\\
+$T=$ Choose k objects where order does not matter and with replacement. \\
+\hfill\\
+We keep track of how many times a given object repeats in the selection and the total number of objects in the selection is equal to k.\\
+Which is the same as choosing $n-1$ walls in a set of $(n+k-1)$, we got \begin{align*}
+\Comb{n+k-1}{k}=\Comb{n+k-1}{n-1}
+\end{align*}
+\hfill\\
+\example $\{1,2,3,4\}$, $k=10$, We are selecting 10 objects from $\{1,2,3,4\}$ with replacement and order does not matter.\\
+We only care about how many times each number shows up since order does not matter and the total objects in selection are 10. To achieve that, we setup 13 spots. Such that, the extra position is how many times the given number repeats in the selection.\\
+Such that, the
+\newpage
+\chapter[Conditional Probability]{Conditional Probability}
+Recall that given two events A and B, the conditional probability is \begin{align*}
+P(A\mid B)=\frac{P(A\cap B)}{P(B)}
+\end{align*}
+\begin{defn}
+WE say two events A and B are independent if and only if\begin{align*}
+P(A\cap B)&=P(A)\cdot P(B)\\
+P(A\mid B)&=P(A)\\
+P(B\mid A)&-P(B)
+\end{align*}
+This means that B has happened will not affect the probability of A happening. Equivalent to saying that $P(A\mid B)=P(A)$
+\end{defn}
+\note $P(A\cap B)$ is the probability that A and B happen simultaneously.\\
+\begin{thm}
+\begin{align*}
+P(A\mid B)&=\frac{P(A\cap B)}{P(B)}\\
+&=\frac{P(B\mid A)\cdot P(A)}{P(B)}
+\end{align*}
+and \begin{align*}
+P(B\mid A)&=\frac{P(B\cap A)}{P(A)}\\
+&=\frac{P(A\mid B)\cdot P(B)}{P(A)}
+\end{align*}
+\end{thm}
+\hfill\\
+\exercise Now if A and B and independent, we want to check if $A$ and $B^{c}$ is independent, which is checking if $P(A\cap B^c)=P(A)P(B^c)$. \\
+\hfill\\
+\example\\
+\textbf{Experiment:} \\
+\text{\qquad} Step1: Toss a coin with $P(H)=0.4$\\
+\text{\qquad} Step2: If we got head, we will roll a fair dice. \\
+\text{\qquad \quad} \text{\qquad} Else, we will roll a dice with $P(1)=P(2)=\cdots=P(5)=0.1$ and $P(6)=0.5$\\
+\hfill\\
+\textbf{Question:} Given that they observed a 6, what is the probability that a fair dice was rolled?\\
+So we need to calculate $P(H\mid 6)$ which is the probability of rolling a fair dice (toss 6) given that 6 was observed.\\
+\hfill\\
+\begin{thm}
+\textbf{Law of Total Probability}\\
+If $A_1,A_2,\cdots,A_k$ are given, and 
+\end{thm}
+	\end{document}
