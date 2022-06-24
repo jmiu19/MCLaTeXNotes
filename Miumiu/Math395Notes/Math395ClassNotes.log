@@ -1,0 +1,1538 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.12) (preloaded format=pdflatex 2020.12.25)  12 JAN 2022 00:46
+entering extended mode
+**./Math395ClassNotes.tex
+(Math395ClassNotes.tex
+LaTeX2e <2020-10-01> patch level 2
+L3 programming layer <2020-12-07> xparse <2020-03-03>
+(C:\Users\Cat\AppData\Local\Programs\MiKTeX\tex/latex/base\book.cls
+Document Class: book 2020/04/10 v1.4m Standard LaTeX document class
+(C:\Users\Cat\AppData\Local\Programs\MiKTeX\tex/latex/base\bk11.clo
+File: bk11.clo 2020/04/10 v1.4m Standard LaTeX file (size option)
+)
+\c@part=\count177
+\c@chapter=\count178
+\c@section=\count179
+\c@subsection=\count180
+\c@subsubsection=\count181
+\c@paragraph=\count182
+\c@subparagraph=\count183
+\c@figure=\count184
+\c@table=\count185
+\abovecaptionskip=\skip47
+\belowcaptionskip=\skip48
+\bibindent=\dimen138
+)
+(C:\Users\Cat\AppData\Local\Programs\MiKTeX\tex/latex/xcolor\xcolor.sty
+Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
+
+(C:\Users\Cat\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 225.
+
+(C:\Users\Cat\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\pdftex.def
+File: pdftex.def 2020/10/05 v1.2a Graphics/color driver for pdftex
+)
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1352.
+Package xcolor Info: Model `RGB' extended on input line 1364.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1367.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
+) (C:\Users\Cat\AppData\Local\Programs\MiKTeX\tex/latex/mathtools\mathtools.sty
+Package: mathtools 2020/03/24 v1.24 mathematical typesetting tools
+
+(C:\Users\Cat\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks15
+)
+(C:\Users\Cat\AppData\Local\Programs\MiKTeX\tex/latex/tools\calc.sty
+Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count186
+\calc@Bcount=\count187
+\calc@Adimen=\dimen139
+\calc@Bdimen=\dimen140
+\calc@Askip=\skip49
+\calc@Bskip=\skip50
+LaTeX Info: Redefining \setlength on input line 80.
+LaTeX Info: Redefining \addtolength on input line 81.
+\calc@Ccount=\count188
+\calc@Cskip=\skip51
+)
+(C:\Users\Cat\AppData\Local\Programs\MiKTeX\tex/latex/mathtools\mhsetup.sty
+Package: mhsetup 2017/03/31 v1.3 programming setup (MH)
+)
+(C:\Users\Cat\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsmath.sty
+Package: amsmath 2020/09/23 v2.17i AMS math features
+\@mathmargin=\skip52
+
+For additional information on amsmath, use the `?' option.
+(C:\Users\Cat\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amstext.sty
+Package: amstext 2000/06/29 v2.01 AMS text
+
+(C:\Users\Cat\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks16
+\ex@=\dimen141
+))
+(C:\Users\Cat\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen142
+)
+(C:\Users\Cat\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsopn.sty
+Package: amsopn 2016/03/08 v2.02 operator names
+)
+\inf@bad=\count189
+LaTeX Info: Redefining \frac on input line 234.
+\uproot@=\count190
+\leftroot@=\count191
+LaTeX Info: Redefining \overline on input line 399.
+\classnum@=\count192
+\DOTSCASE@=\count193
+LaTeX Info: Redefining \ldots on input line 496.
+LaTeX Info: Redefining \dots on input line 499.
+LaTeX Info: Redefining \cdots on input line 620.
+\Mathstrutbox@=\box47
+\strutbox@=\box48
+\big@size=\dimen143
+LaTeX Font Info:    Redeclaring font encoding OML on input line 743.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 744.
+\macc@depth=\count194
+\c@MaxMatrixCols=\count195
+\dotsspace@=\muskip16
+\c@parentequation=\count196
+\dspbrk@lvl=\count197
+\tag@help=\toks17
+\row@=\count198
+\column@=\count199
+\maxfields@=\count266
+\andhelp@=\toks18
+\eqnshift@=\dimen144
+\alignsep@=\dimen145
+\tagshift@=\dimen146
+\tagwidth@=\dimen147
+\totwidth@=\dimen148
+\lineht@=\dimen149
+\@envbody=\toks19
+\multlinegap=\skip53
+\multlinetaggap=\skip54
+\mathdisplay@stack=\toks20
+LaTeX Info: Redefining \[ on input line 2923.
+LaTeX Info: Redefining \] on input line 2924.
+)
+LaTeX Info: Thecontrolsequence`\('isalreadyrobust on input line 130.
+LaTeX Info: Thecontrolsequence`\)'isalreadyrobust on input line 130.
+LaTeX Info: Thecontrolsequence`\['isalreadyrobust on input line 130.
+LaTeX Info: Thecontrolsequence`\]'isalreadyrobust on input line 130.
+\g_MT_multlinerow_int=\count267
+\l_MT_multwidth_dim=\dimen150
+\origjot=\skip55
+\l_MT_shortvdotswithinadjustabove_dim=\dimen151
+\l_MT_shortvdotswithinadjustbelow_dim=\dimen152
+\l_MT_above_intertext_sep=\dimen153
+\l_MT_below_intertext_sep=\dimen154
+\l_MT_above_shortintertext_sep=\dimen155
+\l_MT_below_shortintertext_sep=\dimen156
+\xmathstrut@box=\box49
+\xmathstrut@dim=\dimen157
+)
+(C:\Users\Cat\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.sty
+Package: geometry 2020/01/02 v5.9 Page Geometry
+
+(C:\Users\Cat\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifvtex.sty
+Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
+
+(C:\Users\Cat\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.sty
+Package: iftex 2020/03/06 v1.0d TeX engine tests
+))
+\Gm@cnth=\count268
+\Gm@cntv=\count269
+\c@Gm@tempcnt=\count270
+\Gm@bindingoffset=\dimen158
+\Gm@wd@mp=\dimen159
+\Gm@odd@mp=\dimen160
+\Gm@even@mp=\dimen161
+\Gm@layoutwidth=\dimen162
+\Gm@layoutheight=\dimen163
+\Gm@layouthoffset=\dimen164
+\Gm@layoutvoffset=\dimen165
+\Gm@dimlist=\toks21
+
+(C:\Users\Cat\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.cfg))
+(C:\Users\Cat\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+(C:\Users\Cat\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+))
+(C:\Users\Cat\AppData\Local\Programs\MiKTeX\tex/latex/paralist\paralist.sty
+Package: paralist 2017/01/22 v2.7 Extended list environments
+\pltopsep=\skip56
+\plpartopsep=\skip57
+\plitemsep=\skip58
+\plparsep=\skip59
+\pl@lab=\toks22
+)
+(C:\Users\Cat\AppData\Local\Programs\MiKTeX\tex/latex/rsfso\rsfso.sty
+Package: rsfso 2013/11/02 v1.01 U/rsfso (Michael Sharpe)
+
+(C:\Users\Cat\AppData\Local\Programs\MiKTeX\tex/latex/xkeyval\xkeyval.sty
+Package: xkeyval 2020/11/20 v2.8 package option processing (HA)
+
+(C:\Users\Cat\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\xkeyval.tex
+(C:\Users\Cat\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\xkvutils.tex
+\XKV@toks=\toks23
+\XKV@tempa@toks=\toks24
+)
+\XKV@depth=\count271
+File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
+))
+LaTeX Font Info:    Redeclaring math alphabet \mathcal on input line 12.
+) (C:\Users\Cat\AppData\Local\Programs\MiKTeX\tex/latex/amscls\amsthm.sty
+Package: amsthm 2020/05/29 v2.20.6
+\thm@style=\toks25
+\thm@bodyfont=\toks26
+\thm@headfont=\toks27
+\thm@notefont=\toks28
+\thm@headpunct=\toks29
+\thm@preskip=\skip60
+\thm@postskip=\skip61
+\thm@headsep=\skip62
+\dth@everypar=\toks30
+)
+(C:\Users\Cat\AppData\Local\Programs\MiKTeX\tex/latex/wasysym\wasysym.sty
+Package: wasysym 2020/01/19 v2.4 Wasy-2 symbol support package
+\symwasy=\mathgroup6
+LaTeX Font Info:    Overwriting symbol font `wasy' in version `bold'
+(Font)                  U/wasy/m/n --> U/wasy/b/n on input line 93.
+)
+(C:\Users\Cat\AppData\Local\Programs\MiKTeX\tex/latex/enumitem\enumitem.sty
+Package: enumitem 2019/06/20 v3.9 Customized lists
+\labelindent=\skip63
+\enit@outerparindent=\dimen166
+\enit@toks=\toks31
+\enit@inbox=\box50
+\enit@count@id=\count272
+\enitdp@description=\count273
+)
+(C:\Users\Cat\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hyperref.sty
+Package: hyperref 2020-05-15 v7.00e Hypertext links for LaTeX
+
+(C:\Users\Cat\AppData\Local\Programs\MiKTeX\tex/generic/ltxcmds\ltxcmds.sty
+Package: ltxcmds 2020-05-10 v1.25 LaTeX kernel commands for general use (HO)
+)
+(C:\Users\Cat\AppData\Local\Programs\MiKTeX\tex/generic/pdftexcmds\pdftexcmds.s
+ty
+Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+(C:\Users\Cat\AppData\Local\Programs\MiKTeX\tex/generic/infwarerr\infwarerr.sty
+Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
+)
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+(C:\Users\Cat\AppData\Local\Programs\MiKTeX\tex/generic/kvsetkeys\kvsetkeys.sty
+Package: kvsetkeys 2019/12/15 v1.18 Key value parser (HO)
+)
+(C:\Users\Cat\AppData\Local\Programs\MiKTeX\tex/generic/kvdefinekeys\kvdefineke
+ys.sty
+Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
+)
+(C:\Users\Cat\AppData\Local\Programs\MiKTeX\tex/generic/pdfescape\pdfescape.sty
+Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
+) (C:\Users\Cat\AppData\Local\Programs\MiKTeX\tex/latex/hycolor\hycolor.sty
+Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
+)
+(C:\Users\Cat\AppData\Local\Programs\MiKTeX\tex/latex/letltxmacro\letltxmacro.s
+ty
+Package: letltxmacro 2019/12/03 v1.6 Let assignment for LaTeX macros (HO)
+) (C:\Users\Cat\AppData\Local\Programs\MiKTeX\tex/latex/auxhook\auxhook.sty
+Package: auxhook 2019-12-17 v1.6 Hooks for auxiliary files (HO)
+)
+(C:\Users\Cat\AppData\Local\Programs\MiKTeX\tex/latex/kvoptions\kvoptions.sty
+Package: kvoptions 2020-10-07 v3.14 Key value format for package options (HO)
+)
+\@linkdim=\dimen167
+\Hy@linkcounter=\count274
+\Hy@pagecounter=\count275
+
+(C:\Users\Cat\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\pd1enc.def
+File: pd1enc.def 2020-05-15 v7.00e Hyperref: PDFDocEncoding definition (HO)
+Now handling font encoding PD1 ...
+... no UTF-8 mapping file for font encoding PD1
+)
+(C:\Users\Cat\AppData\Local\Programs\MiKTeX\tex/generic/intcalc\intcalc.sty
+Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
+)
+(C:\Users\Cat\AppData\Local\Programs\MiKTeX\tex/generic/etexcmds\etexcmds.sty
+Package: etexcmds 2019/12/15 v1.7 Avoid name clashes with e-TeX commands (HO)
+)
+\Hy@SavedSpaceFactor=\count276
+Package hyperref Info: Hyper figures OFF on input line 4464.
+Package hyperref Info: Link nesting OFF on input line 4469.
+Package hyperref Info: Hyper index ON on input line 4472.
+Package hyperref Info: Plain pages OFF on input line 4479.
+Package hyperref Info: Backreferencing OFF on input line 4484.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4717.
+\c@Hy@tempcnt=\count277
+
+(C:\Users\Cat\AppData\Local\Programs\MiKTeX\tex/latex/url\url.sty
+\Urlmuskip=\muskip17
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 5076.
+\XeTeXLinkMargin=\dimen168
+
+(C:\Users\Cat\AppData\Local\Programs\MiKTeX\tex/generic/bitset\bitset.sty
+Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
+
+(C:\Users\Cat\AppData\Local\Programs\MiKTeX\tex/generic/bigintcalc\bigintcalc.s
+ty
+Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
+)
+))
+\Fld@menulength=\count278
+\Field@Width=\dimen169
+\Fld@charsize=\dimen170
+Package hyperref Info: Hyper figures OFF on input line 6347.
+Package hyperref Info: Link nesting OFF on input line 6352.
+Package hyperref Info: Hyper index ON on input line 6355.
+Package hyperref Info: backreferencing OFF on input line 6362.
+Package hyperref Info: Link coloring OFF on input line 6367.
+Package hyperref Info: Link coloring with OCG OFF on input line 6372.
+Package hyperref Info: PDF/A mode OFF on input line 6377.
+LaTeX Info: Redefining \ref on input line 6417.
+LaTeX Info: Redefining \pageref on input line 6421.
+
+(C:\Users\Cat\AppData\Local\Programs\MiKTeX\tex/latex/base\atbegshi-ltx.sty
+Package: atbegshi-ltx 2020/08/17 v1.0a Emulation of the original atbegshi packa
+ge
+with kernel methods
+)
+\Hy@abspage=\count279
+\c@Item=\count280
+\c@Hfootnote=\count281
+)
+Package hyperref Info: Driver (autodetected): hpdftex.
+
+(C:\Users\Cat\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hpdftex.def
+File: hpdftex.def 2020-05-15 v7.00e Hyperref driver for pdfTeX
+
+(C:\Users\Cat\AppData\Local\Programs\MiKTeX\tex/latex/base\atveryend-ltx.sty
+Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atvery packag
+e
+with kernel methods
+)
+\Fld@listcount=\count282
+\c@bookmark@seq@number=\count283
+
+(C:\Users\Cat\AppData\Local\Programs\MiKTeX\tex/latex/rerunfilecheck\rerunfilec
+heck.sty
+Package: rerunfilecheck 2019/12/05 v1.9 Rerun checks for auxiliary files (HO)
+
+(C:\Users\Cat\AppData\Local\Programs\MiKTeX\tex/generic/uniquecounter\uniquecou
+nter.sty
+Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
+)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+86.
+)
+\Hy@SectionHShift=\skip64
+)
+(C:\Users\Cat\AppData\Local\Programs\MiKTeX\tex/latex/tocloft\tocloft.sty
+Package: tocloft 2017/08/31 v2.3i parameterised ToC, etc., typesetting
+Package tocloft Info: The document has chapter divisions on input line 51.
+\cftparskip=\skip65
+\cftbeforetoctitleskip=\skip66
+\cftaftertoctitleskip=\skip67
+\cftbeforepartskip=\skip68
+\cftpartnumwidth=\skip69
+\cftpartindent=\skip70
+\cftbeforechapskip=\skip71
+\cftchapindent=\skip72
+\cftchapnumwidth=\skip73
+\cftbeforesecskip=\skip74
+\cftsecindent=\skip75
+\cftsecnumwidth=\skip76
+\cftbeforesubsecskip=\skip77
+\cftsubsecindent=\skip78
+\cftsubsecnumwidth=\skip79
+\cftbeforesubsubsecskip=\skip80
+\cftsubsubsecindent=\skip81
+\cftsubsubsecnumwidth=\skip82
+\cftbeforeparaskip=\skip83
+\cftparaindent=\skip84
+\cftparanumwidth=\skip85
+\cftbeforesubparaskip=\skip86
+\cftsubparaindent=\skip87
+\cftsubparanumwidth=\skip88
+\cftbeforeloftitleskip=\skip89
+\cftafterloftitleskip=\skip90
+\cftbeforefigskip=\skip91
+\cftfigindent=\skip92
+\cftfignumwidth=\skip93
+\c@lofdepth=\count284
+\c@lotdepth=\count285
+\cftbeforelottitleskip=\skip94
+\cftafterlottitleskip=\skip95
+\cftbeforetabskip=\skip96
+\cfttabindent=\skip97
+\cfttabnumwidth=\skip98
+)
+(C:\Users\Cat\AppData\Local\Programs\MiKTeX\tex/latex/wrapfig\wrapfig.sty
+\wrapoverhang=\dimen171
+\WF@size=\dimen172
+\c@WF@wrappedlines=\count286
+\WF@box=\box51
+\WF@everypar=\toks32
+Package: wrapfig 2003/01/31  v 3.6
+)
+(C:\Users\Cat\AppData\Local\Programs\MiKTeX\tex/latex/titlesec\titlesec.sty
+Package: titlesec 2021/07/05 v2.14 Sectioning titles
+\ttl@box=\box52
+\beforetitleunit=\skip99
+\aftertitleunit=\skip100
+\ttl@plus=\dimen173
+\ttl@minus=\dimen174
+\ttl@toksa=\toks33
+\titlewidth=\dimen175
+\titlewidthlast=\dimen176
+\titlewidthfirst=\dimen177
+)
+\c@axiom=\count287
+\c@thm=\count288
+\c@lem=\count289
+\c@corL=\count290
+\c@defn=\count291
+
+(C:\Users\Cat\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdfte
+x.def
+File: l3backend-pdftex.def 2020-09-24 L3 backend support: PDF output (pdfTeX)
+\l__kernel_color_stack_int=\count292
+\l__pdf_internal_box=\box53
+)
+No file Math395ClassNotes.aux.
+\openout1 = `Math395ClassNotes.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 139.
+LaTeX Font Info:    ... okay on input line 139.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 139.
+LaTeX Font Info:    ... okay on input line 139.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 139.
+LaTeX Font Info:    ... okay on input line 139.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 139.
+LaTeX Font Info:    ... okay on input line 139.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 139.
+LaTeX Font Info:    ... okay on input line 139.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 139.
+LaTeX Font Info:    ... okay on input line 139.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 139.
+LaTeX Font Info:    ... okay on input line 139.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 139.
+LaTeX Font Info:    ... okay on input line 139.
+
+(C:\Users\Cat\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count293
+\scratchdimen=\dimen178
+\scratchbox=\box54
+\nofMPsegments=\count294
+\nofMParguments=\count295
+\everyMPshowfont=\toks34
+\MPscratchCnt=\count296
+\MPscratchDim=\dimen179
+\MPnumerator=\count297
+\makeMPintoPDFobject=\count298
+\everyMPtoPDFconversion=\toks35
+) (C:\Users\Cat\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx.sty
+Package: graphicx 2020/09/09 v1.2b Enhanced LaTeX Graphics (DPC,SPQR)
+
+(C:\Users\Cat\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphics.sty
+Package: graphics 2020/08/30 v1.4c Standard LaTeX Graphics (DPC,SPQR)
+
+(C:\Users\Cat\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig.sty
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+(C:\Users\Cat\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 105.
+)
+\Gin@req@height=\dimen180
+\Gin@req@width=\dimen181
+)
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: legalpaper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(72.26999pt, 469.75502pt, 72.26999pt)
+* v-part:(T,H,B)=(72.26999pt, 867.24002pt, 72.26999pt)
+* \paperwidth=614.295pt
+* \paperheight=1011.78pt
+* \textwidth=469.75502pt
+* \textheight=867.24002pt
+* \oddsidemargin=0.0pt
+* \evensidemargin=0.0pt
+* \topmargin=-31.8738pt
+* \headheight=12.0pt
+* \headsep=19.8738pt
+* \topskip=11.0pt
+* \footskip=27.46295pt
+* \marginparwidth=62.0pt
+* \marginparsep=7.0pt
+* \columnsep=10.0pt
+* \skip\footins=10.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+Package hyperref Info: Link coloring OFF on input line 139.
+(C:\Users\Cat\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\nameref.sty
+Package: nameref 2019/09/16 v2.46 Cross-referencing by name of section
+
+(C:\Users\Cat\AppData\Local\Programs\MiKTeX\tex/latex/refcount\refcount.sty
+Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
+)
+(C:\Users\Cat\AppData\Local\Programs\MiKTeX\tex/generic/gettitlestring\gettitle
+string.sty
+Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
+)
+\c@section@level=\count299
+)
+LaTeX Info: Redefining \ref on input line 139.
+LaTeX Info: Redefining \pageref on input line 139.
+LaTeX Info: Redefining \nameref on input line 139.
+\@outlinefile=\write3
+\openout3 = `Math395ClassNotes.out'.
+
+
+
+pdfTeX warning: pdflatex (file ./hmm.pdf): PDF inclusion: found PDF version <1.
+7>, but at most version <1.5> allowed
+<hmm.pdf, id=3, 221.36029pt x 224.36021pt>
+File: hmm.pdf Graphic file (type pdf)
+<use hmm.pdf>
+Package pdftex.def Info: hmm.pdf  used on input line 153.
+(pdftex.def)             Requested size: 177.08846pt x 179.4884pt.
+[1
+
+
+{C:/Users/Cat/AppData/Local/MiKTeX/pdftex/config/pdftex.map} <./hmm.pdf>]
+\tf@toc=\write4
+\openout4 = `Math395ClassNotes.toc'.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 174--175
+
+ []
+
+LaTeX Font Info:    Trying to load font information for U+msa on input line 176
+.
+(C:\Users\Cat\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 176
+.
+
+(C:\Users\Cat\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+LaTeX Font Info:    Trying to load font information for U+wasy on input line 17
+6.
+
+(C:\Users\Cat\AppData\Local\Programs\MiKTeX\tex/latex/wasysym\uwasy.fd
+File: uwasy.fd 2020/01/19 v2.4 Wasy-2 symbol font definitions
+)
+Underfull \hbox (badness 10000) in paragraph at lines 176--177
+
+ []
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.184 \newpage
+               [1]
+Chapter 1.
+
+Underfull \hbox (badness 10000) in paragraph at lines 188--189
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 191--193
+
+ []
+
+LaTeX Font Info:    Trying to load font information for U+rsfso on input line 2
+01.
+(C:\Users\Cat\AppData\Local\Programs\MiKTeX\tex/latex/rsfso\ursfso.fd
+File: ursfso.fd 2011/02/13 Fontinst v1.933 font definitions for U/rsfso.
+)
+LaTeX Font Info:    Font shape `U/rsfso/m/n' will be
+(Font)              scaled to size 10.95pt on input line 201.
+LaTeX Font Info:    Font shape `U/rsfso/m/n' will be
+(Font)              scaled to size 8.0pt on input line 201.
+LaTeX Font Info:    Font shape `U/rsfso/m/n' will be
+(Font)              scaled to size 6.0pt on input line 201.
+ [2
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 250--253
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 261--262
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 295--296
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 297--300
+
+ []
+
+[3]
+Underfull \hbox (badness 10000) in paragraph at lines 302--303
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 308--310
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 315--318
+
+ []
+
+[4]
+Underfull \hbox (badness 10000) in paragraph at lines 394--395
+
+ []
+
+[5]
+Underfull \hbox (badness 10000) in paragraph at lines 479--480
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 481--483
+
+ []
+
+[6
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 491--494
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 528--529
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 531--532
+
+ []
+
+[7]
+Underfull \hbox (badness 10000) in paragraph at lines 591--592
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 593--594
+
+ []
+
+[8]
+Chapter 2.
+LaTeX Font Info:    Font shape `U/rsfso/m/n' will be
+(Font)              scaled to size 24.88pt on input line 606.
+LaTeX Font Info:    Font shape `U/rsfso/m/n' will be
+(Font)              scaled to size 20.74pt on input line 606.
+LaTeX Font Info:    Font shape `U/rsfso/m/n' will be
+(Font)              scaled to size 17.28pt on input line 606.
+
+Underfull \hbox (badness 10000) in paragraph at lines 609--610
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 612--613
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 615--616
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 617--618
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 619--621
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 622--623
+
+ []
+
+[9
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 637--638
+
+ []
+
+[10]
+Underfull \hbox (badness 10000) in paragraph at lines 690--692
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 693--695
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 696--698
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 699--700
+
+ []
+
+[11]
+Underfull \hbox (badness 10000) in paragraph at lines 720--721
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 722--723
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 724--725
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 726--729
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 744--745
+
+ []
+
+[12]
+Underfull \hbox (badness 10000) in paragraph at lines 779--780
+
+ []
+
+
+
+pdfTeX warning: pdflatex (file ./thm6_1.pdf): PDF inclusion: found PDF version 
+<1.7>, but at most version <1.5> allowed
+<thm6_1.pdf, id=210, 631.15872pt x 388.94308pt>
+File: thm6_1.pdf Graphic file (type pdf)
+<use thm6_1.pdf>
+Package pdftex.def Info: thm6_1.pdf  used on input line 794.
+(pdftex.def)             Requested size: 315.57858pt x 194.47105pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 804--805
+
+ []
+
+[13 <./thm6_1.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 814--815
+
+ []
+
+<thm6_2.png, id=261, 626.34pt x 357.58594pt>
+File: thm6_2.png Graphic file (type png)
+<use thm6_2.png>
+Package pdftex.def Info: thm6_2.png  used on input line 826.
+(pdftex.def)             Requested size: 244.2716pt x 139.45795pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 831--832
+
+ []
+
+[14 <./thm6_2.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 857--858
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 859--861
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 862--863
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 864--866
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 867--868
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 872--874
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 872--874
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 875--876
+
+ []
+
+[15]
+Underfull \hbox (badness 10000) in paragraph at lines 909--910
+
+ []
+
+[16]
+Underfull \hbox (badness 10000) in paragraph at lines 950--952
+
+ []
+
+[17]
+Underfull \hbox (badness 10000) in paragraph at lines 1009--1010
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1009--1010
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1011--1013
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1014--1015
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1016--1020
+
+ []
+
+LaTeX Font Info:    Font shape `U/rsfso/m/n' will be
+(Font)              scaled to size 9.0pt on input line 1022.
+LaTeX Font Info:    Font shape `U/rsfso/m/n' will be
+(Font)              scaled to size 5.0pt on input line 1022.
+[18]
+Underfull \hbox (badness 10000) in paragraph at lines 1068--1070
+
+ []
+
+[19]
+Underfull \hbox (badness 10000) in paragraph at lines 1079--1080
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1106--1108
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1109--1111
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1142--1143
+
+ []
+
+[20]
+Underfull \hbox (badness 10000) in paragraph at lines 1217--1219
+
+ []
+
+[21]
+Underfull \hbox (badness 10000) in paragraph at lines 1267--1268
+
+ []
+
+[22]
+Underfull \hbox (badness 10000) in paragraph at lines 1276--1277
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1292--1293
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1297--1299
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1302--1303
+
+ []
+
+[23]
+Underfull \hbox (badness 10000) in paragraph at lines 1352--1358
+
+ []
+
+[24] [25] [26]
+Chapter 3.
+
+
+pdfTeX warning: pdflatex (file ./integration.pdf): PDF inclusion: found PDF ver
+sion <1.7>, but at most version <1.5> allowed
+<integration.pdf, id=398, 575.29604pt x 210.56267pt>
+File: integration.pdf Graphic file (type pdf)
+<use integration.pdf>
+Package pdftex.def Info: integration.pdf  used on input line 1470.
+(pdftex.def)             Requested size: 419.96262pt x 153.70946pt.
+[27
+
+ <./integration.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 1544--1547
+
+ []
+
+[28] [29] [30]
+Underfull \hbox (badness 10000) in paragraph at lines 1664--1666
+
+ []
+
+[31]
+
+pdfTeX warning: pdflatex (file ./IntOverBddSet.pdf): PDF inclusion: found PDF v
+ersion <1.7>, but at most version <1.5> allowed
+<IntOverBddSet.pdf, id=480, 260.95291pt x 268.15181pt>
+File: IntOverBddSet.pdf Graphic file (type pdf)
+<use IntOverBddSet.pdf>
+Package pdftex.def Info: IntOverBddSet.pdf  used on input line 1688.
+(pdftex.def)             Requested size: 130.47614pt x 134.07556pt.
+[32 <./IntOverBddSet.pdf>] [33]
+Underfull \hbox (badness 10000) in paragraph at lines 1811--1812
+
+ []
+
+[34] [35]
+Underfull \hbox (badness 10000) in paragraph at lines 1873--1875
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1888--1890
+
+ []
+
+[36]
+Underfull \hbox (badness 10000) in paragraph at lines 1919--1920
+
+ []
+
+[37]
+Underfull \hbox (badness 10000) in paragraph at lines 1968--1969
+
+ []
+
+
+
+pdfTeX warning: pdflatex (file ./chngOfVar.pdf): PDF inclusion: found PDF versi
+on <1.7>, but at most version <1.5> allowed
+<chngOfVar.pdf, id=592, 504.50883pt x 153.57175pt>
+File: chngOfVar.pdf Graphic file (type pdf)
+<use chngOfVar.pdf>
+Package pdftex.def Info: chngOfVar.pdf  used on input line 1970.
+(pdftex.def)             Requested size: 348.11147pt x 105.9646pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 2011--2013
+
+ []
+
+[38 <./chngOfVar.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 2022--2023
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2027--2028
+
+ []
+
+
+Overfull \hbox (0.17299pt too wide) detected at line 2048
+[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2048--2050
+
+ []
+
+[39]
+Underfull \hbox (badness 10000) in paragraph at lines 2062--2064
+
+ []
+
+[40]
+
+pdfTeX warning: pdflatex (file ./cor13.4.pdf): PDF inclusion: found PDF version
+ <1.7>, but at most version <1.5> allowed
+<cor13.4.pdf, id=665, 497.91017pt x 153.57274pt>
+File: cor13.4.pdf Graphic file (type pdf)
+<use cor13.4.pdf>
+Package pdftex.def Info: cor13.4.pdf  used on input line 2117.
+(pdftex.def)             Requested size: 343.55838pt x 105.96529pt.
+[41 <./cor13.4.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 2178--2179
+
+ []
+
+[42]
+Underfull \hbox (badness 10000) in paragraph at lines 2196--2197
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2198--2199
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2222--2224
+
+ []
+
+[43]
+Underfull \hbox (badness 10000) in paragraph at lines 2231--2232
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2242--2243
+
+ []
+
+[44]
+Underfull \hbox (badness 10000) in paragraph at lines 2260--2261
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2315--2316
+
+ []
+
+[45]
+Underfull \hbox (badness 10000) in paragraph at lines 2317--2318
+
+ []
+
+
+
+pdfTeX warning: pdflatex (file ./parallpied.pdf): PDF inclusion: found PDF vers
+ion <1.7>, but at most version <1.5> allowed
+<parallpied.pdf, id=749, 378.53221pt x 313.1439pt>
+File: parallpied.pdf Graphic file (type pdf)
+<use parallpied.pdf>
+Package pdftex.def Info: parallpied.pdf  used on input line 2319.
+(pdftex.def)             Requested size: 189.26564pt x 156.57156pt.
+
+Overfull \hbox (18.93799pt too wide) in paragraph at lines 2330--2331
+\OT1/cmr/m/n/10.95 For ex-pec-ta-tion (1). Sup-pose we have $\OML/cmm/m/it/10.9
+5 A[] \OT1/cmr/m/n/10.95 = [][]$, then we see that $[] = [] =
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2330--2331
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2349--2349
+
+ []
+
+[46 <./parallpied.pdf>]
+Chapter 4.
+
+
+pdfTeX warning: pdflatex (file ./par-manifold.pdf): PDF inclusion: found PDF ve
+rsion <1.7>, but at most version <1.5> allowed
+<par-manifold.pdf, id=785, 338.59187pt x 215.56033pt>
+File: par-manifold.pdf Graphic file (type pdf)
+<use par-manifold.pdf>
+Package pdftex.def Info: par-manifold.pdf  used on input line 2376.
+(pdftex.def)             Requested size: 270.87386pt x 172.44849pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 2378--2379
+
+ []
+
+[47
+
+ <./par-manifold.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 2395--2397
+
+ []
+
+
+
+pdfTeX warning: pdflatex (file ./manifold-disk.pdf): PDF inclusion: found PDF v
+ersion <1.7>, but at most version <1.5> allowed
+<manifold-disk.pdf, id=829, 203.964pt x 122.3782pt>
+File: manifold-disk.pdf Graphic file (type pdf)
+<use manifold-disk.pdf>
+Package pdftex.def Info: manifold-disk.pdf  used on input line 2409.
+(pdftex.def)             Requested size: 163.1714pt x 97.90268pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 2412--2414
+
+ []
+
+[48 <./manifold-disk.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 2423--2424
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2425--2426
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2427--2428
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2429--2430
+
+ []
+
+[49]
+
+pdfTeX warning: pdflatex (file ./coorPatch.pdf): PDF inclusion: found PDF versi
+on <1.7>, but at most version <1.5> allowed
+<coorPatch.pdf, id=859, 475.69722pt x 237.11185pt>
+File: coorPatch.pdf Graphic file (type pdf)
+<use coorPatch.pdf>
+Package pdftex.def Info: coorPatch.pdf  used on input line 2449.
+(pdftex.def)             Requested size: 328.23143pt x 163.60733pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 2451--2452
+
+ []
+
+
+
+pdfTeX warning: pdflatex (file ./manifoldsDefn.pdf): PDF inclusion: found PDF v
+ersion <1.7>, but at most version <1.5> allowed
+<manifoldsDefn.pdf, id=860, 490.71129pt x 295.7469pt>
+File: manifoldsDefn.pdf Graphic file (type pdf)
+<use manifoldsDefn.pdf>
+Package pdftex.def Info: manifoldsDefn.pdf  used on input line 2463.
+(pdftex.def)             Requested size: 338.59114pt x 204.06558pt.
+[50 <./coorPatch.pdf> <./manifoldsDefn.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 2487--2489
+
+ []
+
+[51]
+Underfull \hbox (badness 10000) in paragraph at lines 2501--2502
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2507--2508
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2512--2513
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2538--2539
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2540--2541
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2542--2544
+
+ []
+
+[52]
+Underfull \hbox (badness 10000) in paragraph at lines 2549--2550
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2551--2553
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2554--2555
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2568--2569
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2570--2571
+
+ []
+
+
+
+pdfTeX warning: pdflatex (file ./1-manifoldHom.pdf): PDF inclusion: found PDF v
+ersion <1.7>, but at most version <1.5> allowed
+<1-manifoldHom.pdf, id=918, 325.14072pt x 201.56404pt>
+File: 1-manifoldHom.pdf Graphic file (type pdf)
+<use 1-manifoldHom.pdf>
+Package pdftex.def Info: 1-manifoldHom.pdf  used on input line 2576.
+(pdftex.def)             Requested size: 162.56995pt x 100.78177pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 2580--2582
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2583--2584
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2586--2588
+
+ []
+
+[53 <./1-manifoldHom.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 2589--2590
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2591--2592
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2593--2594
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2595--2596
+
+ []
+
+
+
+pdfTeX warning: pdflatex (file ./handleBody.pdf): PDF inclusion: found PDF vers
+ion <1.7>, but at most version <1.5> allowed
+<handleBody.pdf, id=951, 345.53802pt x 227.35841pt>
+File: handleBody.pdf Graphic file (type pdf)
+<use handleBody.pdf>
+Package pdftex.def Info: handleBody.pdf  used on input line 2627.
+(pdftex.def)             Requested size: 276.43079pt x 181.88696pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 2631--2632
+
+ []
+
+[54 <./handleBody.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 2652--2653
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2654--2655
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2656--2657
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2662--2663
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2671--2673
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2678--2681
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2687--2689
+
+ []
+
+[55]
+Underfull \hbox (badness 10000) in paragraph at lines 2728--2729
+
+ []
+
+[56]
+
+pdfTeX warning: pdflatex (file ./M.pdf): PDF inclusion: found PDF version <1.7>
+, but at most version <1.5> allowed
+<M.pdf, id=1000, 141.57422pt x 122.3782pt>
+File: M.pdf Graphic file (type pdf)
+<use M.pdf>
+Package pdftex.def Info: M.pdf  used on input line 2756.
+(pdftex.def)             Requested size: 70.78693pt x 61.18895pt.
+[57 <./M.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 2793--2795
+
+ []
+
+[58]
+Underfull \hbox (badness 10000) in paragraph at lines 2874--2875
+
+ []
+
+[59] [60]
+
+pdfTeX warning: pdflatex (file ./cantor.pdf): PDF inclusion: found PDF version 
+<1.7>, but at most version <1.5> allowed
+<cantor.pdf, id=1055, 298.74571pt x 70.78746pt>
+File: cantor.pdf Graphic file (type pdf)
+<use cantor.pdf>
+Package pdftex.def Info: cantor.pdf  used on input line 2918.
+(pdftex.def)             Requested size: 238.99689pt x 56.63004pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 2964--2966
+
+ []
+
+[61 <./cantor.pdf>] [62]
+Underfull \hbox (badness 10000) in paragraph at lines 2973--2974
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2975--2976
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2977--2978
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2979--2980
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2981--2982
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2983--2986
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2987--2991
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2995--2997
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 3004--3005
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 3010--3011
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 3015--3017
+
+ []
+
+[63]
+Underfull \hbox (badness 10000) in paragraph at lines 3038--3040
+
+ []
+
+[64]
+Underfull \hbox (badness 10000) in paragraph at lines 3076--3077
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 3094--3095
+
+ []
+
+
+Overfull \hbox (11.50511pt too wide) in paragraph at lines 3096--3097
+[]$\OML/cmm/m/it/10.95 M$ \OT1/cmr/m/n/10.95 is an in-te-gral man-i-fold for $\
+OML/cmm/m/it/10.95 !$ \OT1/cmr/m/n/10.95 if and only if $\OML/cmm/m/it/10.95 [
+]! \OT1/cmr/m/n/10.95 = 0$, where $\OML/cmm/m/it/10.95 []! \OT1/cmr/m/n/10.95 
+= (\OML/cmm/m/it/10.95 U\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 x; f\OT1/cmr/m/
+n/10.95 (\OML/cmm/m/it/10.95 x\OT1/cmr/m/n/10.95 )) + \OML/cmm/m/it/10.95 V\OT1
+/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 x; f\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95
+ x\OT1/cmr/m/n/10.95 ))\OML/cmm/m/it/10.95 f[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it
+/10.95 x\OT1/cmr/m/n/10.95 )) \OML/cmm/m/it/10.95 dx \OT1/cmr/m/n/10.95 =
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 3096--3097
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 3099--3101
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 3102--3103
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 3107--3109
+
+ []
+
+[65] [66] (Math395ClassNotes.aux)
+
+Package rerunfilecheck Warning: File `Math395ClassNotes.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `Math395ClassNotes.out':
+(rerunfilecheck)             Before: <no file>
+(rerunfilecheck)             After:  4E57D6FD2A8770A65DEB9EC50036A63C;1637.
+ ) 
+Here is how much of TeX's memory you used:
+ 9885 strings out of 479697
+ 145205 string characters out of 2868082
+ 486927 words of memory out of 3000000
+ 26309 multiletter control sequences out of 15000+200000
+ 422355 words of font info for 103 fonts, out of 3000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 78i,21n,85p,1935b,456s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/Users/Cat/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cm
+bx10.pfb><C:/Users/Cat/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfont
+s/cm/cmbx12.pfb><C:/Users/Cat/AppData/Local/Programs/MiKTeX/fonts/type1/public/
+amsfonts/cm/cmbxti10.pfb><C:/Users/Cat/AppData/Local/Programs/MiKTeX/fonts/type
+1/public/amsfonts/cm/cmex10.pfb><C:/Users/Cat/AppData/Local/Programs/MiKTeX/fon
+ts/type1/public/amsfonts/cmextra/cmex8.pfb><C:/Users/Cat/AppData/Local/Programs
+/MiKTeX/fonts/type1/public/amsfonts/cmextra/cmex9.pfb><C:/Users/Cat/AppData/Loc
+al/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Cat/AppD
+ata/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/Ca
+t/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Us
+ers/Cat/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi9.pfb>
+<C:/Users/Cat/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr1
+0.pfb><C:/Users/Cat/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/c
+m/cmr12.pfb><C:/Users/Cat/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsf
+onts/cm/cmr17.pfb><C:/Users/Cat/AppData/Local/Programs/MiKTeX/fonts/type1/publi
+c/amsfonts/cm/cmr6.pfb><C:/Users/Cat/AppData/Local/Programs/MiKTeX/fonts/type1/
+public/amsfonts/cm/cmr8.pfb><C:/Users/Cat/AppData/Local/Programs/MiKTeX/fonts/t
+ype1/public/amsfonts/cm/cmr9.pfb><C:/Users/Cat/AppData/Local/Programs/MiKTeX/fo
+nts/type1/public/amsfonts/cm/cmsl10.pfb><C:/Users/Cat/AppData/Local/Programs/Mi
+KTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Cat/AppData/Local/Prog
+rams/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users/Cat/AppData/Loca
+l/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/Cat/AppDat
+a/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/Cat
+/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti8.pfb><C:/Use
+rs/Cat/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10
+.pfb><C:/Users/Cat/AppData/Local/Programs/MiKTeX/fonts/type1/public/rsfs/rsfs10
+.pfb>
+Output written on Math395ClassNotes.pdf (67 pages, 7431732 bytes).
+PDF statistics:
+ 1294 PDF objects out of 1440 (max. 8388607)
+ 469 named destinations out of 1000 (max. 500000)
+ 81 words of extra memory for PDF output out of 10000 (max. 10000000)
+

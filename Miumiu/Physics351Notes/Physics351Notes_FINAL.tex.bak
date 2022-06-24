@@ -1,0 +1,167 @@
+ \documentclass[11pt]{article}
+
+\usepackage{xcolor}
+\usepackage{mathtools}
+\usepackage[legalpaper, margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{paralist}
+\usepackage{rsfso}
+\usepackage{amsthm}
+\usepackage[inline]{enumitem}   
+
+\newtheoremstyle{break}
+  {\topsep}{\topsep}%
+  {\itshape}{}%
+  {\bfseries}{}%
+  {\newline}{}%
+\theoremstyle{break}
+\theoremstyle{break}
+\newtheorem{axiom}{Axiom}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lem}{Lemma}[thm]
+\newtheorem{prop}[lem]{Proposition}
+\newtheorem{corL}{Corollary}[lem]
+\newtheorem{corT}[lem]{Corollary}
+\newtheorem{defn}{Definition}[corL]
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\J}{\mathcal{J}}
+\newcommand{\T}{\mathcal{T}}
+\newcommand{\Td}{\mathcal{T}_d}
+\newcommand{\C}{\mathcal{C}}
+\newcommand{\M}{\mathcal{M}}
+\newcommand{\Complex}{\mathbb{C}}
+\newcommand{\Power}{\mathcal{P}}
+\newcommand{\pd}{\partial}
+\newcommand{\ee}{\cdot 10}
+\newcommand{\Intab}{[\,a,b\,]}
+\newcommand{\ihat}{\hat{\i}}
+\newcommand{\jhat}{\hat{\j}}
+\newcommand{\khat}{\hat{k}}
+\newcommand{\bmat}[1]{\begin{bmatrix}
+#1\end{bmatrix}}
+
+\makeatletter
+\def\@seccntformat#1{%
+  \expandafter\ifx\csname c@#1\endcsname\c@section\else
+  \csname the#1\endcsname\quad
+  \fi}
+\makeatother
+
+\makeatletter
+\newcommand*{\rom}[1]{\expandafter\@slowromancap\romannumeral #1@}
+\makeatother
+
+\makeatletter
+% This command ignores the optional argument for itemize and enumerate lists
+\newcommand{\inlineitem}[1][]{%
+\ifnum\enit@type=\tw@
+    {\descriptionlabel{#1}}
+  \hspace{\labelsep}%
+\else
+  \ifnum\enit@type=\z@
+       \refstepcounter{\@listctr}\fi
+    \quad\@itemlabel\hspace{\labelsep}%
+\fi}
+\makeatother
+\parindent=0pt
+
+
+\begin{document}
+For complex number $z_1,z_2$, $\bar{z_1/z_2} = \bar{z}_1/\bar{z}_2$. $|z_1| = \sqrt{z_1\bar{z}_1}$. $1/z = \bar{z} / |z|^2$. $e^{i\theta} = \sin(\theta) + i \cos(\theta)$. \\
+$\cos(iz) = \cosh(z) = (e^z + e^{-z})/2$. $\sin(iz) = i\sin(z) = i (e^x - e^{-x})/2$.\\ The equation $z^n = 1$ has $n$ solutions $e^{i2\pi k/n}$ with $0\leq k \leq n-1$.\\
+
+\textbf{Series} sum: $\sum_{n=0}^N a^n = (1-a^N) / (1-a)$. $\sum_{n=0}^N a+bn = (N+1)(a+Nb/2)$.\\
+\textbf{Taylor series} expanding around $x_0$: $f(x) = \sum_{k=0}^\infty \frac{f^{(k)}(x_0)}{n!}(x-x_0)^k$.  \\ 
+\textbf{Binomial Expansion}: $(1\pm x)^n = 1\pm n x + \frac{n(n-1)}{2!}x^2\pm \frac{n(n-1)(n-2)}{3!}x^3\cdots$.\\
+
+Given $m\frac{d^2x}{dx^2} = f(x)$ with $f(x_0) = 0$ and $f'(x_0) >0$, for small deviations from $x_0$: $$x(t) = x_0 + A\cos(\sqrt{\frac{f'(x_0)}{m}}\ t+ \phi)$$
+with $A$ and $\phi$ depending on initial conditions. \\
+
+$\vec{a}\cdot (\vec{b}+\vec{c}) = \vec{a}\cdot \vec{b}+ \vec{a}\cdot \vec{c}$. \ \ $\vec{a}\times \vec{b} =-\vec{b}\times \vec{a}$. \ \  $\vec{a}\times(\vec{b}+\vec{c}) = \vec{a}\times \vec{b}+ \vec{a}\times \vec{c}$. \ \ $\vec{a}\cdot (\vec{b}\times \vec{c}) = \vec{b}\cdot (\vec{c}\times \vec{a}) = \vec{c}\cdot (\vec{a}\times \vec{b})$.\\
+$\vec{a}\times(\vec{b}\times \vec{c}) = (\vec{a}\cdot \vec{c})\vec{b} - (\vec{a}\cdot \vec{b})\vec{c}$.\ \ \ $\frac{d\hat{\theta}}{dt} = -\frac{d\theta}{dt}\hat{\rho}$. $\frac{d\hat{\rho}}{dt} = \frac{d\theta}{dt}\hat{\theta}$. \ \ $\nabla f = \frac{\pd f}{\pd x} \ihat + \frac{\pd f}{\pd y}\jhat + \frac{\pd f}{\pd z}\khat$. \ \ $\nabla f = \frac{\pd f}{\pd \rho}\hat{\rho} + \frac{1}{\rho}\frac{\pd f}{\pd \theta} \hat{\theta} + \frac{\pd f}{\pd z}\hat{k}$.\\
+
+For maximizing $\Phi(x_1,x_2,x_3)$ with constraints $f(x_1,x_2,x_3) = 0$ and $g(x_1,x_2,x_3) = 0$. \\We need Lagrange multipliers $\lambda$ and $\mu$. $\frac{\pd \Phi}{\pd x_i} = \lambda \frac{\pd f}{\pd x_i} + \mu \frac{\pd g}{\pd x_i}$, $f(x_1,x_2,x_3)= 0$, and $g(x_1,x_2,x_3) = 0$. \\
+
+For vector field $\vec{F} (\vec{r}) = F_x(\vec{r})\ihat+ F_y(\vec{r})\jhat + F_z(\vec{r})\khat$, and scalar function $f$:
+$$Divergence = \nabla \cdot \vec{F} = \frac{\pd F_x}{\pd x} + \frac{\pd F_y}{\pd y }+ \frac{\pd F_z}{\pd z} = \frac{1}{\rho}\frac{\pd(\rho F_{\rho})}{\pd \rho} + \frac{1}{\rho}\frac{\pd F_\theta}{\pd \theta} + \frac{\pd F_z}{pd z}$$
+$$Curl = \nabla \times \vec{F} = (\frac{\pd}{\pd x}, \frac{\pd}{\pd y}, \frac{\pd}{\pd z})\times (F_x,F_y,F_z) = \frac{1}{\rho}(\frac{\pd}{\pd \rho}, \frac{\pd}{\pd \theta}, \frac{\pd }{\pd z})\times (F_\rho, \rho F_\theta, F_z)$$
+$$Laplacian = \nabla^2 f = \nabla \cdot \nabla f = \frac{\pd^2 f}{\pd x^2} + \frac{\pd^2 f}{\pd y^2} + \frac{\pd^2 f}{\pd z^2}$$
+\hfill\break
+For matrices $A, B$, $(AB)_{ij} = \sum_{k} A_{il} B_{kj}$. $(AB)^T = B^T A^T$. The Hermitian conjugate of $A$ is $A^\dagger$. \\ $(A^\dagger)_{ij} = \bar{A_{ji}}$. A matrix $A$ is hermitian provided that $A_{ij} = \bar{A_{ji}}$. \\
+
+For matrix $M$, $f(M) = \sum_{n=1}^\infty \frac{f(0)}{n!} M^n \qquad \Rightarrow \qquad e^M = I + M + \frac{1}{2}M^2+ \cdots =\sum_{k=0}^\infty \frac{1}{k!}M^k$.\\
+
+For $n \times n$ matrices $A, B$ and scalar $\lambda$, $\det(\lambda A) = \lambda^n \det(A)$, $\det(A^T) = \det(A)$, $\det(AB) = \det(A)\det(B)$. Swap two rows or two columns of $A$ to get $A'$, $\det(A') = -\det(A)$. Subtracting one row, or column, of $A$ to another row, or columns, of $A$ to get $A''$, $\det(A'') = \det(A)$. \\
+
+Given $u(t)$ as a function, $\frac{du}{dt} = M u$, where $M$ is a constant matrix. $u(t) = e^{Mt}u(0)$. \\
+
+Vector space $V$ over $F$ has properties: \\$\vec{u}+\vec{v}\in V$, $\vec{u}+\vec{v} = \vec{v}+\vec{u}$, $(\vec{u}+\vec{v}) +\vec{w} = \vec{u}+(\vec{v}+\vec{w})$, \\$\lambda \vec{u} \in V$, $\lambda(\vec{u}+\vec{v}) = \lambda\vec{v}+\lambda\vec{u}$, $(\lambda\vec{u})+(\mu \vec{u}) = (\lambda+\mu)\vec{u}$, where $\vec{u},\vec{v},\vec{w}\in V$, and $\lambda,\mu \in F$, \\
+zero vector $\vec{0}\in V$ with $\vec{0}+\vec{u} = \vec{u}$, $1 \in F$ with $1\vec{u} = \vec{u}$. Each $\vec{u}$ has additive inverse $\vec{w}$, $\vec{u}+\vec{w} = \vec{0}$. \\
+
+$L$ is a linear transformation on vector space $V$ over $F$ provided that for $\vec{v},\vec{w}\in V$ and $a,b \in F$, \\we have $L(a\vec{v}+b\vec{w}) = aL(\vec{v})+bL(\vec{w})$.\\
+
+When two distinct eigenvectors have the same eigenvalues they are said to be
+degenerate. When the number of eigenvectors is less than $n$, the $n \times n$ matrix is said to be defective.\\
+
+For Hermitian matrice: \\Eigenvectors with different eigenvalues are orthogonal and have real-valued eigenvalues. Eigenvectors with the same eigenvalues can be made orthogonal by Gram-Schmidt orthonormalization.\\
+
+For basis $\{\vec{e}_k \}$ and $\{ \vec{e}'_k \}$, let the coordinate of $\vec{u}$ be $\vec{v}$ in basis $\{\vec{e}_k \}$ and $v'$ in $\{\vec{e}'_k \}$. One can find $P$ such that $v' = Pv$ and $v = P^{-1} v'$, with $P_{ij}$ satisfies $\vec{e}'_j = \sum_{i}^n P_{ij} \vec{e}_i$. Let the representation of a linear operator be the matrix $M$ in basis $\{\vec{e}_k \}$, and $M'$ in basis $\{\vec{e}'_k \}$, we have $M' = PMP^{-1}$.\\
+
+Let $(\vec{v}_i)$ be the eigenvectors of $M$ corresponds to eigenvalues $(\lambda_i)$. Let $S = \bmat{\vec{v}_1&\vec{v}_2&\cdots&\vec{v}_n}$.\\
+Then $D = S^{-1}MS$ is a diagonal matrix with $(\lambda_i)$ on the diagonal. Here we have $M^k = SD^k S$. \\For Hermitian matrix, $S^{-1} = S^\dagger$. 
+
+
+
+\newpage
+\textbf{Separable first order ODE}:\qquad  $\frac{dy}{dx} = f(x)g(y) \qquad \Rightarrow \qquad \int \frac{1}{g(y)}dy = \int f(x) dx$\\
+
+\textbf{Exact differentials:}\qquad $f(x,y)dx+g(x,y)dy = 0\qquad\Rightarrow \qquad d\Phi = \frac{\pd \Phi}{\pd x}dx +\frac{\pd \Phi }{\pd y} dy$\\
+Guess $f(x,y) = \frac{\pd\Phi}{\pd x}$ and $g(x,y) = \frac{\pd \Phi}{\pd y}$. Check $\frac{pd f}{\pd y} = \frac{\pd x}{\pd g}$. Solve $\Phi$. If not exact:\\ Try $\mu(x,y) = \mu(x)$, if we have $\frac{1}{\mu}\frac{d\mu}{dx} = \frac{1}{g}(\frac{\pd f}{\pd y}-\frac{\pd g}{\pd x})$ depends only on $x$, proceed with $\mu$. \\
+Try $\mu(x,y) = \mu(y)$, if we have $\frac{1}{\mu}\frac{d\mu}{dy} = \frac{1}{f}(\frac{\pd g}{\pd x}-\frac{\pd f}{\pd y})$ depends only on $y$, proceed with $\mu$.\\ 
+Write $\mu(x,y)f(x,y)dx + \mu(x,y) g(x,y) dy = 0$, and solve with exact differentials.\\
+
+\textbf{System of first-order equations}: \\$\lambda_1,\lambda_2$ are eigenvalues of $M$, $\vec{v}_1,\vec{v}_2$ are eigenvectors correspond to $\lambda_1,\lambda_2$ respectively. 
+$$\bmat{\frac{dx}{dt}\\\frac{dy}{dt}} = \bmat{\alpha & \beta \\ \gamma & \delta}\bmat{x \\ y}=M\bmat{x \\ y}\qquad\Rightarrow \qquad \bmat{x\\y} = ae^{\lambda_1 t}\vec{v}_1 + be^{\lambda_2 t} \vec{v}_2$$
+
+\textbf{Constant coefficient}:
+$\alpha y'' + \beta y' + \gamma y = 0$, guess $y = e^{\lambda t}$, with $\lambda = -\frac{\beta \pm \sqrt{\beta^2 -4\alpha \gamma}}{2\alpha}$. \\
+
+\textbf{Reduction of Order and Variation of Parameter}:\\
+For $d(x)y'' + b(x) y + cy = h(x)$, general solution is $y(x) = c_1 y_1(x) + c_2y_2(x) + y_p(x)$, with $c_1,c_2 \in \R$.\\
+$$y_2(x)=y_1(x) \int^x \frac{e^{-\int^s \frac{b(t)}{d(t)}dt}}{(\, y_1(s)\, )^2}\, ds\qquad\qquad y_p(x) = \int^x h(s)\frac{y_1(s)y_2(x) - y_1(x)y_2(s)}{W(s)}\, ds$$
+$$Wronskian = W(s) = \det\left(\bmat{y_1(s) & y_2(s) \\ y_1'(s) &y_2'(s)}\right)$$
+
+
+\textbf{Normal Modes}: Taylor expand energy $E$ with displacement $\epsilon$: $E \approx \dot{\epsilon}^T M \dot{\epsilon}  + \epsilon^T K \epsilon$ with some matrix $M$ and $K$. With $\frac{dE}{dt} = 0$, we get $M\ddot{\epsilon}+k\epsilon = 0$. Assume that $\epsilon = e^{i\omega t} \eta$ with some constant vector $\eta$, we get $(-\omega^2 M+K)\eta = 0$. Solve for $\omega_i$ by $\det(-{\omega_i}^2 M +K) = 0$. For each $\omega_i$, find $\eta_i$ such that $(-\omega_i^2 M + K) \eta_i = 0$. Each $\eta_i$ is a normal mode with a frequency of oscillation $\omega_i$.\\ Now write: $\epsilon = \sum_{k=1}^N c_k (\cos(\omega_k t +\theta_i)) \eta_k$. Find $c_k$ and $\theta_i$ with initial conditions. \\
+
+\textbf{Orthogonal Integrals:} $\int_{-\pi}^{\pi} e^{imx}\cdot  \overline{e^{inx}} = \int_{-\pi}^{\pi}e^{i(m-n)x}dx = 2\pi \delta_{mn}$, $\delta_{mn}=1$ if $m=n$ else $\delta_{mn}=0$. 
+When $n\neq m \neq 0$:
+$\int_{-\pi}^\pi \cos(mx)\cos(nx) = \int_{-\pi}^\pi \sin(mx)\cos(nx) = \int_{-\pi}^\pi \cos(mx)\sin(nx)=0$,\\
+$\int_{-\pi}^\pi \cos(mx) = \int_{-\pi}^\pi \sin(mx)=0 \qquad\qquad\int_{-\pi}^\pi \cos^2(mx) = \int_{-\pi}^\pi \sin^2(mx) = \pi$\\
+
+\textbf{Fourier Series}: For $f$ defined on $[a,b]$, $f(x)= \sum_{m=-\infty}^\infty c_m e^{i2\pi mx / L}$ with $L = b-a$. \\If $f$ is real-valued defined on $[a,b]$, $f(x) = a_0 + \sum_{m=1}^\infty a_m \cos(2\pi nx/L) + b_m\sin(2\pi nx/L)$. \\
+$$c_n = \frac{1}{b-a}\int_a^b f(x)e^{-i 2\pi nx / L}\,dx \qquad\qquad a_0 = \frac{1}{b-a}\int_a^b f(x) dx$$
+$$a_m = \frac{2}{b-a}\int_a^b f(x) \cos(2\pi nx / L) \, dx \qquad\qquad b_m = \frac{2}{b-a}\int_a^b f(x)\sin(2\pi nx/L) \, dx$$
+Fourier series of \textbf{even functions} on $[-L/2, L/2]$ has the form $f(x) = a_0 + \sum_{m=1}^\infty a_m \cos(2\pi nx /L)$,\\ with $a_0 = \frac{2}{L} \int_0^{L/2} f(x)\, dx$, $a_m = \frac{4}{L} \int_{0}^{L/2} f(x)\cos(2\pi nx/L)\, dx$. Fourier series of \textbf{odd functions} on $[-L/2, L/2]$ has the form $f(x) = \sum_{m=0}^\infty b_m \sin(2\pi nx/L)$ with $b_m = \frac{4}{L} \int_{0}^{L/2}f(x) \sin(2\pi nx/L)\, dx$.\\
+
+\textbf{Separable PDE}: Solve $\frac{\pd^2}{\pd x^2}T(x,y) + \frac{\pd^2}{\pd y^2}T(x,y) = 0$.\\
+Assume that $T(x,y) = f(x)g(y)$. Write $g(y) f''(x) + f(x)g''(y)=\frac{f''(x)}{f(x)} + \frac{g''(y)}{g(y)} = 0$.\\ Then $\frac{f''(x)}{f(x)} = \alpha = -\frac{g''(y)}{g(y)} \Rightarrow f''(x) -\alpha f(x) = 0$ and $g''(y) +\alpha g(y) = 0$. Use boundary conditions or initial conditions to solve for $\alpha$, then $g$ and $f$, and assemble. Note here if we have $e^{\lambda L} - e^{-\lambda L} = 0$ for some non-zero $L$ and $\omega$, we can write $e^{2\lambda L} = 1\Rightarrow 2\lambda L = 2m i \pi$ for $m \in \Z$. 
+
+$$e^{\lambda i} + e^{-\lambda i} = \cos(\lambda)+ i\sin(\lambda) +\cos(-\lambda) + i \sin(-\lambda) = 2\cos(\lambda)$$
+$$e^{\lambda i} - e^{-\lambda i} = \cos(\lambda)+ i\sin(\lambda) -\cos(-\lambda) - i \sin(-\lambda) = 2\sin(\lambda)$$
+
+\textbf{Rotation matrix}: Rotate vectors counterclockwise through an angle $\theta$. 
+$$\text{2-D}:\ \bmat{\cos(\theta)& -\sin(\theta) \\ \sin(\theta) & \cos(\theta)}\qquad\text{3-D}: 
+\bmat{1&0&0 \\ 0&\cos(\theta)&-\sin(\theta) \\ 0 &\sin(\theta)&\cos(\theta)} \ \ 
+\bmat{\cos(\theta)&0&\sin(\theta) \\ 0&1&0 \\ -\sin(\theta) & 0 &\cos(\theta)} \ \ 
+\bmat{\cos(\theta)&-\sin(\theta)&0\\ \sin(\theta) &\cos(\theta)&0 \\ 0 &0&1}$$
+
+$$\text{Integration by parts: }\int u\,v\,dx = u \left(\int v\,dx\right) - \int\, u'\left(\int v\, dx\right)\, dx$$
+
+\end{document}

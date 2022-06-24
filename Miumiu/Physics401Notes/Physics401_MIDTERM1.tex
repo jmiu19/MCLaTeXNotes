@@ -1,0 +1,145 @@
+\documentclass[11pt]{article}
+
+\usepackage{xcolor}
+\usepackage{mathtools}
+\usepackage[legalpaper, margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{paralist}
+\usepackage{rsfso}
+\usepackage{amsthm}
+\usepackage[inline]{enumitem}   
+
+\newtheoremstyle{break}
+  {\topsep}{\topsep}%
+  {\itshape}{}%
+  {\bfseries}{}%
+  {\newline}{}%
+\theoremstyle{break}
+\theoremstyle{break}
+\newtheorem{axiom}{Axiom}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lem}{Lemma}[thm]
+\newtheorem{prop}[lem]{Proposition}
+\newtheorem{corL}{Corollary}[lem]
+\newtheorem{corT}[lem]{Corollary}
+\newtheorem{defn}{Definition}[corL]
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\J}{\mathcal{J}}
+\newcommand{\T}{\mathcal{T}}
+\newcommand{\C}{\mathcal{C}}
+\newcommand{\M}{\mathcal{M}}
+\newcommand{\Complex}{\mathbb{C}}
+\newcommand{\Power}{\mathcal{P}}
+\newcommand{\pd}{\partial}
+\newcommand{\ee}[1]{\cdot 10^{#1}}
+\newcommand{\ihat}{\hat{\i}}
+\newcommand{\jhat}{\hat{\j}}
+\newcommand{\khat}{\hat{k}}
+
+
+
+\newcommand{\note}{\color{red}Note: \color{black}}
+\newcommand{\remark}{\color{blue}Remark: \color{black}}
+\newcommand{\example}{\color{green}Example: \color{black}}
+\newcommand{\exercise}{\color{green}Exercise: \color{black}}
+
+
+
+
+\makeatletter
+\def\@seccntformat#1{%
+  \expandafter\ifx\csname c@#1\endcsname\c@section\else
+  \csname the#1\endcsname\quad
+  \fi}
+\makeatother
+
+\makeatletter
+\newcommand*{\rom}[1]{\expandafter\@slowromancap\romannumeral #1@}
+\makeatother
+
+\makeatletter
+% This command ignores the optional argument for itemize and enumerate lists
+\newcommand{\inlineitem}[1][]{%
+\ifnum\enit@type=\tw@
+    {\descriptionlabel{#1}}
+  \hspace{\labelsep}%
+\else
+  \ifnum\enit@type=\z@
+       \refstepcounter{\@listctr}\fi
+    \quad\@itemlabel\hspace{\labelsep}%
+\fi}
+\makeatother
+\parindent=0pt
+
+
+\begin{document}
+$$\vec{p} = m\vec{v}\qquad \vec{v} = \vec{\omega}\times \vec{r} \qquad \vec{L} = I\vec{\omega} = \vec{r}\times \vec{p}\qquad \vec{N} = \frac{d\vec{L}}{dt}=\vec{r}\times \vec{F}\qquad U = \frac{1}{2}I \omega^2 \qquad I = \int_V r^2\, dm$$
+
+Given $m\frac{d^2x}{dx^2} = F(x)$ with $f(x_0) = 0$ and $F'(x_0) >0$, for small deviations from $x_0$: $$x(t) = x_0 + A\cos\left(\sqrt{\frac{F'(x_0)}{m}}\ t+ \phi\right)$$
+with $A$ and $\phi$ depending on initial conditions.\\
+
+Suppose $F = -kx$, and $\omega_0^2 \coloneqq \frac{k}{m}$, we get a second order ODE $\frac{d^2x}{dt^2}+\omega_0^2 x = 0$. The solution to such ODE is given by $x = A\cos(\omega_0 t-\phi)$, where $A$ is the maximum oscillation amplitude, and $\delta$ and $\phi$ are the oscillation angle offset. The period of an oscillation system is given by $\tau = {2\pi}/{\omega_0} = 2\pi \, \sqrt{{m}/{k}}$ and the frequency is then given by $\nu ={1}/{\tau} = {1}/{2\pi}\sqrt{{k}/{m}}$.\\
+
+Assume that the the retarding force is given by $\vec{F}_r = -b\vec{v}$. The standard form of damped oscillation equation is given by $
+\ddot{x}+2\beta\dot{x}+\omega_0^2x = 0 \text{ with }\omega_0 = \sqrt{k/m}\ \text{and }2\beta = b/m$\\
+The solution to the ODE is then given by:
+\begin{align*}
+x = e^{-\beta t}(c_1e^{\omega_1 t} + c_2e^{-\omega_1 t}) \qquad\qquad\qquad\text{with }\omega_1 = \sqrt{\beta^2 - \omega_0^2}
+\end{align*}
+Here $e^{-\beta t}$ is called the amplitude decay, where the unit of beta is $\frac{1}{s}$. When $(\beta^2 - \omega_0^2)<0$, we have underdamping. When $(\beta^2-\omega_0^2) = 0$, then we have critial damping. When we have $(\beta^2 - \omega_0^2) >0$, we have overdamping. Note that energy of the oscillated object in damped oscillation is not a constant. \\
+
+For sinusoidal driving force $F = A\cos(\omega t)$, one obtains the standard equation and its solution:
+\begin{align*}
+\ddot{x} + 2\beta \dot{x} + \omega_0^2 x = A\cos(\omega t)\qquad\quad\Rightarrow\qquad\quad
+x = x_0 + x_p = e^{-\beta t} (c_1 e^{\omega_1 t} + c_2 e^{-\omega t} ) + D\cos(\omega t- \delta)
+\end{align*}
+$$\omega_1 = \sqrt{\beta^2 - \omega_0^2} \qquad\qquad \tan(\delta) = \frac{2\omega \beta}{\omega_0^2 - \omega^2}\qquad\qquad D = \frac{A}{(\omega_0^2 -\omega^2 ) \cos(\delta) +2 \omega\beta \sin(\delta)}$$
+The quantity $\delta$ represents the phase difference between the driving force and the resultant motion. A real delay occurs between the action of the driving force and the response of the system.\\
+
+Note that $D$ reaches a maximum with some particular $\omega = \omega_R$. setting $\frac{dD}{d\omega} = 0$, we can solve for the amplitude resonance frequency $\omega_R$, the result is given by $\omega_R = \sqrt{\omega_0^2 - 2\beta^2} = \omega_0 \left( 1- \frac{\beta^2}{\omega_0^2}\right)$.\\
+
+The Q-value of damped oscillation is $Q\coloneqq (\omega_R)/(2\beta) = (\sqrt{\omega_0^2 - 2\beta^2})/({2\beta})$. If a driven oscillator is only slightly damped and driven near resonance, $Q \approx 2\pi {(\text{total energy})}/{(\text{energy loss in one period})}$.
+Since the oscillator is only slightly damped, then we have $\omega_R = \sqrt{\omega_0^2 - 2\beta^2} \approx \omega_0$. \\
+We have $\omega_0 \approx \omega_R \approx \omega$ where $\omega$ is the driving frequency, and this gives $Q \approx \omega_0 /(2\beta)$. \\
+
+For Kinetic Energy resonance, $\dot{x} = \frac{-A\omega \sin(\omega t-\delta)}{\sqrt{(\omega_0^2 -\omega^2)^2 +4\omega^2 \beta^2}}$, the value of $T$ is maximized when $ \omega = \omega_0$.\\
+
+
+Gravitational force and gravitational field are given by:
+\begin{align*}
+\vec{F} =-G m \int_V \frac{\rho(r)\,\hat{r}}{r^2}\, d\tau= -\frac{GMm}{r^2} \qquad \qquad \qquad\qquad\qquad
+\vec{g} =-G  \int_V \frac{\rho(r)\,\hat{r}}{r^2}\, d\tau= -\frac{GM}{r^2}\hat{r}
+\end{align*}
+$G$ is a constant $G = 6.673\pm 0.010 \ee{-11}\, Nm^2/kg^2$.\\
+
+For object of mass $M$, Clearly, we have $\nabla \times \vec{g} = 0$, thus we have $\vec{g}(r) = -\nabla \Phi(r)$, where $\Phi$ is called the gravitational potential and has dimension of (force per unit mass) $\times$ (distance), or energy per unit mass. Gravitational potential and gravitational potential energy are given by:
+$$\Phi(r) =- \int_V \frac{G\,\rho(\vec{r})}{r}\, d\tau = -\int_{\infty}^r -\frac{GM}{(r')^2} \, dr' = -\frac{GM}{r}\qquad\qquad\qquad\qquad U = -\int \vec{F}\cdot d\vec{r} = -\frac{GmM}{r}$$
+
+Poisson's Equation about $\Phi$ is given by the following:
+\begin{align*}
+\nabla^2 \Phi(\vec{r}) = 4\pi G \rho(\vec{r}) \qquad \Rightarrow \qquad \oint_S \vec{g}\cdot d\vec{a} = \int_V \nabla \times \vec{g}\,d\tau = \int_V -\nabla^2 (\Phi(\vec{r})) \, d\tau = -4\pi G \int_V \rho(\vec{r}) \, d\tau
+\end{align*}
+where $V$ is the volume enclosed by $S$. \\
+
+If one $\Phi(\vec{r}) = \Phi(r)$, that is, if one has mass density $\rho(\vec{r}) = \rho(r)$, then we get the following:
+\begin{align*}
+\nabla^2 \Phi(r) = \frac{1}{r^2}\frac{\partial}{\partial r} \left( r^2 \frac{d\Phi(r)}{dr}\right) =  4\pi G \rho(r)
+\end{align*}
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

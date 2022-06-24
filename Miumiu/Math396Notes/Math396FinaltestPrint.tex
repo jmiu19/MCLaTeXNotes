@@ -1,0 +1,667 @@
+\documentclass[9pt]{article}
+
+
+
+%%%%%%%%%%%%%%Include Packages%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{xcolor}
+\usepackage{mathtools}
+\usepackage[a4paper, total={6in, 8in}, margin=0.8in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{paralist}
+\usepackage{rsfso}
+\usepackage{amsthm}
+\usepackage{wasysym}
+\usepackage[inline]{enumitem}   
+\usepackage{hyperref}
+\usepackage{tocloft}
+\usepackage{wrapfig}
+\usepackage{titlesec}
+\usepackage{colortbl}
+\usepackage{stackengine} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%Theorem environments%%%%%%%%%%%%%%%%%%%
+\newtheoremstyle{break}
+  {\topsep}{\topsep}%
+  {\itshape}{}%
+  {\bfseries}{}%
+  {\newline}{}%
+\theoremstyle{break}
+\theoremstyle{break}
+\newtheorem{axiom}{Axiom}
+\newtheorem{thm}{Theorem}[section]
+\renewcommand{\thethm}{\arabic{section}.\arabic{thm}}
+\newtheorem{lem}{Lemma}[thm]
+\newtheorem{prop}[lem]{Proposition}
+\newtheorem{corL}{Corollary}[lem]
+\newtheorem{corT}[lem]{Corollary}
+\newtheorem{defn}{Definition}[corL]
+\newenvironment{indEnv}[1][Proof]
+  {\proof[#1]\leftskip=1cm\rightskip=1cm}
+  {\endproof}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%Integral%%%%%%%%%%%%%%%%%%%%%%%
+\def\upint{\mathchoice%
+    {\mkern13mu\overline{\vphantom{\intop}\mkern7mu}\mkern-20mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+  \int}
+\def\lowint{\mkern3mu\underline{\vphantom{\intop}\mkern7mu}\mkern-10mu\int}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\D}{\mathcal{D}}
+\newcommand{\J}{\mathcal{J}}
+\newcommand{\T}{\mathcal{T}}
+\newcommand{\Td}{\mathcal{T}_d}
+\newcommand{\C}{\mathcal{C}}
+\newcommand{\M}{\mathcal{M}}
+\newcommand{\Lt}{\mathcal{L}}
+\newcommand{\Symm}{\text{Symm}}
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\Alt}{\text{Alt}}
+\newcommand{\Int}{\text{Int}}
+\newcommand{\Bd}{\text{Bd}}
+\newcommand{\Complex}{\mathbb{C}}
+\newcommand{\Power}{\mathcal{P}}
+\newcommand{\ee}{\cdot 10}
+\newcommand{\spa}{\text{span}}
+\newcommand{\supp}{\text{supp}}
+\newcommand{\sgn}{\text{sgn}}
+\newcommand{\degr}{\text{deg}}
+\newcommand{\pd}{\partial}
+\newcommand{\that}[1]{\widetilde{#1}}
+\newcommand{\lr}[1]{\left(#1\right)}
+\newcommand{\vmat}[1]{\begin{vmatrix} #1 \end{vmatrix}}
+\newcommand{\bmat}[1]{\begin{bmatrix} #1 \end{bmatrix}}
+\newcommand{\pmat}[1]{\begin{pmatrix} #1 \end{pmatrix}}
+\newcommand{\rref}{\xrightarrow{\text{row\ reduce}}}
+\newcommand\oast{\stackMath\mathbin{\stackinset{c}{0ex}{c}{0ex}{\ast}{\Circle}}}
+
+\newcommand{\note}{\color{red}Note: \color{black}}
+\newcommand{\remark}{\color{blue}Remark: \color{black}}
+\newcommand{\example}{\color{green}Example: \color{black}}
+\newcommand{\exercise}{\color{green}Exercise: \color{black}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\makeatletter
+\def\@seccntformat#1{%
+  \expandafter\ifx\csname c@#1\endcsname\c@section\else
+  \csname the#1\endcsname\quad
+  \fi}
+\makeatother
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Enumerate%%%%%%%%%%%%%%
+\makeatletter
+% This command ignores the optional argument 
+% for itemize and enumerate lists
+\newcommand{\inlineitem}[1][]{%
+\ifnum\enit@type=\tw@
+    {\descriptionlabel{#1}}
+  \hspace{\labelsep}%
+\else
+  \ifnum\enit@type=\z@
+       \refstepcounter{\@listctr}\fi
+    \quad\@itemlabel\hspace{\labelsep}%
+\fi}
+\makeatother
+\parindent=0pt
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\begin{prop}
+Let $A$ be an open subset of $\R^n$, and let $\omega$ be a $1$-form defined on $A$. \\
+For $k$-manifold $M\subseteq A$, the followings are equivalent:
+\begin{enumerate}[topsep=3pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
+\item $\T_{\vec{p}}(M) \subseteq \ker(\omega(\vec{p}))$ for all $\vec{p}\in M$
+\item $\alpha^*\omega = 0$ for all coordinate patches $\alpha$ for $M$
+\item $\int_C \omega =0$ for all $1$-manifold $C\subseteq M$. 
+\end{enumerate} 
+\end{prop}
+
+Let $\omega$ be a $1$-form defined on an open subset $A$ of $\R^n$, for $k$-manifold $M \subseteq A$, $M$ is called an integral manifold for $\omega$ provided that $\int_C \omega =0$ for all $1$-manifold $C\subseteq M$. Integral manifolds for $\omega$ are also integral manifold for $g\omega$ where $g$ is a scalar function, because we have $\alpha^*(g\omega) = (\alpha^*g)(\alpha^*\omega)$.
+
+\begin{lem}
+Let $f \in C^1(A,\R)$ where $A$ is an open subset of $\R^n$, with $df \neq 0$ on $A$. \\Then, for $c \in \R$, the level set $f^{-1}(c)$ is an $(n-1)$-manifold without boundary.
+\end{lem}
+
+\begin{corL}
+Let $f \in C^1(A,\R)$ where $A$ is an open subset of $\R^n$, with $df \neq 0$ on $A$.\\
+Each level set of $f$ is an integral manifold for $df$.
+\end{corL}
+
+Let $A$ be an open subset of $\R^n$, let $f:A \to \Complex$. $Y_\alpha \subseteq A$, we define $\int_{Y_\alpha} f\, dV = \int_{Y_\alpha}u \, dV + i \int_{Y_\alpha} v \, dV$.\\
+Let $A\subseteq \R^n$ be open, let $\omega:A \to \Complex^n_{row}$, $\omega = \omega_1 + i \omega_2$, be a $\Complex$-valued $1$-form. $\int_{Y_\alpha} \omega \coloneqq (\int_{Y_\alpha} \omega_1 )+( i\int_{Y_\alpha} \omega_2)$.\\
+Let $A$ be an open subset of $\R^n$, let $f:A \to \Complex$ with $f = u+iv$ for functions $u$ and $v$. Define $D_j f \coloneqq D_j u + i D_j v$.\\
+If $f = u + iv$, then $f\, dz = (u+iv)(dx+idy) = (u+iv)dx+(iu-v) dy$. If the $1$-form $f\, dz$ is closed, we have $D_1(if) = D_2(f)$, or the Cauchy-Riemann equation holds: $D_1 u = D_2 v$, $D_2 u = -D_1 v$.
+A function $f:\Complex \to \Complex$ is holomorphic provided that $f\, dz$ is closed, or the Cauchy-Riemann Equations hold for the function $f$. 
+
+
+\begin{prop}
+Let $A$ be an open subset of $\R^n$, let $f:A \to \Complex$. we have $\left|\int_A f\right| \leq \int_A |f|$
+\end{prop}
+
+\begin{thm}
+Let $f$ be a holomorphic on open $A\subseteq \Complex$. If $A$ is diffeomorphic to a convex set, then $f\, dz$ is exact.
+\end{thm}
+
+\begin{corT}[Cauchy Integral Theorem]
+Given a holomorphic function $f$ defined on an open subset $A$ of $\Complex$, where $A$ is diffeomorphic to a convex set, and given $\alpha:[a,b] \to A$ being a piecewise $C^1$ function with $\alpha(a) = \alpha(b)$, we have $\int_{Y_\alpha} f\, dz = 0$.
+\end{corT}
+
+\begin{lem}
+Let $f$ and $g$ be holomorphic functions. Then $f\cdot g$, $g\circ f$, $\frac{1}{g}$ and $\frac{f}{g}$ are holomorphic functions. \\
+If $f$ is holomorphic diffeomorphism, then $f^{-1}$ is holomorphic.
+\end{lem}
+
+\begin{thm}[Cauchy Integral Theorem]
+Let $C_1$ and $C_2$ be disjoint circles in $\Complex$ with $C_2$ lying inside $C_1$, let $A$ be an open set of points lying inside $C_1$ and outside of $C_2$, let $U$ be an open subset of $\Complex$ containing $A\cup C_1 \cup C_2$, and let $f$ be a holomorphic function on $U$, then we have $\int_{C_1} f \, dz = \int_{C_2} f\, dz$
+\end{thm}
+
+\begin{corT}
+Let $U$ be an open subset of $\Complex$ with some $z_0 \in U$, let $f$ be a holomorphic function defined on $U\setminus \{z_0\}$, \\
+then for $K = \{z \in \Complex \mid ||z - z_0|| = r\} \subseteq U$, we have $\frac{1}{2\pi i}\int_K f\, dz$ being independent of $r$. 
+\end{corT}
+
+\begin{defn}
+Let $U$ be an open subset of $\Complex$ with some $z_0 \in U$, let $f$ be a holomorphic function defined on $U\setminus \{z_0\}$,\\ 
+then for $K = \{z \in \Complex \mid ||z - z_0|| = r\} \subseteq U$. The residue of $f\, dz$ at $z_0$ is $Res(f\,dz, z_0)\coloneqq \frac{1}{2\pi i}\int_K f\, dz$
+\end{defn}
+
+\begin{thm}
+Let $U$ be an open subset of $\Complex$, let $D$ be a closed disc in $U$ with $z_0 \in \Int(D)$, and let $f$ be a holomorphic function defined on $U \setminus \{ z_0\}$. We have $\int_{\Bd(D)} f\, dz = 2\pi i \, Res(f\, dz, z_0)$
+\end{thm}
+
+
+Let $g$ be a holomorphic function defined on an open subset $U$ of $\Complex$ with $z_0 \in U$.\\ 
+We have the following holds:
+\begin{align*}
+Res\left(\frac{g(z)}{z-z_0}\, dz, z_0\right) &= \frac{1}{2\pi i}\int_{||z-z_0||=r} \frac{g(z)}{z-z_0}\, dz = g(z_0)
+\end{align*}
+
+\begin{prop}[ML-estimate in $\R^n$]
+Let $Y_\alpha \subseteq \R^n$ be a parametrized $1$-manifold parametrized by $\alpha:[a,b] \to Y_\alpha$. Let $\omega$ be a $1$-form defined on an open subset of $\R^n$ containing $Y_\alpha$. Then 
+$\left|\left|\int_{Y_\alpha} \omega \right|\right| \leq \left(\sup_{\vec{v}\in Y_\alpha}||\omega(\vec{v})||\right) \cdot \text{length}(Y_\alpha)$
+\end{prop}
+
+\begin{thm}[ML-estimate in $\Complex$]
+Let $Y_\alpha \subseteq \Complex$ be a parametrized $1$-manifold parametrized by $\alpha:[a,b] \to Y_\alpha$. Let $f:A \to \Complex$ be a continuous function with $A\subseteq \Complex$ being an open and contains $Y_\alpha$. Then 
+$\left|\left|\int_{Y_\alpha} f\, dz \right|\right| \leq \left(\sup_{z \in Y_\alpha} |f(z)|\right) \cdot \text{length}(Y_\alpha)$
+\end{thm}
+
+\begin{defn}
+Let $U$ be an open subset of $\Complex$, let $f:U \to \Complex$ be a function. $f$ is said to be differentiable in real sense at $t \in U$ provided that $u:U \to \R \ \ \ z\mapsto\Re(f(z))$ and $v:U \to \R \ \ \ z\mapsto\Im(f(z))$ are both differentiable at $t$. Here we consider $\Complex \cong \R^2$ when evaluating the differentiability of $u$ and $v$.  
+\end{defn}
+
+
+\begin{defn}
+Let $f$ be a function of $C^1$ type defined on $U$, where $U$ is an open subset of $\Complex$. $f$ is said to be complex differentiable, denoted as $\Complex$-differentiable, at $z_0\in U$ provided that $\frac{\partial f}{\partial \bar{z}}(z_0)= 0$. If $f$ is $\Complex$-differentiable, $f'_{\Complex}(z_0) = \frac{\pd f}{\pd z}(z_0)$ is called the derivative of $f$ at $z_0$. 
+\end{defn}
+\newpage
+
+\begin{thm}
+Let $f$ be a function defined on $U$, where $U$ is an open subset of $\Complex$. The followings are equivalent:
+\begin{enumerate}[topsep=3pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
+\item $f$ is holomorphic on $U$
+\item $f$ is of $C^1$ type on $U$, and $\frac{\pd f}{\pd \bar{z}} = 0$ 
+\item $f$ is $\Complex$-differentiable at each point in $U$, and $f'_{\Complex}$ is continuous. 
+\end{enumerate}
+\end{thm}
+
+
+\begin{corT}[Differentiated Cauchy Integral Formula]
+Let $U$ be an open subset of $\Complex$, let $D\subseteq U$ be a closed disc with $z_0 \in \Int(D)$, and let $g$ be a holomorphic function defined on $U \setminus \{ z_0\}$. Then we have:
+$$g^{(m)}_{\Complex}(z_0) = \frac{m!}{2\pi i}\int_{z\in \Bd(D)}\frac{g(z)\, dz}{(z-z_0)^{m+1}}$$
+The function $g$ is infinitely $\Complex$-differentiable. Here $0! = 1$.
+\end{corT}
+
+\begin{thm}[Taylor's Theorem]
+Let $z_0 \in \Complex$, let $f$ be a holomorphic function defined on an open subset $\Omega$ of $\Complex$ that contains $z_0$. \\For all $z \in \Complex$ that satisfies $|z-z_0|<\rho$ for some $d(z_0, \Bd(\Omega))>\rho >0$, we have:
+$$f(z) = \sum_{k=0}^\infty \frac{f^{(k)}_{\Complex}(z_0)}{k!}(z-z_0)^k$$
+Here we denote $f^{(0)} \coloneqq f$, $0!\coloneqq 1$, and $(z-z_0)^0 \coloneqq 1$ for $z= z_0$. 
+\end{thm}
+\begin{thm}
+Let $f$ be a holomorphic function defined on a open subset $\Omega$ of $\Complex$. Denote $E \coloneqq  \bigcap_{k=0}^\infty (f_{\Complex}^{(k)})^{-1}(0)$. If we have $\Omega$ being connected, then we have either $E = \emptyset$ or $f(z)= 0$ for all $z\in \Omega$. 
+\end{thm}
+
+\begin{corT}
+Let $\Omega$ be a connected open subset of $\Complex$ that contains $z_0$, let $f_1$ and $f_2$ be holomorphic functions on $\Omega$, with $f_1^{(k)}(z_0) = f_2^{(k)}(z_0)$ for all $k$. 	Then we have $f_1(z) = f_2(z)$ for all $z \in \Omega$. 
+\end{corT}
+
+\begin{corT}
+Let $\text{Holo}(A)$ denote the set of holomorphic functions defined on a set $A$. Let $V$ be an open connected subset of $\Complex$, let $U$ be a nonempty open proper subset of $V$. The restriction map from $\text{Holo}(V)$ to $\text{Holo}(U)$ is injective.
+\end{corT}
+
+
+\begin{thm}
+For $z_0 \in \Complex$, consider the following power series $f(z) = \sum_{k=0}^\infty a_k(z-z_0)^k $. If $\sum_{k=0}^\infty a_k(z-z_0)^k$ converges pointwise on $|z-z_0| <r$ for some $r >0$. Then the function $f$ is holomorphic on the set $\{ z \in \Complex \mid \, |z-z_0|<r\}$. 
+\end{thm}
+
+\begin{thm}
+Let $z_0 \in \Complex$, let $\Omega$ be a connected open subset of $\Complex$ that contains $z_0$, let $f$ be a holomorphic function defined on $\Omega$ and being not all zero on $\Omega$. Then there exists $m \in \N\cup\{0\}$ such that, for $z \in \Omega$, $f(z) = (z-z_0)^m h(z)$ with some holomorphic function $h$ defined on $\Omega$ and $h(z_0) \neq 0$. 
+\end{thm}
+
+In the settings of Theorem 0.9, $m$ is called the order of $f$ at $z_0$, denoted as $\text{ord}_{z_0}f \coloneqq m$.
+
+
+\begin{corT}
+Let $z_0 \in \Complex$, let $\Omega$ be a connected open subset of $\Complex$ that contains $z_0$, let $f$ be a holomorphic function defined on $\Omega$ with $f(z) \neq 0$ for some $z \in \Omega$. Then there exists $r>0$ such that $f(z) \neq 0$ for all $z \in \Omega$ that satisfies $0<|z-z_0|<r$. 
+\end{corT}
+
+
+\begin{corT}
+Let $K$ be a compact set that is contained in some connected open subset of $\Complex$, let $f$ be a holomorphic function defined on $\Omega$ with $f(z) \neq 0$ for some $z\in \Omega$. Then $\#(K\cap f^{-1}(0)) < \infty$. 
+\end{corT}
+
+\begin{corT}
+Let $f_1$ and $f_2$ be holomorphic functions on an open connected subset $\Omega$ of $\Complex$ with $f_1 = f_2$ on some infinite subset of a compact subset of $\Omega$. Then $f_1 = f_2$ on $\Omega$. 
+\end{corT}
+
+\begin{corL}[Persistence of Relations]
+Let $f_1$ and $f_2$ be holomorphic functions defined on an open connected subset $\Omega$ of $\Complex$ that satisfies $\Omega \cap \R \neq \emptyset$.
+If with $f_1(z) = f_2(z)$ for all $z \in \Omega\cap \R$, then we have $f_1 = f_2$ on $\Omega$. 
+\end{corL}
+
+\begin{defn}
+A sequence on functions $(f_j)$ defined on $\Omega\subseteq \Complex$ is said to converge almost uniformly to a function $f$ defined on $\Omega$ provided that the sequence $(f_j)$ converges uniformly to $f$ on each compact subset $K$ of $\Omega$.
+\end{defn}
+
+\begin{thm}[Weierstrass Convergence Theorem]
+The limit of a almost uniformly convergent sequence of holomorphic functions is holomorphic. 
+\end{thm}
+
+\begin{defn}
+A $k$-tensor $f$ defined on a vector space $V$ is symmetric provided  that $f(\vec{v}_1,\cdots, \vec{v}_{i+1}, \vec{v}_i,\cdots, \vec{v}_k) = f(\vec{v}_1,\cdots, \vec{v}_{i}, \vec{v}_{i+1},\cdots, \vec{v}_k) $
+A $k$-tensor $f$ defined on a vector space $V$ is alternating provided that $f(\vec{v}_1,\cdots, \vec{v}_{i+1}, \vec{v}_i,\cdots, \vec{v}_k) = -f(\vec{v}_1,\cdots, \vec{v}_{i}, \vec{v}_{i+1},\cdots, \vec{v}_k)$
+\end{defn}
+
+\begin{thm}
+Let $V$ be an $n$-dimensional vector space with a basis $(\vec{a}_1,\vec{a}_2,\cdots. \vec{a}_n)$. Let $I = (i_1,i_2,\cdots, i_k)$ be a $k$-tuple of integers from the set $\{1,2,\cdots, n\}$. There exists a unique $k$-tensor $\Phi_I$ on $V$ such that for every $k$-tuple $M = (m_1,m_2,\cdots,m_k)$ of integers from the set $\{1,2,\cdots, n\}$, we have $\Phi_I\left(\vec{a}_{m_1},\vec{a}_{m_2},\cdots, \vec{a}_{m_k},\right) = 1$ if and only if $I = M$, and $\Phi_I\left(\vec{a}_{m_1},\vec{a}_{m_2},\cdots, \vec{a}_{m_k},\right)=0$ otherwise. For $f \in \Lt^k(V)$, we have $f = \sum_I f(\vec{a}_I) \Phi_I$, where we write $\vec{a}_I \coloneqq \left(\vec{a}_{m_1},\vec{a}_{m_2},\cdots, \vec{a}_{m_k},\right)$.
+\end{thm}
+
+For $f\in \Lt^k(V)$ and $g \in \Lt^l(V)$, $f\otimes g : V^{k+l} \to \R \ \ \ (\vec{v}_1,\vec{v}_2,\cdots \vec{v}_{k+l})\mapsto f(\vec{v}_1,\vec{v}_2,\cdots, \vec{v}_k)\cdot g(\vec{v}_{k+1},\vec{v}_{k+2}, \cdots, \vec{v}_{k+l} )$\\
+For $f \in \Lt^k(V)$, $h \in \Lt^m(V)$, and $g \in \Lt^l(V)$, and $c \in \R$, we have $(f\otimes g) \otimes h = f\otimes (g\otimes h)$,\\ $(c\cdot f) \otimes g = c\cdot (f\otimes g) = f\otimes (c\cdot g)$, $(f+g) \otimes h = f\otimes h + g\otimes h$, $f\otimes (g+h) = f\otimes g+ f\otimes h$.\\
+
+Let $V$ and $W$ be vector spaces, let $T:V \to W$ be a linear transformation. For $f \in \Lt^k(W)$, and $\vec{v}_1,\vec{v}_2,\cdots, \vec{v}_k \in V$, we define $T^*f:V^k \to \R \ \ \ (\vec{v}_1,\vec{v}_2,\cdots, \vec{v}_k ) \mapsto f\left(T(\vec{v}_1),T(\vec{v}_2),\cdots, T(\vec{v}_k) \right) $.\\
+$T^*(f\otimes g) = T^*f \otimes T^* g$ for all $f,g \in \Lt^k(W)$. $(S\circ T)^*f = T^*(S^*f)$ for all $f \in \Lt^k(W)$
+
+\begin{thm}
+Let $V$ be a vector space, there exists a function $W:\A^k(V) \times \A^l(V) \to \A^{k+l}(V) \ \ \ (f,g)\mapsto f \wedge g$ such that $f\wedge g \in \A^{k+l}(V)$ for $f \in \A^k(V)$, $g \in \A^l(V)$, and satisfies all of the followings:
+\begin{enumerate}[topsep=3pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
+\item For $f \in \A^k(V)$, $g \in \A^l(V)$, and $h \in \A^m(V)$, we have $f\wedge(g\wedge h) = (f\wedge g) \wedge h$
+\item For $f \in \A^k(V)$, $g \in \A^l(V)$, and scalar $c$, we have $(c\cdot f) \wedge g = c\cdot (f\wedge g) = f\wedge (c\cdot g)$
+\item For $f,g \in \A^k(V)$ and $h \in \A^l(V)$, we have $h\wedge (f+g) = h\wedge f + h\wedge g$, and $(f+g)\wedge h = f\wedge h + g \wedge h$
+\item For $f \in \A^k(V)$ and $g \in \A^l(V)$, we have $g\wedge f = (-1)^{kl} \cdot f\wedge g$
+\item Given a finite basis of $V$, let $(\Phi_i \mid 1 \leq i \leq n)$ be the corresponding dual basis for $V^*$, \\and let $(\Psi_I\mid I \text{ is an ascending }k\text{-tuple}\text{ of integers in }\{1,2,\cdots, n\})$ be the corresponding family of elementary alternating tensors. For ascending $k$-tuple $I = (i_1,i_2,\cdots, i_k)$ of integers in $\{1,2,\cdots, n\}$, we have $\Psi_I = \Phi_{i_1}\wedge \Phi_{i_2}\wedge \cdots \wedge \Phi_{i_k}$. 
+\item Let $T:V\to W$ be a linear transformation with $W$ being a vector space, let $f$ and $g$ be alternating tensors on $W$, then we have $T^*(f\wedge g) = T^*f \wedge T^* g$. 
+\end{enumerate}
+\end{thm}
+
+Let $[I]$ denote the set of ascending $k$-tuples of integers from $\{1,2,\cdots, n\}$. A $k$-form defined on an open subset $U$ of $\R^n$ is a continuous function $\omega:U \to \A^k(\R^n) \ \ \ \vec{x}\mapsto \sum_{I \in [I]} b_I(\vec{x}) \Psi_I$
+where $b_I$ are continuous functions from $U$ to $\R$. The degree of a $k$-form is $k$, denoted as $\text{deg}(\omega)$. \\
+
+Let $U$ be a subset of $\R^n$ and let $V$ be a subset of $\R^l$, let $\Phi:U \to V$ be a $C^1$ function, let $\omega$ be a $k$-form defined on $V$, then $\Phi^*\omega$ is a $k$-form defined on $U$ given by $\Phi^*\omega: U \to \A^k(U) \ \ \ \vec{x}\mapsto (D\Phi(\vec{x}))^*\omega(\Phi(\vec{x}))$
+where we have $(D\Phi(\vec{x}))^*\omega(\Phi(\vec{x})): U^k \to \R \ \ \ (\vec{u}_1,\vec{u}_2,\cdots, \vec{u}_k)\mapsto \omega(\Phi(\vec{x}))(D\Phi(\vec{x})(\vec{u}_1), D\Phi(\vec{x})(\vec{u}_2), \cdots , D\Phi(\vec{x})(\vec{u}_k))$.
+
+$$
+d\left(\alpha\, dx_1+ \beta \, dx_2\right)= \left( \frac{\partial \beta}{\partial x_1} - \frac{\partial \alpha}{\partial x_2}\right) dx_1\wedge dx_2 \qquad\qquad\qquad d\lr{\sum_j b_j(\vec{x}) dx_j} = \sum_{j<k}\lr{\frac{\pd b_j}{\pd x_j} - \frac{\pd b_j}{\pd x_k}} dx_j \wedge dx_k$$
+
+A $k$-form $\omega$ is sad to be closed provided that we have $d\omega = 0$.\\
+
+Let $U$ be a subset of $\R^k$ that is open in either $\R^k$ or $\mathbb{H}^k$, and let $\omega$ be a $k$-form defined on an open subset $U$ of $\R^k$ given by $\omega:U \to \A^k(\R^k) \ \ \ \vec{x}\mapsto  f(\vec{x}) \,dx_1 \wedge dx_2 \wedge \cdots \wedge dx_k$, with $f$ being continuous function on $U$. Then $
+\int_U \omega \coloneqq \int_U f$
+whenever $\int_U f$ exists. Let $Y$ be a parametrized $k$-manifold in $\R^n$ parametrized by $\alpha:U \to Y$, let $\omega$ be a $k$-form defined on open subset of $\R^n$ containing $Y$, we define $\int_{Y_\alpha} \omega \coloneqq \int_U \alpha^*\omega$.
+
+
+\begin{lem}
+Let $U$ be a subset of $\R^l$ and let $V$ be a subset of $\R^n$, let $\Phi:U \to V$ be a $C^1$ function, let $\omega$ be a $k$-form defined on $V$ given by equation (W), we have $d(\Phi^* \omega) = \Phi^* d\omega$.
+\end{lem}
+
+
+Let $M$ be a $k$-manifold in $\R^n$. Given coordinate path $\alpha_i:U_i \to V_i$ on $M$ for $i = 0,1$, we say $\alpha_1,\alpha_0$ overlap if $V_0 \cap V_1 \neq \emptyset$. We say $\alpha_1,\alpha_0$ overlap positively provided that the transition function $\alpha_1^{-1} \circ \alpha_0$ is orientation preserving. Let $M$ be a $k$-manifold in $\R^n$. $M$ is said to be orientable provided that $M$ can be covered by a collection of coordinate patches such that each pair of coordinate patches overlap positively, if they overlap at all. $M$ is said to be non-orientable if it cannot be covered by such collection of coordinate patches. Given a collection of coordinate patches covering $M$ that overlap positively, adjoin to this collection all other coordinate patches on $M$ that overlap these patches positively, denote such collection as $O$. $O$ is called an orientation on $M$. A coordinate patch $\alpha$ on $M$ is said to be orientation preserving provided that $\alpha$ overlaps any one of the coordinate patches in $O$ positively. Otherwise $\alpha$ is said to be orientation reversing.\\
+
+Let $M$ be an oriented $1$-manifold in $\R^n$. Choose a coordinate patch $\alpha_{\vec{p}} :U \to V$ on $M$ about $\vec{p}$ belonging to the given orientation of $M$, $\vec{T}:M \to \R^n\times \R^n \ \ \ \vec{p}\mapsto (\vec{p}\ ;\ \frac{D\alpha_{\vec{p}}(t_0)}{||D\alpha_{\vec{p}}(t_0)||})$, where $\alpha_{\vec{p}}(t_0 ) = \vec{p}$. $\vec{T}$ is called the unit tangent field corresponding to the orientation of $M$.\\
+
+Let $M$ be an oriented $(n-1)$-manifold in $\R^n$, let $\vec{p} \in M$, let $\alpha:U \to V$ be a coordinate patch on $M$ about $\vec{p}$ belonging to the given orientation of $M$, denote $\alpha(\vec{x}) = \vec{p}$. Let $(\vec{p};\, \vec{n}(\vec{p}))$ be a unit vector in the $n$-dimensional vector space $\T_{\vec{p}}(\R^n)$ that is orthogonal to the $(n-1)$-dimensional linear subspace $\T_{\vec{p}}(M)$ such that the matrix $\bmat{\vec{n}(\vec{p})& D\alpha(\vec{x})}$ has positive determinant.  $\vec{N}:M \mapsto \R^n\times \R^n \ \ \ \ \vec{p}\mapsto (\vec{p};\, \vec{n}(\vec{p}))$ is called the unit normal field to $M$ corresponding to the orientation of $M$.\\
+
+Let $M$ be an $n$-manifold in $\R^n$. The natural orientation of $M$ consists of all coordinate patches $\alpha$ on $M$ for which $\det(D\alpha(\vec{x})) >0$ for all $\vec{x}$ in the definition of domain of $\alpha$.\\
+
+Let $M$ be an orientable $k$-manifold with nonempty manifold boundary $\partial M$. If $k$ is even, the corresponding induced orientation of $\partial M$ is the orientation obtained by restricting coordinate patches belonging to $O$. If $k$ is odd, the corresponding induced orientation of $\partial M$ is the opposite of the orientation of $\partial M$ obtained by restricting coordinate patches belonging to $O$.\\
+
+Let $M$ be an oriented $k$-manifold in $\R^n$, let $\alpha: U \to V$ be a coordinate patch on $M$ belonging to the given orientation, with $\alpha(\vec{q}) = \vec{p} \in M$, let $\omega$ be a $k$-form defined on an open subset of $\R^n$ containing $M$. We can write $\alpha^*\omega = f(\vec{x}) \, dx_1 \wedge dx_2 \wedge \cdots \wedge dx_k$ for some $0$-form $f$ defined on the definition of domain of $\omega$. $\omega$ is said to be positive for $M$ at $\vec{p}$ provided that $f(\vec{p})>0$, $\omega$ is said to be negative for $M$ at $\vec{p}$ provided that $f(\vec{p})<0$, and $\omega$ is said to be integral for $M$ at $\vec{p}$ provided that $f(\vec{p})=0$. $M$ is integral manifold for $\omega$ provided that $\omega$ is integral for $M$ at $\vec{p}$ for all $\vec{p}\in M$.
+
+\begin{thm}[Theorem 36.2 on Munkres]
+Let $M$ be a compact oriented $k$-manifold in $\R^n$, let $\omega$ be a $k$-form defined in a open subset of $\R^n$ containing $M$, and let $\lambda$ be the scalar function on $M$ defined by $\lambda:M \to \R \qquad \vec{p}\mapsto \omega(\vec{p})((\vec{p};\vec{a}_1),(\vec{p};\vec{a}_2),\cdots, (\vec{p};\vec{a}_k))$ where, for $\vec{p}\in M$, the family $((\vec{p};\vec{a}_1),(\vec{p};\vec{a}_2),\cdots, (\vec{p};\vec{a}_k))$ forms an orthonormal frame in the linear space $\T_{\vec{p}}(M)$ belonging to the given orientation of $M$. Then $\lambda$ is continuous, and we have $\int_M \omega = \int_M \lambda \, dV$.
+\end{thm}
+
+\begin{lem}[Lemma 25.2 on Munkres]
+Let $M$ be a compact $k$-manifold in $\R^n$ of class $C^r$. Given a covering $\mathcal{C}$ of $M$ by coordinate patches, there exists a finite collection of $C^\infty$ functions from $\R^n$ to $\R$, denoted as $P = \{ \phi_1, \phi_2,\cdots, \phi_l\}$, such for each $1\leq i\leq l$, $\phi_i$ has compact support and there exists a coordinate patch $\alpha_i : U_i \to V_i$ in the collection $\C$ such that we have $\text{supp}(\phi_i) \cap M \subseteq V_i$, $\phi_i(\vec{x})\geq 0$ for all $\vec{x} \in \R^n$, and $\sum_{i=1}^l \phi_i(\vec{x}) = 1$ for all $\vec{x}\in M$.
+\end{lem}
+
+
+\begin{defn}
+Let $M$ be a compact oriented $k$-manifold in $\R^n$, along with orientation $O$ on $M$. Take $\C$ to be a finite collection of coordinate patches in $O$ that cover $M$, denoted as $C = \{ \alpha_1, \alpha_2,\cdots, \alpha_N\}$. One can use partition of unity to write $\omega = \sum_{j=1}^N\omega_j $ such that the support of each $\omega_j$ is a subset of $V_j$, where $V_j$ is the codomain of a coordinate patch $\alpha_j: U_j \to V_j$ in $C$. Here we define $\int_M \omega = \sum_{j=1}^N (\int_{(V_j)_{\alpha_j}}\omega_j )$
+\end{defn}
+
+\begin{thm}[The Generalized Stokes' Theorem]
+Let $k>1$, let $M$ be a compact oriented $k$-manifold in $\R^n$, with $\partial M$ having the induced orientation if $\partial M$ is not empty, let $\omega$ be a $(k-1)$-form defined in an open set of $\R^n$ containing $M$, then we have $\int_M d\omega  = \int_{\partial M}\omega$ if $\partial M$ is not empty, and we have $
+\int_{\partial M}\omega = 0$ if $\partial M$ is empty.
+\end{thm}
+
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+\cellcolor{orange!29} Exterior Calculus & \cellcolor{blue!29} Vector Calculus \\
+\hline
+Exterior derivative operator $d$ & Del operator $\nabla = \left(\frac{\partial}{\partial x}, \ \frac{\partial }{\partial y}\right)$\\
+\hline
+$0$-form $k$ define on $\R^2$ & Scalar field $k$ of $C^1$ type defined on $\R^2$ \\
+\hline
+$1$-forms $\omega = \alpha \, dx + \beta \, dy$ & Vector field $\vec{F}$ \\
+\hline
+$2$-forms $f\,dx \wedge dy$ defined on $\R^2$ & Scalar field $f$\\
+\hline
+$1$-form $\omega$ wedged with $1$-form $\eta$ & Scalar field $\det\left(\bmat{\vec{F}_1 \vec{F}_2}\right)$ with $\vec{F}_1,\vec{F}_2$ being vector fields\\
+\hline
+$df = \frac{\pd f}{\pd x}\, dx + \frac{\pd f}{\pd y}\, dy$ & Gradient of $f$, $\text{grad}(f) \coloneqq \nabla f = \lr{\frac{\pd }{\pd x}, \frac{\pd }{\pd y}}f =\lr{\frac{\pd f}{\pd x}, \frac{\pd f}{\pd y}}  $ \\
+\hline
+$d(\alpha\, dx + \beta \, dy) = \lr{\frac{\pd \beta}{\pd x} - \frac{\pd \alpha }{\pd y}}\, dx\wedge dy$ & Curl of $\vec{F}$, $\text{curl}(\vec{F}) \coloneqq \lr{\frac{\pd \beta}{\pd x} - \frac{\pd \alpha}{\pd y}}$\\
+\hline
+$\int_{M_1} \omega$ &  \qquad$\int_{M_1} \left<\vec{F}, d\vec{l} \right> = \int_{M_1} \left< \vec{F},\, \vec{T}\right> \, dV$ \qquad${}^1$\\
+\hline
+$\int_{M_1}df = \Delta_{M_1} f$ &$\int_{M_1}\left< \nabla f, \vec{T}\right> = \Delta_{M_1} f$\\
+\hline
+$\int_{M_2} f\, dx \wedge dy = \int_{M_2} f$ & $\int_{M_2} f$\\
+\hline
+$\int_{\pd {M_2}}\omega = \int_{M_2} d\omega$ & Circulation of $\vec{F}$ along $\pd M_2$, $\int_{M_2} \, \text{curl}(\vec{F})$\\
+\hline
+\end{tabular}
+\end{center}
+
+${}^1$ Here we define: $d\vec{l} \coloneqq (dx, dy)$. Since we have $\vec{F}(\vec{x}) =(\alpha(\vec{x}),\beta(\vec{x}))$, so we have $d\vec{l} = \vec{T} \, dV$.\\
+
+\begin{lem}[Lemma 38.1 on Munkres]
+Let $M$ be a compact oriented $1$-manifold in $\R^n$, and let $\vec{T}$ be the unit tangent vector to $M$ corresponding to the given orientation of $M$. Let $\vec{F}$ be a vector field defined in $\R^n$ and let $\omega$ be the $1$-form corresponds to $\vec{F}$. Then $
+\int_M \omega = \int_M \left< \vec{F}, \vec{T}\right> \, dV $.\\
+Let $M$ be a compact oriented $(n-1)$-manifold in $\R^n$, and let $\vec{N}$ be the corresponding unit normal vector field, let $\vec{F}$ be a vector field defined on open $A\subseteq \R^n$ that contains $M$, and let $\omega$ be the $(n-1)$-form corresponds to $\vec{F}$, then $\int_M \omega = \int_M \left< \vec{F},\vec{N}\right> \, dV$.\\
+Let $M$ be a compact $n$-manifold in $\R^n$, oriented naturally, and let $\omega = h\, dx_1 \wedge dx_2 \wedge \cdots \wedge dx_n$ be an $n$-form defined on an open set of $\R^n$ containing $M$, with $h$ being the scalar field corresponds to $\omega$, then $\int_M \omega = \int_M h\, dV$.
+\end{lem}
+
+
+
+\begin{thm}[The Divergence Theorem]
+Let $M$ be a compact $n$-manifold in $\R^n$, let $\vec{N}$ e the unit normal vector field to $\partial M$ that points outwards from $M$, and let $\vec{F}$ be a vector field defined on an open subset of $\R^n$ containing $M$, then we have $\int_M \text{div}(\vec{F}) \, dV = \int_{\partial M}\left< \vec{F}, \vec{N}\right> \, dV$
+\end{thm}
+
+\begin{thm}[Stokes' Theorem for $2$-manifold in $\R^3$]
+Let $M$ be a compact oriented $2$-manifold in $\R^3$, let $\vec{N}$ be a unit normal field to $M$ corresponding to the orientation of $M$, and let $\vec{F}$ be a vector field of $C^\infty$ type defined on an open subset of $\R^3$ containing $M$. If $\partial M$ is empty, then $\int_M \left< \text{curl}(\vec{F}),\vec{N}\right> \, dV = 0$.
+If $\partial M$ is nonempty, let $\vec{T}$ be the unit tangent vector field to $\partial M$ chosen such that $\vec{N}(\vec{p}) \times \vec{T}(\vec{p})$ points into $M$ from $\vec{p}\in \partial M$, then $\int_M \left< \text{curl}(\vec{F}),\vec{N}\right> \, dV = \int_{\partial M}\left< \vec{F},\vec{N}\right>\, dV$
+\end{thm}
+
+\begin{prop}
+Let $\omega$ be an alternating $k$-tensor with $k$ being an odd number. For any alternating $m$-tensor $\hat{\omega}$, we have $\omega\wedge \hat{\omega}\wedge\omega = 0$. 
+\end{prop}
+
+
+\begin{thm}[Cauchy's Estimate]
+Let $z_0 \in \Complex$ be given, let $r>0$ be given, let $f$ be a holomorphic function defined on $D = \{ z \in \Complex \mid |z-z_0| < r\}$ with $|f(z)|<M$ for all $z \in D$. Then we have $|f'_{\Complex}(z_0)| \leq \frac{M}{r}$. 
+\end{thm}
+
+
+\begin{thm}[Liouville's Theorem]
+Let $f$ be a holomorphic function on $\Complex$. If $f(\Complex)$ is a bounded set, then $f$ is a constant function.
+\end{thm}
+
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+\cellcolor{orange!29} $1$-form $\omega$ & \cellcolor{blue!29} Integrating factor $B(x,y)$\\
+\hline
+$-\alpha(x)\beta(y)\, dx + dy$ & $1/\beta(y)$ \\
+\hline
+$-(\beta(x)y+\gamma(x))\, dx + dy$ & $\exp(-\int \beta(x)\, dx)$\\
+\hline
+$-\beta(y/x)\, dx + dy$ & $1/(y-x\beta(y/x))$\\
+\hline
+\end{tabular}
+\end{center}
+
+\begin{lem}
+Let $M$ be a nonempty compact orientable $k$-manifold in $\R^n$ with nonempty manifold boundary $\partial M$. There exists an $(k-1)$-form of $C^\infty$ type defined on $\R^n$ such that $\int_{\partial M}\omega \neq 0$. 
+\end{lem}
+
+\begin{lem}
+Let $M$ be a $k$-manifold in $\R^n$ with nonempty manifold boundary $\partial M$, and let $\omega$ be an $(k-1)$-form defined on an open subset of $\R^n$ containing $M$. If $R:M \to \partial M$ is a $C^1$ retraction, then $\partial M$ is integral for the $(k-1)$-form $\omega - R^*\omega$. 
+\end{lem}
+
+\begin{lem}
+Let $M$ be a $k$-manifold in $\R^n$ with nonempty manifold boundary $\partial M$. Let $R:M \to \partial M$ be a function of $C^1$ type and let $\eta$ be a $k$-form defined on an open subset of $\R^n$ containing $\partial M$, then $M$ is an integral for $R^*\eta$. 
+\end{lem}
+
+\begin{thm}[Non-retraction Theorem]
+Let $M$ be a nonempty compact orientable $k$-manifold in $\R^n$. There is no retraction of $C^1$ type from $M$ to $\partial M$. 
+\end{thm}
+
+\begin{thm}[Brouwer Fixed Point Theorem]
+Let $B^n\coloneqq \{ \vec{x}\in \R^n \mid ||\vec{x}|| \leq 1 \}$ be the closed unit ball in $\R^n$. 
+If $f:B^n \to B^n$ is a function of $C^1$ type, then there exists $\vec{x}\in B^n$ such that $f(\vec{x}) = \vec{x}$, and such $\vec{x}$ is called a fixed point of $f$. 
+\end{thm}
+
+\begin{thm}
+Let $B^n$ denote the closed unit ball in $\R^n$. If $\vec{v}$ points inwards at all points $\vec{p}$ on the boundary $\partial B^n$, then there is an equilibrium point in $B^n$. 
+\end{thm}
+
+\begin{thm}[Rectification Theorem]
+Let $\vec{x}_0 \in A$ where $A $ is an open subset of $\R^n$, let $v $ be a vector field of $C^\infty$ type defined on $A$, with $v(\vec{x}_0) \neq \vec{0}$. Then there exists an open neighborhood $U$ of $\vec{x}_0$ contained in $A$, and a $C^\infty$-diffeomorphism $\alpha:U\to V$ such that $D\alpha(\vec{x})(v(\vec{x})) = \vec{e}_1$, where $\vec{e}_1 = (1,0,0,\cdots, 0)$ is the first element in the standard basis of $\R^n$. 
+\end{thm}
+
+$F:\R^{n+1} \to \R^n$ defined for $\vec{z}\in \R^n$, $t \in \R$, such that $D_{n+1}F(\vec{z},t) = v(F(\vec{z},t))$ and $F(\vec{z},0) = \vec{z}$. Denote $F^s(\vec{z},t) \coloneqq F(\vec{z}, t+s)$, then $
+D_{n+1} F^s(\vec{z},t) = v(F^s(\vec{z},t)) $, and $F^s(\vec{z},0) = F(\vec{z},s)$, so we get $F(\vec{z},t+s) = F^s(\vec{z},t) = F(F(\vec{z},s),t)$. Then $g^t:\R^n \to \R^n \qquad \vec{z}\mapsto F(\vec{z},t)$, has the property $g^{t+s}(\vec{z}) = g^t(g^s(\vec{z}))$ for $\vec{z}\in \R^n$, $t,s \in \R$, and $g^0$ being the identity transformation. 
+
+\begin{thm}
+Let $M$ be a closed $k$-manifold without boundary in $\R^n$ of $C^\infty$ class, let $v$ be a vector field that is tangent to $M$ at all $\vec{p}\in M$, that is, we have $v(\vec{p}) \in \T_{\vec{p}}(M)$ for all $\vec{p}\in M$. Then each $g^t|_M$ induced by $v$ belongs to $\text{Diffeo}(M)$.
+\end{thm}
+
+\begin{corT}
+Let $M$ be a compact $k$-manifold without boundary in $\R^n$ of $C^\infty$ class, and let $U$ be an open subset of $\R^n$ containing $M$. For vector field $v \in C^2(U, \R^n)$ such that $v$ is tangent to $M$, each $g^t|_M$ induced by $v$ belongs to $\text{Diffeo}(M)$, and there exists Lipchitz $\hat{v} \in C^2(\R^n, \R^n)$ such that $\hat{v} = v$ on some neighborhood of $M$, here the flow for $\hat{v}$ along $M$ is also a flow for $v$ along $M$.
+\end{corT}
+
+\begin{thm}[Hairy Billiard Ball Theorem]
+Any tangential vector field of $C^1$ type defined on an even-dimensional sphere $S^{2n}$ vanishes at some point $\vec{p}$ in $S^{2n}$. There is no $v:S^{2n} \to \R^{2n+1}\setminus \{0\}$ with $\left<v(\vec{p}), \vec{p}\right> = 0$ for all $\vec{p}\in S^{2n}$
+\end{thm}
+
+\begin{thm}
+Let $v$ be a $C^1$ inward-pointing vector field on $B^n$, then $v$ must vanish some point on $B^n$.
+\end{thm}
+
+\begin{thm}[Cauchy Integral Theorem]
+Let $M$ be a naturally oriented compact $2$-manifold in $\Complex$, let $f \in C^1(M, \Complex)$ be holomorphic on $M \setminus \partial M$, and let $\partial M$ obtain the induced orientation from $M$. then we have $\int_{\partial M}f\, dz = 0$
+\end{thm}
+
+
+\begin{thm}[Residue Theorem]
+Let $M$ be a compact $2$-manifold in $\Complex$, let $E = \{z_1,z_2,\cdots, z_k\} \subseteq M\setminus \partial M$, let $f\in C^1(M\setminus E, \Complex)$ be holomorphic on $M \setminus (\partial M\cup E)$, then we have the following holds:
+$$\int_{\partial M}f\, dz = 2\pi i \sum_{j=1}^k Res(f\, dz, z_j)$$ 
+\end{thm}
+
+
+\begin{thm}[Rouche's Theorem]
+Let $M$ be a compact $2$-manifold in $\Omega$, where $\Omega$ is an open subset of $\Complex$, let $f, h$ be holomorphic functions on $\Omega$, with $|h(x)|< |f(x)|$ for $x\in\partial M$, then the number of zeros of $f+h$ in $M$ is equal to the number of zeros of $f$ in $M$.  
+\end{thm}
+
+\begin{defn}
+Let $f:\R \to \Complex$ be a bounded function such that the set $\{x \in \R \mid f\text{ is discontinuous at }x\}$ has measure zero, and $ext \int_{\R}|f| < \infty$. The Fourier Transform of $f$, denoted as $\hat{f}$, is the function defined by $
+\hat{f}:\R \to \R \ \ \ \ \ t\mapsto ext\int_{\R}f(x) e^{-i xt}\, dx$
+\end{defn}
+
+\begin{defn}
+Let $M$ be compact oriented $1$-manifold without boundary in $\R^2\simeq \Complex$. We define $
+\mathbb{W}_M: \Complex\setminus M \to \Complex  \qquad z\mapsto \frac{1}{2\pi i}\int_{\zeta \in M} \frac{d\zeta}{\zeta -z}$
+\end{defn}
+
+
+For compact $1$-manifold $M\subseteq \R$, there exists $U\subseteq \Complex$ containing $M$ such that $U \setminus M$ has two components $L,R$. Denote the winding number of $w \in L$ as $\mathbb{W}(L)$ and denote the winding number of $z \in R$ as $\mathbb{W}(R)$, we have: $\mathbb{W}(L) = \mathbb{W}(R)+1$
+
+
+\begin{thm}[Residue theorem for Winding Numbers]
+Let $M$ be a compact $1$-manifold without boundary in $\Complex$, let $K$ denote the union of the bounded components on $\Complex \setminus M$, let $U$ be an open subset of $\Complex$ containing $M\cup K$, let $\{z_1,z_2,\cdots, z_m\} \in U\setminus M$, and let $f$ be a function being holomorphic on $U \setminus \{z_1,z_2,\cdots, z_m\}$,  then we have:
+$$\int_M f\, dz = 2\pi i \sum_{j=1}^m \mathbb{W}_M(z_j) \cdot Res(f\, dz, z_j)$$
+\end{thm}
+ 
+
+Let $U$ be a subset of $\R^k$, let $f:U \to \R^n$ be a function. $f$ is called an immersion provided that $Df(\vec{x})$ is injective for all $\vec{x}\in U$. $f$ is called a submersion provided that $Df(\vec{x})$ is surjective for all $\vec{x}\in U$.  \\For immersion $f:\R \to \R^2$. $\frac{x'y'' - x''y'}{((x')^2 + (y')^2)^{3/2}} = \kappa_f =\text{curvature of }f $
+
+\begin{thm}
+Let $\Omega$ be a compact $2$-manifold in $\R^2$, we have $\text{area}(\Omega) \leq \frac{1}{4\pi}\left( \text{length}(\partial \Omega)\right)^2$
+\end{thm}
+
+
+Let $A$ be an open subset of $\R^k$. A Riemannian metric $G$ on $A$ is a smooth function defined by: $G:A \to \text{Pos}(k)$. Given $\psi\in C^2([a,b],A)$, we define the $G$-length of $Y_\psi$, or the length of $Y_{\psi}$ in $G$ metric, as $l_G(Y_{\psi}) \coloneqq \int_a^b \sqrt{\psi'(t)^T \cdot G(\psi(t))\cdot \psi'(t)}\, dt$
+
+
+\begin{thm}
+Vertical segment and Arc in $\mathbb{H}_+^2$ of circle centered on $x$-axis minimize Poincare length among curves with the same end points.
+\end{thm}
+
+Let $A$ be an open subset of $\R^n$, $\Omega^k(A) \coloneqq \{\omega \mid \omega\text{ is a }k\text{-form of }C^\infty \text{ type defined on }A\}$,\\ 
+$Cl^k(A) \coloneqq \{\omega \in \Omega^k(A) \mid d\omega = 0 \},\
+E^k(A) \coloneqq \{ d\eta \mid \eta \in \Omega^{k-1}(A) \}$, $H^k_{dR}(A)\coloneqq Cl^k(A)/ E^k(A)$
+
+
+\begin{thm}
+Let $E$ be a nonempty affine subset of $\R^n$, we have: $\dim(H^k_{dR}(\R \setminus E)) = \begin{cases} 1 & k=n-\dim(E) \ or\ k=0 \\ 0 &\text{otherwise}\end{cases}$\\
+with an exception where $\dim(E) = n-1$ and $k=0$, in which case $\dim(H_{dR}^0 (\R^n \setminus E)) = 2$.
+\end{thm}
+
+\begin{corT}
+Let $E_1$ and $E_2$ be nonempty affine subsets of $\R^n$, and if $R^n \setminus E_1$ is diffeomorphic to $\R^n \setminus E_2$, then we have $\dim(E_1) = \dim(E_2)$. 
+\end{corT}
+
+\begin{defn}
+Let $M$ be a manifold in $\R^n$, and let $U$ be an open subset of $\R^n$ containing $M$ such that $M$ is closed in $U$. $\Omega^k(M) \coloneqq \Omega^k(U) /\{ \omega \in \Omega^k(U) \mid M \text{ is integral for }\omega\}$. Equivalently, $\Omega^k(M)$ is a set consisting of smooth $\omega$ defined on $U$ that maps $\vec{p}\in M$ to $\omega(\vec{p}) \in \A^k(\T_{\vec{p}}(M))$.
+\end{defn}
+
+
+\begin{defn}
+For $s$-manifold $M$ in $\R^n$, $Cl^k(M) \coloneqq \ker(d_k)$,
+$E^k(M) \coloneqq \text{Im}(d_{k-1}) \subseteq Cl^k(M)$, 
+$H^k_{dR}(M) \coloneqq Cl^k(M) / E^k(M)$
+\end{defn}
+
+
+\begin{thm}
+Let $M$ be a compact oriented $s$-manifold without boundary, $
+\dim(H_{dR}^s (M) )= \#\{\text{connected componenents of }M\} = \dim(H_{dR}^0 (M))$
+\end{thm}
+
+
+\begin{thm}
+Let $M$ be a compact connected non-orientable $s$-manifold, we have $H_{dR}^s(M) = 0$.\\
+Let $M$ be a non-compact connected $s$-manifold, then $H_{dR}^s(M) = 0$.\\
+Let $M$ be a compact connected $s$-manifold with $\partial M\neq 0$, then $H_{dR}^s(M) = 0$.\\
+Let $M$ be a compact oriented $s$-manifold without boundary, then $H_{dR}^s(M) \neq 0$. 
+\end{thm}
+
+
+
+
+
+
+\begin{defn}
+Consider an open subset $A$ of $\R^n$, for ascending $k$-tuple $I$ of integers in $\{1,2,\cdots, n\}$, let $I'$ be the $(n-k)$-tuple complementary to $I$, we define the Hodge star operator $*$ as the following: 
+$$ *: \Omega^k(A) \to \Omega^{n-k}(A) \qquad\left(\sum_{[I]}b_I(\vec{x}) dx_I\right) \mapsto \sum_{[I]}\text{sgn}(I,I')\, b_I(\vec{x}) dx_{I'}$$
+Here the notation $\text{sgn}(I,I')$ denotes $\sgn(\sigma_{II'})$, where $\sigma_{II'}$ is a permutation that sorts the concatenated $n$-tuple $(I,I')$.
+\end{defn}
+
+
+Consider $1$-form $\alpha \, dx + \beta \, dy + \gamma \, dz$, $2$-form $\alpha\, dy \wedge dz + \beta\, dz \wedge dx + \gamma\, dx \wedge dy$.
+\begin{enumerate}[topsep=3pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
+\item $*(\alpha \, dx + \beta \, dy + \gamma \, dz) = \alpha dy \wedge dz + \beta dz \wedge dx + \gamma dx \wedge dy$
+\item $*(\alpha\, dy \wedge dz + \beta\, dz \wedge dx + \gamma\, dx \wedge dy) = \alpha\, dx + \beta \, dy + \gamma \, dz$
+\end{enumerate}
+
+
+
+\begin{lem}
+For $0$-form $f$ and $k$-forms $\omega$, $l$-form $\that{\omega}$ defined on an open subset of $\R^n$, denote $\omega = \sum_{[I]} b_I(\vec{x}) dx_I ,\ \that{\omega} =\sum_{[J]} \that{b}_J(\vec{x}) dx_J$.\\
+$*(f\omega) = f*\omega$\qquad \qquad $*(*(\omega)) = (-1)^{k(n-k)}\omega$\qquad \qquad $*(\omega_1 + \omega_2) = *(\omega_1) + *(\omega_2)$\\
+$\omega\wedge *(\omega) = \sum_{[I]}b_I^2 dx_1 \wedge \cdots\wedge dx_n$\qquad\qquad If $\deg(\omega) = \deg(\that{\omega})$, then $\omega \wedge *(\that{\omega}) = \that{\omega}\wedge *(\omega) = \sum_{[I]} b_I \that{b}_I \, dx_1 \wedge \cdots \wedge dx_n$
+\end{lem}
+
+
+
+\begin{thm}
+Let $A, B$ be open subsets of $\R^n$, if $\Phi:A \to B$ defines an orientation preserving isometry, then we have $\Phi^*(*(\omega)) = *(\Phi^*(\omega))$ holds for all $k$-forms $\omega$ defined on an open subset of $\R^n$ containing $B$, with $k\leq n$.
+\end{thm}
+
+
+\begin{defn}
+Let $A$ be an open subset of $\R^n$, $\Delta: \Omega^k(A) \to \Omega^k(A) \qquad \omega \mapsto (-1)^{kn}*d*d\omega +(-1)^n d*d*\omega$
+\end{defn}
+
+For $k$-form $\omega = \sum_I b_I dx_I$, we have $
+\Delta\left(\sum_I b_I dx_I\right) = \sum_I\left(\Delta b_I\right)dx_I$. For $0$-form $f$, $\Delta f = 0 \iff d*df = 0 \iff \sum_j D_jD_j = 0$.
+
+
+\begin{lem}[Green's First Identities]
+Let $M$ be a compact $n$-manifold in $\R^n$, let $f,g\in C^2(M,\R)$, then we have:
+$$\int_M f\,\Delta g = \int_M f*\Delta g = \int_M f d*dg = \int_M d(f\wedge *dg)- df \wedge *dg = \int_{\partial M}f\wedge *dg - \int_M df \wedge * dg== \int_{\partial M}f\wedge *dg -  \int_M \langle df,\, dg\rangle $$
+\end{lem}
+
+\begin{corL}[Green's Second Identity]
+Let $M$ be a compact $n$-manifold in $\R^n$, let $f,g\in C^2(M,\R)$, then we have:$
+\int_M (f\Delta g- g\Delta f) = \int_{\partial M}(f*dg - g*df)$
+\end{corL}
+
+
+
+For all $f \in C^2(\bar{B}_1(\vec{0}),\R)$, with $n >2$. We have $
+\text{avg}_{||\vec{x}||=1}f = f(\vec{0}) + \frac{\int_{\bar{B}_1(\vec{0})\setminus \{0\}} \left((||\vec{x}||^{2-n}-1)\Delta f\right)}{(n-2) V_{n-1}(S^{n-1})}$, ${\text{avg}}_A f = \frac{\int_A f}{V(A)}$
+
+
+\begin{thm}[Gauss' Mean Value Theorem]
+Let $f \in C^2(A,\R)$ where $A$ is an open subset of $\R^n$, $f$ is harmonic on $A$ if and only if the  mean value property holds for all closed balls in $A$: $\text{avg}_{||\vec{x} - \vec{x}_0||=r}f = f(\vec{x}_0)$. Here $\{\vec{x}\mid ||\vec{x} - \vec{x}_0||\leq r\} \subseteq A$ is a closed ball of radius $r$ centered at $\vec{x}_0 \in A$.
+\end{thm}
+
+
+\begin{corT}
+Let $\vec{a}\in \R^n$, let $f \in C^2(\bar{B}_r(\vec{a}), \R)$, then we get the followings:
+\begin{enumerate}[topsep=3pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
+\item If $\Delta f(\vec{x}) \geq 0$ for $\vec{x}\in \bar{B}_r(\vec{a})$, and $\exists\ \vec{p}\in \bar{B}_r(\vec{a})$ such that $\Delta f(\vec{p}) >0$, then $\text{avg}_{\partial \bar{B}_r(\vec{a})} f > f(\vec{a})$
+\item If $\Delta f(\vec{x}) \leq 0$ for $\vec{x}\in \bar{B}_r(\vec{a})$, and $\exists\ \vec{p}\in \bar{B}_r(\vec{a})$ such that $\Delta f(\vec{p}) <0$, then $\text{avg}_{\partial \bar{B}_r(\vec{a})} f < f(\vec{a})$
+\item If $\Delta f(\vec{x}) = 0$ for $\vec{x}\in \bar{B}_r(\vec{a})$, then $\text{avg}_{\partial \bar{B}_r(\vec{a})} f = f(\vec{a})$
+\end{enumerate}
+\end{corT}
+
+
+\begin{lem}
+For $k$-forms $\mu, \zeta$ defined on $\R^4$, and $0$-form $f$ defined on $\R^4$, we get $\oast (f\mu) = f\oast \mu$, $\oast (\mu + \zeta) = \oast \mu + \oast \zeta$, $\oast \oast \mu = (-1)^{1+ \deg(\mu)}\mu$
+\end{lem}
+
+\begin{defn}
+For $k$-form $\mu$ defined on $\R^4$, we defined $\square \mu$ as $
+\square \mu \coloneqq -\oast d\oast d\mu - d\oast d\oast \mu$
+\end{defn}
+
+\begin{thm}
+Let $M \subseteq \R^n$ be an oriented $k$-manifold. There exists a $k$-form $\omega_{\vec{p}}$ defined on some open neighborhood of $M$ with the property that $\omega$ is positive at every point of $M$.
+\end{thm}
+
+Riemannian metric $G_f$ induced by $f$. Let $\alpha = 1+\left(D_1f\right)^2$, $\beta = D_1f \cdot D_2f$, $\gamma = 1+\left(D_2f\right)^2$.  $\text{length}(Y_{\eta}) = \int_a^b \sqrt{\bmat{x'& y'}\bmat{\alpha &\beta \\ \beta & \alpha} \bmat{x' \\ y'}}$
+
+\begin{thm}[Borsuk-Ulam Theorem for Low-dimensional Smooth Case]
+For all $f \in C^1(S^2, \R^2)$, there exists some $\vec{x}\in S^2$ such that $f(-\vec{x}) = f(\vec{x})$.
+\end{thm}
+
+$$\int_0^{2\pi}\sin^2(\theta)=\int _0^{2\pi }\cos ^2\left(\theta\right) = \pi \qquad\qquad(-1)^{k+1} \int_M d\omega \wedge \eta =  \int_M \omega \wedge d\eta\qquad\qquad \int u\, dv =uv - \int v\, du $$
+
+\end{document}

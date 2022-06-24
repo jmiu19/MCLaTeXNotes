@@ -1,0 +1,201 @@
+\documentclass[11pt]{article}
+
+\usepackage{xcolor}
+\usepackage{mathtools}
+\usepackage[legalpaper, margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{paralist}
+\usepackage{rsfso}
+\usepackage{amsthm}
+\usepackage[inline]{enumitem}   
+
+\newtheoremstyle{break}
+  {\topsep}{\topsep}%
+  {\itshape}{}%
+  {\bfseries}{}%
+  {\newline}{}%
+\theoremstyle{break}
+\theoremstyle{break}
+\newtheorem{axiom}{Axiom}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lem}{Lemma}[thm]
+\newtheorem{prop}[lem]{Proposition}
+\newtheorem{corL}{Corollary}[lem]
+\newtheorem{corT}[lem]{Corollary}
+\newtheorem{defn}{Definition}[corL]
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\J}{\mathcal{J}}
+\newcommand{\T}{\mathcal{T}}
+\newcommand{\Td}{\mathcal{T}_d}
+\newcommand{\C}{\mathcal{C}}
+\newcommand{\M}{\mathcal{M}}
+\newcommand{\Complex}{\mathbb{C}}
+\newcommand{\Power}{\mathcal{P}}
+\newcommand{\ee}{\cdot 10}
+\newcommand{\Intab}{[\,a,b\,]}
+
+\makeatletter
+\def\@seccntformat#1{%
+  \expandafter\ifx\csname c@#1\endcsname\c@section\else
+  \csname the#1\endcsname\quad
+  \fi}
+\makeatother
+
+\makeatletter
+\newcommand*{\rom}[1]{\expandafter\@slowromancap\romannumeral #1@}
+\makeatother
+
+\makeatletter
+% This command ignores the optional argument for itemize and enumerate lists
+\newcommand{\inlineitem}[1][]{%
+\ifnum\enit@type=\tw@
+    {\descriptionlabel{#1}}
+  \hspace{\labelsep}%
+\else
+  \ifnum\enit@type=\z@
+       \refstepcounter{\@listctr}\fi
+    \quad\@itemlabel\hspace{\labelsep}%
+\fi}
+\makeatother
+\parindent=0pt
+
+
+\begin{document}
+
+	\begin{titlepage}
+		\begin{center}
+			\topskip0pt
+			\vspace*{\fill}
+			\Huge \color{red}
+				\textbf{Class Notes}\\
+			\vspace{0.5cm}			
+			\Large \color{black}
+				EECS 183\\	
+				University of Michigan\\
+			\vspace{3cm}
+
+			
+			\vspace{5cm}
+			\LARGE
+				\textbf{Jinyan Miao}\\
+				Fall 2021\\
+			\vspace{5cm}
+
+		\vspace*{\fill}
+		\end{center}			
+	\end{titlepage}
+
+\newpage
+\Large\textbf{}\\
+
+\normalsize 
+\begin{defn}
+An \textbf{algorithm} is a sequence of steps to solve a problem. Algorithm is an ordered sequence of small tasks, or instructions, and instructions are well-defined and unambiguous. Everyone would perform the instruction the same way, and stops at some point when the problem is solve.
+\end{defn}
+
+Note that algorithm requires some human interpretation. In programming, it is usually expressed in pseudocode.
+
+\begin{defn}
+Program is a way expressing an algorithm in a way a computer can understand.
+\end{defn}
+
+\begin{defn}
+Programming is collaborative problem-solving between people and computers, giving a computer a list of instructions to follow.
+\end{defn}
+
+\begin{defn}
+A computer is a machine that executes algorithm.
+\end{defn}
+
+\begin{defn}
+Psedocode uses human language to describe an algorithm, structured like a programming language. It is words and phrases that people can understand.
+\end{defn}
+
+\begin{defn}
+Programming language offers a way for us to communicate algorithm to computer.
+\end{defn}
+Computers can not interpret, so programming language needs to be unambiguous. For example, C++ is an programming language.\\
+
+When we try to run a program, a source code, such as C++ code, expressed by a algorithm, will be passed to the IDE compiler, such as XCode and VS, which will then turn into executable, the application, that can be run in the CPU.\\
+\newpage
+
+$\#include <iostream>$ \hfill Imports the library iostream\\
+$\#include <string>$ \hfill Imports the library string for string\\
+$\#include <cmath>$ \hfill Imports the library cmath for math functions\\
+$using\ namspace\ std;$ \hfill \\
+\hfill\break
+$int\ main()\{$\hfill All C++ code starts with using the main() function\\
+${}\qquad cout\ <<\ "\text{Hello World}";$\hfill cout prints the string Hello World\\
+${}\qquad int\ x;$\hfill int x declares a variable x as an integer\\
+${}\qquad int\ y\ =\ 4;$\hfill Declare variable y and set it to 4\\
+${}\qquad x\ =\ 3;$\hfill Assign 3 to the variable x\\
+${}\qquad x\ =\ y;$\hfill Permanently change the value of x to y=4\\
+${}\qquad y\ =\ "M";$\hfill Change the value of y to M, while x remains 4\\
+${}\qquad x\ =\ x\ +\ 2;$\hfill Add 2 to x, now x is 6\\
+${}\qquad x\ +\ 2;$\hfill This line does nothing, but the program keeps running\\
+${}\qquad return\ 0;$ \hfill Ends the program\\
+${}\qquad cout\ <<\ x;$\hfill Prints the value of x, here it prints 6\\
+$\}$\hfill Ends the main() function\\
+
+\hfill\break
+Every time we use an assignment operation "$=$", we permanently change the value of the variable. If we did not assign a new value to a variable, the value of the variable will not change regardless how other variables change.\\
+
+The 0 in the "return 0;" statement tells the operating system the program ended without error.\\
+
+Compile errors are usually caused by grammar mistake in the code, the compiler, or IDE, got confused about the grammar of the code.\\
+\newpage
+
+
+Floating points are stored as "double", integers are stored as "int" in the C++ language. A type conversion is a conversion of one data type to another, such as an int to a double. The compiler automatically performs several common conversions between int and double types, such automatic conversion known as implicit conversion. For an arithmetic operator like + or *, if either operand is a double, the other is automatically converted to double, and then a floating-point operation is performed.
+For assignments, the right side type is converted to the left side type. As a result, if we perform the calculation $z = x/y$, where $x$ and $y$ are both integers, and we have $x=5$ and $y=3$. If $z$ is declared as an integer, then $z$ will also be an integer and we have $z=1$. If $z$ is declared as a double, then $z$ will be an float and $z = 1.0$.\\
+
+For explicit conversion, the static$\_$cast operator: $$static\_cast<type>(expression)$$ converts the expression's value to the indicated type. \\For example: If myIntVar is 7, then static$\_$cast$<$double$>$(myIntVar) converts int 7 to double 7.0.\\
+
+
+A variable of char type, as in char myChar;, can store a single character like the letter m. A character literal is surrounded with single quotes, as in myChar = 'm';.\\
+
+A string is a sequence of characters. A string literal surrounds a character sequence with double quotes, as in "Hello", "52 Main St.", or "42", vs. an integer literal like 42 or character literal like 'a'. Various characters may be in a string, such as letters, numbers, spaces, or symbols like $\$$, as in "$\$$100 for Julia!!". Note that when using strings, we need to include $\#include <string>$ at the beginning of the program to import the string library.\\
+
+Sometimes we might want to declare a constant, which is not allowed to change throughout the entire script. To declare a constant, we can use the following syntax:
+$$const\ double\ X\ =\ 5.0; \qquad\qquad\qquad\qquad const\ int\ Y\ =\ 3;$$
+\hfill\break
+
+A whitespace character is a character used to represent horizontal and vertical spaces in text, and includes spaces, tabs, and newline characters. Ex: "Oh my goodness!" has two whitespace characters, one between h and m, the other between y and g. When assigning a value to the string using $cin$, the $cin$ only takes the input up to the next white space. That is, if the input is "Hello world" for $cin\ <<\ myString$, then we will have $myString = "Hello"$, the word "world" will be ignored, or left for the next $cin$. Sometimes a we want to get whitespace characters into a string, such as getting a user's input of the name "Franklin D. Roosevelt" into a string variable presidentName. For such cases, the language supports getting an entire line into a string. The function $getline(cin,\ stringVar)$ gets all remaining text on the current input line, up to the next newline character, which is removed from input but not put in stringVar. On another note, $cin$ ignores all the whitespace and newline character, while $getline(cin,\ stringVar)$ does not. That is, if the input is " Hello World", $cin$ will get 'Hello", while $getline(cin,\ stringVar)$ will get " Hello World". Moreover, if the input is "Hello\textbackslash n World", and we first use $cin$ to get the input "Hello", and then use $getline(cin,\ stringVar)$ to get the next input for variable stringVar, then stringVar will be an empty string, this is because $getline(cin,\ stringVar)$ does not skip newline character.\\
+
+
+
+\newpage
+C++ function can only return one singular value of a single type.
+To declare a user-defined function, we need the following code:\\
+
+$double\ FunctionName(string\ parameter1,\ int\ parameter2) \{$\\
+${}\qquad   Something = 19.0;$\\
+${}\qquad   return\ Something;$\\
+$\}$\\
+
+Here the function return a type double variable "Something." Other return types are allowed, such as char, double, etc. A function can only return one item, not two or more. A return type of void indicates that a function does not return any value. We can have no parameter, or more parameters, when declaring the function, while notice that the type of the parameters also need to be included when declaring a function. \\
+
+One might declare a function before defining the function. That is, at the beginning of the program, before the main() function, one might declare a function using the following:
+$$void\ myFunction(int\ x);$$
+and define the function at the end of the program, after the main() function:
+\begin{align*}
+&void\ myFunction(int\ x)\{\\
+&\text{}\qquad return;\\
+&\}
+\end{align*}
+
+The scope of a variable starts at the declaration point of the function, and ends at the closing bracket of the enclosing block, which is the end of a user-defined function, the end of the main() function, etc.. Once the execution leaves the scope of a variable, by return statement or reaching the end of the scope, the variable gets de-allocated. On the other hand, the scope of the declared functions starts at their declaration points and ends at the end of the program. When not in the scope of a variable or function, one cannot write a statement using that variable or function\\ 
+
+
+
+
+
+
+
+\end{document}

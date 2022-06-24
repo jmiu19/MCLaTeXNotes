@@ -1,0 +1,156 @@
+\documentclass[11pt]{article}
+
+\usepackage{xcolor}
+\usepackage{mathtools}
+\usepackage[legalpaper, margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{paralist}
+\usepackage{rsfso}
+\usepackage{amsthm}
+\usepackage[inline]{enumitem}   
+\usepackage{wasysym}
+
+\newtheoremstyle{break}
+  {\topsep}{\topsep}%
+  {\itshape}{}%
+  {\bfseries}{}%
+  {\newline}{}%
+\theoremstyle{break}
+\theoremstyle{break}
+\newtheorem{axiom}{Axiom}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lem}{Lemma}[thm]
+\newtheorem{prop}[lem]{Proposition}
+\newtheorem{corL}{Corollary}[lem]
+\newtheorem{corT}[lem]{Corollary}
+\newtheorem{defn}{Definition}[corL]
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\J}{\mathcal{J}}
+\newcommand{\T}{\mathcal{T}}
+\newcommand{\Td}{\mathcal{T}_d}
+\newcommand{\C}{\mathcal{C}}
+\newcommand{\M}{\mathcal{M}}
+\newcommand{\Complex}{\mathbb{C}}
+\newcommand{\Power}{\mathcal{P}}
+\newcommand{\ee}{\cdot 10}
+\newcommand{\Intab}{[\,a,b\,]}
+\newcommand{\spa}{\text{span}}
+
+\newcommand{\note}{\color{red}Note: \color{black}}
+\newcommand{\remark}{\color{blue}Remark: \color{black}}
+\newcommand{\example}{\color{green}Example: \color{black}}
+\newcommand{\exercise}{\color{green}Exercise: \color{black}}
+
+\makeatletter
+\def\@seccntformat#1{%
+  \expandafter\ifx\csname c@#1\endcsname\c@section\else
+  \csname the#1\endcsname\quad
+  \fi}
+\makeatother
+
+\makeatletter
+\newcommand*{\rom}[1]{\expandafter\@slowromancap\romannumeral #1@}
+\makeatother
+
+\makeatletter
+% This command ignores the optional argument for itemize and enumerate lists
+\newcommand{\inlineitem}[1][]{%
+\ifnum\enit@type=\tw@
+    {\descriptionlabel{#1}}
+  \hspace{\labelsep}%
+\else
+  \ifnum\enit@type=\z@
+       \refstepcounter{\@listctr}\fi
+    \quad\@itemlabel\hspace{\labelsep}%
+\fi}
+\makeatother
+\parindent=0pt
+
+
+\begin{document}
+
+\newpage
+\example Consider the equality $y^5 + xy +z = 0$, call it $f(x,z,y) = 0$. \\Here we order the variables as $(x,z,y)$. Then we can write the following:
+\begin{align*}
+Df = \begin{bmatrix}
+y & 1 & 5y^4+x
+\end{bmatrix}
+\end{align*}
+We can use Implicit Function Theorem when we have $5y^4+x \neq 0$. We will identity the "folding curve" for the $f(x,z,y)=0$. Here we need $g(x,z,y)=0$ for $g(x,z,y) =\begin{bmatrix}
+y^5 +xy+z \\ 5y^4+x
+\end{bmatrix} $.\\
+$$Dg(x,z,y) =\begin{bmatrix}
+y & 1 & 5y^4+x \\ 1 & 0 & 20y^3
+\end{bmatrix}  $$
+Note here: $$\begin{bmatrix}
+y & 1 \\ 1 & 0
+\end{bmatrix}\text{ is always invertible}$$
+We can choose $(x,z)$ being dependent variables and $y$ being independent variable.\\ Then $x = -5y^4,\ y=4z^5$.
+
+
+From Wednesday handout:
+\begin{align*}
+f: \begin{bmatrix}
+x \\y 
+\end{bmatrix} \mapsto y^5 + xy +1 \\
+Df = \begin{bmatrix}
+y & 5y^4 + x
+\end{bmatrix}\\
+E \coloneqq f^{-1}(0) \text{ is locally } y = g(x) \text{except possibily when } 5y^4 + x = 0
+\end{align*}
+
+Assuming $y$ is differentiable with respect to $x$, then we have $$5y^4\frac{dy}{dx}+ y + x\frac{dy}{dx} = 0 \qquad\Rightarrow\qquad \frac{dy}{dx} = -\frac{y}{5y^4+x}$$
+$$g'(x) = -\frac{g(x)}{5(g(x))^4 + x}$$
+
+
+\begin{align*}
+\text{let } \widetilde{g}(x) = \begin{bmatrix}
+x \\ g(x) 
+\end{bmatrix}\\
+f\circ \widetilde{g} = 0 \text{ because we assume that the graph of g lies in E}\\
+Df(\widetilde g(x))(\widetilde{g} ' (x)) = 0\\
+\begin{bmatrix}
+\frac{\partial f}{\partial x}\begin{bmatrix}
+ x \\ g(x)
+\end{bmatrix} & 
+\frac{\partial f}{\partial y}\begin{bmatrix}
+ x \\ g(x)
+\end{bmatrix}\cdot \begin{bmatrix}
+1 \\ g'(x)
+\end{bmatrix} 
+\end{bmatrix}= \frac{\partial f}{\partial x} \begin{bmatrix}
+x \\ g(x)
+\end{bmatrix} + \frac{\partial f}{\partial y}\begin{bmatrix}
+x \\ g(x)
+\end{bmatrix} \cdot g'(x) = 0\\
+g'(x) = \frac{-\frac{\partial f}{\partial x} \begin{bmatrix}
+x \\g(x)
+\end{bmatrix}}{\frac{\partial f}{\partial y}\begin{bmatrix}
+x \\ g(x)
+\end{bmatrix}}
+\end{align*}
+In higher dimension, let $\widetilde{g}(\vec{x}) = \begin{bmatrix}
+\vec{x} \\ g(\vec{x}) 
+\end{bmatrix}$, $f\circ \widetilde{g}= 0$.
+$(Df\circ \widetilde{g}) D\widetilde{g} = 0$
+\begin{align*}
+\Rightarrow \begin{bmatrix}
+\frac{\partial f}{\partial \vec{x}}\circ \widetilde {g} & \frac{\partial f}{\partial y}\widetilde{g} 
+\end{bmatrix} \begin{bmatrix}
+ I \\ Dg
+\end{bmatrix} = \frac{\partial f}{\partial \vec{x}}\circ \widetilde{g} + (\frac{\partial f}{\partial \vec{y}}\circ \widetilde{g}) Dg = 0\\
+Dg(\vec{x}) = -\left(\left(\frac{\partial f}{\partial  \vec{y}} \right)^{-1} \frac{\partial f}{\partial \vec{x}} \right)(\widetilde{g}(\vec{x}))
+\end{align*}
+
+
+
+
+
+
+\end{document}

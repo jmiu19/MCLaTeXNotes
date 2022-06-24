@@ -373,4 +373,142 @@ So we need to calculate $P(H\mid 6)$ which is the probability of rolling a fair 
 \textbf{Law of Total Probability}\\
 If $A_1,A_2,\cdots,A_k$ are given, and 
 \end{thm}
+\note $\bigcup_{i=0}^{k}|\{X=i\}|=2^n$\\
+\begin{align*}
+E(X)&=\sum_{x\in X}x\cdot p_X(x)\\
+&=\sum_{k=0}^{n}k\cdot p_x(k)\\
+&=\sum_{k=0}^{n}k\cdot \binom nk p^k\cdot (1-p)^{n-k}\\
+&=\sum_{k=0}^{n}k\cdot \frac{n!}{(n-k)!k!} p^k\cdot (1-p)^{n-k}\\
+&=\sum_{k=1}^{n}k\cdot \frac{n!}{(n-k)!k!} p^k\cdot (1-p)^{n-k}\\
+&=\sum_{k=1}^{n}\frac{n!}{(n-k)!(k-1)!} p^k\cdot (1-p)^{n-k}\\
+&=\sum_{k=1}^{n}n\cdot p \frac{(n-1)!}{(n-k)!(k-1)!} p^{k-1}\cdot (1-p)^{n-k}\\
+&=n\cdot p \cdot \sum_{k=1}^{n}\frac{(n-1)!}{(n-k)!(k-1)!} p^{k-1}\cdot (1-p)^{n-k}\\
+&=n\cdot p \cdot \sum_{r=0}^{n-1}\frac{(n-1)!}{(n-r-1)!(r)!} \cdot p^{r}\cdot (1-p)^{n-r-1} &\text{set }r=(k-1)\\
+&=n\cdot p \cdot \sum_{r=0}^{n-1}\frac{(n-1)!}{((n-1)-r)!(r)!} \cdot p^{r}\cdot (1-p)^{(n-1)-r} \\
+&=n\cdot p \cdot \sum_{r=0}^{n-1}\binom{n-1}{r}  \cdot p^{r}\cdot (1-p)^{(n-1)-r} \\
+&=n\cdot p &\text{note it is a pmf for binom((n-1), p), so the sum is 1}
+\end{align*}
+Then, let's calculate the Variance \begin{align*}
+E(X^2)&=\sum_{k=0}^n k^2\cdot p_X(k)\\
+&=\sum_{k=0}^{n}k^2\cdot \binom nk p^k\cdot (1-p)^{n-k}\\
+&=\sum_{k=0}^{n}k^2 \cdot \frac{n!}{(n-k)!k!} p^k\cdot (1-p)^{n-k}\\
+&=\sum_{k=1}^{n}k^2\cdot \frac{n!}{(n-k)!k!} p^k\cdot (1-p)^{n-k}\\
+&=\sum_{k=1}^{n}k\cdot \frac{n!}{(n-k)!(k-1)!} p^k\cdot (1-p)^{n-k}\\
+&=\sum_{k=1}^{n}k\cdot n \cdot p \frac{(n-1)!}{(n-k)!(k-1)!} p^{k-1}\cdot (1-p)^{n-k}\\
+&=\sum_{k=1}^{n}k\cdot n \cdot p \frac{(n-1)!}{(n-k)!(k-1)!} p^{k-1}\cdot (1-p)^{n-k}\\
+&=n\cdot p \left( \sum_{r=0}^{n-1}r\binom{n-1}{r}p^r\cdot (1-p)^{(n-1)-r}+\sum_{r=0}^{n-1}\binom{n-1}{r}p^r\cdot (1-p)^{(n-1)-r} \right)\\
+&=n\cdot p((n-1)p+1)\\
+&=n(n-1)p^2+np
+\end{align*}
+\begin{align*}
+V(X)&=E(X^2)-E(X)^2\\
+&=n(n-1)p^2+np-(np)^2\\
+&=np((n-1)p+1-np)\\
+&=np(np-p+1-np)\\
+&=np\cdot (1-p)
+\end{align*}
+Moment Generating Function \begin{align*}
+M_X(t)&=E(e^{tx})\\
+&=\sum_{k=0}^n e^{tk}\cdot p_X(k)\\
+&=\sum_{k=0}^{n}e^{tk}\cdot \binom nk p^k\cdot (1-p)^{n-k}\\
+&=\sum_{k=0}^{n}e^{tk} \cdot \binom nk \cdot p^k\cdot (1-p)^{n-k}\\
+&=\sum_{k=0}^{n}\binom nk  \cdot (e^tp)^k\cdot (1-p)^{n-k}\\
+&=(pe^t+(1-p))^n
+\end{align*}
+\textbf{Hyper Geometric Distribution}\\
+$N=$ population size\\
+$M=$ number success in the population\\
+$n=$ sample size\\
+$p_X(k)=\frac{\binom Mk \cdot \binom{N-M}{n-k}}{\binom{N}{k}}$\\
+In this setting, $X=k$ number of successes in a sample of size n, sampled from a population of size N with M success and sampling without replacement.\\
+$|\{X=k\}|=$ number elements in this set.
+Find the exactly k spots in n spots for the successes. Fill the remaining $(n-k)$ spots with Failure.\\
+\hfill\\
+And the total number of ways to n objects from N without replacements is $\binom Nn$
+\newpage
+\section[The Negative Binomial Distribution]{The Negative Binomial Distribution}
+Waiting for a certain number of successes\\
+\textbf{Experiment:} Keep tossing a coin independently, fix $r\in \mathbb{R}$\\
+$X=$ number of tails until exactly r heads have appeared\\
+Alternatively: Perform a trial whose outcomes are successes independently.\\ 
+$X=$ number of failure until exactly r successes have appeared\\
+\hfill\\
+We want to calculate the probability mass function of X.\\
+Values of $\{X=x\}=\{0,1,2,3,\cdots,x\}$\\
+\example If $r=2$\\
+$\{X=0\}=\{$ All outcomes with 0 failures until 2 successes$\}=\{SSS\}$\\
+$\{X=0\}=\{$ All outcomes with 1 failures until 2 successes$\}=\{FSS,SFS\}$\\
+Observe: All outcomes in the set $\{X=k\}$ is equally likely.\\
+\hfill\\
+First, We find the probability of a single outcome in $\{X=k\}$\\
+$\{X=k\}=\{$All outcomes with exactly k failures before the $r^{th}$ success$\}$\\
+$\omega = FFF\cdots F_kSSS\cdots S_r$, $P(S)=p,P(F)=(1-p)$\\
+$P(\omega)=p^{k}p^{r}$\\
+So we have $k+r$ slots, and where $k+r$ will always be S. Then the remaining $(r-1)$ successes can happen in any of the remaining $(k+r-1)$ slots. \\
+So we only need to choose $(r-1)$ slots out of $(k+r-1)$ to put the success, which is a total of\begin{align*}
+\binom{k+r-1}{r-1}
+\end{align*}
+or, if we choose the failure seats, we will get \begin{align*}
+\binom{k+r-1}{k}
+\end{align*}
+Therefore, we find that \begin{align*}
+|\{X=k\}|=\binom{k+r-1}{r-1}=\binom{k+r-1}{k}=\frac{(k+r-1)!}{(r-1)!k!}
+\end{align*}
+So the probability mass function is \begin{align*}
+p_X(k)=\binom{k+r-1}{r-1}p^r\cdot (1-p)^k
+\end{align*}
+\hfill\\
+Now, suppose $X~$NegBinom$(p,r)$, we want to calculate the \textbf{Expected Value} E(X)\begin{align*}
+E(X)&=\sum_{x\in X}p_X(x)\\
+&=\sum_{k=0}^{\infty}k\cdot p_X(k)\\
+&=\sum_{k=0}^{\infty}k\cdot \binom{k+r-1}{k} \cdot p^r\cdot (1-p)^k\\
+&=\sum_{k=0}^{\infty}k\cdot \frac{(k+r-1)!}{(r-1)!k!} \cdot p^r\cdot (1-p)^k\\
+&=\sum_{k=1}^{\infty} \frac{(k+r-1)!}{(r-1)!(k-1)!} \cdot p^r\cdot (1-p)^k\\
+&=\sum_{j=0}^{\infty} \frac{(j+1+r-1)!}{(r-1)!(j)!} \cdot p^r\cdot (1-p)^{j+1}&\text{Set} j=k-1\\
+&=\sum_{j=0}^{\infty} r\cdot \frac{(j+(r+1)-1)!}{(r)!(j)!} \cdot \frac{p^{r+1}}{p}\cdot (1-p)^{j}\cdot (1-p)\\
+&=\frac{r(1-p)}{p}\cdot \sum_{j=0}^{\infty} \frac{(j+(r+1)-1)!}{(r)!(j)!} \cdot p^{r+1}\cdot (1-p)^{j}\\
+&=\frac{r(1-p)}{p}\text{ Note that above is the sum of all the possibilities assosicated to NegBinom}(r+1,p)
+\end{align*}
+Similarly, we can find the \textbf{Variance} $V(X)$ to get \begin{align*}
+V(x)&=\frac{r(1-p)}{p^2}
+\end{align*}
+The \textbf{Moment Generating Function} is \begin{align*}
+M_x(t)&=\left( \frac{p\cdot e^t}{1-(1-p)e^t}\right)^r
+\end{align*}
+\exercise Find the Moment Generating Function
+\hfill\\
+\hfill\\
+\section[Poisson Distribution]{Poission Distribution}
+\begin{align*}
+e^{\lambda}=1+e
+\end{align*}
+\begin{defn}
+We say X has the \textbf{Poission Distrubution} with parameters \begin{align*}
+\lambda &\rightarrow \text{rate}
+\end{align*}
+if \begin{align*}
+X&=\{0,1,2,3,\cdots\}\\
+p_X(k)&=e^{-\lambda}\frac{\lambda}{k!}
+\end{align*}
+\end{defn}
+We can calculate the \textbf{Expected Value}
+\begin{align*}
+E(x)&=\sum_{k=0}^{\infty}k\cdot p_X(k)\\
+&=\sum_{k=0}^{\infty}k\cdot e^{-\lambda}\cdot \frac{\lambda}{k!}\\
+&=\sum_{k=0}^{\infty} e^{-\lambda}\cdot \frac{\lambda}{(k-1)!}\\
+&=\lambda \sum_{k=0}^{\infty} e^{-\lambda}\cdot \frac{\lambda}{(k-1)!}\\
+\end{align*}
+Special Case of Binomial Distribution: $(n=1)$
+\textbf{Bernonli Ditsribution}\\
+$x=\{0,1\}$
+$p_X(x)=\begin{cases}p&x=1\\ (1-p)^x=0\end{cases}$\\
+\section[Geometric Distribution]{Distribution}
+\chapter[Continuous Variables]{Continuous Variables}
+We say X is a continuous random variable if and only if $F_X$ is a continuous function.\\
+Given a random variable X, there are multiple pdfs assosiated to the X.\begin{defn}
+We say two random variables X, Y with cumulative distribution $F_X,F_Y$ respectively, are \textbf{identically distributed} if \begin{align*}
+F_X(u)&=F_Y(y)\forall u \in \mathbb{R}
+\end{align*}
+\end{defn}
+\section[Uniform Continuous Distribution]{Uniform Continuous Distribution}
 	\end{document}

@@ -1,0 +1,730 @@
+ \documentclass[11pt]{article}
+
+\usepackage{xcolor}
+\usepackage{mathtools}
+\usepackage[legalpaper, margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{paralist}
+\usepackage{rsfso}
+\usepackage{amsthm}
+\usepackage[inline]{enumitem}   
+
+\newtheoremstyle{break}
+  {\topsep}{\topsep}%
+  {\itshape}{}%
+  {\bfseries}{}%
+  {\newline}{}%
+\theoremstyle{break}
+\theoremstyle{break}
+\newtheorem{axiom}{Axiom}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lem}{Lemma}[thm]
+\newtheorem{prop}[lem]{Proposition}
+\newtheorem{corL}{Corollary}[lem]
+\newtheorem{corT}[lem]{Corollary}
+\newtheorem{defn}{Definition}[corL]
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\J}{\mathcal{J}}
+\newcommand{\T}{\mathcal{T}}
+\newcommand{\Td}{\mathcal{T}_d}
+\newcommand{\C}{\mathcal{C}}
+\newcommand{\M}{\mathcal{M}}
+\newcommand{\Complex}{\mathbb{C}}
+\newcommand{\Power}{\mathcal{P}}
+\newcommand{\pd}{\partial}
+\newcommand{\ee}{\cdot 10}
+\newcommand{\Intab}{[\,a,b\,]}
+\newcommand{\ihat}{\hat{\i}}
+\newcommand{\jhat}{\hat{\j}}
+\newcommand{\khat}{\hat{k}}
+
+\makeatletter
+\def\@seccntformat#1{%
+  \expandafter\ifx\csname c@#1\endcsname\c@section\else
+  \csname the#1\endcsname\quad
+  \fi}
+\makeatother
+
+\makeatletter
+\newcommand*{\rom}[1]{\expandafter\@slowromancap\romannumeral #1@}
+\makeatother
+
+\makeatletter
+% This command ignores the optional argument for itemize and enumerate lists
+\newcommand{\inlineitem}[1][]{%
+\ifnum\enit@type=\tw@
+    {\descriptionlabel{#1}}
+  \hspace{\labelsep}%
+\else
+  \ifnum\enit@type=\z@
+       \refstepcounter{\@listctr}\fi
+    \quad\@itemlabel\hspace{\labelsep}%
+\fi}
+\makeatother
+\parindent=0pt
+
+
+\begin{document}
+
+	\begin{titlepage}
+		\begin{center}
+			\topskip0pt
+			\vspace*{\fill}
+			\Huge \color{red}
+				\textbf{Class Notes}\\
+			\vspace{0.5cm}			
+			\Large \color{black}
+				Physics 351 - Methods of Theoretical Physics\\	
+				University of Michigan\\
+			\vspace{3cm}
+
+			
+			\vspace{5cm}
+			\LARGE
+				\textbf{Jinyan Miao}\\
+				Fall 2021\\
+			\vspace{5cm}
+
+		\vspace*{\fill}
+		\end{center}			
+	\end{titlepage}
+
+\newpage
+\section{\color{red} Complex Numbers}
+Any time we have periodic behavior, we should look for complex number formulation.\\
+Quantum mechanics is written in terms of complex numbers.\\ 
+
+\begin{thm}[Euler's Formula]
+For $\theta \in \R$, and $i = \sqrt{-1}$, we have the following holds:
+$$e^{i\theta} = \cos(\theta)+i\sin(\theta)$$
+\end{thm}
+
+When describing waves, we can describe it using the equation $e^{i(kx-\omega t)}$ where $k$ is the wave number, $x$ is the position, $\omega$ is the frequency, and $t$ is time.\\
+
+%We might also want to use $D(\omega) = \epsilon E(\omega)$ to describe fields, where $\epsilon$ is the dielectric constant, which depends on frequency $\omega$, and $\epsilon(\omega) = \epsilon ' (\omega)+i\epsilon '' (\omega)$.\\
+
+
+Let $z$ be a complex number, that is, we have $z \in \Complex$, we can write $z = z'+iz''$ for some $z',z'' \in \R$.
+
+\begin{defn}
+Let $z=z'+iz'' \in \Complex$ for $z',z''\in \R$, the complex conjugate of $z$ is defined to be $z^*=z'-iz''$
+\end{defn}
+
+For $z_1,z_2 \in \Complex$, note here the following holds:
+\begin{enumerate}[topsep=3pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
+\item $(z_1+z_2)^* = z_1^*+z_2^*$		
+\item $\left(\frac{1}{z_1}\right)^* = \frac{1}{z_1^*}$
+\item $(z_1z_2)^* = z_1^*z_2^*$
+\end{enumerate}
+
+\begin{defn}
+Let $z = z'+iz'' \in \Complex$, the modulus of $z$ is defined to be $|z|  = \sqrt{zz^*} = \sqrt{(z')^2+(z'')^2}$
+\end{defn}
+
+Here we note that for a complex number $z$, we have $|z|^2 = zz^*$.\\
+
+Any complex number $z = z'+iz''$ can be written as $\rho e^{i\theta}$ where $\rho,\theta \in \R$.
+Here we see that $z = \rho \cos(\theta)+i\rho\sin(\theta)$, and hence $z' = \rho \cos(\theta)$ and $z'' = \rho\sin(\theta)$. Notice that $\tan(\theta) = \frac{\sin(\theta)}{\cos(\theta)} = \frac{z''}{z'}$.\\
+On another note, we have $(z')^2 + (z'')^2 = \rho^2\cos^2(\theta)+\rho^2\sin^2(\theta) = \rho^2 = |z|^2$\\
+
+\begin{defn}
+Let $z = z'+iz'' \in \Complex$, then the real part of $z$ is $Re\{z\} = z'$, and the complex part of $z$ is $Im\{z\} = z''$.
+\end{defn}
+
+Notice that, for $z = z'+iz'' \in \Complex$, we have $Re\{z\}, Im\{z\} \in \R$.\\
+On another note, we have $z+z^* = z'+iz''+z'-iz'' = 2z' = 2Re\{z\}$.\\
+
+For $z \in \Complex$, the equation $z^n = 1$ has $n$ solutions, give by $e^{i2\pi \frac{k}{n}}$ with $k=n-1$ and $n \in \N$.\\
+
+\begin{thm}
+For $z,a,b \in \R$, we have the followings hold:
+\begin{enumerate}[topsep=3pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
+\item $\cos (iz) = \cosh (z) = \frac{e^z+e^{-z}}{2}$ \hfill $\cosh(iz) = \frac{e^{iz}+e^{-iz}}{2} = \cos (z)$
+\item $\sin (iz) = \sinh (z) = \frac{e^z - e^{-z}}{2}$\hfill $\sinh(iz) = \frac{e^{iz}-e^{-iz}}{2} = i\sin(z)$
+\item $\tanh(iz) = i\tan(z) $\hfill $\tanh(z) = -i\tan(iz)$
+\item $\cosh(a+ib) = \cosh(a)\cos(b)+i\sinh(a)\sin(b)$
+\item $\sinh(a+ib) = \sinh(a)\cos(b)+i\sinh(a)\sin(b)$
+\end{enumerate}
+\end{thm}
+
+When solving a algebraic equation with complex numbers, say $f(z) = a+bi$ for some $z \in\Complex,\ a,b\in \R$, we want to have $Re(f(z)) = a$ and $Im(f(z)) = b$.\\
+\newpage
+
+\section{\color{red} Series}
+
+\begin{defn}
+Fine structure constant is given by $\alpha = \frac{e^2}{4\pi \epsilon_0 \hbar c}$\\ The experimental value is $\approx 137.033599206(11)$, and the theoretical value is around $\approx 137.035999174(35)$
+\end{defn}
+
+\begin{defn}
+An infinity series is any sum of the form $S = \sum_{n=0}^\infty a_n$ for $a_n \in \R$.
+\end{defn}
+
+\begin{defn}
+Partial sum is defined to be any sum of the form $S_N = \sum_{n=0}^N a_n$ for $a_n \in \R$ and $N \in \N$.
+\end{defn}
+
+\begin{defn}
+A series $S$ is said to be convergent provided that $\lim_{n \to \infty} S_n$ exists. $S$ is said to be divergent provided that $\lim_{n\to \infty} S_n$ does not exist.
+\end{defn}
+
+\begin{defn}
+A series $S = \sum_{n=0}^\infty a_n$ is said to be absolutely convergent provided that $\widetilde{S} = \sum_{n=0}^\infty |a_n|$ is convergent.
+\end{defn}
+
+For absolutely convergent series, the order of the terms does not affect the value it converges to.\\
+
+
+\begin{defn}
+A series $S$ is said to be conditionally convergent provided that $S$ is convergent but not absolutely convergent.
+\end{defn}
+
+\begin{defn}
+For some coefficients $a_n$ where $n \in \N$, $S(x) = \sum_{n=0}^\infty a_n(x-x_0)^n$ is called a power series.
+\end{defn}
+
+Note that each power series has a radius of convergence, or the interval of convergence. In other words, there exists an interval for $x$ over which a power series will converge. For example, consider the series $(1+x)^\alpha = 1=\alpha x+ \frac{\alpha(\alpha - 1)x^2}{2!}+ \cdots$, the series converges for $x \in (-1,1)$. \\
+
+Notes:
+\begin{enumerate}[topsep=3pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
+\item Power series can be integrated and differentiated.
+\item Power series canbe added, subtracted, multiplied, and divided.
+\item The power series of a function, if exists, is unique.
+\end{enumerate}
+
+\begin{thm}[Taylor's Theorem]
+Let $f:\R \to \R$ be a function. There exists an intercal of convergence $(-R+x_0,R+x_0)$ such that $f(x) = \sum_{n=0}^\infty \frac{f^{(n)}(x_0)(x-x_0)^n}{n!}$, such expression is called the Taylor series for $f$ around $x_0$.
+\end{thm}
+
+\begin{defn}
+For some $a,b \in \R$ and $N \in \N$, $S_N = \sum_{n=0}^N (a+b\cdot n) = a(N+1)+b\cdot \sum_{n=1}^N n = a(N+1)+b(N+1)\frac{N}{2}$ is called a Arithmetic Series.
+\end{defn}
+
+\begin{defn}
+For some $a\in \R$, $S = \sum_{n=0}^\infty a^n$ is called a Geometric Series.
+\end{defn}
+
+Let $a \in \R$ and $S = \sum_{n=0}^\infty a^n$. For some $N \in \N$, the partial sum $S_N = \sum_{n=0}^N a^n = \frac{1-a^{N+1}}{1-a}$. Hence $S$ converges provided that $\lim_{N \to \infty} \frac{1-a^{N+1}}{1-a}$ exists, in which case we have $S = \frac{1}{1-a}$.
+
+\begin{defn}
+For $m \in \Z$, $p,q \in \R$, $(p+q)^m = \sum_{k=0}^m p^{m-k}q^k\frac{m!}{(m-k)!k!}$ is called the Binomial Series.
+\end{defn}
+\newpage
+
+\section{\color{red} Series as approximations}
+Let $S = a_0 + a_1 x+x_2 x^2 +\cdots $. We might want to truncate the series $S$ to $S_1 = a_0 + a_1 x$.\\
+Here we note that, $\frac{S}{S_1} = 1+ \frac{a_2 x^2}{a_0+a_1x}+\frac{a_3x^3}{a_0+a_1x}+ \cdots$, and hence we see that $\lim_{x \to 0} \frac{S}{S_1} = 1$. In another words, the truncation gives a good approximation when $x$ tends to $0$, and we can evaluate the precision of the truncation $S_1$ by observing the value of $\frac{S}{S_1}$. Here, $a_0$ is called the leading order term, and for $n \in \N$, $a_n$ is called the $n$-th correction term.\\
+
+To explain the idea. Here we suppose we need to solve the equation $x^2+\epsilon x+1 = 0$. We note that, for the exactly solution, we have $x = \frac{-\epsilon \pm \sqrt{\epsilon^2 +4}}{2}$, and we can expand the exactly solution of the equation as Taylor series around $\epsilon = 0$, here we have $x_1(\epsilon) = 1-\frac{\epsilon}{2}+\frac{\epsilon^2}{8}+\cdots$, and $x_2(\epsilon) = -1 -\frac{\epsilon}{2}-\frac{\epsilon^2}{8}+\cdots$. While on the other hand, in general, without the quadratic formula, we can find the power series representation of $x(\epsilon)$ using the following way. Fist, we assume that $x(\epsilon)$ can be written as a power series of the following form: 
+\begin{align}
+x(\epsilon) = a_0 +a_1\epsilon + a_2\epsilon^2 +\cdots
+\end{align}
+Here we can plug equation (1) into $x^2+\epsilon x-1 = 0$, and get the following: 
+\begin{align*}
+(a_0+a_1\epsilon +a_2\epsilon^2 + \cdots)^2 + \epsilon(a_0+a_1\epsilon+a_2\epsilon^2+\cdots)-1 = 0
+\end{align*}
+Here we expand and collect terms of equal power of $\epsilon$:
+\begin{align*}
+\epsilon^0: &\qquad a_0^2 - 1 = 0\\
+\epsilon^1: &\qquad 2a_1a_0+a_0 = 0\\
+\epsilon^3: &\qquad 2a_1a_0+a_1^2+a_1 = 0\\
+\cdots
+\end{align*}
+Here we can solve for $a_0,a_1,a_2,\cdots $, and get $a_0 = \pm 1$, $a_1 = \frac{-1}{2}$, $a_2 = \pm\frac{1}{8}$, and get the same solution as using the quadratic formula:  $x_1(\epsilon) = 1-\frac{\epsilon}{2}+\frac{\epsilon^2}{8}+\cdots$, and $x_2(\epsilon) = -1 -\frac{\epsilon}{2}-\frac{\epsilon^2}{8}+\cdots$.\\
+\hfill\break\hfill\break
+Another example for approximation using series:\\
+
+[Insert picture here]\\
+
+We want to find an expression for the potential $\phi$ in the limit that $r>>a$. For the exact answer, we have the following:
+$$\phi  = \phi_+ + \phi_- = \frac{q}{4\pi\epsilon_0 R_1} + \frac{-q}{4\pi\epsilon_0 R_2} = \frac{q}{4\pi\epsilon_0}\left(\frac{1}{R_1}-\frac{1}{R_2}\right)$$
+For the approximation, we proceed by the following:\\
+
+[Insert Picture]\\
+
+Here we note that: $R_1^2 = r^2+a^2 - 2ar\cos \theta$
+\begin{align*}
+\frac{1}{R_1} &= \frac{1}{\sqrt{r^2+a^2 - 2ar\cos \theta}}\\ &= \frac{1}{r\left(1+\left(\frac{a}{r}\right)^2-\frac{2a}{r}\cos\theta\right)^{\frac{1}{2}}}\\ &= \frac{1}{r}\left(1+\left(\frac{a}{r}\right)^2-2\frac{a}{r}\cos\theta\right)^{\frac{-1}{2}} \\&= \frac{1}{r}\left(1-\frac{1}{2}\left(\left(\frac{a}{r}\right)^2 - \frac{2a}{r}\cos\theta\right) + \frac{-\frac{1}{2}\left(-\frac{1}{2}-1\right)}{2!}\left(\left(\frac{a}{r}\right)^2-\frac{2a}{r}\cos\theta\right)^2 + \cdots \right)\\
+\hfill\\
+\frac{1}{R_2}&= \frac{1}{r}\left(1-\frac{1}{2}\left(\left(\frac{a}{r}\right)^2+\frac{2a}{r}\cos\theta\right)+\cdots\right)
+\end{align*}
+Combining the equations above, we can write the following:
+\begin{align*}
+\frac{1}{R_1}-\frac{1}{R_2} &= \frac{1}{r}\left(-\frac{1}{2}\left(\left(\frac{a}{r}\right)^2 - \frac{2a}{r}\cos\theta\right)+\frac{1}{2}\left(\left(\frac{a}{r}\right)^2+\frac{2a}{r}\cos\theta\right)\right)\\ &= \frac{1}{r}\left(\frac{1}{4}\frac{2a}{r}\cos\theta+\text{terms of order }\left(\frac{a}{r}\right)^2 \text{ or higher}\right)
+\end{align*}
+Here we have $\phi \approx \frac{q}{4\pi\epsilon_0}\frac{1}{r^2}2a\cos\theta$.
+\newpage
+
+Let $E$ be the total energy, $T$ be the kinetic energy, and $U(x)$ be the potential energy. We know that $E = T +U(x)$. We have the following diagram:\\
+$[$Insert a picture$]$\\
+For Harmonic oscillator, we can write $E = \frac{1}{2}mv^2 + \frac{1}{2}k(x-x_0)^2$ where $m$ is the mass of the oscillator and $v$ is the speed of the oscillator, and $k$ is some constant. We have the following diagram:\\
+$[$Insert a picture$]$\\
+Notice that in both diagrams, the curve have a minimum, and tends to be quadratic around the minimum. We can expand the $U(x)$ using Taylor series around the minimum point $x_0$:
+$$U(x) = U(x_0) + \frac{dU}{dx}\mid_{x_0} (x-x_0) + \frac{1}{2}\frac{d^2U}{dx^2}\mid_{x_0} (x-x_0)^2 + \cdots$$
+Here we note that $U(x_0)$ is a constant, and since we are expanding around $x_0$, we have $\frac{dU}{dx}\mid_{x_0} = 0$. Hence we can write the following:
+$$U(x) = U(x_0) + \frac{1}{2}U''(x-x_0)^2 + \cdots = U(x_0) + \frac{1}{2}t(x-x_0)^2 +\cdots \qquad\text{for some }t \in \R$$
+Hence we say every potential function $U(x)$ looks like a harmonic oscillation, which is quadratic, near its minimum. If the system is originally at rest, and we perturb the system by adding a small energy to it, then the perturbation makes the system oscillate, and if the perturbation is small enough, then such oscillation will tend to be quadratic.\\
+$[$Insert a picture$]$\\
+
+On the other hand, we can derive this from Newton's Law. By Newton's Law, we have $m\frac{d^2x}{dt^2} = -f(x)$ for some force of the form $-f(x)$. Say there exists a position $x_0$ such that $f(x_0) = 0$. We can expand $f$ around $x_0$, by the following:
+$$f(x) = f(x_0) + \frac{df}{dx}(x_0) (x-x_0) + \cdots  = k(x-x_0) + \cdots \qquad\qquad \text{for some }k \in \R$$
+If we keep $f(x) = k(x-x_0) = -m\frac{d^2x}{dt^2}$, we can solve for $x$ and get $x = x_0 + A \cos(\omega t+\phi)$, where $\omega^2 = \frac{k}{m}$, and has a period $T = \frac{2\pi}{\omega} = 2\pi \sqrt{\frac{m}{k}}$.\\
+
+$[$Insert a picture for energy diagram of planet going around the sun$]$\\
+
+\newpage
+\section{\color{red} Vectors}
+For Newton's Law in vector notation, we can write: $$m\frac{d^2\vec{r}}{dt^2} =\vec{F}$$
+where $\vec{r}$ is the position of the particle, $\vec{F}$ is the sum of all external forces acting on that particle.
+\begin{defn}
+A vector is a mathematical object with a magnitude with a direction.
+\end{defn}
+\begin{defn}
+Given a vector $\vec{r}$.\\
+The magnitude of $\vec{r}$ is denoted as $|\vec{r}| = r$, which is a scalar. The direction of $\vec{r}$ is denoted as $\hat{r} = \frac{\vec{r}}{|\vec{r}|}$.
+\end{defn}
+
+EX. The center of mass of two objects, one has mass $m_1$ and position $\vec{r}_1$, one has mass $m_2$ and position $\vec{r}_2$, is given by the following:
+$$\vec{R}_{cm} = \frac{m_1\vec{r}_1+m_2\vec{r}_2}{m_1+m_2}\qquad \qquad \qquad \qquad \text{Let }\alpha = \frac{m_1}{m_1+m_2},\text{ note that }0\leq \alpha \leq 1$$
+$$\text{We have }\vec{R}_{cm} = \alpha \vec{r}_1 + (1-\alpha)\vec{r}_2 = \alpha(\vec{r}_1-\vec{r}_2)+\vec{r}_2$$
+
+\begin{defn}
+Given vector $\vec{a}$ and $\vec{b}$, the dot product of $\vec{a},\vec{b}$ is given by $\vec{a}\cdot \vec{b} = |\vec{a}||\vec{b}|\cos(\theta)$, where $\theta$ is the angle between the two vectors.
+\end{defn}
+
+Here we have some properties for the dot product. Let $\vec{a},\vec{b},\vec{c}$ be vectors. 
+\begin{enumerate}[topsep=3pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
+\item $\vec{a}\cdot \vec{b} = \vec{b}\cdot \vec{a}$
+\item $\vec{a}\cdot (\vec{b}+\vec{c}) = \vec{a}\cdot \vec{b}+\vec{a}\cdot \vec{c}$
+\item $\vec{a}\cdot \vec{a} = |\vec{a}|^2$
+\end{enumerate}
+\hfill\break
+\hfill\break
+EX. Let $\vec{a},\vec{b}$ be vectors such that $\vec{a}\neq \vec{b}$, with $|\vec{a}|,|\vec{b}| \in (0,\infty)$. If we have $\vec{a}\cdot \vec{b} = 0$, then we know that $\cos(\theta) = 0 \Rightarrow \theta = \frac{\pi}{2}$, where $\theta$ is the angle between the two vectors. Here we say the two vectors $\vec{a},\vec{b}$ are orthogonal to each other.\\
+
+EX. Let $\vec{a},\vec{R},\vec{r}$ be vectors such that $\vec{a}+\vec{R}=\vec{r}$, let $\theta$ denote the angle between $\vec{a}$ and $\vec{r}$.
+\begin{align*}
+|\vec{R}|^2 &= \vec{R}\cdot \vec{R} = (\vec{r}-\vec{a})\cdot (\vec{r}-\vec{a})\\
+ &= \vec{r}\cdot \vec{r} - \vec{r}\cdot \vec{a}-\vec{a}\cdot \vec{r}+\vec{a}\cdot \vec{r}\\
+ &=|\vec{r}|^2 - 2|r||a|\cos(\theta)+|\vec{a}|^2
+\end{align*}
+Here we derived the Law of Cosine. \\
+
+\begin{defn}
+Give two vectors $\vec{a}$ and $\vec{b}$, we define a new vector $\vec{c} = \vec{a}\times \vec{b}$ which has the properties:
+\begin{enumerate}[topsep=3pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
+\item $\vec{c}$ is orthogonal to both $\vec{a}$ and $\vec{b}$
+\item $|\vec{c}| = |\vec{a}||\vec{b}| \sin(\theta)$
+\item The direction $\vec{c}$ is set by the Right Hand Rule
+\end{enumerate}
+\end{defn}
+
+Here we have some properties for the cross product. Let $\vec{a},\vec{b},\vec{c}$ be vectors. 
+\begin{enumerate}[topsep=3pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
+\item $\vec{a}\times \vec{b} = -\vec{b}\times \vec{a}$
+\item $\vec{a}\times (\vec{b}+\vec{c}) = \vec{a}\times \vec{b} + \vec{a}\times \vec{c}$
+\item $(\vec{b}+\vec{c})\times \vec{a} = \vec{b}\times \vec{a}+\vec{c}\times \vec{a}$
+\end{enumerate}
+
+Here we note that, for vectors $\vec{a}$ and $\vec{b}$:\\
+If $\vec{a}\times \vec{b} = \vec{0}$, then $\vec{a}$ and $\vec{b}$ are parallel.\\
+If $\vec{a}\cdot \vec{b} = \vec{0}$, then $\vec{a}$ and $\vec{b}$ are orthogonal.\\
+
+For vector $\vec{a},\vec{b},\vec{c}$, $|\vec{a}\cdot (\vec{b}\times \vec{c})|$ gives the volume of the Parallelepiped form by the three vectors.
+
+\newpage
+
+
+For the standard unit vectors $\hat{i}=(1,0,0),\hat{j}=(0,1,0),\hat{k}=(0,0,1)$ in $\R^3$, we have the followings:
+\begin{enumerate}[topsep=3pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
+\item $\hat{i}\cdot \hat{j} = \hat{j}\cdot \hat{k} = \hat{i}\cdot \hat{k} = 0$
+\item $\hat{i}\times \hat{j} = \hat{k},\ \hat{j}\times \hat{k} = \hat{ i},\ \hat{k}\times \hat{i} = \hat{j}$
+\end{enumerate}
+\hfill\break
+For $a,b,c,d,e,f \in \R$, we have the followings:
+\begin{enumerate}[topsep=3pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
+\item $(a\hat{i}+b\hat{j}+c\hat{k})\cdot (d\hat{i}+f\hat{j}+g\hat{k}) = ad+bf+cg$
+\item $(a\hat{i}+b\hat{j}+c\hat{k})\times (d\hat{i}+f\hat{j}+g\hat{k}) = (bf-ce)\hat{i} + (cd-af)\hat{j} + (ae-bd)\hat{k}$
+\end{enumerate}
+\hfill\break
+For vectors $\vec{a},\vec{b},\vec{c}$, we have the followings:
+\begin{enumerate}[topsep=3pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
+\item $\vec{a}\cdot (\vec{b}\times \vec{c}) = \vec{b}\cdot (\vec{c}\times \vec{a}) = \vec{c}\cdot (\vec{a}\times \vec{b})$
+\item $\vec{a}\times (\vec{b}\times \vec{c}) = \vec{b}(\vec{a}\cdot \vec{c})-\vec{c}(\vec{a}\cdot \vec{b})$
+\item $(\vec{a}\times \vec{b})\cdot (\vec{c}\times \vec{d}) = (\vec{a}\cdot \vec{c})(\vec{b}\cdot \vec{d}) - (\vec{a}\cdot \vec{d})(\vec{b}\cdot \vec{c})$
+\end{enumerate}
+\hfill\break
+To distinguish two planes in the three dimensional Euclidean space, we need a normal vectors of the planes, and two points, one on each plane. As a result, a plane can be denoted by $P_{\hat{n},\vec{r}_0}$, where $\hat{n}$ is the normal vector of the plane, and $\vec{r}_0$ is any point on that plane. Here we have $\hat{n}\cdot (\vec{r}-\vec{r}_0) = 0$ for all $\vec{r}\in P_{\hat{n},\vec{r}_0}$.\\
+
+In $\R^3$, suppose we have $\vec{r}(t)$ as the position vector of an object. Then we can write the components of $\vec{r}(t)$ as the followings:
+$$x(t) = \hat{\i}\cdot \vec{r}(t)\qquad\qquad  y(t) = \hat{\j}\cdot \vec{r}(t)\qquad\qquad z(t) = \hat{k}\cdot \vec{r}(t)$$
+Now suppose an object is going in a circular path on a plane parallel to the $x-y$ plane in $\R^3$, then the path of the object can be described as the following:
+$$\vec{r}(t) = \vec{r}_0 + R(\cos(\omega t)\hat{\i} + \sin(\omega t)\hat{\j}) $$
+where $R$ is the radius of the circular path, $\omega$ is the angular velocity of the object, and $\vec{r}_0$ is the initial position of the object.\\
+
+Given a position vector of an object in $\R^3$ as $\vec{r}(t) = (x(t),y(t),z(t))$, the velocity of the object can be defined by the following:
+\begin{align*}
+\vec{v}(t) &= \lim_{h \to 0}\frac{(x(t+h)-x(t))\hat{\i}+(y(t+h)-y(t))\hat{\j}+(z(t+h)-z(t))\hat{k}}{h}\\
+&= \lim_{h\to 0}\left[\frac{(x(t+h)-x(t))\hat{\i}}{h}\right] +\lim_{h\to 0}\left[\frac{(y(t+h)-y(t))\hat{\j}}{h}\right] + \lim_{h\to 0}\left[\frac{(z(t+h)-z(t))\hat{k}}{h}\right] \\
+&= x'(t)\hat{\i}+y'(t)\hat{\j}+z'(t)\hat{k}
+\end{align*}
+
+
+In Polar Coordinate system, we describe the position of some object as $\vec{r}(t) = \rho (t) \hat{\rho}$, where $\rho(t)$ is the length of the vector and $\hat{\rho}$ has some direction pointing from the origin outwards, not necessarily to be constant. As a result, if an object is in circular motion, then in Polar Coordinate system, the path of the object can be described as $\vec{r}(t) = R \hat{\rho}$, where $R$ is the radius of the circular path. Here, using Polar Coordinate system, given the path of an object $\vec{r}(t) = r(t)\hat{\rho}$ we can find the velocity of the object, given by the following:
+$$\vec{v} = \frac{d}{dt}(r\hat{\rho}) = \frac{dr}{dt}\hat{\rho} + r\frac{d\theta}{dt}\hat{\theta}$$
+And acceleration: 
+\begin{align*}
+\vec{a} &= \frac{d^2\vec{r}}{dt^2}\\
+&=\frac{d}{dt}\left(\frac{dr}{dt}\hat{\rho}\right)+\frac{d}{dt}\left(r\frac{d\theta}{dt}\hat{\theta}\right)\\
+&= \left(\frac{d^2r}{dt^2}-r\frac{d^2\theta}{dt^2}\right)\hat{\rho} + \left(2\frac{dr}{dt}\frac{d\theta}{dt}+r\frac{d^2\theta}{dt^2}\right)\hat{\theta}
+\end{align*}
+
+
+For a pendulum hanging from the origin, making an angle $\theta$ with the vertical. The pendulum is experiencing a force $-mg\sin(\theta)$ in the direction of $\hat\theta$, let $L$ be the length of the pendulum, and $m$ be the mass of the pendulum, we can write the following:
+$$-mg\sin(\theta) = m L \frac{d^2\theta}{dt^2}$$ 
+Similarly, if the tension is $T$, in the direction of $\hat\rho$ we can write the following:
+$$-T+mg\cos(\theta) = -L \left(\frac{d\theta}{dt}\right)^2m$$
+\newpage
+
+For time dependent vector $\vec{v}=(v_1,v_2,v_3)$, we can write the following:
+$$\vec{v} = \sum_{i=1}^k v_i\hat{e}_i \qquad\qquad\text{where }\hat{e}_i\text{ are orthonormal basis}$$
+Then we can write the following:
+$$\frac{d\vec{v}}{dt} = \sum_{i=1}^k \left[\frac{dv_i}{dt}\hat{e}_i + v_i\frac{d\hat{e}_i}{dt}\right]$$
+In Cartesian coordinate system, we have $\frac{d\hat{e}_i}{dt} = 0$, while in Polar coordinate, we have $\frac{d\hat{e}_i}{dt}\neq 0$. 
+
+\newpage
+\section{\color{red} Matrix}
+Say we have two coordinate systems, one with orthonormal basis $\ihat,\jhat$, called the $S$ coordinate system, and the other one with orthonormal basis $\ihat',\jhat'$, called the $S'$ coordinate system. Suppose further $S'$ is obtained by rotating $S$ at an angle $\theta$ counterclockwise. Then for $\vec{r}=x\ihat + y \jhat$ in $S$, we can write:
+$$\vec{r}\cdot \ihat' = x' \qquad\qquad\qquad \vec{r}\cdot \jhat' = y' \qquad\qquad\qquad\qquad\text{and we get }\vec{r} = x'\ihat' + y'\jhat\text{ in }S'$$
+
+\begin{defn}
+A matrix is an array of elements arranged in rows and columns.\\ An $m\times n$ matrix has $m$ rows and $n$ columns.
+\end{defn}
+
+For $n,m,l \in \N$. A $n\times m$ matrix $P$ can left multiply an $m\times l$ matrix $Q$, and get an $n\times l$ matrix $L$. That is, we have $PQ = L$. Note that in general, we have $PQ \neq QP$. 
+
+\begin{defn}
+The transpose of a matrix $M$ is written as $M^T$, the rows of $M$ becomes the columns of $M^T$.
+\end{defn}
+
+For a matrix $M$, the $(i,j)$-entry of $M$ is the element in $M$ in the $i$-row and $j$-column.\\
+
+
+For matrix $P$ and matrix $Q$, suppose matrix $PQ$ exists. Let $p_i$ denote the rows of $P$, and $q_j$ denote the columns of $Q$, then the $(i,j)$-entry of $PQ$ is given by $p_i\cdot q_j$.
+
+Let $A,B$ be $n \times n$ matrices and $c \in \R$, then we have the followings:
+\begin{enumerate}
+\item $\det(AB) = \det(A)\det(B)$
+\item $\det(A^T) = \det(A)$
+\item $\det(cA) = c^n \det(A)$
+\end{enumerate}
+
+Let $A'$ be obtained by switching two rows of an $n\times n$ matrix $A$, then we can write the following:
+$$\det(A) = -\det(A')$$
+Let $A''$ be obtained by adding a scalar multiple of one row of an $n\times n$ matrix $A$ to another row of $A$, then we can write the following:
+$$\det(A) = \det(A'')$$
+Let $A'''$ be obtained by multiplying a row of an $n\times n$ matrix $A$ with a scalar $\lambda$, then we can write the following:
+$$\lambda\det(A) = \det(A''')$$
+
+Let $A$ be an $n\times n$ matrix. If $A$ is invertible, then the $(j,i)$-entry of $A^{-1}$ is given by the following:
+$$(A^{-1})_{ji} = (-1)^{i+j} \frac{\det(C^{ij})}{\det (A)}$$
+where $C^{ij}$ is obtained by deleting the $i$-th row and $j$-th column of $A$.\\
+
+\textbf{Linear Least Squares}\\
+When applying linear regression, say we have a set of $N$ data, dependent variable $\{y_i\}$ and independent variable $\{x_i\}$, and suppose we have a prediction linear model $\{\widetilde{y}_i(x_i) = mx_i +b \}$, then we can make use of the Error Function to generate the best value for $m$ and $b$:
+$$E(m,b) \coloneqq \sum_{i=1}^N ( y_i - \widetilde{y}_i(x_i) )^2 = \sum_{i=1}^N ( y_i - (mx_i +b) )^2$$
+Notice here $E(m,b)$ is a function of $m$ and $b$, then we can differentiate $E(m,b)$ to find the minimum value of $E$.  
+
+$$\frac{\partial E}{\partial m}=\frac{\partial}{\partial m} \left[ \sum_{i=1}^N ( y_i - (mx_i +b) )^2 \right]= 0 \qquad\Rightarrow\qquad \sum_{i=1}^N (y_i-mx_i-b)(x_i) = 0$$
+
+$$\sum_{i=1}^Nx_iy_i = \sum_{i=1}^Nm x_i^2 + \sum_{i=1}^N bx_i = m\sum_{i=1}^N x_i^2 + b\sum_{i=1}^Nx_i$$
+Let $\sum_{i=1}^Nx_iy_i = S_{xy}$ and let $\sum_{i=1}^N x_i^2 = S_{xx}$, $\sum_{i=1}^Nx_i = S_x$. Then we can write: 
+$$S_{xx} m + S_{x} b = S_{xy}$$
+We can similarly find that the following holds:
+$$\frac{\partial E}{\partial b} = 0 \qquad\Rightarrow\qquad S_xm + Nb = S_y$$
+where $S_y =  \sum_{i=1}^N y_i$.
+Here we can solve the following system to minimize $m$ and $b$:
+$$\begin{bmatrix}
+S_xx & S_x \\ S_x & N
+\end{bmatrix}\begin{bmatrix}
+m \\ b
+\end{bmatrix} = 
+\begin{bmatrix}
+S_{xy} \\ S_y
+\end{bmatrix}
+$$
+Hence we can write the following:
+\begin{align*}
+\begin{bmatrix}
+m \\ b
+\end{bmatrix}
+= \frac{1}{NS_{xx}-S_x^2}
+\begin{bmatrix}
+N & -S_x \\ -S_x & S_{xx}  
+\end{bmatrix}
+\begin{bmatrix}
+S_{xy} \\ S_{y}
+\end{bmatrix}
+\end{align*}
+
+In other words, we can write the following:
+\begin{align*}
+\widetilde{Y} \coloneqq \begin{bmatrix}
+\widetilde{y}_1\\ \widetilde{y}_2 \\\vdots \\ \widetilde{y}_N
+\end{bmatrix} = \begin{bmatrix}
+x_1 & 1 \\ x_2 & 1 \\ \vdots & \vdots \\ x_N &1 
+\end{bmatrix}
+\begin{bmatrix}
+m \\ b
+\end{bmatrix}
+\end{align*}
+
+We define the following:
+$$X = \begin{bmatrix}
+x_1 & 1 \\ x_2 & 1 \\ \vdots & \vdots \\ x_N &1 
+\end{bmatrix} \qquad\qquad \vec{p} = \begin{bmatrix} m \\ b \end{bmatrix}
+\qquad\qquad Y = \begin{bmatrix}
+y_1\\ y_2 \\\vdots \\ y_N
+\end{bmatrix} $$
+Then we can write:
+\begin{align*}
+&E(m,b) =\sum_{i=1}^N ( y_i - \widetilde{y}_i(x_i) )^2 \\
+&\Rightarrow E = (Y-\widetilde{Y})^T(Y-\widetilde{Y}) = Y^TY - 2\widetilde{Y}^TY + \widetilde{Y}^T\widetilde{Y} = Y^TY - 2(X\vec{p})^TY + (X\vec{p})^T (X\vec{p})\\
+&\Rightarrow E = Y^TY-2\vec{p}^TX^TY + \vec{p}^TX^TX\vec{p}
+\end{align*}
+
+Here we can take the derivative of $E$:
+$$\frac{\partial E}{\partial m} = 0 - 2\left(\frac{\partial}{\partial m} \vec{p}^T\right)X^TY + \frac{\partial \vec{p}^T}{\partial m}X^TX\vec{p} + \vec{p}^TX^TX \frac{\partial \vec{p}}{\partial m}$$
+where we have:
+$$\frac{\partial }{\partial }\vec{p} = \begin{bmatrix}
+1 \\ 0
+\end{bmatrix}\qquad\qquad\qquad \frac{\partial }{\partial }\vec{p}^T = \begin{bmatrix}
+1 & 0
+\end{bmatrix}$$
+
+Let $\vec{u} = \sum_k u_k\vec{e}_k$ for some scalars $u_k$ and standard basis vector $\vec{e}_k$, similarly let $\vec{v} = \sum_l v_l \vec{e}_l$. Then we can write the following, with a matrix $M$ whose entries is $M_{i,j} = \left<\vec{e}_i,\vec{e}_j\right>$:
+$$\left<\vec{u},\vec{v}\right> = \left<\sum_k u_k\vec{e}_k , \sum_l v_l \vec{e}_l\right> = \sum_l v_l\left<\sum_k u_k\vec{e}_k, \vec{e}_l\right> = \sum_k \bar{u}_k \sum_l v_l \left<\vec{e}_l, \vec{e}_k\right> \coloneqq \sum_k \bar{u}_k (M \vec{v})_k$$
+
+
+Let $M$ be a matrix, $\overline{M}$ denotes the matrix whose entries are complex conjugate of the corresponding entries in $M$. Hermitian conjugate of a matrix $M$ is defined to be $M^+ \coloneqq \overline{M^T}$. A matrix is said to be Hermitian provided that $M^+ = M$. \\
+
+\begin{lem}
+For $\vec{u},\vec{v}$ and matrix $A$, we have $\left<u,A\vec{v}\right> = \left<A^+\vec{u}, \vec{v}\right>$, where $\left<\cdot \right>$ denote the Euclidean inner product.
+\end{lem}
+\begin{proof}
+$\left<\vec{u},A\vec{v}\right> = (\vec{u}^+ A)\vec{v} = (A^+\vec{u})^+\vec{v} = \left<A^+ \vec{u},\vec{v}\right>$, with $(A^+\vec{u})^+ = u^+(A^+)^+ = u^+A$
+\end{proof}
+
+
+\begin{thm}
+In Euclidean space, the eigenvectors of a Hermitian matrix with different eigenvalues are orthogonal to each other. Furthermore, the eigenvalues are real.
+\end{thm}
+\begin{proof}
+Let $v_1$ and $v_2$ be eigenvectors of a Hermitian matrix $M$, corresponds to different eigenvectors $\lambda_1$ and $\lambda_2$. We see that $\left<v_1, Mv_1\right> = \left<v_1, \lambda_1 v_1\right> = \lambda_1 \left<v_1,v_1\right>$. By the Lemma, we can write $\left<v_1, Mv_1\right> = \left<M^+ v_1, v_1\right> = \left<Mv_1,v_1\right> = \left<\lambda_1 v_1, v_1\right> = \bar{\lambda}_1 \left<v_1,v_1\right> = \lambda_1 \left<v_1,v_1\right> \Rightarrow \bar{\lambda}_1 = \lambda_1$. Moreover, $\left<v_1, Mv_2\right> = \left<v_1,\lambda_2 v_2\right> = \lambda_2 \left<v_1,v_2\right> = \left<M^+v_1,v_2\right> = \left<Mv_1,v_2\right> = \left<\lambda_1v_1,v_2\right> = \lambda_1\left<v_1,v_2\right> = \lambda_2\left<v_1,v_2\right> \Rightarrow \left<v_1,v_2\right> = 0$. The result follows.
+\end{proof}
+
+\newpage
+\textbf{Partial Derivative}\\
+\begin{defn}
+The partial derivative of a function $f$ is a derivative in which all variables except one are held fixed. Given $f(x_1,x_2,\cdots,x_n)$, we write $\frac{\partial f}{\partial x_k}$ being the partial derivative of $f$ in the $x_k$ direction. 
+\end{defn}
+
+
+\newpage
+\textbf{Vector Field}\\
+For vector $\vec{r}$ in $\R^3$:
+$$\vec{F}(\vec{r}) = F_x(\vec{r})\hat{e}_x + F_y (\vec{r})\hat{e}_y + F_z(\vec{r})\hat{e}_z = F_\rho (\vec{r})\hat{e}_\rho + F_\theta(\vec{r}) \hat{e}_\theta+ F_z(\vec{r}) \hat{e}_z$$ describes a vector field, with $(\hat{e}_x,\hat{e}_y,\hat{e}_z)$ being the standard Cartesian $\R^3$ basis, and $(\hat{e}_\rho,\hat{e}_\theta,\hat{e}_z)$ being the standard cylindrical $\R^3$ basis.\\ 
+
+
+The divergence of a vector field is given by $\nabla\cdot \vec{F}$ where $$\nabla = \frac{\partial }{\partial x} \hat{i} + \frac{\partial }{\partial y	}\hat{j} + \frac{\partial }{\partial z} \hat{k}$$ Physically, the divergence of a vector field describes the net flow through an infinitesimal volume at a given point in the vector field. \\
+
+The curl of a vector field is given by $\nabla \times \vec{F} = (\frac{\partial}{\partial x}, \frac{\partial}{\partial y},\frac{\partial}{\partial z}) \times (F_x,F_y,F_z) = (\frac{\partial }{\partial \rho}, \frac{1}{\rho}\frac{\partial}{\partial \theta},\frac{\partial}{\partial z}) \times (F_\rho , \rho F_\theta, F_z)$. Physically, the curl of a vector field is equal to the rotation produced at a given infinitesimal point. 
+
+\newpage
+\section{\color{red}Fourier Series}
+
+\begin{thm}
+Given $f:[a,b]\to \R$, there exists $(c_m)$ such that the following holds:
+$$f(x) = \sum_{m=-\infty}^\infty c_m e^{ik_m x} \qquad\qquad\qquad\qquad \text{with }k_m=\frac{2\pi m}{b-a}$$
+\end{thm}
+
+In the following discussion, we will find a way to construct $(c_m)$ for given $f:[a,b]\to \R$.\\
+
+Denote $I_{mn} \coloneqq \int_a^b e^{ik_mx}e^{-ik_nx}\, dx$. First we notice that, if $m\neq n$, we can write
+\begin{align*}
+I_{mn} &= \int_a^b e^{ik_mx}e^{-ik_nx}\, dx\\
+&=\int_a^b \exp\left(\frac{2\pi i(m-n)}{b-a}x \right)\, dx\\
+&=\frac{b-a}{2\pi i(m-n)}\left[\exp\left(\frac{2\pi i(m-n)x}{b-a}\right) \right]_a^b\\
+&=\frac{b-a}{2\pi i(m-n)}\left[\exp\left(\frac{2\pi i(m-n)b}{b-a}\right)-\exp\left(\frac{2\pi i(m-n)a}{b-a}\right) \right]\\
+&=\frac{b-a}{2\pi i(m-n)}\exp\left(\frac{2\pi i(m-n)a}{b-a}\right)\left[\exp\left(\frac{2\pi i(m-n)(b-a)}{b-a}\right)-1 \right]\\
+&=\frac{b-a}{2\pi i(m-n)}\exp\left(\frac{2\pi i(m-n)a}{b-a}\right)\left[\cos(2\pi(m-n))+ i\sin(2\pi(m-n))-1 \right]\\
+&=\frac{b-a}{2\pi i(m-n)}\exp\left(\frac{2\pi i(m-n)a}{b-a}\right)\left[0 \right]\\
+&=0
+\end{align*}
+Here we get $I_{mn} = 0$ if $m\neq n$, and $I_{mn} = b-a$ if $m=n$. \\
+Now we can write the following:
+\begin{align*}
+\int_a^b f(x) e^{-ik_n x}\, dx &= \int_a^b \left(\sum_{m=-\infty}^{\infty} c_m e^{ik_m  x} \right) e^{-ik_n x}\, dx \\
+&=\sum_{m=-\infty}^\infty c_m \int_a^b e^{i(k_mx-k_nx)}\, dx \\
+&= \sum_{m=-\infty}^\infty c_m I_{mn}\\
+&= (b-a)c_n
+\end{align*}
+Hence we get the following:
+$$c_n = \frac{\int_a^b f(x)e^{-ik_n x} \, dx}{b-a}$$
+Moreover, for real-valued function $f(x)$, we can write the following:
+$$f(x) = \sum_{m=-\infty}^\infty c_m e^{imx} = c_0 + \sum_{m=1}^\infty (c_m e^{imx} + c_{-m} e^{-imx} )
+\qquad\qquad\text{with }c_{-m} = \overline{c_m}$$
+Rewriting with $c_m = c_m' + ic_m''$, 
+\begin{align*}
+f(x) &= c_0 + \sum_{m=1}^\infty 2\, Re(c_m e^{imx})\\
+&= c_0 + \sum_{m=1}^\infty 2(c_m'\cos(mx) - c_m''\sin(mx))\\
+&= a_0 + \sum_{m=1}^\infty (a_m\cos(mx) + b_m \sin(mx))
+\end{align*}
+where we define $a_0 = c_0$, $a_m = 2\,Re(c_m)$, and $b_m = -2\,Im(c_m)$. \\
+Or conversely, we define $c_0 = a_0$, $c_m = \frac{a_m}{2} - \frac{b_m}{2}\, i$.
+\newpage
+Here we have an observation, for periodic functions $f(x) = f(x+h)$ defined on $\R$, once we calculate the Fourier Series for $f(x)$ on $[0,h]$, the series is automatically periodic on $\R$ when defined.\\
+
+For real Fourier Series for function $f$ defined on $[a,b]$, one can write the following:
+$$f(x) = a_0 + \sum_{m=1}^\infty \left(a_m \cos(k_mx) + b_m \sin(k_mx)\right)$$
+where we have:
+$$k_m = \frac{2\pi m}{b-a}\qquad\qquad\qquad\qquad\qquad a_0 = \frac{1}{b-a}\int_a^b f(x) dx$$
+$$ a_m = \frac{2}{b-a}\int_a^b \cos(k_m x) f(x) \, dx \qquad\qquad b_m = \frac{2}{b-a}\int_a^b \sin(k_mx)f(x)\, dx$$
+
+Let $f$ be a function defined on the interval $[0,\frac{L}{2}]$. Suppose we want a Fourier Series with a basic period of $L/2$ that agrees with $f(x)$ on $[0,\frac{L}{2}]$, then we can simply let the Fourier Series be defined with coefficients:
+\begin{align*}
+c_m = \frac{1}{L/2}\int_0^{L/2} f(x) \exp(-ik_mx)\, dx \tag{C}
+\end{align*}
+One might extend the period of the Fourier Series to be $L$ by extending the definition of $f$ on $[-\frac{L}{2}, 0]$. If we let $f(x) = f(-x)$, we obtain the following for such Fourier Series that agrees with $f(x)$ on on $[-L/2, L/2]$:
+\begin{align*}
+S(x) = a_0 + \sum_{n=1}^\infty a_n \cos\left(\frac{2\pi n}{L}x\right) \tag{E}
+\end{align*}
+where $(a_n)$ is determined by $(c_m)$ in equation (C). If instead we let $f(x) = -f(-x)$, then one would obtain the following for the corresponding Fourier Series that agrees with $f(x)$ on $[-L/2, L/2]$:
+\begin{align*}
+S(x) = \sum_{n-1}^\infty b_n \sin\left( \frac{2\pi n}{L}x\right) \tag{O}
+\end{align*}
+where $(b_n)$ is determined by $(c_m)$ in equation (C). Conversely, if $f(x)$ is odd or even being defined originally, the Fourier Series obtained correspondingly will also be given in the form in equation (E) and equation (O), respectively.
+
+\newpage
+\section{Linear Partial Differential Equations}
+
+\textbf{Wave Equation}
+Consider the wave equation given by the following:
+\begin{align*}
+\nabla^2 \Psi = \frac{1}{c^2}\frac{\partial^2 \Psi}{\partial t}
+\end{align*}
+For Cartesian Coordinate, we have $\nabla^2=\frac{\partial^2}{\partial x^2}+\frac{\partial^2}{\partial y^2}+\frac{\partial^2}{\partial z^2}$. Note that the principle of superposition holds for solutions of the wave equation.\\
+
+For one dimensional space, we get the following wave equation:
+\begin{align*}
+\frac{\partial^2 \Psi}{\partial x^2}=\frac{1}{c^2}\frac{\partial^2 \Psi}{\partial t^2} \tag{1}
+\end{align*}
+For two dimensional space, we get the wave equation in polar coordinates:
+\begin{align*}
+\frac{\partial^2 \Psi}{\partial \rho^2}+\frac{1}{\rho}\frac{\partial \Psi}{\partial \rho} + \frac{1}{\rho^2}\frac{\partial^2 \Psi}{\partial \theta} = \frac{1}{c^2}\frac{\partial^2 \Psi}{\partial t^2} \tag{2}
+\end{align*}
+
+
+Consider a string that is held at the two ends at $x=0$ and $x=L$. The string is perturb at small vertical distance, and we can model the motion of the string through a function $\Psi(x,t)$, with $\Psi(0,t) =0$ and $\Psi(L,t) = 0$. First we set some condition where we have $\Psi(x,0) = h(x)$, and $\frac{\partial \Psi}{\partial t}(x,0) = v(x)$. Assume that we can write the following:
+\begin{align*}
+\Phi(x,t)=w(x)T(t)
+\end{align*}
+Then we can write:
+\begin{align*}
+\frac{\pd^2}{\pd x^2}(wT) &= \frac{1}{c^2}\frac{\pd^2}{\pd t^2}(wT)\\
+\left(\frac{d^2}{dx^2}w\right)\frac{1}{w} &= \left(\frac{1}{c^2}\frac{d^2}{dt^2}T\right)\frac{1}{T}
+\end{align*}
+By the property of $w$ and $T$, we can introduce a separation constant $\alpha$:
+\begin{align*}
+\left(\frac{d^2}{dx^2}w\right)\frac{1}{w} &= \left(\frac{1}{c^2}\frac{d^2}{dt^2}T\right)\frac{1}{T} = \alpha
+\end{align*}
+Hence we obtain the following:
+\begin{align*}
+\frac{w''}{w} = \alpha\qquad\qquad\qquad \frac{T''}{T} = \alpha c^2
+\end{align*}
+Solving $w$ and $T$ we get the followings, for $\alpha \neq 0$:
+\begin{align*}
+w=ae^{\sqrt{\alpha}x}+be^{-\sqrt{\alpha}x}\qquad\qquad\qquad T=Ae^{\sqrt{\alpha}ct} + Be^{-\sqrt{\alpha}ct}
+\end{align*}
+with $a,b,A,B \in \R$ being constant. 
+Now we apply the boundary condition where we have $\Psi(0,t) = 0 = w(0)T(t) \Rightarrow w(0) = 0$.  $\Psi(L,t) = 0 = w(L)T(t) \Rightarrow w(L) = 0$. Here we can write the following, for $\alpha\neq 0$:
+$$w(0) = a+b=0 \qquad\qquad\qquad w(L)=ae^{\sqrt{\alpha}L}+be^{-\sqrt{\alpha}L} = 0$$
+$$a\left(e^{\sqrt{\alpha}L} - e^{-\sqrt{\alpha}L} \right) = 0 \qquad \Rightarrow\qquad e^{2\sqrt{\alpha}L} = 1$$
+We get that $2\sqrt{\alpha}L = (2n\pi)i$ for $n \in \Z\setminus\{0\}$. In this case, for $\alpha\neq 0$, arranging we get the following:
+\begin{align*}
+a\left(e^{i\frac{m\pi x}{L} }- e^{-\frac{im\pi x}{L}} \right)=a\sin\left(\frac{m\pi x}{L}\right)
+\end{align*} 
+Notice that for $\alpha = 0$, one can show that we get the trivial solution $w(t) = 0$. Notice here, for the equation $T=Ae^{\sqrt{\alpha}ct} + Be^{-\sqrt{\alpha}ct}$, the LHS is real, so the RHS must also be real, this implies $A$ and $B$ must be chosen such that the RHS is real. Here with the same $\alpha = i\frac{\pi m}{L}$ for some $m \in \Z\setminus \{0\}$, here we can write the following:
+\begin{align*}
+\Psi_m(x,t) = a_m \sin\left(\frac{m\pi x}{L}\right) \left(A_m \sin\left(\frac{c\pi mt}{L}\right)+ B_m\cos\left(\frac{c\pi mt}{L}\right) \right)
+\end{align*}
+Then the general solution is given by the following:
+\begin{align*}
+\Psi(x,t) = \sum_{m=1}^\infty \sin\left(\frac{m\pi x}{L}\right) \left(A_m \sin\left(\frac{c\pi mt}{L}\right)+ B_m\cos\left(\frac{c\pi mt}{L}\right) \right) \tag{3}
+\end{align*}
+where $A_m$ and $B_m$ are constants depending on the initial conditions of the problem. Here we can write the following:
+\begin{align*}
+\Psi(x,0) = h(x) = \sum_{m=1}^\infty \sin\left(\frac{m\pi}{L}x\right)B_m
+\end{align*}
+which can be viewed as a Fourier Series with length period $2L$, defined on $[-L,L]$, with $\Psi(x,0) = -\Psi(-x,0)$ on the interval $[-L,0]$. Now we can write the following:
+\begin{align*}
+\int_{-L}^L h(x) \sin\left(\frac{\pi n}{L}x\right) = \sum_{m=1}^\infty B_m \int_{-L}^L \sin\left( \frac{m\pi}{L}x\right) \sin\left(\frac{n\pi}{L}x\right) = B_n L
+\end{align*}
+Hence we can write the following:
+\begin{align*}
+B_n = \frac{1}{L} \int_{-L}^L h(x) \sin\left( \frac{n \pi}{L}x\right) = \frac{2}{L}\int_0^L h(x) \sin\left(\frac{n\pi}{L}x \right)\, dx
+\end{align*}
+By equation (3), we can write the following:
+\begin{align*}
+\frac{\partial \Psi}{\partial t}(x,t) = \sum_{m=1}^\infty \sin\left(\frac{m\pi}{L}x\right)\left(-\frac{c\pi m}{L}B_m \sin\left(\frac{c\pi mt}{L}\right) + \frac{c\pi m}{L}A_m \cos\left(\frac{c\pi mt}{L}\right)\right)
+\end{align*}
+With the initial condition that $\frac{\partial \Phi}{\partial t}(x,0) = v(x)$, one can solve for $A_n$. 
+\hfill\break\hfill\break\hfill\break
+Heat equation is given by the following:
+\begin{align*}
+\nabla^2 T = \frac{\partial T}{\partial t}
+\end{align*}
+with $T(r,\theta,\phi) = T(r,\theta) = f(r)g(\theta)$ in Spherical Coordinate. Then we can write the following:
+\begin{align*}
+\frac{\nabla^2 T}{fg} = \frac{1}{f}\frac{\partial}{\partial r}\left( r^2 \frac{df}{dr}\right) + \frac{1}{g\sin(\theta)}\frac{\partial }{\partial \theta}\left( \sin(\theta) \frac{dg}{d\theta}\right) = 0
+\end{align*}
+Hence we must have the following holds:
+\begin{align*}
+\frac{1}{f}  \frac{d}{dr}\left( r^2 f'\right) = \alpha \qquad\qquad\qquad\qquad -\frac{1}{\sin(\theta)}\frac{1}{g}\frac{d}{d\theta}(\sin(\theta) g') = \alpha
+\end{align*}
+for some arbitrary $\alpha$. Now we need to solve the following ODE:
+\begin{align*}
+-\frac{1}{\sin(\theta)}\frac{1}{g}\left( \cos(\theta) g' + \sin(\theta) g''\right) = \alpha \tag{4}
+\end{align*}
+let $z = \cos(\theta)$, and $y(z) = g(\theta)$, then we get:
+\begin{align*}
+\frac{\pd g}{\pd \theta} = \frac{\pd}{\pd\theta} y(z) = \frac{dy}{dz}\frac{d z}{d \theta} = -\sin(\theta) \frac{dy}{dz} = -(1-z^2)^{1/2} y'
+\end{align*}
+Here we can rewrite ODE (4) as the following:
+\begin{align*}
+(1-z^2)y'' - 2zy + \alpha y = 0 \tag{5}
+\end{align*}
+Such ODE (5) has solution given by the following:
+\begin{align*}
+y = \sum_{m=0}^\infty a_m z^{m+s} \qquad\qquad\qquad\qquad a_{m+1} = a_m \frac{m(m+1)-n(n+1)}{(m+2)(m+1)}
+\end{align*}
+If $\alpha \neq n(n+1)$ with $n$ being an integer, the resulting infinite series diverges at $z = \pm 1 $. To keep our solutions free of singularities, we demand that $\alpha=n(n+1)$. Here we conclude that $g(\theta)$ is given by the following, with $P_n$ being the Legendre Polynomial:
+$$g(\theta) = P_n(\cos(\theta))$$
+On the other hand, we need to solve for $f$ with the following ODE:
+$$r^2 f'' + 2rf' - \alpha f = 0$$
+Here we get the following:
+$$f(r) = Ar^\lambda \ \ \ \ \text{with }\lambda = \frac{1+\sqrt{1+4\alpha}}{2},\ A \in \R$$
+Combining the results, we can write:
+$$T_n(r,\theta) = A_n\cdot  P_n(\cos(\theta))\cdot r^{\lambda_n}\ \ \ \ \text{with }\lambda_n = \frac{1+\sqrt{1+4n(n+1)}}{2},\ A_n \in \R$$
+Here the general solution to the Heat equation is given by the following:
+\begin{align*}
+T(r,\theta) = \sum_{n=0}^\infty A_n \cdot P_n(\cos(\theta)) \cdot r^{\lambda_n}
+\end{align*}
+
+\end{document}

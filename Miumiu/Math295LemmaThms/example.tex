@@ -1,0 +1,69 @@
+\documentclass{article}
+\usepackage[inline]{enumitem}   
+\makeatletter
+% This command ignores the optional argument for itemize and enumerate lists
+\newcommand{\inlineitem}[1][]{%
+\ifnum\enit@type=\tw@
+    {\descriptionlabel{#1}}
+  \hspace{\labelsep}%
+\else
+  \ifnum\enit@type=\z@
+       \refstepcounter{\@listctr}\fi
+    \quad\@itemlabel\hspace{\labelsep}%
+\fi}
+\makeatother
+\parindent=0pt
+\begin{document}
+
+% Pure inline list
+This is an inline list.
+\bigskip 
+
+\begin{enumerate*}
+    \item First item.
+    \item Second item.
+    \item Third item.
+    \item Fourth item.
+\end{enumerate*}
+
+\bigskip
+
+% Combined inline list
+This is a combined inline enumerated list.
+\begin{enumerate}
+    \item First item \inlineitem Second item\inlineitem Third item.
+    \item Fourth item
+    \item Fifth item
+\end{enumerate}
+
+\bigskip
+
+% Works with itemize
+This is a combined inline itemized list.
+\begin{itemize}
+    \item First item \inlineitem Second item \inlineitem Third item. 
+    \item Fourth item
+    \item Fifth item
+\end{itemize}
+
+\bigskip
+% Works with description lists
+This is a combined inline description list.
+\begin{description}
+    \item[Foo] First item \inlineitem[Bar]Second item\inlineitem[FooBar] Third item.
+    \item[Bar] Fourth item
+    \item[Foo] Fifth item
+\end{description}
+
+\bigskip
+% Showing that it can be embedded and works with modified labels
+The new command works with arbitrary labels and embedding.
+\begin{enumerate}
+    \item
+    \begin{enumerate}[label=\Alph*.]
+        \item First item\inlineitem Second item \inlineitem Third item. 
+        \item Fourth item
+        \item Fifth item
+    \end{enumerate}
+\end{enumerate}
+\end{document}

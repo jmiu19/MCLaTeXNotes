@@ -1,0 +1,187 @@
+\documentclass[11pt,oneside]{book}
+
+
+
+%%%%%%%%%%%%%%Include Packages%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{xcolor}
+\usepackage{mathtools}
+\usepackage[legalpaper, margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{paralist}
+\usepackage{rsfso}
+\usepackage{amsthm}
+\usepackage{wasysym}
+\usepackage[inline]{enumitem}   
+\usepackage{hyperref}
+\usepackage{tocloft}
+\usepackage{wrapfig}
+\usepackage{titlesec}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%Chapter Setting%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{gray75}{gray}{0.75}
+\newcommand{\hsp}{\hspace{20pt}}
+\titleformat{\chapter}[hang]{\Huge\bfseries}{\thechapter\hsp\textcolor{gray75}{$\mid$}\hsp}{0pt}{\Huge\bfseries}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%Theorem environments%%%%%%%%%%%%%%%%%%%
+\newtheoremstyle{break}
+  {\topsep}{\topsep}%
+  {\itshape}{}%
+  {\bfseries}{}%
+  {\newline}{}%
+\theoremstyle{break}
+\theoremstyle{break}
+\newtheorem{axiom}{Axiom}
+\newtheorem{thm}{Theorem}[section]
+\renewcommand{\thethm}{\arabic{section}.\arabic{thm}}
+\newtheorem{lem}{Lemma}[thm]
+\newtheorem{prop}[lem]{Proposition}
+\newtheorem{corL}{Corollary}[lem]
+\newtheorem{corT}[lem]{Corollary}
+\newtheorem{defn}{Definition}[corL]
+\newenvironment{indEnv}[1][Proof]
+  {\proof[#1]\leftskip=1cm\rightskip=1cm}
+  {\endproof}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%Integral%%%%%%%%%%%%%%%%%%%%%%%
+\def\upint{\mathchoice%
+    {\mkern13mu\overline{\vphantom{\intop}\mkern7mu}\mkern-20mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+  \int}
+\def\lowint{\mkern3mu\underline{\vphantom{\intop}\mkern7mu}\mkern-10mu\int}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\D}{\mathcal{D}}
+\newcommand{\J}{\mathcal{J}}
+\newcommand{\T}{\mathcal{T}}
+\newcommand{\Td}{\mathcal{T}_d}
+\newcommand{\C}{\mathcal{C}}
+\newcommand{\M}{\mathcal{M}}
+\newcommand{\Lt}{\mathcal{L}}
+\newcommand{\Symm}{\text{Symm}}
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\Alt}{\text{Alt}}
+\newcommand{\Complex}{\mathbb{C}}
+\newcommand{\Power}{\mathcal{P}}
+\newcommand{\ee}{\cdot 10}
+\newcommand{\spa}{\text{span}}
+\newcommand{\sgn}{\text{sgn}}
+\newcommand{\degr}{\text{deg}}
+\newcommand{\pd}{\partial}
+\newcommand{\that}[1]{\widetilde{#1}}
+\newcommand{\lr}[1]{\left(#1\right)}
+\newcommand{\vmat}[1]{\begin{vmatrix} #1 \end{vmatrix}}
+\newcommand{\bmat}[1]{\begin{bmatrix} #1 \end{bmatrix}}
+\newcommand{\pmat}[1]{\begin{pmatrix} #1 \end{pmatrix}}
+\newcommand{\rref}{\xrightarrow{\text{row\ reduce}}}
+
+
+\newcommand{\note}{\color{red}Note: \color{black}}
+\newcommand{\remark}{\color{blue}Remark: \color{black}}
+\newcommand{\example}{\color{green}Example: \color{black}}
+\newcommand{\exercise}{\color{green}Exercise: \color{black}}
+
+
+
+
+%%%%%%%%%%%%table of contents%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setlength{\cftchapindent}{0em}
+\setlength{\cftsecindent}{2em}
+
+
+\renewcommand\cfttoctitlefont{\hfill\Large\bfseries}
+\renewcommand\cftaftertoctitle{\hfill\mbox{}}
+
+\setcounter{tocdepth}{2}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%Footnotes%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand\blfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\makeatletter
+\def\@seccntformat#1{%
+  \expandafter\ifx\csname c@#1\endcsname\c@section\else
+  \csname the#1\endcsname\quad
+  \fi}
+\makeatother
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Enumerate%%%%%%%%%%%%%%
+\makeatletter
+% This command ignores the optional argument 
+% for itemize and enumerate lists
+\newcommand{\inlineitem}[1][]{%
+\ifnum\enit@type=\tw@
+    {\descriptionlabel{#1}}
+  \hspace{\labelsep}%
+\else
+  \ifnum\enit@type=\z@
+       \refstepcounter{\@listctr}\fi
+    \quad\@itemlabel\hspace{\labelsep}%
+\fi}
+\makeatother
+\parindent=0pt
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+
+\begin{thm}[The Generalized Stokes' Theorem]
+Let $k>1$, let $M$ be a compact oriented $k$-manifold in $\R^n$, with $\partial M$ having the induced orientation if $\partial M$ is not empty, let $\omega$ be a $(k-1)$-form defined in an open set of $\R^n$ containing $M$, then we have the following holds if $\partial M$ is not empty:
+\begin{align*}
+\int_M d\omega  = \int_{\partial M}\omega
+\end{align*}
+and we have the following holds if $\partial M$ is empty:
+\begin{align*}
+\int_{\partial M}\omega = 0
+\end{align*}
+\end{thm}
+\begin{proof}
+A detailed proof is provided on Munkres Theorem 37.2. Here it suffices to prove the special case where $\text{supp}(\omega) \subseteq V$ with $\alpha:U \to V$ being a coordinate patch on $M$. Note that $\text{supp}(d\omega) \subseteq \text{supp}(\omega)$, hence we have $\text{supp}(\omega) \subseteq V$. The general case will follow by taking finite sums over regions on $M$ parametrized by coordinate patches. \\
+
+First we note that we can extend the definition of domain of $d(\alpha^*\omega)$ to $\mathbb{H}^k$
+\begin{align*}
+\int_M d\omega = \int_U \alpha^* d\omega = \int_U d(\alpha^*\omega) = \int_{\mathbb{H}^k} d(\that{\alpha^*\omega})
+\end{align*} 
+On the other hand, we can write:
+\begin{align*}
+\int_{\pd M}\omega = \int_{U \cap \pd \mathbb{H}^k}\alpha^*\omega  = \int_{\pd \mathbb{H}^k} \that{\alpha^*\omega}
+\end{align*}
+Write $d\that{\alpha^*\omega} = f_1 \, dx_2 \wedge dx_3\wedge \cdots \wedge dx_k+ f_2 dx_1 \wedge dx_3 \wedge \cdots \wedge dx_k + \cdots + f_k \wedge dx_1 \wedge dx_2 \wedge \cdots \wedge dx_{k-1}$. Here we have:
+\begin{align*}
+d\that{\alpha^*\omega} = (D_1f_1 - D_2f_2 + \cdots + (-1)^{k-1}D_kf_k)dx_1 \wedge dx_2 \wedge \cdots \wedge dx_k
+\end{align*}
+\begin{align*}
+\int_{\mathbb{H}^k} d\that{\alpha^*\omega} &= \int_{\mathbb{H}^k}(D_1f_1 - D_2f_2 + \cdots + (-1)^{k-1}D_kf_k) \\
+&= \int_B (D_1f_1 - D_2f_2 + \cdots + (-1)^{k-1}D_kf_k)
+\end{align*}
+where $B$ is a box $a_1 \leq x_1 \leq b_1 , \cdots, 0 = a_k \leq x_k \leq b_k$. Here by Fubini's Theorem and Fundamental Theorem of Calculus, we have:
+\begin{align*}
+\int_{\mathbb{H}^k} d\that{\alpha^*\omega} &= \int_B (D_1f_1 - D_2f_2 + \cdots + (-1)^{k-1}D_kf_k)\\
+&= 0 - 0 +0 - 0 +\cdots + (-1)^{k-1} \int_{\mathbb{H}^k} D_k f_k\\
+&= (-1)^{k-1}\int_{\R^{k-1} } f_k(x_1, x_2,\cdots, x_{k-1}, 0)\\
+&= \int_{\pd \mathbb{H}^k} f_k dx_1 \wedge \wedge dx_2  \wedge \cdots \wedge dx_{k-1} \\
+&= \int_{\pd \mathbb{H}^k} \alpha^*\omega
+\end{align*}
+The result follows.
+\end{proof}
+
+\end{document}

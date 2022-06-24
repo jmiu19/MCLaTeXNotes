@@ -1,0 +1,180 @@
+\documentclass[9pt,oneside]{book}
+
+\usepackage{xcolor}
+\usepackage{mathtools}
+\usepackage[legalpaper, margin=0.5in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{paralist}
+\usepackage{rsfso}
+\usepackage{amsthm}
+\usepackage[inline]{enumitem}   
+\usepackage{lipsum}
+
+\newtheoremstyle{break}
+  {\topsep}{\topsep}%
+  {\itshape}{}%
+  {\bfseries}{}%
+  {\newline}{}%
+\theoremstyle{break}
+\theoremstyle{break}
+\newtheorem{axiom}{Axiom}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lem}{Lemma}[thm]
+\newtheorem{prop}[lem]{Proposition}
+\newtheorem{corL}{Corollary}[lem]
+\newtheorem{corT}[lem]{Corollary}
+\newtheorem{defn}{Definition}[corL]
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\J}{\mathcal{J}}
+\newcommand{\T}{\mathcal{T}}
+\newcommand{\C}{\mathcal{C}}
+\newcommand{\M}{\mathcal{M}}
+\newcommand{\Complex}{\mathbb{C}}
+\newcommand{\Power}{\mathcal{P}}
+\newcommand{\pd}{\partial}
+\newcommand{\ee}[1]{\cdot 10^{#1}}
+\newcommand{\ihat}{\hat{\i}}
+\newcommand{\jhat}{\hat{\j}}
+\newcommand{\khat}{\hat{k}}
+
+
+
+\newcommand{\note}{\color{red}Note: \color{black}}
+\newcommand{\remark}{\color{blue}Remark: \color{black}}
+\newcommand{\example}{\color{green}Example: \color{black}}
+\newcommand{\exercise}{\color{green}Exercise: \color{black}}
+
+
+
+\newcommand\blfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
+
+\makeatletter
+\def\@seccntformat#1{%
+  \expandafter\ifx\csname c@#1\endcsname\c@section\else
+  \csname the#1\endcsname\quad
+  \fi}
+\makeatother
+
+\makeatletter
+\newcommand*{\rom}[1]{\expandafter\@slowromancap\romannumeral #1@}
+\makeatother
+
+\makeatletter
+% This command ignores the optional argument for itemize and enumerate lists
+\newcommand{\inlineitem}[1][]{%
+\ifnum\enit@type=\tw@
+    {\descriptionlabel{#1}}
+  \hspace{\labelsep}%
+\else
+  \ifnum\enit@type=\z@
+       \refstepcounter{\@listctr}\fi
+    \quad\@itemlabel\hspace{\labelsep}%
+\fi}
+\makeatother
+\parindent=0pt
+
+
+\begin{document}
+\blfootnote{Jinyan Miao; Winter 2022; CC BY-NC-SA; University of Michigan; Physics 401; Professor Bing Zhou}
+$$\vec{p} = m\vec{v}\qquad \vec{v} = \vec{\omega}\times \vec{r} \qquad \vec{l} = I\vec{\omega} = \vec{r}\times \vec{p}\qquad \vec{N} = \frac{d\vec{l}}{dt}=\vec{r}\times \vec{F}\qquad U = \frac{1}{2}I \omega^2 \qquad I = \int_V r^2\, dm$$
+
+Given $m\frac{d^2x}{dx^2} = F(x)$, $f(x_0) = 0$, and $F'(x_0) >0$. For small deviations from $x_0$: $x(t) = x_0 + A\cos\left(\sqrt{\frac{F'(x_0)}{m}}\ t+ \phi\right)$
+
+In mathematical statement, Hamilton's Principle states that $I = \int_{t_1}^{t_2}\mathcal{L} \, dt = \int_{t_1}^{t_2}(T-U)\, dt $ where we want to minimize $I$. \\We write $\mathcal{L}(q_i, \dot{q_i}; t)$ and $\mathcal{H}(q_1, p_i;t)$. Denote the constraint in algebraic expression $f(q_i; t) = 0$
+\begin{align*}
+\frac{\pd \mathcal{L}}{\pd q_i} - \frac{d}{dt}\frac{\pd \mathcal{L}}{\pd \dot{q_i}} = 0 \qquad \begin{cases} \frac{\pd \mathcal{L}}{\pd q_i} \text{ is called the generalized force component}\\
+\frac{d}{dt}\frac{\pd \mathcal{L}}{\pd \dot{q}_i} \text{ is called the kinetic part}
+\end{cases} \qquad\qquad\qquad \left( \frac{\pd L}{\pd q_i} - \frac{d}{dt}\frac{\pd L}{\pd \dot{q}_i} \right) + \sum_k \lambda_k \frac{\pd f_k}{\pd q_i} = 0
+\end{align*}
+\begin{align*}
+ Q_i \coloneqq \sum_{k=1}^m \lambda_k \frac{\partial f_k}{\partial q_i} \quad\qquad p_i  \coloneqq \frac{\partial \mathcal{L}}{\partial \dot{q}_i} \qquad\quad \mathcal{H} \coloneqq \sum_{i}\dot{q}\frac{\partial \mathcal{L}}{\partial \dot{q}} -\mathcal{L} \qquad\quad\dot{q}_i = \frac{\partial \mathcal{H}}{\partial p_i} \qquad\quad -\dot{p}_i = \frac{\partial \mathcal{H}}{\partial q_i} \qquad\quad \frac{\partial \mathcal{H}}{\partial t} = -\frac{\partial \mathcal{L}}{\partial t}
+\end{align*}
+$Q_i$ is the generalized constrain force components.
+$p_i$ is the generalized momentum associated with $q_i$.
+If $p_i$ is invariant under time, the associated $q_i$ is cyclic, and the generalized momentum $\frac{\partial \mathcal{L}}{\partial \dot{q}_i} = p_i$ is the canonical momentum, or conjugate momentum. If the kinetic energy $T$ is quadratic in $\dot{q}_i$, and $U = U(q_i)$, then $\mathcal{H}$ gives the total energy of the system.
+
+
+In the center of mass frame: 
+$$\mathcal{L} =\frac{\mu}{2}|\dot{\vec{r}}|^2 - U(r)= \frac{\mu}{2}( \dot{r}^2 + r^2\dot{\theta}^2) - U(r) \qquad\qquad\qquad E = \frac{1}{2}\mu \dot{r}^2 + \frac{1}{2}\frac{l^2}{\mu r^2}+ U(r) = \frac{1}{2}\mu \dot{r}^2 + U_{\text{eff}}(r)$$ 
+$d_1$, $d_2$ are the distance of the two particles to the center of mass. ${l}/({2\mu r^2})$ is the angular momentum barrier.
+\begin{align*}
+l= m_1 d_1^2 \dot{\theta} + m_2 d_2^2 \dot{\theta} = \mu r^2 \dot{\theta} = \text{constant} \qquad\quad
+\frac{d^2}{d\theta^2}\frac{1}{r} + \frac{1}{r} = -\frac{\mu r^2}{l^2} F(r) \qquad\quad  \mu \ddot{r} + \frac{\partial}{\partial r}\left( U(r)+\frac{l^2}{2\mu r^2}\right) = 0 \hspace{5cm}
+\end{align*}
+
+\begin{align*}
+\int_0^{t} dt' = \int_{r(0)}^{r(t)} \left( \frac{2}{\mu}\left( E - U(r') - \frac{l^2}{2\mu (r')^2}\right) \right)^{1/2} \, dr' \qquad \quad \theta(t) - \theta(0) = \int_0^t \frac{1}{\mu (r(t'))^2}\, dt' \hspace{10cm}
+\end{align*}
+
+\begin{align*}
+\theta(r) = \int_{r(0)}^{r(t)} \frac{d\theta}{dt}\frac{dt}{dr}\, dr' = \pm \int_{r(0)}^{r(t)}\frac{l / (\mu (r')^2 )\, dr'}{\sqrt{ \frac{2}{\mu}\left( E - U(r')\right) - \left(\frac{l^2}{\mu r'}\right)^2 }} \hspace{10cm}
+\end{align*}
+
+\textbf{ASSUME} $U(r) = -k/r$. $\epsilon$ is the eccentricity of the two-body system, $u_0$ is constant, $u = 1/r$, Kepler's First Law states:
+\begin{align*}
+\alpha \coloneqq \frac{l^2}{\mu k} \quad \qquad \epsilon = \frac{l^2 u_0}{\mu k} \quad\qquad \frac{\alpha}{r} = 1+\epsilon \cos(\theta) \quad \qquad \epsilon = \sqrt{1+ \frac{2E l^2}{\mu k^2}} \quad\qquad E = \frac{1}{2}\frac{l^2}{\mu}\frac{(1+\epsilon)^2}{\alpha^2} - \frac{k(1+\epsilon)}{\alpha}    
+\end{align*}
+\begin{align*}
+u = \frac{\mu k}{l^2}\left( \frac{l^2 u_0}{\mu k}\cos(\theta) + 1\right)\qquad\quad \alpha = a(1+\epsilon)(1-\epsilon) \qquad\quad a = \frac{\alpha}{1-\epsilon^2} = \frac{k}{2|E|}\qquad\quad b=\sqrt{\alpha a} = \frac{\alpha}{\sqrt{1-\epsilon^2}} = \frac{l}{\sqrt{2\mu|E| }}  
+\end{align*}
+\textbf{ASSUME} $U(r) = -k/r$. Kepler's Second and Third Law:
+\begin{align*}
+\frac{dA}{dt} = \frac{r^2}{2} \frac{d\theta}{dt} = \frac{r^2 \dot{\theta}}{2} = \frac{l}{2\mu} =\text{constant} \qquad\qquad \tau = \frac{2\mu}{l}A=\frac{2\mu}{l}(\pi ab) = \pi k \sqrt{\frac{\mu}{2}}|E|^{-3/2}\qquad\qquad \tau^2 = \frac{4\pi ^2}{k}\mu a^3 
+\end{align*}
+
+For the transfer from the ellipse to the circular orbit of radius $r_2$, $\Delta v_2 = v_2 - v_{t2}$.
+\begin{align*}
+v_{t2} = \sqrt{\frac{2k}{mr_2}\left( \frac{r_1}{r_1 + r_2}\right)}\qquad\qquad\qquad T_t = \frac{\tau_t}{2} = \pi \sqrt{\frac{m}{k}} a_t^{3/2} 
+\end{align*}
+\textbf{ASSUME ELASTIC COLLISION} of $m_1$ and $m_2$. Center of mass parameters: $\vec{R}, \vec{V}, M$. Initial KE $T_0$ in LAB.\\
+Moving particle: initial speed $u_1$ in LAB, initial speed $u_1'$ in CM, final speed $v_1$ in LAB, final speed $v_1'$ in CM.\\ Particle at rest in LAB: initial speed $u_2$ in LAB, initial speed $u_2'$ in CM, final speed $v_2$ in LAB, final speed $v_2'$ in CM.
+\begin{align*}
+\vec{R} = \frac{\int_M \vec{r}\, dm}{\int_M dm}\qquad\quad
+\vec{F}_{ext} = M \frac{d\vec{V}_{CM}}{dt} = \frac{d\vec{P}_{CM}}{dt} \qquad\quad\vec{V} = \frac{m_1 \vec{u}_1}{m_1+m_2} = -\vec{u}_2'\qquad\quad\frac{V}{v_1'} = \frac{m_1 u_1/(m_1+m_2)}{m_2 u_1 /(m_1 +m_2)} = \frac{m_1}{m_2}
+\end{align*}
+
+\begin{align*}
+\tan(\psi) = \frac{\sin(\theta)}{\cos(\theta) +(V/v_1')}=\frac{\sin(\theta)}{\cos(\theta) + (m_1/m_2)}\qquad\quad \tan(\zeta) = \frac{\sin(\theta)}{1 - \cos(\theta)} = \cot\left( \frac{\theta}{2}\right) \qquad\quad 2\zeta = \pi - \theta
+\end{align*}
+
+
+\begin{align*}
+\frac{T_1}{T_0} \coloneqq \frac{m_1v_1^2}{m_1 u_1^2} = 1-\frac{2m_1m_2(1-\cos(\theta))}{(m_1+m_2)^2} = \frac{m_1^2}{(m_1+m_2)^2} \left( \cos(\psi) \pm \sqrt{\left(\frac{m_2}{m_1}\right)^2 - \sin^2(\psi)}\right)^2 \tag{*}
+\end{align*}
+In (*), take plus sign for the radical unless $m_1>m_2$. If $m_1 > m_2$ evaluated using $\psi$, the result is double-valued.
+
+\begin{align*}
+\frac{T_2}{T_0} \coloneqq \frac{m_2 v_2^2}{m_1 u_1^2}  =1- \frac{T_1}{T_0} = \frac{4m_1m_2\cos^2(\zeta)}{(m_1+m_2)^2} \qquad\qquad\qquad \text{if }\zeta \leq \frac{\pi}{2} \hspace{10cm}
+\end{align*}
+\begin{align*}
+\sin(\zeta) = \sqrt{\frac{m_1T_1}{m_2T_2}} \sin(\psi) \qquad\quad \tan(\psi) = \frac{\sin(2\zeta)}{(m_1/m_2) -\cos(2\zeta)}\qquad\quad \tan(\psi) = \frac{\sin(\phi)}{(m_1/m_2) - \cos(\phi)} \hspace{10cm}
+\end{align*}
+
+
+
+
+
+If $m_1 > m_2$, the following specifies the maximum value allowed for $\psi$:
+\begin{align*}
+\psi_{max} = \sin^{-1}\left(\frac{v_1'}{V} \right)=\sin^{-1}\left(\frac{m_2}{m_1} \right) \hspace{7.5cm}
+\end{align*}
+
+
+If we have $m_1 = m _2$, we have $\theta = 2\psi$, and we get the followings:
+\begin{align*}
+\frac{T_1}{T_0} = \cos^2 (\psi) \qquad\qquad  \frac{T_2}{T_0} = \sin^2(\psi) \qquad\qquad \zeta + \psi = \frac{\pi}{2}\qquad\qquad\qquad\qquad\qquad \text{if }m_1= m_2
+\end{align*}
+
+
+\end{document}

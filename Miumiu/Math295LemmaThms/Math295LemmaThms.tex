@@ -1,0 +1,1784 @@
+\documentclass[11pt]{article}
+
+\usepackage{xcolor}
+\usepackage{mathtools}
+\usepackage[legalpaper, margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{paralist}
+\usepackage{rsfso}
+\usepackage{amsthm}
+\usepackage[inline]{enumitem}   
+
+\newtheoremstyle{break}
+  {\topsep}{\topsep}%
+  {\itshape}{}%
+  {\bfseries}{}%
+  {\newline}{}%
+\theoremstyle{break}
+\theoremstyle{break}
+\newtheorem{axiom}{Axiom}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lem}{Lemma}[thm]
+\newtheorem{prop}[lem]{Proposition}
+\newtheorem{corL}{Corollary}[lem]
+\newtheorem{corT}[lem]{Corollary}
+\newtheorem{defn}{Definition}[corL]
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\J}{\mathcal{J}}
+\newcommand{\T}{\mathcal{T}}
+\newcommand{\C}{\mathcal{C}}
+\newcommand{\M}{\mathcal{M}}
+\newcommand{\Complex}{\mathbb{C}}
+\newcommand{\Power}{\mathcal{P}}
+\newcommand{\Intab}{[\,a,b\,]}
+
+\makeatletter
+\def\@seccntformat#1{%
+  \expandafter\ifx\csname c@#1\endcsname\c@section\else
+  \csname the#1\endcsname\quad
+  \fi}
+\makeatother
+
+\makeatletter
+\newcommand*{\rom}[1]{\expandafter\@slowromancap\romannumeral #1@}
+\makeatother
+
+\makeatletter
+% This command ignores the optional argument for itemize and enumerate lists
+\newcommand{\inlineitem}[1][]{%
+\ifnum\enit@type=\tw@
+    {\descriptionlabel{#1}}
+  \hspace{\labelsep}%
+\else
+  \ifnum\enit@type=\z@
+       \refstepcounter{\@listctr}\fi
+    \quad\@itemlabel\hspace{\labelsep}%
+\fi}
+\makeatother
+\parindent=0pt
+
+
+\begin{document}
+
+	\begin{titlepage}
+		\begin{center}
+			\topskip0pt
+			\vspace*{\fill}
+			\Huge \color{red}
+				\textbf{Lemmas and Theorems}\\
+			\vspace{0.5cm}			
+			\Large \color{black}
+				Math 295 - Honors Mathematics I\\
+				Professor Sarah Koch\\		
+				University of Michigan\\
+			\vspace{3cm}
+			
+			\includegraphics[scale=0.19]{spikyLambdaPazo.pdf}
+			
+			\vspace{5cm}
+			\LARGE
+				\textbf{Jinyan Miµ}\\
+				Fall 2020\\
+			\vspace{5cm}
+
+		\vspace*{\fill}
+		\end{center}			
+	\end{titlepage}
+
+\section{\color{red} The Construction of the Unique Ordered Field}
+	\begin{axiom}[Peano Axioms]
+		There exists a triple $(\N',\sigma,1_{\N})$ such that the followings hold:
+		\begin{enumerate}[topsep=3pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
+		\item $\N'$ is a set, and the element $1_{\N}$ belongs to $\N'$.
+		\item $\sigma: \N' \to \N'$ is an injective function, and $\forall n \in \N'$, $\sigma(n) \neq 1_{\N}$.
+		\item For $S \subset \N'$, if $1_{\N} \in S$ and $m \in S$, then $\sigma(m) \in S$, and hence $S = \N'$.
+		\end{enumerate}
+	\end{axiom}
+	
+	\begin{thm}[Principle of Recursive Definition]
+		Let $X$ be a set, let $\varphi:X \to X$ be a function, let $a \in X$, then there exists a unique function $f:\N' \to X$ such that $f(1_\N)=a$, and $\forall n \in \N'$, we have $f(\sigma(n))=\varphi(f(n))$.
+	\end{thm}
+		
+	\begin{defn}
+		Let $m \in \N'$, let $a = \sigma(m)$. For the function $\sigma: \N' \to \N'$ given in the Peano Axiom, by using the Principle of Recursive Definition, we can define a unique function $f_m: \N' \to \N'$ such that $f_m(1_{\N})=\sigma(m)=a$, and $\forall n \in \N'$, we have $f_m(\sigma(n))=\sigma(f_m(n))$.
+	\end{defn}
+	
+	\begin{defn}
+		Let $m,n \in \N'$, $m +_{\N} n \coloneqq f_m(n)$.
+	\end{defn}
+	
+	\begin{defn}
+		Let $m \in \N'$. For the function $f_m:\N' \to \N'$, by the Principle of Recursive Definition, we can define a unique function $\mu_m :\N' \to \N'$ s.t. $\mu_m (1_\N)=m$, and $\forall n \in \N'$, we have $\mu_m(\sigma(n))=f_m(\mu_m(n))$.
+	\end{defn}
+	
+	\begin{defn}
+		Let $m,n \in \N'$, $m \ast_{\N} n \coloneqq \mu_m(n)$.
+	\end{defn}
+	
+	\begin{lem}
+		For $m,n,q \in \N'$, the followings hold:
+		\begin{enumerate}[topsep=3pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
+			\item $(m=n) \iff (m +_{\N} q=n +_{\N} q)$
+			\item $f_1(n)=\sigma(n)$
+			\item $\mu_1(n)=n$
+		\end{enumerate}
+	\end{lem}
+	
+	\begin{lem}
+		For $m,n \in \N'$ with $m \neq n$, exactly one of the followings holds:
+		\begin{enumerate}[topsep=3pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
+			\item If $\exists! \ r \in \N' \ s.t. \ m=n +_{\N} r$, then we write $m >_{\N}n$.
+			\item If $\exists! \ r \in \N' \ s.t. \ n=m +_{\N} r$, then we write $n >_{\N}m$.
+		\end{enumerate}
+	\end{lem}
+	
+	\begin{corL}
+		For $m,n \in \N'$, Trichotomy holds:
+		\begin{enumerate}[topsep=3pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
+		\item m=n \qquad \qquad
+		\inlineitem $m >_{\N}n$ \qquad \qquad
+		\inlineitem $n >_{\N}m$
+		\end{enumerate}
+	\end{corL}
+	
+%	\begin{defn}
+%		Let $S$ be a set, a Relation on $S$ is a subset of $S \times S$. Let $R$ be a relation on $S$, and let $x,y \in S$, we write $xRy$ whenever $(x,y) \in \R$.
+%	\end{defn}
+%	
+%	\begin{defn}
+%		Let $S$ be a set, let $R$ be a relation on $S$, $R$ is called an Equivalence Relation on $S$ provided that the followings hold:
+%		\begin{enumerate}[topsep=3pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
+%			\item $R$ is reflexive, that is, $\forall s \in S$, we have $sRs$
+%			\item $R$ is symmetric, that is, $\forall s,t \in S$, if $sRt$, then $tRs$
+%			\item $R$ is transitive, that is, $\forall s,t,u \in S$, if $sRt$ and $tRu$, then $sRu$
+%		\end{enumerate}
+%		If $R$ is an equivalence relation on $S$, then for $s,t \in S$, we write $s \sim t$ whenever $(s,t) \in \R$
+%	\end{defn}
+%	
+%	\begin{defn}
+%		Let $S$ be a set, let $\sim$ be an equivalence relation on $S$, let $x \in X$, $C(x)\coloneqq \{ y \in S \mid y \sim x \}$ is called the Class of $x$, or the Equivalence Class of $x$. For notation, we write $C(x)=[(x)]$
+%	\end{defn}
+%	
+%	\begin{defn}
+%		Let $S$ be a set, and let $\sim$ be an equivalence relation on $S$, $S/{\sim} \coloneqq \{ C(x) \mid x \in X\}$ is called the Quotient of $X$ by $\sim$, or the Factor Set of $X$ by $\sim$.
+%	\end{defn}
+	
+	\begin{defn}
+		Let $m,n,l,q \in \N'$, let $\sim_{\Z}$ be a relation on $(\N' \times \N')$ with $(n,m) \sim_{\Z} (l,q) \iff n +_{\N} q = l +_{\N} m$.
+	\end{defn}
+	
+	\begin{defn}
+		 $\Z' \coloneqq {(\N' \times \N')}/{\sim_{\Z}}$	
+	\end{defn}
+		
+	\begin{lem}
+		The relation $\sim_{\Z}$ is an equivalence relation on the set $\N' \times \N'$.
+	\end{lem}
+	
+	\begin{defn}
+		$0_{\Z} \coloneqq [(1_\N,1_\N)]$
+	\end{defn}
+	
+	\begin{defn}
+		$1_{\Z} \coloneqq [(1_\N +_{\N} 1_\N,1_\N)]$
+	\end{defn}
+	
+	\begin{defn}
+		Let $[(a,b)] \in \Z'$, $-[(a,b)] \coloneqq [(b,a)]$.
+	\end{defn}
+	
+	\begin{defn}
+		Let $[(n,m)],[(l,k)] \in \Z'$, $[(n,m)] +_{\Z} [(l,k)] \coloneqq [(n +_{\N} l, m +_{\N} k)]$.
+	\end{defn}
+
+	\begin{defn}
+		Let $[(n,m)],[(l,k)] \in \Z'$, $[(n,m)] -_{\Z} [(l,k)] \coloneqq [(n,m)] +_{\Z}  -[(l,k)]$.
+	\end{defn}
+	
+	\begin{defn}
+		Let $[(n,m)],[(l,k)] \in \Z'$, $[(n,m)] \ast_{\Z} [(l,k)] \coloneqq [(n \ast_{\N} l +_{\N} m \ast_{\N} k , m \ast_{\N} l +_{\N} n \ast_{\N} k)]$.
+	\end{defn}
+\clearpage
+	\begin{lem}
+		For $[(m,n)],[(p,q)] \in \Z'$, exactly one of the followings hold:
+		\begin{enumerate}[topsep=3pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
+			\item $m +_{\N} q >_{\N} p +_{\N} n$, then we write $[(m,n)] >_{\Z} [(p,q)]$.
+			\item $m +_{\N} q <_{\N} p +_{\N} n$, then we write $[(m,n)] <_{\Z} [(p,q)]$.
+			\item $m +_{\N} q = p +_{\N} n$, then we write $[(m,n)] = [(p,q)]$.
+		\end{enumerate}
+	\end{lem}
+	
+	\begin{thm}
+		Let $i_{\N}:\N' \to \Z' \ \ n \mapsto [(n+1_\N,1_\N)]$ be a function, then $i_{\N}(\N') \subseteq \Z'$, with the followings hold:
+		\begin{enumerate}[topsep=3pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
+			\item $i_{\N}$ is an injection, and $i_{\N}(1_{\N})=1_{\Z}$.
+			\item For $m,n \in \N'$, $i_{\N}(n +_{\N} m) = i_{\N}(n) +_{\Z} i_{\N}(m)$.
+			\item For $m,n \in \N'$, $i_{\N}(n \ast_{\N} m) = i_{\N}(n) \ast_{\Z} i_{\N}(m)$.
+			\item For $m,n \in \N'$, $(n >_{\N} m)\iff(i_{\N}(n) >_{\Z} i_{\N}(m))$.
+			\item For $m,n \in \N'$, $(n <_{\N} m)\iff(i_{\N}(n) <_{\Z} i_{\N}(m))$.
+		\end{enumerate}
+	\end{thm}
+	
+	\begin{defn}
+		Let $a,b,c,d \in \Z'$, let $\sim_{\Q}$ be a relation on $(\Z' \times (\Z' \setminus \{0_\Z \}))$ with $(a,b) \sim_{\Q} (c,d) \iff  a \ast_{\Z} d = b \ast_{\Z} c$.
+	\end{defn}		
+	
+	\begin{defn}
+	$\Q' \coloneqq (\Z' \times (\Z' \setminus \{0_\Z \}))/{\sim_{\Q}}$
+	\end{defn}
+	
+	\begin{lem}
+		The relation $\sim_{\Q}$ is an equivalence relation on the set $(\Z' \times (\Z' \setminus \{0_\Z \}))$.
+	\end{lem}
+	
+	\begin{defn}
+		$0_{\Q} \coloneqq [(0_{\Z},1_{\Z})]$
+	\end{defn}
+	
+	\begin{defn}
+		$1_{\Q} \coloneqq [(1_{\Z}, 1_{\Z})]$
+	\end{defn}
+	
+	\begin{defn}
+		Let $[(a,b)] \in \Q'$, $-[(a,b)] \coloneqq [(-a,b)]$.
+	\end{defn}
+
+	\begin{defn}
+		Let $[(a,b)] \in \Q'$ with $a \neq 0_{\Z}$, $[(a,b)]^{-1} \coloneqq [(b,a)]$.
+	\end{defn}
+		
+	\begin{defn}
+		Let $[(a,b)],[(c,d)] \in \Q'$, $[(a,b)] +_{\Q} [(c,d)] \coloneqq [(a \ast_{\Z} d +_{\Z} b \ast_{\Z} c, b \ast_{\Z} d)]$.
+	\end{defn}
+	
+	\begin{defn}
+		Let $[(a,b)],[(c,d)] \in \Q'$, $[(a,b)] -_{\Q} [(c,d)] \coloneqq [(a,b)] +_{\Q} -[(c,d)]$.
+	\end{defn}
+	
+	\begin{defn}
+		Let $[(a,b)],[(c,d)] \in \Q'$, $[(a,b)] \ast_{\Q} [(c,d)] \coloneqq [(a \ast_{\Z} c , b \ast_{\Z} d)]$.
+	\end{defn}
+	
+	\begin{defn}
+		Let $[(a,b)],[(c,d)] \in \Q'$ with $c \neq 0_\Z$, $\frac{[(a,b)]}{[(c,d)]} \coloneqq [(a,b)] \ast_{\Q} [(c,d)]^{-1}$.
+	\end{defn}
+
+	\begin{lem}
+		For $[(a,b)],[(c,d)] \in \Q'$, exactly one of the followings hold:
+		\begin{enumerate}[topsep=3pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
+			\item $a \ast_{\Z} d >_{\Z} b \ast_{\Z} c$, and $b \ast_{\Z} d >_{\Z} 0_{\Z}$, then we write $[(a,b)] >_{\Q} [(c,d)]$.
+			\item $a \ast_{\Z} d <_{\Z} b \ast_{\Z} c$, and $b \ast_{\Z} d <_{\Z} 0_{\Z}$, then we write $[(a,b)] >_{\Q} [(c,d)]$.
+			\item $a \ast_{\Z} d <_{\Z} b \ast_{\Z} c$, and $b \ast_{\Z} d >_{\Z} 0_{\Z}$, then we write $[(a,b)] <_{\Q} [(c,d)]$.
+			\item $a \ast_{\Z} d >_{\Z} b \ast_{\Z} c$, and $b \ast_{\Z} d <_{\Z} 0_{\Z}$, then we write $[(a,b)] <_{\Q} [(c,d)]$.
+			\item $a \ast_{\Z} d = b \ast_{\Z} c$, then we write $[(a,b)]=[(c,d)]$.
+		\end{enumerate}
+	\end{lem}
+	
+	\begin{defn}
+		The function $| \ |_{\Q} : \Q' \to \Q' \ \ \ x \mapsto \begin{cases} x & x >_{\Q} 0_{\Q} \\ -x & x<_{\Q} 0_{\Q} \\ 0_\Q & x=0_{\Q} \end{cases}$ \ is called the Absolute Value function on $\Q'$.
+	\end{defn}
+	
+	\begin{thm}
+		Let $i_{\Z}:\Z' \to \Q' \ \ \ n \mapsto [(n,1_{\Z})]$ be a function, then we have $i_{\Z}(\Z') \subseteq \Q'$, with the followings hold:
+		\begin{enumerate}[topsep=3pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
+			\item $i_{\Z}$ is an injection, with $i_{\Z}(1_{\Z})=1_{\Q}$ and $i_{\Z}(0_{\Z})=0_{\Q}$.
+			\item For $m,n \in \Z'$, $i_{\Z}(n +_{\Z} m) = i_{\Z}(n) +_{\Q} i_{\Z}(m)$.
+			\item For $m,n \in \Z'$, $i_{\Z}(n \ast_{\Z} m) = i_{\Z}(n) \ast_{\Q} i_{\Z}(m)$.
+			\item For $m,n \in \Z'$, $(n >_{\Z} m)\iff(i_{\Z}(n) >_{\Q} i_{\Z}(m))$.
+			\item For $m,n \in \Z'$, $(n <_{\Z} m)\iff(i_{\Z}(n) <_{\Q} i_{\Z}(m))$.
+		\end{enumerate}
+	\end{thm}
+	
+	\begin{defn}
+		Any function of the form $seq:\N' \to \Q' \ \ \ n \mapsto q_n$ is called a Sequence in $\Q'$, the function $seq$ is denoted as $(q_n)$ or $n \mapsto q_n$.
+	\end{defn}
+	
+	\begin{defn}
+		Let $(q_n)$ be a sequence in $\Q'$, $(q_n)$ is said to be Cauchy provided that for all \mbox{$L \in \N', \ \exists \ N \in \N'$} $\ s.t. \ \forall n,m \in \N'$ with $m >_\N N$ and $n >_\N N$, we have $|q_n -_\Q q_m|_{\Q} <_{\Q} \frac{1_\Q}{i_\Z (i_N (L))}$.
+	\end{defn} 
+	
+	\begin{defn}
+		Let $(a_n),(b_n)$ be Cauchy sequences in $\Q'$, we write $\lim_{n \to \infty}(a_n -_\Q b_n)=0_{\Q}$ provided that for all $L \in \N', \ \exists \ N \in \N' \ s.t. \ \forall n \in \N'$ with $n \geq N$, we have $|a_n -_\Q b_n |_{\Q} <_{\Q} \frac{1_\Q}{i_\Z (i_\N (L))}$.
+	\end{defn}
+	
+	\begin{defn}
+		$\C_{\Q} \coloneqq \{ (q_n) \mid (q_n)$ is a Cauchy sequence in $\Q' \ \}$
+	\end{defn}	
+	
+	\begin{defn}
+		Let $\sim_{\R}$ be a relation on $\C_{\Q}$ with $(a_n) \sim_{\R} (b_n) \iff \lim_{n \to \infty}(a_n -_\Q b_n)=0_{\Q}$.
+	\end{defn}
+	
+	\begin{lem}
+		The relation $\sim_{\R}$ is an equivalence relation on the set $\C_{\Q}$.
+	\end{lem}
+	
+	\begin{defn}	
+		$\R \coloneqq \C_{\Q}/{\sim_{\R}}$ is called the Set of Real Numbers, and each element in $\R$ is called a Real Number.
+	\end{defn}		
+		
+	\begin{defn}
+		Let $(\frac{1}{n})$ denote the sequence $seq: \N' \to \Q' \ \ n \mapsto \frac{1_{\Q}}{i_{\Z}(i_{\N}(n))}$, $0_{\R} \coloneqq [(\frac{1}{n})]$.
+	\end{defn}
+	
+	\begin{defn}
+		Let $(\frac{1+n}{n})$ denote the sequence $seq: \N' \to \Q' \ \ n \mapsto \frac{1_{\Q}+i_{\Z}(i_{\N}(n))}{i_{\Z}(i_{\N}(n))}$, $1_{\R} \coloneqq [(\frac{n+1}{n})]$.
+	\end{defn}
+	
+	\begin{defn}
+		Let $[(a_n)] \in \R$, $-[(a_n)] \coloneqq [(-a_n)]$.
+	\end{defn}
+
+	\begin{defn}
+		Let $[(a_n)],[(b_n)] \in \R$, $[(a_n)] +_{\R} [(b_n)] \coloneqq [(a_n +_{\Q} b_n)]$.
+	\end{defn}
+	
+	\begin{defn}
+		Let $[(a_n)],[(b_n)] \in \R$, $[(a_n)] -_{\R} [(b_n)] \coloneqq [(a_n)] +_{\R} -[(b_n)]$.
+	\end{defn}	
+	
+	\begin{defn}
+		Let $[(a_n)],[(b_n)] \in \R$, $[(a_n)] \ast_{\R} [(b_n)] \coloneqq [(a_n \ast_{\Q} b_n)]$.
+	\end{defn}	
+		
+	\begin{lem}
+		For $[(a_n)] \in \R$ with $[(a_n)] \neq 0_{\R}$, $\exists \ N \in \N' \ s.t. \ \forall n \in \N'$ with $n> _\N N$ we have $a_n \neq 0_{\Q}$. Let $(b_k)$ be a sequence with $b_k = 1_{\Q}$ for $1_\N \leq_\N k \leq_\N N$, and $b_k=\frac{1_{\Q}}{a_k}$ for $k >_\N N$, then $(b_k)$ belongs to $\C_{\Q}$ and we have $[(a_n)] \ast_{\R} [(b_n)] = 1_{\R}$, we write $[(a_n)]^{-1} \coloneqq [(b_n)]$.
+	\end{lem}
+	
+	\begin{defn}
+		Let $[(a_n)],[(b_n)] \in \R$ with $[(b_n)] \neq 0_\R$, $\frac{[(a_n)]}{[(b_n)]} \coloneqq [(a_n)] \ast_{\R} [(b_n)]^{-1}$.
+	\end{defn}
+	
+	\begin{lem}
+		For $[(a_n)],[(b_n)] \in \R$, exactly one of the followings hold:
+		\begin{enumerate}[topsep=3pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
+			\item $\exists \ N \in \N \ s.t. \ \forall n \in \N$ with $n>_{\N} N$, we have $(a_n -_{\Q} \, b_n)>_{\Q} 0_{\Q}$, then we write $[(a_n)] >_{\R} [(b_n)]$.
+			\item $\exists \ N \in \N \ s.t. \ \forall n \in \N$ with $n>_{\N} N$, we have $(b_n -_{\Q} \, a_n)>_{\Q} 0_{\Q}$, then we write $[(a_n)] <_{\R} [(b_n)]$.
+			\item $\lim_{n \to \infty}(a_n -_\Q b_n)=0_{\Q}$, then we write $[(a_n)]=[(b_n)]$.
+		\end{enumerate}
+	\end{lem}
+	
+	\begin{defn}
+		The function $| \ |: \R \to \R \ \ \ x \mapsto \begin{cases} x & x >_{\R} 0_{\R} \\ -x & x<_{\R} 0_{\R} \\ 0_\R & x=0_{\R} \end{cases}$ \ is called the Absolute Value function on $\R$.
+	\end{defn}
+	
+	\begin{thm}
+		Let $i_{\Q}:\Q' \to \R \ \ \ n \mapsto [(n,n,\cdots,n,\cdots)]$ be a function, then $i_{\Q}(\Q') \subseteq \R$, with the followings hold:
+		\begin{enumerate}[topsep=3pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
+			\item $i_{\Q}$ is an injection, with $i_{\Q.}(1_{\Q})=1_{\R}$ and $i_{\Q}(0_{\Q})=0_{\R}$.
+			\item For $m,n \in \Q'$, $i_{\Q}(n +_{\Q} m) = i_{\Q}(n) +_{\R} i_{\Q}(m)$.
+			\item For $m,n \in \Q'$, $i_{\Q}(n \ast_{\Q} m) = i_{\Q}(n) \ast_{\R} i_{\Q}(m)$.
+			\item For $m,n \in \Q'$, $(n >_{\Q} m)\iff(i_{\Q}(n) >_{\R} i_{\Q}(m))$.
+			\item For $m,n \in \Q'$, $(n <_{\Q} m)\iff(i_{\Q}(n) <_{\R} i_{\Q}(m))$.
+		\end{enumerate}
+	\end{thm}
+	
+	\begin{defn}
+		The set $\N \coloneqq i_\Q ( i_\Z ( i_\N ( N' )))$ is called the Set of Natural Numbers.\\
+		The set $\Z \coloneqq i_\Q ( i_\Z ( Z' ))$ is called the Set of Integers.\\
+		The set $\Q \coloneqq i_\Q ( Q' )$ is called the Set of Rational Numbers.
+	\end{defn}
+	
+	\begin{defn}
+		Each element in the set $\N$ is called a Natural Number.\\
+		Each element in the set $\Z$ is called an Integer.\\
+		Each element in the set $\Q$ is called a Rational Number.
+	\end{defn}
+	
+	\begin{defn}
+		$0 \coloneqq 0_\R$\\ $1 \coloneqq 1_\R$\\ $2 \coloneqq 1+1$
+	\end{defn}		
+				
+	\begin{defn}
+		Let $m,n \in \R$, we define the followings:
+		\begin{enumerate}[topsep=3pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
+			\item $m+n \coloneqq m +_\R n$
+			\item $m \ast n \coloneqq m \ast_\R n$
+			\item $m-n \coloneqq m -_\R n$
+			\item $(m<n) \iff (m <_\R n)$
+			\item $(m>n) \iff (m >_\R n)$
+		\end{enumerate} 
+	\end{defn}
+	
+	\begin{defn}
+		Any function of the form $seq:\N \to \R \ \ \ n \mapsto r_n$ is called a Sequence in of Real Numbers, the function $seq$ is denoted as $(r_n)$ or $n \mapsto r_n$.
+	\end{defn}	
+	
+	\begin{defn}
+		Let $(r_n)$ be a sequence of real numbers, $(r_n)$ is said to be Cauchy provided that for all $\epsilon \in \R$ with $\epsilon > 0, \ \exists \ N \in \N \ s.t. \ \forall n,m \in \N$ with $m > N$ and $n > N$, we have $|r_n - r_m| < \epsilon$.
+	\end{defn}
+	
+	\begin{defn}
+		Let $(r_n)$ be a sequence of real numbers, $(r_n)$ converges to some $l \in \R$ provided that for all $\epsilon \in \R$ with $\epsilon>0$, $\exists \ N \in \N \ s.t. \ \forall n \in \N$ with $n>N$, we have $|r_n - l|<\epsilon$. If $(r_n)$ converges, then we say $(r_n)$ is a Convergent Sequence of real numbers in the Euclidean topology. If $(r_n)$ converges to some $l \in \R$, then $\lim_{n \to \infty}r_n \coloneqq l$ is called the limit of $(r_n)$.
+	\end{defn}
+	
+	\begin{thm}
+		Let $r \in \R$, for all $w \in \Q$ with $w>0$, $\exists \ q \in \Q \ s.t. \ |r-q|<w$.
+	\end{thm}
+	
+	\begin{lem}
+		$Q$ is Archimedean, that is, the followings hold:
+		\begin{enumerate}[topsep=3pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
+			\item For $q \in \Q$, $\exists \ N \in \N \ s.t. \ N>q$.
+			\item For $q \in \Q$ with $q>0$, $\exists \ N \in \N \ s.t. \ \frac{1}{N}<q$.
+		\end{enumerate}
+	\end{lem}
+	
+	\begin{lem}
+		Let $(x_n)$ be a Cauchy sequence of real numbers, then $(x_n)$ converges to some $l \in \R$.
+	\end{lem}
+
+	\begin{defn}
+	Let $(t_m)$ be a sequence of real numbers, $(t_m)$ is Monotonic Increasing provided that for all $a,b \in \N$ with $a>b$, we have $t_a \geq t_b$.
+	\end{defn}
+	
+	\begin{defn}
+	Let $(t_m)$ be a sequence of real numbers, $(t_m)$ is Monotonic Decreasing provided that for all $a,b \in \N$ with $a>b$, we have $t_a \leq t_b$.
+	\end{defn}
+		
+	\begin{defn}
+	Let $(t_m)$ be a sequence of real numbers, $(t_m)$ is Monotonic provided that $(t_m)$ is either monotonic increasing or monotonic decreasing.
+	\end{defn}
+	
+	\begin{defn}
+	Let $(t_m)$ be a sequence of real numbers, $(t_m)$ is Bounded provided that for all $s \in \{t_n \mid m \in \N \}$, there exist $M,N \in \R$ such that $N < s < M$.
+	\end{defn}
+		
+	\begin{lem}
+		Let $(x_n)$ be a sequence of real numbers. If $(x_n)$ is monotonic and bounded, then $(x_n)$ is Cauchy.
+	\end{lem}
+	
+	\begin{corL}
+		All bounded monotonic sequences of real numbers converge.
+	\end{corL}
+	
+	\begin{thm}
+		The ordered field $(\R,+,\ast,1,0,<)$ has the least upper bound property.
+	\end{thm}
+
+	\begin{defn}	
+		Let $(F_1,+_1,\ast_1,0_1,1_1)$ and $(F_2,+_2,\ast_2,0_2,1_2)$ be fields, the field $(F_1,+_1,\ast_1,0_1,1_1)$ is isomorphic to the field $(F_2,+_2,\ast_2,0_2,1_2)$ provided that there exists a bijection $\varphi:F_1 \to F_2$ such that $\forall x,y \in F_1$, we have the followings hold:
+		\begin{enumerate}[topsep=3pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
+			\item $\varphi(x +_1 y)=\varphi(x)+_2 \varphi(y)$
+			\item $\varphi(x \ast_1 y)=\varphi(x)\ast_2 \varphi(y)$
+			\item $\varphi(1_1)=1_2$
+		\end{enumerate}
+	\end{defn}
+	
+	\begin{defn}
+		Let $(F_1,+_1,\ast_1,0_1,1_1,<_1)$ and $(F_2,+_2,\ast_2,0_2,1_2,<_2)$ be ordered fields, we say $(F_1,+_1,\ast_1,0_1,1_1,<_1)$ is isomorphic to $(F_2,+_2,\ast_2,0_2,1_2,<_2)$ provided that there exists a bijection $\varphi:F_1 \to F_2$ such that $\forall x,y \in F_1$, we have the followings hold:
+		\begin{enumerate}[topsep=3pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
+			\item If $x <_1 y$, then $\varphi(x) <_2 \varphi(y)$.
+			\item If $x >_1 y$, then $\varphi(x) >_2 \varphi(y)$.
+			\item $\varphi(x +_1 y)=\varphi(x)+_2 \varphi(y)$
+			\item $\varphi(x \ast_1 y)=\varphi(x)\ast_2 \varphi(y)$
+			\item $\varphi(1_1)=1_2$
+		\end{enumerate}
+	\end{defn}
+	
+	\begin{thm}
+		Let $(F_1,+_F,\ast_F,0_F,1_F,<_F)$ be an ordered field. If $(F_1,+_F,\ast_F,0_F,1_F,<_F)$ is a complete ordered field, then $(F_1,+_F,\ast_F,0_F,1_F,<_F)$ is isomorphic to $(\R,+,\ast,1,0,<)$.
+	\end{thm}
+	
+	\begin{defn}
+		The ordered field $(\R,+,\ast,1,0,<)$ is called the Unique Complete Ordered field.
+	\end{defn}
+	
+\clearpage	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+\section{\color{red} Fields}
+	\begin{thm}[De Morgan's Law]
+		Let $S$ be a set, let $A,B$ be subsets of $S$, then the followings hold:
+		\begin{enumerate}[topsep=3pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
+			\item $(A \cap B)^C = A^C \cup B^C$ \qquad \qquad
+			\inlineitem $S (A \cup B)^C = A^C \cap B^C$
+		\end{enumerate}			
+	\end{thm}
+	
+	\begin{lem}
+		Let $S$ be a set, let $\diamond$ be a binary operation on $S$. If $\diamond$-identity exists, then the $\diamond$-identity is unique.
+	\end{lem}
+
+	\begin{lem}
+  		Let $S$ be a set, let $\diamond$ be a binary operation on $S$.\\ If $\diamond$ is associative and $s' \in S$ is the $\diamond$-inverse of $s \in S$,  then $s'$ is the unique $\diamond$-inverse of $s$.
+	\end{lem}
+	
+	\begin{lem}
+		Let $F$ be a field, for $a,b,c,d \in F$, the followings hold:
+		\begin{enumerate}[topsep=3pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
+			\item $-(-a)=a$
+			\item $-(a+b)=(-a)+(-b)$
+			\item $(a+b=c+b) \iff (a=c)$
+			\item $a \ast 0 =0$
+			\item $(a\ast b =0) \iff (a=0$ or $b=0)$
+			\item $(-a)\ast b = -(a \ast b)$
+			\item $(-a) \ast (-b) = a \ast b$
+			\item If $a \neq 0_F$, then $(a^{-1})^{-1}=a$.
+			\item If $b \neq 0_F$ and $c\neq 0_F$, then $a \ast b^{-1} = (a \ast c) \ast (b \ast c)^{-1}$.
+			\item If $b \neq 0_F$ and $d\neq 0_F$, then $a \ast d^{-1} + c \ast d^{-1} = (a \ast d+b \ast c) \ast (b \ast d)^{-1}$.
+			\item If $a \neq 0_F$ and $b\neq 0_F$, then $(a \ast b)^{-1} = a^{-1} \ast b^{-1}$.
+			\item If $b \neq 0_F$ and $d\neq 0_F$, then $(a \ast d =c \ast b) \iff (\frac{a}{b} = \frac{c}{d})$.
+		\end{enumerate}
+	\end{lem}
+	
+	\begin{thm}
+		Let $F$ be a field, the followings hold:
+		\begin{enumerate}[topsep=3pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
+			\item For $a \in F$, $(a*a=0) \iff (a=0)$.
+			\item For $a \in F$, if $\exists \ b \in F \ s.t. \ b^2=a$, then $(-b)^2 = a$.
+		\end{enumerate}
+	\end{thm}
+	
+	\hfill\break
+	\hfill\break
+	\color{red} \noindent Consider using the ordered field $(F,P)$ from now on. \color{black}
+	
+	\begin{lem}
+		For $a,b,c,d \in F$, the followings hold:
+		\begin{enumerate}[topsep=3pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
+			\item If $a<b$, then $(-b) < (-a)$.
+			\item If $a>b$ and $b>c$, then $a>c$.
+			\item If $a<b$ and $c<d$, then $(a+c)<(b+d)$.
+			\item If $a<b$ and $c>d$, then $(a-c)<(b-d)$.
+			\item If $a<b$ and $c>0_F$, then $(a \ast c)<(b \ast d)$.
+			\item If $a<b$ and $c<0_F$, then $(a \ast c)>(b \ast d)$.
+			\item If $a>1_F$, then $a^2 > a$.
+			\item If $0_F \leq a < b$, then $a^2 < b^2$.
+			\item If $0_F<a<1_F$, then $a^2 < a$.
+			\item If $0_F \leq a <b$ and $0_F \leq c <d$, then $a \ast c< b \ast d$.
+			\item If $a\geq 0_F$, $b \geq 0_F$, and $a^2 < b^2$, then $a<b$.
+		\end{enumerate}
+	\end{lem}
+
+	\begin{lem}
+		For $a,b,c \in F$ with $a,b \in (P \cup \{0_F \})$, the followings hold:
+		\begin{enumerate}[topsep=3pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
+			\item $(c \in P) \iff (c^{-1} \in P)$
+			\item $(a>0_F) \iff (a^2 > 0_F)$
+			\item $(a=b) \iff (a^2 = b^2)$
+			\item $(a>b) \iff (a^2 > b^2)$
+		\end{enumerate}
+	\end{lem}
+	
+	\begin{corL}
+		For $a \in F \setminus \ \{0_F \}$, we have $a^2 \in P$.
+	\end{corL}
+			
+	\begin{corL}
+		Given the ordered field $(F,P)$, we have $1_F > 0_F$.
+	\end{corL}
+	
+	\begin{corL}
+		Given the ordered field $(F,P)$, $2_F \coloneqq 1_F + 1_F$ belongs to $P$.
+	\end{corL}
+
+	\begin{lem}
+		For $a,b \in F$, we have $(a \leq b) \iff (x<y+\epsilon \ \forall \epsilon \in P)$.
+	\end{lem}
+
+	\begin{lem}
+		For $x \in F$, we have $|x|^2 = x^2$.
+	\end{lem}
+
+	\begin{lem}
+		For $x \in F$, we have $x \leq |x|$.
+	\end{lem}
+	
+	\begin{lem}
+		For $a,b \in F$, we have $(-b \leq a \leq b) \iff (|a| <b)$.
+	\end{lem}
+
+	\begin{thm}
+		For $a,b \in F$, the followings hold:
+		\begin{enumerate}[topsep=3pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
+			\item $|a \ast b|=|a| \ast |b|$
+			\item $|a-b| \leq (|a| + |b|)$
+			\item $(|a|-|b|) \leq |a-b|$
+			\item $|(|x|-|y|)| \leq |x-y|$
+			\item If $b \neq 0_F$, then $\left|\frac{a}{b} \right|=\frac{|a|}{|b|}$.
+		\end{enumerate}		 
+	\end{thm}
+
+	\begin{thm}[Triangle Inequality]
+		For $a,b \in F$, we have $|a + b| \leq |a| + |b|$.	
+	\end{thm}
+	
+	\begin{thm}[Schwarz Inequality]
+		For $a,b,c,d \in F$, we have $a \cdot b + c \cdot d \leq \sqrt{a^2+c^2} \cdot \sqrt{b^2+d^2}$.
+	\end{thm}
+		
+	
+	\begin{lem}
+		Let $A$ be a subset of $F$. If $A$ has a supremum, then the supremum is unique.
+	\end{lem}
+	
+	\begin{corL}
+		Let $a \in F$, and let $A=\{ x \in F \mid x < a \}$ be a subset of $F$, then $a$ is the least upper bound for $A$.
+	\end{corL}
+
+	\begin{lem}
+		Let $A$ be a subset of $F$. If $A$ has an infimum, then the infimum is unique.
+	\end{lem}
+	
+	\begin{corL}
+		Let $a \in F$, and let $A=\{ x \in F \mid x > a \}$ be a subset of $F$, then $a$ is the greatest lower bound for $A$.
+	\end{corL}
+
+	\begin{thm}
+		(The ordered field $F$ has the lest upper bound property) iff ($F$ has the greatest upper bound property)
+	\end{thm} 
+	
+	\begin{lem}
+		$A \subseteq F$ has a maximal element iff the followings hold:
+		\begin{enumerate}[topsep=3pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
+		\item $A$ has a supremum.
+		\item The supremum of $A$ belongs to $A$.
+		\end{enumerate}
+	\end{lem}
+	
+	\begin{lem}
+		$B \subseteq F$ has a minimal element iff the followings hold:
+		\begin{enumerate}[topsep=3pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
+		\item $B$ has an infimum.
+		\item The infimum of $B$ belongs to $B$.
+		\end{enumerate}
+	\end{lem}
+		
+	\begin{thm}
+		Every nonempty finite subset of $\R$ contains a maximal element and a minimal element.
+	\end{thm}		
+		
+	\begin{lem}
+		For $a,b \in \N_F$, we have $a+b \in \N_F$, and $a \cdot b \in \N_F$, \\where $\N_F \coloneqq \{ x \in F \mid$ x belongs to every inductive subset of F $\} $.
+	\end{lem}
+		
+	\begin{lem}
+		There exists a unique inductive set $\N_F \subseteq F$ that contains all inductive sets in $F$.
+	\end{lem}
+	
+	\begin{lem}
+		For $n \in N_F$, we have $n \geq 1$.
+	\end{lem}
+	
+	\begin{lem}
+		For $m,n \in \N_F$, we have $(n<m) \iff m=n+r$ for some $r \in \N_F$.
+	\end{lem}
+		
+	\begin{lem}
+		For $a,b \in \N_F$. If $a>b$, then $a-b \in \N_F$.
+	\end{lem}
+	
+	\begin{thm}
+		The only strongly inductive subset of $\N_F$ is $\N_F$.
+	\end{thm}
+	
+	\begin{thm}
+		Every nonempty subset of $\N_F$ has a minimal element.
+	\end{thm}	
+
+	
+	\color{red} \noindent The assumption of using the ordered field $(F,P)$ is now removed. \color{black}	
+	\clearpage
+	
+	\color{red} \noindent From now on, we use $(\R,\R_{>0})$ to denote the unique complete ordered field.\color{black}
+	
+	\begin{lem}
+		In the ordered field $(\R,\R_{>0})$, let $A,B$ be nonempty subsets of $\R$. If $\forall a \in A, \ \forall b \in B$, we have $a<b$, then the followings hold:
+		\begin{enumerate}[topsep=3pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
+			\item $\sup(A) \leq \inf(B)$
+			\item $(\sup(A) = \inf(B)) \iff (\, \forall n \in \N, \ \exists \ b \in B$ and $a \in A \ s.t. \ b-a < \frac{1}{n} \, )$
+		\end{enumerate}
+	\end{lem}	
+	
+	\begin{lem}
+		In the ordered field $(\R,\R_{>0})$, the subset $\N \subseteq \R$ is not bounded above.
+	\end{lem}
+		
+	\begin{lem}
+		Let $(F,P)$ be an ordered field, for $a,b \in P$, we have $(a<b) \iff (a^{-1} > b^{-1})$.
+	\end{lem}
+	
+	\begin{corL}[Archimedean Property for $\R$]
+		In the ordered field $(\R,\R_{>0})$, $\forall \epsilon \in \R$ with $\epsilon >0, \ \exists \ n \in \N \ s.t. \ n^{-1} < \epsilon$.
+	\end{corL}
+	
+	\begin{corL}[The Density of $\Q$ in $\R$]
+		In the ordered field $(\R,\R_{>0})$, for $a,b \in \R$ with $a<b$, $\exists \  q \in \Q \ s.t. \ a<q<b$.
+	\end{corL} 
+	
+	\begin{thm}[Characterization of Supremum]
+		In the ordered field $(\R,\R_{>0})$, let $A$ be a nonempty bounded above subset of $\R$, let $\alpha \in \R$ be an upper bound for $A$, then we have $(\alpha = \sup(A)) \iff ( \forall \epsilon >0, \ \exists \ a \in A \ s.t. \ \alpha - \epsilon <a\leq \alpha )$.
+	\end{thm}
+	
+	\begin{thm}[Characterization of Infimum]
+		In the ordered field $(\R,\R_{>0})$, let $B$ be a nonempty bounded below subset of $\R$, let $\beta \in \R$ be a lower bound for $B$, then we have $(\beta = \inf(B)) \iff ( \forall \epsilon >0, \ \exists \ b \in B \ s.t. \ \beta \leq b < \beta + \epsilon )$.
+	\end{thm}
+	
+	\begin{lem}
+		In the ordered field $(\R,\R_{>0})$, let $A$ be a nonempty subset of $\R$. \\If $A$ is bounded above, then $\forall z \in \R$, $(z \geq \sup(A)) \iff (z \geq a$ for all $a \in A)$. \\ If $A$ is bounded below, then $\forall s \in \R$, $(s \leq \inf(A)) \iff (s \leq a$ for all $a \in A)$.
+	\end{lem}
+	
+	\begin{thm}
+		In the ordered field $(\R,\R_{>0})$, let $A$ be a subset of $\R$.\\ If $A$ is bounded above in $(\R,\R_{>0})$, then $A$ has an supremum.\\ If $A$ is bounded below in $(\R,\R_{>0})$, then $A$ has an infimum.
+	\end{thm}
+	
+	\begin{lem}
+		In the ordered field $(\R,\R_{>0})$, let $A$ be a subset of $\R$, let $b \in \R$,
+		\begin{enumerate}[topsep=3pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
+			\item ($A$ is bounded above)$\iff$($-A$ is bounded below)
+			\item ($A$ is bounded above)$\iff$($b+A$ is bounded above)
+			\item ($A$ is bounded below)$\iff$($b+A$ is bounded below)
+			\item ($A$ is not empty and bounded above)$\iff (-\sup(A)=\inf(-A))$
+			\item If $A$ is nonempty and bounded above, then $\sup(b+A)=b+\sup(A)$.
+			\item If $A$ is nonempty and bounded below, then $\inf(b+A)=b+\inf(A)$.	
+		\end{enumerate}
+	\end{lem}
+	
+	\begin{lem}
+		In the ordered field $(\R,\R_{>0})$, let $A,B$ be subsets of $\R$. If both $\sup(A)$ and $\sup(B)$ exist, then we have $\sup(A)+\sup(B)=\sup(A+B)$, that is, $\sup(A)+\sup(B)$ is the supremum of the set $A+B$.
+	\end{lem}
+	
+	\begin{thm}
+		Let $(F,P)$ be an ordered field, let $a \in P$, let $S_a = \{ x \in F \mid x^2 \leq a\}$, then $S_a$ is not empty and bounded above, and ($x \in F$ is the supremum of $S_a$)$\iff$($x^2 =a$ has a solution in $F$).
+	\end{thm}
+	
+	\begin{corT}
+		In the ordered field $(\R,\R_{>0})$, $ \forall a \in P$, $ \exists \ x \in \R \ s.t. \ x^2 = a$, that is, all positive real numbers in $\R$ have at least one square root.
+	\end{corT}
+	
+	\begin{corT}[The Density of Irrational Numbers in $\R$]		
+		In the ordered field $(\R,\R_{>0})$, for $a,b \in \R$ with $a<b$, $\exists \ r \in (\R \setminus \Q), \ s.t. \ a<r<b$.
+	\end{corT}
+	
+	\begin{lem}
+		In the ordered field $(\R,\R_{>0})$, for $a,b \in \R$ with $a>0$ and $b>0$, the followings hold:
+		\begin{enumerate}[topsep=3pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
+			\item If $a<b$, then for all $n \in \N$, we have $a^n \leq b^n$.
+			\item If $a^n \leq b^n$ for some $n \in \N$, then $a<b$.
+		\end{enumerate}
+	\end{lem}
+		
+\clearpage
+
+
+	
+	\color{red} \noindent Consider using the ordered field $(\R,\R_{>0})$ from now on. \color{black}
+	
+	\begin{thm}
+		Let $S$ be a subset of $\N$. If $S$ is weakly inductive, then $S=\N$.
+	\end{thm}
+	
+	\begin{lem}
+		$1 \in \R$ is the minimal element of $\N$.
+	\end{lem}		
+	
+	\begin{lem}
+		For $n,m \in \N$, we have $(m>n) \iff (m \geq n+1)$.
+	\end{lem}
+	
+	\begin{corL}
+		For $n,m \in \N$, we have $(n<m \leq n+1) \iff (m = n+1)$ .
+	\end{corL}
+	
+	\begin{thm}
+		\mbox{$\N$ is well ordered, that is, if $S \subset \N$ is nonempty, then $\exists \ l \in S$ such that $t \leq s$ for all $s \in S$.}
+	\end{thm}
+	
+	\begin{lem}
+		Every nonempty bounded above subset of $\N$ has a maximal element, that is, if $S \subset \N$ is nonempty and bounded above, then $\exists \ l \in S$ such that $t \geq s$ for all $s \in S$.
+	\end{lem}
+	
+	\begin{thm}
+		Let $S$ be a subset of $\N$. If $S$ is strongly inductive, then $S=\N$.
+	\end{thm}
+	
+	\begin{lem}
+		For all $n,m \in \N$, we have $2 \cdot n \neq 2 \cdot m -1$.
+	\end{lem}
+	
+	\begin{lem}
+		For $n \in \N$, $\exists! \ m \in \N \ s.t. \ $ either one of the followings hold:
+		\begin{enumerate}[topsep=3pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
+			\item $n =2 \cdot m$
+			\item $n =2 \cdot m -1$
+		\end{enumerate}
+	\end{lem}
+	
+	\begin{corL}
+		A natural number is either an odd number or an even number.
+	\end{corL}
+
+	\begin{lem}	
+		The sum of a rational number and an irrational number is an irrational number.\\ The product of a non-zero rational number and an irrational number is an irrational number.
+	\end{lem}
+		
+	\begin{lem}
+		Let $A$ be a infinite set, then there exist a proper subset $B$ of $A$ and a function $g:A \to B$ such that $g$ is a bijection.
+	\end{lem}
+	
+	\begin{lem}
+		Given $a \in \N$, we denote $N_a \coloneqq \{ n \in \N \mid n \leq a\}.$ \\Let $m,l \in \N$. then (there exists a bijection from $\N_l$ to $\N_m$)$\iff$(\,$l=m$).
+	\end{lem}
+	
+	\begin{lem}
+		Given $a \in \N$, we denote $N_a \coloneqq \{ n \in \N \mid n \leq a\}.$ Let $m \in \N$.\\ If $S$ is a nonempty subset of $\N_m$, then $\exists$ a bijection from $S$ to $N_l$ for some $l \in \N$ with $l \leq n$.
+	\end{lem}
+	
+	\begin{corL}
+		Given $a \in \N$, we denote $N_a \coloneqq \{ n \in \N \mid n \leq a\}.$\\
+		Let $A$ be a set. If $A$ is finite, then $\exists! \ n \in \N$ such that there exists a bijection from $\N_n$ to $A$.
+	\end{corL}
+	
+	\begin{corL}
+		Every subset of \,$\N$ is countable.
+	\end{corL}
+	
+	\begin{lem}
+		Let $A$ be a nonempty set, then ($A$ is countable)$\iff$(\,$\exists$ an injection from $A$ to $\N$).
+	\end{lem} 
+	
+	\begin{lem}
+		Let $A$ be a nonempty set, then ($A$ is countable)$\iff$(\,$\exists$ a surjection from $\N$ to $A$).
+	\end{lem}
+
+	\begin{thm}
+		Let $A$ be a nonempty set, the followings are equivalent:
+		\begin{enumerate}[topsep=3pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
+			\item The set $A$ is countable.
+			\item There exists a surjection from $\N$ to $A$.
+			\item There exists an injection from $A$ to $\N$.
+		\end{enumerate}
+	\end{thm}
+	
+	\begin{corT}
+		A subset of a countable set is countable.
+	\end{corT}	
+	
+	\begin{corT}
+		A union of finitely many countable sets is countable.
+	\end{corT} 
+	
+	\begin{corT}
+		The set $\N \times \N$ is countable.
+	\end{corT}
+	
+	\begin{lem}
+		The set $\Z$ is countably infinite.
+	\end{lem}
+	
+	\begin{corL}
+		The set $\Z$ is countable.
+	\end{corL}
+	
+	\begin{prop}
+		The set $\Q$ is countably infinite.
+	\end{prop}
+		
+	\begin{corL}
+		The set $\Q$ is countable.
+	\end{corL}
+	
+	\begin{prop}
+		Let $X=\{x_1,x_2\}$ be a set with $x_1 \neq x_2$,\\ then the set $S \coloneqq \{f \mid f$ is a function from $\N$ to $X \} $ is not countable.
+	\end{prop}
+	
+	\begin{lem}
+		Every nonempty bounded below subset of $\Z$ has a minimal element, that is, if $S \subset \Z$ is nonempty and bounded below, then there exists $l \in S$ such that $t \leq s$ for all $s \in S$.
+	\end{lem}	
+	
+	\begin{lem}
+		Every nonempty bounded above subset of $\Z$ has a maximal element, that is, if $S \subset \Z$ is nonempty and bounded above, then there exists $l \in S$ such that $t \geq s$ for all $s \in S$.
+	\end{lem}
+	
+	\begin{thm}
+		For $a,b \in \R$ with $b-a>1$, there exists $m \in \Z$ such that $a<m<b$.
+	\end{thm}
+	
+	\begin{corT}
+		For $a,b \in \R$ with $b-a \geq 1$, there exists $m \in \Z$ such that $a<m<b$.
+	\end{corT}
+	
+	\begin{corT}
+		For $b \in \R$, there exists a unique $m \in \Z$ such that $b-1<m<b$.
+	\end{corT}
+	
+	
+	
+	
+	
+	
+	
+	\begin{lem}	
+		Let $X$ be a set, let $\sim$ be an equivalence relation on $X$, then the followings hold:
+		\begin{enumerate}[topsep=3pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
+			\item For all $y \in X$, we have $y \in C(y)$.
+			\item For all $x,y \in X$, if $x \sim y$, then $C(x)=C(y)$.
+			\item For all $x,y \in X$, we have ($x \sim y$)$\iff$($C(x) \cap C(y) \neq \emptyset$).
+			\item We have $X = \bigcup_{x \in X} C(x)$ and $X=\bigsqcup_{C \in X/{\sim}} C$.
+		\end{enumerate}
+	\end{lem}
+	
+	\begin{thm}[Division Algorithm for Natural Numbers]
+		For $D,d \in \N, \ \exists! \ q,r \in \N \cup \{0 \}$ with $r<d \ s.t. \ D=q \cdot d +r$.
+	\end{thm}
+	
+	\begin{thm}[Division Algorithm]
+		For $D,d \in \Z$ with $d \neq 0$, $\exists! \ q,r \in \Z$ with $0 \leq r <|b|$ such that $D=q \cdot d + r$.
+	\end{thm}
+	
+	\begin{lem}[Bezout's Theorem]
+		For $a,b \in \N$, $\exists \ m,n \in \Z \ s.t. \ a \cdot m + b \cdot n = \gcd(a,b)$.
+	\end{lem}	
+
+\clearpage
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{\color{red} Topology}
+	\color{red} \noindent From now on, consider using the ordered field $(\R,\R_{>0})$. \color{black}
+
+	\begin{lem}
+		Let $a,b \in \R$ with $a \leq b$, the followings are intervals:\\
+		$(a,b) \coloneqq \{x \in \R \mid a<x<b \}$ \ \ \ \ \ \ \ \ \ \, $[ \, a,b \, ] \coloneqq \{x \in \R \mid a\leq x\leq b \}$ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ $(-\infty ,\infty )\coloneqq \{ x \in \R \}$\\ $( a,b \, ] \coloneqq \{x \in \R \mid a<x\leq b \}$ \ \ \ \ \ \ \ \ \ \ \ \ \ $[ \, a,b) \coloneqq \{x \in \R \mid a\leq x<b \}$ \ \ \ \ \ \ \ \ \ \ \ \ \ $(a,\infty) \coloneqq \{x \in \R \mid a<x \}$\\ $(-\infty,b) \coloneqq \{x \in \R \mid x< b \}$\ \ \ \ \ \ \ \ \ \ \ \ \ $[\, a,\infty) \coloneqq \{x \in \R \mid a\leq x \}$\ \ \ \ \ \ \ \ \ \ \ \ \ $(-\infty,b \, ] \coloneqq \{x \in \R \mid x\leq b \}$
+	\end{lem} 	
+	
+	\hfill\break
+	\hfill\break
+	\hfill\break
+	\color{red} \noindent Consider using the topological space $(\R, \T_{EUC})$ from now on. \color{black}
+
+	\begin{lem}
+		Let $a,b \in \R$ with $a \leq b$, the following intervals are open in the Euclidean topology:\\
+		$(a,b)$ \ \ \ \ \ \ \ \ \ \ $(a,\infty)$\ \ \ \ \ \ \ \ \ \ \ $(-\infty,b)$\ \ \ \ \ \ \ \ \ \ $(-\infty,\infty)$
+	\end{lem}
+	
+	\begin{corL}
+		Let $a,r \in \R$ with $r>0$, then $B_r(a)=(a-r,a+r)$ is an open interval in the Euclidean topology.
+	\end{corL}	
+	
+	\begin{corL}
+		Let $a,b \in \R$ with $a \leq b$, the following intervals are closed in the Euclidean topology:\\
+		$[\,a,b\,]$ \ \ \ \ \ \ \ \ \ \ $[\,a,\infty)$\ \ \ \ \ \ \ \ \ \ \ $(-\infty,b\,]$\ \ \ \ \ \ \ \ \ \ $(-\infty,\infty)$
+	\end{corL}
+	
+	\begin{lem}
+		Let $A$ be a subset of $\R$, let $f:A \to \R$ be a function. If the limit of $f$ at $a \in A$ exists, then the limit of $f$ at $a$ is unique, that is, if $\lim_{x \to a} f(x) =l$ and $\lim_{x \to a} f(x) =m$, then $l=m$.
+	\end{lem}
+
+	\begin{lem}
+		Let $A$ be a subset of $\R$, let $h:A \to \R$ be a function, let $a \in A$. If $\lim_{x \to a} h(x) =l$ for some $l \in \R \setminus \{ 0 \}$, then $\exists \ \delta >0 \ s.t.$ if $x \in \R$ satisfies $0<|x-a|< \delta$, we have $|h(x)|>\frac{|l|}{2}$.
+	\end{lem}
+
+	\begin{lem}
+		Let $A$ be a subset of $\R$, let $f:A \to \R$ and $g:A \to \R$ be functions, let $a \in A$. If $\lim_{x \to a} f(x) = m$ for some $m \in \R$, and $\lim_{x \to a} g(x) =n$ for some $n \in \R$, then the followings hold:
+		\begin{enumerate}[topsep=3pt,itemsep=-1ex,partopsep=1ex,parsep=1.5ex]
+			\item $\lim_{x \to a}(c \cdot f)(x) = \lim_{x \to a}[c \cdot f(x)] = c \cdot m$
+			\item $\lim_{x \to a}(f+g)(x) = \lim_{x \to a} [f(x)+g(x)]= m+n$
+			\item $\lim_{x \to a}(f \cdot g)(x) = \lim_{x \to a} [f(x)\cdot g(x)]= m \cdot n$
+			\item If $n \neq 0$, then $\lim_{x \to a} ( \frac{f}{g})(x) = \lim_{x \to a} \frac{f(x)}{g(x)} = \frac{m}{n}$
+		\end{enumerate}		  
+	\end{lem}
+	
+	\begin{lem}
+		Let $A,B$ be subsets of $\R$, let $f:A \to B$ and $g:B \to \R$ be functions, let $a \in A$ and $l \in B$, let $\circ$ denote function composition. \mbox{If $\lim_{x \to a} f(x) = l$}, $\lim_{y \to l} g(y) =m$ for some $m \in \R$, and $m=g(l)$, then we have $\lim_{x \to a}(g \circ f) (x) =m$ .
+	\end{lem}
+	
+	\begin{lem}
+		\mbox{Let $A,B$ be sets, let $S_1 \subseteq S_2 \subseteq A$, $T_1 \subseteq T_2 \subseteq B$, let $g:A \to B$ be a function, the followings hold:} 
+		\begin{enumerate}[topsep=3pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
+		\item $g(S_1 \cap S_2) \subseteq g(S_1) \cap g(S_2)$ \hspace{100pt}
+		\inlineitem $g(S_1) \subseteq g(S_2)$ 
+		\item $g(S_1 \cup S_2) = g(S_1) \cup g(S_2)$ \hspace{100pt}
+		\inlineitem $g^{-1}(T_1) \subseteq g^{-1}(T_2)$
+		\item $g^{-1}(T_1 \cap T_2) = g^{-1}(T_1) \cap g^{-1}(T_2)$ \hspace{67pt}
+		\inlineitem $S_1 \subseteq g^{-1}(g(S_1))$
+		\item $g(g^{-1}(T_1)) \subseteq T_1$		
+		\end{enumerate}
+	\end{lem}
+	
+	\begin{thm}
+		Let $f:\R \to \R$ be a function. ($f$ is continuous)$\iff$(for all $U \in \T_{EUC}$, we have $f^{-1}(U) \in \T_{EUC}$).
+	\end{thm}
+
+	\begin{lem}
+		The topological space $(\R, \T_{EUC})$ is connected.
+	\end{lem}
+	
+	\begin{corL}
+		Let $A \subseteq \R$ be an interval, let $\T_A$ denote the subspace topology on $A$ inherited from $\T_{EUC}$, then the topological space $(A,\T_A)$ is connected.
+	\end{corL}
+	
+	\begin{thm}
+		Let $A$ be a subset of $\R$, let $\T_A$ denote the subspace topology on $A$ inherited from $\T_{EUC}$,\\then ($A$ is an interval)$\iff$(the topological space $(A,\T_A)$ is connected).
+	\end{thm}
+	
+	
+	\color{red} \noindent The assumption of using $(\R, \T_{EUC})$ is now removed. \color{black}
+
+\clearpage
+	
+	
+	\begin{lem}
+		Let $(X,\T_X),(Y,\T_Y),(Z,\T_Z)$ be topological spaces, let $f:X \to Y$ and $g:Y \to Z$ be continuous functions, let $\circ$ denote function composition, then the function $(g \circ f): X \to Z$ is also continuous.
+	\end{lem}
+	
+	\begin{lem}
+		Let $(X,\T_X)$ and $(Y,\T_Y)$ be topological spaces, let $A$ be a subset of $X$, let $\T_A$ denote the subspace topology on $A$ inherited from $\T_X$, let $f:X \to Y$ be a continuous function, then the restriction of $f$ on $A$, $res_A f : A \to Y$ is a continuous function from $(A,\T_A)$ to $(Y,\T_Y)$.
+	\end{lem}
+	
+	\begin{lem}
+		Let $(X,\T_X)$ and $(Y,\T_Y)$ be topological spaces, let $f:X \to Y$ be a continuous function, let $\T_{f(X)}$ denote the subspace topology on $f(X)$ inherited from $\T_Y$, then the function $f : X \to f(X)$ is a continuous function from $(X,\T_X)$ to $(f(A),\T_{f(A)})$.
+	\end{lem}
+
+	\begin{thm}
+		Let $(X,\T_X)$ and $(Y,\T_Y)$ be topological spaces, let $f:X \to Y$ be a continuous function, let $\T_{f(X)}$ denote the subspace topology on $f(X)$ inherited from $\T_Y$. If $(X,\T_X)$ is connected, then the topological space $(f(X),\T_{f(X)})$ is connected.
+	\end{thm}
+	
+	\begin{corT}[Intermediate Value Theorem]
+		In $(\R,\T_{EUC})$, let $a,b \in \R$ with $a<b$, let $f:[\,a,b\,] \to \R$ be a function, let $y$ be an element between $f(a)$ and $f(b)$, then there exists an element $c \in [\,a,b\,]$ such that $y=f(c)$.
+	\end{corT}
+	
+	\begin{lem}
+		Let $(X,\T_X)$ be a topological space. If $(X,\T_X)$ is path connected, then $(X,\T_X)$ is connected.
+	\end{lem}
+	
+	\begin{lem}
+		In $(\R,\T_{EUC})$, let $A$ be a subset of $\R$, let $\T_A$ denote the subspace topology on $A$ inherited from $\T_{EUC}$. (The topological space $(A,\T_A)$ is connected)$\iff$(the topological space $(A,\T_A)$ is path connected)
+	\end{lem}
+	
+	\begin{thm}
+		Let $(X,\T_X)$ and $(Y,\T_Y)$ be topological spaces, let $f:X \to Y$ be a continuous function, let $\T_{f(X)}$ denote the subspace topology on $f(X)$ inherited from $\T_Y$. If $(X,\T_X)$ is path connected, then the topological space $(f(X),\T_{f(X)})$ is path connected.
+	\end{thm}
+	
+	\begin{thm}[Heine–Borel Theorem]
+		In $(\R,\T_{EUC})$, let $A$ be a subset of $\R$, let $\T_A$ denote the subspace topology on $A$ inherited from $\T_{EUC}$.\\ ($A$ is closed and bounded)$\iff$(the topological space $(A,\T_A)$ is compact).
+	\end{thm}
+	
+	\begin{corT}
+		In $(\R,\T_{EUC})$, let $a,b \in \R$ with $a \leq b$, let $[\, a,b \, ]$ be an interval, let $\T_{ab}$ denote the subspace topology on $\Intab$ inherited from $\T_{EUC}$, then the topological space $(\Intab, \T_{ab})$ is compact.
+	\end{corT}
+	
+	\begin{lem}
+		Let $(X,\T)$ be a topological space, let subspace topology be given, a union of finitely many compact subsets of $X$ is compact.
+	\end{lem}	
+	
+	\begin{lem}
+	Let $(X,\T)$ be a compact topological space, let $C$ be a closed subset of $X$, then the topological space $(C,\T_C)$ is compact.
+	\end{lem}	
+	
+	\begin{thm}
+		Let $(X,\T_X)$ and $(Y,\T_Y)$ be topological spaces, let $f:X \to Y$ be a continuous function, let $\T_{f(X)}$ denote the subspace topology on $f(X)$ inherited from $\T_Y$. If $(X,\T_X)$ is compact, then the topological space $(f(X),\T_{f(X)})$ is compact.
+	\end{thm}	
+	
+	\begin{lem}
+		In $(\R,\T_{EUC})$, let $A$ be a nonempty bounded subset of $\R$. If $A$ is closed, then $A$ contains a maximal element and a minimal element.
+	\end{lem}		
+	
+	\begin{thm}[Extreme Value Theorem in $(\R,\T_{EUC})$]
+		In $(\R,\T_{EUC})$, let $a,b \in \R$ with $a \leq b$, let $f:[\,a,b\,] \to \R$ be a continuous function, then \mbox{$\exists \ x_m \in [\,a,b\,]$} $\ s.t. \ \forall x \in \Intab,$ we have $f(x) \geq f(x_m)$, and $\exists \ x_M \in \Intab, \ s.t. \ \forall x \in \Intab,$ we have $f(x) \leq f(x_M)$.
+	\end{thm}
+	
+	\begin{thm}[Extreme Value Theorem]
+		Let $(X,\T)$ be a nonempty compact topological space, let $f:X \to \R$ be a continuous function, then the set $f(X) \subseteq \R$ contains a maximal element and a minimal element.
+	\end{thm}
+	
+	\begin{lem}	
+		Let $(X,\T_X)$ and $(Y,\T_Y)$ be topological spaces, let $A$ be a subset of $X$, let $f:X \to Y$ be a homeomorphism let $\T_A$ denote the subspace topology on $A$ inherited from $\T_X$, let $\T_{f(A)}$ denote the subspace topology on $f(A)$ inherited from $\T_Y$, then the restriction of $f$ on $A$, $res_Af:A \to f(A)$ is a homeomorphism from $(A, \T_A)$ to $(f(A),\T_{f(A)})$.
+	\end{lem}
+	
+	\begin{lem}
+		In $(\R,\T_{EUC})$, let $I$ be a subset of $\R$, let $\T_I$ denote the subspace topology on $I$ inherited from $\T_{EUC}$, let $f:I \to \R$ be a function. If the topological space $(I,\T_I)$ is connected and $f$ is locally constant and continuous on $I$, then $f$ is a constant function.
+	\end{lem}
+	
+	\begin{lem}
+		In $(\R,\T_{EUC})$, let $I$ be a subset of $\R$, let $\T_I$ denote the subspace topology on $I$ inherited from $\T_{EUC}$. If every continuous, locally constant function $f:I \to \R$ is a constant function, then the topological space $(I,\T_I)$ is connected.
+	\end{lem}
+	
+	\begin{lem}
+		Let $(X,\T)$ be a topological space, let $A,B$ be subsets of $X$, let $\bar{A} \subset X$ denote the topological closure of $A$,  let $\bar{B} \subset X$ denote the topological closure of $B$, the followings hold:
+		\begin{enumerate}[topsep=3pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
+			\item $\bar{A}$ is the smallest closed subset of $X$ that contains $A$.
+			\item ($x \in \bar{A}$)$\iff$(\,$\forall C \in \T$, if $x \in C$, then $C \cap A \neq \emptyset$).
+			\item If $A$ is a subset of $B$, then $\bar{A}$ is a subset of $\bar{B}$.
+		\end{enumerate}
+	\end{lem}
+	
+	\begin{lem}
+		Let $(X,\T)$ be a topological space, let $A$ be a subset of $X$, then the interior of $A$ is the largest open subset of $X$ that is contained in  $A$.
+	\end{lem}
+	
+	\begin{lem}
+		Let $(X,d)$ be a metric space, $\T_d \coloneqq \{ A \subseteq X \mid \forall a \in A, \ \exists \ r>0 \ s.t. \ B_r(a) \subseteq A\}$ is a topology on $X$.
+	\end{lem}
+	
+	\begin{lem}
+		Let $(X,d)$ be a metric space, let $\T_d$ denote the topology on $X$ associated to $d$, then the topological space $(X,\T_d)$ is Hausdorff, that is, every metric space is Hausdorff.
+	\end{lem}
+	
+	\begin{corL}
+		Every metrizable topological space is Hausdorff.
+	\end{corL}
+	
+	\begin{thm} 
+		Let $(X,\T)$ be a Hausdorff topological space, let $C \subseteq X$, let $\T_C$ be the subspace topology on $C$ inherited from $\T$. If the topological space $(C,\T_C)$ is compact, then the set $C$ is closed.
+	\end{thm}
+	
+	\begin{lem}
+		In $(\R, \T_{EUC})$, let $S$ be a subset of $\R$. \\($S$ is closed)$\iff$(the set of accumulation points of $S$ is a subset of $S$)
+	\end{lem}
+	
+	\begin{thm}
+		In $(\R, \T_{EUC})$, let $S$ be a subset of $\R$, let $\T_S$ denote the subspace topology on $S$ inherited from $\T_{EUC}$, then the following statements are equivalent:
+		\begin{enumerate}[topsep=3pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
+			\item The topological space $(S,\T_S)$ is compact.
+			\item $S$ is closed in $\T_{EUC}$ and bounded in $\R$.
+			\item Every sequence in $(S,\T_S)$ has a convergent subsequence whose limit belongs to $S$.
+			\item $S$ is bounded in $\R$ and $\nexists$ sequence in $(S,\T_S)$ whose limit belongs to $\R \setminus S$.
+		\end{enumerate}
+	\end{thm}
+	
+\clearpage
+	
+	
+	
+	
+	
+	
+	
+	
+	
+\section{\color{red} Functions}
+
+	\begin{lem}
+  		Let $A,B$ be sets, let $f:A \to B$ be a function, then ($f$ is invertible)$\iff$($f$ is bijective).
+	\end{lem}
+	
+	\begin{lem}
+		Let $A$ be a set, let $f:A \to A$ be an involution, then $f$ is bijective.
+	\end{lem}
+	
+	\begin{lem}
+		Let $A$ be a finite set, let $f:A \to A$ be an involution.\\ If $A$ is finite and has odd number of element, then $\exists \ a \in A \ s.t. \ f(a)=a$.
+	\end{lem}
+	
+	\begin{lem}
+		Let $A,B,C$ be sets, let $f:A \to B$ and $g:B \to C$ be functions, then the function $(g \circ f): A \to C$ is injective provided that $f$ is injective and $res_{f(A)}g:f(A) \to C$ is injective.
+	\end{lem}
+	
+	\begin{lem}
+		Let $A,B,C$ be sets, let $f:A \to B$ and $g:B \to C$ be functions, then the function $(g \circ f): A \to C$ is surjective provided that $res_{f(A)}g:f(A) \to C$ is surjective.
+	\end{lem}
+	
+	\begin{thm}
+		Let $A,B,C$ be sets, let $f:A \to B$ and $g:B \to C$ be functions, then the function $(g \circ f): A \to C$ is bijective provided that $f$ is injective and $res_{f(A)}g:f(A) \to C$ is bijective.
+	\end{thm}
+		
+
+	\hfill\break
+	\hfill\break
+	\hfill\break
+	\color{red} \noindent From now on, consider using the ordered field $(\R,\R_{>0})$, and the topological space $(\R,\T_{EUC})$.\\ The term IWIMP refers to Interval With Infinitely Many Points. \color{black}	
+	
+	\begin{lem}
+		Let $A,B$ be subsets of $\R$, let $f:A \to B$ be a function. If $f$ is strictly increasing on $A$, then the inverse of $f$, $f^{-1}:f(A) \to A$, is strictly increasing on $f(A)$.
+	\end{lem}
+	
+	\begin{lem}
+		Let $A,B$ be subsets of $\R$, let $f:A \to B$ be a function. If $f$ is strictly decreasing on $A$, then the inverse of $f$, $f^{-1}:f(A) \to A$, is strictly decreasing on $f(A)$.
+	\end{lem}
+	
+	\begin{lem}
+		Let $A$ be subsets of $\R$, let $f:A \to \R$, $g:A \to \R$ be functions that are strictly increasing on $A$, then the function $(f+g):A \to \R \ \ \ x \mapsto f(x)+g(x)$ is strictly increasing on $A$.
+	\end{lem}	
+	
+	\begin{lem}
+		Let $A,B$ be subsets of $\R$, let $f:A \to B$, $g:B \to \R$ be functions that are strictly increasing on their domains, then the function $(g \circ f):A \to \R \ \ \ x \mapsto g(f(x))$ is strictly increasing on $A$.
+	\end{lem}	
+		
+	\begin{lem}
+		Let $f:\R \to \R$ be a function that is bounded on $\R$, then $f$ is locally bounded.
+	\end{lem}
+	
+	\begin{lem}
+		Let $A$ be a subset of $\R$, let $f:A \to \R$ be a function that is continuous at $a \in A$. If $f(a) \neq 0$, then there exists an interval $I \in \T_{EUC}$ such that $f(x) \neq 0$ for $x \in I$.
+	\end{lem} 
+	
+	\begin{lem}
+		Let $A$ be a subset of $\R$, let $a \in A$, $c \in \R$, let $f:A \to \R$ and $g:A \to \R$ be functions that are continuous at $a$, then the followings hold:
+		\begin{enumerate}[topsep=3pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
+			\item The function $(f+g):A \to \R \ \ \ x \mapsto f(x)+g(x)$ is continuous at $a$.
+			\item The function $(f \cdot g):A \to \R \ \ \ x \mapsto f(x) \cdot g(x)$ is continuous at $a$.
+			\item The function $(c \cdot f):A \to \R \ \ \ x \mapsto c \cdot f(x)$ is continuous at $a$.
+			\item The function $|f|:A \to \R \ \ \ x \mapsto |f(x)|$ is continuous at $a$.
+			\item If $g(a) \neq 0$, then $\frac{f}{g}:A \to \R \ \ \ x \mapsto \frac{f(x)}{g(x)}$ is continuous at $a$.
+		\end{enumerate}
+	\end{lem}
+	
+	\begin{lem}
+		Let $a,b \in \R$, let $\Intab$ be an interval, let $f:\Intab \to \R$ be a function that is continuous on $\Intab$, then there exists a function $g:\R \to \R$ that is continuous on $\R$ with $g(x)=f(x)$ for all $x \in \Intab$.
+	\end{lem}
+	
+	\begin{lem}
+		Given $n \in \N$, the function $f:\R \to \R \ \ \ x \mapsto x^n$ is continuous.
+	\end{lem}
+
+	\begin{prop}
+		Every polynomial function is continuous.
+	\end{prop}
+	
+	\begin{lem}
+		Let $I \subseteq \R$ be an IWIMP, let $f:I \to \R$ be a function. If $f$ is injective and continuous on $I$, then $f$ is either strictly increasing or strictly decreasing on $I$.
+	\end{lem}
+	
+	\begin{lem}[a version of the Inverse Function Theorem]
+		Let $I \subseteq \R$ be an IWIMP, let $f:I \to \R$ be a function. If $f$ is injective and continuous on $I$, then the inverse of $f$, $f^{-1}:f(I) \to I$, is continuous on $f(I)$.
+	\end{lem}
+	
+	\begin{lem}[Principle of Uniformly Continuity]
+		Let $a,b \in \R$ with $a<b$, let $[\,a,b\,]$ be an interval, and let $g:[\,a,b\,] \to \R$ be a continuous function, then $g$ is uniformly continuous on $[\,a,b\,]$.
+	\end{lem}
+	
+	\begin{lem}
+		Let $A$ be a subset of $\R$, let $f:A \to \R$ be a function. If $f$ is uniformly continuous on $A$, then $f$ is continuous on $A$
+	\end{lem}
+	
+	\begin{lem}
+		Let $A$ be a subset of $\R$, let $f:A \to \R$ and $g:A \to \R$ be functions that are uniformly continuous on $A$, then the function $(f+g):A \to \R \ \ \ x \mapsto f(x)+g(x)$ is uniformly continuous on $A$.
+	\end{lem}
+	
+	\begin{lem}
+		Let $A$ be a subset of $\R$, let $f:A \to \R$ and $g:A \to \R$ be functions that are uniformly continuous on $A$. If $f$ and $g$ are bounded on $A$, then the function $(f \cdot g):A \to \R \ \ \ x \mapsto f(x)\cdot g(x)$ is uniformly continuous on $A$.
+	\end{lem}
+	
+	\begin{lem}
+		Let $A,B$ be a subset of $\R$, let $f:A \to B$ and $g:B \to \R$ be functions, let $\circ$ denote function composition. If $f$ is uniformly continuous on $A$ and $g$ is uniformly continuous on $B$, then the function $(g \circ f):A \to \R$ is uniformly continuous on $A$.
+	\end{lem}
+		
+		
+	\begin{prop}	
+		For some $\alpha \in (0,\infty)$, let $f:[\,0,\infty) \to \R \ \ \ x \mapsto x^{\alpha}$ be a function, the followings hold:
+		\begin{enumerate}[topsep=3pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
+			\item If $0<\alpha\leq 1$, then $f$ is uniformly continuous on $[\,0,\infty)$.
+			\item If $\alpha >1$, then $f$ is not uniformly continuous on $[\,0,\infty)$.
+		\end{enumerate}		 
+	\end{prop}
+	
+\hfill\break
+\hfill\break
+\hfill\break
+\hfill\break
+\hfill\break
+\section{\color{red} Polynomials}
+	\color{red} \noindent From now on, consider using the ordered field $(\R,\R_{>0})$, and the topological space $(\R, \T_{EUC})$\\ The term IWIMP refers to Interval With Infinitely Many Points. \color{black}
+		
+	\begin{thm}
+		Let $I \subseteq \R$ be an IWIMP, let $a \in I$, $n \in \N$, and let $f:I \to \R$ be a function, then we have:
+		\begin{enumerate}[topsep=3pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
+			\item  (Lagrange Remainder) If $f$ is $(n+1)$-times differentiable on $I$,\\ then $\forall x \in I, \ \exists \ t \in I$ between $a$ and $x \ s.t. \ R_{n,a}(x)=\frac{f^{(n+1)}(t)}{(n+1)!}(x-a)^{n+1}$.
+			\item  (Cauchy Remainder) If $f$ is $(n+1)$-times differentiable on $I$,\\ then $\forall x \in I, \ \exists \ t \in I$ between $a$ and $x \ s.t. \ R_{n,a}=\frac{f^{(n+1)}(t)}{n!}(x-t)^n (x-a)$.
+			\item If $f$ is $(n+1)$-times differentiable at $a$, and $f$ is continuous on $I$,\\ then we have $R_{n,a}=\int_a^x \frac{f^{(n+1)}(t)}{n!}(x-t)^n \, dt$.
+		\end{enumerate}
+	\end{thm}
+	
+	\begin{corT}
+		Given $n \in \N$, the best degree $n$ polynomial approximation of a degree $n$ polynomial function is the polynomial function itself. That is, let $f:\R \to \R \ \ \  x\mapsto \sum_{j=0}^n b_j x^j$ be a polynomial function of degree $n$, let $a \in \R$, let $P_{n,a}$ denote the Taylor polynomial of degree $n$ centered at $a$ associated to $f$, then for all $x \in \R$, we have $P_{n,a}(x)=f(x)$.
+	\end{corT}
+
+
+\clearpage	
+	
+	
+	
+	
+\section{\color{red} Groups}
+	\color{red} \noindent From now on, consider using the ordered field $(\R,\R_{>0})$ \color{black}
+	
+	\begin{lem}
+		Let $(G,\diamond_G)$ and $(H,\diamond_H)$ be groups, let $\varphi: G \to H$ be a group isomorphism from $(G,\diamond_G)$ to $(H,\diamond_H)$, then $\varphi^{-1}:H \to G$ is a group isomorphism from $(H,\diamond_H)$ to $(G,\diamond_G)$.
+	\end{lem}
+	
+	\begin{prop}
+		Let $(G,\diamond_G),(H,\diamond_H)$ be groups, let $\varphi :G \to H$ be a group homomorphism from $(G,\diamond_G)$ to $(H,\diamond_H)$, then $(im(\varphi),\diamond_H)$ and $(ker(\varphi),\diamond_G)$ are groups.
+	\end{prop}
+	
+	\begin{lem}
+		The set $s_n$ has $n!$ elements.
+	\end{lem}
+	
+	\begin{lem}
+		Given $n \in \N$, $S_n$ is a group.
+	\end{lem}
+	
+	\begin{lem}
+		For $n \in \{1,2\}$, the group $S_n$ is abelian, while for $n \in \N$ with $n \geq 3$, the group $S_n$ is not abelian.
+	\end{lem}
+	
+	\begin{prop}
+		The group $D_3$ is isomorphic to the group $S_3$, while $\forall n \in \N$ with $n>3$, $D_n$ is not isomorphic to $S_n$.
+	\end{prop}
+	
+	\begin{lem}
+		The function $\ln:(0,\infty) \to \R$ is a group homomorphism from $((0,\infty),\ast)$ to $(\R,+)$.
+	\end{lem}
+	
+	\begin{corL}
+		The group $((0,\infty),\ast)$ is isomorphic to the group $(\R,+)$.
+	\end{corL}
+	
+	\begin{lem}
+		Let $(G,\diamond)$ be a group, let $e \in G$ be the $\diamond$-identity, let $x \in G$, then ($x \diamond x = x$)$\iff$($x=e$).
+	\end{lem}
+	
+	\begin{lem}
+		Let $(G,\diamond_G)$ and $(H,\diamond_H)$ be groups, let $\varphi:G \to H$ be a group homomorphism from $(G,\diamond_G)$ to $(H,\diamond_H)$, let $e_G \in G$ be the $\diamond_G$-identity, and let $e_H \in H$ be the $\diamond_H$-identity, then the followings hold:
+		\begin{enumerate}[topsep=3pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
+		\item $\varphi (e_G) = e_H$
+		\item $\forall x \in G$, we have $\varphi (x^{-1}) = (\varphi(x))^{-1}$.
+		\item $\forall x \in G$, and $\forall n \in \N$, we have $\varphi(x^n) = (\varphi(x))^n$.
+		\end{enumerate}
+	\end{lem} 
+	
+
+\clearpage
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+\section{\color{red} Calculus}
+	\color{red} \noindent From now on, consider using the ordered field $(\R,\R_{>0})$, and the topological space $(\R, \T_{EUC})$.\\ \mbox{IWIMP refers to Interval With Infinitely Many Points. Fix $a,b \in \R$, let $[\,a,b\,]$ be an interval.} \color{black}
+	
+	\begin{lem}
+		Let $P,Q$ be partitions of $[\,a,b\,]$ with $P \leq Q$, let $f:\Intab \to \R$ be a bounded function, then we have $U(f,P) \geq U(f,Q)$.
+	\end{lem}
+
+	\begin{lem}
+		Let $P,Q$ be partitions of $\Intab$, let $f:\Intab \to \R$ be a bounded function, then $L(f,P) \leq U(f,Q)$.
+	\end{lem}
+	
+	\begin{lem}
+		Any constant function of the form $f:\Intab \to \R$ is Darboux integrable on $\Intab$.
+	\end{lem}
+	
+	\begin{lem}[Darboux Integrability Criterion]
+		Let $f:\Intab \to \R$ be a bounded function.\\ \mbox{($f$ is Darboux integrable on $\Intab$) iff ($\forall \epsilon >0,  \ \exists$ partitions $P,Q$ of $\Intab \ s.t. \ U(f,P)-L(f,Q)<\epsilon$).}
+	\end{lem}
+	
+	\begin{lem}
+		Let $f:\Intab \to \R$ be a function. If $f$ is Riemann integrable on $\Intab$, then $f$ is bounded on $\Intab$.
+	\end{lem}
+	
+	\begin{lem}
+		Let $f:\Intab \to \R$ be a bounded function, let $P$ denote partition of $\Intab$, and let $P_n$ denote regular partition of $\Intab$. If $\lim_{||P|| \to 0} U(f,P) =l$ for some $l \in \R$, then $\lim_{n \to \infty} U(f,P_n) =l$. Similarly, if $\lim_{||P|| \to 0} L(f,P) =m$ for some $m \in \R$, then $\lim_{n \to \infty} L(f,P_n) =m$.
+	\end{lem}
+	
+	\begin{lem}
+		Let $f:\Intab \to \R$ be a bounded function, let $P,Q$ be partitions of $\Intab$,\\ then we have $\lim_{||P|| \to 0} U(f,P) = U(f)$, and $\lim_{||Q|| \to 0} L(f,P) = L(f)$.
+	\end{lem}
+	
+	\begin{corL}
+		Let $f:\Intab \to \R$ be a bounded function,\\ then ($f$ is Darboux integrable on $\Intab$) iff ($f$ is Darboux Integrable on $\Intab$).\\ Moreover, if $f$ is Darboux integrable on $\Intab$ or S-integrable on $\Intab$, then we have $I_S =I_D$.
+	\end{corL}
+
+	\begin{lem}
+		Let $f:\Intab \to \R$ be a bounded function. If $f$ is S-integrable on $\Intab$, then $f$ is Riemann Integrable on $\Intab$. Moreover, if $f$ is S-integrable on $\Intab$, then we have $I_R=I_S$.
+	\end{lem}
+	
+	\begin{lem}
+		Let $f:\Intab \to \R$ be a function. If $f$ is Riemann integrable on $\Intab$, then $f$ is S-integrable $\Intab$. \mbox{Moreover, if $f$ is Riemann integrable $\Intab$, then we have $I_S=I_R$}.
+	\end{lem}
+	
+	\begin{thm}
+		Let $f:\Intab \to \R$ be a function, the followings are equivalent:
+		\begin{enumerate}[topsep=3pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
+		\item $f$ is bounded and Darboux integrable on $\Intab$.
+		\item $f$ is bounded and S-integrable on $\Intab$.
+		\item $f$ is Riemann integrable on $\Intab$.
+		\end{enumerate}
+		Moreover, if any one of the three holds, then we have $I_S = I_D = I_R$.
+	\end{thm}
+	
+	\begin{lem}
+		Let the functions $f:\Intab \to \R$ and $g:\Intab \to \R$ be integrable on $\Intab$, let $c \in \R$, then we have:
+		\begin{enumerate}[topsep=3pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
+			\item The function $(f+g):\Intab \to \R \ \ \ x \mapsto f(x)+g(x)$ is integrable on $\Intab$.
+			\item The function $(c \cdot f):\Intab \to \R \ \ \ x \mapsto c \cdot f(x)$ is integrable on $\Intab$.
+			\item The function $f^2:\Intab \to \R \ \ \ x \mapsto (f(x))^2$ is integrable on $\Intab$.
+			\item The function $(f \cdot g):\Intab \to \R \ \ \ x \mapsto f(x) \cdot g(x)$ is integrable on $\Intab$.
+		\end{enumerate}
+		Moreover, we have $\int_a^b (f+g) = (\int_a^b f )+ (\int_a^b g)$ and $\int_a^b (c \cdot f) = c \cdot \int_a^b f$.
+	\end{lem}
+	
+	\begin{thm}
+		Let $f:\Intab \to \R$ be a function. If $f$ is continuous, then $f$ is integrable on $\Intab$.
+	\end{thm}
+	
+	\begin{lem}
+		Let $c \in (a,b)$, let $[\,a,c\,]$, $[\,c,b\,]$ be intervals, let $f:[\,a,b\,] \to \R$ be a function.\\ ($f$ is integrable on $\Intab$) iff (\,$res_{[\,a,c\,]}f$ is integrable on $[\,a,c\,]$ and $res_{[\,c,b\,]}f$ is integrable on $[\,c,b\,]$)
+	\end{lem}
+	
+	\begin{corL}
+		Let $l,m,n \in \Intab$, let $f:[\,a,b\,] \to \R$ be a function.\\ If $f$ is integrable on $\Intab$, then we have $\int_l^m f + \int_m^n f = \int_l^n f$.
+	\end{corL}
+	
+	\begin{lem}
+		The function $\ln:(0,\infty) \to \R \ \ \ x \mapsto \ln(x)$ is strictly increasing.
+	\end{lem}
+	
+	\begin{lem}
+		Let $f:\Intab \to \R$ be a function that is bounded by $M \in \R$, that is, $ \forall x \in \Intab,$ we have $ |f(x)| \leq M$. If $f$ is integrable on $\Intab$, then $-M \cdot (b-a) \leq \int_a^b f \leq M \cdot (b-a)$.
+	\end{lem}
+	
+	\begin{lem}
+		Let $f:\Intab \to \R$ be a function. If $f$ is integrable on $\Intab$, then $|f|:\Intab \to \R \ \ \ x \mapsto |f(x)|$ is integrable on $\Intab$. Moreover, if $f$ is integrable on $\Intab$, then we have $| \int_a^b f | \leq \int_a^b |f|$.
+	\end{lem}
+	
+	\begin{lem}
+		Let $f:\R \to \R$ be a function, let $m \in [\,0,\infty)$. \\If $f$ is odd, and $f$ is integrable on $[\,-m,m\,]$, and we have $\int_{-m}^m f =0$.
+	\end{lem}
+	
+	\begin{lem}
+		Let $f:\Intab \to \R$ be a function that is integrable on $\Intab$. If $f(x) \geq 0 \  \forall x \in \Intab$, then $\int_a^b f \geq 0$.
+	\end{lem}
+	
+	\begin{lem}
+		Let $f:\Intab \to \R$ and $g:\Intab \to \R$ be functions that are integrable on $\Intab$.\\ If $f(x) \geq g(x) \ \forall x \in \Intab$, then $\int_a^b f \geq \int_a^b g$.
+	\end{lem}
+	
+	\begin{lem}
+		Let $f:\Intab \to \R$ be a function that is integrable on $\Intab$, let $c \in \R$,\\ then $g:[\,a+c,b+c\,] \to \R \ \ \ x \mapsto f(x-c)$ is integrable on $[\,a+c,b+c\,]$, and we have $\int_a^b f = \int_{a+c}^{b+c} g$.
+	\end{lem}
+	
+	\begin{lem}
+		Let $c \in \R_{>0}$, let $f:[\,c \cdot a,c \cdot b\,] \to \R$ be a function that is integrable on $[\,c \cdot a,c \cdot b\,]$,\\ then $g:\Intab \to \R \ \ \ x \mapsto f(c \cdot x)$ is integrable on the interval $\Intab$, and we have $\int_{c \cdot a}^{c \cdot b} f = c \cdot \int_{a}^{b} g$.
+	\end{lem}
+
+	\begin{lem}
+		Let $f:\Intab \to \R$ be a function that is integrable on $\Intab$, let $F:\Intab \to \R \ \ \ x \mapsto \int_a^x f$ be a function, then $F$ is continuous on $\Intab$.
+	\end{lem}	 
+	
+	\begin{corL}
+		The function $\ln:(0,\infty) \to \R \ \ \ x \mapsto \ln(x)$ is continuous.
+	\end{corL}
+	
+	\begin{thm}
+		Let $\T_{0}$ denote the subspace topology on the interval $(,\infty)$ inherited from $\T_{EUC}$.\\ The function $\ln:(0,\infty) \to \R \ \ \ x \mapsto \ln(x)$ is a homeomorphism from $((0,\infty),\T_{0})$ to $(\R,\T_{EUC})$.
+	\end{thm}
+	
+	\color{red} \noindent The assumptions, $a,b \in \R$, $\Intab$ is an interval, are now removed. \\ We continue using the ordered field $(\R,\R_{>0})$ and the topological space $(\R,\T_{EUC})$. \color{black}
+	\hfill\break
+	\hfill\break
+	
+	\begin{lem}
+		Let $A$ be a subset of $\R$, let $f:A \to \R$ be a function, let $a \in A$,\\  then (\,$\lim_{x \to a} f(x) =l$ for some $l \in \R$)$\iff$(\,$\lim_{x \to a^+} f(x) = \lim_{x \to a^-} f(x) = l$).
+	\end{lem}	
+	
+	\begin{lem}
+		Let $A$ be a subset of $\R$, let $f:A \to \R$ be a function, let $a \in A$,\\ then (\,$\lim_{x \to a} f(x)=f(a)$)$\iff$(\,$\lim_{h \to 0}[f(a+h)-f(a)]=0$).
+	\end{lem}
+	
+	\begin{lem}
+		Let $I \subseteq \R$ be an IWIMP, let $f:I \to \R$ and $g:I \to \R$ be functions that are differentiable on $I$, let $c \in \R$, then the followings hold: 
+		\begin{enumerate}[topsep=3pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
+		\item The function $(f+g):I \to \R \ \ \ x \mapsto f(x)+g(x)$ is differentiable on $I$.
+		\item The function $(c \cdot f): I \to \R \ \ \ x \mapsto c \cdot f(x)$ is differentiable on $I$.
+		\end{enumerate}
+		Moreover, we have $(f+g)'=f'+g'$ and $(c \cdot f)' = c \cdot (f')$.
+	\end{lem}
+	
+	\begin{lem}
+		Given $n \in \N$, let $g:\R \to \R \ \ \ x \mapsto x^n$ be a function, let $a \in \R$, then $g$ is differentiable at $a$.
+	\end{lem}
+	
+	\begin{corL}
+		All polynomial functions are differentiable on $\R$.
+	\end{corL}
+	
+	\begin{lem}
+		Let $I \subseteq \R$ be an IWIMP, let $f:I \to \R$ be a function that is differentiable at $c \in I$. If $f$ attains a local minimal or a local maximum at $c$, then we have $f'(c)=0$.
+	\end{lem} 
+
+	\begin{lem}
+		Let $I \subseteq \R$ be an IWIMP, let $f:I \to \R$ be a function, let $c \in I$. If $f$ is differentiable at $c$, then $f$ is continuous at $c$.
+	\end{lem}
+	
+	\begin{lem}[Chain Rule]
+		Let $I,W \subseteq \R$ be IWIMP, let $g:I \to W$ be a function that is differentiable at $a \in I$, let $f:W \to \R$ be a function that is differentibale at $g(a)$, let $\circ$ denote function composition, then the function $f \circ g : I \to \R$ is differentiable at $a$, and we have $(f \circ g)'(a) = f'(g(a)) \cdot g'(a)$.
+	\end{lem}
+	
+	\begin{thm}[Rolle's Theorem]
+		Let $a,b \in \R$ with $a<b$, let $\Intab$ be an interval, let $f: \Intab \to \R$ be a function with $f(a)=f(b)$. If $f$ is differentiable on $(a,b)$ and continuous on $\Intab$, then $\exists \ c \in (a,b) \ s.t. \ f'(c)=0$.
+	\end{thm}
+	
+	\begin{thm}[Cauchy's Mean Value Theorem]
+		Let $a,b \in \R$ with $a<b$, let $\Intab$ be an interval, let $f: \Intab \to \R$ and $g: \Intab \to \R$ be functions. \mbox{If both $f$ and $g$ are differentiable on $(a,b)$, and both $f$ and $g$ are continuous on $\Intab$,}\\ \mbox{then $\exists \ c \in (a,b) \ s.t. \ f'(c) \cdot [g(b)-g(a)]=g'(c) \cdot [f(b)-f(a)]$}.
+	\end{thm}
+	
+	\begin{corT}[Mean Value Theorem]
+		Let $a,b \in \R$ with $a<b$, let $\Intab$ be an interval, let $f: \Intab \to \R$ be a function. If $f$ is continuous on $\Intab$ and differentiable on $(a,b)$, then $\exists \ c \in (a,b) \ s.t. \ f'(c)\cdot (b-a)=f(b)-f(a)$.
+	\end{corT}
+	
+	\begin{corT}
+		Let $I \in \T_{EUC}$ be an IWIMP, let $f:I \to \R$ be a function that is differentiable on $I$. If $f' \equiv 0$, that is, if $f':I \to \R \ \ \ x \mapsto 0$, then $f$ is a constant function.
+	\end{corT} 
+	
+	\begin{corT}
+		Let $a,b \in \R$ with $a<b$, let $\Intab$ be an interval, let $f: \Intab \to \R$ and $g: \Intab \to \R$ be functions. \mbox{If $f$ and $g$ are both continuous on $\Intab$ and differentiable on $(a,b)$, and $f'=g'$ on $\Intab$}\\ then $\exists \ c \in \R \ s.t. \ \forall x \in \Intab$, we have $f(x)=g(x)+c$.
+	\end{corT}
+	
+	\begin{lem}
+		Let $A$ be a subset of $\R$, let $f:A \to \R$ be a function, let $a \in A$, then $\lim_{x \to a} f(x) = \lim_{h \to 0} f(a+h)$.
+	\end{lem}
+	
+	\begin{thm}[L'Hopital's Rule]
+		Let $I \in \T_{EUC}$ be an IWIMP, let $f:I \to \R$ and $g:I \to \R$ be functions that are differentiable at $a \in I$, then the followings hold:
+		\begin{enumerate}[topsep=3pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
+			\item \mbox{If $\lim_{x \to a^+}f(x) = \lim_{x \to a^+} g(x) =0$ and $\lim_{x \to a^+} \frac{f'(x)}{g'(x)}=l$ where $l \in \R$, then $\lim_{x \to a^+}\frac{f(x)}{g(x)}=l$}.
+			\item \mbox{If $\lim_{x \to a^-}f(x) = \lim_{x \to a^-} g(x) =0$ and $\lim_{x \to a^-} \frac{f'(x)}{g'(x)}=l$ where $l \in \R$, then $\lim_{x \to a^-}\frac{f(x)}{g(x)}=l$}.
+			\item If $\lim_{x \to a}f(x) = \lim_{x \to a} g(x) =0$ and $\lim_{x \to a} \frac{f'(x)}{g'(x)}=l$ for some $l \in \R$, then $\lim_{x \to a}\frac{f(x)}{g(x)}=l$.
+			\item If $\lim_{x \to a^+}f(x) = \lim_{x \to a^+} g(x) =0$ and $\lim_{x \to a^+} \frac{f'(x)}{g'(x)}=-\infty$, then $\lim_{x \to a^+}\frac{f(x)}{g(x)}=-\infty$.
+			\item If $\lim_{x \to a^-}f(x) = \lim_{x \to a^-} g(x) =0$ and $\lim_{x \to a^-} \frac{f'(x)}{g'(x)}=-\infty$, then $\lim_{x \to a^-}\frac{f(x)}{g(x)}=-\infty$.
+			\item If $\lim_{x \to a^+}f(x) = \lim_{x \to a^+} g(x) =0$ and $\lim_{x \to a^+} \frac{f'(x)}{g'(x)}=\infty$, then $\lim_{x \to a^+}\frac{f(x)}{g(x)}=\infty$.
+			\item If $\lim_{x \to a^-}f(x) = \lim_{x \to a^-} g(x) =0$ and $\lim_{x \to a^-} \frac{f'(x)}{g'(x)}=\infty$, then $\lim_{x \to a^-}\frac{f(x)}{g(x)}=\infty$.
+			\item If $\lim_{x \to a}f(x) = \lim_{x \to a} g(x) =0$ and $\lim_{x \to a} \frac{f'(x)}{g'(x)}=-\infty$, then $\lim_{x \to a}\frac{f(x)}{g(x)}=-\infty$.
+			\item If $\lim_{x \to a}f(x) = \lim_{x \to a} g(x) =0$ and $\lim_{x \to a} \frac{f'(x)}{g'(x)}=\infty$, then $\lim_{x \to a}\frac{f(x)}{g(x)}=\infty$.
+		\end{enumerate}	
+	\hfill\break
+		Let $f:\R \to \R$ and $g:\R \to \R$ be functions that are differentiable on $\R$, then the followings hold:
+		\begin{enumerate}[topsep=3pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
+			\item \mbox{If $\lim_{x \to -\infty}f(x) = \lim_{x \to -\infty} g(x) =0$ and $\lim_{x \to -\infty} \frac{f'(x)}{g'(x)}=l$ where $l \in \R$, then $\lim_{x \to -\infty}\frac{f(x)}{g(x)}=l$}.
+			\item \mbox{If $\lim_{x \to \infty}f(x) = \lim_{x \to \infty} g(x) =0$ and $\lim_{x \to \infty} \frac{f'(x)}{g'(x)}=l$ where $l \in \R$, then $\lim_{x \to \infty}\frac{f(x)}{g(x)}=l$}.
+			\item If $\lim_{x \to -\infty}f(x) = \lim_{x \to -\infty} g(x) =0$ and $\lim_{x \to -\infty} \frac{f'(x)}{g'(x)}=-\infty$, then $\lim_{x \to -\infty}\frac{f(x)}{g(x)}=-\infty$.
+			\item If $\lim_{x \to -\infty}f(x) = \lim_{x \to -\infty} g(x) =0$ and $\lim_{x \to -\infty} \frac{f'(x)}{g'(x)}=\infty$, then $\lim_{x \to -\infty}\frac{f(x)}{g(x)}=\infty$.
+			\item If $\lim_{x \to \infty}f(x) = \lim_{x \to \infty} g(x) =0$ and $\lim_{x \to \infty} \frac{f'(x)}{g'(x)}=-\infty$, then $\lim_{x \to \infty}\frac{f(x)}{g(x)}=-\infty$.
+			\item If $\lim_{x \to \infty}f(x) = \lim_{x \to \infty} g(x) =0$ and $\lim_{x \to \infty} \frac{f'(x)}{g'(x)}=\infty$, then $\lim_{x \to \infty}\frac{f(x)}{g(x)}=\infty$.
+		\end{enumerate}
+		\hfill\break
+		Let $f:\R \to \R$ and $g:\R \to \R$ be functions that are differentiable on $\R$, then the followings hold:
+		\begin{enumerate}[topsep=3pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
+			\item \mbox{If $\lim_{x \to -\infty}f(x) = \lim_{x \to -\infty} g(x) =\infty$ and $\lim_{x \to -\infty} \frac{f'(x)}{g'(x)}=l$ where $l \in \R$, then $\lim_{x \to -\infty}\frac{f(x)}{g(x)}=l$}.
+			\item \mbox{If $\lim_{x \to \infty}f(x) = \lim_{x \to \infty} g(x) =\infty$ and $\lim_{x \to \infty} \frac{f'(x)}{g'(x)}=l$ where $l \in \R$, then $\lim_{x \to \infty}\frac{f(x)}{g(x)}=l$}.
+		\end{enumerate}
+	\hfill\break
+	* \mbox{There are still many other cases for L'Hopital's Rule, while those cases that have been proven in}\\ 2020 Fall Semester Math 295 either in class or in homework 10 are listed above.
+	\end{thm}
+
+	\begin{prop}
+		Let $I \in \T_{EUC}$ be an IWIMP, let $f:I \to \R$ be a function that is twice differentiable on $I$. If there exist three distinct elements $a,b,c \in I \ s.t. \ f(a)=f(b)=f(c)=0$, then $\exists \ k \in I \ s.t. \ f''(k)=0$.
+	\end{prop}
+			
+	\begin{thm}[Fundamental Theorem of Calculus \rom{1}]
+		Let $a,b \in \R$ with $a<b$, let $\Intab$ be an interval, let $f:\Intab \to \R$ be a continuous function, let $F:\Intab \to \R \ \ \ x \mapsto \int_a^x f$ be a function, then $F$ is differentiable on $\Intab$ and we have $F'(x)=f(x)$.
+	\end{thm}
+
+	\begin{prop}
+		Let $\ln:(0,\infty) \to \R \ \ \ x \mapsto \ln(x)$ be a function, then $\lim_{x \to \infty}\ln(x)=\infty$ and $\lim_{x \to 0^+}\ln(x)=-\infty$.
+	\end{prop}	
+	
+	\begin{thm}[Inverse Function Theorem]
+		Let $I \subseteq \R$ be an IWIMP, let $f:I \to \R$ be a continuous injective function, let $f^{-1}:f(I) \to I$ denote the inverse of $f$, and let $b \in f(I)$. If $f$ is differentiable at $f^{-1}(b)$ with $f'(f^{-1}(b)) \neq 0$, then $f^{-1}$ is differentiable at $b$, and we have $(f^{-1})'(b)=\frac{1}{f'(f^{-1}(b))}$.
+	\end{thm}
+	
+	\begin{lem}[Product Rule]
+		Let $A \subseteq \R$ be an IWIMP, let $a \in A$, let $f:A \to \R$ and $g:A \to \R$ be functions that are differentiable at $a$, then the function $(f \cdot g):A \to \R \ \ x \mapsto f(x) \cdot g(x)$ is differentiable at $a$, and we have $(f \cdot g)'(a)=f'(a) \cdot g(a) +f(a) \cdot g'(a)$.
+	\end{lem}	
+	
+	\begin{lem}
+		Let $a \in \R \setminus \{ 0 \}$, let $h:\R \setminus \{ 0 \} \to \R \ \ \ x \mapsto \frac{1}{x}$ be a function, then $h$ is differentiable at $a$, and we have $h'(a)=- \frac{1}{a^2}$.
+	\end{lem}
+	
+	\begin{corL}[Quotient Rule]
+		Let $A \subseteq \R$ be an IWIMP, let $a \in A$, let $f:A \to \R$ and $g:A \to \R$ be functions that are differentiable at $a$ with $g(a) \neq 0$, then the function $(\frac{f}{g}):A \to \R \ \ \ x \mapsto \frac{f(x)}{g(x)}$ is differentiable at $a$ and we have $(\frac{f}{g})'(a) = \frac{f'(a)\cdot g(a)-f(a) \cdot g'(a)}{(g(a))^2}$.
+	\end{corL} 
+	
+	\begin{lem}
+		Let $A \subseteq \R$ be an IWIMP, let $f:A \to \R$ be a function that is differentiable on $A$. If $f':A \to \R$ is positive on $A$, then $f$ is strictly increasing on $A$. Similarly, if $f':A \to \R$ is negative on $A$, then $f$ is strictly decreasing on $A$.
+	\end{lem}
+	
+	\begin{thm}[Second Derivative Test]
+		Let $A \subseteq \R$ be an IWIMP, let $a \in A$, let $f:A \to \R$ be a function that is twice differentiable on $A$. If $f'(a)=0$ and $f''(a)>0$, then $f$ attains a local minimum at $a$. Similarly, if $f'(a)=0$ and $f''(a)<0$, then $f$ attains a local maximum at $a$.
+	\end{thm}
+	
+	\begin{thm}[Fundamental Theorem of Calculus \rom{2}]
+		Let $a,b \in \R$ with $a<b$, let $\Intab$ be an interval, let $f$ be a function that is integrable on $\Intab$. If $f=g'$ for some function $g:\Intab \to \R$, then we have $\int_a^b f = g(b)-g(a)$.
+	\end{thm}
+
+	\begin{thm}[Squeeze Theorem]
+		Let $A$ be a subset of $\R$, let $f:A \to \R$, $g:A \to \R$, $h:A \to \R$ be functions with \mbox{$f(x) \leq g(x) \leq h(x) $} $\forall x \in A$, let $a \in A$. If $\lim_{x \to a} f(x) = \lim_{t \to a}h(t)=l$ for some $l \in \R$, then $\lim_{s \to a}g(s)=l$.
+	\end{thm}
+	
+	\begin{thm}[The Cauchy-Schwarz Inequality]
+		Let $a,b \in \R$ with $a<b$, let $\Intab$ be an interval, let $f$ and $g$ be functions that are integrable on $\Intab$, then the inequality holds: $(\int_a^b f \cdot g )^2 \leq (\int_a^b f^2)\cdot (\int_a^b g^2)$
+	\end{thm}
+
+	
+\clearpage
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{\color{red} Sequences}
+
+	\begin{lem}
+		In $(\R,\T_{EUC})$, let $c \in \R$, any sequence of the form $n \mapsto \frac{c}{n}$ converges to $0$.
+	\end{lem}
+	
+	\begin{lem}
+		In $(\R,\T_{EUC})$, let $n \mapsto a_n$ and $n \mapsto b_n$ be sequences of real numbers with $a_n < b_n \ \forall n \in \N$. If both $(a_n)$ and $(b_n)$ converge, then we have $\lim_{n \to \infty} a_n \leq \lim_{n \to \infty} b_n$.
+	\end{lem}
+	
+	\begin{lem}
+		Let $(X,\T)$ be a Hausdorff topological space, let $(x_n)$ be a sequence in $(X,\T)$. If $(x_n)$ converges, then the limit $\lim_{n \to \infty} x_n$ is unique, that is, limits of sequences in Hausdorff spaces are unique.
+	\end{lem}
+		
+	\begin{lem}
+		Let $(X,\T)$ be a topological space, let $(x_n)$ be a sequence in $(X,\T)$, \mbox{let $(x_{j_k})$ be a subsequence of $(x_n)$.} If $(x_n)$ converges in $(X,\T)$, then $(x_{j_k})$ converges in $(X,\T)$. Moreover, if $(x_n)$ converges to $l \in X$, then $(x_{j_k})$ converges to $l$.
+	\end{lem}
+	
+	\begin{corL}
+		Let $(X,\T)$ be a topological space, let $(x_n)$ be a sequence on $(X,\T)$.\\(The sequence $(x_n)$ converges to $l \in X$)$\iff$(every subsequence of  $(x_n)$ converges to $l$)
+	\end{corL}
+	
+	\begin{thm}
+		Every bounded monotonic sequence of real numbers in the Euclidean topology converges.
+	\end{thm}
+	
+	\begin{thm}[Bolzano-Weierstrass Theorem]
+		Every bounded sequence of real numbers in the Euclidean topology has a convergent subsequence.
+	\end{thm}
+
+	\begin{lem}[Squeeze Theorem]
+		Let $(s_n),(t_n),(u_n)$ be sequences of real numbers in the Euclidean topology, let $l \in \R$. If we have $\lim_{n \to \infty} s_n =l = \lim_{n \to \infty}t_n$, and $\exists \ M \in \R \ s.t. \ \forall m \in \R$ with $m>M$, we have $s_m \leq u_m \leq t_m$, then we have $\lim_{n \to \infty} u_m = l$.
+	\end{lem}
+	
+	\begin{lem}
+		Let $(X,d)$ be a metric space, let $\T_d$ denote the topology on $X$ associated to $d$, then every convergent sequence in $(X,\T_d)$ is a Cauchy sequence.
+	\end{lem}
+	
+	\begin{lem}
+		Let $a,b \in \R$ with $a \geq b$, let $\Intab$ be an interval, let $\T_{\Intab}$ denote the subspace topology on $\Intab$ inherited from $\T_{EUC}$, then the topological space $(\Intab, \T_{\Intab})$ is Cauchy complete.
+	\end{lem}
+	
+	\begin{lem}
+		Let $(X,d)$ be a metric space, let $\T_d$ denote the topology on $X$ associated to $d$, let $(x_n)$ be a Cauchy sequence in $(X,\T_d)$, then the set $S = \{ x_n \mid x \in \N \} $ is bounded in $X$.
+	\end{lem}
+	
+	\begin{corL}
+		Let $(X,d)$ be a metric space, let $\T_d$ denote the topology on $X$ associated to $d$, let $(x_n)$ be a convergent sequence in $(X,\T_d)$, then the set $S = \{ x_n \mid x \in \N \} $ is bounded in $X$.
+	\end{corL}
+	
+	\begin{thm}
+		Every Cauchy sequence of real numbers in the Euclidean topology converges.
+	\end{thm}
+	
+	\begin{lem}
+		Let $(a_n),(b_n)$ be Cauchy sequences of real numbers in the Euclidean topology, let $c \in \R$, then the followings hold:
+		\begin{enumerate}[topsep=3pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
+		\item The sequence $n \mapsto (c \cdot a_n)$ is a Cauchy sequence, and $\lim_{n \to \infty}(c \cdot a_n)=c \cdot \lim_{n \to \infty} a_n$.
+		\item $n \mapsto (a_n +b_n)$ is a Cauchy sequence, and $\lim_{n \to \infty}(a_n+b_n) = \lim_{n \to \infty}a_n +\lim_{n \to \infty} b_n$.
+		\item $n \mapsto (a_n \cdot b_n)$ is a Cauchy sequence, and $\lim_{n \to \infty}(a_n \cdot b_n) = \lim_{n \to \infty}a_n \cdot \lim_{n \to \infty} b_n$.
+		\item If $\lim_{n \to \infty} b_n \neq 0$ and $\forall n \in \N, \ b_n \neq 0$, then $n \mapsto \frac{a_n}{b_n}$ is a Cauchy, and  $\lim_{n \to \infty} \frac{a_n}{b_n} = \frac{\lim_{n \to \infty} a_n}{\lim_{n \to \infty} b_n}$.
+		\end{enumerate}
+	\end{lem}
+
+	\begin{thm}
+		Let $(X,\T_X), (Y,\T_Y)$ be topological spaces, let $f:X \to Y$ be a continuous function, let $n \mapsto x_n$ be a sequence in $(X,\T_X)$. If $n \mapsto x_n$ converges in $(X,\T_X)$, then the sequence $n \mapsto f(x_n)$ converges in $(Y,\T_Y)$. Moreover, if $n \mapsto x_n$ converges to some $l \in X$, then $n \mapsto f(x_n)$ converges to $f(l) \in Y$.
+	\end{thm}
+	
+	\begin{prop}
+		Let $(X,d_X),(Y,d_Y)$ be metric spaces, let $\T_{dX}$ denote the topology on $X$ associated to $d_X$, let $\T_{dY}$ denote the topology on $Y$ associated to $d_Y$, let $f:X \to Y$ be a function. [$f$ is continuous at $x \in X$] iff [\,for each sequence $n \mapsto x_n$ in $(X,\T_{dX})$ that converges to $x$, the sequence $n \mapsto f(x_n)$ in $(Y,\T_{dY})$ converges to $f(x) \in Y$]
+	\end{prop}
+	
+	\begin{lem}
+		\mbox{In $(\R, \T_{EUC})$, let $S \subseteq \R$, $x \in \R$, let $\T_{S_x}$ denote the subspace topology on $S \setminus \{x \} $ inherited from $\T_{EUC}$.}\\($x$ is an accumulation poing of $S$) iff ( $\exists$ a sequence $n \mapsto s_n$ in $(S\setminus \{x \},\T_{S_x}) \ s.t. \ \lim_{n \to \infty} s_n = x$)
+	\end{lem} 
+	
+	
+	\begin{thm}
+		In $(\R, \T_{EUC})$, let $S$ be a subset of $\R$, let $\T_S$ denote the subspace topology on $S$ inherited from $\T_{EUC}$, then the following statements are equivalent:
+		\begin{enumerate}[topsep=3pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
+			\item The topological space $(S,\T_S)$ is compact.
+			\item $S$ is closed in $\T_{EUC}$ and bounded in $\R$.
+			\item Every sequence in $(S,\T_S)$ has a convergent subsequence whose limit belongs to $S$.
+			\item $S$ is bounded in $\R$ and $\nexists$ sequence in $(S,\T_S)$ whose limit belongs to $\R \setminus S$.
+		\end{enumerate}
+	\end{thm}
+	
+
+
+\end{document}
+

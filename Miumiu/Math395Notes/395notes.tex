@@ -1,0 +1,491 @@
+\documentclass[11pt]{article}
+
+%%%%%%%%%%%%%%Include Packages%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{xcolor}
+\usepackage{mathtools}
+\usepackage[legalpaper, margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{paralist}
+\usepackage{rsfso}
+\usepackage{amsthm}
+\usepackage{wasysym}
+\usepackage[inline]{enumitem}   
+\usepackage{hyperref}
+\usepackage{tocloft}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%Theorem environments%%%%%%%%%%%%%%%%%%%
+\newtheoremstyle{break}
+  {\topsep}{\topsep}%
+  {\itshape}{}%
+  {\bfseries}{}%
+  {\newline}{}%
+\theoremstyle{break}
+\theoremstyle{break}
+\newtheorem{axiom}{Axiom}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lem}{Lemma}[thm]
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{corL}{Corollary}[lem]
+\newtheorem{corT}[lem]{Corollary}
+\newtheorem{defn}{Definition}[corL]
+\newenvironment{indEnv}[1][Proof]
+  {\proof[#1]\leftskip=1cm\rightskip=1cm}
+  {\endproof}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%Integral%%%%%%%%%%%%%%%%%%%%%%%
+\def\upint{\mathchoice%
+    {\mkern13mu\overline{\vphantom{\intop}\mkern7mu}\mkern-20mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+  \int}
+\def\lowint{\mkern3mu\underline{\vphantom{\intop}\mkern7mu}\mkern-10mu\int}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\D}{\mathcal{D}}
+\newcommand{\J}{\mathcal{J}}
+\newcommand{\T}{\mathcal{T}}
+\newcommand{\Td}{\mathcal{T}_d}
+\newcommand{\C}{\mathcal{C}}
+\newcommand{\M}{\mathcal{M}}
+\newcommand{\Complex}{\mathbb{C}}
+\newcommand{\Power}{\mathcal{P}}
+\newcommand{\ee}{\cdot 10}
+\newcommand{\spa}{\text{span}}
+\newcommand{\vmat}[1]{\begin{vmatrix} #1 \end{vmatrix}}
+\newcommand{\rref}{\xrightarrow{\text{row\ reduce}}}
+\newcommand{\bmat}[1]{\begin{bmatrix}#1 \end{bmatrix}}
+
+
+\newcommand{\note}{\color{red}Note: \color{black}}
+\newcommand{\remark}{\color{blue}Remark: \color{black}}
+\newcommand{\example}{\color{green}Example: \color{black}}
+\newcommand{\exercise}{\color{green}Exercise: \color{black}}
+
+
+
+
+%%%%%%%%%%%%table of contents%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\cftsetindents{section}{0em}{2em}
+\cftsetindents{subsection}{0em}{2em}
+
+\renewcommand\cfttoctitlefont{\hfill\Large\bfseries}
+\renewcommand\cftaftertoctitle{\hfill\mbox{}}
+
+\setcounter{tocdepth}{2}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%Footnotes%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand\blfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\makeatletter
+\def\@seccntformat#1{%
+  \expandafter\ifx\csname c@#1\endcsname\c@section\else
+  \csname the#1\endcsname\quad
+  \fi}
+\makeatother
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Enumerate%%%%%%%%%%%%%%
+\makeatletter
+% This command ignores the optional argument 
+% for itemize and enumerate lists
+\newcommand{\inlineitem}[1][]{%
+\ifnum\enit@type=\tw@
+    {\descriptionlabel{#1}}
+  \hspace{\labelsep}%
+\else
+  \ifnum\enit@type=\z@
+       \refstepcounter{\@listctr}\fi
+    \quad\@itemlabel\hspace{\labelsep}%
+\fi}
+\makeatother
+\parindent=0pt
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+\begin{thm}
+$S\subseteq V$ is affine, $\vec{0}\in S$, then $S$ is affine if and only if $S$ is a vector subspace of $V$.
+\end{thm}
+
+\begin{thm}[$\widetilde{S} \coloneqq \{\vec{a}-\vec{b} \mid \vec{a},\vec{b}\in S\}$]
+For $\vec{x}\in S$, $S$ is affine if and only if $S - \vec{x}$ is affine. If $S$ is affine, $S - \vec{x} = \widetilde{S}$.
+\end{thm}
+
+\begin{thm}
+Let $f:X\to Y$ be a function. $f$ is sequentially continuous if and only if $f$ is continuous.
+\end{thm}
+
+\begin{thm}[Bolzano-Weierstrass Theorem for metric spaces]
+A metric space $(X,d)$ is compact if and only if $(X,d)$ is sequentially compact.
+\end{thm}
+
+\begin{thm}[Bolzano-Weierstrass Theorem for $\R^n$ space]
+For $X \subseteq \R^n$, $X$ is sequentially compact if and only if $X$ is closed and bounded.
+\end{thm}
+
+\begin{thm}[Heine-Borel Theorem]
+For $X \subseteq \R^n$ with Euclidean metric, $X$ is compact if and only if $X$ is closed and bounded. 
+\end{thm}
+
+\begin{thm}[Chain Rule for Multivariate Differentiation]
+Let $f:V \to W$ be a differentiable function, and let $g:im(f) \to Z$ be a differentiable function. For $\vec{a}\in V$, $D(g\circ f)(\vec{a}) = Dg(\vec{b})\circ Df(\vec{a})$, where $f(\vec{a}) = \vec{b}$.
+\end{thm}
+
+\begin{thm}
+Let $A$ be an open subset of $\R^m$, and let $f:A \to \R^n \ \ \ \vec{a}\mapsto (f_1(\vec{a}),f_2(\vec{a}),\cdots, f_n(\vec{a}))$ be a function. If $D_kf_j$ exists and is continuous, then $f \in C^1(A,\R^n)$.
+\end{thm}
+
+\begin{thm}
+Given $f\in C^2(A,\R)$, where $A$ is an open subset of $\R^2$. Then we can write the following: $$D_2D_1f(a,b) = \lim_{(h,k)\to (0,0)} \frac{f(a+h,b+k)-f(a+h,b)-f(a,b+k)+f(a,b)}{hk}$$
+\end{thm}
+
+\begin{thm}[\color{red}Inverse Function Theorem\color{black}]
+Let $A $ be an open subset of $\R^n$, let $\vec{a}\in A$, let $f\in C^r(A,\R^n)$ with $r\geq 1$, and given $Df(\vec{a})$ is invertible. There exists an open neighborhood $U$ of $\vec{a}$ such that $f|_U$ is a $C^r$-diffeomorphism, that is, $f$ maps $U$ bijectively to some open set in $\R^n$, and $f^{-1}:f(U) \to U$ is of $C^r$ type. 
+\end{thm}
+
+\begin{thm}
+Given $E$ as a open subset of $\R^n$, $f \in C^1(E,\R^n)$, and $\det(Df(\vec{x})) \neq 0$ for all $\vec{x}\in E$. Then $f(\vec{a}) \in $ Int\,$(f(E))$ for all $\vec{a}\in E$, $f(E)$ is open in $\R^n$, and $f:E \to f(E)$ is an open map.
+\end{thm}
+
+\begin{thm}[Implicit Function Theorem]
+Let $\vec{G}$ in $\R^{k+n}$, $\vec{G} =(\vec{x}, \vec{y})$ with $\vec{x}\in \R^k,\ \vec{y}\in \R^n$. Fix $\vec{S}$ in $\R^{k+n}$, $\vec{S} = (\vec{a}, \vec{b})$ with $\vec{a}\in \R^k,\ \vec{b}\in \R^n$.
+For $f \in C^r(A,\R^n)$, where $A$ is an open subset of $\R^{k+n}$. If we have $\vec{S} \in f^{-1}(\vec{0}) \coloneqq E$, and $\frac{\partial f}{\partial \vec{y}}\ \vec{S} \text{ is invertible}$. Then there exists a neighborhood $U$ of $\vec{S}$ such that $E \cap U = $Graph$(g)$ for a unique function $g \in C^r(B,\R^n)$, where $\vec{a}\in B$, and $B$ is an open subset of $\R^k$. In other words, $\exists$ an open neighborhood $B$ of $\vec{x}$ such that $\vec{y} = g(\vec{x})$ and $f(\vec{x},g(\vec{x})) = \vec{0}$ for all $\vec{x}\in B$, with a unique function $g \in C^r(B,\R^n)$.
+\end{thm}
+
+\begin{thm}[First Derivative Test for Higher Dimensions]
+Let $\Omega$ be an open subset of $\R^n$, and let $h: \Omega \to \R$ be a function that achieves a local maximum, or minimum, at $\vec{p}\in \Omega$, then $Dh(\vec{p}) = 0$.
+\end{thm}
+
+\begin{thm}[Lagrange Multiplier Theorem]
+Let $U$ be an open subset of $\R^{k+n}$, let the constraint function be $f\in C^1(U,\R^n)$ with $E=f^{-1}(\vec{0})$, let the objective function be $h\in C^1(U,\R)$, with the property that $h|_E$ has a local maximum , or a local minimum, at $\vec{p}\in E$. Given rank$((Df(\vec{p})) = n$, we have $Dh(\vec{p})$ belongs to the row space of $Df(\vec{p})$, that is, we can write $Dh(\vec{p}) = \lambda_1 Df_1(\vec{p}) + \cdots \lambda_n Df_n(\vec{p})$ for $\lambda_j \in \R$.
+\end{thm}
+
+\begin{thm}[Spectral Theorem]
+Every symmetric square matrix admits an orthonormal basis of eigenvectors. The corresponding eigenvalues are all real.
+\end{thm}
+
+\begin{thm}[Second Derivative Test for Higher Dimensions]
+Let $\Omega$ be an open subset of $\R^n$, let $f \in C^2(\Omega, \R)$, with $Hf(\vec{x})\geq 0$ for all $\vec{x}\in \Omega$. \\
+If $Df(\vec{x}_0)= \vec{0}$ for some $\vec{x}_0 \in \Omega$, then $f(\vec{x}) \geq f(\vec{x}_0)$ for all $\vec{x} \in \Omega$. 
+\end{thm}
+\newpage
+\begin{thm}[Local Second Derivative Test]
+Let $A$ be an open subset of $\R^n$, let $f \in C^2(A , \R)$, let $\vec{x}_0 \in A$ with $Df(\vec{x}_0) = \vec{0}$. Then we have the followings hold:
+\begin{enumerate}[topsep=3pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
+\item If we have $Hf(\vec{x}_0) > 0$, then $Hf(\vec{x})>0$ for all $\vec{x}\in B_\delta(\vec{x}_0)$ with some $\delta>0$, and the function $f$ achieves a local minimum at $\vec{x}_0$
+\item If we have $Hf(\vec{x}_0) \ngeq 0$, then the function $f$ has a strict local maximum at the point $\vec{x}_0$ along some line in $A$, and hence $f$ does not have a local minimum at the point $\vec{x}_0$.
+\item If we have  $Hf(\vec{x}_0) < 0$, then $f$ has strict local maximum at $\vec{x}_0$
+\item If we have $Hf(\vec{x}_0) \nleq 0$, then $f$ does not have a local maximum at $\vec{x}_0$
+\item If we have $Hf(\vec{x}_0)$ is not definite nor semi-definite, then the function $f$ does not have a local max, nor local min, at the point $\vec{x}_0$.
+\end{enumerate}
+\end{thm}
+
+\begin{prop}
+Let $(X,\T)$ be a topological space, the followings are equivalent:
+\begin{enumerate}[topsep=3pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
+\item There exists $f:X \to \{0,1\}$ that is a continuous surjective function.
+\item There exists nonempty $A \subsetneq X$ that is open and closed in $X$
+\end{enumerate}
+\end{prop}
+
+\begin{prop}
+Let $(X,\T)$ be a topological space. The function $f: X\to \R^n \ \ \ x\mapsto (f_1(x),f_2(x),\cdots, f_n(x))$ is continuous if and only if each function $f_j:X \to \R$ is continuous.
+\end{prop}
+
+Let $f$ be a $C^2$ type function defined in a neighborhood of $\vec{x}\in \R^n$. The \textbf{Hessian} $Hf(\vec{x})$ of $f$ at $\vec{x}$ is the $n\times n$ matrix whose entry at $i$-th row, $j$-th column is given by $D_kD_jf(\vec{x})$. \\
+
+The \textbf{directional derivative of $f$ at $\vec{a}$ in the direction of $\vec{u}$} is $f'(\vec{a};\vec{u}) \coloneqq \lim_{t\to 0} \frac{f(\vec{a}+t\vec{u})-f(\vec{a})}{t}$.\\
+
+Let $V,W$ be normed vector spaces over the field $\R$ or the field $\Complex$, let $\vec{a}\in A$, where $A$ is an open subset of $V$. For function $f:V \to W$, we write $Df(\vec{a}) = T$ provided that there exists $T \in B(V,W)$ that satisfies $\lim_{\vec{h}\to \vec{0}} \frac{f(\vec{a}+\vec{h})-f(\vec{a})-T(\vec{h})}{||\vec{h}||} = \vec{0}$. If such $T$ exists, then we write $Df(\vec{a})(\vec{h})=T(\vec{h})$ and $f$ is said to be \textbf{differentiable} at $\vec{a}$.\\
+
+Let $(X,d)$ be a metric space, let $x_0 \in X$, and let $A \subseteq X$. $x_0$ is \textbf{interior} to $A$ provided that $\exists\ \epsilon>0$ such that $B_\epsilon(x_0) \subseteq A$. $x_0$ is \textbf{exterior} to $A$ provided that $\exists\ \epsilon>0$ such that $B_\epsilon(x_0) \cap A = \emptyset$. $x_0$ is a \textbf{boundary point} of $A$ provided that $\forall \epsilon>0$, we have $B_\epsilon(x_0)\cap A\neq \emptyset \neq B_\epsilon(x_0)\cap (X\setminus A)$.\\
+
+$f:X \to Y$ is said to be \textbf{bi-Lipschitz} provided that $\exists\ C \in [0,+\infty), \widetilde{C}\in (0,\infty)$ such that $\widetilde{C}\cdot d_X(x_1,x_2) \leq d_Y(f(x_1),f(x_2)) \leq C d_X(x_1,x_2)$ for all $x_1,x_2 \in X$. \\
+
+In general, if $B\in Mat(n,n,\R)$ is a symmetric matrix then we say that $B\geq 0$ if $\vec{a}^TB\vec{a}\geq 0$ for all $\vec{a}\in \R^n$. Here $B$ admits a set of maximized real eigenvalues $\{\mu_1,\mu_2,\cdots,\mu_n\}$.
+\begin{enumerate}[topsep=3pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
+\item If $\mu_j \geq 0$ for all $1\leq j \leq n$, then $B$ is positive semi-definite, with $B>0$
+\item If $\mu_j > 0$ for all $1\leq j \leq n$, then $B$ is said to be positive definite, with $B \geq 0$.
+\item If $\mu_j \leq 0$ for all $1\leq j \leq n$, then $B$ is said to be negative semi-definite, with $B \leq 0$.
+\item If $\mu_j < 0$ for all $1\leq j \leq n$, then $B$ is said to be negative definite, with $B < 0$.\\
+\end{enumerate}
+
+
+\note For vector space $V$ over $\R$. $S\subseteq V$ is convex if and only if $S$ is connected. \\
+\note A function $T$ is affine if and only if $T = \widetilde{T} + \vec{b}$  for some linear $T$ and $\vec{b} = T(\vec{0})$.\\
+\note Let $(X,d)$ be a metric space, let $A \subseteq X$, and let $x_0 \in X$. Int$(A)$ is an open subset of $A$, and it contains all open subsets of $A$. Bd$(X\setminus A) =$Bd$(A)$. Bd$(A)$ is closed.\\
+\note $(X, d)$ is compact if and only if every sequence in $X$ admits a convergent subsequence.\\
+\note Let $(X, d)$ be a sequentially compact metric space, $\forall \epsilon > 0$, we can cover $X$ by finitely many $\epsilon$-ball, in other words, X is totally bounded.\\
+\note A path connected topological space is connected.\\
+\note Convex subset of $\R^n$ is connected and path-connected.\\
+\note Let $V$ and $W$ be normed vector spaces over field $\R$ or $\Complex$. For $T \in \hom(V,W)$, TFAE:\\
+(1) $T$ is Lipschitz, (2) $T$ is continuous, (3) $T$ is continuous at $\vec{0}\in V$, 
+\\(4) $\exists\ M \in [0,\infty)$ such that $||T\vec{v}|| \leq M||\vec{v}||\ \forall \vec{v}\in V$, in which we say $T$ is bounded.\\
+\note Intersection of affine sets is affine, intersection of convex sets is convex.
+
+\newpage
+\begin{thm}
+Let $f: V\to W$ be a linear map between normed vector space, TFAE:
+\begin{enumerate}[topsep=3pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
+\item $\exists\ M \in [0,\infty)$ such that $||T{\vec{v}}|| \leq M $ with $||\vec{v}|| \leq 1$.
+\item $\exists\ M \in [0,\infty)$ such that $||T{\vec{v}}|| \leq M||\vec{v}||$ for all $\vec{v}\in V$.
+\item $T$ satisfies $d_W(T(\vec{v}_1),T(\vec{v}_2)) \leq M \cdot d_V(\vec{v}_1,\vec{v}_2)$ for $\vec{v}_1,\vec{v}_2 \in V$ and some $M \in [0,\infty)$.
+\item $T$ is continuous on $V$. \item $T$ is continuous at $\vec{0}$. 
+\end{enumerate}
+\end{thm}
+
+\begin{thm}[Contraction Mapping Theorem]
+Let $f:X \to X$ be a contraction on a non-empty complete metric space $X$.\\ The equation $f(x) = x$ has exactly one solution $x \in X$.  
+\end{thm}
+
+\begin{thm}
+A linear map from a finite dimensional vector space to normed vector space is continuous.\\
+If $T:\R^m \to W$ is a linear bijection, then $T^{-1}$ is continuous.  
+\end{thm}
+
+\begin{thm}
+Let $||\cdot ||$ and $|\cdot |$ be two norms on a finite dimensional vector space $V$ over the field $\R$.\\ There exists $C_1,C_2 \in (0,\infty)$ such that $C_1^{-1} ||\vec{v}|| \leq |\vec{v}| \leq C_2 ||\vec{v}||$ for all $\vec{v}\in V$. 
+\end{thm}
+
+\begin{thm}
+Let $V$ be a vector space over a field $F$, a nonempty finite subset $A$ of $V$ is affinely independent if and only if for all $\vec{a}\in A$, $\vec{a}$ is not an affine combination of vectors in $A \setminus \{\vec{a}\}$.  
+\end{thm}
+
+\begin{thm}
+Let $M$ be an $n \times n$ matrix and let $T:\R^n \to \R^n\ \ \ \vec{x}\mapsto M\vec{x}$ be a function. $T$ is isometry if and only if $<M\vec{x},M\vec{y}> = <\vec{x},\vec{y}>$ for $\vec{x},\vec{y}\in \R^n$, if and only if $M^TM = I$. 
+\end{thm}
+
+\begin{thm}
+Any path connected set is connected.\\
+Any connected open subset of $\R^n$ is path connected.\\
+Any open subset of $\R^n$ is a countable disjoint union of connected open sets.
+\end{thm}
+
+\begin{thm}
+Let $\Omega$ be an open subset of $\R^n$, let $\psi \in C^2(\Omega, \R)$ with the property that $H\psi(\vec{x})> 0$ $\forall \vec{x}\in \Omega$.
+$$\text{epigraph}(\psi) = \bigcap_{\vec{x}_0 \in \Omega} \{ (\vec{x},y) \in \Omega \times \R \mid y\geq \psi(\vec{x}_0)+D\psi (\vec{x}_0) (\vec{x}-\vec{x}_0)\}\text{ is convex}$$
+\end{thm}
+
+\begin{thm}
+Let $\Omega$ be a convex subset of $\R^n$. $f : \Omega \to \R$ is convex if and only if we have: \\$f((1-t)\vec{x}_0 + t\vec{x}_1) \leq (1-t)f(\vec{x}_0) + tf(\vec{x}_1),\quad \forall \vec{x}_1,\vec{x}_0 \in \Omega,\ 0\leq t \leq 1$
+\end{thm}
+
+\begin{thm}
+Let $A$ be an open subset of $\R^{k+n}$, and let $f:A \to \R^n$ be a differentiable function. Write $f$ in the form $f(\vec{x},\vec{y})$ for $\vec{x}\in \R^k$ and $\vec{y}\in \R^n$. If there exists a differentiable function $f:B \to \R^n$ defined on an open set $B $ in $\R^k$ such that $f(\vec{x},g(\vec{x})) = \vec{0}$ for all $\vec{x}\in B$, then for $\vec{x}\in B$, we have: $$Dg(\vec{x}) = -\left[\frac{\partial f}{\partial \vec{y}}(\vec{x},g(\vec{x})) \right]^{-1} \frac{\partial f}{\partial \vec{x}}(\vec{x},g(\vec{x}))$$
+\end{thm}
+
+\begin{thm}
+Let $A $ be an open subset of $\R^n$, let $f:A \to \R^n$, and let $f(\vec{a}) = \vec{b}$. Let $g$ be a function that maps an open neighborhood of $\vec{b}$ into $\R^n$ such that $g(\vec{b}) = \vec{a}$, and $g(f(\vec{x})) = \vec{x}$ for all $\vec{x}$ in a neighborhood of $\vec{a}$. If $f$ is differentiable at $\vec{a}$ and if $g$ is differentiable at $\vec{b}$, then we have $Dg(\vec{b}) = [Df(\vec{a})]^{-1}$. 
+\end{thm}
+
+\begin{thm}
+Let $A$ be open in $\R^m$, let $f:A \to \R$ be differentiable on $A$. If $A$ contains the line segment with end points $\vec{a}$ and $\vec{a}+ \vec{h}$, then there is a point $\vec{c} = \vec{a}+ t_0 \vec{h}$ with $0 < t_0 < 1$ on such line segment such that $f(\vec{a}+\vec{h}) - f(\vec{a}) = Df(\vec{c}) \cdot \vec{h}$. 
+\end{thm}
+
+\begin{thm}
+Let $A$ be a convex open subset of $V$ and let $g: A \to W$ be a differentiable function satisfying $||Dg(\vec{a})|| \leq M$ for all $\vec{a}\in A$ and some $M \geq 0$. Then $||g(\vec{b}) - g(\vec{a})|| \leq M ||\vec{b}-\vec{a}||$. 
+\end{thm}
+\newpage
+
+\begin{thm}
+Let $f:Q \to \R$ be a bounded function with $Q$ being a box of $\R^n$.\\ Given $\epsilon>0$ and some $k \in \N$, the followings are equivalent:
+\begin{enumerate}[topsep=3pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
+\item The function $f$ is Riemann integrable on $Q$
+\item There exists a partition $P$ such that $U(f,P) < L(f,P) + \epsilon$
+\item $\exists$ some subboxes $R_1,R_2,\cdots, R_j$ of $Q$ s.t. $\D_k(f) \subseteq R_1\cup R_2\cup\cdots\cup R_j$ and $\sum_{i=1}^j V(R_i) <\epsilon$ 
+\item There exists some subboxes $R_p$ of $Q$ such that $\D(f) \subseteq \bigcup_{p=1}^\infty R_p$, with $\sum_{p=1}^\infty V(R_p) < \epsilon$
+\item There exists some subboxes $R_p$ of $Q$ such that $\D(f) \subseteq \bigcup_{p=1}^\infty rInt(R_p)$ with $\sum_{p=1}^\infty V(R_p) < \epsilon$
+\end{enumerate}
+In the context of this theorem, a box $R$ is called a subbox of $Q$ provided that $R$ is a box in $\R^n$ contained in $Q$, and here $R$ is allowed to have zero volume, or in other words, measure zero.
+\end{thm}
+
+\begin{thm}[Fubini's Theorem]
+Let $A$ be a box in $\R^k$, $B$ be a box in $\R^n$, let $Q = A \times B$, and let $f:Q \to \R$ be a bounded function. Then we can write:
+$$\lowint_Q f  \leq \lowint_{\vec{x}\in A} \lowint_{\vec{y}\in B}f(\vec{x},\vec{y})\leq \ \ \ \begin{cases}\begin{rcases} \lowint_{\vec{x}\in A} \upint_{\vec{y} B}f(\vec{x},\vec{y}) \\ \upint_{\vec{x}\in A} \lowint_{\vec{y}\in B}f(\vec{x},\vec{y})\ \  \end{rcases}\end{cases}\leq  \upint_{\vec{x}\in A} \upint_{\vec{y}\in B}f(\vec{x},\vec{y})\leq  \upint_Q f$$
+\end{thm}
+
+\begin{corT}
+Let $A$ be a box in $\R^k$, $B$ be a box in $\R^n$, let $Q = A \times B$, and let $f:Q \to \R$ be a bounded function. If $f$ is integrable on $Q$, then we have:
+$$\lowint_Q f  = \lowint_{\vec{x}\in A} \lowint_{\vec{y}\in B}f(\vec{x},\vec{y})= \ \ \ \begin{cases}\begin{rcases} \lowint_{\vec{x}\in A} \upint_{\vec{y} B}f(\vec{x},\vec{y}) \\ \upint_{\vec{x}\in A} \lowint_{\vec{y}\in B}f(\vec{x},\vec{y})\ \  \end{rcases}\end{cases}= \upint_{\vec{x}\in A} \upint_{\vec{y}\in B}f(\vec{x},\vec{y})=  \upint_Q f$$ 
+and we can write:
+$$\int_Q f = \int_{\vec{x}\in A}\upint_{\vec{y}\in B}f(\vec{x},\vec{y}) = \int_{\vec{x}\in A}\lowint_{\vec{y}\in B} f(\vec{x},\vec{y})$$
+\end{corT}
+
+\begin{thm}
+Let $S$ be a bounded subset of $\R^n$, let $f:S \to \R$ be a bounded continuous function, let $E = \{ \vec{x}_0 \in Bd(S) \mid\lim_{\vec{x}\in S,\ \vec{x}\to \vec{x}_0} f(\vec{x}) \neq 0 \}$. If we have $m^*(E) = 0$, then $f$ is Riemann integrable on $S$. 
+\end{thm}
+
+\begin{thm}[Theorem 15.2 on Munkres]
+Let $A$ be an open subset of $\R^n$, let $E_1 \subseteq E_2\subseteq \cdots \subseteq A$ be compact rectifiable sets with $\bigcup_j Int(E_j) = A$, then we have $ext\int_A f = \lim_{j\to \infty} \int_{E_j} f$ when $ext\int_A f $ exists for continuous function $f:A \to \R$.
+\end{thm}
+
+\begin{thm}[Theorem 15.6 on Munkres] 
+Let $A$ be an open subset of $\R^n$, let $U_1 \subseteq U_2 \subseteq \cdots \subseteq A$ be open subsets of $A$ with $\bigcup_j U_j = A$, then we have $ext \int_A f = \lim_{j \to \infty} ext \int_{U_j} f$ whenever $ext\int_A f $ exists for the continuous function $f:A \to \R$. 
+\end{thm}
+
+\begin{thm}[Fubini's Theorem for Simple Regions]
+Let $S\coloneqq \{(x,t) \mid x \in C,\ \phi(x) \leq t \leq \psi(x)\}$ be a simple region in $\R^n$, where $C$ is a compact rectifiable set in $\R^{n-1}$ for $n \geq 2$, $\phi:C \to \R$ and $\psi:C \to \R$ are continuous functions with the property $\phi(x) \leq \psi(x)$ for all $x \in C$, let $f:S \to \R$ be a continuous function. Then $f$ is integrable over $S$ and we have the following holds: 
+$$\int_S f = \int_{x \in C} \int_{t=\phi(x)}^{t=\psi(x)} f(x,t)\, dt\, dx$$
+\end{thm}
+
+\begin{thm}[Change of Variable Theorem]
+Let $A$ be an open subset of $\R^n$, let $B$ be an open subset of $\R^n$, and let $g$ be a diffeomorphism from $A$ to $B$. For continuous function $f:B\to \R$, $f$ is integrable over $B$ if and only if the function $(f\circ g) \cdot |\det Dg|$ is integrable over $A$. Moreover, if $f$ is integrable over $B$, we have $$ext \int_B f = ext \int_A (f\circ g) \cdot |\det Dg|$$ 
+That is, for continuous function $f:B \to \R$, we have either $ext \int_B f = ext \int_A (f\circ g) \cdot |\det Dg|$, or neither $ext \int_B f$ nor $ext \int_A (f\circ g) \cdot |\det Dg|$ exists.
+\end{thm}
+
+\begin{thm}[Partition of Unity Theorem]
+Let $\Omega$ be an open subset of $\R^n$. If $\Omega = \bigcup_{\alpha \in A} U_\alpha$ for some open subsets $U_\alpha$ of $\R^n$, then there exist some functions $\phi_1,\phi_2,\cdots \in C^\infty(\Omega, [0,\infty))$ such that the followings hold:
+\begin{enumerate}[topsep=3pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
+\item Each $supp(\phi_j)$ is compact
+\item Each $supp(\phi_j)$ is contained in some $U_\alpha$
+\item Each $\vec{x}\in \Omega$  has an open neighborhood that intersects only finitely many $supp(\phi_j)$
+\item $\sum_{j=1}^\infty \phi_j(\vec{x}) = 1$ for all $\vec{x}\in \Omega$, such sum is called the locally finite sum.
+\end{enumerate}
+\end{thm}
+
+\begin{thm}[Theorem 21.2 from Munkres] 
+For $k\leq n$, let $T:\R^k \to \R^n \ \ \ \vec{x} \mapsto A\vec{x}+\vec{b}$ be an affine injection for some matrix $A$ and $\vec{b}\in \R^n$.\\ One can pick an orthogonal $n \times n$ matrix $B$ such that we have: $$B\cdot A= \bmat{M \\ Z}$$ for some $k\times k$ matrix $M$ and zero matrix $Z$.
+\end{thm}
+
+\begin{thm}
+For $M \subseteq  \R^n$, the followings are equivalent:
+\begin{enumerate}[topsep=3pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
+\item For all $\vec{p}\in M$, there exist a set $U\subseteq \R^k$ open in $\R^k$, a set $V \subseteq M$ open in \mbox{$M$ that contains $\vec{p}$,} and a homeomorphism $\alpha \in C^r(U,V)$ with rank $D\alpha(\vec{x}) = k$ for all $\vec{x}\in U$.  
+\item For all $\vec{p}\in M$, there exist a set $A \subseteq \R^k$ open in $\R^k$, a set $V\subseteq M$ open in $M$ that \mbox{contains $\vec{p}$,} a function $g\in C^r(A,\R^{n-k})$, and a coordinate permutation $\rho:\R^n \to \R^n$, such that we have $\rho(V) = Graph(g)$.  
+\end{enumerate}
+\end{thm}
+
+\begin{thm}
+Let $U$ be an open subset of $\R^n$, let $F \in C^r(U,\R^{n-k})$, let $M = F^{-1}(\vec{0})$. If $rank(DF(\vec{x})) = n-k$ for all $\vec{x}\in M$. Then $M$ is a $k$-manifolds without boundary of class $C^r$.
+\end{thm}
+
+\begin{thm}[Theorem 24.4 on Munkres]
+Let $M$ be a $k$-manifold, $\partial M$ is a $C^r$ $k-1$ manifold without boundary.
+\end{thm}
+
+\begin{thm}
+Every $k$-manifold $M$ can be decomposed uniquely as a disjoint union of open connected $k$-manifolds, which are called the components of $M$. 
+\end{thm}
+
+\begin{thm}
+Every connected 1-manifold of class $C^r$ is $C^r$-diffeomorphic to an interval in $\R$ or to the circle $S^1$. 
+\end{thm}
+
+\begin{thm}
+Let $A$ be an open connected subset of $\R^n$, let $f \in C^1(A,\R)$. $df(x) = 0$ for $x \in A$ if and only if $f$ is a constant function. 
+\end{thm}
+
+\begin{thm}[Fundamental Theorem of Calculus I(a) for 1-forms]
+Let $\omega$ be a 1-form on $A$, where $A$ is a connected open subset of $\R^m$. The followings are equivalent:
+\begin{enumerate}[topsep=3pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
+\item $\omega = df$ for some $f \in C^1(A,\R)$, in which case $\omega$ is said to be exact on $A$.
+\item For $\alpha \in C_{pw}^1 ([a,b],A)$ with $\alpha(a) = \alpha(b)$, we have $\int_{Y_\alpha} \omega = 0$.
+\item For $\alpha_j \in C_{pw}^1 ([a_j,b_j],A)$ with $\alpha_1(a_1) = \alpha_2(a_2)$ and $\alpha_1(b_1) = \alpha_2(b_2)$, we have $\int_{Y_{\alpha_1}}\omega = \int_{Y_{\alpha_2}} \omega $, in which case $\omega$ is said to be path independent. 
+\end{enumerate}
+\end{thm}
+
+\begin{thm}[Fundamental Theorem of Calculus I(b) for 1-forms]
+Let $\omega$ be a closed 1-form on $A\subseteq \R^m$. If $A$ is a convex open subset of $\R^m$, then  $\omega$ is exact on $A$.  
+\end{thm}
+
+\begin{thm}[Fundamental Theorem of Calculus II for one-forms]
+For $C^1$ type function $\alpha:[a,b]=I \to A$ where $A$ is an open subset of $\R^n$, with $C^1$ function $f:A\to \R$, we can write the following: 
+$$\int_{Y_\alpha} df = \int_I \alpha^*df = \int_I d(f\circ \alpha) = \int_I (f\circ \alpha)'= (f\circ \alpha)(b) - (f\circ \alpha) (a) = f(\alpha(b)) - f(\alpha(a))\coloneqq \Delta_{Y_\alpha}f$$
+\end{thm}
+
+
+
+\begin{lem}
+Let $\omega$ be a closed 1-form of $C^1$ type, and let $\alpha$ be a $C^2$ type function. Then $\alpha^*\omega$ is closed. 
+\end{lem}
+
+
+\begin{lem}[Green's Theorem for Two-dimensional Boxes]
+Let $\omega$ be a 1-form defined on an open set $A\subseteq \R^2$ which contains a box $R$ of $\R^2$, then we have: 
+$$\int_{\substack{{Bd(R)}\\ \text{ counter-clockwise orientation}}} \omega = \int_R (D_1\omega_2 - D_2\omega_1)$$ 
+where $\omega_1,\omega_2$ are component functions of $\omega$. The counter-clockwise orientation of $Bd(R)$ refers to a path which maps an interval in $\R$ to $Bd(R)$ that goes in counter-clockwise direction on $Bd(R)$.
+\end{lem}
+
+
+
+\newpage
+\note Consider a bounded function defined on a box $Q$.
+\begin{enumerate}[topsep=3pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
+\item If $f^{-1}(0)$ is dense in $Q$, then all $L(f,P) \leq 0$, all $U(f,P) \geq 0$, which implies $\lowint_Q f \leq 0 \leq \upint_Q f$.
+\item If $f^{-1}(0)$ is dense in $Q$ and $f$ is integrable, then $\int_Q f = 0$.
+\item If $f \geq 0$, $f(\vec{a}) > 0$, $f $ is continuous at $\vec{a}$, then $\lowint_Q f > 0$. 
+\item If $f \geq 0$, $f(\vec{a}) > 0$, and $\lowint_Q f =0$, then $f$ is discontinuous.
+\item If $f \geq 0$ and $f$ is integrable on $Q$, with $\int_Q f = 0$, then $Q \setminus f^{-1}(0)$ has measure zero. 
+\end{enumerate}
+
+
+A bounded set $S \subseteq \R^n$ is said to be rectifiable provided that any one of the following holds:
+\begin{enumerate}[topsep=3pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
+\item The function $\mathbb{I}:S \to \R \ \ \ \vec{x}\mapsto 1$ is Riemann integrable on $S$
+\item The indicator function $\mathbb{I}_S$ is integrable on some box $Q\subseteq \R^n$ that contains $S$.
+\item $m^*(Bd(S)) = 0$
+\item $m^{*,J}(Bd(S)) = 0$
+\end{enumerate}
+Lebesgue outer measure: $m^*(E) \coloneqq  \inf\left\{\sum_{j=1}^\infty V(Q_j) \mid E \subseteq \bigcup_{j=1}^\infty Q_j, \text{ where } Q_j \text{ are boxes in }\R^n \right\} $\\
+Jordan outer measure: $m^{*,J}(E) \coloneqq  \inf\left\{\sum_{j=1}^k V(Q_j) \mid E \subseteq \bigcup_{j=1}^k Q_j, \text{ where } Q_j \text{ are boxes in }\R^n \right\} $\\
+The $Q_j$ can be replaced by $Int(Q_j)$. The two measures are equal when $E$ is compact.
+\begin{corT}
+Let $S$ be a bounded subset of $\R^n$, let $f:S \to \R$ be a bounded continuous function.\\ 
+If $m^*(Bd(S)) = 0$, then $f$ is Riemann integrable on $S$. 
+\end{corT}
+
+\begin{defn}
+For $f \in C(A,\R)$ where $A$ is an open subset of $\R^n$, \\$ext \int_A f$ exists provided that at least one of $ext \int_A f_+$ and $ext \int_A f_-$ is finite. \\Take supremum of integrating $f$ on compact rectifiable set when $f$ is non-negative. \end{defn}
+
+$avg_A f\coloneqq \frac{\int_A f}{V(A)}$ and for a special case where $f:\R^n \to \R^n \ \ \ \vec{x}\mapsto \vec{x}$, $avg_A f$ is the centroid of $A$.
+
+\begin{defn}
+Let $Q$ be a box in $\R^k$, and let $T$ be an affine injection from $\R^k$ to $\R^n$ of the form $\vec{x}\mapsto A\vec{x}+\vec{b}$ for some matrix $A$ and vector $\vec{b}\in \R^n$. We define $V_k(T(Q)) = \sqrt{\det(A^TA)}\cdot V(Q)$. 
+\end{defn}
+
+\begin{defn}
+Let $k,n,r\in \N$ with $k \leq n$, let $\alpha \in C^r(U, \R^n)$, where $U$ is an open subset of $\R^k$.  The set $Y \coloneqq \alpha(U)$, equipped with the map $\alpha$, constitute a parametrized $k$-manifold of class $C^r$, denoted as $Y_\alpha$. 
+$$V_k(Y_\alpha) \coloneqq ext \int_U \mathcal{V}(D\alpha)\qquad\qquad\qquad\qquad\qquad \int_{Y_\alpha} f\, dV \coloneqq ext \int_U (f\circ \alpha) \mathcal{V}(D\alpha)$$
+\end{defn}
+
+\begin{defn}
+Given $r,k,n \in \N$, a set $M \subseteq \R^n$ is called a k-manifold without boundary of class $C^r$ provided that for all $\vec{p} \in M$, there exist a set $V \subseteq M$ that contains $\vec{p}$, a set $U\subseteq \R^k$, with $V$ being open in $M$ and $U$ being open in $\R^k$, and a homeomorphism $\alpha \in C^r(U,V)$, with $rank(D\alpha(\vec{x})) = k$ for all $\vec{x}\in U$. The map $\alpha$ is called a coordinate patch on $M$ about $\vec{p}$.
+\end{defn}
+
+\begin{defn}
+Given $r,k,n \in \N$, a set $M \subseteq \R^n$ is called a $k$-manifold of class $C^r$ provided that, for all $\vec{p}\in M$, there exist a subset $U$ of $\R^k$ open in either $\R^k$ or $\mathbb{H}^k$, a subset $V$ of $M$ open in $M$, and a homeomorphism $\alpha \in C^r(U,V)$ with $rank(D\alpha(\vec{x})) = k$ for all $\vec{x}\in U$. If such $\alpha$ exists for $\vec{p}\in M$, then $\alpha$ is called the coordinate patch on $M$ about $\vec{p}$, and $M$ is also called a $C^r$ manifold which might have  boundary. 
+\end{defn}
+
+
+
+\begin{defn}
+Let $M$ be a $k$-manifold. For $\vec{p}\in M$, $\vec{p}$ is called a boundary point of $M$ provided that there exists a coordinate patch $\alpha:U \to V$ on $M$ about $\vec{p}$ such that $U$ is open in $\mathbb{H}^k$, $V$ is open in $M$, and $\vec{p} = \alpha((x_1,x_2,\cdots, x_{k-1},0))$. The set of boundary points of $M$ is called the manifold boundary of $M$. denoted as $\partial M$. For $\vec{q}\in M\setminus \partial M$, $\vec{q}$ is called an interior point of $M$. 
+\end{defn}
+
+\begin{defn}
+Let $A$ be an open subset of $\R^n$, $B$ be an open subset of $\R^m$, let $\alpha \in C^1(B,A)$, and let $\omega$ be an $1$-form defined on $A$.  $\alpha^*\omega \coloneqq (\omega\circ \alpha) \cdot D\alpha$ is called the pullback of $\omega$ by $\alpha$. 
+$$\int_{Y_\alpha} df = \int_I \alpha^*df = \int_I d(f\circ \alpha) = \int_I (f\circ \alpha)'= (f\circ \alpha)(b) - (f\circ \alpha) (a) = f(\alpha(b)) - f(\alpha(a))\coloneqq \Delta_{Y_\alpha}f$$
+\end{defn}
+
+If we have $\omega \in C^1$ and is exact, then $D_k\omega_j = D_j \omega_k$, in which case $\omega$ is said to be closed on $A$. 
+
+\end{document}

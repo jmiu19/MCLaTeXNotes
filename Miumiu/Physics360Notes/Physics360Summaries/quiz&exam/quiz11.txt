@@ -1,0 +1,64 @@
+Suppose we have a wave that has frequency f_a in material a, and frequency f_b in material b. The wave is going from material a to material b. 
+
+A wavetop of the wave hits the "surface" of material b at time t_0, so the wavetop leaves material a at time t_0, and enters material b at time t_0. The next wavetop of the wave hits the "surface" of material b at time t_1, so the wavetop leaves the material a at time t_1, and enters material b at time t_1. Notice that the time difference between the two wavetops entering material b is the same as the time difference between the two wavetops leaving material a, and this time difference is the period of the wave in material a, so the period of the wave in material b is the same as the period of the wave in material a, and hence we have f_a=f_b. Moreover, we note that the wave travels in the same speed in materal b and it has a fixed wavelength in material b (even though they might be different from those in material a), so the frequency of the wave entering material b must be the same as the frequency of the wave traveling through material b. 
+
+Comparing to the string instruments. Suppose the vibration of the string is in some frequency f_a, which implies the string strikes the air at the frequency f_a, and hence the induced frequency of the air vibration is also f_a. The frequency of the sound heard by human air is the frequency of the air vibration, which is equal to the frequency of the vibration of the string. Note that the wave has a fixed speed in air, and hence the frequency of the air vibration does not change when it is traveling through the air. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+The gas undergoes some thermodynamic process and it has its final state halved the tempearture and five times the volume. By the ideal gas law, we have p_iV_i=NkT_i, and p_fV_f=NkT_f. Here we have V_f=5V_1, and T_f=(T_i)/2, hence we have p_f(5V_i)=Nk(T_i)/2, which implies p_f=(p_i)/10. Here the process can be broken down into a combination of an isobaric process that increases the volume of the gas from V to 5V, and an isochoric process that decreases the pressure of the gas from p to p/10. The change of the entropy of the gas is path independent, hence we know that the change of the entropy of the gas is the sum of the changes of entropy in the isochoric and the isobaric process. Then we can write
+
+\Delta S_{total} = \Delta S_{isoch.} + \Delta S_{isoba.},
+ 
+where
+
+\Delta S_{isoch.} = \int dQ/T = \int n C_v dT/T = n C_v \ln(p/(10p)) = - n C_v \ln(10)
+
+and
+
+\Delta S_{isoba.} = \int dQ/T = \int n C_p dT/T = n C_p\ln(5V/V) = n C_p \ln(5)
+
+If the gas is monatomic, then we can write:
+
+\Delta S_{total} = - nC_v \ln(10)+ nC_p\ln(5)
+
+= - nR(3/2)\ln(10) + nR(5/2)\ln(5) = Nk\ln(10^{-3/2}5^{5/2}).
+
+If the gas is diatomic, then we can write:
+
+\Delta S_{total} = - nC_v \ln(10)+ nC_p\ln(5)
+
+= - nR(5/2)\ln(10) + nR(7/2)\ln(5) = Nk\ln(10^{-5/2}5^{7/2}).
+
+
+So we see that x=10^{-3/2}5^{5/2} for monatomic gas, and x=10^{-5/2}5^{7/2} for diatomic gas.
+
+
+
+
+
+
+
+
+
+
+
+The spaceship itself is acceleartion, hence it is experiencing an external force, so the spaceship itself cannot be a inertial frame, then the spaceship will never have zero acceleration in any inertial frame. When calculating the acceleration of a spaceship in an inertial frame S, we need to use the change in time in frame S, and the velocity of the spaceship in this frame S, and these will involve the Lorentz factor in this frame. So we know that there is a Lorentz transformation for the acceleration between inertial frames. So when describing the acceleration of a spaceship, we need to choose a specific reference frame, and note that spaceship itself cannot be an inertial frame. 
+
+
+
+
+
+
+
+
