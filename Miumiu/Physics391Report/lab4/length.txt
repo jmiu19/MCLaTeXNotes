@@ -1,0 +1,21 @@
+slit:
+red - 43/53
+green - 95/143
+blue - 73/143
+
+
+hair:
+red - 103/206
+green - 76/173
+
+
+wire:
+red - 273/164
+green - 176/125
+blue - 181/179
+
+
+slits:
+red - 756/186
+green - 630/186
+blue - 389/150

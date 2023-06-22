@@ -1,0 +1,20 @@
+room temp resistance of bulb: 5.129
+cable resistance: 0.028
+light bulb condition: clear
+
+
+
+after measuring the spectral intensity:
+room temp resistance of bulb: 5.135
+cable resistance: 0.030
+light bulb condition: clear
+
+
+
+
+after measuring the radiated power data:
+room temp resistance of bulb: 5.134
+cable resistance: 0.031
+
+
+
