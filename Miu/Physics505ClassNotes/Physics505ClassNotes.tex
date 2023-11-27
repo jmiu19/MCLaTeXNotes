@@ -1,0 +1,2861 @@
+                                                                                                                                               \documentclass[11pt, onesided]{book}
+
+%%%%%%%%%%%%%%Include Packages%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{xcolor}
+\usepackage{mathtools}
+\usepackage[a4paper, total={6in, 8in}, margin=1.25in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{paralist}
+\usepackage{rsfso}
+\usepackage{amsthm}
+\usepackage{wasysym}
+\usepackage[inline]{enumitem}   
+\usepackage{hyperref}
+\usepackage{tocloft}
+\usepackage{wrapfig}
+\usepackage{titlesec}
+\usepackage{colortbl}
+\usepackage{stackengine} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%Chapter Setting%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{gray75}{gray}{0.75}
+\newcommand{\hsp}{\hspace{20pt}}
+\titleformat{\chapter}[hang]{\Huge\bfseries}{\thechapter\hsp\textcolor{gray75}{$\mid$}\hsp}{0pt}{\Huge\bfseries}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%Theorem environments%%%%%%%%%%%%%%%%%%%
+\newtheoremstyle{break}
+  {\topsep}{\topsep}%
+  {\itshape}{}%
+  {\bfseries}{}%
+  {\newline}{}%
+\theoremstyle{break}
+\theoremstyle{break}
+\newtheorem{axiom}{Axiom}
+\newtheorem{thm}{Theorem}[section]
+\renewcommand{\thethm}{\arabic{section}.\arabic{thm}}
+\newtheorem{lem}{Lemma}[thm]
+\newtheorem{cor}{Corollary}[thm]
+\newtheorem{defn}{Definition}[thm]
+\newenvironment{indEnv}[1][Proof]
+  {\proof[#1]\leftskip=1cm\rightskip=1cm}
+  {\endproof}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%Integral%%%%%%%%%%%%%%%%%%%%%%%
+\def\upint{\mathchoice%
+    {\mkern13mu\overline{\vphantom{\intop}\mkern7mu}\mkern-20mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+  \int}
+\def\lowint{\mkern3mu\underline{\vphantom{\intop}\mkern7mu}\mkern-10mu\int}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\T}{\mathcal{T}}
+\newcommand{\M}{\mathcal{M}}
+\newcommand{\Symm}{\text{Symm}}
+\newcommand{\Alt}{\text{Alt}}
+\newcommand{\Int}{\text{Int}}
+\newcommand{\Bd}{\text{Bd}}
+\newcommand{\Power}{\mathcal{P}}
+\newcommand{\ee}[1]{\cdot 10^{#1}}
+\newcommand{\spa}{\text{span}}
+\newcommand{\sgn}{\text{sgn}}
+\newcommand{\degr}{\text{deg}}
+\newcommand{\pd}{\partial}
+\newcommand{\that}[1]{\widetilde{#1}}
+\newcommand{\lr}[1]{\left(#1\right)}
+\newcommand{\vmat}[1]{\begin{vmatrix} #1 \end{vmatrix}}
+\newcommand{\bmat}[1]{\begin{bmatrix} #1 \end{bmatrix}}
+\newcommand{\pmat}[1]{\begin{pmatrix} #1 \end{pmatrix}}
+\newcommand{\rref}{\xrightarrow{\text{row\ reduce}}}
+\newcommand{\txtarrow}[1]{\xrightarrow{\text{#1}}}
+\newcommand\oast{\stackMath\mathbin{\stackinset{c}{0ex}{c}{0ex}{\ast}{\Circle}}}
+\newcommand{\txt}{Wald's \textit{General Relativity}}
+
+\newcommand{\note}{\color{red}Note: \color{black}}
+\newcommand{\remark}{\color{blue}Remark: \color{black}}
+\newcommand{\example}{\color{green}Example: \color{black}}
+\newcommand{\exercise}{\color{green}Exercise: \color{black}}
+
+%%%%%%%%%%%%%%%%%%%%%%Roman Number%%%%%%%%%%%%%%%%%%%%%%%
+\makeatletter
+\newcommand*{\rom}[1]{\expandafter\@slowromancap\romannumeral #1@}
+\makeatother
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%table of contents%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\setlength{\cftchapindent}{0em}
+%\cftsetindents{section}{2em}{3em}
+%
+%\renewcommand\cfttoctitlefont{\hfill\huge\bfseries}
+%\renewcommand\cftaftertoctitle{\hfill\mbox{}}
+%
+%\setcounter{tocdepth}{2}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%Footnotes%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand\blfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%Section%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\makeatletter
+\def\@seccntformat#1{%
+  \expandafter\ifx\csname c@#1\endcsname\c@section\else
+  \csname the#1\endcsname\quad
+  \fi}
+\makeatother
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Enumerate%%%%%%%%%%%%%%
+\makeatletter
+% This command ignores the optional argument 
+% for itemize and enumerate lists
+\newcommand{\inlineitem}[1][]{%
+\ifnum\enit@type=\tw@
+    {\descriptionlabel{#1}}
+  \hspace{\labelsep}%
+\else
+  \ifnum\enit@type=\z@
+       \refstepcounter{\@listctr}\fi
+    \quad\@itemlabel\hspace{\labelsep}%
+\fi}
+\makeatother
+\parindent=0pt
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\begin{document}
+
+	\begin{titlepage}
+		\begin{center}
+			\vspace*{0.5cm}
+			\Huge \color{red}
+				\textbf{Class Notes}\\
+			\vspace{0.5cm}			
+			\Large \color{black}
+			Math 505 - Classical Field Theory\\
+			Professor Kai Sun
+			\vspace{1.5cm}
+
+			\includegraphics[scale=1.15]{hmm.pdf}
+			
+			
+			\vspace{2cm}
+			\LARGE
+				\textbf{Jinyan Miao}\\
+				\hfill\break
+				\LARGE Fall 2023\\
+			\vspace{1cm}
+
+		\vspace*{\fill}
+		\end{center}			
+	\end{titlepage}
+
+
+
+\tableofcontents
+\hfill\break
+\hfill\break
+\hfill\break
+ 
+
+\newpage
+\chapter{Classical Mechanics}
+\quad Just as going from Newton's Law to Lagrangian mechanics for point-like particles, here we will develop a theory from wave equations to Lagrangian mechanics, referred as the classical field theory.\\
+
+\section[Action and Lagrangian]{\color{red} Action and Lagrangian\color{black}}
+\example For kinetic energy of a suspended mas by a massless string of length $r$. The mass has kinetic energy $T = m(r\dot{\theta})^2/2$, with potential energy $V = mgh = -mgr\cos(\theta)$. Hence we can write the Lagrangian
+\begin{align*}
+L = T-V = \frac{1}{2}mr^2 \dot{\theta}^2 + mgr \cos(\theta)\, .
+\end{align*}
+In such a system, $\theta$ is the only canonical coordinate, with velocity $\dot{\theta}$. \\
+
+In general, a Lagrangian is a function of $n$ coordinates denoted as $q_1,q_2,\cdots, q_n$ and $n$ velocities denoted as $\dot{q}_1, \dot{q}_2,\cdots, \dot{q}_n$. That is, we can write
+\begin{align}
+L(\dot{q}_1,\dot{q}_2,\cdots, \dot{q}_n, q_1,q_2,\cdots, q_n)
+\end{align} 
+as the Lagrangian of the system, from which we can define the action 
+\begin{align}
+S\coloneqq \int_{t_0}^{t_1} L(t) \, dt\, .
+\end{align}
+The \textbf{principle of least action} requires that $\delta S = 0$ for a physical path from $t_0$ to $t_1$, that is $S$ is stationary. \\
+
+\example For the pendulum problem, we here have
+\begin{align*}
+L(\dot{\theta,\theta}) =\frac{1}{2}mr^2 \dot{\theta}^2 + mgr \cos(\theta)\,,
+\end{align*} 
+hence we have 
+\begin{align*}
+S = \int_{t_i}^{t_f} L(\dot{\theta}, \theta) \, dt = \int_{t_i}^{t_f} \left(\frac{1}{2}mr^2 \dot{\theta}^2 + mgr \cos(\theta)\right) \, dt
+\end{align*}
+we can apply small variation as $\theta(t) \to \theta(t) + \delta \theta(t)$, and correspondingly $\dot{\theta}(t) \to \dot{\theta}(t)  + \delta \dot{\theta}(t)$. Here we write 
+\begin{align*}
+\delta S = S' - S 
+&= \int_{t_i}^{t_f} \left(L(\dot{\theta}+\delta \dot{\theta}, \, \theta + \delta \theta) -L(\dot{\theta},\theta) \right)\, dt \\
+&= \int_{t_i}^{t_f} \left( \frac{\pd L}{\pd \dot{\theta}} \frac{d(\delta \theta)}{dt} + \frac{\pd L}{\pd \theta}\delta \theta\right) \, dt\, .
+\end{align*}
+Utilizing integral by part and dropping the boundary term, we obtain
+\begin{align*}
+\delta S = \int_{t_i}^{t_f} \left( - \left(\frac{d}{dt}\frac{\pd L}{\pd \dot{\theta}}\right)\delta \theta + \frac{\pd L}{\pd \theta} \delta \theta \right) \, dt = \int_{t_i}^{t_f} \left( - \frac{d}{dt}\frac{\pd L}{\pd \dot{\theta}} + \frac{\pd L}{\pd \theta} \,  \right)dt \delta \theta \, .
+\end{align*}
+For requiring that $\delta S = 0$, we must have 
+\begin{align}
+ \frac{d}{dt} \frac{\pd L}{\pd \dot{\theta}} = \frac{\pd L}{\pd \theta}
+\end{align}
+ holds for arbitrary $\delta \theta$. \\
+ 
+ For a general Lagrangian of the form given by (1.1), we have $n$ equations, called the Euler Lagrangian Equations, each of the form
+ \begin{align}
+ \frac{d}{dt}\frac{\pd L}{\pd \dot{q}_i} = \frac{\pd L}{\pd q_i}\,,
+\end{align}   
+ for $i\in \N_n$. Here Eq. (1.4) is called the equation of motion.\\
+ 
+
+\example For the pendulum example, we have (1.3) holds, and hence we can write
+\begin{align*}
+-mgr \sin(\theta) =\frac{\pd L}{\pd \theta} =  \frac{d}{dt} \frac{\pd L}{\pd \dot{\theta}} =\frac{d}{dt}\left( \frac{mr^2}{2}\left( \frac{\pd \dot{\theta}}{\pd \dot{\theta}}\right)^2\right) = mr^2 \ddot{\theta}\,.
+\end{align*}
+Hence the equation of motion of such system is
+\begin{align*}
+ mr\ddot{\theta} = -mg\sin(\theta)\,.
+\end{align*}
+For small angle $\theta\ll 1$, we have $\sin(\theta) \approx \theta$ and hence we can write
+\begin{align*}
+ mr\ddot{\theta} = mg \theta\, ,
+\end{align*}
+from which we obtain the angular velocity $\omega = \sqrt{g/r}$ for such system. \\
+
+
+\subsection{Constraint and Lagrangian Multipliers}
+One can choose any coordinate system to describe the physics, as long as the the chosen coordinate components are independent. For the pendulum example, one cannot use the general Cartesian coordinate $(x,y)$ as the only ingredient to describe the suspended mass as $x^2 + y^2 = r^2$ is a constraint to $x$ and $y$, or in other words, $x$ and $y$ are not independent. \\
+
+\example For the pendulum example, if one uses the Cartesian coordinate $(x,y)$ to describe the system, one can write
+\begin{align*}
+ T = \frac{m\dot{x}^2}{2} + \frac{m\dot{y}^2}{2},\qquad\qquad V = mgy\, ,
+\end{align*}
+and hence the Lagrangian is given by 
+\begin{align*}
+L = \frac{1}{2} m\dot{x}^2 + \frac{1}{2}m\dot{y}^2 - mgy\, ,
+\end{align*}
+from which we can write the equation of motion of the system using (1.2), which yields
+\begin{align*}
+m \ddot{x} = 0\, , \qquad\qquad m \ddot{y} = -mg\,.
+\end{align*}
+which does not describe the full picture of the system as the condition $x^2 + y^2 = r^2$ is not included in the analysis. \\
+
+However, one can define a constraint of the form 
+\begin{align*}
+f(\dot{q}_1,\dot{q}_2,\cdots, \dot{q}_n, q_1,q_2,\cdots, q_n) = 0
+\end{align*}
+and include $f$ to the Lagrangian to restore the constraint on the coordinates. \\
+
+\example For the pendulum example, one can write
+\begin{align*}
+f(x,y) = \sqrt{x^2 + y^2} - r = 0
+\end{align*}
+and define the new Lagrangian 
+\begin{align*}
+ \hat{L} = L - \lambda f = \hat{L}(\dot{q}_1,\dot{q}_2,\cdots, \dot{q}_n, q_1,q_2,\cdots, q_n, \lambda)\,,
+\end{align*}
+where $\lambda \in \R$ is called the Lagrange multiplier, and $L$ is the Lagrangian obtained using the coordinates $(\dot{q}_1,\dot{q}_2,\cdots, \dot{q}_n, q_1,q_2,\cdots, q_n)$ only. Then by principle of least motion, we require that $\delta S = 0$, and obtain the equations of motion for the system
+\begin{align*}
+\frac{d}{dt}\frac{\pd \hat{L}}{\pd \dot{q}_i} = \frac{\pd \hat{L}}{\pd q_i}\,, \qquad\qquad\qquad \frac{\delta S}{\delta \lambda} = f = 0\,.
+\end{align*}
+If one is able to obtain a coordinate system such that no constraint is needed, or in other words, coordinate components are independent, the system is said to be conanical, and solving conanical systems is generally much easier than non-conanical systems.\\
+
+If one has a system that requires more than one, say $n$, constraints $f_i$ on the coordinate system, one needs to include $n$ Lagrange multipliers $\lambda_i$ such that the Lagrangian reads
+\begin{align*}
+\hat{L} = L -\left( \sum_{i\in \N_n}\lambda_if_i\right)
+\end{align*}
+and obtain $n+1$ equations of motion by requiring that $\delta S = 0$. 
+
+\section[Canonical Momenta and Hamiltonian]{\color{red} Canonical Momenta and Hamiltonian\color{black}}
+For a given Lagrangian and general coordinates, one can define the canonical momenta
+\begin{align}
+p_i = \frac{\pd L}{\pd \dot{q}}
+\end{align}
+\example For the pendulum example in the previous section, we have 
+\begin{align*}
+p = \frac{\pd L}{\pd \dot{\theta}} = mr^2 \dot{\theta}
+\end{align*}
+\note Here if the coordinates are some linear coordinates, we can interpret the canonical momenta as linear momenta, while if the coordinates are some angular coordinates, we can interpret the canonical momenta as angular momenta. Also note here the canonical momenta and velocity of the system carry the same information, as for the pendulum example, we can write
+\begin{align*}
+\dot{\theta} = \frac{p}{mr^2}
+\end{align*}
+Hence we can choose either $(q_i,\dot{q}_i)$ or $(q_i, p_i)$ to describe the system. The Lagrangian approach uses the the Lagrangian $L(q_i,\dot{q}_i)$ to describe the system, while the Hamiltonian approach uses Hamiltonian $H(p_1,q_i)$ to describe. \\
+
+
+\example In thermodynamics, one describe a gas using the pair $(S,P)$ or the pair $(T,P)$, as $dU = T\,dS - P\,dV$ or $dF = -S\,dT - P\, dV$, where $U$ is the internal energy and $F$ is the Helmholtz free energy. In thermodynamics, the Legendre transformation gives
+\begin{align*}
+F = U - TS = U - \left( \frac{\pd U}{\pd S}\right)_V \, S\,.
+\end{align*}
+In mechanics, a very similar idea applies.\\
+
+The transformation from a Lagrangian $L(\dot{q}_1, \dot{q}_2,\cdots, \dot{q}_n, q_1,q_2,\cdots, q_n)$ to the correspondingly defined Hamiltonian $H(p_1,p_2,\cdots, p_n, q_1,q_2,\cdots, q_n)$ is given by
+\begin{align}
+H  = \left( \frac{\pd L}{\pd \dot{q}_i}\right) \dot{q}_i -L = p_i \dot{q}_i - L\,,
+\end{align}
+where we have used the Einstein notation that same index get summed.\\
+
+\example For the pendulum example, we can write that 
+\begin{align*}
+p_\theta = \frac{\pd L}{\pd \dot{\theta}} = mr^2 \dot{\theta}\,,
+\end{align*}
+from which we can write
+\begin{align*}
+H = mr^2 \dot{\theta}^2 - \frac{1}{2}mr^2 \dot{\theta}^2 - mgr\cos(\theta) = \frac{1}{2}mr^2 \dot{\theta} - mgr \cos(\theta) = \frac{p_\theta^2}{2mr^2}-mgr \cos(\theta)
+\end{align*}
+Notice here that we have the Hamiltonian is the sum of kinetic energy and potential energy. While in general, in classical mechanics, $H = \text{KE} + \text{PE}$ only when $H$ does not have explicit time dependence, and $H$ does not necessarily represent the sum of kinetic and potential energy in other fields of physics.\\
+
+
+\note In summary, to transform from Lagrangian to Hamiltonian, we need to define the canonical momenta via (1.5), then we need to apply the transformation via (1.6). Finally, we need to ensure that the Hamiltonian $H$ is a function of $p_i$ and $q_i$ only, which does not contain the velocity components $\dot{q}_i$ explicitly. \\
+
+
+\subsection{Hamiltonian Mechanics}
+For a Lagrangian $L(\dot{q}_i, q_i)$, we can write
+\begin{align}
+dL = \frac{\pd L}{\pd \dot{q}_i}\,d\dot{q}_i + \frac{\pd L}{\pd q_i}\,dq_i\,.
+\end{align}
+For Hamiltonian $H (p_i,q_i)$, we can write
+\begin{align}
+dH = \frac{\pd H}{\pd p_i}\, dp_i + \frac{\pd H}{\pd q_i}\, dq_i\,.
+\end{align}
+Note $H$ is defined via (1.6), here we have
+\begin{align*}
+dH = d(p_i \dot{q}_i -L) = d(p_i\dot{q}_i) - dL= p_i\, d\dot{q}_i +\dot{q}_i\, dp_i - \frac{\pd L}{\pd \dot{q}_i}\,d\dot{q}_i - \frac{\pd L}{\pd q_i}\,dq_i
+\end{align*}
+Note that $H$ should not contain $\dot{q}$ term explicitly, hence $dH$ should not have $d\dot{q}_i$ here. Also note that by definition $p_i = \pd L /\pd \dot{q}_i$. Hence we have
+\begin{align}
+dH =\dot{q}_i \,dp_i  - \frac{\pd L}{\pd q_i}\,dq_i\,.
+\end{align}
+Also note that combing (1.4) and (1.5), we obtain
+\begin{align*}
+\frac{\pd L}{\pd q_i} = \frac{dp_i}{dt} = \dot{p}_i\,.
+\end{align*}
+Hence (1.9) becomes
+\begin{align*}
+dH = \dot{q}_i dp_i - \dot{p}_i \, dq_i\,
+\end{align*}
+for which comparing with (1.8) we conclude that we require
+\begin{align}
+\dot{q}_i = \frac{\pd H}{\pd p_i}\,, \qquad
+\dot{p}_i = -\frac{\pd H}{\pd q_i}\,.
+\end{align}
+As a result, for Lagrangian mechanics, we have, via (1.4), $n$ equations of motion. While for Hamiltonian mechanics, we have, via (1.10), $2n$ equations of motion, where $n$ is the number of canonical coordinate components. While (1.4) is a second order differential equation, (1.10) is a system of two first order differential equations.\\
+
+\section[Comparison between Lagrangian and Hamiltonian]{\color{red}Comparison between Lagrangian and Hamiltonian\color{black}}
+In classical physics, the complexity of Lagrangian ($n$ second order differential eq.) is the same as the Hamiltonian ($2n$ first order differential eq.). However, Hamiltonian has clearer physical meaning, that is the energy of the system, while the symmetry of the system can be more easily seen from the Lagrangian. \\
+
+In the context of special relativity, the action $S$ of a system is a $4$-dimensional scalar, and is invariant under Lorentz boost, while the Hamiltonian of the system is neither a $4$-dimensional scalar nor $4$-dimensional vector, and is not invariant under Lorentz boost (changing reference frame would change the kinetic energy of the system described). Hence Lagrangian is preferred in this context.\\
+
+In the context of quantum system, Hamiltonian has canonical quantization, directly fitting the Heisenberg picture of quantum systems. In quantum system, (1.10) still holds while viewing $H,\,\dot{q},\,q,\,\dot{p}_i,\,$and$\,p_i$ as operators, and enforcing $[\hat{q}_i, \hat{p}_j ] =i\hbar \delta_{ij}$, from which one obtains
+\begin{align*}
+\frac{d\hat{q}_i}{dt}= \frac{\pd \hat{H}}{\pd \hat{p}_i} = \frac{i}{\hbar}[\hat{H},\hat{q}_i]\,,\qquad \frac{d\hat{p}_i}{dt}=- \frac{\pd \hat{H}}{\pd \hat{q}_i} = -\frac{i}{\hbar}[\hat{H},\hat{p}_j]\,.
+\end{align*}
+In quantum system, Lagrangian approach utilizes path integral formalism, which is very different from what is done using Hamiltonian.\newpage
+
+
+
+
+
+
+
+\section[Symmetry]{\color{red} Symmetry\color{black}}
+There are two types of symmetry, discrete or continuous. By symmetry, we mean one does some operation to the system and the system obey the same laws of physics. \\
+
+\example For a mass suspended by massless string of length $r$, the angle between the string and the vertical is denoted as $\theta$. Note such system $\theta \to -\theta$ is a symmetry, as the physics laws stay the same by mirroring the mass over the vertical axis. In particular, the equation of motion for the system 
+\begin{align*}
+mr \frac{d^2 \theta}{dt^2} = mg \sin(\theta)
+\end{align*}
+is invariant under the mapping $\theta \to -\theta$.\\
+
+For now we will focus on the Lagrangian formalism. Action, the time integral of Lagrangian, stays the same under symmetry. In the case of classical mechanics (and some other fields), for most textbooks, the Lagrangian of the system is unchanged under symmetry.\\
+
+\example For the pendulum example, under the map $\theta \to -\theta$, $L$ is invariant
+\begin{align*}
+L = \frac{1}{2} mr^2 \dot{\theta}^2 + mgr\cos(\theta)\, .
+\end{align*}
+
+\example In the context of special relativity, the Lagrangian of the system changes under Lorentz boost, while the time interval $dt$ in the time integral of Lagrangian also changes, and the resultant action of the system stays the same under Lorentz boost.\\
+
+\remark The symmetry $\theta \to -\theta$ in the pendulum example is a discrete symmetry. Another type of symmetry is the continuous symmetry, for instance a $\vec{r} \to \vec{r}+ \vec{a}$ transformation where $\vec{a}$ can be any real-valued vector. Note also that continuous symmetry can be broken down into smaller steps of continuous symmetry, as in the $\vec{r}\to \vec{r} + \vec{a}$ case, $\vec{r} \to \vec{r}+ \vec{a}/N$ is also a continuously symmetric transformation and being performed $N$ times will restore the $\vec{r}\to \vec{r} + \vec{a}$ transformation.\\
+
+\subsection{Noether's Theorem}
+The focus of this subsection is that each continuous symmetry gives a conservation law. Now suppose one has a Lagrangian $L(\dot{q}_1,\dot{q}_2,\cdots, \dot{q}_n, q_1,q_2,\cdots, q_n)$. One performs a translation at the $j$-th coordinate $q_j \to q_j + a$. Here we have immediately
+\begin{align*}
+\frac{dq_j}{dt}\to \frac{dq_j}{dt} + \frac{da}{dt} = \frac{dq_j}{dt} 
+\end{align*}
+as we have treated $a$ as a constant. If the system is symmetric under such a translation $q_j \to q_j +a$, then $L$ stays the same, hence we have
+\begin{align*}
+\frac{\pd L}{\pd q_j} = 0\,,
+\end{align*}
+then from (1.4) we obtain
+\begin{align*}
+\dot{p}_j = \frac{d}{dt}\frac{\pd L}{\pd \dot{q}_j} = \frac{\pd L}{\pd q_j} = 0\,,
+\end{align*}
+so we see here $p_j$ is a constant. Here we have present that the continuous symmetry with respect to one of the coordinate components $q_j$ gives us a conservation law $p_j=\text{constant}$. In general, one can usually perform a change of coordinates to obtain the conservation law via one of the coordinate components for some given arbitrary continuous symmetry that is originally not along any given coordinate component.\\
+
+\subsection{Constraint on Action and Equations of Motion}
+A symmetry of the system in fact imposes constraint to the action and equation of motion of the system. For the pendulum example, as action of the system stays the same under symmetry $\theta \to -\theta$, $S$ should be an even function of $\theta$. \\
+
+\example For the pendulum example, here we \textit{pretend} that we have no knowledge about Newtonian mechanics, and we would like to determine what the system should look like only based on the symmetry of the system. Here we some assumptions that we will enforce:
+\begin{enumerate}[topsep=3pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
+\item $\delta S = 0$ as for the principle of least action;
+\item The pendulum is characterized by one angle $\theta$ only;
+\item $t \to -t$ is a symmetry, called the time reversal symmetry;
+\item $\theta \to -\theta$ is a symmetry, called the spatial mirror symmetry;
+\item We are dealing with small oscillation and slow motion.
+\end{enumerate}
+From which one knows that the Lagrangian takes the form
+\begin{align*}
+L(\theta, \dot{\theta}, \ddot{\theta},\cdots_\text{\ \ higher order derivatives of $\theta$} )
+\end{align*}
+From small oscillation, the higher orders derivative of $\theta$ are negligible. For slow motion, we can apply Taylor expansion, hence we have Lagrangian to be simplified as
+\begin{align*}
+L(\theta,\dot{\theta}) = \kappa + \alpha\theta +\beta\dot{\theta} + \gamma\theta^2 + \delta\theta \dot{\theta} + \epsilon\dot{\theta}^2
+\end{align*}
+ where $\alpha,\beta, \gamma, \delta, \epsilon, \kappa \in \R$. Note that via (1.4), $\kappa$ does not contribute to the equation of motion for the system. By symmetry requirement, $\alpha=\beta = 0$ by the spatial mirror symmetry, and $\beta = 0$ also by time symmetry. Furthermore, $\dot{\theta}$ is the total derivative term, here we write, suppose $\that{L} = b \dot{\theta}$
+ \begin{align*}
+ S = \int_{-\infty}^\infty \that{L} \,dt = b \int_{-\infty}^\infty \frac{d\theta}{dt}\, dt = \frac{\theta(t= \infty) - \theta(t = -\infty)}{2}	
+ \end{align*}
+In physics, what happened at $t = -\infty$ and $t = \infty$ is a boundary condition and has nothing to do with the equation of motion. So as far as the equation of motion is concerned, this total derivative terms plays no role and thus can be ignored, that is $\beta =0$. Furthermore, we also require $\delta = 0$ in the term $\delta \theta \dot{\theta}$ by time symmetry $\theta \dot{\theta} = -\theta \dot{\theta}$ and the fact that $\theta \dot{\theta} = (1/2)(d\theta^2/dt)$ gets integrated to $0$ in periodic boundary conditions. Hence the Lagrangian gets simplified to the form
+\begin{align*}
+L = \gamma\theta^2 + \epsilon\dot{\theta}^2\,,
+\end{align*}
+which gives an equation of motion
+\begin{align*}
+\epsilon \ddot{\theta} = \gamma\theta\,,
+\end{align*}
+or in other words
+\begin{align}
+\ddot{\theta} = \frac{\gamma}{\epsilon}\theta\,.
+\end{align}
+Note here $\gamma/\epsilon$ is not a universal quantity, but the form of (1.11) is universal under the given symmetries of the system.
+
+\newpage
+\chapter{Classical Field Theory}
+Here we will shift our focus from classical mechanics to fields. Instead of rigid body or point mass, we will mostly focus on
+continuous medium or continuous fields.\\
+
+\example Let $\rho$ denote the density of gas, or liquid, in a region. Here we define
+\begin{align*}
+\varphi(\vec{r}, t) = \rho(\vec{r} , t) - \bar{\rho}\,,
+\end{align*}
+where $\rho$ is the mass density at position $\vec{r}$ and time $t$ and $\bar{\rho}$ is the average density of the whole region. Such description $\varphi$ is a field. In the following we will explore how one can define the Lagrangian and action using $\varphi$ and its derivatives.\\
+
+\textit{\textbf{The principle of locality} states that an object can get direct influence only from its immediate neighbors.}\\
+
+\example The principle of locality can be understood via an example of shaking a rope: One side of the rope is held by a person and the other side of the rope is held by a wall. If the person shakes the rope from one end, the movement of the rope takes time to propagate to the other end of the rope. \\
+
+\remark Note that there is no way to prove the principle of locality, while it is a general assumption for studying modern physics, as the standard model and theory of general relativity are both local.\\
+
+\example Maxwell's Equations respects the principle of locality as it is a set of differential equations, which describes how particles are affected by infinitesimal neighbors. While the Coulomb's Law and the gravitational laws do not respect the principle of locality, as they are just the approximation of the field theory derived from the principle of locality.\\
+
+\note Mathematically, \textit{local} theory can be written in terms of differential equations, while a non-local theory requires integral equations. Local theory are easier to be dealt with as differential equations are easier to be solved than the integral equations, and also because we only need to worry about objects nearby for the dynamics of an object. \\
+
+\note Locality enforces strong constraint on the interaction potential between objects. We shall see later that the potential between particles can only take two possible forms $\sim 1/r$ or $\sim 1/r e^{kr}$.\\
+
+
+Principle of locality allows us to define the local Lagrangian density $\mathcal{L}$,  that is the Lagrangian per volume, at each point $(t,x,y,z)$ as a function of the field and the derivatives of the field at $(t,x,y,z)$. Given a Lagrangian density $\mathcal{L}(t,x,y,z)$, we then can define the local action by
+\begin{align*}
+S \coloneqq \iiiint \mathcal{L}\, dt\,dx\,dy\,dz\,,
+\end{align*}
+and define the Lagrangian by
+\begin{align*}
+L = \iiint \mathcal{L}\, dx\,dy\,dz\,.
+\end{align*}
+Note here in field theory, the Lagrangian is no longer a function of only coordinates and velocities, instead it is a function of the field and many of its derivatives, as for the gas example here we write
+\begin{align*}
+\mathcal{L} (t,x,y,z) = \mathcal{L}\left(\varphi(t,x,y,z), \ \pd \varphi(t,x,y,z), \ \pd^2 \varphi(t,x,y,z)\, \cdots\right)\,.
+\end{align*}
+
+Via principle of locality, an action of the following form is never allowed:
+\begin{align*}
+S = \iiint\iiint \frac{\varphi(t,x,y,z)\varphi(t',x',y',z')}{\sqrt{(x-x')^2 + (y-y')^2 + (z-z')^2}} \,dx'\,dy'\,dz'\, dx\,dy\,dz\,,
+\end{align*}
+as it requires information at two separate points $(t,x,y,z)$ and $(t',x',y',z')$.\\
+
+\example Now we want to obtain the form of Lagrangian density for the gas density $\varphi$ example, with the following assumptions:
+\begin{enumerate}[topsep=3pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
+\item The density is small, $\varphi\ll 1$;
+\item The system possess rotational symmetry, or being isotropic at each point; 
+\item Slow variation assumed, that is in the long wavelength and low frequency limits.
+\end{enumerate}
+Based on the assumptions, the higher order derivatives $\pd_x^n \varphi \propto k_x^n \varphi$ can be ignored as $k_x$ is small when having long wavelength. Similarly, the higher order derivatives $\pd_t^n \varphi \propto \omega^n \varphi$ can be ignored as the frequency $\omega$ is small. Thus we can approximate $\mathcal{L}$ as a function $\mathcal{L}(\varphi,\,\pd \varphi,\, \pd^2 \varphi)$, for which we can apply Taylor expansion
+\begin{align*}
+\mathcal{L}(\varphi,\, \pd \varphi,\, \pd^2 \varphi) =a + a_0 \varphi + \sum a_i \pd_i \varphi + (\text{nonlinear terms and second order terms})
+\end{align*}
+where $a$ can be ignored as a constant does not contribute to $\delta S$. $a_0$ does not contribute either as we can write by definition of $\bar{\rho}$,
+\begin{align*}
+\iiiint (\rho(\vec{r},t)- \bar{\rho}) \, dt\,dx\,dy\,dz &=
+\left(\iiiint \rho(\vec{r},t) \, dt\,dx\,dy\,dz	\right)-
+\left(\iiiint \bar{\rho} \, dt\,dx\,dy\,dz	\right) = 0\,.
+\end{align*} 
+Furthermore, the linear term of $\pd \varphi$ and the terms like $\varphi\, \pd \varphi = \pd \varphi^2/2$ also can be ignored as integrating such terms gives the difference in boundaries, and boundaries conditions do not contribute to the equation of motion for the system. Thus in general, we can write
+\begin{align*}
+\mathcal{L} = a\varphi^2 +  \sum a_{ij}\, \varphi\, \pd_j \pd_i \varphi   + \sum b_{ij}\, \pd_i \varphi\, \pd_j \varphi\,.
+\end{align*}
+Now for the $\varphi\, \pd_j \pd_i \varphi$ terms, if one performs integration by parts on those terms, one obtains the boundary terms and a $\pd_ \varphi \pd_j \varphi$ terms, thus $a_{ij}$ can also be assumed to be zero. Lastly, for the $\pd_i \varphi\, \pd_j \varphi$ terms, we utilize the spatial rotation symmetry. The action is unchanged under a rotation of the coordinate system, that is the action must be a scalar rather than a vector, and thus the Lagrangian density is also a scalar instead of a vector. The only way we are able to write $\mathcal{L}$ as a scalar is given by
+\begin{align*}
+\mathcal{L} = a\varphi^2 + b(\pd_t \varphi)^2 + c (\nabla\varphi \cdot \nabla \varphi)\,,
+\end{align*}
+where $\nabla \varphi \coloneqq (\pd_x \varphi,\, \pd_y \varphi, \, \pd_z \varphi)$. Here we denote $\that{\varphi} \coloneqq \sqrt{2b}\varphi$, from which we have
+\begin{align*}
+\mathcal{L} =\frac{1}{2}\left(  \left( \pd_t \that{\varphi}\right)^2 + \frac{a}{b}\left( \that{\varphi}\right)^2 + \frac{c}{b} \left|\nabla \that{\varphi}\right|^2 \right)\,.
+\end{align*}
+As we will use $\that{\varphi}$ instead of $\varphi$ from now, we simply write
+\begin{align}
+\mathcal{L} =\frac{1}{2}\left( (\pd_t \varphi)^2 - v^2 (\nabla \varphi \cdot \nabla \varphi) - \omega_0^2 \varphi^2\right)\,,
+\end{align}
+where $c/b = -v^2$ and $a/b = -\omega_0^2$. Now we have obtained the form of Lagrangian density, we can compute for the action
+\begin{align*}
+S =\iiiint \mathcal{L}\,dt\,dx\,dt\,dz\,.
+\end{align*}
+Here we consider $\varphi'(\vec{r},t) = \varphi(\vec{r},t) + \delta \varphi(\vec{r},t)$, with the action corresponds to $\varphi$ denoted as $S$, action corresponds to $\varphi'$ denoted as $S'$, the Lagrangian density corresponds to $\varphi$ as $\mathcal{L}$, and Lagrangian density corresponds to $\varphi'$ as $\mathcal{L}'$. Here we have
+\begin{align*}
+S' &=  \iiiint \frac{1}{2} \left(\left( \pd_t(\varphi+ \delta \varphi)\right)^2 - \left( v^2 (\nabla(\varphi + \delta \varphi) \cdot \nabla(\varphi + \delta \varphi)\right) - \omega_0^2 ( \varphi + \delta \varphi)^2  \right)  \,dt\,dx\,dy\,dz\\
+&= \iiiint \frac{1}{2} \left( (\pd_t \varphi)^2 + 2\,\pd_t \varphi\, \pd_t\delta\varphi - v^2 (\nabla\varphi \cdot \nabla\varphi) - 2v^2 (\nabla\varphi \cdot \nabla\delta \varphi) - \omega_0^2 \varphi^2 - 2\omega_0^2\, \varphi\, \delta \varphi\right) \,dt\,dx\,dy\,dz\\
+&= \iiiint \mathcal{L} \,dt\,dx\,dy\,dz  + \iiiint (\pd_t \varphi\, \pd_t \delta \varphi - v^2 (\nabla\varphi \cdot \nabla\delta \varphi) - \omega_0^2\, \varphi\, \delta \varphi) \,dt\,dx\,dy\,dz\,,
+\end{align*}
+where we have neglected some terms as $\delta\varphi$ is assumed to be small. Rewriting we have
+\begin{align*}
+\delta S = S' - S = \iiiint (\pd_t \varphi\, \pd_t \delta \varphi - v^2 (\nabla\varphi \cdot \nabla\delta \varphi) - \omega_0^2 \,\varphi\, \delta \varphi) \,dt\,dx\,dy\,dz
+\end{align*}
+Integration by parts, ignoring the boundary terms, yields the following
+\begin{align*}
+\delta S =  \iiiint \left(-(\pd_t^2 \varphi) + v^2 (\nabla^2 \varphi) - \omega_0^2 \varphi \right)\delta\varphi  \,dt\,dx\,dt\,dz\,.
+\end{align*}
+By principle of least action, holding for all $\delta \varphi$, we thus require 
+\begin{align}
+0 = (\pd_t^2 \varphi) - v^2 (\nabla^2 \varphi) + \omega_0^2 \varphi \,.
+\end{align}
+Thus experimentally we only need to measure $v$ and $\omega_0$ to obtain the precise form of (2.2), and here (2.1) is known as the linear wave equation, characterizing the equation of motion for the field $\varphi$. \\
+
+For another approach, we can approximate that
+\begin{align*}
+\mathcal{L}' = \mathcal{L} + \frac{\pd \mathcal{L}}{\pd \varphi}\, \delta \varphi + \frac{\pd \mathcal{L}}{\pd (\pd_t \varphi)} \, \pd_t \delta \varphi + \frac{\pd \mathcal{L}}{\pd (\pd_x\varphi)} \, \pd_y \delta \varphi + \frac{\pd \mathcal{L}}{\pd (\pd_t\varphi)} \, \pd_t\delta \varphi\,.
+\end{align*}
+To avoid confusion, we rewrite $\pd$ as $\delta$, and see 
+\begin{align*}
+\mathcal{L}' = \mathcal{L} + \frac{\delta \mathcal{L}}{\delta \varphi}\, \delta \varphi + \frac{\delta \mathcal{L}}{\delta (\pd_t \varphi)} \, \pd_t \delta \varphi + \frac{\delta \mathcal{L}}{\delta (\pd_x\varphi)} \, \pd_y \delta \varphi + \frac{\delta \mathcal{L}}{\delta (\pd_t\varphi)} \, \pd_t\delta \varphi\,.
+\end{align*}
+Integrating over spacetime and applying integration by part we have
+\begin{align*}
+S' 
+&= S+ \iiiint  \left(\frac{\delta \mathcal{L}}{\delta \varphi}\delta \varphi - \pd_t \frac{\delta \mathcal{L}}{\delta \pd_t \varphi}\, \delta \varphi  - \pd_x \frac{\delta \mathcal{L}}{\delta \pd_x \varphi} \, \delta \varphi  -  \pd_y \frac{\delta \mathcal{L}}{\delta \pd_y \varphi} \, \delta \varphi  -  \pd_z \frac{\delta \mathcal{L}}{\delta \pd_z \varphi} \, \delta\varphi\right)         \,dt\,dx\,dy\,dz \,,
+\end{align*}
+Here we obtain another form of equation of motion
+\begin{align}
+\pd_t \frac{\delta \mathcal{L}}{\delta\, \pd_t \varphi} + \pd_x \frac{\delta \mathcal{L}}{\delta\, \pd_x \varphi} + \pd_y \frac{\delta \mathcal{L}}{\delta \,\pd_y \varphi} + \pd_z \frac{\delta \mathcal{L}}{\delta\, \pd_z \varphi} = \frac{\delta \mathcal{L}}{\delta \varphi}\,,
+\end{align}
+which is universal as we have only employed $\delta S = 0$ in the derivation, whereas (2.2) is not universal as (2.2) requires further assumptions about the field. For notation, (2.3) is usually denoted as
+\begin{align}
+\pd_\mu \frac{\delta \mathcal{L}}{\delta \, \pd_\mu \varphi} = \frac{\delta \mathcal{L}}{\delta \varphi}\,.
+\end{align}
+
+\example For the gas density $\varphi$ example, from (2.1), we can write
+\begin{align*}
+\mathcal{L} = \frac{1}{2}\left( (\pd_t \varphi)^2 - v^2 (\pd_x \varphi)^2 - v^2 (\pd_y \varphi)^2 - v^2(\pd_t \varphi)^2 - \omega_0^2 \varphi^2\right)\,
+\end{align*}
+with (2.3), we obtain
+\begin{align}
+\pd_t^2 \varphi -v^2 \pd_x^2 \varphi - v^2 \pd_y^2 \varphi - v^2 \pd_z^2 \varphi = \omega_0^2 \varphi
+\end{align}
+as we have
+\begin{align*}
+\frac{\delta \mathcal{L}}{\delta\, \pd_t \varphi} = \frac{1}{2} \frac{\delta (\pd_t \varphi)^2}{\delta \, \pd_t \varphi} = \pd_t \varphi\,,
+\end{align*}
+\begin{align*}
+\frac{\delta \mathcal{L}}{\delta\, \pd_x \varphi} = -\frac{v^2}{2} \frac{\delta (\pd_x \varphi)^2}{\delta \, \pd_x\varphi} = -v^2 \pd_x \varphi\,,
+\end{align*}
+\begin{align*}
+\frac{\delta \mathcal{L}}{\delta \varphi}  =-\frac{\omega_0^2}{2}\frac{\delta (\varphi^2)}{\delta \varphi} = -\omega_0^2 \varphi\,.
+\end{align*}
+Hence simplifying (2.5) we obtain
+\begin{align}
+\pd_t^2 \varphi - v^2 \nabla^2 \varphi = -\omega_0^2 \varphi\,,
+\end{align}
+which has a general plane wave solution
+\begin{align}
+\varphi = Ae^{i\vec{k}\cdot \vec{r} - i\omega t}\,.
+\end{align}
+With (2.7), note here we have
+\begin{align*}
+\pd_t \varphi = -i\omega A e^{i\vec{k}\cdot \vec{r} - i\omega t}\,, \qquad 
+\pd_t^2 \varphi = (i\omega)^2 \varphi = -\omega^2 \varphi\,, \qquad
+\nabla \varphi = A \nabla e^{i\vec{k}\cdot \vec{r} - i\omega t} =i \vec{k}\varphi\,.
+\end{align*}
+Thus combing with (2.6) we have
+\begin{align*}
+-\omega^2 \varphi + v^2 k^2 \varphi = -\omega_0^2 \varphi\,,
+\end{align*}
+that is $\omega,\ v,\ k$ satisfy
+\begin{align*}
+\omega^2 - v^2 k^2 = \omega_0^2\,,
+\end{align*}
+or in other words
+\begin{align}
+\omega = \pm \sqrt{v^2 k^2  + \omega_0^2}\,.
+\end{align}
+Here (2.8) is called the dispersion relation.\\
+
+In the case where $\omega_0 \neq 0$, there is a gap in the solution space for (2.8). The frequency $\omega$ can never have access to any value in the frequency range $-\omega_0 < \omega <\omega_0$, no matter what $k$ is used, hence we say such solution space is gapped, or massive.\\
+
+For the case where $\omega_0 = 0$, we have $\omega = \pm v|k|$, and thus the solution space is said to be gapless, or massless.\\
+
+\example 
+From particle-wave duality, from (2.8) we have
+\begin{align*}
+\omega^2 \hbar^2 &= v^2 k^2 \hbar^2 + \omega_0^2 \hbar^2\\
+E^2 &= v^2 p^2 + \omega_0^2 \hbar^2\,, \tag{*}
+\end{align*}
+where $\omega_0^2 \hbar^2$ is interpreted as $m_0^2 c^4$ in special relativity, and thus (*) reduces to a conservation law in special relativity. Here we can also define
+\begin{align*}
+m_0 = \frac{\hbar \omega_0}{c^2}\,.
+\end{align*}
+This explains why the solution space of (2.8) is said to be massive or massless. \\
+
+\example For the gas density example, one can interpret (2.7) as sound wave propagating through the gas, in which case we have $\omega_0 = 0$. In other words, acoustic sound waves are always gapless. Note here if $k= 0$, we have $\varphi = Ae^{-i\omega_0t}$, that is $\varphi$ is homogeneous. In other words, we are changing the density of the gas homogeneously, everywhere by the same amount, but in such case the system is still in a equilibrium state and there will be no mass flow in the system. Thus the density will not change as a function of $t$, and thus $\omega = 0$, enforcing $\omega_0=0$.\\
+
+Note from (2.1), we have
+\begin{align}
+\mathcal{L} = \frac{1}{2}\left( \pd_t \varphi\right)^2 - \frac{1}{2}v^2 \left(\nabla \varphi\right)^2 - \frac{1}{2} \omega_0^2 \varphi - \frac{1}{2}g\varphi^4
+\end{align}
+where a higher order term $-(g/2)\varphi^4$ is appended and is allowed by symmetry. Such a form (2.9) is generic and is needed for certain topics, such as the Ising field theory and the Klein-Gordon Theory for Higgs.\\ 
+
+
+
+Now we have, using an example of gas density, defined a field $\varphi(\vec{r},t)$. This idea can be applied to characterize many other systems, such as the water surface wave, quantum particle, and Ising model. Once a field is being defined, then one can write down the Lagrangian density, as a function of the field itself and the derivatives of the field, as allowed by the principle of locality. Possibly with some further assumption of slow variation and small density, one then employs Taylor expansion and symmetry of the system to simplify the Lagrangian density and compute the equation of motion via the principle of least action. \\
+
+We note that fields only carry information about certain length scale. For microscopic detials that takes place at small length scale, fields would not capture those physics. For sound waves and water surface waves, the cut-off distance is roughly the typical distance between atoms, physics at smaller length scales cannot be capture by the description of field. Thus, the theory only work when wavelength is much longer than the cut-off length scale. \\
+
+
+The equation of motion is in general a PDE. In the case for the gas density example, the PDE (2.2) has plane wave solution, from which we obtain a relation between $\omega,\ k,\ $and $v$ suggested by (2.4). There are cases there the equation of motion is a non-linear PDE, as in the case where $\mathcal{L}$ contains a $\varphi^4$ term. The case of gas density example has linear PDE, which is solvable, but only an approximation and is not very interesting as everything is predictable. A non-linear PDE is much harder to be solved, and have much broader \textit{possibilities}. In other words, if our universe behaves as a linear PDE system, then once we know the theory of fundamental principle of particles, then we know everything about the universe, while if our system behaves like a non-linear PDE system, then even we know the fundamental laws, it is hard to predict the outcomes.\\
+
+Note further that linear system implies particles are not interacting, while non-linear system implies particle interact with each other. The form of Eq. (2.6) is an example of linear system. We will show later that for linear system, the total energy of the system is directly proportional to the number of particles, while for non-linear system, the total energy is not proportional to the total number of particles.\\
+
+\newpage
+\section[Noether's Theory]{\color{red}Noether's Theory\color{black}}
+In previous section, we have shown that continuous symmetry gives rise to conserved quantity. In classical mechanics, a conserved quantity $Q$ is defined by the statement $dQ/dt = 0$. While in classical theory, a conserved quantity is characterized by continuity equation, such as the charge conservation
+\begin{align*}
+\pd_t \rho + \nabla \cdot \vec{j} = 0\,.
+\end{align*}
+Note that the continuity equation does not give conservation law directly, while it is a combination of conservation law and principle of locality. \\
+
+\example For a region $\Omega$, the change of charge in $\Omega$ from time $t$ to $t+\Delta t$ is given by
+\begin{align*}
+\Delta Q_{\omega} = I_{\pd\Omega}\, \Delta t + \Delta Q_{teleport}\,,
+\end{align*}
+while principle of locality requires that $ \Delta Q_{teleport} = 0$, thus we have
+\begin{align*}
+\iiint_\Omega \pd_t\rho\, dV = \frac{d}{dt}\iiint_\Omega \rho\, dV = \frac{dQ}{dt} = -\iint_{\pd \Omega} \vec{j}\cdot d\vec{S}= - \iiint_{\Omega} \nabla\cdot \vec{j}\, dV \,,
+\end{align*}
+where the negative sign comes from the orientation of $\pd\Omega$. Concluding we have
+\begin{align*}
+\pd_t \rho + \nabla \cdot \vec{j} = 0\,,
+\end{align*}
+where $\rho$ is the charge density, and $\vec{j}$ is the current density. \\
+
+\subsection{Translation symmetry in space and time}
+Consider a time translation symmetry $t \to t' = t + \delta t$, and similarly a spatial translation symmetry $\vec{r} \to \vec{r}' = \vec{r} + \delta \vec{r}$. Thus a space-time translation can be denoted as 
+\begin{align*}
+r^\nu \to r'^{\nu} = r^\nu + \epsilon^\nu\,,
+\end{align*}
+where we assume $\epsilon^\nu$ to be constant here, and here we makes use of the notation $\pd_\mu = (\pd_0, \pd_1, \pd_2, \pd_3)=(\pd_t, \pd_x, \pd_y, pd_z)$. Note further here $r$ is a $4$-dimensional object, including time and spatial coordinates. Thus we can write
+\begin{align*}
+S = \iiiint \, dr \, \mathcal{L}\left(\varphi(r),\, \pd\varphi(r)\right)\,,\qquad 
+S' = \iiiint \, dr' \, \mathcal{L}\left(\varphi'(r'),\, \pd'\varphi'(r')\right)\,.
+\end{align*}
+Note that the coordinate has been changed, and thus we have change of coordinate
+\begin{align*}
+\iiint_{\Omega} f\, dV' = \iiint_{\Omega}\, f\, \det\left(
+\bmat{\frac{\pd t'}{\pd t}&  \frac{\pd x'}{\pd t}&  \frac{\pd y'}{\pd t}&  \frac{\pd z'}{\pd t}\\
+\frac{\pd t'}{\pd x}&  \frac{\pd x'}{\pd x}&  \frac{\pd y'}{\pd x}&  \frac{\pd z'}{\pd x}\\
+\frac{\pd t'}{\pd y}&  \frac{\pd x'}{\pd y}&  \frac{\pd y'}{\pd y}&  \frac{\pd z'}{\pd y}\\
+\frac{\pd t'}{\pd z}&  \frac{\pd x'}{\pd z}&  \frac{\pd y'}{\pd z}&  \frac{\pd z'}{\pd z} } 
+\right)\, dV\,,
+\end{align*}
+where the Jacobian can be expanded as
+\begin{align*}
+\det\left( \frac{\pd r'^\nu}{\pd r^\mu}\right) 
+&= \det\left( \frac{\pd r^\nu}{\pd r^\mu} +\frac{\pd \epsilon^\nu}{\pd r^\mu}\right)\\
+&= \det\left( \delta^\nu{}_\mu + \pd_\mu \epsilon^\nu\right) \\
+&= 1 + \pd_\mu\epsilon^\mu\,,
+\end{align*}
+that is we have
+\begin{align*}
+\iiint_{\Omega} f\, dV' = \iiiint_{\Omega} f\, (1 + \pd_\mu \epsilon^\mu)\, dV\,.
+\end{align*}
+Note that the field, under transformation, should satisfy 
+\begin{align*}
+\varphi(r) \to \varphi'(r') = \varphi(r)\,.
+\end{align*}
+While the derivative of the field, under transformation, should satisfies
+\begin{align*}
+\pd_\mu\varphi(r) \to \pd_\mu'\varphi'(r') = \pd'_\mu\varphi(r) = \frac{\pd\varphi(r) }{\pd r^\nu}\frac{\pd r^\nu}{\pd r'^\mu}\,. 
+\end{align*}
+Note here $(\pd r/\pd r')$ is the inverse of the Jacobian matrix, that is we have
+\begin{align*}
+\frac{\pd r^\nu}{\pd r'^\mu} = \delta^\nu{}_\mu - \pd_\mu \epsilon^\nu\,.
+\end{align*}
+Thus combining we have
+\begin{align*}
+\pd_{\mu}' \varphi'(r') = \left( \delta^{\nu}{}_{\mu} - \pd_\mu \epsilon^\nu \right) \frac{\pd \varphi}{\pd r^\nu} = \frac{\pd \varphi}{\pd r^\mu} - \frac{\pd \varphi }{\pd r^\nu}\, \pd_\mu \epsilon^\nu\,,
+\end{align*}
+and thus we have
+\begin{align*}
+S' 
+&= \iiiint \, dr\,\left( 1 + \pd_\mu \epsilon^\mu \right) \mathcal{L}\left( \varphi(r) ,\, \pd_\mu \varphi \epsilon^\nu \pd_\nu \varphi\right)\\
+&= \iiiint \, dr\, \left( 1 + \pd_\mu \epsilon^\mu \right) \left( \mathcal{L}(\varphi(r), \pd \varphi(r)) + \frac{\delta \mathcal{L}}{\delta\, \pd_\mu \varphi}(-\pd_\mu \epsilon^\nu \pd_\nu \varphi(x) )\right)\\
+&= \iiiint \, dr \, \mathcal{L}(\varphi, \pd \varphi) + \left( \pd_\mu \epsilon^\mu \mathcal{L} - \pd_\mu \epsilon^\nu \, \frac{\delta\, \mathcal{L}}{\delta\, \pd_\mu \varphi } \,\pd_\nu \varphi\right)+ \text{higher order terms}\,.
+\end{align*}
+Here we will discard the higher order terms, and rewrite
+\begin{align*}
+S' 
+&= S + \iiiint \, dr\, \left( \mathcal{L}\delta^\mu{}_\nu - \frac{\delta \mathcal{L}}{\delta \, \pd_\mu \varphi}\,\pd_\nu \varphi\right) \pd_\mu \epsilon^\nu \\
+&= S - \iiiint \, dr\, \epsilon^\nu \ \pd_\mu\left( \mathcal{L}\delta^\mu{}_\nu - \frac{\delta \mathcal{L}}{\delta \, \pd_\mu \varphi}\,\pd_\nu \varphi\right)  \tag{*}\,,
+\end{align*}
+where we have employed integration by parts, and discarded the boundary terms. Thus the conclusion here, for $S' -S = 0$ by translation symmetry, we require
+\begin{align}
+\pd_\mu\left(\frac{\delta \mathcal{L}}{\delta \, \pd_\mu \varphi}\,\pd_\nu \varphi -  \mathcal{L}\delta^\mu{}_\nu \right) = 0\,,
+\end{align}
+which we will see later that (2.10) gives a conservation law. Note further that the integral in (*) gives zero does not necessarily require (2.10) to be zero everywhere, but by principle of locality, particle far away from each other cannot communicate, thus the only way to obtain zero after integrating is (2.10) holds. Expanding (2.10) for index $\nu = 0$, which corresponds to the time translation symmetry, and noting that $\delta^i{}_j = 0$ for $i \neq j$, we have
+\begin{align*}
+\pd_t \underbrace{\left( \frac{\delta \mathcal{L}}{\delta \pd_t \varphi} \, \pd_t \varphi - \mathcal{L}  \right)}_w + \pd_x \underbrace{\left( \frac{\delta \mathcal{L}}{\delta \pd_x \varphi} \, \pd_t \varphi \right)}_{s_x} +\pd_y \underbrace{\left( \frac{\delta \mathcal{L}}{\delta \pd_y \varphi} \, \pd_t \varphi \right)}_{s_y} + \pd_z \underbrace{\left( \frac{\delta \mathcal{L}}{\delta \pd_z \varphi} \, \pd_t \varphi \right)}_{s_z}  = 0\,.
+\end{align*}
+In a compact form we write
+\begin{align*}
+\pd_t w + \pd_x s_x + \pd_y  s_y + \pd_z s_z = 0\,,
+\end{align*}
+or even better, we have
+\begin{align}
+\pd_t w + \nabla \cdot \vec{s} = 0\,
+\end{align}
+with $\vec{s} = (s_x,s_y,s_z)$ being defined. Notice that the form of (2.11) coincide with the form of charge conservation law $\pd_t \rho + \nabla\cdot \vec{j} = 0$. Here one can define
+\begin{align*}
+E = \iiiint dr\, w
+\end{align*}
+which is the energy of the system, as seen from the fact that 
+\begin{align*}
+E =\iiint\, dr\, \frac{\delta \mathcal{L}}{\delta \pd_t \varphi} \, \pd_t \varphi - \iiint \, dr\, \mathcal{L} = \iiint\, dr\, \frac{\delta \mathcal{L}}{\delta \pd_t \varphi} \, \pd_t \varphi - L = H\,.
+\end{align*}
+\note In the derivation here we have assumed that the Lagrangian density has only one field $\varphi$. However, in general $\mathcal{L}$ can contain multiple fields $\varphi_i$, in which case $(w,s_x,s_y,s_z)$ each include additional similar terms for each of $\varphi_i$. \\
+
+Now expanding (2.10) for index $\nu = 1$, which corresponds to $x$-spatial translation symmetry, we can write
+\begin{align*}
+\pd_t \underbrace{\left(-\frac{\delta \,\mathcal{L}}{\delta\, \pd_t \varphi}\, \pd_x \varphi\right)}_{g_x} +
+\pd_x\underbrace{\left(-\frac{\delta\, \mathcal{L}}{\delta_x\, \pd_x\varphi}\, \pd_x \varphi - \mathcal{L}\right)}_{t_{xx}}  + 
+\pd_y \underbrace{\left(-\frac{\delta \,\mathcal{L}}{\delta\, \pd_y \varphi}\, \pd_x \varphi\right)}_{t_{xy}} +
+\pd_z \underbrace{\left(-\frac{\delta \,\mathcal{L}}{\delta\, \pd_z \varphi}\, \pd_x \varphi\right)}_{t_{zx}} =0\,,
+\end{align*}
+which yields
+\begin{align}
+\pd_t g_x + \nabla \cdot \vec{t}_x = 0\,
+\end{align}
+for $\vec{t}_x = (t_{xx} ,\, t_{yx},\, t_{zx})$. Now defining
+\begin{align*}
+P_x = \iiiint \, dr\, g_x
+\end{align*}
+
+
+
+The physical interpretation of time translation is that no matter when to do the experiment, we should be able to find the same physics law, and the interpretation of spatial translation is that no matter where we do the experiment, we should be able to find the same physics law. 
+
+
+
+
+
+\newpage
+\section[Energy Momentum]{\color{red} Energy Momentum\color{black}}
+Previously we have found the the action of gas density, describing a sound wave, is given by
+\begin{align*}
+S = \int dt\, \iiint  \left( \frac{1}{2}\left( (\pd_t \varphi)^2 - v^2(\nabla \varphi)^2 - \omega_0^2 \varphi^2 \right) \right) \, dx\,dy\,dz\,.
+\end{align*}
+From expanding (2.10) with $\nu = 0$, we have
+\begin{align*}
+w &= \frac{\delta \mathcal{L}}{\delta\, \pd_t \varphi} \,\pd_t \varphi - \mathcal{L} = \frac{1}{2} \frac{\delta (\pd_t \varphi)^2}{\delta \pd_t \varphi} \, \pd\varphi - \mathcal{L} = \pd_t \varphi \, \pd_t \varphi - \mathcal{L}\\
+&= (\pd_t\varphi)^2 - \frac{1}{2}(\pd_t \varphi)^2 + \frac{v^2}{2}(\nabla \varphi)^2 + \frac{\omega_0^2}{2} \varphi^2 \\
+&=\underbrace{ \frac{1}{2}(\pd_t \varphi)^2}_{\text{KE}} + \underbrace{\frac{v^2}{2} (\nabla \varphi)^2 + \frac{\omega_0^2}{2} \varphi^2}_{\text{PE}}\,,
+\end{align*}
+thus we have
+\begin{align*}
+\mathcal{L} = \frac{1}{2}(\pd_t \varphi)^2 - \frac{v^2}{2}(\nabla \varphi)^2 - \frac{1}{2}\omega_0^2 \varphi^2 = \text{KE} - \text{PE}\,.
+\end{align*}
+Here we can write the Hamiltonian
+\begin{align}
+H = \iiint \left( \frac{1}{2}(\pd_t \varphi)^2 +\frac{v^2}{2} (\nabla \varphi)^2 + \frac{\omega_0^2}{2} \varphi^2  \right) \, dx\, dy\, dz\,,
+\end{align}
+and the Lagrangian
+\begin{align}
+L = \iiint\left( \frac{1}{2}(\pd_t \varphi)^2 -\frac{v^2}{2} (\nabla \varphi)^2 - \frac{\omega_0^2}{2} \varphi^2  \right)\,dx\, dy\,dz
+\end{align}
+Note here the requirement of setting $c/b=-v^2$ and $a/b = -\omega_0^2$ in (2.1) ensures that $H$ is non-negative here. Furthermore, the expansion of (2.10) in the $\nu = 0$ component gives
+\begin{align*}
+s_x = \frac{\delta \mathcal{L}}{\delta \, \pd_x \varphi} \, \pd_t \varphi = \frac{\delta \mathcal{L}}{\delta\, \pd_x \varphi} = -\frac{v^2}{2}\frac{\delta\,(\pd_x \varphi)^2}{\delta \, \pd_x \varphi} = -v^2\, \pd_x \varphi\, \pd_t \varphi\,,
+\end{align*}
+and similarly we obtain
+\begin{align*}
+s_y = -v^2\, \pd_y \varphi \, \pd_t \varphi \,,\qquad s_z = -v^2 \, \pd_z \varphi \, \pd_t \varphi\,,
+\end{align*}
+which can be combined to obtain
+\begin{align*}
+\vec{s} = -v^2 \nabla\, \varphi \, \pd\varphi\,.
+\end{align*}
+Furthermore, expansion of (2.1) also gives
+\begin{align*}
+g_x &= -\frac{\delta \mathcal{L}}{\delta\, \pd_t \varphi}\, \pd_x \varphi = -\pd_t \varphi \, \pd_x \varphi\,,\\
+g_y &= -\frac{\delta \mathcal{L}}{\delta\, \pd_t \varphi}\, \pd_y \varphi = -\pd_t \varphi \, \pd_y \varphi\,,\\
+g_z &= -\frac{\delta \mathcal{L}}{\delta\, \pd_t \varphi}\, \pd_z \varphi = -\pd_t \varphi \, \pd_z \varphi\,.
+\end{align*}
+Combining here we have
+\begin{align*}
+\vec{g} = -\pd_t \varphi \, \nabla \varphi\,.
+\end{align*}
+Comparing we have
+\begin{align}
+\vec{s} = v^2 \vec{g}\,.
+\end{align}
+Note that (2.15) is a rather generic equation. In electrodynamics, $\vec{s}$ is called the Poynting's vector
+\begin{align*}
+\vec{s} = \frac{\vec{E} \times \vec{B}}{\mu_0}\,,
+\end{align*}
+and if one defines
+\begin{align*}
+\vec{g} = \epsilon_0 (\vec{E}\times \vec{B})\,,
+\end{align*}
+we have
+\begin{align*}
+\vec{s} = \frac{1}{\epsilon_0 \mu_0}\vec{g} = c^2 \vec{g}\,.
+\end{align*}
+Now suppose one has a plane wave solution
+\begin{align*}
+\varphi(\vec{r},t) = A\cos(\vec{k}\cdot \vec{r}- \omega t + \theta)\,.
+\end{align*}
+The energy of the wave is given by, using (2.13),
+\begin{align*}
+H = \iiint \frac{1}{2}\left(A^2 \omega^2 \sin^2(\vec{k}\cdot \vec{r} - \omega t + \theta) + v^2 k^2 A^2 \sin^2(\vec{k}\cdot \vec{r} - \omega t + \theta)+\omega_0^2 A^2 \cos^2(\vec{k}\cdot \vec{r} - \omega t+ \theta) \right)  \, dx\, dy\, dz\,.
+\end{align*}
+One can get the time average of $H$, applying dispersion relation $\omega = \sqrt{v^2 k^2 + \omega_0^2}$,
+\begin{align*}
+\langle E \rangle = \iiint  \frac{1}{4}\left( \omega^2 + v^2k^2 + \omega_0^2 \right) A^2 \, dx\, dy\, dz =  \frac{V\omega^2A^2}{2}\,,
+\end{align*}
+where $V$ is the volume of region we are interested in, thus we see here $E \propto V$, $E\propto A^2$, and $E\propto \omega^2$. Furthermore, one can also compute
+\begin{align*}
+P_x = \iiint g_x\,dx\,dy\,dz = -\iiint \pd_t \varphi\, \pd_x \varphi \,dx\,dy\,dz = -\iiint -\omega A^2 k_x \sin(\vec{k}\cdot \vec{r} - \omega t + \theta)\, dx\,dy\,dz \,.
+\end{align*}
+Taking the time average we obtain the time-averaged momentum
+\begin{align*}
+\langle P_x\rangle = \frac{1}{2}\omega k_x A^2 V\,.
+\end{align*}
+Similarly, it is easy to see here
+\begin{align*}
+\langle \vec{P}\rangle = \frac{1}{2}\omega\vec{k}A^2 V\,.
+\end{align*}
+That is, we see that $P\propto V$, $P \propto A^2$, $P\propto kw$, and $\vec{P}$ is parallel to $\vec{k}$. Furthermore, we can compare
+\begin{align*}
+\frac{\langle E\rangle}{\langle p\rangle} = \frac{ (1/2)\omega^2 A^2V}{(1/2)\omega k A^2 V} = \frac{\omega}{k}\,,
+\end{align*}
+such equation can be interpreted using particle-wave duality from quantum mechanics
+\begin{align*}
+\frac{\langle E\rangle}{\langle P\rangle} = \frac{(\text{energy of one particle})\cdot (\text{number of particles})}{(\text{momentum of one particle})\cdot (\text{number of particles})} = \frac{\hbar \omega}{\hbar k} = \frac{\omega }{k}\,.
+\end{align*}
+One can define the phase velocity as
+\begin{align*}
+v_p \coloneqq \frac{\omega}{k}\,.
+\end{align*}
+
+\subsection{Velocity}
+For waves, one can define the phase velocity $v_p = \omega/k$ and the group velocity as
+\begin{align*}
+v_g \coloneqq \frac{d\omega}{dk}\,.
+\end{align*}
+Again, using dispersion relation, $\omega = \sqrt{v^2 k^2 + \omega_0^2}$, we have
+\begin{align*}
+v_p = \frac{\sqrt{v^2 k^2 + \omega_0^2}}{k}\,,\qquad v_g = \frac{v^2k}{\sqrt{v^2 k^2 + \omega_0^2}}\,.
+\end{align*}
+Notice here we have
+\begin{align*}
+v_p\cdot v_g = v^2\,.
+\end{align*}
+Note that $v$ is a parameter that need to be \textit{experimentally measured}.\\
+
+For electromagnetic wave, one will find that we have
+\begin{align*}
+v_p \cdot v_g = c^2\,,
+\end{align*}
+as only the group velocity is physically meaningful, by the requirement that nothing can propagate faster than the speed of light, we require that $v_g\leq c$ and $v_p \geq c$. \\
+
+Note further that, for massless system, $\omega_0 = 0$ as mentioned previously, we have
+\begin{align*}
+v_p = \frac{\omega}{k} = v= \frac{d\omega}{dk} = v\,.
+\end{align*}
+While for massive wave, we have found above that
+\begin{align*}
+v_g < v
+\end{align*}
+as one must have $v_p > v$. \\
+
+\subsection{Speed of Energy Flow}
+We have shown that
+\begin{align*}
+\frac{\langle E\rangle}{\langle P\rangle} = \frac{\omega}{k} = v_p\,,
+\end{align*}
+and we have mentioned that phase velocity $v_p$ does not have physical interpretation. What we are truly interested in is the velocity of the flow of energy.\\
+
+\example Suppose we have charged particles moving in a wire. One can draw a cross-section of the wire to obtain the current density $\vec{j} = I/A$, where $I$ is the current and $A$ is the cross-section area. Here we can write
+\begin{align*}
+\vec{j} = \frac{I}{A} = \frac{Q/\delta t}{A} = \frac{(v A\rho\,\delta t)/\delta t}{A} = \rho v\,,
+\end{align*}
+where $v$ is the velocity of the charged particles, and $\delta t$ is a unit time.\\
+
+Similarly, we derive the speed of the energy flow, denoted as $v^*$,
+\begin{align*}
+v^* = \frac{s}{w} = \frac{g v^2}{w} = \frac{g}{w}\, v^2 = \frac{v^2}{v_p} = v_g
+\end{align*} 
+where $s$ is the current density and $\rho$ is the energy density. Eq. (2.15) is used for $s = gv^2$. 
+
+
+\section[Elasticity]{\color{red}Elasticity\color{black}}
+In this section, we will discuss the difference between scalar field and vector field, and introduce the notion of tensor. Then we will define the notion of soft and hard, and the topic of elasticity.\\
+
+Let $\vec{r}$ be a point in some solid, the solid can deform, and the point $\vec{r}$ moves the point $\vec{r}'$ after the deformation. Define $\vec{u} = \vec{r}' - \vec{r}$. Here $\vec{u}$ is a field that we will study. Note immediately that $\vec{u}$ is a vector that has three components
+\begin{align*}
+\vec{u} = u_x \hat{e}_x + u_y \hat{e}_y + u_z \hat{e}_z\,.
+\end{align*}
+Thus one would expect that we have a Lagrangian density of the form
+\begin{align*}
+\mathcal{L}(u_x,\, u_y,\, u_z,\, \pd u_z,\, \pd u_y,\, \pd u_z)\,,
+\end{align*}
+where we have omitted the higher order terms. Thus from previous section, we can write the equations of motion
+\begin{align*}
+\pd_\mu \frac{\delta \,\mathcal{L}}{\delta \, \pd_\mu u_x} = \frac{\delta \, \mathcal{L}}{\delta \, u_x}\,,\qquad
+\pd_\mu \frac{\delta \,\mathcal{L}}{\delta \, \pd_\mu u_y} = \frac{\delta \, \mathcal{L}}{\delta \, u_y}\,,\qquad
+\pd_\mu \frac{\delta \,\mathcal{L}}{\delta \, \pd_\mu u_z} = \frac{\delta \, \mathcal{L}}{\delta \, u_z}\,,
+\end{align*}
+where $\mu \in \{0,1,2,3\}$. \\
+
+A scalar, mathematically is a number, while physically we require scalar to be invariant under rotational transformation.\\
+
+A vector, mathematically is an ordered set of three numbers, while physically we require the three numbers rotate the same way as the Cartesian coordinates $(x,y,z)$. If $R$ is a rotation matrix, we require that $RR^T = R^TR = 1$, and thus $R^{-1} = R^T$, implying that $R$ is orthogonal. We further require that $\det(R) = 1$ for rotation matrices $R$. \\
+
+\note Here we require, for a rotation matrix $R$, that $R^{-1} = R^T$, simply based on the fact that the length of a vector should not be changed via rotation, that is, if we have
+\begin{align*}
+\vec{r}' = R\vec{r}\,,
+\end{align*}
+then we should have
+\begin{align*}
+\vec{r}^T\vec{r} = \vec{r}\cdot \vec{r} = \vec{r}' \cdot \vec{r}' = (R\vec{r})^T(R\vec{r}) = \vec{r}^TR^TR\vec{r}\,,
+\end{align*}
+which implies $R^TR = \mathbb{I}$, so $R^{-1} = R^T$. Furthermore, we see that we have
+\begin{align*}
+\det(RR^T) = \det(R)\cdot \det(R^T) =(\det(R))^2 = \det(\mathbb{I}) = 1\,,
+\end{align*}
+thus $\det(R) =\pm 1$. Intuitively, those transformations that satisfy $R^T = R^{-1}$ and $\det(R) = -1$ are the inversion, mirror reflection, or some compositions of them. Thus we focus on the rotation matrices that satisfy $R^T = R^{-1}$ and $\det(R) = 1$. \\
+
+\example In particular, in $\R^3$, the rotation around the $x$-axis by an angle $\theta$ is given by
+\begin{align*}
+R_x(\theta) = \bmat{
+1 & 0 & 0 \\
+0 & \cos(\theta) & -\sin(\theta) \\
+0 & \sin(\theta) & \cos(\theta) 
+}\,.
+\end{align*}
+Similarly, the rotations around the $y$-axis by an angle $\theta$, and around the $z$-axis by an angle $\theta$, are given by
+\begin{align*}
+R_y(\theta) = 
+\bmat{
+\cos(\theta) & 0 & -\sin(\theta) \\
+0 & 1 & 0\\
+\sin(\theta) & 0 & \cos(\theta)
+}\,,\qquad
+R_z(\theta) = \bmat{
+\cos(\theta) & -\sin(\theta) & 0\\
+\sin(\theta)& \cos(\theta) & 0 \\
+ 0 & 0 & 1
+}\,.
+\end{align*} 
+
+If a quantity $(A_x,A_y,A_z)$ satisfies exactly the same transformation as the coordinate vector, then we call it a vector. Thus all vectors rotate in the same way. As we assume here the physical universe is isotropic, we require that the laws of physics stays the same under rotation. Scalar$_1=$ Scalar$_2$ and Vector$_1=$ Vector$_2$ under any rotation as they all rotate in the same way. \\
+
+Now we will introduce the notion of rank-2 tensor, which can be usually viewed as $3\times3$ matrices, 
+\begin{align*}
+T = \bmat{
+A_{xx} & A_{xy} & A_{xz}\\
+A_{yx} & A_{yy} & A_{yz}\\
+A_{zx} & A_{zy} & A_{zz}
+}\,.
+\end{align*}
+Note here rank-1 tensors, which are the scalars, have only $1$ component. The rank-1 tensors, which are the vectors, have $3$ components. The rank-2 tensors have $9$ components. Then it is expected that the rank-3 tensors have $12$ components. 
+\\
+
+Furthermore, rank-2 tensors also need to follow some structure under rotation, namely all rank-2 tensors rotate in the same way
+\begin{align*}
+T = RTR^{T}\,.
+\end{align*}
+
+In summary, under rotation $R$. Scalar $A$ transforms as
+\begin{align*}
+A \to A' = A\,,
+\end{align*}
+vector $A_i$ transforms as
+\begin{align*}
+A_i \to A'_i = R_{ii'}A_{i'}\,,
+\end{align*}
+rank-2 tensor transforms as
+\begin{align*}
+A_{ij} \to A'_{ij} = R_{ii'} R_{jj'} A_{i''j'}\,,
+\end{align*}
+and rank-3 tensor transforms as
+\begin{align*}
+A_{ijk} \to A_{ijk}'= R_{ii'}R_{jj'}R_{kk'}A_{i'j'k'}\,.
+\end{align*}
+
+We define the outer product of vectors $\vec{A}$ and $\vec{B}$, denoted as $\vec{A}\otimes \vec{B}$, via
+\begin{align*}
+\vec{A}\otimes \vec{B} = \bmat{A_x \\ A_y \\ A_z} \bmat{B_x&B_y &B_z} = 
+\bmat{
+A_xB_x & A_xB_y & A_xB_z\\
+A_yB_x & A_yB_y & A_yB_z\\
+A_zB_x & A_zB_y & A_zB_z
+}\,,
+\end{align*}
+whose components are denoted as $(AB)_{ij} = A_iB_j$, from which we see that the outer product of vectors give is rank-2 tensor. Note further that $\vec{A}\otimes \vec{B}$ contains information about the inner product, that is the trace of $\vec{A}\otimes \vec{B}$ gives the inner product $\vec{A}\cdot \vec{B}$. Furthermore, for a matrix $M$, we can always decompose $M$ into a symmetric component and an antisymmetric component
+\begin{align*}
+M = M_S + M_T = \frac{M+M^T}{2} + \frac{M-M^T}{2}\,.
+\end{align*}
+
+
+The Lagrangian density $\mathcal{L}$, Lagrangian $L$, and action $S$ all need to be scalars. Thus immediately we know that $\mathcal{L}$ does not contain any vector. For $\vec{u}$ defined by $\vec{u} = \vec{r}' - \vec{r}$ where $\vec{r}$ is a point in some solid, and $\vec{r}'$ is the same point after the solid deforms. We can write
+\begin{align}
+\mathcal{L}(\vec{u},\, \pd \vec{u}) = c\,(\vec{u}\cdot \vec{u}) + a\, (\pd_t\vec{u}\cdot \pd_t \vec{u}) + b_1\, (\text{tr}(e))^2 + b_2\,(\text{tr}(ee))
+\end{align}
+where $e$ is the strain tensor defined in the following discussion, $c,a,b_1,b_2 \in \R$ are some constants. Note that higher order terms and constant term have been discarded here, the linear terms $u_x$, $u_y$, $\cdots$ are not allowed under symmetry, and the terms  $\pd_x u$, $\pd_y u$, $\cdots$ are discarded as they are total derivative which integrates to boundary conditions. The term $\vec{u}\cdot \pd_t \vec{u} = (1/2)\pd_t (\vec{u}\cdot \vec{u})$ is discarded as it integrates to boundary condition of the system. The term $\vec{u}\cdot (\nabla \times \vec{u})$, for $i$ being spacial coordinate, is not allowed by argument of space inversion. The terms $\pd_t \vec{u}\cdot\pd_i \vec{u}$ is not allowed by time-reversal symmetry and space-inversion symmetry. Notice that $D\vec{u}$ is a Jacobian
+\begin{align*}
+D\vec{u} &= \bmat{
+\pd_x u_x & \pd_x u_y & \pd_x u_z\\
+\pd_y u_x & \pd_y u_y & \pd_y u_z\\
+\pd_z u_x & \pd_z u_y & \pd_z u_z
+} \coloneqq e+\eta
+\\
+&=
+\bmat{
+\pd_x u_x & \frac{\pd_x u_y+\pd_y u_x}{2} & \frac{\pd_x u_z + \pd_z u_x}{2}\\
+\frac{\pd_x u_y + \pd_y u_x}{2} & \pd_y u_y & \frac{\pd_y u_z + \pd_zu_y}{2}\\
+\frac{\pd_x u_z + \pd_z u_x}{2} & \frac{\pd_y u_z + \pd_z u_y}{2} & \pd_zu_z
+} + 
+\bmat{
+0 & \frac{\pd_x u_y-\pd_y u_x}{2} & \frac{\pd_x u_z - \pd_z u_x}{2}\\
+\frac{\pd_xu_y - \pd_yu_y}{2} & 0 & \frac{\pd_y u_z - \pd_zu_y}{2}\\
+\frac{\pd_x u_z - \pd_z u_x}{2} & \frac{\pd_y u_z - \pd_z u_y}{2} & 0
+} 
+\,,
+\end{align*}
+where $e$ is called the strain tensor, together with the anti-symmetric part $\eta$ of $D\vec{u}$, we have $D\vec{u} = e+\eta$, and the components of $e$ and $\eta$ are characterized by
+\begin{align*}
+e_{ij} = \frac{\pd_i u_j + \pd_j u_i}{2} \,,\qquad 
+\eta_{ij} = \frac{\pd_i u_j -\pd_j u_i}{2}\,.
+\end{align*}
+Also notice here the terms in the upper triangle on the right of $\eta$ constitutes the curl of $\vec{u}$
+\begin{align*}
+\frac{\nabla \times \vec{u}}{2} = \left( \frac{\pd_y u_z - \pd_z u_y}{2}, \ -\frac{\pd_x u_z - \pd_z u_x}{2},\ \frac{\pd_x u_y - \pd_y u_x}{2}\right)\,.
+\end{align*} 
+
+
+
+If we consider rotating a crystal by a small angle $\delta \theta$ around an axis $\vec{n}$. Then we have, approximately,
+\begin{align*}
+\vec{r} \to \vec{r}' = \vec{r} + \delta \theta\,\vec{n}\times \vec{r}\,,
+\end{align*}
+The displacement $\vec{u} = \vec{r}' - \vec{r}$ is characterized by
+\begin{align*}
+\vec{u} = \delta \theta\, \vec{n}\times \vec{r}\,.
+\end{align*}
+Furthermore, the crystal has the same energy before and after rotation, that is its Lagrangian stays the same, $L = L'$, before and after the rotation. \\
+
+ 
+Back to the general case, we then can write
+\begin{align*}
+\nabla \times \vec{u} = \nabla \times (\vec{n}\times \vec{r})\, \delta \theta = \left(\vec{n}(\nabla \cdot \vec{r}) - \vec{r}(\nabla \cdot \vec{n})\right) \, \delta\theta = 3\vec{n}\,\delta\theta\,,
+\end{align*}
+suggesting that $\nabla\times \vec{u}$ is non-zero when an angle $\delta \theta$ exists. As argued above, the solid should have the same Lagrangian before and after rotational transformation, thus $\mathcal{L}$ should not be dependent on $\eta$. Thus the only allowed terms are $(\text{tr}(e))^2$ and $\text{tr}(ee)$.\\
+
+
+Consider two points $\vec{r} = (x,y,z)$ and $\vec{r}+d\vec{r} = (x+ dx, y + dy, z+dz)$ in a solid, the squared distance between the two is given by
+\begin{align*}
+dr^2 = dx^2 + dy^2 + dz^2\,.
+\end{align*}
+If one deforms the solid a little, such that $\vec{r}$ goes to $\vec{r}'$, and $\vec{r}+d\vec{r}$ goes to $\vec{r}'+d\vec{r}'$, then the distance between the two now becomes
+\begin{align*}
+(d\vec{r}')^2 = d\vec{r}^2 +2e_{ij}\,dr_i\, dr_j + \text{(higher order terms)}\,.
+\end{align*}
+Thus we see here $e_{ij}$ describes the change of distance between the two points. Furthermore, for a spring, the elastic energy only depends on the change of length of the spring, thus we can write
+\begin{align*}
+U = \frac{1}{2}C\Delta L^2\,.
+\end{align*}
+Thus for a solid, it is in nature to expect that the elastic energy depends on the change of length between two points
+\begin{align*}
+U = \int d\vec{r}\,\sum_{ijkl}\,\frac{1}{2}C_{ijkl}\,e_{ij}(\vec{r})\, e_{kl}(\vec{r})\,.
+\end{align*}
+While the components $C_{ijkl}$ here should satisfy some symmetries
+\begin{align*}
+C_{ijkl} = C_{klij}\,,\qquad
+C_{ijkl} = C_{jikl}\,,\qquad
+C_{ijkl} = C_{ijlk}\,.
+\end{align*}
+$C_{ijkl}$ here is in fact a rank-4 tensor, called the elastic modulus tensor. Each component of $C_{ijkl}$ is known as an elastic stiffness constant. Here $C_{ijkl}$ has $81$ components, but in reality only $21$ of them are independent. As we know that $e_{ij} = e_{ji}$, one can show that $C_{ijkl} = C_{jikl} = C_{ijlk}$, and by definition of $U$, we also require $C_{ijkl}= C_{klij}$, which are the symmetry requirements shown. Note further that if one choose proper axes, one can make three of the $21$ elastic constants $0$, thus in reality we have only $18$ independent constants.\\
+
+
+It is not hard that one can calculate
+\begin{align*}
+(\text{tr}(e))^2 &= e_{xx}^2 + e_{yy}^2 + e_{zz}^2 + 2\left( e_{xx}e_{yy} + e_{xx}e_{zz} + e_{yy}e_{zz}\right) = (e_{ii})^2\,,\\
+\text{tr}(ee)&= e_{xx}^2 + e_{yy}^2 + e_{zz}^2 +2\left( e_{xy}e_{xy} + e_{xz}e_{xz} + e_{yz}e_{yz}\right) = e_{ij}e_{ji}\,.
+\end{align*}
+Furthermore, $c$ in (2.16) should also vanish by translation symmetry and the fact that $\mathcal{L}$ is closely related to the total energy of the system. Thus rewritten (2.16) here, we obtain
+\begin{align*}
+\mathcal{L} = \frac{\rho}{2}\, (\pd_t \vec{u}\cdot \pd_t \vec{u}) - \frac{\lambda}{2}\left( \text{tr}(e)\right)^2 - G\, \text{tr}(ee)
+\end{align*}
+where $\rho$ is called the mass density. The energy density of the system can be described by
+\begin{align*}
+w &= \frac{\delta \mathcal{L}}{\delta \pd_tu_i} \, \pd_t u_i  - \mathcal{L}= \frac{\delta \mathcal{L}}{\delta \, \pd_t u_x}+\frac{\delta \mathcal{L}}{\delta \, \pd_t u_x}+\frac{\delta \mathcal{L}}{\delta \, \pd_t u_x} - \mathcal{L} \\
+&= \frac{\rho}{2} \, \pd_t\vec{u}\cdot \pd_t \vec{u} + \frac{\lambda}{2}\left( \text{tr}(e)\right)^2 + G(\text{tr}(ee))\,. 
+\end{align*}
+Comparing with $\mathcal{L}$ we observe that, the the kinetic energy term and elastic potential term in $w$ is given by
+\begin{align*}
+\text{KE term} =  \rho \, \pd_t\vec{u}\cdot \pd_t \vec{u} \,\qquad \text{PE term} = \frac{\lambda}{2}\left( \text{tr}(e)\right)^2 + G(\text{tr}(ee))\,.
+\end{align*}
+Thus the total elastic energy can be obtained by computing
+\begin{align*}
+U = \iiint \,\left( \frac{\lambda}{2}\left( \text{tr}(e)\right)^2 + G(\text{tr}(ee))\right) dx\,dy\, dz\,.
+\end{align*}
+Equivalently, one show that $U$ is equivalent to 
+\begin{align}
+U = \iiint\, \left(\frac{1}{2}B(\text{tr}(e))^2 + G\text{tr}\left(\left(e-\frac{\text{tr}(e)}{3}\mathbb{I}\right)\left(e-\frac{\text{tr}(e)}{3}\mathbb{I}\right)  \right)  \right)  \, dx\,dy\,dz
+\end{align}
+where $\mathbb{I}$ is the $3\times 3$ identity matrix, the form of $U$ given by (2.17) is more often used.\\
+
+\subsection{Types of solid deformation}
+One type of deformation is the bulk deformation, which changes only the volume of the solid, but not the shape of the solid, then the change in energy in such type of deformation is governed by the coefficient $B$ in (2.17).\\
+
+Another type of deformation is the shear deformation, which changes the shape of the solid, but not the volume, then the change in energy in such type of deformation is governed by the coefficient $G$ in (2.17).\\
+
+For a spring, the deformation is governed by the spring constant $k$. When $k$ is large, the spring is said to be hard as it takes a huge amount of energy to deform the spring. While when $k$ is small, the spring is said to be soft. On the other hand, solid with a large $B$ and large $G$ is said to be hard. Solids with either large $B$ and small $G$, small $B$ and large $G$, or small $G$ and small $B$, are all said to be soft. \\
+
+\example Liquid usually has $G\sim 0$. Rubber has $B\sim 1\text{ GPa}$, $G\sim 10^{-3}\, \text{GPa}$. Solid crystal has $B\sim 10 \text{ GPa}$, and $G\sim B$. There exists materials with small $B$ and higher $G$, such as the auxetic materials. \\
+
+One can introduce the Possion's ratio. Suppose one stretch a cubic material along the $x$-axis, denote the change of length of the material along the $x$-axis as $\Delta L$, and the change of the length of the material along the $y$-axis as $\Delta L'$, we define
+\begin{align*}
+\nu = \frac{\Delta L'}{\Delta L}\,,
+\end{align*}
+which is a quantity that is usually larger than $0$ for most of the materials. For some materials that have $B\ll G$, $\nu$ will become negative, such as the cork wood used for wine stopper. Rigorously, the Possion's ratio is defined by
+\begin{align*}
+\nu = \frac{3B - 2G}{2(3B +G)}\,.
+\end{align*}  
+
+
+Previously we have derived the Lagrangian density for solid deformation (2.16), here we expand the Lagrangian density,
+\begin{align*}
+\mathcal{L}=& \frac{\rho}{2}\left( \pd_t u_x\right)^2 + \frac{\rho}{2}\left(\pd_t u_y\right)^2 + \frac{\rho}{2}\left(\pd_t u_z\right)^2 \\
+&{}\qquad - \left( \frac{B}{2}+ \frac{2}{3}G\right) \left( (\pd_x u_x)^2+(\pd_y u_y)^2 + (\pd_z u_z)^2 \right) \\
+&{}\qquad\qquad-\left( B-\frac{2G}{3}\right) \left( \pd_x u_x \, \pd_yu_y + \pd_xu_x\, \pd_zu_z + \pd_yu_y\,\pd_zu_z\right) \\
+&{}\qquad\qquad\qquad -2G\left( \left( \frac{\pd_xu_y + \pd_y u_x}{2}\right)^2+
+\left( \frac{\pd_yu_z + \pd_z u_y}{2}\right)^2+
+\left( \frac{\pd_xu_z + \pd_z u_x}{2}\right)^2\right)\,.
+\end{align*}
+The equation of motion (2.4) thus reads
+\begin{align}
+\pd_t \frac{\delta\, \mathcal{L}}{\delta \, \pd_t u_x}+
+\pd_x \frac{\delta\, \mathcal{L}}{\delta \, \pd_x u_x}+
+\pd_y \frac{\delta\, \mathcal{L}}{\delta \, \pd_y u_x}+
+\pd_z \frac{\delta\, \mathcal{L}}{\delta \, \pd_z u_x} &= \frac{\delta\, \mathcal{L}}{\delta\, u_x}\,,\\
+\pd_t \frac{\delta\, \mathcal{L}}{\delta \, \pd_t u_y}+
+\pd_x \frac{\delta\, \mathcal{L}}{\delta \, \pd_x u_y}+
+\pd_y \frac{\delta\, \mathcal{L}}{\delta \, \pd_y u_y}+
+\pd_z \frac{\delta\, \mathcal{L}}{\delta \, \pd_z u_y} &= \frac{\delta\, \mathcal{L}}{\delta\, u_y}\,,\\
+\pd_t \frac{\delta\, \mathcal{L}}{\delta \, \pd_t u_z}+
+\pd_x \frac{\delta\, \mathcal{L}}{\delta \, \pd_x u_z}+
+\pd_y \frac{\delta\, \mathcal{L}}{\delta \, \pd_y u_z}+
+\pd_z \frac{\delta\, \mathcal{L}}{\delta \, \pd_z u_z} &= \frac{\delta\, \mathcal{L}}{\delta\, u_z}\,.
+\end{align}
+As the three equations are of the same form, we focus on (2.18). It is clear that the RHS of (2.18) vanishes, and the LHS of (2.18) gives
+\begin{align*}
+0 = \rho\,\pd_t^2u_x - \left( B + \frac{4G}{3}\right) \pd_x^2 u_x - \left( B - \frac{2G}{3}\right) \left(\pd_x\pd_y u_y + \pd_x\pd_zu_z\right) - G\left(\pd_x\pd_y u_y + \pd_y^2 u_x\right)- G\left( \pd_x\pd_z u_z + \pd_z^2u_x\right)
+\end{align*}
+as we have
+\begin{align*}
+\frac{\delta\, \mathcal{L}}{\delta \, \pd_t u_x} =(\rho\, \pd_t u_x)\,,
+\end{align*}
+\begin{align*}
+\frac{\delta\,\mathcal{L}}{\delta\, \pd_x u_x} &= \frac{\delta}{\delta\, \pd_xu_x}\left( 
+\left( \frac{B}{2}+\frac{2G}{3}\right) (\pd_xu_x)^2 + \left( B - \frac{2}{3}G\right) \left( \pd_xu_x\,\pd_y u_y + \pd_xu_x\,\pd_zu_z \right)\right)\\
+&= -\left( B + \frac{4}{3}G\right) \pd_xu_x - \left( B - \frac{2G}{3}\right) \left( \pd_y u_y + \pd_zu_z\right)\,,
+\end{align*}
+\begin{align*}
+\frac{\delta\,\mathcal{L}}{\delta\, \pd_yu_x} = -\frac{G}{2}\, \frac{\delta}{\delta\, \pd_xu_y}\left(\pd_xu_y + \pd_y u_x \right)^2 = -G\left( \pd_xu_y + \pd_y u_x\right)\,.
+\end{align*}
+\begin{align*}
+\frac{\delta\,\mathcal{L}}{\delta\, \pd_zu_x} = -\frac{G}{2}\, \frac{\delta}{\delta\, \pd_xu_z}\left(\pd_xu_z + \pd_z u_x \right)^2 = -G\left( \pd_xu_z + \pd_z u_x\right)\,.
+\end{align*}
+Grouping the terms we obtain
+\begin{align}
+\rho\,\pd_t^2 u_x=
+\left( \left( B + \frac{4G}{3}\right) \pd_x^2u_x + G\pd_y^2u_x + G\pd_z^2u_x\right) 
++\left(B + \frac{G}{3}\right) \pd_x\pd_yu_y  
++\left( B + \frac{G}{3}\right) \pd_x\pd_zu_z\,.
+\end{align}
+Similarly, for (2.19) and (2.20), we obtain
+\begin{align}
+\rho\pd_t^2u_y &=
+\left( B + \frac{G}{3}\right) \pd_x\pd_yu_x 
++\left(\left( B + \frac{4G}{3}\right) \pd_y^2u_y + G\pd_x^2u_y + G\pd_z^2u_y\right) 
++\left(B + \frac{G}{3}\right)\pd_y\pd_zu_z\,, \\
+\rho\pd_z^2u_z &=
+\left(B+ \frac{G}{3}\right) \pd_x\pd_zu_x 
++\left(B+\frac{G}{3}\right) \pd_y \pd_z u_y
++\left(\left(B+ \frac{4G}{3}\right)\pd_z^2u_z + G\pd_x^2u_z+ G\pd_y^2u_z\right)\,.
+\end{align}
+Intuitively, we believe that the solution to (2.21 - 2.23) is a plane wave
+\begin{align}
+\vec{u} = \vec{A}e^{i\vec{k}\cdot \vec{r} - i\omega t}\,,
+\end{align}
+or in component form
+\begin{align*}
+u_x = A_x e^{i\vec{k}\cdot \vec{r} - i\omega t}\,,\qquad
+u_y = A_y e^{i\vec{k}\cdot \vec{r} - i\omega t}\,,\qquad
+u_z = A_z e^{i\vec{k}\cdot \vec{r} - i\omega t}\,.
+\end{align*}
+It is not hard to see that (2.24) satisfies
+\begin{align*}
+\pd_x\vec{u} = ik_x \vec{u}\,,\qquad
+\pd_y\vec{u} = ik_y \vec{u}\,,\qquad
+\pd_z\vec{u} = ik_z \vec{u}\,,\qquad
+\pd_t \vec{u} = -i\omega \vec{u}\,.
+\end{align*}
+Thus (2.21) gives
+\begin{align*}
+\rho \omega^2u_x = 
+\left(\left(B+\frac{4G}{3}\right) k_x^2 + Gk_y^2 + Gk_z^2\right) u_x 
++\left(B+ \frac{G}{3}\right) k_xk_yu_y
++\left(B+\frac{G}{3}\right)k_xk_zu_z\,.
+\end{align*}
+Similarly, (2.22) and (2.23) give
+\begin{align*}
+\rho \omega^2 u_y &= \left(B + \frac{G}{3}\right) k_xk_yu_x + \left( \left(B + \frac{4G}{3}\right) k_y^2 + Gk_x^2 +Gk_z^2\right) u_y + \left(B + \frac{G}{3}\right) k_yk_zu_z\,.\\
+\rho \omega^2 u_z &= \left(B + \frac{G}{3}\right) k_xk_zu_x + \left( B + \frac{G}{3}\right) k_y k_zu_y + \left( \left( B + \frac{4G}{3}\right)k_z^2 + Gk_x^2 + Gk_y^2\right)u_z\,. 
+\end{align*}
+In matrix form, the coupled differential equations can be written as
+\begin{align*}
+\rho \omega^2 \bmat{u_x \\ u_y \\ u_z} = \bmat{
+\left(B + \frac{4G}{3}\right) k_x^2+Gk_y^2 + Gk_z^2 & \left(B+\frac{G}{3}\right)k_xk_y & \left(B+\frac{G}{3}\right)k_xk_z\\
+\left(B+\frac{G}{3}\right)k_xk_y & Gk_x^2 + \left(B+\frac{4G}{3}\right)k_y^2 + Gk_z^2 & \left(B+\frac{G}{3}\right)k_yk_z\\
+\left(B+\frac{G}{3}\right)k_xk_z & \left(B+\frac{G}{3}\right)k_yk_z & Gk_x^2+Gk_y^2+\left(B+\frac{4G}{3}\right) k_z^2
+}
+\bmat{u_x\\ u_y \\ u_z}\,.
+\end{align*}
+We observe from (2.24) that the only \textit{difference} between $u_x$, $u_y$, and $u_z$ is characterized by $A_x$, $A_y$, and $A_z$, thus the system becomes
+\begin{align*}
+\rho \omega^2 \bmat{A_x \\ A_y \\ A_z} = \bmat{
+\left(B + \frac{4G}{3}\right) k_x^2+Gk_y^2 + Gk_z^2 & \left(B+\frac{G}{3}\right)k_xk_y & \left(B+\frac{G}{3}\right)k_xk_z\\
+\left(B+\frac{G}{3}\right)k_xk_y & Gk_x^2 + \left(B+\frac{4G}{3}\right)k_y^2 + Gk_z^2 & \left(B+\frac{G}{3}\right)k_yk_z\\
+\left(B+\frac{G}{3}\right)k_xk_z & \left(B+\frac{G}{3}\right)k_yk_z & Gk_x^2+Gk_y^2+\left(B+\frac{4G}{3}\right) k_z^2
+}
+\bmat{A_x\\ A_y \\ A_z}\,,
+\end{align*}
+which can be written in a simple form
+\begin{align}
+\rho \omega^2 \vec{A} = D\vec{A}\,,
+\end{align}
+with matrix $D$ referred as the dynamic matrix, which satisfies $D = D^\dagger$. We notice here (2.25) characterizes a eigenvalue problem. (2.25) can be solved via
+\begin{align*}
+\left( \rho \omega^2 \mathbb{I} - D\right) \vec{A} = 0\,.
+\end{align*}
+Solving the characteristic equation
+\begin{align*}
+\det(\rho \omega^2 \mathbb{I} - D) = 0
+\end{align*}
+gives the result 
+\begin{align*}
+\omega_1 = \sqrt{\frac{G}{\rho}}\, k\,,\qquad
+\omega_2 = \sqrt{\frac{G}{\rho}}\, k\,,\qquad
+\omega_3 = \sqrt{\frac{B+4G/3}{\rho}}\, k\,,
+\end{align*}
+where $k = \sqrt{k_x^2 + k_y^2 + k_z^2}$, with their corresponding eigenvectors
+\begin{align*}
+\vec{A}_1 = \bmat{-k_z \\ 0 \\ k_x} \,,\qquad
+\vec{A}_2 = \bmat{-k_y \\ k_x \\0}\,,\qquad
+\vec{A}_3 = \bmat{k_x \\ k_y \\ k_z}\,.
+\end{align*}
+Here $\vec{A}_1$ and $\vec{A}_2$ are called the transverse modes, or transverse phonons, and $\vec{A}_3$ is called the longitudinal mode, or longitudinal phonon. Here we observe that
+\begin{align*}
+\vec{A}_1 \cdot \vec{k} = \vec{A}_2 \cdot \vec{k} = 0
+\end{align*}
+hence the name \textit{transverse} for $\vec{A}_1$ and $\vec{A}_2$. While we observe that $$\vec{A}_3 \parallel \vec{k}\,,$$  
+hence the name \textit{longitudinal} for $\vec{A}_3$. Note further that $\vec{A}_3$ mode always has higher frequency $\omega_3$ than the transverse modes by the fact that $G,B >0$. From that phase velocity $v_p = \omega/k$, and we have assumed here the wave is massless, thus group velocity $v_g = v_p = \omega/k$, we obtain
+\begin{align*}
+v_L = \sqrt{\frac{B+4G/3}{\rho}}\,,\qquad\qquad v_T=\sqrt{\frac{G}{\rho}}\,.
+\end{align*}
+thus we see here $v_L > v_T$, the speed of longitudinal wave is always larger than that of the traverse wave. \\
+
+\remark Here we see that, for solid deformation, there can be transverse modes and longitudinal mode. However, for liquid and gas, we have $G = 0$, that is there is no transverse mode for liquid and gas deformation, only longitudinal wave survives. \\
+
+\subsection{Massive wave}
+Here we break the translation symmetry and add back the $u^2 = \vec{u}\cdot \vec{u}$ term to the Lagrangian density
+\begin{align*}
+\mathcal{L} = \frac{\rho}{2}\,\pd_t \vec{u}\, \pd_t \vec{u} -\frac{\lambda}{2}(\text{tr}(e))^2 - G\text{tr}(ee) - \frac{\rho}{2}\omega_0^2 u^2\,.
+\end{align*}
+In this case, RHS of (2.18), (2.19), and (2.20) gives
+\begin{align*}
+\frac{\delta \mathcal{L}}{\delta u_x} = -\rho \omega_0^2 u_i\,,
+\end{align*}
+and the system (2.25) thus become
+\begin{align*}
+\rho^2 \omega^2 \vec{A} = D\vec{A} + \rho\omega_0^2\vec{A}\,,
+\end{align*}
+or rearranging we obtain
+\begin{align}
+\rho(\omega^2 - \omega_0^2) \vec{A} = D\vec{A}\,.
+\end{align}
+Notice that the dynamic matrix $D$ is unchanged, while the eigenvalue problem has been modified to include the $-\rho \omega_0^2$ term. The eigenvalues and their corresponding eigenvectors, in this case, are then given by
+\begin{align*}
+Gk^2 = \rho(\omega_1^2 - \omega_0^2)\,\qquad \text{with } &\vec{A}_1 = (-k_z,\ 0,\ k_x)\,,\\
+Gk^2 = \rho(\omega_2^2 - \omega_0^2)\,\qquad\text{with } &\vec{A}_2 = (-k_y,\ k_x,\ 0)\,,\\
+\left( B +4G/3\right)k^2 = \rho(\omega_3^2 - \omega_0^2) \,\qquad 
+\text{with } &\vec{A}_3 = (k_x,\ k_y,\ k_z)\,.
+\end{align*}
+Solving we obtain the frequencies
+\begin{align*}
+\omega_1 &= \sqrt{\frac{G}{\rho}k^2 + \omega_0^2} = \sqrt{v_T^2k^2 + \omega_0^2}\,, \\
+\omega_2 &= \sqrt{\frac{G}{\rho}k^2 + \omega_0^2} = \sqrt{v_T^2k^2 + \omega_0^2}\,, \\
+\omega_3 &= \sqrt{\frac{B+4G/3}{\rho} k^2 + \omega_0^2} = \sqrt{v_L^2k^2 + \omega_0^2}\,.
+\end{align*}
+As derived above, we have 
+\begin{align*}
+v_p \, v_g = v_T^2,\ v_g<v_T \text{ for transverse wave,}\qquad
+v_p \, v_g = v_L^2,\ v_g<v_L \text{ for longitudinal wave.}
+\end{align*}
+As derived before, appending the $u^2$ term, we have the energy density of the system
+\begin{align*}
+w 
+=& \frac{\rho}{2}\,\pd_t \vec{u}\cdot \pd_t \vec{u} + \frac{\lambda}{2}(\text{tr}(e))^2 + G\text{tr}(ee) + \frac{\rho}{2}\omega_0^2 u^2\\
+=& \frac{\rho}{2}\left( (\pd_t u_x)^2 + (\pd_t u_y)^2 + (\pd_t u_z)^2\right)\\
+&{}\qquad + \left( \frac{B}{2} + \frac{2G}{3}\right) \left( \left( \frac{\pd u_x}{\pd y}\right)^2 + \left( \frac{\pd u_y}{\pd y}\right)^2 + \left( \frac{\pd u_z}{\pd z}\right)^2 \right) \\
+&{}\qquad\qquad + \left( B + \frac{2G}{3}\right)\left( \frac{\pd u_x}{\pd x} \frac{\pd u_y}{\pd y} + \frac{\pd u_x}{\pd x}\frac{\pd u_z}{\pd z} + \frac{\pd u_y}{\pd y}\frac{\pd u_z}{\pd z}\right)\\
+&{}\qquad\qquad\qquad + \frac{G}{2}\left(
+\left( \frac{\pd u_x}{\pd y}\right)^2+
+\left( \frac{\pd u_y}{\pd y}\right)^2+
+\left( \frac{\pd u_x}{\pd z}\right)^2+
+\left( \frac{\pd u_z}{\pd x}\right)^2+
+\left( \frac{\pd u_y}{\pd z}\right)^2+
+\left( \frac{\pd u_z}{\pd y}\right)^2\right)\\
+&{}\qquad\qquad\qquad\qquad + G\left( \frac{\pd u_x }{\pd y} \frac{\pd u_y}{\pd x} + \frac{\pd u_x}{\pd z} \frac{\pd u_z}{\pd x} + \frac{\pd u_y}{\pd z} \frac{\pd u_z}{\pd y}\right) \\
+&{}\qquad\qquad\qquad\qquad\qquad +\frac{\rho}{2}\omega_0^2 \left( u_x^2 + u_y^2 + u_z^2\right)\,.
+\end{align*}
+Here we assume here
+\begin{align*}
+\vec{u} = \Re\left( \vec{A}e^{i\vec{k}\cdot \vec{r} -i\omega t}\right) = \vec{A}\cos(\vec{k}\cdot \vec{r} - \omega t + \varphi)\,,
+\end{align*}
+where $\omega$ is given, as above, $\omega = \sqrt{v^2k^2 + \omega_0^2}$ for the three modes with $v= v_T$ or $v= v_L$, and $\vec{A}$ being the corresponding eigenvector. Combining all we obtain
+\begin{align*}
+w =& 
+G\left( k_y^2A_x^2 + k_x^2 A_y^2 + k_y^2A_z^2 + k_z^2A_y^2 + k_x^2 A_z^2 + k_z^2A_x^2 + 2k_xk_yA_xA_y + 2k_xk_zA_xA_z + 2k_yk_zA_yA_z\right)\sin^2(\mathcal{M})/2\\
+&\qquad + 
+(\rho/2)\,\omega^2 \sin^2(\mathcal{M}) (A_x^2 + A_y^2 + A_z^2) +\left( B/2 +2G/3\right) \left( k_x^2A_x^2 + k_y^2A_y^2 +k_z^2A_z^2\right) \sin^2(\mathcal{M})\\
+&\qquad\qquad + \left( B - 2G/3\right) \left( k_xk_yA_xA_y + k_xk_zA_xA_z + k_yk_zA_yA_z\right) \sin^2(\mathcal{M})\\
+&\qquad\qquad\qquad + (\rho/2)\,\omega_0^2\left( A_x^2 + A_y^2 + A_z^2 \right)\cos^2(\mathcal{M})\,,
+\end{align*}
+where $\mathcal{M} = \vec{k}\cdot \vec{r} - \omega t + \varphi$. Now taking the time average, we obtain
+\begin{align*}
+2\langle w\rangle = \frac{\rho}{2}(\omega^2 + \omega_0^2)|\vec{A}|^2 + \frac{1}{2}\vec{A}^T D \vec{A}\,,
+\end{align*}
+where $D$ is again the dynamic matrix. For the three eigenmodes of the system, we thus obtain that 
+\begin{align*}
+2\langle w\rangle = \frac{\rho}{2}\left( \omega^2 + \omega_0^2\right)A^2 + \frac{\rho}{2}(\omega^2 - \omega_0^2)A^2 = \rho \omega^2 A^2\,,
+\end{align*}
+or concluding here 
+\begin{align*}
+\langle w\rangle = \frac{\rho \omega^2 A^2}{2}\,.
+\end{align*}
+The total energy of the system is then
+\begin{align}
+\langle E\rangle = \iiint \, dx\, dy\, dz \, \frac{\rho \omega^2 A^2}{2} = \frac{\rho \omega^2 A^2V}{2}\,,
+\end{align}
+that is we observe that $E \propto V$, $E\propto A^2$, and $E \propto \omega^2$. As computed previously for scalar field, we have
+\begin{align*}
+\langle E\rangle = \frac{\omega^2 A^2V}{2} \text{ for scalar field}\,,
+\end{align*}
+which differ from (2.27) by a factor of $\rho$, and that is because the $\rho$ factor in the scalar field energy has been absorbed in the transformation that we used for obtaining (2.1). \\
+
+
+\section[Rotational Symmetry]{\color{red}Rotational Symmetry\color{black}}
+Here we assume small angle rotation
+\begin{align*}
+\vec{r} \to \vec{r}' = R\vec{r} = \vec{r}+\vec{n}\times \vec{r} \, \delta \theta\,,
+\end{align*}
+where $\vec{n}$ is a unit vector representing the axis of rotation and $\delta\theta$ is the angle rotated. Here more conveniently, we can write
+\begin{align}
+r^\nu \to r'^\nu = r^\nu + \frac{\delta \epsilon^\nu}{\delta \theta^j}\, \delta \theta^j\,.
+\end{align}
+Note that we have
+\begin{align*}
+\left( \vec{n}\times \vec{r}\, \delta \theta\right)_i = \epsilon_{ijk}\delta\theta^j r^k
+\end{align*}
+where $\epsilon_{ijk}$ is the Levi-Civita symbol. Comparing we obtain
+\begin{align*}
+\frac{\delta \epsilon^0}{\delta\theta^j} = 0\,,\qquad\qquad \frac{\delta \epsilon^i}{\delta \theta_j}=\epsilon_{ijk}r^k \text{ for }i\neq 0.
+\end{align*} 
+Before the rotation, we write the action as
+\begin{align*}
+S = \iiiint \mathcal{L}\left(\phi_a(\vec{r}), \, \pd_\mu\phi_a(\vec{r})\right) \,dt\,dx\,dy\,dz\,,
+\end{align*}
+and after the rotation, we write the action as
+\begin{align*}
+S' = \iiiint \mathcal{L}\left(\phi_a'(\vec{r}') ,\, \pd'_\mu\phi'_a(\vec{r}')\right)\, dt'\,dx'\,dy'\,dz'\,.
+\end{align*}
+We have information about the transformation from $r$ to $r'$, but not for the transformation from $\phi$ to $\phi'$. For scalar field $\phi_a(r)$, after rotation we should have $\phi_a(r) = \phi'_a(r')$. While for vector field, we should write
+\begin{align*}
+\phi_a(\vec{r}) \to \phi_a'(\vec{r}') = \phi_a(\vec{r}) + \frac{\delta \phi_a}{\delta \theta^j}|_{\vec{r}}\, \delta \theta^j\,,
+\end{align*}
+and thus the derivative of $\phi_a$ transforms as
+\begin{align*}
+\pd_\mu \phi_a(\vec{r}) \to \pd_\mu'\phi_a'(\vec{r}') = \pd_\mu'\phi_a(\vec{r}) + 
+\pd_\mu' \left( \frac{\delta \phi_a}{\delta \theta^j}\right)|_{\vec{r}} \,\delta \theta^j\,.
+\end{align*}
+Note here we can write
+\begin{align*}
+\pd_\mu'\phi_a(\vec{r}) &= \pd_\nu \phi_a(\vec{r}) \frac{\pd r^\nu}{\pd r'^\mu} \\
+&= \pd_\nu \phi_a(\vec{r}) \left(\frac{\pd r'^\mu}{\pd r^\nu} \right)^{-1}\\
+&= \pd_\nu \phi_a(\vec{r})\left( \frac{\pd r^\mu}{\pd r^\nu} + \frac{\pd \epsilon^\mu}{\pd r^\nu} \right)^{-1}\\
+&= \pd_\nu \phi_a(\vec{r}) \delta^\nu{}_{\mu} - \pd_\nu \phi_a(\vec{r}) \frac{\pd \epsilon^\nu}{\pd r^\mu}\\
+&= \pd_\mu \phi_a(\vec{r}) - \pd_\nu \phi_a(r) \pd_\mu \epsilon^\nu\\
+&= \pd_\mu \phi_a(\vec{r}) - \pd_\nu \phi_a\pd_\mu \epsilon^\nu + \pd_\mu \left( \frac{\delta \phi_a}{\delta \theta^j}\right) \delta \theta^j\\
+&= \pd_\mu \phi_a(\vec{r}) - \pd_\nu \phi_a\,\pd_\mu\left( \frac{\delta \epsilon^\mu}{\delta \theta^j}\, \delta \theta^j\right)  + \pd_\mu \left( \frac{\delta \phi_a}{\delta \theta^j} \delta \theta^j\right)\,.
+\end{align*}
+Noting here the Jacobian is given by
+\begin{align*}
+\frac{dr}{dr'} = \left(1+ \pd_\mu \left( \frac{\delta \epsilon^\mu}{\delta \theta^j}\, \delta \theta^j\right)\right)
+\end{align*}
+Now we obtain
+\begin{align*}
+S' 
+&= \iiiint dr' \, \mathcal{L}\left(\phi'(r'),\ \pd'_\mu \phi'(r')\right)\\
+&=\iiiint \, dr \, \left(1+ \pd_\mu \left( \frac{\delta \epsilon^\mu}{\delta \theta^j}\, \delta \theta^j\right)\right)\mathcal{L}\left(
+\phi_a(\vec{r}) + \frac{\delta \phi_a}{\delta \theta^j}\, \delta \theta^j
+,\ 
+\pd_\mu \phi_a(\vec{r}) - \pd_\nu \phi_a\,\pd_\mu\left( \frac{\delta \epsilon^\mu}{\delta \theta^j}\, \delta \theta^j\right)  + \pd_\mu \left( \frac{\delta \phi_a}{\delta \theta^j} \delta \theta^j\right)
+\right)\\
+&= \iiiint \, dr \mathcal{L}(\phi, \pd\phi) + \underbrace{\iiiint \, dr\left(\text{terms of $\delta\theta^j$} \right)\, \delta \theta_j}_{\text{vanishes by $\delta S = 0$}} + \iiiint \, dr\left(\text{terms of $\pd \delta\theta_j$}\right) \pd_\mu \delta \theta^j + \text{H.O.T.}\,.
+\end{align*}
+where we have applied Taylor expansion. Neglecting the higher order terms, we have
+\begin{align*}
+S' = S+ \iiiint \, dr\left( \frac{\delta \epsilon^\mu}{\delta \theta^j}\,\mathcal{L}(\phi, \pd \phi) + \frac{\delta \mathcal{L}}{\delta \pd_\mu \phi}\left(-\pd_\nu \phi \frac{\delta \epsilon^\mu}{\delta \theta^j} + \frac{\delta \phi}{\delta \theta^j}\right)\right) \, \pd_\mu \theta^j\,. 
+\end{align*} 
+Rotation symmetry states that we should have $S = S'$. Here we define
+\begin{align*}
+j^\mu\coloneqq -\frac{\delta \epsilon^\mu}{\delta \theta^j}\,\mathcal{L}(\phi, \pd \phi) - \frac{\delta \mathcal{L}}{\delta \pd_\mu \phi}\left( \frac{\delta \phi}{\delta \theta^j}-\pd_\nu \phi \frac{\delta \epsilon^\mu}{\delta \theta^j} \right)\,,
+\end{align*}
+and thus rotational symmetry requires
+\begin{align*}
+0 = \iiiint \, dr\, j^\mu \,\pd_\mu\theta^j  =\iiiint \, dr\, (\pd_\mu \j^\mu) \, \theta^j \,. 
+\end{align*}
+Concluding we obtain the equation
+\begin{align}
+\pd_t j^0 + \nabla\cdot \vec{j} = 0
+\end{align}
+which characterizes the conservation law obtained from rotational symmetry.\\
+
+\subsection{General form of Noether's Theorem}
+Note here, in the discussion above, the procedure of deriving the conservation law (2.29) does not involve the rotational property of $\delta\theta^j$, that is, we can replace $\delta \theta^j$ by $\delta w^j$ for arbitrary small deformation. In general, for a continuous transformation, such as translation or rotation discussed above, characterizes by $r \to r+ \epsilon$, where $\epsilon$ is a small quantity, we can write
+\begin{align*}
+r^\mu \to r'^\mu = r^\mu + \frac{\delta \epsilon^\mu}{\delta w^b}\, \delta w^b\,,\qquad\quad
+\phi_a(r) \to \phi_a'(r') = \phi_a(r) + \frac{\delta \phi_a}{\delta w^b}\,\delta w^b\,.
+\end{align*}
+Following a similar procedure as above for the rotational symmetry, we can obtain a conservation law
+\begin{align*}
+\pd_\mu j^\mu = 0\,,
+\end{align*}
+another form of writing (2.29), where $j^\mu$ is in general defined by
+\begin{align*}
+j^\mu \coloneqq \left( \frac{\delta \mathcal{L}}{\delta \, \pd_\mu \phi_a}\, \pd_\mu \phi_a - \delta^{\mu}{}_\nu \mathcal{L}\right) \frac{\delta \epsilon^\nu}{\delta w^b} - \frac{\delta \mathcal{L}}{\delta \,\pd_\mu \phi_a} \frac{\delta \phi_a}{\delta w^b}\,.
+\end{align*}
+\example Revisit of time translation. We consider the case $\delta w^b = \delta t$. That is, we write
+\begin{align*}
+t \to t' = t+\delta t\,,\qquad x \to x' = x \,,\qquad y \to y' = y \,,\qquad z\to z' = z\,.
+\end{align*}
+Then it is immediate that we have
+\begin{align*}
+\delta^{\mu}{}_0 = \frac{\delta \epsilon^\mu}{\delta w^b}\,.
+\end{align*}
+Here we have further that $\phi(r) \to \phi'(r') = \phi(r) + 0 \cdot \delta t$ as translation does not change the field, thus we see 
+\begin{align*}
+\frac{\delta \phi}{\delta w^b} = 0\,.
+\end{align*}
+Then the conserved quantity for time translation is given by
+\begin{align*}
+j^\mu = \left( \frac{\delta \mathcal{L}}{\delta \pd_\mu \phi}\pd_\nu \phi_a - \mathcal{L}\delta^\mu{}_\nu \right) \delta^\mu{}_0 = \frac{\delta \mathcal{L}}{\delta \pd_\mu \phi_a}\pd_0\phi_a - \mathcal{L}\delta^\mu{}_0\,.
+\end{align*}
+In particular, we have
+\begin{align*}
+j^0 = \frac{\delta \mathcal{L}}{\delta \pd_t \phi_a}\, \pd_t \phi - \mathcal{L}\,,
+\end{align*}
+and one can obtain
+\begin{align*}
+S_i = j^i = \frac{\delta \mathcal{L}}{\delta \pd_i \phi} \, \pd_t \phi
+\end{align*}
+for $i$ being one of the spatial coordinates. \\
+
+\example Going back to the rotation, consider $\phi = \rho  - \bar{\rho}$ to be a scalar field. Let $r^\mu = (t, r^i)$ denote the general coordinate, then here we have
+\begin{align*}
+t\to t' = t+0\cdot \delta \theta^j\,,\qquad\quad r^i \to r'^i = r^i + \epsilon_{ijk}r^k \delta \theta^j\,.
+\end{align*}
+That is, we have $\vec{r} \to \vec{r}' =\vec{r} + \vec{n}\times \vec{r}\, \delta \theta$. Direct computation we see here
+\begin{align*}
+\frac{\delta \epsilon^\mu}{\delta \theta^j} = \begin{cases}
+0 & \mu = 0\\
+\epsilon_{ijk}r^k & \mu = x,y,z
+\end{cases}\,.
+\end{align*}
+Furthermore, we have $\phi'(r') = \phi(r) + 0 \cdot \delta \theta^j$ as $\phi$ is a scalar field, unaffected by rotation. Then the conserved quantity here is 
+\begin{align*}
+j^\mu = \left( \frac{\delta \mathcal{L}}{\delta \, \pd_\mu\phi} \,\pd_\nu \phi - \delta^\mu{}_\nu \mathcal{L}\right) \frac{\delta \epsilon^\nu}{\delta \theta^j} =\left( \frac{\delta \mathcal{L}}{\delta \pd_\mu \phi}\pd_i \phi - \delta^\mu{}_i \mathcal{L}\right) \epsilon_{ijk}r^k \,,
+\end{align*}
+where $i$ is one of the spatial coordinates. In particular, we have
+\begin{align*}
+j^0 = \left( \frac{\delta \mathcal{L}}{\delta \, \pd_t \phi}\, \pd_i \phi\right) \epsilon_{ijk}r^k\,.
+\end{align*}
+We showed previously that we have
+\begin{align*}
+j^0 = -g^i \epsilon_{ijk}r^k\,,\qquad\qquad \text{where }g^i = \frac{\delta \mathcal{L}}{\delta \, \pd_t \phi}\, \pd_i \phi\,.
+\end{align*}
+Here the rotation is along one of the spatial axes, denoted as $j$, thus $j^0$ is just the $j$-component of a more general conserved quantity $\vec{j}^0 \coloneqq \vec{g}\times \vec{r}$. The orbital angular momentum of the system thus can be characterized by a conserved quantity
+\begin{align*}
+\vec{L} \coloneqq \iiint \, dx\,dy\, dz\, \vec{g}\times \vec{r}\,.
+\end{align*}
+
+\example Now consider instead a vector field $\vec{u}$ under a rotation transformation, the term $\delta\vec{u}/\delta w^b$ no longer vanishes. Note that all vectors rotate the same way, as vector $\vec{r}$ rotates as
+\begin{align*}
+\vec{r} \to \vec{r}' = \vec{r}+ \vec{n}\times \vec{r}\, \delta \theta\,,
+\end{align*}
+then the field rotates in the same way
+\begin{align*}
+\vec{u}(\vec{r}) \to \vec{u}'(\vec{r'})= \vec{u}(\vec{r}) + \vec{n}\times \vec{u}(\vec{r}) \, \delta \theta\,.
+\end{align*}
+Or in components, we can write
+\begin{align*}
+u^i(r) \to u'^i(r') = u^i(r) + \epsilon_{ijk}u^k\, \theta^j\,.
+\end{align*}
+Thus we obtain
+\begin{align*}
+j^0_j = -g^i \epsilon_{ijk}r^k - \frac{\delta \mathcal{L}}{\delta\, \pd_t u^l}\frac{\delta u^l}{\delta \theta^j}
+=\underbrace{{\vphantom{\frac{a^l}{b_{ijk}}}} -g^i \epsilon_{ijk}r^k}_{\substack{\text{orbitral}\\ \text{angular } \\ \text{momentum}}} \underbrace{\vphantom{\frac{a^l}{b_{ijk}}} - \frac{\delta \mathcal{L}}{\delta\, \pd_t u^l}{\epsilon_{ijk}}u^k}_{\substack{\text{spin}\\ \text{angular}\\ \text{momentum}}}\,.
+\end{align*}
+\example For a sound wave, we have found that the Lagrangian density of the sound wave in solid is 
+\begin{align*}
+\mathcal{L} = \frac{\rho}{2}\, \pd_t \vec{u}\, \pd_t \vec{u} - \frac{\lambda}{2}(\text{tr}(e))^2 - G\text{tr}(ee)\,.
+\end{align*}
+Here we denote $\vec{S}$ as the spin angular momentum, then we can write
+\begin{align*}
+S_i = \iiint \, dx\, dy\, dz\, \epsilon_{ikl}u^k \, \frac{\delta \mathcal{L}}{\delta \,\pd_t u^l}\,,
+\end{align*}
+where we have
+\begin{align*}
+\frac{\delta \mathcal{L}}{\delta \, \pd_t u^l} = \frac{\delta}{\delta\,\pd_{t}u^l}\left( \frac{\rho}{2}(\pd_t u^l)^2\right) = \rho \, \pd_t u^l\,,
+\end{align*}
+thus we obtain
+\begin{align*}
+S_i = \iiint \, dx\, dy\, dz\, \rho\epsilon_{ikl}u^k\pd_tu^l\,.
+\end{align*}
+In other words,
+\begin{align}
+\vec{S} = \iiint \, dx\, dy\, dz \, \rho \vec{u}\times (\pd_t \vec{u})\,.
+\end{align}
+Note here (2.30) is generic, independent on the form of the strain tensor $e$. Furthermore, linearly polarized sound wave typically has the form given by
+\begin{align*}
+\vec{u}(\vec{r},t) = \vec{A}\cos(\vec{k}\cdot \vec{r} - \omega t + \theta)\,.
+\end{align*}
+We observe here
+\begin{align*}
+\pd_t \vec{u} = \vec{A}\omega \sin(\vec{k}\cdot \vec{r} - w t+\theta)\,,
+\end{align*}
+thus we have $\vec{u}\times (\pd_t \vec{u}) = 0$, that is $\vec{S} = 0$. We conclude here linear polarized wave have spin zero. As sound wave can be decomposed into longitudinal and transverse modes, we see here immediately that the longitudinal mode has spin zero. For transverse sound wave, which typically takes the form
+\begin{align*}
+\vec{u}(\vec{r},t) = \vec{A}_1 \cos(\vec{k}\cdot \vec{r} -\omega t + \theta_1) + \vec{A}_2 \cos(\vec{k}\cdot \vec{r} -\omega t + \theta_2)\,.
+\end{align*}
+If one has $\theta_1 = \theta_2$, we obtain
+\begin{align*}
+\vec{u} = (\vec{A}_1 + \vec{A}_2)\cos(\vec{k}\cdot \vec{r} - \omega t + \theta)\,,	
+\end{align*}
+or if one has $\theta_1 = \theta_2 + n\pi$, then we can also write
+\begin{align*}
+\vec{u} = (\vec{A}_1 \pm \vec{A}_2)\cos(\vec{k}\cdot \vec{r} - \omega t + \theta)\,.
+\end{align*}
+In both cases, $\theta_1 = \theta_2 + n\pi$ or $\theta_1 = \theta_2$, we have linearly polarized wave, and thus $\vec{S} = 0$. While in general cases, $\theta_1 \neq \theta_2 + n\pi$, which gives elliptical polarized wave, with special case $\theta_1 - \theta_2 = \pi/2 + n\pi$ being circular polarized wave. We will see in the following that elliptical polarized waves have nonzero spin. Here we can write
+\begin{align*}
+\pd_t \vec{u} = \vec{A}_1 \omega \sin(\vec{k}\cdot \vec{r} -\omega t + \theta_1) + \vec{A}_2 \omega \sin(\vec{k}\cdot \vec{r} - \omega t + \theta_2) 
+\end{align*}
+Then we can see here
+\begin{align*}
+\vec{u}\times (\pd_t \vec{u}) 
+&= \vec{A}_1\times\vec{A}_2 \omega \cos(\mathcal{M}_1) \sin(\mathcal{M}_2) + \vec{A}_2 \times \vec{A}_1 \omega \cos(\mathcal{M}_2) \sin(\mathcal{M}_1)\\
+&=\vec{A}_1\times\vec{A}_2 \omega \cos(\mathcal{M}_1) \sin(\mathcal{M}_2) - \vec{A}_1 \times \vec{A}_2 \omega \cos(\mathcal{M}_2) \sin(\mathcal{M}_1)\\
+&= (\vec{A}_1 \times \vec{A}_2) \omega \sin(\theta_2 - \theta_1)\,,
+\end{align*}
+where we have $\mathcal{M}_1 = \vec{k}\cdot \vec{r} - \omega t + \theta_1$ and $\mathcal{M}_2 = \vec{k}\cdot \vec{r} - \omega t + \theta_2$. Thus we see here
+\begin{align*}
+\vec{S} 
+&= \iiint \, dx\,dy\,dz \, \rho \vec{u}\times (\pd_t \vec{u})\\
+&= \iiint \, dx\,dy\,dz \, \rho (\vec{A}_1 \times \vec{A}_2) \omega \sin(\theta_2- \theta_1) \\
+&= \rho \omega (\vec{A}_1 \times \vec{A}_2) \sin(\theta_2 - \theta_1) \, V\,,
+\end{align*}
+where $V$ is the volume of the solid. We observe that we have $\vec{S} \propto V$, $\vec{S}\propto (A_1 A_2) \sim A^2$. Furthermore, if $\theta_1 - \theta_2 = n\pi$, then $\vec{S} = 0$, and if $\theta_1 - \theta_2 \neq n\pi$, we must have $\vec{S} \neq 0$. Note also that $\vec{A}_1 \times \vec{A}_2$ is parallel to $\vec{k}$ by definition of transverse wave, and thus $\vec{S}\parallel \vec{k}$, so here we can write
+\begin{align*}
+\vec{S} = \rho \omega A_1 A_2 \sin(\theta_2 - \theta_1) V\, \hat{k}\,.
+\end{align*}
+To get an intuition of what $\vec{S}$ represents, we compute the quantity
+\begin{align}
+\frac{\vec{S} \cdot \hat{k}}{E} = \frac{\rho \omega A_1A_2\sin(\theta_2 - \theta_1) V}{ \omega^2 \rho (A_1^2 + A_2^2)V/2} = \frac{2A_1A_2}{\omega(A_1^2 + A_2^2)}\, \sin(\theta_2 - \theta_1)\,.
+\end{align}
+where we have applied (2.27) for energy of a sound wave. To maximize (2.31), we can separately deal with the $\sin$ term and the amplitude term. One can see that we have
+\begin{align*}
+-\frac{1}{\omega} \leq \frac{\vec{S} \cdot \hat{k}}{E}  \leq \frac{1}{\omega}\,.
+\end{align*}
+The amplitude term in (2.31) can be maximized by choosing $A_1 = A_2$, that is, the ratio (2.31) is maximized when we have right-circular polarized mode
+\begin{align*}
+A_1 = A_2 \,,\qquad\text{with }\theta_2 - \theta_1 = \frac{\pi}{2} + 2n\pi\,;
+\end{align*}
+and the ratio (2.31) is minimized when we have left-circular polarized mode
+\begin{align*}
+A_1 = A_2 \,,\qquad\text{with }\theta_2 - \theta_1 =- \frac{\pi}{2} + 2n\pi\,.
+\end{align*}
+One can in general write a general wave with the basis of left- and right-circular polarized wave,
+\begin{align*}
+|T\rangle = \alpha_1 |R\rangle + \alpha_2 | L\rangle\,,
+\end{align*}
+where $|R\rangle$ and $|L\rangle$ represent the right- and left-circular polarized wave, respectively, and here we have
+\begin{align*}
+\langle \vec{S}\cdot \vec{k}\rangle = \left(|\alpha_1|^2  - |\alpha_2|^2\right)\, \frac{E}{\omega} \,.
+\end{align*}
+That is, one thing to clarify is that linearly polarized wave, with $\alpha_1 = \alpha_2$, does have left- and right-handed spin, but the sum of the two is zero, resulting a zero expectation value of $ \vec{S}\cdot \hat{k}$. Here the quantity $\vec{S}\cdot \hat{k}$ is called the Helicity of the wave. \\
+
+In conclusion here, for a sound wave in solid, we have
+\begin{align*}
+\frac{\vec{S}\cdot \hat{k}}{E} = 
+\begin{cases}
+0 & \text{longitudinal mode}\\
+1/\omega  & \text{right-circular polarized mode}\\
+-1/\omega & \text{left-circular polarized mode}
+\end{cases}\,.
+\end{align*}
+Using particle-wave duality, we can interpret this result as
+\begin{align*}
+\frac{\vec{S}\cdot \hat{k}}{E} = \frac{(\vec{s}\cdot \hat{k})\times \text{number of particles}}{(\hbar \omega)\times \text{number of particles}}\,,
+\end{align*}
+what we have found for the wave thus requires
+\begin{align*}
+\vec{s}\cdot \hat{k} = \begin{cases}
+0 & \text{longitudinal mode}\\
++\hbar & \text{right-circular polarized mode}\\
+-\hbar & \text{left-circular polarized mode}
+\end{cases}\,,
+\end{align*}
+if we set $\hat{k} = \hat{z}$, we recognize that vector fields correspond to spin-1 particles, with spin $\{-\hbar, 0,\hbar\}$. That is, for vector field, the spin is always $1$, but its projection (the modes of the wave) on the $z$-axis takes integer values between $-1$ and $1$. It follows from our analysis that spin-0 particle corresponds to the scalar field, which always have spin zero. One can further show that rank-2 tensor fields correspond to spin-2 particles, rank-3 tensor fields correspond to spin-3 particles. However, in classical field theory, there is no field (scalar, vector, or tensor field) corresponds to spin-half particles. To obtain fields that corresponds to spin-half particles, one needs to introduce the notion of spinors.\\
+
+
+
+\chapter{Special Relativity}
+\section[Lorentz Transformation]{\color{red}Lorentz Transformation\color{black}}
+By far, the speed of the waves, such as sound waves, are defined relative to the media that it is propagating in. However, electromagnetic waves (EM waves) can propagate in vacuum, which is not a \textit{media}, thus we need to find a reference frame to describe the electromagnetic wave. Here there are three candidates to construct the reference frame for EM waves, (1) the source, (2) the medium, and (3) the observer. While in theory, by the principle of locality, the source cannot be used to define the reference frame as the motion of the source does not effect the wavefront when they are far away from each other. The medium cannot be used to define the reference frame either, as the EM wave can travel in vacuum, one would need to define a medium \textit{ether} for which EM waves in general can travel through, and turns out to cause other problems in the theory and disagree with experimental observations, that is the Michelson-Morley experiment.\\
+
+
+Therefore, we now can only use the observer itself as the reference frame. We need to ensure that the theory itself is self-consistent, and one can make experimental predictions from the theory. As long as some fundamental assumptions are adopted, the transformation between different reference frames $K=(t,x,y,z) \to K'=(t',x',y',z')$ will have the form
+\begin{align}
+t' = \gamma\left(t - \frac{\gamma^2 - 1}{v\gamma^2}x\right)\,,\qquad
+x' = \gamma(x - vt) \,,\qquad
+y' = y\,,\qquad
+z' =z \,.
+\end{align}
+To simplify our calculation, we choose the origin of the two reference frames to be the same point at $t=x=y=z=t'=x'=y'=z' = 0$, and conventionally we set up axes such that $x\parallel x'$, $y\parallel y'$, and $z\parallel z'$, with the unprimed frame moving relative to the primed frame in the $xx'$-direction.\\ 
+
+Now we impose Assumption (1), that the two frames $K$ and $K'$ are related by a linear transformation,
+\begin{align*}
+\bmat{t' \\ x'\\ y'\\ z'} = A \bmat{t \\ x\\y\\z} + \bmat{b_1\\ b_2 \\ b_3 \\ b_4}\,,
+\end{align*}
+with some matrix $A$. Note here the $(b_1,b_2,b_3,b_4)$ vector vanishes as one of our conventions is that the two frames have the same origin. Here we denote the components of $A$ as $a_{ij}$. \\
+
+Furthermore, we impose Assumption (2), that the space is isotropic, that is, we can rotate our coordinates around the $xx'$-axis and everything shall remain unchanged. Note here if we rotate the coordinates in the $K$ frame by an angle $\varphi$ about the $x$-axis, by one of the conventions that the axes in the two frames are parallel pairwise, we shall also rotate the coordinates in the $K'$ frame by the same angle $\varphi$. \\
+
+Lastly, we impose Assumption (3) that we have mirror symmetry for the spacetime. \\
+
+With the three Assumptions and the conventions imposed, the transformation law (3.1) and the elements of matrix $A$ can be derived. The proof is left for the reader.\\
+
+Now suppose in the $K$ frame, a light signal is emitted at time $t= 0$, then the wavefront of the light has position $\sqrt{x^2 + y^2 + z^2}/c$ at time $t$, where $c$ denotes the speed of the wavefront. Thus here we can write
+\begin{align}
+ct = \sqrt{x^2 + y^2 + z^2}\,.
+\end{align}
+As $K'$ and $K$ have the same origin, then we can also write
+\begin{align}
+ct' = \sqrt{x'^2 + y'^2 + z'^2}\,,
+\end{align}
+relating (3.2) and (3.3) via the transformation law (3.1), we can write
+\begin{align*}
+0 = c^2 \gamma^2 \left( t - \frac{\gamma^2 - 1}{v\gamma^2}x\right)^2 - \gamma^2 \left( x-vt\right)^2 +x^2 -c^2 t^2\,,
+\end{align*}
+from which one obtain
+\begin{align*}
+0 = \left( c^2 \gamma^2 - v^2 \gamma^2 -c^2\right) t^2 + \left( c^2 \left( \frac{\gamma^2 - 1}{v\gamma}\right)^2 - \gamma^2  + 1 \right) x^2 - \left( c^2 \frac{\gamma^2 - 1}{v} - \gamma^2 v\right)tx \,,
+\end{align*}
+which has a general solution given by
+\begin{align}
+\gamma = \frac{c}{\sqrt{c^2 - v^2}} =\frac{1}{\sqrt{1-v^2/c^2}} \,.
+\end{align}
+With $\gamma$ given by (3.4), the transformation law (3.1) has the form
+\begin{align}
+t' = \gamma(t - vx/c^2)\,,\qquad
+x' = \gamma(x-vt)\,,\qquad
+y' = y\,,\qquad
+z' = z\,.
+\end{align}
+In Newton's theory, one can check that $\gamma = 1$ recovers the Galilean transformation. In Einstein's special theory of Relativity, $\gamma \geq 1$. We observe here, when $v\ll c$, we indeed obtain $\gamma \approx 1$, which ensures the consistency of Einstein's theory with the well-conducted experiments that agree with Newton's theory. \\
+
+\section[Causality]{\color{red}Causality\color{black}}
+\subsection{Relativity of simultaneity}
+Now with the new theory, not all intuition that we had in classical kinematic theories shall be kept. While, all those intuition can be kept as long as we stay in the same reference frame. Otherwise \textit{weird things} will happen. Here we will utilize the notion of $K$ and $K'$ frames defined in Section - Lorentz Transformation. In $K$ frame, suppose we have event $A$ and event $B$ happening at the same time $t$. Classically, $t' =t$ in $K'$ frame and the two events are simultaneous in both $K$ and $K'$ frames. However, this is not the case in the special theory of relativity. Denote that $A$ has coordinate $(t_A,x_A,y_A,z_A)$ in the $K$ frame and with components primed in the $K'$ frame. With similar definition for coordinate of $B$, one can derive
+\begin{align*}
+t_A' = \gamma\left(t_A - \frac{v}{c^2}x_A\right)\,,\qquad
+t_B' = \gamma\left(t_B - \frac{v}{c^2} x_B\right)\,.
+\end{align*}
+Thus we see here
+\begin{align}
+t_A' - t_B' = \gamma(t_A - t_B) -\gamma \frac{v}{c^2}\left(x_A - x_B\right)\,,
+\end{align}
+which does not vanish whenever $x_A \neq x_B$, thus even though the two events might happen at the same time $t_A = t_B$ in frame $K$, such notion of simultaneity does not hold in the frame $K'$. While if the two events happen at the same point $x_A = x_B$, the simultaneity in $K$ frame will also hold in the $K'$ frame. Further, denoting $T = t_A - t_B$, if we have $x_A = x_B$, then we obtain
+\begin{align*}
+T' = \gamma T \geq T
+\end{align*}
+as $\gamma \geq 1$. This result can be intuitively understood via the example of a person $A$ holding a flashlight in a train moving with speed $v$. Say the train has length $L$, and a person $B$ is standing still outside of the train. Then the person $B$ will observe that the light from the flashlight held by $A$ reach the two ends of the train at different time as the train is moving, while the person $A$ will observe that the light from his flashlight reach the two ends of the train simultaneously. Note here the assumption of light travels at the same speed in all inertial frames play an essential role. \\
+
+The proper time is defined for an object. Suppose we have a moving object, and a clock is attached to the object, the proper time of the object is the reading of the clock. On the other hand, the coordinate time is the laboratory time defined for observer. Observers in different places in the laboratory might possesses different coordinate time, but all observers will agree with the same proper time defined for an object. \\
+
+\example Suppose one has some object which has a proper decay time $\tau$. The number of particles in the object is characterized by
+\begin{align}
+N(t) = N_0 e^{-t/\tau}\,.
+\end{align}
+If the particle is stationary, a person in the laboratory will measure the number of particles in the object at time $t$ given precisely by (3.7). However, if the particle is moving, we have instead
+\begin{align*}
+N(t) = N_0 e^{-t/(\gamma\tau)}\,,
+\end{align*}
+thus the faster the particle moves, the slower its decay measured in the laboratory. This is in fact one of the experimental verifications of special theory of relativity. One can measure the decay time $\tau*$ of the particle,
+\begin{align*}
+N(t) = N_0 e^{-t/\tau^*}\,,
+\end{align*}
+as a function of the speed $v$ of the particle in the laboratory. One in fact finds that 
+\begin{align*}
+\tau^*(v) = \frac{\tau}{\sqrt{1 - v^2/c^2}}\,.
+\end{align*}
+
+\example Now suppose a clock $C$ in frame $S$ moves from point $A$ to point $B$ at constant velocity $v$ in $15$ seconds. Suppose further that $v = \sqrt{3}c/2 $ such that $\gamma = 2$. In $C$'s own stationary frame, the clock itself ticks $30$ seconds in its proper time. That is, one can picture the measurement in the frame $S$ as having two timing clocks synchronized at point $A$ and $B$, when the clock $C$ moves from $A$ to $B$, both timing clocks tick $15$ seconds. While in the $C$'s own stationary frame, the simultaneity of the timing clock breaks, that is the two timing clocks are not at the synchronized. One can find that, in $C$'s frame, the timing clock at point $A$ has time coordinate $0$, while the one at point $B$ has time coordinate $22.5$ seconds, such that when $C$ moves to $B$, the timing clock at $B$ has time coordinate $30$ seconds. \\
+
+We note that, the proper time can be made much smaller than the coordinate time $t$, as $1\geq \gamma>0$ can be made arbitrarily small, thus no matter how far between two points, a person can travel from one to the other in an arbitrarily small amount of his proper time, as the person has its own coordinate time as proper time, provided that the person travel at a speed closed enough to the speed of light.\\
+
+In fact, the proper time formula (3.6) reflects the conservation of spacetime. Note that in the object's own frame, the object does not move, thus we can write
+\begin{align*}
+c\tau = \sqrt{c^2 (t_A - t_B)^2 - (x_A - x_B)^2 - (y_A - y_B)^2 - (z_A - z_B)^2}\,,
+\end{align*}
+where in the lab frame, we have
+\begin{align*}
+v^2(t_A - t_B)^2 = (x_A - x_B)^2 - (y_A - y_B)^2 - (z_A - z_B)^2
+\end{align*}
+as the object is traveling at a velocity $v$, thus combining we have
+\begin{align*}
+c\tau = \sqrt{c^2 (t_B - t_A)^2 - v^2(t_A- t_B)^2} = (t_A - t_B)\sqrt{c^2 - v^2}\,,
+\end{align*}
+denoting coordinate time $T = t_B - t_A$, we recover
+\begin{align*}
+\tau = T \frac{\sqrt{c^2 - v^2}}{c} = \frac{T}{\gamma}
+\end{align*}
+
+\subsection{Length contraction}
+Consider in the unprimed frame, we have two positions with coordinates
+\begin{align*}
+p = (t_B,x_B,0,0) \,,\qquad q = (t_A,x_A,0,0)\,,
+\end{align*}
+where $x_A$ and $x_B$ are constants independent on time. In the primed frame, which is moving at a speed $v$ relative to the unprimed frame, we have the two positions with primed coordinates,
+\begin{align*}
+&p' = \left(\gamma(t_B  - vx_B/c^2\right),\ \gamma\left(x_B-vt_B\right),\ 0,\ 0)\,,\\
+&q' = \left(\gamma(t_A  - vx_A/c^2\right),\ \gamma\left(x_A-vt_A\right),\ 0,\ 0)\,.
+\end{align*}
+The proper length between the two positions in the unprimed frame is thus given by $L=x_A - x_B$ measured at the same time in the unprimed frame. The length between the two positions in the primed frame is, on the other hand, $L' = x_A' - x_B'$ while measured at the same time in the primed frame. Thus we compute
+\begin{align*}
+\gamma(t_A - vx_A/c^2) = \gamma(t_B - vx_B/c^2) \,,\qquad \text{which gives }t_A - t_B = \frac{v}{c^2}(x_A - x_B)\,.
+\end{align*}
+Hence we obtain
+\begin{align}
+L' = \gamma\left( (x_A - x_B) - v(t_A- t_B)\right) = \gamma\left( (x_A - x_B) - v^2(x_A - x_B) /c^2\right) = \frac{L}{\gamma}\,,
+\end{align}
+as we know that $\gamma \geq 1$, we see here $L' \leq L$, that is length contraction. This phenomenon, seemingly contradictive, can be in fact explained by the relativity of simultaneity. As one in the unprimed frame trying to measure the length of the object assuming that $p$ and $q$ have the same time coordinate in the unprimed frame), while the corresponding $p'$ and $q'$ coordinates do not have the same time coordinates in the unprimed frame. \\
+
+
+Now suppose we have event $A$ and event $B$, with coordinates $(t_A,x_A)$ and $(t_B, x_B)$, respectively, such that $x_B > x_A$ and $t_B > t_A$. One can find a frame with relative moving speed $v>0$, such that 
+\begin{align*}
+t'_A = \gamma\left(t_A - \frac{v}{c^2}x_A\right)\,,\qquad
+t'_B = \gamma\left(t_B - \frac{v}{c^2}x_B\right)\,.
+\end{align*}
+One sees here
+\begin{align}
+t_A ' - t_B' = \gamma\left( (t_A - t_B) - \frac{v}{c^2}(x_A - x_B)\right) \,,
+\end{align}
+which is not guaranteed to be non-positive whenever $t_A - t_B <0$. That is, seemingly, event $B$ happens after event $A$ has happened in one frame does not imply event $B$ happens after event $A$ has happened in all frames. However, if one also consider that, information propagates at some speed $u>0$, one can ensure the causality, say $A\to B$, that is $B$ happens after $A$ has happened, if we have
+\begin{align}
+t_B - t_A \geq \frac{x_B - x_A}{u}\,.
+\end{align}
+Via (3.9), one sees that, by imposing $u$ as the speed of propagation of information, and if (3.10) holds, we then obtain
+\begin{align*}
+t_B ' - t_A' \geq \gamma\left( \frac{x_B - x_A}{u} - \frac{v}{c^2}(x_B - x_A) \right) = \gamma\left( 1- \frac{uv}{c^2}\right)\left( \frac{x_B - x_A}{u}\right) >0\,,
+\end{align*}
+where we have imposed an extra requirement that $u \leq c$. 
+
+\subsection{Light-cone}
+For two events $A$ and $B$, with coordinates
+\begin{align*}
+A = (t_A,x_A,y_A,z_A)\,,\qquad\qquad
+B = (t_B,x_B,y_B,z_B)\,;
+\end{align*}
+The two events are said to be time-like separated provided that we have
+\begin{align*}
+c^2(t_B - t_A)^2 > (x_B - x_A)^2 + (y_B - y_A)^2 + (z_B - z_A)^2\,;
+\end{align*}
+The two events are said to be space-like separated provided that we have
+\begin{align*}
+c^2(t_B - t_A)^2 < (x_B - x_A)^2 + (y_B - y_A)^2 + (z_B - z_A)^2\,;
+\end{align*}
+The two events are said to be null separated provided that we have
+\begin{align*}
+c^2(t_B - t_A)^2 = (x_B - x_A)^2 + (y_B - y_A)^2 + (z_B - z_A)^2\,.
+\end{align*}
+Note here, if one redefine $A$ to be the origin of the chart, then the null separated points consist of the light-cone about $A$. Inside the light-cone, points are time-like related to $A$. Outside the light-cone, points are space-like related to $B$. Furthermore, the light-cone consists of two cones, the future cone and the past cone. The future cone lies completely in the positive $t$-hypersurface, and the past cone lies completely in the negative $t$-hypersurface. Points inside the light-cone stay inside the light-cone, while points outside the light-cone stay outside the light-cone, under all Lorentz transformation.\\
+
+
+\section[Types of Transformations]{\color{red} Types of Transformations\color{black}}
+In $3$-dimensional space $\R^3$, we are interested in isometric transformation, that is the transformation that preserve the length
+\begin{align*}
+l^2 \coloneqq \Delta x^2 + \Delta y^2 + \Delta z^2
+\end{align*}
+between the two points $A$ and $B$. Here $\Delta x \coloneqq x_B - x_A$, and similarly for $\Delta y$ and $\Delta z$. We denote the coordinate of $A$ and $B$ to be $(x_A',y_A',z_A')$ and $(x_B', y_B', z_B')$, respectively, and the length between $A$ and $B$ to be $l'$, after the transformation. That is, for isometric transformation, we require
+\begin{align*}
+l^2 = l'^2 = \Delta x'^2 + \Delta y'^2 + \Delta z'^2\,.
+\end{align*}
+There are four types of isometric transformation. The first type is the the translation
+\begin{align*}
+\bmat{x' \\ y' \\ z'} = \bmat{x \\ y \\ z} + \bmat{b_1 \\ b_2 \\ b_3}\,.
+\end{align*}
+The second type is the rotation
+\begin{align*}
+\bmat{x' \\ y' \\ z'} = R\, \bmat{x \\ y \\ z} \,,
+\end{align*}
+for some matrix $R$ that satisfies $R^T = R^{-1}$ and $\det(R) = 1$. The third type is the space inversion transformation characterized by
+\begin{align*}
+\bmat{x' \\ y' \\ z'} = - \bmat{x \\ y \\ z}\,.
+\end{align*}
+The fourth type is any combination of the first three types of transformation. To show that these four types of transformation are the only isometric transformations, we write here
+\begin{align*}
+l^2 = \bmat{\Delta x & \Delta y & \Delta z} \bmat{\Delta x \\ \Delta y \\ \Delta z} = \bmat{\Delta x' & \Delta y' & \Delta z'} \bmat{\Delta x'\\ \Delta y' \\ \Delta z'} \,.
+\end{align*}
+Here we define
+\begin{align*}
+\bmat{\Delta x' \\ \Delta y' \\ \Delta z'} = A\,\bmat{\Delta x \\ \Delta y \\ \Delta z}\,,
+\end{align*}
+for some $3\times 3$ matrix $A$, and elementary linear algebra result gives
+\begin{align*}
+\bmat{\Delta x' & \Delta y' & \Delta z'} = \bmat{\Delta x & \Delta y & \Delta z} \,  A^T\,.
+\end{align*}
+Thus combining we require
+\begin{align*}
+l'^2 = \bmat{\Delta x & \Delta y & \Delta z}\, A^TA \, \bmat{\Delta x \\ \Delta y \\ \Delta z} = l^2\,,
+\end{align*}
+that is require here $A^T = A^{-1}$, the transformation $A$ needs to be orthogonal. In particular, the rotation transformations constitute the special orthogonal group.\\
+
+\subsection*{Lorentz boost and rotation transformation}
+Next we will show that Lorentz boost in $4$-dimensional space are rotational isometric transformation. Here we first define the distance that we are interested in,
+\begin{align*}
+l^2 = c^2 ( t_B - t_A)^2 - (x_B - x_A)^2 - (y_B - y_A)^2 - (z_B - z_A)^2 \,.
+\end{align*}
+As Lorentz boosts preserve $l^2$, we see immediately that Lorentz boosts are isometric transformation. Furthermore, note that in flat space, translation transformation has no fixed point. That is, all points in space are translated under a translation transformation. While in contrast, rotation transformation always have a fixed point, or a fixed axis. From the definition of Lorentz boost,
+\begin{align*}
+t' = \gamma(t - vx/c^2) \,,\qquad x' = \gamma(x- vt) \,,\qquad
+y ' = y \,,\qquad z' = z\,,
+\end{align*}
+we see that the origin $(0,0,0,0)$ is a fixed point. Thus a Lorentz boost cannot be a translation transformation. Furthermore, it is obvious that the Lorentz boosts are not inversion either, as it is a continuous transformation. In conclude, we see that Lorentz boost is a rotation.\\
+
+Note further that the $l^2$ being invariant under Lorentz boost implies a symmetry in space, which gives rise to the physical laws being invariant in $4$-dimensional space. The \textit{invariance} is in fact characterized by the defining all tensors \textit{rotating in the same way}, as we shall discuss in the next section.\\
+
+Here we introduce a chart $x^\mu = (x^0, x^1,x^2,x^3) = (ct,x,y,z)$, and another chart $x'^\mu$. Here if $x'^\mu$ is related to $x^\mu$ via a Lorentz transformation, then we can write
+\begin{align*}
+\bmat{
+x'^0\\
+x'^1\\
+x'^2\\
+x'^3\\
+} = 
+\bmat{
+\gamma & -v\gamma/c & 0 & 0 \\
+-v\gamma/2 & \gamma & 0 & 0 \\
+0 & 0 & 1 & 0\\
+0 & 0 & 0 & 1
+}
+\bmat{
+x^0\\
+x^1\\
+x^2\\
+x^3\\
+}
+= 
+\bmat{
+\cosh(\xi) & \sinh(\xi) & 0 & 0 \\
+\sinh(\xi) & \cosh(\xi) & 0 & 0 \\
+0 & 0 & 1 & 0\\
+0 & 0 & 0 & 1
+}
+\bmat{
+x^0\\
+x^1\\
+x^2\\
+x^3\\
+}\,,
+\end{align*}
+and one can mathematically show that the two matrices here, being equivalent, are rotational transformation in $4$-dimensional space. With the notion of rotation in $4$-dimensional space, we are now able to define $4$-dimensional vectors. \\
+
+All types of isometric transformation in $4$-dimensional space are the translation, spatial rotation, Lorentz boost, inversion of time, inversion of space, and any mix of these. In particular, translation can be compactly characterized by
+\begin{align*}
+x^\mu \to x'^\mu = x^\mu + b^\mu\,. 
+\end{align*}
+For the rotation transformation, which include both the spatial rotation and Lorentz boost, we can write
+\begin{align*}
+\Delta x'^\mu = R \, \Delta x^\mu\,,
+\end{align*}
+with some matrix $R$. Let $g_{\mu\nu}$ denote the flat metric tensor, with matrix form
+\begin{align*}
+g = \bmat{1 & 0 & 0 & 0 \\
+0 & -1 & 0 & 0\\
+0 & 0 & -1 & 0\\
+0 & 0 & 0 & -1}\,,
+\end{align*}
+we thus can write
+\begin{align*}
+l^2 = g_{\mu\nu}(\Delta x^\mu)(\Delta x^\nu) =g_{\mu\nu}(\Delta x'^\mu)(\Delta x'^\nu) = l'^2\,.
+\end{align*}
+Combining with rotation, and obtain
+\begin{align*}
+l^2 = 
+\bmat{\Delta t & \Delta x & \Delta y & \Delta z}\, g \, \bmat{\Delta t\\
+\Delta x\\
+\Delta y \\
+ \Delta z}
+ =\bmat{\Delta t & \Delta x & \Delta y & \Delta z}\,R^T g \,R\, \bmat{\Delta t\\
+\Delta x\\
+\Delta y \\
+ \Delta z} = l'^2\,.
+\end{align*}
+That is, we require here the rotation matrix to satisfy 
+$$g = R^T g R\,.$$ 
+One can also show that the determinant of the rotational matrix is $\det(R) = \pm 1$, as we can write
+\begin{align*}
+\det(R^T gR)=\det(R^T)\, \det(g)\, \det(R)   = \det(g) \,,
+\end{align*}
+thus we obtain
+\begin{align*}
+\det(R)\cdot \det(R^T) = \det(R) \cdot \det(R) = 1\,,
+\end{align*}
+which implies we have $\det(R) = \pm 1$. As the spacial inversion transformation, 
+\begin{align*}
+I_\text{s} = \bmat{1 & 0 & 0 & 0\\
+0 & -1 & 0 & 0\\
+0 & 0 & -1 & 0\\
+0 & 0 & 0 & -1}
+\end{align*}
+has determinant $-1$ and is not considered to be a rotation, thus rotation transformation $R$ should satisfy $\det (R) = 1$. Lastly, the total inversion transformation
+\begin{align*}
+I = \bmat{-1 & 0 & 0 & 0\\
+0 & -1 & 0 & 0\\
+0 & 0 & -1 & 0\\
+0 & 0 & 0 & -1}
+\end{align*}
+has determinant $1$ but is neither a rotation, thus rotation transformation is required to have $R_{00} >0$. In conclude, a matrix transformation $R$ is called a rotation in $4$-dimensional spacetime provided that we have $R^Tg R = g$, $\det(R) = 1$, and $R_{00} >0$.
+
+
+\section[Vectors and Tensors in Spacetime]{\color{red} Vectors and Tensors in Spacetime\color{black}}
+Now with rotation in spacetime, including both spatial rotations and Lorentz boost, well-defined, we can define the notion of vectors and tensors in spacetime. Due to rotational symmetry, we expect fundamental laws of physics to remain invariant no matter how we rotate the axes. Thus, these
+physics laws must take the form of
+\begin{center}
+Scalar$_1$ = Scalar$_2$\,,\ \quad
+Vector$_1$ = Vector$_2$\,,\ \quad
+(Rank$-n$) Tensor$_1$ = (Rank$-n$) Tensor$_2$\,,
+\end{center}
+and we need to require all vectors (or tensors) rotate the same way. \\
+
+The \textbf{contravariant vectors} are vectors that rotate the same way as coordinates. That is, the coordinates of spacetime are themselves contravariant vectors, and they rotate in the way characterized by
+\begin{align*}
+\bmat{x^0 \\ x^1 \\ x^2 \\ x^3} \to
+\bmat{x'^0 \\ x'^1 \\ x'^2 \\ x'^3} = R\, \bmat{x^0 \\ x^1 \\ x^2 \\ x^3}\,,
+\end{align*}
+where $R$ is a rotation in spacetime, which can be either a boost,
+\begin{align*}R=
+\bmat{\gamma & -v\gamma/c & 0 & 0\\
+-v\gamma/c & \gamma &0 &0\\
+0 &0 &1 &0\\
+0 & 0&0 & 1}\,,
+\end{align*}
+or a spatial rotation
+\begin{align*}
+R = \bmat{1 & 0 & 0& 0\\
+0 & R_{xx} & R_{xy} & R_{xz}\\
+0 & R_{yx} & R_{yy} & R_{yz}\\
+0 & R_{zx} & R_{zy} & R_{zz}}\,.
+\end{align*}
+Contravariant vectors are denoted using superscript, such as $x^\mu$ for spacetime coordinates. \\
+
+On the other hand, we will show that the derivatives of spacetime, $\pd_\mu$, rotate in a way different from contravariant vectors. Here we note that, based on our convention $x_0 = ct$, we have
+\begin{align*}
+\pd_0 = \frac{\pd}{\pd x^0} = \frac{\pd t}{\pd x^0} \frac{\pd}{\pd t} = \frac{\pd (x^0/c)}{\pd x^0} \frac{\pd}{\pd t} = \frac{1}{c}\, \pd_t\,.
+\end{align*}
+For boost transformation of coordinates, we have that
+\begin{align*}
+x^0 = \gamma x'^0 + \frac{v}{c}\gamma x'^1\,,\qquad 
+x^1 = \frac{v}{c}\gamma x'^0 + \gamma x'^1\,,\qquad
+x^2 = x'^2 \,,\qquad
+x^3 = x'^3\,.
+\end{align*}
+Thus chain rule gives
+\begin{align*}
+\pd_0' = \frac{\pd}{\pd x'^0} 
+&= \frac{\pd x^0}{\pd x'^0} \frac{\pd}{\pd x^0}
++\frac{\pd x^1}{\pd x'^0} \frac{\pd}{\pd x^1}
++\frac{\pd x^2}{\pd x'^0} \frac{\pd}{\pd x^2}
++\frac{\pd x^3}{\pd x'^0} \frac{\pd}{\pd x^3}=\gamma\,\pd_0 + \frac{v}{c}\gamma \, \pd_1 \,.
+\end{align*}
+Similarly for $\pd'_1, \pd_2'$, and $\pd_3'$, we obtain
+\begin{align*}
+\bmat{\pd_0'\\
+\pd_1'\\
+\pd_2'\\
+\pd_3'} = 
+\bmat{\gamma & v\gamma/c & 0 & 0\\
+v\gamma/c & \gamma &0 &0\\
+0 &0 &1 &0\\
+0 & 0&0 & 1}
+\bmat{\pd_0\\
+\pd_1\\
+\pd_2\\
+\pd_3}\,.
+\end{align*}
+One can show similarly for spatial rotation to obtain
+\begin{align*}
+\bmat{\pd_0'\\
+\pd_1'\\
+\pd_2'\\
+\pd_3'} = 
+(R^{-1})^T 
+\bmat{\pd_0\\
+\pd_1\\
+\pd_2\\
+\pd_3}\,.
+\end{align*}
+Here the derivative vector $\pd_\mu$ is called a covariant vector, and thus the \textbf{covariant vectors} are the objects that follow the inverse transpose transformation of coordinates. Note here we have used subscripts to denote covariant vectors.\\
+
+It is not hard to observe that we have
+\begin{align*}
+\bmat{\pd_0'\\
+-\pd_1'\\
+-\pd_2'\\
+-\pd_3'} = 
+\bmat{\gamma & -v\gamma/c & 0 & 0\\
+-v\gamma/c & \gamma &0 &0\\
+0 &0 &1 &0\\
+0 & 0&0 & 1}
+\bmat{\pd_0\\
+-\pd_1\\
+-\pd_2\\
+-\pd_3}\,,
+\end{align*}
+thus the vector $(\pd_0, -\pd_1,-\pd_2,-\pd_3)$ is a contravariant vector. \\
+
+\example If we have a plane wave $\psi = Ae^{i\vec{k}\cdot \vec{r}-i\omega t}$, then combined with the contravariant derivative operator, $ic\,\pd^\mu \psi$ gives a contravariant vector of frequency and wave-vector $k^\mu = (\omega, ck_1, ck_2, ck_3)$, and the covariant derivative operator can be used to obtain a covariant vector $k_\mu = (\omega, -ck_1, -ck_2,-ck_3)$. From particle-wave duality, we know that $\hbar \omega$ is energy and $\hbar k$ is momentum, and thus the contravariant vector $(\omega, ck_1, ck_2, ck_3)$ tells us that $(\hbar \omega, c\hbar k_1, c\hbar k_2, c\hbar k_3)$ should be a contravariant vector, and this is in fact, the energy-momentum $4$-vector $(E, cP_1, cP_2, cP_3)$. \\
+
+\remark In $3$-dimensional spatial space, that is $\R^3$ equipped with Euclidean metric, the metric tensor $g$ is the identity matrix. In which case, if $R$ is a rotation, then we require $R^TgR = g$, which implies $R^T R = I$, and thus $(R^{-1})^T = R$. That is, in this case, we do not need to distinguish contravariant vectors and covariant vectors, because they follow the same transformation under rotation $R$. \\
+
+
+
+Now for the inner product between contravariant vector $X^\mu$ and $Y^\mu$, denote by $\vec{x}$ and $\vec{y}$ in their usual $R^n$-vector form, after a rotation transformation, we can write
+\begin{align*}
+X'^\mu Y'_\mu = ((R^{-1})^T \vec{y})^T (R\vec{x}) = \vec{y}^T R^{-1}R \vec{x} = \vec{y}^T\cdot \vec{x} = X^\mu Y_\mu\,.
+\end{align*}
+That is the inner product $X^\mu Y_\mu$ is a scalar invariant under rotation.\\
+
+Let $g$ denote the metric of spacetime. In special relativity, $g$ takes the form
+\begin{align*}
+g = \bmat{1 & 0 & 0 & 0\\
+0 & -1 & 0 & 0\\
+0 & 0 & -1 & 0\\
+0 & 0 & 0 & -1}\,.
+\end{align*}
+Next we would like to show that, given $X^\mu$ is a contravariant vector, denoted as $\vec{x}$ in its $\R^n$-vector form, $g\vec{x}$ defines a covariant vector. Note that under rotation $R$, we have $\vec{x}\to R\vec{x}$, and thus $g\vec{x} \to gR(g^{-1}g)\vec{x}$. While rotation $R$ satisfies $R^TgR = g$, thus $gR = (R^T)^{-1} g$, so we can write $gRg^{-1} = (R^T)^{-1}$, which implies $g\vec{x}\to (R^T)^{-1}g\vec{x}$, showing that $g\vec{x}$ is a covariant vector. Then in tensor notation, we thus write
+\begin{align*}
+X_\mu = g^{\mu\nu}X^\nu\,.
+\end{align*}
+Similarly, one can show that $g^{-1}\vec{x}$ is a covariant vector if $\vec{x}$ represents a contravariant vector, and thus
+\begin{align*}
+X^\mu = g^{\mu\nu}X_\nu\,,
+\end{align*}
+where we have denoted that $g^{\mu\nu}$ is the inverse of $g_{\mu\nu}$. In general, one utilize the notation 
+\begin{align*}
+g^{\mu\nu}g_{\nu \lambda} = \delta^\mu{}_\lambda = g^{\mu}{}_\lambda\,,\qquad
+g_{\mu\lambda}g^{\lambda\nu} = \delta_\mu{}^\nu = g_\mu{}^\nu\,.
+\end{align*}
+Now that inner product of $X^\mu$ and $Y^\mu$ can then be written in the way
+\begin{align*}
+X^\mu g_{\mu\nu} Y^\nu=X^\mu Y_\mu = X_\mu Y^\mu \,.
+\end{align*}
+\example Here we consider $x^\mu = (x^0,x^1,x^2,x^3)$ and $\pd_\mu = (\pd_0,\pd_1,\pd_2,\pd_3)$, we thus have $\pd_\mu x^\mu = 4$, and that 
+$$\pd_\mu \pd^\mu = \pd_0^2 - \pd_1^2 - \pd_2^2 - \pd_3^2 = \pd_0^2 - \nabla^2 \coloneqq \square\,.$$
+\example The product between the covariant vector $(\omega, -ck_1, -ck_2, -ck_3)$ and the contravariant vector $(\omega, ck_1, ck_2, ck_3)$ is a Lorentz invariant scalar
+\begin{align*}
+\omega^2 -( ck_1)^2 - (ck_2)^2 - (ck_3)^2\,,
+\end{align*}
+as multiplied by $\hbar^2$, we obtain
+\begin{align*}
+E^2 - (cP_1)^2 - (cP_2)^2 - (cP_3)^2 = E^2 - cP^2 \coloneqq m_0^2 c^4\,.
+\end{align*}
+As we will discuss later, in special relativity, the energy of a particle is $E = \sqrt{P^2c^2 +m_0^2 c^4}$, where $m_0$ is the rest mass of the particle. \\
+
+For a rank-$2$ tensor, which can take one of the following forms
+\begin{align*}
+C_{\mu\nu}\,,\qquad
+C_{\mu}{}^\nu\,,\qquad
+C^\mu{}_{\nu}\,,\qquad
+C^{\mu\nu}\,,
+\end{align*}
+one can lower or raise its indices to interchange between different forms, that is, for instance
+\begin{align*}
+C_{\mu\nu} = g_{\mu\mu'}g_{\nu\nu'}C^{\mu'\nu'}\,.
+\end{align*}
+When we have two tensors $A^\mu$ and $B^\nu$, we can form an outer product of the two by writing
+\begin{align*}
+C^{\mu\nu} = A^\mu B^\nu = \bmat{A^0B^0 & A^0 B^1 & A^0B^2 & A^0B^3\\
+A^1B^0 & A^1 B^1 & A^1B^2 & A^1B^3\\
+A^2B^0 & A^2 B^1 & A^2B^2 & A^2B^3\\
+A^3B^0 & A^3 B^1 & A^3B^2 & A^3B^3\\}\,.
+\end{align*}
+Similarly, one can form 
+\begin{align*}
+C^\mu{}_\nu = A^\mu B_\nu\,,\qquad
+C_{\mu\nu} = A_{\mu}A_\nu\,,\qquad
+W_{\mu\nu \lambda} = A_\mu C_{\nu\lambda}\,,
+\end{align*}
+and so on. When one has a tensor of rank higher than or equal to $2$, such as $T^{\alpha}_{\beta}$, one can contract the tensor by defining
+\begin{align*}
+T^\alpha{}_\alpha \coloneqq 
+T^0{}_0+T^1{}_1+T^2{}_2 + T^3{}_3\,,
+\end{align*}
+which is the trace of $T$ as a matrix. Further, one can define contraction
+\begin{align*}
+A^\beta{}_{\gamma} = C^{\alpha\beta}{}_{\alpha\gamma} = \sum_\sigma C^{\sigma\beta}{}_{\sigma\gamma}
+\end{align*}
+and another contraction of the same tensor
+\begin{align*}
+B^\beta{}_{\gamma} = C^{\alpha\beta}{}_{\gamma\alpha} = \sum_\sigma C^{\sigma\beta}{}_{\gamma\sigma}\,.
+\end{align*}
+Note that in general $A^\beta{}_{\gamma} \neq B^{\beta}{}_\gamma$,  although they are both obtained by contracting $C^{\alpha\beta}{}_{\sigma\gamma}$. Note further here
+$C^{\alpha\beta}{}_{\alpha\beta}$ is a scalar, but is in general different from the scalar $C^{\alpha\beta}{}_{\beta \alpha}$, unless the tensor satisfies further symmetric property. If one would like to contract a tensor of the form $C^{\mu\nu}$, one would first need to lower one of the indices, that is, 
+\begin{align*}
+C^\mu{}_\mu = C^{\mu\nu}g_{\mu\nu} =g^{\mu\nu} C_{\mu\nu}\,. 
+\end{align*}
+Contraction gives us a way to obtain a scalar from a tensor of any rank. 
+
+\section[]{}
+Next we will discuss the dynamics in special relativity. The principle is that, as we discussed in previous sections, all fundamental physics laws should take the form 
+\begin{center}
+Scalar$_1$ = Scalar$_2$\,,\ \quad
+Vector$_1$ = Vector$_2$\,,\ \quad
+(Rank$-n$) Tensor$_1$ = (Rank$-n$) Tensor$_2$\,,
+\end{center}
+such that they retain their forms under spacetime rotations, which include both spatial rotation and Lorentz boost.\\
+
+\section[Electromagnetic Theory in its Lorentz Invariant Form]{\color{red} Electromagnetic Theory in its Lorentz Invariant Form\color{black}}
+The continuity equation for charge density and current is the natural consequence of charge conservation and principle of locality,
+\begin{align*}
+\pd_t \rho + \nabla \cdot \vec{j} = 0\,,
+\end{align*}
+expanding we have the form
+\begin{align*}
+\frac{1}{c}\, \pd_t \, c\rho + \pd_x \,j_x + \pd_y \, j_y + \pd_z \, j_z = 0\,.
+\end{align*}
+With our convention that $\pd_0 = (1/c)\,\pd_t$, we obtain
+\begin{align*}
+\pd_0 (c\rho) + \pd_1 \,j_x + \pd_2 \, j_y + \pd_3 \, j_z = 0\,.
+\tag{*}
+\end{align*}
+One might have noticed that, the RHS of (*) is a scalar, thus in order for (*) to retain its form under rotation, the LHS of (*) should also be a scalar. Thus, written in a more rigorous way, with the right subscripts and superscripts, we should have written 
+\begin{align*}
+\pd_\mu j^\mu =\pd_0 j^0 + \pd_1 \,j^1 + \pd_2 \, j^2 + \pd_3 \, j^3 = 0\,,
+\end{align*}
+where we define
+\begin{align*}
+j^\mu \coloneqq (c\rho,\, j_x,\, j_y , \,j_z)\,.
+\end{align*}
+Written in matrix form, under a Lorentz boost, we can write
+\begin{align*}
+\bmat{c\rho'  \\ j_x' \\ j_y' \\ j_z'} = 
+\bmat{\gamma & -v\gamma/c & 0 & 0\\
+-v\gamma/c & \gamma &0 &0\\
+0 &0 &1 &0\\
+0 & 0&0 & 1}
+\bmat{c\rho  \\ j_x \\ j_y \\ j_z}\,.
+\end{align*}
+For electric and magnetic field, we have the Maxwell's equations being satisfied
+\begin{align*}
+\nabla \cdot \vec{E} = \frac{\rho}{\epsilon_0}\,,\qquad
+\nabla\times\vec{E} = -\frac{\pd \vec{B}}{\pd t}\,,\qquad
+\nabla \cdot \vec{B} = 0\,,\qquad 
+\nabla \times \vec{B} = \mu_0\vec{j} + \epsilon_0 \mu_0 \frac{\pd \vec{E}}{\pd t}\,.
+\end{align*}
+Here we see six degrees of freedom here $E_x, E_y,E_z,B_x,B_y,B_z$. But we know that they are in fact not all independent. For instance, via $\nabla \cdot \vec{B}= 0$, we know that $B_x$ is dependent on $B_y$ and $B_z$, thus the system is seemingly too complicated. While notice that $\nabla \cdot \vec{B} = 0$ can be guaranteed if one write
+\begin{align*}
+\vec{B} = \nabla \times \vec{A}
+\end{align*} 
+for some vector field $\vec{A}$, and thus
+\begin{align*}
+\nabla \cdot \vec{B} = \nabla \cdot (\nabla \times \vec{A}) = 0\,.
+\end{align*}
+We note that $\nabla \cdot \vec{B} = 0$ implies $\vec{B} = \nabla \times \vec{A}$ provided that the space of interest has no hole, while the other direction, $\vec{B} = \nabla \times \vec{A}$ implies $\nabla \cdot \vec{B} = 0$, always holds. Now with the assumption $\vec{B} = \nabla \times \vec{A}$, we can write
+\begin{align*}
+\nabla \times \vec{E} = -\frac{\pd \vec{B}}{\pd t} = -\frac{\pd}{\pd t}\left( \nabla \times \vec{A}\right) = -\nabla \times \left( \frac{\pd\vec{A}}{\pd t}\right)\,.
+\end{align*}
+Thus we obtain here 
+\begin{align*}
+\nabla \times \left(\vec{E} + \frac{\pd \vec{A}}{\pd t}\right) = 0\,,
+\end{align*}
+which implies
+\begin{align*}
+\vec{E} + \frac{\pd \vec{A}}{\pd t} = -\nabla \phi
+\end{align*}
+for some scalar field $\phi$. Now two of the Maxwell's equations have been used, 
+\begin{align*}
+\nabla \times \vec{E} = -\frac{\pd \vec{B}}{\pd t}\,,\qquad \nabla \cdot \vec{B} = 0\,,
+\end{align*}
+and they lead us to
+\begin{align*}
+\vec{E} =-\nabla \phi - \frac{\pd \vec{A}}{\pd t} \,,\qquad
+\vec{B} = \nabla \times \vec{A}\,.
+\end{align*}
+In general, by the property of the two of the four Maxwell's equations that we have used, the choice of $\vec{A}$ and $\phi$ are uniquely determined up to a gauge transformation
+\begin{align*}
+\vec{A} \to \vec{A} + \nabla \Lambda \,,\qquad 
+\phi \to \phi -\frac{\pd \Lambda}{\pd t}\,,
+\end{align*}
+where $\Lambda$ is an arbitrary function of $\vec{r}$ and $t$. Note that $\vec{E}$ and $\vec{B}$ are observables, while $\phi$ and $\vec{A}$ are not. The values of $\phi$ and $\vec{A}$ here are thus not unique, instead, they depend on the gauge choice. Note further that the quantum wavefunction of a quantum particle of charge $q$ is also effected by the choice of gauge, up to a unobservable phase
+\begin{align*}
+\Psi \to \Psi e^{iq\Lambda/\hbar}\,.
+\end{align*}
+As the gauge can be chosen arbitrarily, one will choose the gauge to simplify the calculation. For instance, one would use the transverse gauge such that
+\begin{align*}
+\nabla \cdot \vec{A} = 0\,,
+\end{align*}
+and the Lorentz gauge such that
+\begin{align*}
+\nabla \cdot \vec{A} + \frac{1}{c^2} \frac{\pd \phi}{\pd t} = 0\,.
+\end{align*}
+Note further that the Lorentz gauge is neither unique. \\
+
+The other two Maxwell's equations lead us to
+\begin{align*}
+\nabla\times (\nabla \times \vec{A}) =\nabla^2 \vec{A} + \nabla(\nabla\cdot \vec{A}) = \mu_0 \vec{j} - \epsilon_0 \mu_0 \frac{\pd}{\pd t}\, \nabla \phi - \epsilon_0 \mu_0 \frac{\pd^2 \vec{A}}{\pd t^2}\,,
+\end{align*}
+\begin{align*}
+\nabla \cdot \vec{E} = -\nabla \cdot \nabla \phi - \nabla \cdot \frac{\pd \vec{A}}{\pd t} = \frac{\rho}{\epsilon_0}\,.
+\end{align*}
+Combining with $c^2 = (\epsilon_0 \mu_0)^{-1}$, we obtain
+\begin{align}
+\nabla^2 \phi + \frac{\pd}{\pd t}(\nabla \cdot \vec{A}) =-\frac{\rho}{\epsilon_0}\,,
+\qquad
+\nabla^2 \vec{A} - \frac{1}{c^2}\frac{\pd^2 \vec{A}}{\pd t^2} - \nabla\left( \nabla \cdot \vec{A} + \frac{1}{c^2}\frac{\pd \phi}{\pd t}\right)  = -\mu_0 \vec{j}\,,
+\end{align}
+and that
+\begin{align}
+\vec{B} = \nabla \times \vec{A}\,,
+\qquad
+\vec{E} = -\nabla \phi - \frac{\pd \vec{A}}{\pd t}\,.
+\end{align}
+
+\subsection{Transverse Gauge}
+Now suppose we have transverse gauge being satisfied, that is $\nabla \cdot \vec{A} = 0$, in which case the Maxwell's equations become
+\begin{align*}
+\nabla^2 \phi = -\frac{\rho}{\epsilon_0}\,,\qquad
+\nabla^2 \vec{A} - \frac{1}{c^2}\frac{\pd^2 \vec{A}}{\pd t^2}-\frac{1}{c}\nabla \frac{\pd \phi}{\pd t} = -\mu \vec{j}\,,
+\end{align*}
+where the first equation can be solved via
+\begin{align*}
+\phi(\vec{r},t) = \frac{1}{4\pi \epsilon_0}\iiint \frac{\rho(\vec{r}',t)}{|\vec{r}-\vec{r}'|} \,dx'\,dy'\,dz'\,.
+\end{align*}
+Note even though $\phi(\vec{r},t)$ has a good form, but $\vec{E}$ is still complicated as by definition
+\begin{align*}
+\vec{E} = -\frac{\pd \vec{A}}{\pd t}- \nabla \phi\,,
+\end{align*}
+$\vec{E}$ also depends on $\vec{A}$, and it is not easy to solve for $\vec{A}$. Furthermore, $\phi$ here is not local, as it depends on $\rho$ everywhere in spacetime, which might also cause causality problem as $\rho(r',t)$ can effect $\phi(\vec{r},t)$ no matter how far between $\vec{r}$ and  $\vec{r}'$ is. While this does not cause problem to our theory as $\phi$ is not a physical observable quantity. \\
+
+
+\subsection{Lorentz Gauge}
+When Lorentz gauge is satisfied, then the second equation in (3.11) becomes
+\begin{align*}
+\nabla^2 \vec{A} - \frac{1}{c^2}\frac{\pd \vec{A}}{\pd t^2} = -\mu_0 \vec{j}\,.
+\end{align*}
+On the other hand, rewriting the Lorentz gauge as
+\begin{align*}
+\nabla \cdot \vec{A} = -\frac{1}{c^2} \frac{\pd\phi}{\pd t}\,,
+\end{align*}
+we see that the first equation in (3.11) becomes
+\begin{align*}
+\nabla^2 \phi - \frac{1}{c^2} \frac{\pd^2 \phi}{\pd t^2} = -\frac{\rho}{\epsilon_0}\,.
+\end{align*}
+That is, in Lorentz gauge, we have the Maxwell's equations become
+\begin{align}
+\nabla^2 \vec{A} - \frac{1}{c^2}\frac{\pd^2 \vec{A}}{\pd t^2} = -\mu_0 \vec{j}
+\,,\qquad
+\nabla^2 \phi - \frac{1}{c^2} \frac{\pd^2 \phi}{\pd t^2} = -\frac{\rho}{\epsilon_0}\,,
+\end{align}
+and the corresponding definition of $\vec{B} = \nabla \times \vec{A}$ and $\vec{E} = -(\pd\vec{A}/\pd t)- \nabla \phi$. That is $\vec{A}$ and $\phi$ follow the same form of equation, and these equations of motion are Lorentz invariant. In vacuum, $\rho = j = 0$, the solution to the form
+\begin{align*}
+\nabla^2 f - \frac{1}{c^2}\frac{\pd^2 f}{\pd t^2} = 0
+\end{align*}
+is plane wave solution
+\begin{align*}
+f = \sum_{\vec{k}} A_{\vec{k},\omega} e^{-\vec{k}\cdot \vec{r}-i\omega t}\,,
+\end{align*}
+where $\omega = c|\vec{k}|$, that gives a form of light as expected.\\
+
+Here (3.13) written in a more covariant form, reads
+\begin{align*}
+\square\, \phi = \frac{\rho}{\epsilon_0}\,,\qquad
+\square\, \vec{A} = \mu_0 \vec{j}\,.
+\end{align*}
+In particular, we see that we have
+\begin{align*}
+\square \, \frac{\phi}{c} = \frac{\rho}{\mu_0 \epsilon_0}\frac{\mu_0}{c} = \rho c\mu_0\,.
+\end{align*}
+Thus we can write
+\begin{align}
+\square\, \bmat{\phi/c \\ A_x \\ A_y \\ A_z} = \mu_0 \bmat{\rho c \\ j_x \\ j_y \\\ j_z}\,, 
+\end{align}
+where we have seen that the RHS of (3.14) is a $4$-vector in spacetime, thus forcing the LHS of (3.14) to be a $4$-vector. As $\square$ can be interpreted as a scalar, then we have $A^\mu = (\phi/c,\, A_x,\, A_y,\,A_z)$ being defined as a $4$-vector. With $A^\mu$ defined, the Lorentz gauge condition becomes
+\begin{align*}
+\pd_\mu A^\mu = 0\,.
+\end{align*}
+That is the Lorentz gauge condition is also Lorentz invariant. Note further that the transverse gauge condition
+\begin{align*}
+\nabla \cdot \vec{A} = 0
+\end{align*}
+is not Lorentz invariant. Here (3.14), and thus (3.13), becomes, in its Lorentz invariant form,
+\begin{align*}
+\square A^\mu = \mu_0 j^\mu\,.
+\end{align*}
+Under a gauge transformation, $\vec{A} \to \vec{A}' = \vec{A} + \nabla \Lambda$, $\phi \to \phi' = \phi-(\pd\Lambda \pd t)$, it follows immediately that we have
+\begin{align*}
+A'^\mu = A^\mu + \pd^\mu \Lambda\,.
+\end{align*}
+From now on, we will mainly focus on Lorentz gauge, where the electromagnetic theory will be described by the equations
+\begin{align}
+\square \, A^\mu = \mu_0 j^\mu \,,\qquad\quad
+\pd_\mu j^\mu = 0\,,\qquad\quad
+\pd_\mu A^\mu = 0\,.
+\end{align}
+
+\chapter{}
+With the essential tools developed in the previous chapter, we have the electromagnetic theory described by the equations (3.15), 
+\begin{align}
+\square \, A^\mu = \mu_0 j^\mu \,,\qquad\quad
+\pd_\mu j^\mu = 0\,,\qquad\quad
+\pd_\mu A^\mu = 0\,.
+\end{align}
+We first would like to recover $\vec{B}$ and $\vec{E}$ from (4.1), and one can expect we shall obtain them via outer products, instead of inner product.\\
+
+If one has $4$-vectors $X^\mu$ and $Y^\mu$, with their usual $\R^n$-vector form denoted as $X$ and $Y$, we have
+\begin{align*}
+X\otimes Y = X^\mu Y^\mu = \bmat{
+X^0Y^0 & X^0Y^1 & X^0Y^2 & X^0Y^3\\
+X^1Y^0 & X^1Y^1 & X^1Y^2 & X^1Y^3\\
+X^2Y^0 & X^2Y^1 & X^2Y^2 & X^2Y^3\\
+X^3Y^0 & X^3Y^1 & X^3Y^2 & X^3Y^3
+}\,.
+\end{align*}
+Here we will introduce the exterior product of $X^\mu$ and $Y^\mu$, which gets us an antisymmetric tensor, 
+\begin{align*}
+X\wedge Y = \bmat{
+0 & \frac{X^0Y^1 - X^1 Y^0}{2} & \frac{X^0Y^2 - X^2Y^0}{2} & \frac{X^0Y^3-X^3Y^0}{2} \\
+\frac{X^1Y^0 - X^0 Y^1}{2} & 0 & \frac{X^1Y^2 - X^2Y^1}{2} & \frac{X^1Y^3-X^3Y^1}{2}\\
+\frac{X^2Y^0 - X^0 Y^2}{2} & \frac{X^1Y^2 - X^1Y^2}{2} & 0& \frac{X^2Y^3-X^3Y^2}{2}\\
+\frac{X^3Y^0 - X^0 Y^3}{2} & \frac{X^3Y^1 - X^1Y^3}{2} & \frac{X^3Y^2-X^2Y^3}{2}&0
+}\,.
+\end{align*}
+Similar idea leads to 
+\begin{align*}
+\pd^\mu \wedge A^\mu = \frac{\pd^\mu A^\mu - \pd^|mu A^\mu}{2} =\frac{1}{2} 
+\bmat{
+0& \pd^0A^1 - \pd^1 A^0 & \pd^0 A^2 - \pd^2 A^0 & \pd^0 A^3 - \pd^3 A^0\\
+\pd^1A^0 - \pd^0 A^1 & 0 & \pd^1 A^2 - \pd^2 A^1 & \pd^1 A^3 - \pd^3 A^1\\
+\pd^2A^0 - \pd^0A^2 & \pd^2 A^1 - \pd^1 A^2 &0 &\pd^2A^3-\pd^3A^2\\
+\pd^3A^0 - \pd^0A^3 & \pd^3A^1-\pd^1A^3 & \pd^3A^2 - \pd^2 A^3 &0 
+}\,.
+\end{align*}
+We notice that we have
+\begin{align*}
+&\pd^0 A^1 - \pd^1 A^0 = \frac{1}{c}\pd_t A_x + \pd_x \frac{\phi}{2} = \frac{1}{c}\left( \pd_t A_x + \pd_x \phi\right) = - E_x /c\,,\\
+&\pd^1 A^2 - \pd^2 A^1 = -\pd_x A_y + \pd_yA_x = -(\nabla \times \vec{A})_z = -B_z\,.
+\end{align*}
+Thus similarly computed for other components, we obtain
+\begin{align*}
+\pd^\mu \wedge A^\mu = \frac{1}{2}
+\bmat{0 & -E_x/c & -E_y /c & -E_z /c \\
+E_x/c & 0 & -B_z & B_y\\
+E_y/c & B_z & 0 & -B_z\\
+E_z/c & -B_y & B_x & 0}\,.
+\end{align*}
+Expressed in a more compact way, using a single tensor, we can define
+\begin{align*}
+F^{\mu\nu} = \pd^\mu A^\nu - \pd^\nu A^\mu = 2(\pd^\mu \wedge A^\mu)\,.
+\end{align*}
+Under Lorentz boost $L^\mu{}_{\mu'}$, or in its matrix form $L$, we can write
+\begin{align*}
+F^{\mu\nu}\to F'^{\mu\nu} = L^\mu{}_{\mu'}L^\nu{}_{\nu'}F^{\mu'\nu'}\,.
+\end{align*}
+or in its matrix form, 
+\begin{align*}
+F \to F' = LFL^T\,,
+\end{align*}
+where one can compute
+\begin{align*}
+&\bmat{0 & -E_x'/c & -E_y'/c & -E_z'/c \\
+E_x'/c & 0 & -B_z' & B_y'\\
+E_y'/c & B_z' & 0 & -B_z\\
+E_z'/c & -B_y' & B_x' & 0}
+ \\
+ &{}\qquad = \bmat{\gamma & -v\gamma/c & 0 & 0\\
+ -v\gamma/c & \gamma & 0 & 0\\
+ 0 & 0 & 1 & 0\\
+ 0 & 0 & 0 & 1}
+ \bmat{0 & -E_x/c & -E_y /c & -E_z /c \\
+E_x/c & 0 & -B_z & B_y\\
+E_y/c & B_z & 0 & -B_z\\
+E_z/c & -B_y & B_x & 0}
+\bmat{\gamma & -v\gamma/c & 0 & 0\\
+ -v\gamma/c & \gamma & 0 & 0\\
+ 0 & 0 & 1 & 0\\
+ 0 & 0 & 0 & 1}\,,
+\end{align*}
+and obtain
+\begin{align*}
+E_x' &= E_x\,,\qquad
+E_y' = \gamma(E_y  -vB_z)\,,\qquad
+E_z' = \gamma(E_z + vB_y)\\
+B_x' &= B_x\,,\qquad
+B_y' = \gamma(B_y+ vE_z/c^2)\,,\qquad
+B_z' = \gamma(B_z-vB_y/c^2)\,.
+\end{align*}
+Furthermore, with the definition of $F^{\mu\nu}$, one finds that the Maxwell's equations become
+\begin{align*}
+\pd_\mu F^{\mu\nu} = \mu_0 j^\mu\,,\qquad\quad
+\epsilon_{\mu\nu \lambda\epsilon}\pd^\nu F^{\lambda \epsilon} = 0\,,
+\end{align*}
+where the first equation generalizes the four equations (components) in 
+\begin{align*}
+\nabla \cdot \vec{E} = \frac{\rho }{\epsilon_0}\,,\qquad\quad
+\nabla \times \vec{B} = \mu_0 \vec{j} + \epsilon_0 \mu_0 \frac{\pd \vec{E}}{\pd t}\,,
+\end{align*}
+and the second equation generalizes the other four equations (components) in
+\begin{align*}
+\nabla \times \vec{E} = -\frac{\pd \vec{B}}{\pd t}\,,\qquad\quad
+\nabla \cdot \vec{B} = 0\,.
+\end{align*}
+Here $\epsilon_{\mu\nu\epsilon\lambda}$ is the $4$-dimensional Levi-Civita symbol.\\
+
+
+
+\newpage
+
+
+\newpage
+\section[Conservation of Energy and Momentum]{\color{red} Conservation of Energy and Momentum\color{black}}
+We have seen that energy and momentum can be combined into a $4$-vector
+\begin{align*}
+p^\mu = (E/c, p_x, p_y, p_z)\,,
+\end{align*}
+and thus the conservation of energy and conservation of momentum become a single conservation law. Now we consider we have a decay of a particle $A$ into substance $B$ and substance $C$. We choose a reference frame where $A$ is stationary. As a result, before the decay, we have
+\begin{align*}
+p_A^\mu = \bmat{m_Ac^2/c \\ 0 \\ 0 \\ 0} = \bmat{m_Ac \\ 0 \\ 0 \\ 0}\,.
+\end{align*}
+After the decay, we obtain two substances $B$ and $C$, moving with velocity $\vec{v}_B$ and $\vec{v}_C$ respectively, then we can write
+\begin{align*}
+p_A^\mu = \bmat{m_Ac \\ 0 \\ 0 \\ 0} = 
+\bmat{\gamma_B m_Bc \\ m_B \gamma_B v_{B,x} \\ m_B \gamma_B v_{B,y} \\ m_B \gamma_B v_{B,z}}+
+\bmat{\gamma_C m_Cc \\ m_C \gamma_B v_{C,x} \\ m_C \gamma_B v_{C,y} \\ m_C \gamma_B v_{C,z}} = p_B^\mu + p_C^\mu\,.
+\end{align*}
+where we have defined
+\begin{align*}
+\gamma_B = \frac{1}{(1- v_B^2/c^2)^{1/2}}\,,\qquad
+\gamma_C = \frac{1}{(1- v_C^2/c^2)^{1/2}}\,.
+\end{align*}
+Thus we have here the energy conservation
+\begin{align}
+m_A = m_B \gamma_B + m_C\gamma_C\,,
+\end{align}
+and momentum conservation
+\begin{align*}
+m_B \gamma_B \vec{v}_B =- m_c \gamma_C \vec{v}_C\,,
+\end{align*}
+from which we see that $\vec{v}_B$ and $\vec{v}_C$ are antiparallel, and that we have their amplitude being conserved, that is
+\begin{align}
+m_B \gamma_B v_B = m_C \gamma_C v_C\,.
+\end{align}
+Assuming that $m_A,m_B,m_C$ are all known, one can solve for $v_B$ and $v_C$, 
+\begin{align}
+v_B = c\left(1-\frac{4m_A^2m_B^2}{(m_A^2 + m_B^2-m_C^2)^2} \right)^{1/2}\,,\qquad
+v_C = c\left(1-\frac{4m_A^2m_C^2}{(m_A^2 + m_B^2-m_C^2)^2} \right)^{1/2}\,.
+\end{align}
+From (4.2), we observe that we have
+\begin{align*}
+m_B + m_C < m_A\,,
+\end{align*}
+and from (4.4) we observe that we have $v_B,v_C<c$ as expected. Here (4.2) can be generalized to multiparticles in a decay process,
+\begin{align*}
+M>m_1 + m_2 + m_3 + \cdots\,,
+\end{align*}
+where we have particle of mass $M$ decaying into particles with mass $m_i$. \\
+
+Next we consider the Compton scattering, an incoming photon with energy $E = \hbar \omega$  is scattered by an electron. The electron, initially at rest in the inertial frame, has a recoiling velocity after scattering.  Consider the electron has a wave-vector $\vec{k} = (k,0,0)$, with $\omega = ck$. Then before scattering, we can write
+\begin{align*}
+p_{\text{photon}}^\mu +p_{\text{electron}}^\mu = \bmat{\hbar \omega/c \\ \hbar k \\ 0\\ 0} + \bmat{m_ec \\ 0 \\ 0\\ 0}
+\end{align*}
+Suppose further that, after the scattering, the photon leaves with momentum $\hbar k'$, energy $\omega' = ck'$, making an angle $\theta$ with respect to the $x$-axis. On the other hand, the electron leaves with velocity magnitude $v_e$, making an angle $\phi $ with respect to the $x$-axis. Thus combining, after scattering, we can write
+\begin{align*}
+p_{\text{photon}}^\mu +p_{\text{electron}}^\mu = 
+\bmat{\hbar \omega' /c \\ \hbar k' \cos(\theta) \\ \hbar k' \sin(\theta) \\ 0} +
+m_e\gamma_e \bmat{c \\ v_e \cos(\phi) \\ -v_e \sin(\phi) \\ 0}\,,
+\end{align*}
+where we have defined
+\begin{align*}
+\gamma_e = \frac{1}{(1- v_e^2/c^2)^{1/2}}\,.
+\end{align*}
+Thus the energy conservation gives
+\begin{align*}
+\hbar \omega  + m_e c^2  = \hbar\omega'  + m_e \gamma_e c^2\,,
+\end{align*}
+and momentum conservation gives
+\begin{align*}
+\hbar \omega = \hbar \omega'\cos(\theta)  +c m_e \gamma_e v_e \cos(\phi) \,,\qquad
+0 = \hbar \omega'\sin(\theta) - cm_e \gamma_e v_e \sin(\phi)\,.
+\end{align*}
+Here we have four unknowns, $\omega'$, $\theta$, $\phi$, and $v_e$, and thus we suppose further that $\theta$ is measured, and solve for the other three using the conservation laws. One obtains
+\begin{align*}
+\frac{\omega}{\omega'} = \frac{1}{1 + (1-\cos(\theta))(\hbar\omega)/(m_ec^2)}\,,
+\end{align*}
+showing that we have
+\begin{align*}
+\omega' < \omega\,,
+\end{align*}
+that is Compton scattering is in fact an inelastic scattering, the frequency of light decreases in the scattering process. Furthermore, when $\omega$ is small enough, such that $\hbar \omega \ll m_e c^2$, we have roughly $\omega' = \omega$, called the Thomson scattering, which is a form of elastic scattering. Note that the statement $\hbar \omega \ll m_e c^2$ is that the photon energy is much less than the electron scattering, in order to have Thomson scattering. \\
+
+\newpage
+\section[Derivation of Maxwell's Equations]{\color{red} 
+Derivation of Maxwell's Equations\color{black}}
+In this section, we will derive Maxwell's equations using the special theory of relativity, together with principle of locality, principle of least action, and symmetries.\\
+
+Here the action of our system of interest can be decomposed into three components
+\begin{align*}
+S = S_{\text{EM field}} + S_{\text{matter}} + S_{\text{coupling}}\,,
+\end{align*}
+where $S_{\text{EM field}}$ depends on only $\vec{E}$ and $\vec{B}$, $S_{\text{matter}}$ depends only on $\rho$ and $\vec{j}$, and $S_{\text{coupling}}$ depends on all $\vec{E}$, $\vec{B}$, $\rho$, and $\vec{j}$. We note further that, using $\vec{E}$ and $\vec{B}$ to derive the theory requires constraints such as
+\begin{align*}
+\nabla \vec{B} = 0\,,
+\end{align*}
+which is not convenient and not desired. Thus we will instead use the scalar potnetial $\phi$ and vector potential $\vec{A}$ to approach the theory. In this case, we thus can write
+\begin{align*}
+S = S_{\text{EM field}}(\phi, \vec{A}) + S_{\text{matter}}(\rho, \vec{j}) + S_{\text{coupling}}(\rho, \vec{j}, \phi, \vec{A})\,.
+\end{align*}
+The principle of locality states further that, the Lagrangian density of the theory should involve only the terms $\phi, \vec{A}, \rho, \vec{j}$ and their products and derivatives, but should not involve the terms like $\rho(x)\,\rho(x')/(x-x')^2$. \\
+
+The symmetry involved in our theory are: \\
+${}$\quad(1) \textbf{$4$-dimensional rotation symmetry}, both Lorentz boosts and spatial rotations, \\
+${}$\quad(2) \textbf{spatial parity symmetry} $\vec{r} \to -\vec{r}$, \\
+${}$\quad(3) \textbf{time reversal symmetry} $t \to -t$, and \\
+${}$\quad(4) \textbf{gauge symmetry}, 
+\begin{align}
+\bmat{\phi/c \\ A_x \\ A_y \\ A_z} \to \bmat{\phi/c \\ A_x \\ A_y \\ A_z} + \bmat{\pd_t/c \\ -\pd_x \\ -\pd_y \\ -\pd_t}\Lambda\,.
+\end{align}
+Under transformation of all those symmetries, $S$ and $\mathcal{L}$ remain unchanged. \\
+
+Another assumption that we impose here is that we are in the weak field limit, with slow variation. That is, we have $\rho$ and $\vec{j}$ being small, and thus $\mathcal{L}$ is a quadratic form of fields $\phi, \vec{A}$, $\rho$ and $\vec{j}$, as well as their derivatives. Slow varying fields requires that all quantities to be slowly varying, and thus we only need to keep the lowest order derivative of a quantity, where higher order derivatives can be ignored.\\
+
+To construct $\mathcal{L}_{\text{EM field}}$ which contributes to $S_{\text{EM field}}$, we start from $A^\mu = (\rho, \vec{A})$. We can make a scalar from $A^\mu$ by considering $A^\mu A_\mu$, that is, we first look at the term $\alpha = A^\mu A_\mu$, a straightforward computation leads to
+\begin{align*}
+\alpha A^\mu A_\mu = \alpha\left( \phi^2 / c^2 - |\vec{A}|^2\right)\,.
+\end{align*}
+Such a term obeys most of the symmetry requirements, but is not allowed by the gauge symmetry. Consider a gauge transformation characterized by (4.5), $A^\mu \to {A'}^\mu$, it is easy to verify that $A_\mu A^\mu \neq {A'}^\mu {A'}_\mu$, and thus gauge symmetry prohibited the term $A_\mu A^\mu$. It is also easy to check that any terms like $A \, \pd A$ would also be prohibited by the gauge symmetry, while terms like $\pd A\, \pd A$ are gauge invariant. Furthermore, one can in fact obtain Lorentz invariant scalar from $\vec{E}$ and $\vec{B}$. An easy exercise shows that the only Lorentz scalars that could be constructed from $\vec{E}$ and $\vec{B}$ are $E^2 - c^2B^2$ and $\vec{E}\cdot \vec{B}$. That is, we can look at the terms 
+\begin{align*}
+\alpha(E^2 - c^2 B^2) + \theta \,\vec{E}\cdot \vec{B}\,,
+\end{align*}
+with $\alpha ,\theta \in \R$. Under spatial parity symmetry, $\vec{E} - -\vec{E}$ and $\vec{B} \to \vec{B}$, thus $\vec{E}\cdot \vec{B}\to -\vec{E}\cdot \vec{B}$ under spatial parity. As we require $S$ to remain invariant under spatial parity transformation, thus the term $\theta\, \vec{E}\cdot \vec{B}$ is prohibited by spatial parity symmetry. That is concluding we have
+\begin{align*}
+\mathcal{L}_{\text{EM field}} = \alpha(E^2 - c^2 B^2)\,.
+\end{align*}
+Now we construct $\mathcal{L}_{\text{coupling}}$ which contributes to $S_{\text{coupling}}$. We know here $\mathcal{L}_{\text{coupling}}$ is a function of $A^\mu$ and $j^\mu$. Notice that $A^\mu A_\mu$ violates Gauge symmetry and $j^\mu j_\mu$ is considered to be matter contribution to $S$, thus we keep only the $A^\mu j_\mu$ term, and thus we write
+\begin{align*}
+\mathcal{L}_{\text{coupling}} = -\alpha' A^\mu j_\mu = -\alpha'(\phi \rho - \vec{j}\cdot \vec{A})\,.
+\end{align*} 
+Here for now we assume that $\mathcal{L}_{\text{matter}} = 0$ and thus $S_{\text{matter} } = 0$. \\
+Thus we can write, for now,
+\begin{align*}
+\mathcal{L} 
+=& \alpha(E^2-c^2 B^2) - \alpha'(\phi \rho - \vec{A}\cdot \vec{j}) \tag{4.6}\\
+=& \alpha(\pd_t \vec{A} \cdot \pd_t \vec{A} + \nabla \phi \, \cdot \nabla \phi - c^2(\nabla \times \vec{A})(\nabla \times \vec{A}))- \alpha'(\phi \rho - \vec{A}\cdot \vec{j})\\
+=&\alpha\left( (\pd_t A_x)^2 + (\pd_t A_y)^2 + (\pd_z A_z)^2 
++ (\pd_x\phi)^2
+ + (\pd_y\phi)^2
+  + (\pd_z\phi)^2\right)\\
+&{}\quad +\alpha\left(
+2(\pd_tA_x)(\pd_x \phi)
+ + 2(\pd_tA_y)(\pd_y \phi)
+  + 2(\pd_tA_z)(\pd_z \phi)
+\right)\\
+&{}\quad\quad -c^2\alpha\left(
+(\pd_xA_y - \pd_y A_x)^2 + 
+(\pd_yA_z - \pd_z A_y)^2 + 
+(\pd_yA_z - \pd_z A_y)^2\right)\\
+&{}\quad\quad\quad -\alpha'\left(\phi \rho -A_xj_x - A_y j_y - A_zj_z\right)
+\end{align*}
+\setcounter{equation}{6}
+Applying the equation of motion
+\begin{align*}
+\pd_t \frac{\delta \mathcal{L}}{\delta\, \pd_t \phi} + \pd_x \frac{\delta\mathcal{L}}{\delta\, \pd_x \phi}
++\pd_y \frac{\delta\mathcal{L}}{\delta\, \pd_y \phi}
++\pd_z \frac{\delta\mathcal{L}}{\delta\, \pd_z \phi} = \frac{\delta \mathcal{L}}{\delta \phi}\,,
+\end{align*}
+one can show that we obtain
+\begin{align*}
+-2\alpha(\pd_x E_x + \pd_y E_y + \pd_z E_z) = -2\alpha (\nabla \cdot \vec{E}) = -\alpha' \rho\,.
+\end{align*}
+Defining here $2\alpha/\alpha' = \epsilon_0$, we obtain
+\begin{align*}
+\nabla \cdot \vec{E} = \frac{\rho}{\epsilon_0}\,.
+\end{align*}
+Now apply the equation of motion 
+\begin{align*}
+\pd_t \frac{\delta \mathcal{L}}{\delta\, \pd_t A_x} + \pd_x \frac{\delta\mathcal{L}}{\delta\, \pd_x A_x}
++\pd_y \frac{\delta\mathcal{L}}{\delta\, \pd_y A_x}
++\pd_z \frac{\delta\mathcal{L}}{\delta\, \pd_z A_x} 
+= \frac{\delta \mathcal{L}}{\delta A_x}\,.
+\end{align*}
+For an example calculation we have here
+\begin{align*}
+\frac{\delta \mathcal{L}}{\delta \, \pd_t A_x} = \alpha \frac{\delta (\pd_t A_x)^2}{\delta\, \pd_t A_x} + 2\alpha \frac{\delta(\pd_t A_x \,\pd_x \phi)}{\delta\, \pd_t A_x} = 2\alpha \pd_tA_x + 2\alpha \pd_x \phi = 2\alpha(\pd_tA_x + \pd_x \phi) = -2\alpha E_x\,.
+\end{align*}
+On the other hand, we have
+\begin{align*}
+\frac{\delta \mathcal{L}}{\delta A_x} = \frac{\delta (\alpha' j_x A_x)}{\delta A_x} = \alpha' j_x\,,\qquad
+\frac{\delta \mathcal{L}}{\delta\, \pd_y A_x} = 2\alpha c^2(\pd_x A_y - \pd_y A_x) = 2\alpha c^2 B_z\,.
+\end{align*}
+Thus combining all we obtain
+\begin{align*}
+-2\alpha \pd_tE_x + 0 + 2\alpha c^2 \pd_y B_z - 2\alpha c^2 \pd_z B_y = \alpha' j_x\,.
+\end{align*}
+Rearranging we obtain
+\begin{align*}
+(\pd_y B_z - \pd_z B_y) - \frac{1}{c^2}\, \pd_t E_z = \frac{1}{\epsilon_0 c^2}\, j_x\,.
+\end{align*}
+We define here $\mu_0$ to be the quantity that satisfies
+\begin{align*}
+c^2 = \frac{1}{\epsilon_0 \mu_0}\,,
+\end{align*}
+and we obtain
+\begin{align*}
+(\nabla \times B)_x =\pd_ y B_z- \pd_z B_y = \mu_0 j_x + \epsilon_0 \mu_0\, \pd_t E_x\,.
+\end{align*}
+Similar calculation, using the equation of motion, on $A_y$ and $A_z$ leads to the final result
+\begin{align*}
+\nabla \cdot \vec{E} = \rho/\epsilon_0\,,\qquad
+\qquad \nabla \times \vec{B} = \epsilon_0 \mu_0 \,\pd_t \vec{E} + \mu_0 \vec{j}\,,
+\end{align*}
+recovering Maxwell's equations. Note that the other two equations in Maxwell's equations 
+$$\nabla \cdot \vec{B} = 0\,,
+\qquad\qquad
+\nabla \times \vec{E} = -\frac{\pd \vec{B}}{\pd t}\,,
+$$
+are automatically satisfied by defining
+\begin{align*}
+\vec{E} = -\pd_t \vec{A} - \nabla \phi\,,\qquad\qquad
+\vec{B} = \nabla \times \vec{A}\,.
+\end{align*}
+With the definition of $\epsilon_0$ and $\mu_0$, now (4.6) becomes
+\begin{align*}
+\mathcal{L} = \alpha'\left( \frac{\epsilon_0}{2}E^2 - \frac{\epsilon_0c^2}{2}B^2 - \phi \rho + \vec{A}\cdot \vec{j}\right) = \alpha'\left( \frac{\epsilon_0}{2}E^2 - \frac{B^2}{2\mu_0} - \phi \rho + \vec{A}\cdot \vec{j}\right)\,.
+\end{align*}
+Note that renormalization of $\mathcal{L}$ does not effect the equation of motion and thus has no effect on action, we take $\alpha' =1$. Thus we write
+\begin{align*}
+\mathcal{L} =   \frac{\epsilon_0}{2}E^2 - \frac{B^2}{2\mu_0} - \phi \rho + \vec{A}\cdot \vec{j}\,.
+\end{align*}
+
+\newpage
+\section[Point Charge]{\color{red} Point Charge\color{black}}
+As we write the Lagrangian $L = \text{K.E.} - \text{P.E.}$, the potential energy contribution to $L$ comes from the coupling Lagrangian density $\mathcal{L}_{\text{coupling}}$. Thus one would expect $\mathcal{L}_{\text{matter}}$, and thus $L_{\text{matter}}$, depends only on the velocity of matter.\\
+
+One thing to notice is that, the total Lagrangian
+\begin{align*}
+L = \iiint \mathcal{L}\, dx\, dy\, dz
+\end{align*}
+is not a scalar, as $\mathcal{L}$ is a scalar while $dx\,dy\,dz$ is not a scalar due to length contraction. On the other hand, 
+\begin{align*}
+S = \iiiint \mathcal{L}\, dt\,dx\,dy\,dz
+\end{align*}
+is a scalar as $dt\,dx\,dy\,dz$ is scalar ($dt$ has time dilation, and $dx\,dy\,dz$ has length contraction). However, one can write
+\begin{align*}
+S = \int L\, dt = \int \gamma L\, d\tau\,,
+\end{align*}
+and thus one expects that $\gamma L$ to be a scalar. To obtain a scalar from velocity, we recall that
+\begin{align*}
+u^\mu \coloneqq \frac{dx^\mu}{d\tau} = \gamma \bmat{c \\ v_x \\ v_y \\ v_z}\,,
+\end{align*}
+which gives us a trivial scalar
+\begin{align*}
+u^\mu u_\mu = \frac{c^2}{c^2 - v^2} ( c^2 - v_x^2 - v_y^2 - v_z^2) = c^2\,.
+\end{align*}
+Thus $\gamma L $ is a constant, that is
+\begin{align*}
+L = -\alpha\cdot \sqrt{1 - v^2/c^2}\,,
+\end{align*}
+for some $\alpha \in \R$. It turns out that we have $\alpha = m_0c^2$. To see this, we note that the momentum can be written as
+\begin{align*}
+p_i = \frac{\delta L}{\delta v_i} = \frac{\alpha}{\sqrt{1- v^2/c^2}}\frac{v_i}{c^2} = \alpha \gamma v_i/c^2\,,
+\end{align*}
+by requiring $p_i = m_0 \gamma v_i$, we see here $\alpha = m_0 c^2$. Then we can compute the Hamiltonian,
+\begin{align*}
+H= \vec{p}\cdot \vec{v} - L= \frac{\alpha}{c^2}\gamma v^2 + \alpha \sqrt{1-v^2/c^2}= \frac{m_0}{\sqrt{1-v^2/c^2}}\left( v^2 + c^2 ( 1- v^2/c^2)\right) = \frac{m_0c^2}{\sqrt{1-v^2/c^2}}\,,
+\end{align*}
+as predicted. Concluding here, we see that
+\begin{align*}
+L = m_0 c^2 \sqrt{1- v^2/c^2}\,,\qquad
+\vec{p} = \frac{m_0}{\sqrt{1-v^2/c^2}}\, \vec{v}\,,\qquad
+H = \frac{m_0c^2}{\sqrt{1-v^2/c^2}}\,.
+\end{align*}
+Notice here $L = \text{K.E.}- \text{P.E.}$ does not hold here.\\
+
+\subsection{A point charge coupled with $E$ and $B$ field}
+From previous result, we have that
+\begin{align*}
+\mathcal{L}_{\text{coupling}}
+=-\rho \phi + \vec{j}\cdot \vec{A}\,.
+\end{align*}
+Thus for a point charge at $\vec{r}_0$, $\rho = q\delta(\vec{r}- \vec{r}_0)$, and $\vec{j} = q\vec{v} \, \delta(\vec{r} - \vec{r}_0)$, and thus
+we can compute the Lagrangian, 
+\begin{align*}
+L_{\text{coupling}} 
+&= \iiint dx\,dy\,dz\, (-\rho \phi + \vec{j}\cdot \vec{A})\\
+&= \iiint dx\,dy\,dz\, \left(-q \phi(\vec{r})\, \delta(\vec{r} - \vec{r}_0) + q \vec{v}\cdot \vec{A}(\vec{r})\,, \delta(\vec{r} - \vec{r}_0) \right)\\
+&= -q\, \phi(\vec{r}_0) + q\vec{v}\cdot \vec{A}(\vec{r}_0)\,.
+\end{align*}
+Thus for a point charge at $\vec{r}$, we obtain
+\begin{align}
+\gamma L_{\text{coupling}} = - \gamma q\, \phi(\vec{r}) + \gamma q\vec{v}\cdot \vec{A}(\vec{r})\,.
+\end{align}
+By denoting
+\begin{align*}
+u^\mu = \gamma\bmat{c \\ v_x \\ v_y \\ v_z}\,,
+\end{align*}
+we thus obtain a compact form of (4.7),
+\begin{align}
+\gamma L_{\text{coupling}}-q u^\mu A_\mu\,.
+\end{align}
+In fact (4.8) can be deduced from the fact that, as $\gamma L_{\text{coupling}}$ is required to be a scalar, and should contain information about both the matter (moving with velocity $\vec{v}$) and the field (described by $A_\mu$), we thus obtain $\gamma L_{\text{coupling}} = \beta u^\mu A_\mu$, where we define $\beta = -q$. \\
+
+Here the evolution of the fields are not of our interest, thus focus on $$L = L_{\text{matter}} + L_{\text{coupling}}\,,$$ 
+where we can write, from the result above,
+\begin{align}
+L(\vec{r}, \vec{v}) = -m_0 c^2 \sqrt{1 - v^2/c^2} - q\, \phi(\vec{r}) + q\vec{v}\cdot \vec{A}(\vec{r})\,,
+\end{align}
+where $\vec{r}$ is the position of the charge. Then we can compute
+\begin{align*}
+p_x = \frac{\delta L}{\delta v_x} = \frac{m_0}{\sqrt{1 - v^2/c^2}}\, v_x + qA_x = mv_x + qA_x\,,
+\end{align*}
+where we have defined $m \coloneqq m_0 \gamma$. Thus here we define
+\begin{align*}
+\vec{P} = m\vec{v} + q\vec{A}
+\end{align*}
+to be the momentum of the particle, and $m\vec{v}=\gamma m_0 \vec{v}$ is the momentum of the particle without coupling to the $E$ and $B$ field. For notation here, we will denote $\vec{p} = m \vec{v}$ to be the momentum of the charged particle without coupling to the fields, and $\vec{P}$ to be the momentum of the charged particle coupling to the field. \\
+
+Next we can compute
+\begin{align*}
+H = \vec{P}\cdot \vec{v} - L = \left(\frac{m_0}{\sqrt{1-v^2/c^2}}\,\vec{v} + q\vec{A}\right) \cdot \vec{v} - L = \frac{m_0c^2}{\sqrt{1 - v^2/c^2}} + q\, \phi(\vec{r})\,,
+\end{align*}
+where the second term $q \,\phi(\vec{r})$ is interpreted as the electric potential energy. Note that $H$ should instead be a function of $\vec{r}$ and $\vec{P}$ instead of $\vec{r}$ and $v$, thus we take a further step here. Notice that we can write
+\begin{align*}
+E = \sqrt{p^2 c^2 + m_0^2 c^4} = 
+\sqrt{m^2 v^2 c^2 + m_0^2 c^4} = \sqrt{\frac{m_0^2v^2c^2}{\sqrt{1-v^2/c^2}} +m_0^2c^4} = \frac{m_0c^2}{\sqrt{1-v^2/c^2}} = mc^2\,.
+\end{align*}
+Thus concluding we see here
+\begin{align*}
+H(\vec{P}, \vec{r}) = \sqrt{p^2c^2 + m_0^2 c^4} + q\, \phi(\vec{r}) = \sqrt{(\vec{P}-q\vec{A})\cdot(\vec{P}-q\vec{A}) c^2 + m_0^2 c^4} + q\, \phi(\vec{r}) \,.
+\end{align*}
+The Hamiltonian of the neutral particle (without charge, thus $\vec{P} = \vec{p}$ in this case) thus have the form
+\begin{align*}
+H(\vec{P}, \vec{r}) = \sqrt{(\vec{P}\cdot \vec{P})\, c^2 + m_0^2 c^4} = \sqrt{p^2 c^2 + m_0^2 c^4} \,,
+\end{align*}
+as expected. \\
+
+Thus going from neutral particle $q=0$ to charged particle $q\neq 0$, a term $q\, \phi(\vec{r})$ should be added to the Hamiltonian, and $\vec{P}$ becomes $\vec{p}-q\vec{A}$, giving rise to the minimal coupling. \\
+
+Furthermore, from (4.9) we can compute the equation of motion from such Lagrangian. For instance, the $x$-component reads
+\begin{align*}
+\frac{d}{dt}\frac{\delta L}{\delta (dx/dt)} =\frac{dP_x}{dt} =\frac{d}{dt}\left( mv_x + qA_x\right) =\frac{dp_x}{dt} + q \frac{dA_x}{dt}= \frac{\delta L}{\delta x}=  -q \, \pd_x \phi + q\, \pd_x(\vec{v}\cdot \vec{A})\,.
+\end{align*}
+Note that in general $\vec{A}$ is not just a function of $\vec{r}$ (the position of the point charge) only, it can also depend on time $t$ if the fields evolve. Thus we compute
+\begin{align*}
+\frac{dA_x}{dt}|_{\vec{r}(t), t} 
+&= \frac{\pd A_x}{\pd t} + \frac{\pd A_x}{\pd x} \frac{dx}{dt} + \frac{\pd A_x}{\pd y} \frac{dy}{dt}+ \frac{\pd A_x}{\pd z} \frac{dz}{dt}=\frac{\pd A_x}{\pd t} + \vec{v}\cdot (\nabla A_x)\,.
+\end{align*}
+Now combining we have
+\begin{align*}
+\frac{dp_x}{dt} + q \, \frac{\pd A_x}{\pd t} + q\,\vec{v}\cdot (\nabla A_x) = \frac{\delta L}{\delta x} = -q \, \pd_x \phi + q\, \pd_x(\vec{v}\cdot \vec{A})\,.
+\end{align*}
+Rearranging we obtain
+\begin{align*}
+\frac{dp_x}{dt} = -q\left(\pd_x\phi + \frac{\pd A_x}{\pd t}\right) + q\left( \pd_x (\vec{v}\cdot \vec{A}) - \vec{v}\cdot (\nabla A_x)\right)\,.
+\end{align*}
+Similarly computation for $y$- and $z$- components gives 
+\begin{align*}
+\frac{dp_y}{dt} &= -q\left(\pd_y\phi + \frac{\pd A_y}{\pd t}\right) + q\left( \pd_y (\vec{v}\cdot \vec{A}) - \vec{v}\cdot (\nabla A_y)\right)\,,\\
+\frac{dp_z}{dt} &= -q\left(\pd_z\phi + \frac{\pd A_z}{\pd t}\right) + q\left( \pd_z (\vec{v}\cdot \vec{A}) - \vec{v}\cdot (\nabla A_z)\right)\,.
+\end{align*}
+Combining we have
+\begin{align*}
+\frac{d\vec{p}}{dt} = -q\left(  \nabla \phi + \frac{\pd \vec{A}}{\pd t}\right) + q \vec{v}\times (\nabla \times\vec{A}) =  q\vec{E}  + q (\vec{v}\times \vec{B})\,,
+\end{align*}
+which agrees with the classical limit.
+
+
+
+\end{document}
+
+

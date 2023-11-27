@@ -1,0 +1,23 @@
+% feyngraph.mf -- do not edit, generated automatically by Physics513ClassNotes.tex
+input feynmf
+require_RCS_revision "1.30";
+beginchar(1, 150*1.0pt#, 150*1.0pt#, 0);
+"feynmf: 1";
+LaTeX_unitlength:=1.0pt;
+subgraph (0, 0, w, h);
+vinit;
+pickup pencircle scaled thin;
+vleft (__i1);
+vright (__o1, __o2, __o3, __o4);
+vconnect ("dashes", __i1, __v1);
+vconnect ("boson", __v1, __v21);
+vconnect ("boson", __v1, __v22);
+vconnect ("fermion", __o1, __v21, __o2);
+vconnect ("fermion", __o3, __v22, __o4);
+vfreeze;
+vdraw;
+endsubgraph;
+endchar;
+% the end.
+end.
+endinput;

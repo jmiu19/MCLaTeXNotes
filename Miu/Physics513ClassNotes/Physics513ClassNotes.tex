@@ -1,0 +1,3633 @@
+\documentclass[11pt, onesided]{book}
+
+%%%%%%%%%%%%%%Include Packages%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{xcolor}
+\usepackage{mathtools}
+\usepackage[a4paper, total={6in, 8in}, margin=1.25in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{paralist}
+\usepackage{rsfso}
+\usepackage{amsthm}
+\usepackage{wasysym}
+\usepackage[inline]{enumitem}   
+\usepackage{hyperref}
+\usepackage{tocloft}
+\usepackage{wrapfig}
+\usepackage{titlesec}
+\usepackage{colortbl}
+\usepackage{stackengine} 
+\usepackage{simpler-wick}
+\usepackage{feynmp-auto}
+\usepackage{slashed}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%Chapter Setting%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{gray75}{gray}{0.75}
+\newcommand{\hsp}{\hspace{20pt}}
+\titleformat{\chapter}[hang]{\Huge\bfseries}{\thechapter\hsp\textcolor{gray75}{$\mid$}\hsp}{0pt}{\Huge\bfseries}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%Theorem environments%%%%%%%%%%%%%%%%%%%
+\newtheoremstyle{break}
+  {\topsep}{\topsep}%
+  {\itshape}{}%
+  {\bfseries}{}%
+  {\newline}{}%
+\theoremstyle{break}
+\theoremstyle{break}
+\newtheorem{axiom}{Axiom}
+\newtheorem{thm}{Theorem}[section]
+\renewcommand{\thethm}{\arabic{section}.\arabic{thm}}
+\newtheorem{lem}{Lemma}[thm]
+\newtheorem{cor}{Corollary}[thm]
+\newtheorem{defn}{Definition}[thm]
+\newenvironment{indEnv}[1][Proof]
+  {\proof[#1]\leftskip=1cm\rightskip=1cm}
+  {\endproof}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%Integral%%%%%%%%%%%%%%%%%%%%%%%
+\def\upint{\mathchoice%
+    {\mkern13mu\overline{\vphantom{\intop}\mkern7mu}\mkern-20mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+  \int}
+\def\lowint{\mkern3mu\underline{\vphantom{\intop}\mkern7mu}\mkern-10mu\int}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\T}{\mathcal{T}}
+\newcommand{\M}{\mathcal{M}}
+\newcommand{\Symm}{\text{Symm}}
+\newcommand{\Alt}{\text{Alt}}
+\newcommand{\Int}{\text{Int}}
+\newcommand{\Bd}{\text{Bd}}
+\newcommand{\Power}{\mathcal{P}}
+\newcommand{\ee}[1]{\cdot 10^{#1}}
+\newcommand{\spa}{\text{span}}
+\newcommand{\sgn}{\text{sgn}}
+\newcommand{\degr}{\text{deg}}
+\newcommand{\pd}{\partial}
+\newcommand{\that}[1]{\widetilde{#1}}
+\newcommand{\lr}[1]{\left(#1\right)}
+\newcommand{\vmat}[1]{\begin{vmatrix} #1 \end{vmatrix}}
+\newcommand{\bmat}[1]{\begin{bmatrix} #1 \end{bmatrix}}
+\newcommand{\pmat}[1]{\begin{pmatrix} #1 \end{pmatrix}}
+\newcommand{\rref}{\xrightarrow{\text{row\ reduce}}}
+\newcommand{\txtarrow}[1]{\xrightarrow{\text{#1}}}
+\newcommand\oast{\stackMath\mathbin{\stackinset{c}{0ex}{c}{0ex}{\ast}{\Circle}}}
+\newcommand{\txt}{Peskin's \textit{An Introduction to Quantum Field Theory}}
+
+\newcommand{\note}{\color{red}Note: \color{black}}
+\newcommand{\remark}{\color{blue}Remark: \color{black}}
+\newcommand{\example}{\color{green}Example: \color{black}}
+\newcommand{\exercise}{\color{green}Exercise: \color{black}}
+
+%%%%%%%%%%%%%%%%%%%%%%Roman Number%%%%%%%%%%%%%%%%%%%%%%%
+\makeatletter
+\newcommand*{\rom}[1]{\expandafter\@slowromancap\romannumeral #1@}
+\makeatother
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%table of contents%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\setlength{\cftchapindent}{0em}
+%\cftsetindents{section}{2em}{3em}
+%
+%\renewcommand\cfttoctitlefont{\hfill\huge\bfseries}
+%\renewcommand\cftaftertoctitle{\hfill\mbox{}}
+%
+%\setcounter{tocdepth}{2}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%Footnotes%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand\blfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%Section%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\makeatletter
+\def\@seccntformat#1{%
+  \expandafter\ifx\csname c@#1\endcsname\c@section\else
+  \csname the#1\endcsname\quad
+  \fi}
+\makeatother
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Enumerate%%%%%%%%%%%%%%
+\makeatletter
+% This command ignores the optional argument 
+% for itemize and enumerate lists
+\newcommand{\inlineitem}[1][]{%
+\ifnum\enit@type=\tw@
+    {\descriptionlabel{#1}}
+  \hspace{\labelsep}%
+\else
+  \ifnum\enit@type=\z@
+       \refstepcounter{\@listctr}\fi
+    \quad\@itemlabel\hspace{\labelsep}%
+\fi}
+\makeatother
+\parindent=0pt
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\begin{document}
+
+	\begin{titlepage}
+		\begin{center}
+			\vspace*{0.5cm}
+			\Huge \color{red}
+				\textbf{Class Notes}\\
+			\vspace{0.5cm}			
+			\Large \color{black}
+			Physics 513 - Quantum Field Theory\\
+			Professor Ratindranath Akhoury
+			\vspace{1.5cm}
+
+			\includegraphics[scale=1.15]{hmm.pdf}
+			
+			
+			\vspace{2cm}
+			\LARGE
+				\textbf{Jinyan Miao}\\
+				\hfill\break
+				\LARGE Fall 2023\\
+			\vspace{1cm}
+
+		\vspace*{\fill}
+		\end{center}			
+	\end{titlepage}
+
+
+
+\tableofcontents
+\hfill\break
+\hfill\break
+\hfill\break
+ 
+
+
+\newpage
+\chapter{Lorentz Transformation}
+\quad The Quantum Field Theory (QFT) evolved out of attempts to combine quantum mechanics and special relativity. The first attempts were single particle wave equations, that are the Klein-Gordon Eq. for scalars and the Dirac Eq. for spin-$1/2$ particles, but were doomed to failure, as single particle wave equations require multi-particle description to make sense. In fact, when one tries to combine quantum mechanics with special relativity, the notion of a single particle becomes inconsistent: we have that $\Delta x \Delta p_x \geq \hbar/2$, when one tries to localize a particle, the momentum fluctuations become large, hence when $\Delta p_x \sim mc$, we have $\Delta E \sim 2mc^2$ (that is $mc^2$ from the particle rest mass energy, and another $mc^2$ from the fluctuation of the momentum), and one starts creating pairs of particles from the vacuum, so a single particle description breaks down. In the relativistic domain, particle number is not a conserved quantity. \\
+
+\quad This non-point particle picture in a relativistic theory was confirmed by the $g$-$2$ measurement of electrons and the lamb-shift in the hydrogen atom spectrum. Dirac's theory of point particle states that $g$ factor of an electron is $2$, and that the $2S_{1/2}$ and $2P_{1/2}$ levels of a hydrogen atom are degenerate, but non of these were experimentally true. We shall see that the QFT description agrees with the experimental results up to $10$ decimal places. As a result, QFT describes processes in which particle number is changing, such as the process ($e^+ + e^-$) $\to$ (mesons $+$ baryons). 
+\hfill\break
+\hfill\break
+\hfill\break
+\section[Lorentz Invariance and Lorentz Group]{\color{red}Lorentz Invariance and Lorentz Group\color{black}}
+The physical space-time point is denoted as $x^\mu = (ct, \vec{x})$ here where $x^0\coloneqq ct$ and $x^i$ are components of $\vec{x}$ for $i \neq 0$. Here we also employ the special choice of units, that is: 
+$$c=1, \qquad 1\,\text{sec} =3\cdot 10^{10}\,\text{cm},\qquad 1\,\text{gm}=9\cdot 10^{20}\,\text{ergs}.$$ 
+Here we also put $\hbar = 1$ such that here $\hbar c = 1$. Note that MeV is a free unit here such that one can convert all units back to conventional units. \\
+
+The space $M^4 \coloneqq \{x^\mu\}$ is called the Minkowski space. Any physical event is a point in $M^4$. In such a space, the separation distance between two points $x_1$ and $x_2$ is defined by
+\begin{align*}
+ds^2 =(x_1 - x_2)^2\coloneqq (t_1 - t_2)^2 - (\vec{x}_1 - \vec{x}_2)^2 \,.
+\end{align*}
+The metric $\eta_{\mu\nu}$ of such definition of separation distance between two points in $M$ takes the matrix form given by
+\begin{align*}
+g_{\mu\nu} = g^{\mu \nu} = \bmat{1 & 0 & 0&0\\0&-1&0&0\\0 &0 &-1&0\\0&0&0&-1}\,,
+\end{align*}
+for which satisfies 
+\begin{align*}
+ds^2 = g_{\mu\nu}(x_1^\mu - x_2^{\mu}) (x_1^{\nu}-x_2^{\nu})\, .
+\end{align*}
+Lorentz transformations are linear mappings of spacetime onto itself. That is, suppose one has two inertial frames, $S$ and $S'$, with the corresponding primed and unprimed coordinates, a Lorentz transformation $\Lambda^\mu{}_\nu$ gives $(x')^\mu = \Lambda^\mu{}_\nu x^\nu$. Here $\Lambda^\mu{}_{\nu}$ is a constant matrix independent of $x^\mu$. Such a transformation leaves $ds^2 = g_{\mu\nu}dx^\mu dx^\nu$ being invariant in the two frames.\\
+
+Note here also that the separation distance between two points in $M^4$ can be positive, negative, and null. If one has $ds^2 >0$, the separation is said to be time-like, if one has $ds^2 < 0$, the separation is said to be space-like, and if one has $ds^2 = 0$, the separation is said to be null. The \textit{principle of microcausality} states that two operators in the two disconnected space-like regions must commute with each other. \\
+
+Given a point $p\in M$, all the points in $M$ that are null related to $p$ form the light cone about $p$. The time-like region, or the space-like region about $p$, are the regions where points are time-like, or space-like, related to $p$. The time-like region and the null lines are the physical regions. In the time-like region, one can define the proper time $d\tau^2 \coloneqq ds^2 $. Laws of physics are invariant in all frames, that is if one particle is not accelerating in one frame, then it should not be accelerating in all frames. That is, if $d^2x^\mu / d\tau^2 = 0$ in one frame $S$, then $d^2(x')^\mu/d\tau^2 = 0$ in any frame $S'$, which implies $\Lambda^\mu{}_\nu$ as a transformation is independent of $x$. \\
+
+
+Lorentz transformation are those that leave invariant the distance between two events in Minkowski space. That is $ds^2 = dx^\mu g_{\mu\nu}dx^\nu = dy^\mu g_{\mu\nu}dy^\nu$ is invariant under Lorentz transformation $y^\mu = \Lambda^\mu{}_\nu x^\nu$. In the following we will derive a general form of Lorentz transformation.\\
+
+For a Lorentz transformation in the $x$-direction (in an $txyz$-Minkowski space), we can write
+\begin{align*}
+\bmat{t'\\x'\\y'\\z'} = 
+\bmat{\gamma & -\gamma v & 0 & 0\\ 
+-\gamma v & \gamma & 0 & 0 \\
+0 & 0 & 1 & 0\\
+0 & 0 & 0 & 1}
+\bmat{t \\x \\y \\z}
+\end{align*}
+To rewrite Lorentz transformation from the invariance of $ds^2$, the $y$- and $z$-components are unimportant, 
+\begin{align}
+\bmat{t' \\ x'} = \bmat{\Lambda^0{}_0 & \Lambda^0{}_1 \\ \Lambda^1{}_0 & \Lambda^1{}_1}\bmat{t \\ x}
+\end{align}
+that is we have
+\begin{align*}
+dt'{}^2 - dx'{}^2 = dt^2 - dx^2
+\end{align*}
+Expanding , we see that one requires
+\begin{align*}
+(\Lambda^0{}_0)^2 - (\Lambda^1{}_0)^2 = 1\,,\qquad (\Lambda^1{}_1)^2 - (\Lambda^0{}_1)^2 = 1 \,,\qquad \Lambda^0{}_0 \Lambda^0{}_1 = \Lambda^1{}_0 \Lambda^1{}_1\,.
+\end{align*}
+
+One can look at the group property of Lorentz transformation. Note here the dot product of two vectors, which defines the distance between two points, is defined as $A\cdot B = A^\mu g_{\mu\nu} B^\nu$, hence for Lorentz transformation $\Lambda^\mu{}_\nu$, we require 
+\begin{align*}
+A\cdot B = A^\mu g_{\mu \nu} B^\nu = A'{}^\mu g_{\mu \nu} B'^\nu = A' \cdot B'\,.
+\end{align*}
+Suppose here we have
+\begin{align*}
+B'^\mu = \Lambda^\mu{}_\nu B^\nu\,,\qquad \\
+A'^\mu = \Lambda^\mu{}_\nu A^\nu\,,\qquad\,. 
+\end{align*}
+Then we should have
+\begin{align*}
+A'^\mu g_{\mu \nu} B'^\nu 
+&= \Lambda^\mu{}_\alpha A^\alpha g_{\mu \nu} \Lambda^\mu{}_\beta B^\beta
+= (\Lambda^\mu{}_\alpha g_{\mu\nu} \Lambda^\nu{}_\beta)\,A^\alpha B^\beta = A^\alpha g_{\alpha\beta} B^\beta\,,
+\end{align*}
+which requires
+\begin{align}
+\Lambda^\mu{}_\alpha g_{\mu\nu} \Lambda^\nu{}_\beta = g_{\alpha \beta}\,
+\end{align}
+holds for any Lorentz transformation $\Lambda^\mu{}_\nu$, and thus (1.2) is the defining property of Lorentz transformation. In matrix form, for a Lorentz transformation $\Lambda^T$, we require
+\begin{align*}
+\Lambda^T G\Lambda = G\,,
+\end{align*}
+where $G$ is the metric in matrix form.\\
+
+Next we will show that the product of two Lorentz transformation is also a Lorentz transformation, that is if each transformation satisfies property (1.2), then their product also satisfies (1.2). Suppose that we have
+\begin{align*}
+x'{}^\mu = L^\mu{}_\nu x^\nu\,, \qquad x''{}^\mu = \Lambda^\mu{}_\nu x'{}^\nu 
+\end{align*}
+Then one wants to show that $\Omega^\mu{}_\nu = \Lambda^\mu{}_\alpha L^\alpha{}_\nu$ is also a Lorentz transformation. First notice here we have
+\begin{align*}
+x''{}^\mu = \Lambda^\mu{}_\alpha x'{}^\alpha = \Lambda^\mu{}_\alpha L^\alpha{}_\nu  x^\nu = \Omega^\mu{}_\nu x^\nu\,.
+\end{align*}
+Now we write
+\begin{align*}
+g^{\mu\nu}\Omega^\rho{}_\mu \Omega^\sigma{}_\nu = g^{\mu\nu} \Lambda^\rho{}_\alpha L^\alpha{}_\nu \Lambda^\sigma{}_\delta L^\delta{}_\nu\,,
+\end{align*}
+while we have
+\begin{align*}
+g^{\mu \nu} L^\alpha{}_\mu L^\delta{}_\nu = g^{\alpha\delta}, \qquad g^{\alpha \delta} \Lambda^\rho{}_\alpha \Lambda^\sigma{}_\delta = g^{\rho \sigma}\,,
+\end{align*}
+hence we have
+\begin{align*}
+ g^{\mu\nu}\Omega^\rho{}_\mu \Omega^\sigma{}_\nu = g^{\alpha \delta} \Lambda^\rho{}_\alpha \Lambda^\sigma{}_\delta = g^{\rho \sigma}\,,
+\end{align*}
+showing that $\Omega^\rho{}_\mu$ is also a Lorentz transformation given by $L^\mu{}_\nu$ and $\Lambda^\mu{}_\nu$ are Lorentz transformations.\\
+
+
+Next one would like to find the inverse transformation for a given Lorentz transformation. Notice here we require
+\begin{align*}
+\Lambda_{\nu\rho} \Lambda^{\nu}{}_\sigma=g_{\mu\nu} \Lambda^\mu{}_\sigma \Lambda^\nu{}_\rho = g_{\sigma\rho}\,.
+\end{align*}
+For $g_{\sigma\rho}g^{\alpha\sigma} =  \delta^\alpha{}_\rho$ denoting the identity ($4\times 4$ identity matrix), we see that we have
+\begin{align*}
+\Lambda_\nu{}^\alpha \Lambda^\nu{}_\rho = \delta^\alpha{}_\rho\,.
+\end{align*}
+Hence we conclude here that we have
+\begin{align*}
+(\Lambda_\nu{}^\rho)^{-1} = \Lambda^\nu{}_\rho \,,
+\end{align*}
+from which we see that $A'_\mu$ has to transform as 
+\begin{align*}
+A'{}_\mu = \Lambda_\mu{}^\nu A_\nu
+\end{align*}
+so that $A'{}_{\mu}A'{}^\mu$ is invariant. In general, for a tensor with many indices
+\begin{align*}
+T'{}^{\mu \nu}  = \Lambda^\mu{}_\alpha \Lambda^\nu{}_\beta T^{\alpha\beta}\,.
+\end{align*}
+A tensor equation like $A^{\mu\nu} = 19B^{\mu\nu}$ retains its form in all Lorentz frames. \\
+
+The defining property of Lorentz transformation is given by
+\begin{align*}
+g_{\mu\nu} \Lambda^\mu{}_{\rho}\Lambda^\mu{}_\sigma = g_{\rho \sigma}\,,
+\end{align*}
+which can be rewritten as
+\begin{align*}
+\Lambda^T g\Lambda = g\,, \qquad 
+\text{thus }\left( \det(\Lambda)\right)^2 = 1\,,
+\end{align*}
+thus $\det(\Lambda) = \pm 1$, in matrix form of the formulation. \\
+
+Those Lorentz transformation with $\det(\Lambda) = 1$ are called the proper transformation, and those with $\det(\Lambda) =-1$ are called the improper transformation. \\
+
+For $\rho = \sigma = 0$ here, we can write
+\begin{align*}
+g_{\mu\nu}\Lambda^\mu{}_0 \Lambda^\nu{}_0 = 1\,,
+\end{align*}
+and thus we have
+\begin{align*}
+g_{00}\Lambda^0{}_0 \Lambda^0{}_0 + g_{ij}\Lambda^i{}_0 \Lambda^j{}_0 &= 1\\
+(\Lambda^0{}_0)^2 - \Lambda^1{}_0 \Lambda^1{}_0 &= 1\\
+( \Lambda^0{}_0)^2 &= 1 + ( \Lambda^1{}_0)^2
+\end{align*}
+thus $\Lambda^0{}_0 \geq 1$ or $\Lambda^0{}_0 \leq 1$. Those Lorentz transformation with $\Lambda^0{}_0 \geq 1$ are called orthochronous transformation.\\
+
+We will be interested in the proper orthochronous Lorentz transformation (POLT), that is those satisfying $(\det(\Lambda) = 1$ and $\Lambda^0{}_0 \geq 1$, which are those continuously connected to the identity transformation. The $\det(\Lambda) = -1$ transformation are of different kinds.\\
+
+\example An example of a transformation with $\det(\Lambda) = -1$ is given by
+\begin{align*}
+\Lambda = \bmat{1 & 0 & 0& 0\\
+0 & -1 & 0 & 0 \\
+0 & 0 & -1 & 0\\
+0 & 0 & 0 & -1}\,,
+\end{align*}
+which transforms $t\to -t$ and $\vec{x} \to -\vec{x}$, a parity transformation. Note here $\Lambda^0{}_0 = 1$.\\
+
+\example Another example, the time reversal transformation, also has $\det(\Lambda) = -1$,
+\begin{align*}
+\Lambda = \bmat{-1 & 0 & 0& 0\\
+0 & 1 & 0 & 0 \\
+0 & 0 & 1 & 0\\
+0 & 0 & 0 & 1}\,,
+\end{align*}
+which has $\Lambda^0{}_0 = -1$ and $\det(\Lambda) = -1$.\\
+
+\section[Generators of Lorentz Transformations]{\color{red} Generators of Lorentz Transformations \color{black}}
+Given a Lorentz transformation, which preserves the metric $ds^2 = dt^2 - d\vec{x}^2 = dt'{}^2 - d\vec{x}'^2$, if $dt^2 = dt'{}^2$, the Lorentz transformation can take the form of rotation as $d\vec{x}^2 = d\vec{x}'{}^2$ under rotation. On the other hand, those yields $dt^2 \neq dt'{}^2$ are the Lorentz boost, possibly composed with some rotations. Hence there should be six generators for Lorentz transformation, three for rotations and three for boosts.  \\
+
+
+Now consider an infinitesimal Lorentz transformation, we write
+\begin{align*}
+\Lambda^\mu{}_\nu = g^\mu{}_\nu + \omega^\mu{}_\nu\,,
+\end{align*}
+where $\omega$ is infinitesimal. Lorentz transformation reads
+\begin{align*}
+g_{\mu\nu}\Lambda^\mu{}_\alpha \Lambda^\nu{}_\beta &= g_{\alpha\beta}\,,\\
+\Lambda_{\nu\alpha} \Lambda^\nu{}_\beta  = g_{\alpha\beta}\,,
+\end{align*}
+thus we have
+\begin{align*}
+g_{\alpha\beta} 
+&= (g_{\nu{\alpha}}+ \omega_{\nu \alpha}) (g^\nu{}_\beta + \omega^\nu{}_\beta) \\
+&= g_{\nu\alpha}g^\nu{}_\beta + \omega_{\nu \alpha} g^\nu{}_\beta  + g_{\nu \alpha}\omega^\nu{}_\beta \,.
+\end{align*}
+where we have dropped the $\omega^2$ terms as $\omega $ is infinitesimal, from which we see that $\omega$, viewed as a matrix, is antisymmetric
+\begin{align*}
+\omega_{\beta\alpha} = \omega_{\alpha \beta}\,,
+\end{align*}
+thus there are six independent free component in $\omega$. We can write
+\begin{align*}
+\omega_{\alpha\beta}
+&= \sum_{\mu<\nu} \left( \omega_{\mu\nu} M^{\mu\nu}\right)_{\alpha\beta}\\ 
+&= \left( \omega_{01} M^{01}\right)_{\alpha\beta} +\left( \omega_{02}M^{02} \right)_{\alpha\beta} + \left( \omega_{03}M^{03} \right)_{\alpha\beta}
++
+ \left(\omega_{13} M^{13}\right)_{\alpha\beta} +\left( \omega_{12}M^{12} \right)_{\alpha\beta} + \left( \omega_{23}M^{23} \right)_{\alpha\beta}\,,
+\end{align*}
+where $M^{\mu\nu}$ are antisymmetric matrices, with entry $1$ at $ij$-input and $-1$ at $ji$-input, index starts from zero, and has entry zero elsewhere. For instance,
+\begin{align*}
+M^{13} = \bmat{
+0 & 0 & 0& 0\\
+0 & 0 & 0& 1\\
+0 & 0& 0 & 0\\
+0 & -1 & 0 & 0
+}\,.
+\end{align*}
+and here
+\begin{align*}
+(M^{\mu\nu})_{\alpha\beta} = g^\mu{}_\alpha g^\nu{}_\beta - g^{\mu}{}_\beta g^\nu{}_\alpha\,.
+\end{align*}
+Thus now we can write
+\begin{align*}
+\Lambda^\alpha{}_\beta = g^\alpha{}_\beta + \frac{1}{2}\omega_{\mu\nu}(M^{\mu\nu})^\alpha{}_{\beta}\,,
+\end{align*}
+and hence we have
+\begin{align*}
+\Lambda = 1 + \frac{1}{2}\omega_{\mu\nu}M^{\mu\nu}\,.
+\end{align*}
+The $6$ matrices $M^{\mu\nu}$ can be divided intro two groups: $K_i \coloneqq M^{0i}$, and $L_j \coloneqq M^{jk}$, where $i,j,k$ are cyclic. One can check the commutation relations
+\begin{align}
+[K_i, K_j] = -\epsilon_{ijk} L_k\,,\qquad [L_i, L_j] = \epsilon_{ijk}L_k\,,\qquad
+[L_i, K_j] = \epsilon_{ijk} K_k\,,
+\end{align}
+where $\epsilon_{ijk}$ is a total anti-symmetric quantity 
+\begin{align*}
+\epsilon_{ijk} \coloneqq \begin{cases}
+1 & (i,j,k) \text{ is an even permutation of }(1,2,3)\\
+-1 & (i,j,k) \text{ is an odd permutation of }(1,2,3)\\
+0 & \text{if any of $i,j,k$ are equal}
+\end{cases}\,.
+\end{align*}
+
+Here $L_i$ are the rotation generators and $K_i$ are the boost generators.\footnote{As seen in Physics 513 HW1.} \\
+
+Conventionally, to make the operators Hermitian, one defines $\hat{L}_i = iL_i$, then $[\hat{L}_i , \, \hat{L}_j ] =i\epsilon_{ijk} \hat{L}_k$. Similarly, $\hat{K}_i = iK_i$, such that $[\hat{L}_i , \hat{K}_j ] = i\epsilon_{ijk}\hat{K}_k$, and $[\hat{K}_i, \hat{K}_j] = -i\epsilon_{ijk} \hat{L}_k$. Note here $[\hat{L}_i , \, \hat{L}_j ] =i\epsilon_{ijk} \hat{L}_k$ implies that the $\hat{L}_i$ operators form a group, while the $\hat{K}_i$ operators themselves do not form a group. Action of the Lorentz transformation on Hilbert space will be implemented by representation of the these algebra.\footnote{For more details, check out the algebra of SO$(3,1)$ group.}\\
+
+Now we turn our discussion to finite transformation. Here we will apply
+\begin{align*}
+e^A = \lim_{n \to \infty} \left( 1+ \frac{A}{n}\right)^n\,, \qquad (e^A)^\dagger = e^{A^\dagger}\,, \qquad \det(e^A) = e^{\text{tr}(A)}\,.
+\end{align*}
+\example For infinitesimal rotation about the $z$-axis by some $\delta \theta$, we have
+\begin{align*}
+\bmat{x' \\ y'} = \bmat{1 & -\delta\theta \\ \delta\theta & 1}\bmat{x \\y}
+=\bmat{x- \delta \theta y  \\ y + \delta x} = ( 1- \delta\theta\, L_z) \bmat{x \\ y}
+\end{align*}
+where we write
+\begin{align*}
+L_z = \bmat{0 & -1 \\ 1 & 0}\,.
+\end{align*}
+For rotation of a finite angle, we have
+\begin{align*}
+\bmat{x' \\ y'} = \lim_{n\to \infty} \left( 1- \frac{\theta}{n}\,L_z \right)^n\bmat{x \\y} = e^{-\theta L_z} \bmat{x \\ y}\,,
+\end{align*}
+where $\theta = n\delta \theta$, and one can check that 
+\begin{align*}
+e^{\theta L_z} = \bmat{\cos(\theta)& -\sin(\theta) \\
+\sin(\theta) & \cos(\theta)}\,.
+\end{align*}
+\example Now for the boost in $x$-direction, we can write
+\begin{align*}
+\bmat{t' \\ x'} = \Lambda \bmat{t\\ x}\,,
+\end{align*}
+where we have
+\begin{align*}
+\Lambda = \bmat{\gamma & \gamma v \\ \gamma v & \gamma}\,, \qquad \gamma = \frac{1}{\sqrt{1- v^2}}\,.
+\end{align*}
+For infinitesimal boosts, we have $\gamma \approx 1$ and $\gamma v \approx \delta$, so we have
+\begin{align*}
+\Lambda = \bmat{1 & \delta  \\ \delta &1} = I+ \delta K_x
+\end{align*}
+where $I$ is the identity matrix and
+\begin{align*}
+K_x = \bmat{0 & 1 \\ 1 & 0}\,.
+\end{align*}
+Suppose we apply $n$ such boosts consecutively, where we taken $n$ to infinity while $n\delta$ is fixed to a certain value $\xi = n\delta $. The resulting transformation is
+\begin{align*}
+\Lambda = \lim_{n\to \infty}\left( I + \frac{\xi}{n} K_x \right)^n = e^{\xi K_x}\,,
+\end{align*}
+then one can show that we have
+\begin{align*}
+\Lambda = \bmat{
+\cosh(\xi) & \sinh(\xi)\\
+\sinh(\xi) & \cosh(\xi)
+}\,,
+\end{align*}
+which is a boost characterized by $\gamma = \cosh(\xi)$, $\gamma v = \sinh(\xi)$. 
+
+
+\section[Connection between rotation and angular momentum]{\color{red}Connection between rotation and angular momentum\color{black}}
+Here we will find the representations of the rotation group discussed previously in the Hilbert space that we are interested in.\\
+
+The basis vector of the Hilbert space is denoted as $|x\rangle$. The group of rotation transformations corresponds a set of matrices $\{X(R)\}$ acting on the Hilbert space. For notation, we write a rotation transformation
+\begin{align*}
+X(R)\, |x\rangle  = | x'\rangle = |Rx\rangle\,.
+\end{align*}
+Note that we have
+\begin{align*}
+|\psi \rangle = \int d^3x\, \psi(x) \, |x\rangle\,, \qquad \psi(x) = \langle x|\psi\rangle\,.
+\end{align*}
+Now consider a rotation implemented by $X(R)$ in the Hilbert space, $X(R)\, |\psi\rangle \coloneqq |\psi'\rangle$. Then we can write
+\begin{align*}
+\psi'(x) = \langle x | \psi'\rangle = \langle x | X(R)\, \psi\rangle = \langle R^{-1}x|\,\psi\rangle = \psi(R^{-1} x)\,,
+\end{align*}
+thus we have $\psi'(x') = \psi(x)$. \\
+
+
+For infinitesimal rotations
+\begin{align*}
+\psi'(x) - \psi(x) = \delta \psi(x)\,,
+\end{align*}
+Note $\vec{x}' = R\vec{x}$, if $R$ is infinitesimal, $\vec{x}' = \vec{x} + \delta \vec{\theta} \otimes \vec{x}$, where $\otimes$ is interpreted as the cross product. Here we can write the following using Taylor expansion
+\begin{align*}
+\psi(R^{-1} x)  = \psi(\vec{x} - \delta \vec{\theta}\otimes \vec{x}) 
+&= \psi(\vec{x}) - (\delta \vec{\theta} \otimes \vec{x}) \cdot \nabla \psi+ \text{(higher order terms)}\\
+&=\psi(x) - \frac{i}{\hbar}( \delta \vec{\theta} \otimes \vec{x}) \cdot \vec{p} \psi + \text{(higher order terms)}\,,
+\end{align*}
+thus rearranging, and ignoring the higher order terms, we see here we have
+\begin{align*}
+\delta \psi = -\frac{i}{\hbar} \delta \vec{\phi}\cdot \vec{L}\,,\qquad \text{where } \vec{L} = \vec{x}\times \vec{p}\,,
+\end{align*}
+where $\vec{L}$ characterizes the angular momentum of the particle. Now we see a connection between angular momentum and rotation in quantum mechanics. For particle with spin $j$, the basis is given by $|x, \sigma\rangle$ and here we can write
+\begin{align*}
+|\psi \rangle = \sum_{\sigma} \int d^3x\, \psi_{\sigma}(x) \, |\vec{x},\sigma\rangle\,,\qquad \psi_\sigma (x) = \langle x,\sigma | \psi\rangle\,.
+\end{align*}
+If $X^j(R)$ is the operation implementing rotation in the Hilbert space, then we can write
+\begin{align*}
+X^j(R) \,|x,\sigma\rangle = \sum_{\sigma'} D^j_{\sigma'\sigma}(R) \ | Rx,\sigma'\rangle\,.
+\end{align*}
+Thus we have here
+\begin{align*}
+\psi'_{\sigma}(x) &= \langle x,\sigma | \psi'\rangle = \langle x,\sigma | X(R)\,\psi\rangle = \sum_{\sigma'}D^j_{\sigma \sigma'}(R) \langle R^{-1} x,\sigma '|\psi\rangle= \sum_{\sigma '} D^j_{\sigma \sigma'}(R)\ \psi_{\sigma'} (R^{-1} x)\,.
+\end{align*}
+Rearranging we obtain
+\begin{align*}
+\psi_\sigma'(x') = \sum_{\sigma'}D^j_{\sigma\sigma'}(R) \psi_{\sigma'}(x)\,,
+\end{align*}
+%where we see here
+%\begin{align*}
+%D_{\sigma\sigma'}^j \approx \delta_{\sigma\sigma'}-i(\vec{s}\cdot \delta \theta)_{\sigma\sigma'}
+%\end{align*}
+%for spin half \textbf{(ADD)} $\vec{s} = 1/2$.\\
+Again, for infinitesimal rotation, it is not hard that one can find
+\begin{align*}
+\delta \psi' = -i\delta \vec{\theta} \cdot (\vec{L}+\vec{s}) \,\psi(x)\,,
+\end{align*}
+where $\vec{L} + \vec{s} = \vec{J}$ is the total angular momentum. \\
+
+
+Consider the following combination of the Lorentz generators $K_i$ and $L_i$
+\begin{align*}
+J_i^A = \frac{1}{2}\left(\hat{L}_i - i\hat{K}_i\right)\,,\qquad J_{i}^B = \frac{1}{2}\left( \hat{L}_i + i\hat{K}_i\right) \,.
+\end{align*}
+one can check that the previous algebra implies that we have
+\begin{align*}
+[J^A_i, \ J^A_j ] =i \epsilon_{ijk}J_k^A\,,\qquad [J_i^B,\ J_j^B ] = i\epsilon_{ijk}J_k^B\,,\qquad
+[J_{i}^A, \ J_j^B] = 0\,.
+\end{align*}
+Thus $\{J^A_i\}$ and $\{J^B_i\}$ are two commuting rotational groups each of some group representation dimension  $2j+1$. Thus when $\hat{K}_i$, or $\hat{L}_i$, acts on some object, one can treat it as $J_i^A$ and $J_i^B$ acting on two non-interacting spaces $\{|j_1,m_1\rangle\}$ and $\{|j_2,m_2\rangle\}$, where $j_1$ and $j_2$ are interpreted as the total angular momenta associated to the $\{J^A_i\}$ and $\{J^B\}$ space, respectively, and $m_1$ and $m_2$ are the projections of the total angular momenta in some axes. The basis vector in the Hilbert space $H$ that $\{J^A_i\}$ and $\{J^B_i\}$ are acting on can be defined by $|j_1, m_1\rangle \otimes |j_2,m_2\rangle$.\\
+
+The linear transformation representations of $\{J^A_i\}$ and $\{J^B_i\}$ are labeled as $D^{(j_1,j_2)}$ when acting on $H$, and the dimension of $H$ is $(2j_1 + 1)(2j_2 + 1)$. Here $J_i^A$ and $J_i^B$ themselves are of the form $(J_i^{j_1} \otimes \mathbb{I}^{j_2}) \text{ and } (\mathbb{I}^{j_1}\otimes J_i^{j_2})$ when acting on $H$, respectively. Component-wise, one might also utilize the notation
+\begin{align*}
+(J_i^A)_{m_1'm_2'm_1m_2} = (J_i^{j_1})_{m_1'm_1} \otimes \mathbb{I}_{m_2' m_2}\,,\qquad
+(J_i^B)_{m_1'm_2'm_1m_2} = \mathbb{I}_{m_1'm_1}\otimes (J_i^{j_2})_{m_2'm_2}\,.
+\end{align*}
+Note further that we have
+\begin{align*}
+(J^A)^2 &= \left( \sum_i J_i^A\right)^2 |j_1 m_1 \rangle \otimes |j_2m_2\rangle = j_1(j_1+1) |j_1 m_1\rangle \otimes |j_2m_2\rangle\,,\\
+(J^B)^2 &= \left( \sum_i J_i^B\right)^2 |j_1m_1\rangle \otimes |j_2 m_2 \rangle = j_2(j_2 +1) | j_1m_1\rangle \otimes |j_2 m_2\rangle\,.
+\end{align*}
+Here $H$, the Hilbert space of $(j_1, j_2)$ representation, is a space that describes objects with spins from $|j_1-j_2|$ to $|j_1 + j_2|$.\\
+
+%% \\
+%%
+%%
+%%Low lying representations: 
+%%spin zero: $(0,0)$ scalar\\
+%%spin half: $(1/2,0)$, or $(0,1/2)$ left or right handed\\
+%%spin one: $(1,0)$ or $(0,1)$ left or right handed photons\\
+%%spin two: $\{(1,1)\}$ symmetric traceless that describes graviton\\
+%
+%
+%\newpage
+%Representation of the Lorentz group. Here we have defined
+%\begin{align*}
+%J_i^A = \frac{1}{2}\left( \hat{L}_i - i \hat{K}_i\right) \, \qquad J_i^B = \frac{1}{2}\left( \hat{L}_i + i \hat{K}_i \right)\,.
+%\end{align*}
+%Here $J_i^A$ and $J_i^b$ satisfy angular momentum algebra, and $[J_i^A, J_j^B] = 0$. That is, we have two mutually commuting rotation groups. For states $|j_1, m_1 \rangle$ and $|j_2, m_2\rangle$, the states for the Lorentz group are then $|j_1m_1 \rangle \otimes |j_2 m_2\rangle$. The dimension of the space is $(2j_1 + 1) ( 2j_2 + 1)$. The different representation are labeled by $(j_1, j_2)$ , the corresponding $D$ matrices are $D^{j_1, j_2}$. The $(j_1, j_2)$ representation describes space $|j_1 - j_2| ,\cdots, |j_1 + j_2|$.\\
+
+Here the $(j_1, j_2) = (0,0)$ representation is $1$-dimensional, describing spin zero particles, or scalars. The $(0,1/2)$ and $(1/2,0)$ are both $2$-dimensional representations, describing spin-$1/2$ particles, one is left-handed and the other one is right-handed. The $(1/2,1/2)$ representation is $(2\cdot 1/2 + 1)(2\cdot 1/2+1) = 4$-dimensional, describing objects with spins $0$ and $1$, such as the massive vector mesons. The $(1,0)$ and $(0,1)$ representations describe objects with spin $1$, such as the left-handed and right-handed electromagetic field. The $(1,1)$ representation describes objects with spins $2,\,1\,$and $0$, and represents the symmetric rank $2$ tensor, whose traceless part describes graviton. \\
+
+
+\example For the $(j_1,j_2) =(1/2,0)$ representation, we can write
+\begin{align*}
+ J_i^A=  \frac{1}{2}\sigma \otimes \mathbb{I}
+\end{align*}
+and $J_i^B$ acts triviallly, then we get
+\begin{align*}
+\hat{L}_i = \frac{1}{2}\sigma_i \,, \qquad \hat{K}_i = -i \frac{\sigma_i}{2}\,.
+\end{align*}
+Combining we find
+\begin{align*}
+D^{(1/2, 0)} = e^{i\sigma_i \theta_i /2 + \sigma_i\xi_i/2}\,.
+\end{align*}
+
+For the $(0,1/2)$ representation, $J_i^A$ acts trivially, and 
+\begin{align*}
+J_i^B =\mathbb{I}\otimes  \frac{1}{2}\sigma_i
+\end{align*}
+from which we find that
+\begin{align*}
+\hat{L}_i = \frac{1}{2}\sigma_i \,,\qquad 
+\hat{K}_i = i \frac{\sigma_i}{2}
+\end{align*}
+and thus
+\begin{align*}
+D^{(1/2,0)} = e^{i/2 \sigma_i \theta_i - \sigma_i\xi_i /2}
+\end{align*}
+
+Now we consider pure rotation of a spinor $\phi$ in $(1/2,0) $ representation of the Lorentz group. The rotated spinor is thus given by
+\begin{align*}
+e^{i (\sigma_i/2)\theta_i  } \phi = \left( \cos\left(\frac{\theta}{2} \right)  + i\, \frac{\vec{\sigma} \cdot \vec{\theta}}{|\theta|}\, \sin\left(\frac{\theta}{2} \right) \right) \phi\,\,.
+\end{align*}
+The boosted spinor is
+\begin{align*}
+e^{ (\sigma_i/2)\xi_i} \phi = \left(\cosh\left(\frac{\xi}{2}\right) + \frac{\vec{\sigma}\cdot \vec{\xi}}{|\vec{\xi}|}\,\sinh\left(\frac{\xi}{2}\right)\right) \phi\,.
+\end{align*}
+We can also add two irreducible representation to get a reducible one, for example, we can write $
+\left(0,1/2\right) \oplus \left(1/2, 0\right)$ gives a $4$-dimensional representation but with spin $1/2$, represented as
+\begin{align*}
+D = \bmat{D^{(0,1/2)} & 0 \\ 0 & D^{(1/2,0)}} \bmat{\psi_{(0,1/2)} \\ \psi_{(1/2,0)}}\,.
+\end{align*}
+
+\section[Poincare Invariance]{\color{red} Poincare Invariance\color{black}}
+Poincare invariance states that the laws of physics are invariant not only under Lorentz transformations, but also rigid translation, that is, for any transformation of the form
+\begin{align*}
+x'^\mu = \Lambda^\mu{}_\nu x^\nu + a^\mu
+\end{align*}
+where $a^\mu$ is a constant vector, the laws of physics are invariant before and after the transformation. Translation in Hilbert space are implemented by the four momentum operator $e^{i p^\mu a_\mu}$, 
+so if $\phi(x)$ is a scalar operator, then we can write $\phi(x+a)=e^{-i p_\mu a^\mu} \phi(x) e^{ip_\mu a^\mu}$. Note that $[p_\mu, p_\nu ] =0$, but $p_\mu$ in general does not commute with the Lorentz generator. 
+%\begin{align*}
+%[M^{\mu\nu}, p^\alpha] = [g^{\mu \alpha} p^\nu - g^{\nu \alpha} p^\mu]
+%\end{align*}
+
+
+
+
+\chapter{Quantum Free-scalar Field}
+\section[Quantization of the Field]{\color{red}Quantization of the Field\color{black}}
+Let $\phi$ be a wavefunction of a spin-zero (scalar) particle. Note that $E^2 = \vec{p}^2 + m^2$. Considering $\vec{p} = -i \vec{\nabla}$ and $E = i(\pd/\pd t)$, we recover the Klein-Gordon equation
+\begin{align*}
+-\frac{\pd^2 \phi}{\pd t^2} = -\vec{\nabla}^2 \phi + m^2 \phi\,,
+\end{align*}
+Rearranging we obtain
+\begin{align}
+\left(\frac{\pd^2}{\pd t^2} - \vec{\nabla}^2 +m^2 \right) \phi = 0\,.
+\end{align}
+Note further that we can define
+\begin{align*}
+\frac{\pd^2}{\pd t^2} - \vec{\nabla}^2 = \pd_\mu \pd^\mu \coloneqq \square\,,
+\end{align*}
+which ensures the Lorentz invariance.\\
+
+We require that $\phi(x) = \phi'(x')$ for scalar field $\phi \to \phi'$ under a Lorentz transformation, so if $(\square +m^2) \phi(x) = 0$ in one frame, then $(\square ' + m^2 ) \phi'(x') = 0$ in another inertial frame. While we first need to understand how derivative transform under Lorentz transformations. Thus here we consider a Lorentz Transformation
+\begin{align*}
+x'^{\mu} = \Lambda^\mu{}_{\nu}x^\nu \,.
+\end{align*}
+We also consider a scalar function $f(x)$ that looks the same in all (primed) frames, that is $f(x) = f'(x')$, then we shall write
+\begin{align*}
+f(x + dx) - f(x) = f'(x' + dx') - f'(x')\,,
+\end{align*}
+or in other words,
+\begin{align*}
+dx^\mu \frac{\pd f}{\pd x^\mu} = dx'^\mu \frac{\pd f}{\pd x'^\mu}\,.
+\end{align*}
+That means $\pd f/\pd x^\mu$ must transform as covariant vector, or a vector with lower index. Note here for arbitrary covariant vector $A_\alpha$, under a Lorentz transformation,
+\begin{align*}
+A'_\mu (x') = \Lambda_\mu{}^\alpha A_\alpha(x)\,,
+\end{align*}
+so we have
+\begin{align*}
+\frac{\pd f'}{\pd x'^\mu}|_{x'} = \Lambda_\mu{}^\alpha \frac{\pd f}{\pd x^\alpha}|_x
+\end{align*}
+that is why we write $\pd/\pd x^\mu$ as $\pd_\mu$. \\
+
+
+\newpage
+Here we will need to normalize the plane wave solutions to the wave equations in a relativistically invariant manner. One can show using the wave equation that 
+\begin{align*}
+j^\mu = i \left( \phi^* \pd^\mu \phi - (\pd^\mu \phi^*) \phi\right)
+\end{align*}
+is invariant in a sense that we have
+\begin{align*}
+\pd_\mu j^\mu = 0
+\end{align*}
+Therefore, it is not hard to see that $\int j^0\, d^3x$ is time independent and Lorentz invariant. Thus we will choose a normalization such that $\int j^0 \, d^3 x = 1$. Also, we will first normalize in a region of volume $V$ and time interval $T$, and then take the limit $V,T \to \infty$. One will see that all physical quantities are independent of $T$ and $V$ and the limit exists.\\
+
+The wave equation for a classical spinless particle, in a more compact form, is given by
+\begin{align}
+(\square + m^2)\, \phi(x) = 0\,,
+\end{align} 
+which is a covariant equation, if one has $(\pd_\mu \pd^\mu  + m^2) \, \phi(x) = 0$
+in one frame, then $(\pd'_\mu \pd'^\mu  + m^2) \, \phi'(x') = 0$ in any other primed frame. The solution to (2.2) gives 
+\begin{align}
+\phi(x) = N e^{\pm i p_\mu x^\mu}\,,
+\end{align}
+where $p_\mu$ satisfies
+\begin{align*}
+p_\mu p^\mu = m^2\,.
+\end{align*}
+Here we can normalize (2.3) by putting the system in a cubic box of volume $V=L^3$, such that the momenta are discrete. The three momenta thus become
+\begin{align*}
+p_i = \frac{2\pi n_i}{L}\,,
+\end{align*} 
+with $n_i \in \Z$. Fist we can write here
+\begin{align*}
+dp_i = \frac{2\pi}{L} \, dn_i\,,
+\end{align*}
+thus we have
+\begin{align*}
+d^3p = \left( \frac{2\pi}{L}\right)^3 \,dn_1\, dn_2\, dn_3\,,
+\end{align*}
+from which we see that the number of momentum state is 
+\begin{align*}
+\frac{d^3p}{(2\pi /L)^3} = \frac{V}{(2\pi)^3}\, d^3p
+\end{align*}
+In the limit where $V \to \infty$, we have found that 
+\begin{align*}
+\sum_{\vec{p}}\approx \frac{V}{(2\pi)^3}\int \, d^3p\,.
+\end{align*}
+
+Explicitly looking at the normalization of plane wave state, we introduce 
+\begin{align*}
+j_\mu = i(\phi^* \pd_\mu \phi - \phi \pd_mu \phi^*)\,,
+\end{align*}
+and here $\pd^\mu j_\mu = 0$ follows from the equation of motion, the quantity 
+\begin{align*}
+\int j_0 \, d^3x
+\end{align*}
+is time independent and Lorentz invariant. Thus we normalize such that
+\begin{align*}
+\int\, j^0\, d^3x = 1\,.
+\end{align*}
+For $\phi(x) = N e^{\pm i p_\mu x^\mu}$, one can show that we have
+\begin{align*}
+N = \frac{1}{\sqrt{2p^0 V}}
+\end{align*}
+where $V$ is the volume of the box, and $p^0 = \sqrt{\vec{p}^2 + m^2}$. The general solution of (2.2), after a Fourier transformation to the momentum space, then becomes
+\begin{align*}
+\phi(\vec{x}) = \sum_{\vec{p}} \frac{1}{\sqrt{2p^0 V}} \left( a(\vec{p})\, e^{-i \vec{p}\cdot\vec{x}} + a^\dagger(\vec{p})\, e^{i\vec{p}\cdot\vec{x}}\right)\,,
+\end{align*}
+where $a^\dagger(p)$ is the creation operator, and $a(p)$ is the annihilation operator, the term $\vec{p}\cdot \vec{x}$ is understood as the inner product of spatial components of the four vectors $p$ and $x$, and it is obvious here, $\phi(\vec{x})$ is time-independent, that is the field operator is independent on time, we are in the Schrodinger's picture. 
+
+\subsection{The Lagrangian formulation}
+The Euler-Lagrangian equation of motion gives
+\begin{align}
+\pd_\mu \frac{\pd \mathcal{L}}{\pd_\mu \phi} - \frac{\pd \mathcal{L}}{\pd \phi} = 0\,,
+\end{align}
+and we expect (2.4) gives a solution that satisfies (2.2). One finds easily that
+\begin{align*}
+\mathcal{L}(x) = \frac{1}{2}(\pd_\mu \phi) (\pd^\mu \phi) - \frac{1}{2}m^2 \phi^2\,,
+\end{align*}
+which yields
+\begin{align*}
+\frac{\pd \mathcal{L}}{\pd (\pd_\mu \phi)} = \pd^\mu \phi \, ,\qquad
+\frac{\pd \mathcal{L}}{\pd \phi} = -m^2\phi\,,
+\end{align*}
+thus recovering (2.2) when combined with (2.4).\\
+
+Note further that the action $S$ is dimensionless, and so $\mathcal{L}(x)$ should have (mass)$^4$ dimension as we require $S = \int \mathcal{L}\, d^4x$, thus $\phi$ should have unit mass dimension. We also note that the field $\phi$ here is a free classical scalar field, no interaction potential. \\
+
+Next we will show that $S$ is invariant under Lorentz transformation. Here we consider a Lorentz transformation
+\begin{align*}
+x'^\mu = \lambda^\mu{}_\nu x^\nu\,,
+\end{align*}
+where we require $\phi'(x') = \phi(x)$, and thus $\phi'(x) = \phi(\Lambda^{-1} x) \coloneqq \phi(y)$. Here we have
+\begin{align*}
+\pd_\mu \phi'(y) = (\Lambda^{-1})^\nu{}_\mu \pd_\nu \phi(y)\,,
+\end{align*}
+thus we have, after the transformation,
+\begin{align*}
+\pd_\mu \phi(x) \, \pd_\nu\phi(x) \, g^{\mu\nu} \to (\Lambda^{-1})^\rho{}_\mu (\Lambda^{-1})^{\sigma}{}_{\nu} g^{\mu \nu} \, \pd_\rho \phi(y) \, \pd_\sigma\phi(y) = g^{\rho \sigma} \pd_\rho \phi(y) \, \pd_\sigma \phi(y)\, 
+\end{align*}
+by the property of Lorentz transformation. Note further that the Jacobian of the change of variable $y = \Lambda^{-1}x$ is $|\det(\Lambda)| = 1$, thus we have, finally,
+\begin{align*}
+\int\, d^4 x \, \mathcal{L}(x) = \int\, d^4y \, \mathcal{L}(y)\,,
+\end{align*}
+showing that action is Lorentz invariant. 
+
+\section[Space of Multiple Free-scalar Particles]{\color{red}Space of Multiple Free-scalar Particles\color{black}}
+Some basic principles of Quantum Field Theory:
+\begin{enumerate}
+\item States in the quantum field theory are vectors in a Hilbert space.
+\item States transform under a representation of the Poincare group. That is, $$|\text{state}\rangle \to |\text{state}'\rangle = U(\Lambda, a) \, |\text{state}\rangle\,$$
+\item There is a unique vacuum state $|0\rangle$ which is invariant under Poincare transformation. That is, for arbitrary Lorentz transformation $\Lambda$ and translation $a$,
+\begin{align*}
+U(\Lambda, a)\, |0\rangle = |0\rangle\,.
+\end{align*}
+\item The fundamental objects from which the observables are measured are the field operators, denoted as $\phi(x)$. 
+\item There is a relation between the states we have in the Hilbert space and the field operators. In fact, the field operators build up the Hilbert space. 
+\item The quantum field theory must be unitary and causal. 
+\end{enumerate}
+
+
+Now we will consider Hilbert space for free massless particle, states are labeled by momenta $k^\mu$. The momentum operator $P^\mu$ acting on a state thus gives
+\begin{align*}
+P^\mu |k\rangle = k^\mu |k\rangle\,,
+\end{align*}
+and note further that $k_\mu k^\mu = m^2$. We define the action of Lorentz transformation $U(\Lambda)$ on the state by 
+\begin{align*}
+U(\Lambda) \, |k\rangle = |\Lambda k\rangle\,.
+\end{align*}
+Note that we can write
+\begin{align*}
+U(\Lambda_2) \, U(\Lambda_1)\, |k\rangle = U(\Lambda_2) \, |\Lambda_1 k\rangle = |\Lambda_2 \Lambda_1  k\rangle\,.
+\end{align*}
+Consider the momentum operator $P^\mu$, which should get transformed such that it satisfies
+\begin{align*}
+U(\Lambda^{-1}) P^\mu U(\Lambda)\, |k\rangle = U(\Lambda^{-1}) \, P^\mu |\Lambda k\rangle\,,
+\end{align*}
+writing $P^\mu |\Lambda k\rangle = \Lambda^{\mu}{}_\nu k^\nu |\Lambda k\rangle $, we obtain
+\begin{align*}
+U(\Lambda^{-1}) P^\mu U(\Lambda)\, |k\rangle 
+&= \Lambda^\mu{}_\nu k^\nu U(\Lambda^{-1}) | \Lambda k\rangle \\
+&= \Lambda^\mu{}_{\nu} k^\nu \, |k\rangle\\
+&= \Lambda^\mu{}_\nu P^\nu |k\rangle
+\end{align*}
+thus we have
+\begin{align*}
+U(\Lambda^{-1}) P^\mu U(\Lambda) = \Lambda^\mu{}_\nu P^\nu\,.
+\end{align*}
+\subsection{Construction of the Hilbert space}
+The Hilbert space labeled by \textit{infinite many} momenta is infinite dimensional, and there can be infinite number of particles. To construct the Hilbert space of infinitely many particles, each with momentum labeled as $p$, we utilize the ladder operators as in the space of quantum harmonic oscillator. That is, the Hilbert space could be built up of annihilation and creation operators $a$ and $a^\dagger$, defined by $a_{nm} = \sqrt{n}\delta_{m,n+1}$, and $(a^\dagger )_{nm} = \sqrt{m}\delta_{m, n-1}$. That is $a|0\rangle = 0$, and
+\begin{align*}
+a|\underbrace{\vec{p},\vec{p},\cdots, \vec{p}}_{n}\rangle = \sqrt{n} |\underbrace{\vec{p}, \cdots ,\vec{p}}_{n-1}\rangle
+\end{align*}
+where $|\vec{p},\vec{p},\cdots, \vec{p}\rangle$ represent a state with $n$ particles of momenta $p$. Similarly,
+\begin{align*}
+a^\dagger |\underbrace{\vec{p},\cdots, \vec{p}}_{n-1}\rangle = \sqrt{n+1} |\underbrace{\vec{p},\vec{p}, \cdots \vec{p}}_{n}\rangle
+\end{align*}
+Notice here we require $[a,a^\dagger] = 1$. Here the comma will be dropped when considering states of the same momenta. \\
+
+Now in free scalar quantum field theory, we can have particle with different momenta. Thus we label the $a$ and $a^\dagger$ with the respective momenta, such that the two operators satisfy the commutator
+\begin{align*}
+[a(\vec{p}), \, a^\dagger (\vec{q})] = \delta_{\vec{p},\vec{q}}\,.
+\end{align*}
+The total Hilbert space is then 
+\begin{align*}
+H \coloneqq H_{\vec{p}_1} \otimes H_{\vec{p}_2} \otimes \cdots \,.
+\end{align*}
+Here, for instance, we will have
+\begin{align*}
+a(\vec{p}) \, |\vec{p}\vec{p},\vec{q}\vec{q}\vec{q} \rangle = \sqrt{2}\, |\vec{p},\vec{q}\vec{q}\vec{q}\rangle \,, \quad\qquad
+a(\vec{q}) \, |\vec{p}\vec{p},\vec{q}\vec{q}\vec{q} \rangle = \sqrt{3}\, |\vec{p}\vec{p},\vec{q}\vec{q}\rangle \,.
+\end{align*}
+Here $(a^\dagger(\vec{p})\ a(\vec{p}))$ counts the number of particles of momentum $\vec{p}$, and $(a^\dagger(\vec{q})\, a(\vec{q}))$ counts the number of particles of momentum $\vec{q}$. Total number of the particles can then be computed using the operator
+\begin{align*}
+\sum_{\vec{p}} a^\dagger(\vec{p}) \, a(\vec{p})\,,
+\end{align*}
+and the total momenta in a state can be computed using the operator 
+\begin{align*}
+\sum_{\vec{p}} \vec{p}\, a^\dagger(\vec{p}) \, a(\vec{p})\,.
+\end{align*}
+The entire Hilbert space can be built up by acting with appropriate creation operators on the vacuum states. The normalized states are, for instance,
+\begin{align*}
+\frac{1}{\sqrt{2}}\, a^\dagger(\vec{p})\, a^\dagger(p)\, |0\rangle = |\vec{p}\vec{p}\rangle\,.
+\end{align*} 
+In general, normalization gives
+\begin{align*}
+|\underbrace{\vec{p}_1\vec{p}_1\cdots \vec{p}_1}_{n_1},\ \underbrace{\vec{p}_2\vec{p}_2\cdots \vec{p}_2}_{n_2}, \cdots \rangle = \frac{1}{\sqrt{n_1 !}} \frac{1}{\sqrt{n_2}!}\cdots \left(a^\dagger (\vec{p}_1) \right)^{n_1}
+\left(a^\dagger (\vec{p}_2) \right)^{n_2} \cdots |0\rangle\,.
+\end{align*}
+And here we require the commutation relation
+\begin{align*}
+[a(\vec{p}),\, a^\dagger(\vec{q})] = \delta_{\vec{p},\vec{q}}\,, \qquad 
+[a(\vec{p}), a(\vec{q})] = [a^\dagger(\vec{p}), a^\dagger(\vec{q})] = 0\,.
+\end{align*}
+The field operator are written in the form of Fourier transforming the field into the momentum space, with composition of creation and annihilation operators
+\begin{align*}
+\phi(\vec{x}) = \sum_{\vec{p}} \frac{1}{\sqrt{2p^0 V}} \left( a(\vec{p}) e^{-i \vec{p}\cdot\vec{x}} + a^\dagger(\vec{p}) e^{i\vec{p}\cdot\vec{x}} \right)\,,
+\end{align*}
+where $\vec{p}\cdot \vec{x}$ is the inner product of spatial-vectors. Thus we can write
+\begin{align*}
+\langle 0 |\phi(\vec{x}) |\vec{k}\rangle 
+&= \langle 0 |\phi(\vec{x})\, a^\dagger(\vec{k}) |0\rangle \\
+&= \sum_{\vec{p}} \frac{1}{\sqrt{2Vp^0}} \langle 0 |a(\vec{p}) e^{-i\vec{p}\cdot\vec{x}} a^\dagger(\vec{k}) |0\rangle\\
+&= \sum_{\vec{p}} \frac{1}{\sqrt{2Vp^0}} \langle 0 |a(\vec{p}) \, a^\dagger(\vec{k}) |0\rangle e^{-i\vec{p}\cdot\vec{x}}\\
+&= \frac{e^{-i \vec{k}\cdot \vec{x}}}{\sqrt{2Vp^0}}
+\end{align*}
+
+We note that the total Lagrangian is an integral of the Lagrangian density $\mathcal{L}(\phi, \pd_\mu \phi)$. For scalar field, we have here
+\begin{align*}
+L = \int\, d^3 x\, \mathcal{L} = \int \, d^3x\, \left( \frac{1}{2} \, \pd_\mu \phi\, \pd^\mu \phi - \frac{1}{2}\, m^2 \phi^2\right)\,,
+\end{align*}
+which gives rise to the Klei-Gordon equation of motion
+\begin{align*}
+\left( \pd^\mu  \pd_\mu + m^2\right) \phi(x) = 0\,.
+\end{align*}
+Here we can also find the Hamiltonian, by first defining the momentum density
+\begin{align*}
+\pi(\vec{x}) = \frac{\pd \mathcal{L}}{\pd \dot{\phi}(\vec{x})} = \dot{\phi}(\vec{x})\,.
+\end{align*}
+Thus the Hamiltonian is given by
+\begin{align}
+H = \int\, d^3x (\pi \dot{\phi} - \mathcal{L}) = \frac{1}{2}\int \, d^3x\, \left( \pi^2 + (\nabla \phi)^2 + m^2 \phi^2\right)\,.
+\end{align}
+One cacn write further the equation of motion in Hamiltonian formulation
+\begin{align*}
+\frac{d\phi}{dt} = i[H, \phi]\,,\qquad \qquad \frac{d\pi}{dt} = i[H, \pi]\,,\qquad\qquad \dot{\pi} = \nabla^2 \phi - m^2 \phi = \ddot{\phi}\,.
+\end{align*}
+
+Taking the Fourier transform of the field, we have
+\begin{align*}
+\phi(\vec{x},t) = \int \frac{d^3 p }{(2\pi)^3}\, e^{i\vec{p}\cdot \vec{x}} \, \phi(\vec{p},t)\,.
+\end{align*}
+where $\phi(\vec{p},t)$ satisfies the equation
+\begin{align*}
+\left( \frac{\pd^2}{\pd t^2} + (\vec{p}^2 + m^2) \right) \phi(\vec{p},t) = 0
+\end{align*}
+from which we see that, for each $\vec{p}$, $\phi(\vec{p},t)$ solves equation of harmonic oscillator, with frequency $\omega^2 = \vec{p}^2 + m^2$, thus various modes are decoupled from each other. In fact, the whole Hilbert space, referred as the Fock space, was constructed in this way as discussed above. \\
+
+%Here $a(\vec{p})$ and $a^\dagger(\vec{p})$ are building blocks of the Hilbert space, that is the complete set can be generated. \\
+
+Now we have
+\begin{align*}
+\phi(\vec{x}) = \sum_{\vec{p}} \frac{1}{\sqrt{2V p^0}}\left( a(\vec{p}) \, e^{-i\vec{p}\cdot\vec{x}} + a^\dagger(\vec{p})e^{i\vec{p}\cdot\vec{x}}\right)\,.
+\end{align*}
+Then from (2.5), we can obtain
+\begin{align}
+H = \sum_{\vec{p}} \frac{1}{2Vp^0} \left( (p^0)^2\, (a(\vec{p})\, a^\dagger(\vec{p}) + a^\dagger(\vec{p})\, a(\vec{p}) ) \right)
+\end{align}
+Taking $V \to \infty$ limit, note that $\sum_{\vec{p}} \to V/(2\pi)^3 \int\, d^3p$, we have
+\begin{align*}
+H = \int \frac{d^3p}{(2\pi)^3}\, p^0\left( a^\dagger(\vec{p})\, a(\vec{p}) + \frac{(2\pi)^3 V}{2}\right)\,.
+\end{align*}
+where the term $(1/2)(2\pi)^3 V$ is the term of zero point energy, and has two types of infinities, one is the the volume $V \to \infty$, which can be resolved by looking at the energy density instead
+\begin{align*}
+\epsilon = \frac{E}{V} = \int d^3p\, \frac{p^0}{2}\,,
+\end{align*}
+where $p^0$, as defined previously, is $p^0 = \sqrt{\vec{p}^2 + m^2}$, but $\epsilon$ is also an infinite zero point energy, the infinity comes from the integration of large momenta, and thus is called the ultraviolet infinity. Since only energy difference is important, we may redefine $H$ by subtracting off the infinity, thus we write
+\begin{align*}
+\that{H} = H - \langle 0 |H|0\rangle\,,
+\end{align*}
+and here $\that{H}$ is thus a finite value, with the property that $H|0\rangle = 0$. There is in fact a formal way, the normal ordering, to implement this whole process, which is an ordering where the operator $a^\dagger$ always come to the left of the operator $a$, that is from 
+(2.6),
+\begin{align*}
+:H:\ = \int \frac{d^3p}{(2\pi)^3}\, p^0 \left( a^\dagger(\vec{p})\, a(\vec{p}) \right)\,.
+\end{align*}
+Note that if gravity is included, then the zero point energy cannot be thrown away as it gives rise to the cosmological constant problem. Furthermore, Casimir effect, that is the difference in energy of vacuum fluctuation can be measured, thus throwing away the zero point energy is not a general treatment. \\
+
+Here we can define
+\begin{align*}
+f_{\vec{p}}(\vec{x}) = \frac{1}{\sqrt{2Vp^0}}e^{-i\vec{p}\cdot\vec{x}}\,,
+\end{align*}
+again, $px$ is understood as $\vec{x}\cdot \vec{p}$, then we can define scalar product
+\begin{align*}
+(f,g) = i \int f^*\, \that{\pd}_t g\,  d^3x\,,
+\end{align*}
+where for functional $a, b$, we define
+\begin{align*}
+a^* \that{\pd}_t b = a^* \pd_t b - (\pd_t a^*) b\,.
+\end{align*}
+Some computation leads to the result that
+\begin{align*}
+(f_{\vec{k}}, f_{\vec{k}'}) = i \int \, d^3x \frac{1}{\sqrt{2Vk^0}} \frac{1}{\sqrt{2Vk^0}}\left( e^{i\vec{k}\cdot\vec{x}}\, \that{\pd}_t e^{-i \vec{k}'\vec{x}}\right) = \frac{(k^0 + {k^0}')}{\sqrt{2Vk^0} \sqrt{2V{k^0}'}}
+\int\, d^3x\, e^{-i (\vec{k}-\vec{k}')\cdot \vec{x}} e^{i(k^0 - {k^0}')x^0}
+\end{align*}
+where $k^0 = \sqrt{\vec{k}^2 + m^2}$ and ${k^0}' = \sqrt{\vec{k}'^2 + m^2}$\,.
+thus
+\begin{align*}
+(f_{\vec{k}}, f_{\vec{k}'}) = \frac{k^0 + {k^0}'}{\sqrt{2Vk^0} \sqrt{2V{k^0}'}} (2\pi)^3 \delta^3(\vec{k} - \vec{k}')\, e^{i(k^0 - {k^0}') x^0}
+= \frac{(2\pi)^3}{V} \delta^3(\vec{k} - \vec{k}') = \delta_{\vec{k}, \vec{k}'}
+\end{align*}
+Thus, if we write $\phi(\vec{x})$ as
+$$\phi(\vec{x}) = \sum_{\vec{p}} \left( a(\vec{p}) f_{\vec{p}}(\vec{x}) + a^\dagger(\vec{p}) f^*_{\vec{p}} (\vec{x})\right)\,,$$ 
+we obtain gives 
+\begin{align*}
+a(\vec{k}) = (f_{\vec{k}}, \phi)\,,\qquad 
+a^\dagger(\vec{k}) = -(f_{\vec{k}}^*,\phi)\,.
+\end{align*}
+
+Note here, we now have $P^\mu|0\rangle = 0$, and $U(\Lambda) | 0\rangle = 0$, thus the vacuum state has no particle, and has zero energy. Note further that the rest of the states have a continuum normalization, that is
+$\langle \vec{q} | \vec{p}\rangle = \delta_{\vec{p},\vec{q}}$, except the vacuum has $\langle 0 | 0 \rangle = 1$. This is fine only if we are dealing with massive particles, that is there is a mass gap in the theory. That is $|\vec{p}\rangle$ has energy $E = \vec{p}^2 + m^2$, and $|0\rangle$ has energy $m$. If there are massless particle, then $|0\rangle$ and $|\vec{p}=0\rangle$ are degenerate states. 
+
+
+\section[Microcausality of the Field]{\color{red}Microcausality of the Field\color{black}}
+In the previous discussion we quantized the Klein-Gordon field in the Schrodinger picture, while to discuss microcausality, we shall switch to the Heisenberg picture, where it will be easier to discuss time-dependent quantities.\footnote{Recall that in Schrodinger's picture, states change with time while operators are time independent. In Heisenberg picture, states are time independent, while operators change with time.} Here we make the operators $\phi$ to be time-dependent in the usual way
+\begin{align*}
+\phi(x) = \phi(\vec{x},t) = e^{iHt}\, \phi(\vec{x})\, e^{-iHt}\,.
+\end{align*}
+One can derived the time dependent field operator, presented by Eq. (2.47) in \txt\, as 
+\begin{align*}
+\phi(x) = \phi(\vec{x},t) = \sum_{\vec{p}} \frac{1}{\sqrt{2Vp^0}}\left( a(\vec{p})\,e^{ipx} + a^\dagger(\vec{p})\, e^{ipx}\right)
+\end{align*}
+
+We would like to check that, if there are two field operators $\phi(x)$ and $\phi(y)$, we should have the commutation relation
+\begin{align*}
+[\phi(x), \phi(y)] = 0
+\end{align*}
+for $(x-y)^2 < 0$.
+%\begin{align*}
+%\phi(x) = \sum_{\vec{p}} \frac{1}{\sqrt{2Vp^0}}\left( a(\vec{p}) e^{ipx} + a^\dagger(\vec{p}) e^{ipx}\right)\,.
+%\end{align*}
+Here we write
+\begin{align*}
+[\phi(x),\phi(y)] 
+&= \sum_{\vec{p},\vec{q}} \frac{1}{\sqrt{2Vp^0}\sqrt{2Vq^0}}\left( [a^\dagger(p), a(q)] e^{ipx - iqy} + [a(p) , a^\dagger(q)]e^{-ipx + iqy}\right)\,,\\
+&= \sum_{\vec{p},\vec{q}} \frac{1}{\sqrt{2Vp^0}\sqrt{2Vq^0}}\left( \delta_{\vec{p}, \vec{q}} e^{ipx - iqy} + \delta_{\vec{p}, \vec{q}} e^{-ipx + iqy}\right)\,,\\
+&= \sum_{\vec{p}} \frac{1}{2Vp^0}\left( e^{-ip(x-y)} - e^{ip(x-y)}\right)\,,
+\end{align*}
+now takes the $V \to \infty$ limit, from which we get
+\begin{align}
+[\phi(x), \phi(y)] = \frac{1}{(2\pi)^3}\int \frac{d^3p}{2p^0} \left( e^{-ip(x-y)} - e^{ip(x-y)}\right)\,.
+\end{align}
+We need to show that the RHS of (2.7) vanishes for $(x-y)^2 <0$. Consider $z = x-y$, we write (2.7) in a compact form
+\begin{align*}
+\Delta_c(z) = \frac{1}{(2\pi)^3} \int \frac{d^3p}{2p^0}\left( e^{-ipz} - e^{ipz}\right)\,.
+\end{align*}
+We first need to show that $\Delta_c(z)$ is Lorentz invariant, then we will show that $\Delta_c(z) = 0$ whenever $z^0 = 0$. Since all points $z^2 < 0$ can be reached by Lorentz transformation from $(0,\vec{z})$, therefore $\Delta_c(z) =0$ for all $z^2 <0$. Here we employ a trick,
+\begin{align*}
+\int dp^0 \, \delta((p^0)^2 - (\vec{p}^2 + m^2)) \,\theta(p^0)&= \int dp^0\, \delta\left( (p^0 + \sqrt{\vec{p}^2 + m^2})(p^0 -\sqrt{\vec{p}^2 + m^2})\right) \theta(p^0)\\
+&= \int dp^0 \left(\frac{\delta(p^0 + \sqrt{\vec{p}^2 + m^2})}{|p^0 - \sqrt{\vec{p}^2 + m^2}|} +  \frac{\delta(p^0 -\sqrt{\vec{p}^2 + m^2})}{|p^0 - \sqrt{\vec{p}^2 + m^2}|}  \right)\, \theta(p^0)\,,
+\end{align*}
+where we have utilized the fact that
+\begin{align*}
+\delta(ab) = \frac{\delta(a)}{|b|} + \frac{\delta(b)}{|a|}\,.
+\end{align*}
+Here $\theta(p^0)$ just restrict us to the upper hyperboloid of $p$ for integration, thus the term $\delta(p^0+\sqrt{\vec{p}^2 + m^2})$ does not contribute, we obtain
+\begin{align*}
+\int dp^0 \, \delta((p^0)^2 - (\vec{p}^2 + m^2)) \,\theta(p^0) = \frac{1}{2\sqrt{\vec{p}^2 + m^2}} = \frac{1}{2p^0} \,.
+\end{align*}
+Combining we have
+\begin{align*}
+\Delta_c(z) = \frac{1}{(2\pi)^3}\int d^4p\, \delta(p^2 - m^2)\, \theta(p^0)\,\left(e^{-ipz} - e^{ipz} \right)
+\end{align*}
+Consider a Lorentz transformation 
+\begin{align*}
+z^\mu \to {z'}^\mu = \Lambda^\mu{}_\nu z^\nu\,,
+\end{align*}
+such that we have
+\begin{align*}
+\Delta_c(z') = \frac{1}{(2\pi)^3}\int d^4p \delta(p^2 - m^2)\, \theta(p^0)\,\left(e^{-ipz'} - e^{ipz'} \right)\,.
+\end{align*}
+For a change of variable $p^\mu \to q^\mu$ such that $p^\mu = \Lambda^\mu{}_\nu q^\nu$, the Jacobian gives
+\begin{align*}
+\left|\frac{\pd p}{\pd q}\right| = \det(\Lambda) = 1\,,
+\end{align*}
+thus $d^4p = d^4 q$, and here we can write
+\begin{align*}
+p_\mu {z'}^\mu = g_{\mu\nu} p^\mu {z'}^\nu = g_{\mu\nu} \Lambda^\mu{}_\alpha q^\alpha \Lambda^\nu{}_\rho z^\rho\,.
+\end{align*}
+By the property of Lorentz transformation, we have
+\begin{align*}
+g_{\mu\nu}\Lambda^\mu{}_\alpha \Lambda^\nu{}_\beta = g_{\alpha\beta}\,,
+\end{align*}
+so we see that $p_\mu {z'}^\mu = q_\mu z^\mu$, and thus we obtain
+\begin{align*}
+\Delta_c(z') = \frac{1}{(2\pi)^3}\int d^4q\, \delta(q^2 - m^2) \,\theta(n_\mu \Lambda^\mu{}_{\nu}q^\nu)\,\left(e^{-iqz} - e^{iqz} \right) = \Delta_c(z)\,,
+\end{align*}
+suggesting that $\Delta_c(z)$ is Lorentz invariant. Further, to show that $\Delta_c(z) = 0$ for $z^2 < 0$, it suffices to evaluate
+\begin{align*}
+\Delta_c(z)|_{z^0 = 0} = \frac{1}{(2\pi)^3}\int d^4 p\, \delta(p^2 - m^2) \left( e^{i\vec{p}\cdot \vec{z}} - e^{-i \vec{p}\cdot \vec{z}}\right) \theta(p^0) = 0
+\end{align*}
+where we have made use of change of variable $\vec{p}$ to $-\vec{p}$ in the second term, as $p^0 = \sqrt{\vec{p}^2 + m^2}$ is not affected by the sign of $\vec{p}$. All points $z^2<0$ can be obtained from $(0,\vec{z})$ by Lorentz transformation, and since $\Delta_c(z)$ is Lorentz invariant, then $\Delta_c(z) = 0$ for all $z^2 <0$. That is, we have ensured microcausality.\\
+
+Note further that, as we have
+\begin{align*}
+[\phi(x), \phi(y)] = \frac{1}{(2\pi)^3}\int \frac{d^3p}{2p^0} \left( e^{-ip(x-y)} - e^{ip(x-y)}\right)\,,
+\end{align*}
+taking the derivative we obtain
+\begin{align*}
+[\phi(x), \dot{\phi}(y)] 
+&= \frac{1}{(2\pi)^3}\int  \frac{d^3p}{2p^0}\left( ip^0 e^{i\vec{p}\cdot (\vec{x} - \vec{y})} + ip^0 e^{-i \vec{p}\cdot (\vec{x} -\vec{y})}\right)\\
+&= \frac{i}{(2\pi)^3} \left( \frac{1}{2} \int d^3p \left( e^{i\vec{p}\cdot (\vec{x}-\vec{y})} + e^{-i \vec{p}\cdot (\vec{x}-\vec{y})}\right) \right)= i\delta^3\left(\vec{x} - \vec{y}
+\right)
+\end{align*}
+thus we see here $\dot{\phi}(y)$ is the canonical conjugate operator to $\phi(y)$. \\
+
+\section[Complex Free-scalar Field]{\color{red}Complex Free-scalar Field\color{black}}
+A complex field can describes particles that carry charges and momenta, while real field can only describe particles with momenta and no charge. Here a complex field satisfies Lagrangian density
+\begin{align*}
+\mathcal{L} = \pd_\mu \phi^\dagger \pd^\mu \phi - m^2 \phi^\dagger\phi
+\end{align*}
+and the equation of motion is thus given by
+\begin{align*}
+(\square + m^2)\,\phi(x) = 0
+\end{align*}
+The fields can be further separated into two parts
+\begin{align}
+\phi(x) &= \sum_{\vec{k}} \frac{1}{\sqrt{2Vk^0}} \left( a(\vec{k}) e^{-ikx} + b^\dagger(\vec{k}) e^{ikx}\right) \\
+\phi^\dagger(x) &= \sum_{\vec{k}} \frac{1}{\sqrt{2Vk^0}} \left( a^\dagger(\vec{k}) e^{-ikx} + b(\vec{k}) e^{ikx}\right)
+\end{align}
+where we have two types of creation/annihilation operators, $a, a^\dagger$ and $b, b^\dagger$, and they satisfy the commutation relations 
+\begin{align*}
+\left[a(\vec{k}), a^\dagger(\vec{k}')\right] = \delta_{\vec{k}, \vec{k}'}\,,\qquad
+\left[b(\vec{k}), b^\dagger(\vec{k}')\right] = \delta_{\vec{k},\vec{k}'}\,,
+\end{align*}
+and all other commutators being zeros.\\
+
+Scalar particles with charge can be described in this way, here $a^\dagger(\vec{k})$ creates particles with charges, while $b^\dagger(\vec{k})$ creates anti-particle, the two particles have opposite charges while the same mass. Note further that (2.8) has an operator $a(\vec{k})$ and an operator $b^\dagger(\vec{k})$, which means that, an particle with positive charge is created implies an particle with negative charge is annihilated.\\
+
+In the Hilbert space, $|0\rangle$ is the vacuum sate, and we have
+\begin{align*}
+a(\vec{k}) \,|0\rangle = 0\,,\qquad\qquad & b(\vec{k})\,|0\rangle = 0\,,\\
+a^\dagger(\vec{k})\,|0\rangle = |\vec{k},0\rangle \,,\qquad\qquad &b^\dagger(k)\, |0\rangle = |0,\vec{k}\rangle\,.
+\end{align*}
+Thus a general state in the Hilbert space is
+\begin{align*}
+|\vec{k}_1\vec{k}_2\cdots\vec{k}_n, \,\vec{p}_1\vec{p}_2\cdots\vec{p}_m\rangle = \frac{1}{\sqrt{n!}}\frac{1}{\sqrt{m!}}\, a^\dagger(\vec{k}_1)\,a^\dagger(\vec{k}_2)\cdots a^\dagger(\vec{k}_n)\, b^\dagger(\vec{p}_1)\,b^\dagger(\vec{p}_2) \cdots b^\dagger(\vec{p}_m)\, |0\rangle
+\end{align*}
+where $\vec{k}_1,\cdots,\vec{k}_n$ represents $n$ particles, and $\vec{p}_1,\cdots, \vec{p}_m$ represents $m$ antiparticles. One can check using the equation of motion that the current satisfies
+\begin{align*}
+j^\mu = i\left(\pd^\mu \phi^\dagger\phi - \phi^\dagger \pd^{\mu} \phi\right)\,.
+\end{align*}
+Here the total charge can be computed via
+\begin{align*}
+Q = \int j^0 \, d^3x  = \sum_{\vec{k}}\left( a^\dagger(\vec{k})\, a(\vec{k})  - b^\dagger(\vec{k})\, b(\vec{k})\right)\,.
+\end{align*}
+One would also find that
+\begin{align*}
+a(\vec{p}) = (f_{\vec{p}}, \phi)\,, \qquad
+&b^\dagger(\vec{p}) = -(f_{\vec{p}}^*, \phi)\,,\\
+b(\vec{p}) = (f_{\vec{p}}, \phi^\dagger)\,, \qquad
+&a^\dagger(\vec{p}) = -(f_{\vec{p}}^*, \phi^\dagger)\,.\\ 
+\end{align*}
+
+\section[The Feynman Propagator]{\color{red}The Feynman Propagator\color{black}}
+First we define time ordered product of two operators
+\begin{align*}
+T(\phi(x)\, \phi(y)) = \begin{cases}
+\phi(x) \,\phi(y) & x^0>y^0\\
+\phi(y) \,\phi(x) & y^0>x^0
+\end{cases}\,,
+\end{align*}
+which we claim that it is a Lorentz invariant definition, and consistent with the commutation rules. Note further that we have
+\begin{align*}
+T(\phi(x)\,\phi(y)) = \phi(x) \,\phi(y)\, \theta(x^0 - y^0) + \phi(y)\, \phi(x) \,\theta(y^0 - x^0)\,.
+\end{align*}
+Here we define a Green's function
+\begin{align*}
+i\Delta_F(x_1 - x_2) = \langle\, 0\, |\, T(\phi(x_1)\,\phi(x_2))\,|\,0\,\rangle\,.
+\end{align*}
+First we can compute the vacuum expectation value of $\phi(x_1)\,\phi(x_2)$, 
+\begin{align*}
+\langle\, 0\, &|\,\phi(x_1)\,\phi(x_2)\, |\,0\,\rangle  \\
+&=\left\langle\ 0\ \left| \left(\sum_{\vec{p}}\frac{1}{\sqrt{2Vp^0}} \left( a(\vec{p}) e^{-ipx_1} + a^\dagger(\vec{p}) e^{ipx}\right)\right)\left( \sum_{\vec{q}}\frac{1}{\sqrt{2Vq^0}}\left( a(\vec{q})e^{-iqx_2} + a^\dagger(\vec{q}) e^{iqx_2}\right) \right)\right|\ 0 \right\rangle\\
+&= \sum_{\vec{p},\vec{q}}\langle \, 0 \, |\, a(\vec{p})\, a^\dagger(\vec{q})\, |\, 0 \, \rangle \frac{e^{ipx_1 + iqx_2}}{\sqrt{2Vp^0 }\sqrt{2Vq^0}}  = \sum_{\vec{p},\vec{q}}\langle \, 0 \, |\, (a^\dagger(\vec{q})\, a(\vec{p}) + \delta_{\vec{p},\vec{q}})\, |\, 0 \, \rangle \frac{e^{ipx_1 + iqx_2}}{\sqrt{2Vp^0 }\sqrt{2Vq^0}}\\
+&=\sum_{\vec{p}} \frac{e^{-ip(x_1 - x_2)}}{2Vp^0} \,.
+\end{align*}
+Similarly, we have
+\begin{align*}
+\langle\, 0\, |\phi(x_2)\,\phi(x_1)\, |\,0\,\rangle = \sum_{\vec{p}} \frac{e^{ip(x_2 -x_1)}}{2Vp^0}\,.
+\end{align*}
+Now one can take the continuum limit to obtain
+\begin{align*}
+i\Delta_F(x_1 - x_2) = \theta(x_1^0 - x_2^0) \,\frac{1}{(2\pi)^3}\,\int \frac{d^3p}{2p^0} e^{-ip(x_1-x_2)} + \theta(x_2^0 - x_1^0)\, \frac{1}{(2\pi)^3}\,\int \frac{d^3p}{dp^0}e^{ip(x_1 - x_2)}\,.
+\end{align*}
+Here we use a contour representation of $\theta(z)$,
+\begin{align*}
+\theta(z) = \lim_{\epsilon \to 0}\,\frac{1}{i2\pi}\int_{-\infty}^\infty d\tau \ \frac{e^{i\tau z}}{\tau - i\epsilon}\,,\qquad\qquad (\epsilon>0)
+\end{align*}
+For $z<0$, we choose the lower-half plane to close the contour and Cauchy Integral theorem gives $\theta(z) = 0$. For $z>0$, we choose the upper-half plane to close the contour and we have $\theta(z) = 1$. Combining we obtain
+\begin{align*}
+i\Delta_F(x_1 - x_2) =& \frac{1}{(2\pi)^4 i}\int d^4p \, d\tau e^{i\tau(x_1^0 - x_2^0)}e^{-ip(x_1-x_2)} \frac{\delta(p^2- m^2)\theta(p^0)}{\tau -i\epsilon} \\
+&{}\qquad + \frac{1}{(2\pi)^4i}\int d^4\,d\tau\, e^{i\tau(x_2^0 - x_1^0)} e^{ip(x_1 - x_2)} \frac{\delta(p^2 - m^2)\theta(p^0)}{\tau - i\epsilon}\,, \tag{*}
+\end{align*}
+where we have utilized the trick
+\begin{align*}
+\frac{d^3p}{2p^0} = d^4p \, \delta(p^2 - m^2)\, \theta(p^0)\,.
+\end{align*}
+Here the second term in (*), letting $p \to -p$, and $\tau \to -\tau$, becomes
+\begin{align*}
+\frac{1}{(2\pi)^4i}\int d^4\, d\tau e^{-ip(x_1-x_2) +i\tau(x_1^0 - x_2^0)}\frac{\delta(p^2 - m^2)\theta(-p^0)}{-\tau - i\epsilon}\,,
+\end{align*}
+and thus we have
+\begin{align*}
+i&\Delta_F(x_1-x_2) = \frac{1}{(2\pi)^{4}i}\int d^4\, d\tau\, e^{i\vec{p}\cdot (\vec{x}_1 - \vec{x}_2) - i(p^0 -\tau) (x_1^0 - x_2^0)}\left( \frac{\delta(p^2 - m^2) \theta(p^0)}{\tau - i\epsilon} + \frac{\delta(p^2 - m^2) \theta(-p^0)}{-\tau - i\epsilon}\right)\\
+&= \frac{1}{(2\pi)^4i}\int d^4\, d\tau e^{-ip(x_1-x_2)} \left( \frac{\theta(p^0+\tau)\, \delta((p^0 +\tau)^2 - \vec{p}^2 - m^2)}{\tau - i\epsilon} + \frac{\theta(-p_0 -\tau)\, \delta((p^0+\tau)^2 -\vec{p}^2 -m^2)}{-\tau - i\epsilon} \right)\,.
+\end{align*}
+Performing the $\tau$ integration, for the first term, the $\delta$-function gives $p^0 + \tau = \pm ({\vec{p}^2 + m^2})^{1/2}$, and $\theta(p^0 +\tau)$ ensures a positive sign. For the second term, $\delta$-function and $\theta(-p^0 -\tau)$ ensures that we have $p^0 + \tau = -({\vec{p}^2 + m^2})^{1/2}$. Applying $\delta(ab) = \delta(a)/|b| + \delta(b) /|a|$, we then obtain
+\begin{align*}
+i\Delta_F (x_1 - x_2)
+&= \frac{1}{(2\pi)^4 i}\int d^4p\, e^{-ip(x_1-x_2)} \frac{1}{2\sqrt{p^2 + m^2}} \left( \frac{1}{-p^0 +\sqrt{\vec{p}^2 + m^2}-i\epsilon } +\frac{1}{p^0 + \sqrt{\vec{p}^2 + m^2} -i\epsilon} \right)\\
+&= \frac{1}{(2\pi)^4 i}\int d^4p\, e^{-ip(x_1-x_2)} \frac{1}{2\sqrt{p^2 + m^2}} \left( \frac{2\sqrt{\vec{p}^2 + m^2}}{-(p^0)^2 + \vec{p}^2 + m^2 -i\epsilon}  \right)\\
+&= \frac{i}{(2\pi)^4}\int d^4p \frac{e^{-ip(x_1 - x_2)}}{p^2 -m^2 + i\epsilon}\,.
+\end{align*}
+
+For an observation, we see here
+\begin{align*}
+(\square|_{x_1} + m^2)\Delta_F(x_1 - x_2) = -\delta^4(x_1 - x_2)\,.
+\end{align*}
+Note further that
+\begin{align*}
+\langle \,0\, |\, T(\phi(x)\,\phi(x'))\,|\,0\,\rangle = 
+\langle\, 0\, |\, \phi(x) \,\phi(x')\,|\,0\,\rangle\, \theta(x^0 - {x^0}')
++
+\langle\, 0\, |\, \phi(x')\, \phi(x)\, |\, 0\,\rangle\, \theta({x^0}' - x^0)
+\end{align*}
+which describes the property of a particle traveling from $x'$ towards $x$ and ends at $x$, and a particle traveling from $x$ to $x'$ and ends at $x'$. The Feynman propagator in an interacting theory is a generalization of the potential in a scattering process. \\
+
+\newpage
+\chapter{Interacting Field Theory}
+\section[The \textit{in} and \textit{out} Hilbert Space]{\color{red}The \textit{in} and \textit{out} Hilbert Space\color{black}}
+In this chapter we are interested in the scattering and decay processes. The $S$-matrix is an important tool in this. We will try to describe the scattering process in terms of the Hilbert space of free field.\\
+
+The state of a system is a vector $|\psi\rangle$ in the Hilbert space. In Heisenberg's picture, where states are time-independent, this describes the whole space-time history of a system of particles. Here we consider two observers $O$ and $O'$. $O$ is at time $t$, and $O'$ is at $t' = t+\tau$. Here $O'$ observes the state $e^{-iH\tau}|\psi\rangle$. At $\tau \to \infty$, we write $H = H_0 + V$ for $H_0$ being Hamiltonian in free field, and assume that $V\to 0$ as $\tau \to\pm \infty$. That is, at $\tau = \pm \infty$, the particles in $|\psi\rangle$ are well separated and non interacting. Here we are only interested in the beginning and  final state of the particles. Then assuming that the spectrum of $H_0$ and $H$ are the same, we can say that at $t = \pm \infty$, the states are in one-to-one correspondence with the states of a free particle. \\
+
+That is, we are assuming that (1) the dimensionality of the Hilbert space, before and after interaction, is the same, and in particular, no bound states between two particles can be described by the theory; (2) $V\to 0$ at $\tau \to \pm \infty$, interaction can be switched on and off at some point, or in other words, we have short range interactions, while long range interactions will create infrared problems requiring some new modifications. \\
+
+The states at $t = -\infty$ are called the in state, and the states at $t = \infty$ are called the out states. The in and out states live in the in and out Hilbert spaces, respectively, and are related by a unitary transformation, where we write
+\begin{align*}
+|\text{in}\rangle = S\,|\text{out}\rangle\,,\qquad\qquad |\text{out}\rangle = S^\dagger\,|\text{in}\rangle\,,
+\end{align*}
+and the transformation $S$ satisfies
+\begin{align*}
+SS^\dagger = 1\,.
+\end{align*}
+Here $S$ is called the $S$-matrix, or the scattering matrix. \\
+
+In general, when there is scattering, 
+\begin{align*}
+|\alpha\rangle_{\text{in}}\neq |\alpha\rangle_{\text{out}}\,.
+\end{align*}
+The field operators $\phi_{\text{in}}(x)$, $\phi_{\text{out}}(x)$ can be constructed in both Hilbert spaces, and both obey the free field equation
+\begin{align*}
+(\square + m^2) \,\phi_{\text{}}(x) = 0\,.
+\end{align*} 
+Here we construct the in space, at $t = -\infty$, 
+\begin{align*}
+&|0\rangle_{in}\,,\\
+&|\vec{p}_1\rangle_{\text{in}} = a_{\text{in}}^\dagger(\vec{p}_1)\,|0\rangle_{\text{in}}\,,\\
+&|\vec{p}_1 \vec{p}_2\cdots \vec{p}_n\rangle_{\text{in}}= \frac{1}{\sqrt{n!}} \, a^\dagger_{\text{in}}(\vec{p}_1)\, a^\dagger_{\text{in}}(\vec{p}_2) \cdots a^\dagger_{\text{in}}(\vec{p}_n)\, |0\rangle_{\text{in}}\,,
+\end{align*}
+and the out space can be constructed similarly. One is interested in the probability to observe an out state $|\beta\rangle_{\text{out}}$ at $t =\infty$ starting with in state $|\alpha \rangle_{\text{in}}$ at $t = -\infty$, 
+\begin{align*}
+\left| {}_{\text{out}}\langle\, \beta\, |\,\alpha\, \rangle_{\text{in}}\right|^2
+\coloneqq \left| {}_{\text{in}}\langle\,\beta\, |\, S\,|\,\alpha\rangle_{\text{in}}\right|^2\,.
+\end{align*}
+Thus here $S$ contains all information about the scattering process. We define here
+\begin{align*}
+S_{\beta\alpha}\coloneqq {}_{\text{in}}\langle\,\beta\, |\, S\,|\,\alpha\rangle_{\text{in}} ={}_{\text{out}}\langle\,\beta\, |\,\alpha\,\rangle_{\text{in}}  \,,
+\end{align*}
+so the matrix elements of the $S$ operator are themselves describing the scattering. More specifically, we can define $S$ such that it satisfies
+\begin{align*}
+\left( a^\dagger_{\text{out}}(\vec{p})\right)^n |0\rangle_{\text{out}}=
+|\underbrace{\vec{p}\vec{p}\cdots\vec{p}}_{n}\,\rangle_{\text{out}} = S^\dagger |\underbrace{\vec{p}\vec{p}\cdots \vec{p}}_{n}\,\rangle_{\text{in}} = S^\dagger \left(a^\dagger_{\text{in}}(\vec{p})\right)^n |0\rangle_{\text{in}}\,.
+\end{align*}
+If we can show that $|0\rangle_{\text{out}} = |0\rangle_{\text{in}}$, then we can conclude here
+\begin{align*}
+a^\dagger_{\text{out}} = S^\dagger a^\dagger_{\text{in}} S\,,\qquad\qquad
+\phi_{\text{in}} = S\phi_{\text{out}}S^\dagger\,.
+\end{align*}
+We will now show that Poincare invariance implies stability of the vacuum and single particle state, that is we have
+\begin{align*}
+|0\rangle_{\text{in}} = |0\rangle_{\text{out}}\,,\qquad\qquad 
+|k\rangle_{\text{in}} = |k\rangle_{\text{out}}\,.
+\end{align*}
+Let $U$ be an operator in the Hilbert space such that when $x \to x' = \Lambda x +a$, the states in Hilbert space transform with $U$. One is interested in how the $S$-matrix transform under Poincare transformation. Consider $|\beta'\rangle_{\text{out}} = U |\beta\rangle_{\text{out}}$, and $|\alpha'\rangle_{\text{in}} =|\alpha\rangle_{\text{in}} $, then we have
+\begin{align*}
+{}_{\text{out}}\langle \beta' | \alpha'\rangle_{\text{in}} = {}_{\text{in}}\langle\beta'|S|\alpha'\rangle_{\text{in}} = {}_{\text{in}}\langle \beta |U^\dagger(USU^\dagger)U |\alpha\rangle_{\text{in}} = {}_{\text{out}}\langle \beta | \alpha\rangle_{\text{in}}\,,
+\end{align*}
+so we see here
+\begin{align*}
+S = USU^\dagger\,.
+\end{align*}
+That is, under Poincare invariance, infinitesimally we can write
+\begin{align*}
+[P^\mu,\ S] = 0\,.
+\end{align*}
+Now consider an arbitrary state $|k_1k_2\cdots k_n\rangle_{\text{in}}$,
+\begin{align*}
+{}_\text{in}\langle k_1' k_2'\cdots k_n'| \, [P_{\mu},\ S]\, | k_1k_2\cdots k_n\rangle_{\text{in}} &= 0 \,, \\
+{}_\text{in}\langle k_1' k_2'\cdots k_n'| \, P_\mu S- SP_\mu\, | k_1k_2\cdots k_n\rangle_{\text{in}} &= 0\,,
+\end{align*}
+thus evaluating we obtain
+\begin{align*}
+\left(\sum_{i=1}^n k_\mu^{i'} - \sum_{i}^n k_\mu^i \right) \langle k_1'\cdots k_n' | S | k_1 \cdots k_n\rangle &=0\,,
+\end{align*}
+which implies that we have
+$\langle k_1'\cdots k_n' | S | k_1 \cdots k_n\rangle$
+being proportional to 
+$$\delta^4\left(\sum_{i=1}^n k_\mu^{i'} - \sum_{i}^n k_\mu^i\right).$$ 
+That is, we have here
+\begin{align*}
+{}_{\text{out}}\langle \beta |\alpha \rangle_{\text{in}}\propto \delta^4(P^\beta_\mu - P^\alpha_\mu)\,.
+\end{align*}
+Next we will use energy conservation to show $|0\rangle_{\text{in}} = |0\rangle_{\text{out}}$, note here we have
+\begin{align*}
+1 = {}_{\text{in}}\langle 0 | 0 \rangle_{\text{in}} 
+&= {}_{\text{in}}\langle 0 | SS^\dagger |0\rangle_{\text{in}} \\
+&= {}_{\text{in}}\langle 0 | S\, (\text{a complete set of states }|\alpha\rangle )\, S^\dagger |0\rangle_{\text{in}} \\
+&= \left|{}_\text{in}\langle 0 |S|0\rangle_{\text{in}}\right|^2 +\underbrace{ \sum_{|\alpha\rangle \neq |0\rangle} \left|
+ {}_{\text{in}}\langle 0 |S |\alpha\rangle_{\text{in}}\right|^2}_{\substack{\text{vanish by} \\\text{energy conservation}}}
+\end{align*}
+that is we conclude here 
+\begin{align*}
+{}_{\text{in}}\langle 0 | S | 0 \rangle_{\text{in}} = e^{i\phi}
+\end{align*}
+which is a pure constant phase, and is not observable because we can redefine the vacuum to include the phase, so we conclude here
+\begin{align*}
+|0\rangle_{\text{in}} = |0\rangle_{\text{out}}
+\end{align*}
+Next we will show that $|k\rangle_{\text{in}} = |k\rangle_{\text{out}}$ for single-particle states. Note that we can write
+\begin{align*}
+\delta(k-k') 
+&= {}_{\text{in}}\langle k' | k \rangle_{\text{in}} \\
+&= {}_{\text{in}}\langle k' |SS^\dagger| k \rangle_{\text{in}}\\
+&= \int d^3 k'' {}_{\text{in}}\langle k' | S | k''\rangle_{\text{in}}\langle k''|S^\dagger | k\rangle_{\text{in}} + \cdots\\
+&= |c(k)|^2\delta(k-k')\,.
+\end{align*}
+Thus we have $c(k) = e^{i\alpha(k)}$ is a phase, and hence we have
+\begin{align*}
+{}_\text{in}\langle k | S | k'\rangle_{\text{in}} = e^{i\alpha(k)}\delta(k-k')\,,
+\end{align*}
+indicating that we have
+\begin{align*}
+|k\rangle_{\text{out}} = e^{i\alpha(k)}|k\rangle_{\text{in}}\,.
+\end{align*}
+Now consider Lorentz invariance, under a Lorentz transformation $\Lambda$, 
+\begin{align*}
+|\Lambda k\rangle_{\text{out}} = e^{i\alpha(\Lambda k)}|\Lambda k\rangle_{\text{in}}\,,
+\end{align*}
+here $\alpha(\Lambda k)$ is a scalar dependent only on $k^\mu$, but the only scalar that can be construct from $k^\mu$ is $k^\mu k_\mu = m^2$ which is invariant under Lorentz transformation, so $\alpha(m^2)$ is again a constant phase which is not observable. \\
+
+\section[Construction of the $S$-matrix]{\color{red}Construction of the $S$-matrix\color{black}}
+Now we assume the existence of an interpolating field $\phi(x)$ with the following properties:
+\begin{align*}
+\lim_{x^0\to \infty}\phi(x) = \sqrt{z} \phi_{\text{out}}(x)\,,\qquad\qquad
+\lim_{x^0\to -\infty}\phi(x) = \sqrt{z} \phi_{\text{in}}(x)\,,
+\end{align*}
+where the normalization factor $\sqrt{z}$ is taken to be one for now, and we will reconsider the normalization factor when we describe renormalization. Note here there is an arbitrariness in the choice of the interpolating field. While both $\phi_{\text{in}}$ and $\phi_{\text{out}}$ are assumed to satisfy the free field equation, $\phi(x)$ here does not satisfy the free field equation because $\phi(x)$ is well-defined in the region where the interaction have not been turned off. \\
+
+Here we assume that the equation of $\phi(x)$ is of some form 
+\begin{align}
+(\square + m^2)\, \phi(x) = -j(x)\,,
+\end{align}
+where $j(x)$ is a local operator constructed out of the fields and their derivatives, describing the interaction between particles. For instance, we could have
+\begin{align}
+j(x) = \frac{\lambda}{3!}\phi^3(x)\,,
+\end{align}
+or if there are more than one scalar field, say $\pi(x)$ and $\phi(x)$, then we could have 
+\begin{align*}
+j(x) = (\pd_\mu \phi)^2 \pi(x)\,.
+\end{align*}
+Note that (3.2) combined with (3.1) can be obtained from the equation of motion of a given Lagrangian density
+\begin{align}
+\mathcal{L} = \frac{1}{2}\,(\pd_\mu \phi)(\pd^\mu \phi) - \frac{1}{2}m^2 \phi^2 - \frac{\lambda}{4!} \phi^4\,.
+\end{align}
+One can also introduce more fields into the theory corresponding to other kinds of scalar particles. For example, for two fields $\pi(x)$ and $\sigma(x)$, 
+\begin{align*}
+\mathcal{L} = \underbrace{-\frac{1}{2}(\pd_\mu \pi)(\pd^\mu \pi) - \frac{1}{2}m_\pi^2 \pi^2 }_{\text{free $\pi$ particle terms}}\underbrace{- \frac{1}{2}(\pd_\mu \sigma)(\pd^\mu \sigma) - \frac{1}{2}m_\sigma^2 \sigma^2}_{\text{free $\phi$ particle terms}} \underbrace{ -\frac{g}{2} \pi^2\sigma +\lambda (\pd_\mu \pi)(\pd^\mu \sigma) \sigma^2}_{\text{interaction terms}} +\cdots\,.
+\end{align*}
+Now we consider the construction of the $S$-matrix, for the example
+\begin{align*}
+(\square + m^2) \phi(x) = -\frac{\lambda}{3!}\phi^3(x)\,,
+\end{align*}
+where $\phi$ is the interpolating field, obtained from equation of motion of the Lagrangian density (3.3). We introduce a unitary operator $U(x^0)$ that is independent on $x^i$ for $i \neq 0$, and has the property
+\begin{align*}
+\phi(x) = U^\dagger(x^0)\, \phi_{\text{in}}(x) \, U(x^0)\,, 
+\end{align*}
+The boundary values are such that $U(x^0) = 1$ as $x^0 \to -\infty$. On the other hand, taking $x^0 \to \infty$, we can write
+\begin{align*}
+\phi|_{x^0\to \infty} = \phi_{\text{out}} = U^\dagger\, \phi_{\text{in}}\, U|_{x^0 \to \infty}
+\end{align*}
+since we have further
+\begin{align*}
+\phi_{\text{out}} = S^\dagger\, \phi_{\text{in}}\, S
+\end{align*}
+thus we require, another boundary condition, $U(x^0) = S$ as $x^0\to \infty$. Here we claim that $U(x^0)$ satisfies 
+\begin{align}
+i\,\pd_0U(x^0) = H_{\text{int}}(x^0)\, U(x^0)\,,
+\end{align}
+where we denote the interaction terms in the Hamiltonian of the \textit{in} state to be $H_{\text{int}}$. In our example corresponding to Lagrangian density (3.3), 
+\begin{align*}
+H_{\text{int}}(x^0) = \int_{y^0 = x^0} d^3y\, \frac{\lambda}{4!}(\phi_{\text{in}}(y))^4 = \int_{y^0 = x^0}d^3y \, \mathcal{H}_{\text{int}}(y)\,.
+\end{align*}
+Here $\mathcal{H}_{\text{int}}(y) = -\mathcal{L}_{\text{int}}(\phi_{\text{in}})$. We will assume (3.4) holds, and derive (3.1) with $j(x)$ given by (3.2). First we can write
+\begin{align*}
+(\square + m^2) \phi(x) = (\pd_0^2 -\nabla^2 + m^2) \left( U^\dagger(x^0)\, \phi_{\text{in}}(x) \, U(x^0)\right)\,.
+\end{align*}
+Here we have
+\begin{align*}
+\pd_0\phi(x) 
+&= \pd_0\left( U^\dagger(x^0) \, \phi_{\text{in}}(x) \, U(x^0)\right)\\
+&= (\pd_0 U^\dagger) \phi_{\text{in}} U + U^\dagger (\pd_0 \phi_{\text{in}})U + U^\dagger\phi_{\text{in}}(\pd_0U)\,.
+\end{align*}
+Note that $U^\dagger(x^0)\, U(x^0) = 1$, then we can write
+\begin{align*}
+(\pd_0 U^\dagger) U + U^\dagger( \pd_0 U) &= 0\,,
+\end{align*}
+and thus rearranging we obtain
+\begin{align*}
+\pd_0 U^\dagger &= -U^\dagger (\pd_0 U) U^\dagger \,.
+\end{align*}
+Furthermore, we have
+\begin{align*}
+\pd_0 U  = -i H_{\text{int}}U\,,
+\end{align*}
+so we can write
+\begin{align*}
+\pd_0\phi &= -U^\dagger\, (\pd_0U)U^\dagger\, \phi_{\text{in}} U + U^\dagger (\pd_{0}\phi_{\text{in}}) U  + U^\dagger \phi_{\text{in}} (\pd_0 U)\\
+&= -U^\dagger\, (-i H_{\text{int}}\phi_{\text{in}}) U + U^\dagger (\pd_{0}\phi_{\text{in}}) U  + U^\dagger \phi_{\text{in}} (-i H_{\text{int}} U )\\
+&= -i U^\dagger[\phi_{\text{in}}, H_{\text{int}}]U + U^\dagger (\pd_0 \phi_{\text{in}})U\,.
+\end{align*}
+Then one can compute
+\begin{align*}
+\pd_0^2(\phi(x)) = -U^\dagger [[\phi_{\text{in}}, H_{\text{int}}], H_{\text{int}}]U 
+-i U^\dagger\left(\pd_0 [\phi_{\text{in}}, H_{\text{int}}]\right)U 
+-i U^\dagger[\pd_0 \phi_{\text{in}}, H_{\text{int}}] U 
++ U^\dagger (\pd_0^2\phi_{\text{in}}) U\,.
+\end{align*}
+Note that $[\phi_{\text{in}}, H_{\text{int}}]$ vanishes as $H_{\text{int}}$ only involves $\phi_{\text{in}}$ which commutes with itself. Thus combining we obtain
+\begin{align*}
+(\square + m^2)\,\phi(x) = U^\dagger\left( (\square +m^2) \phi_{\text{in}}(x) \right) U - iU^\dagger[\pd_0 \phi_{\text{in}},\ H_{\text{int}}]U =- iU^\dagger[\pd_0 \phi_{\text{in}},\ H_{\text{int}}]U \,.
+\end{align*}
+For our example, we have
+\begin{align*}
+[\pd_0 \phi_{\text{in}}, H_{\text{in}}] = \frac{4\lambda}{4!} \int_{x^0 = y^0} \, d^3y \, \phi_{\text{in}}^3(y)\, \left( -i \delta^3(\vec{x}- \vec{y})\right) = -\frac{i\lambda}{3!}\phi^3_{\text{in}}(x)\,,
+\end{align*}
+so combining we have
+\begin{align*}
+(\square +m^2) \phi(x) = -U^\dagger \left( \frac{\lambda }{3!}\phi_{\text{in}}^3(x)\right) U 
+&= -\frac{\lambda}{3!}U^\dagger\phi_{\text{in}}UU^\dagger \phi_{\text{in}}UU^\dagger \phi_{\text{in}}U \\
+&= -\frac{\lambda}{3!}\phi^3(x)\,.
+\end{align*}
+In general, we have
+\begin{align*}
+[\pd_0 \phi_{\text{in}}, \, H_{\text{int}}] = -i \frac{\pd}{\pd \phi}\, H_{\text{int}}\,,
+\end{align*}
+thus we obtain
+\begin{align*}
+(\square + m^2) \, \phi(x) = -\frac{\pd H_{\text{int}}}{\pd \phi}\, = -j(x)\,.
+\end{align*}
+
+Now we see that in general (3.4) can be utilized to solve for $U$, with boundary conditions that $U(-\infty) = 1$ and $U(\infty) = S$. Here (3.4) is known as the Dyson equation. Here we denote $x = U(t)$ and $A = -iH_{\text{int}}(t)$, to find the solutions to the Dyson equation, we first write
+\begin{align*}
+\pd_0 x(t) = A(t) \, x(t)\,,
+\end{align*}
+rearranging we have
+\begin{align}
+x(t) = 1+ \int_{-\infty}^t A(t')\, x(t') \, dt'\,,
+\end{align}
+where we have included the boundary condition $x(-\infty) = 1$. The integral equation (3.5) can be solved by iteration, and one can get
+\begin{align*}
+x(t) 
+&= 1 + \int_{-\infty}^t A(t_1)\, dt_1 + \int_{-\infty}^t A(t_1)\, dt_1 \int_{-\infty}^{t_1}  A(t_2)\,  dt_2  + \cdots \\
+&= 1 + \int_{-\infty}^t A(t_1)\, dt_1 + \int_{-\infty}^t \, dt_1 \int_{-\infty}^{t_1}   A(t_1)\,A(t_2)\,  dt_2  + \cdots \\
+&{}\qquad\qquad +\int_{-\infty}^t \, dt_1 \int_{-\infty}^{t_1}\, dt_2\,\cdots\int_{-\infty}^{t_{n-2}}A(t_1)\,A(t_2)\,\cdots A(t_n)\, dt_n + \cdots\,.
+\end{align*}
+We want to convert this to an integration over the same limits, one can do so by introducing the time ordered product, that is
+\begin{align*}
+T(A(t_1)\, A(t_2)) = \begin{cases}
+A(t_1)\, A(t_2) & t_1 \geq t_2\\
+A(t_2)\, A(t_1) & t_2 > t_1
+\end{cases}\,.
+\end{align*}
+In general, we have
+\begin{align*}
+T(A(t_1)\, A(t_2)\,\cdots \, A(t_n)) = A(t_1)\, A(t_2)\,\cdots \, A(t_n) \qquad \text{provided that }t_1\geq t_2\geq \cdots\geq t_n\,.
+\end{align*}
+With some algebra, one sees that we have
+\begin{align*}
+\int_{-\infty}^t \, dt_1 \int_{-\infty}^{t_1}T(A(t_1)\, A(t_2)) = \frac{1}{2!}\int_{-\infty}^t\, dt_1\int_{-\infty}^t \, dt_2\, T(A(t_1) \, A(t_2))\,,
+\end{align*}
+and thus in general, we have
+\begin{align*}
+\int_{-\infty}^t\, dt_1\int_{-\infty}^{t_1}\, dt_2\,\cdots &\int_{-\infty}^{t_{n-1}}\, dt_n\, T\left( A(t_1)\,A(t_2) \cdots A(t_n)\right) \\
+&= \frac{1}{n!}\int_{-\infty}^t dt_1 \,\int_{-\infty}^t dt_2\, \cdots \int_{-\infty}^t dt_n \, T(A(t_1)\,A(t_2)\cdots A(t_n))\,,
+\end{align*}
+from which one obtain
+\begin{align*}
+U(t) &= 1-i \int_{-\infty}^t \, dt_1 H_{\text{int}}(t_1) + \frac{(-i)^2}{2!}\int_{-\infty}^t \,dt_1\int_{-\infty}^t\, dt_2 T\left( H_{\text{int}}(t_1) \, H_{\text{int}}(t_2)\right) \\
+&{}\qquad\quad + \cdots + \frac{(-i)^n}{n!} \int_{-\infty}^t\, dt_1 \int_{-\infty}^{t}\, dt_2\cdots\int_{-\infty}^{t}\, dt_n T\left( H_{\text{int}}(t_1)\,H_{\text{int}}(t_2)\,\cdots H_{\text{int}}(t_n)\right)+\cdots \,.
+\end{align*}
+Taking $t \to \infty$ limit we obtain the $S$ matrix, 
+\begin{align*}
+S &= 1 + (-i) \int\, d^4x_1\, \mathcal{H}_{\text{int}}(x_1) 
++ \frac{(-i)^2}{2!}\int \, d^4x_1 \int d^4x_2 \, T\left(\mathcal{H}_{\text{int}}(x_1)\, \mathcal{H}_{\text{int}}(x_2) \right) 
+\\
+&{}\qquad\quad + \cdots 
++ \frac{(-i)^n}{n!}\int d^4x_1 \cdots \int d^4x_n\, T\left( \mathcal{H}_{\text{int}}(x_1)\mathcal{H}_{\text{int}}(x_2) \cdots \mathcal{H}_{\text{int}}(x_n) \right)+\cdots\\
+&= T\left( \exp\left(-i \int d^4x\, \mathcal{H}_{\text{int}}(x)\right)
+\right)\,,
+\end{align*}
+now we see here the expression of the $S$ matrix is determined entirely by the \textit{in} field.\\
+
+To calculate the probability of transition $|\alpha\rangle \to |\beta\rangle$, we need to evaluate
+\begin{align*}
+{}_\text{in}\langle \alpha | S | \beta\rangle_{\text{in}}= {}_\text{in}\langle \alpha | \, Te^{i \int \mathcal{L}_{\text{in}}\, d^4x}\, | \beta\rangle_{\text{int}}\,,
+\end{align*}
+where we note that we have $\mathcal{L}_{\text{int}} = -\mathcal{H}_{\text{int}}$.
+
+\newpage
+\section[Scattering Amplitude]{\color{red}Scattering Amplitude\color{black}}
+Next we are interested in calculating the scattering amplitude, which is defined by
+\begin{align*}
+{}_{\text{out}}\langle\, \text{final}\, |\, \text{initial}\,\rangle_{\text{in}} = {}_{\text{in}}\langle\, \text{final}\, |\,S\, |\,\text{initial}\, \rangle_{\text{in}}\,.
+\end{align*}
+The probability of a scattering from $|\text{initial}\rangle$ state to $|\text{final}\rangle$ state is defined by
+\begin{align*}
+\mathbb{P}_{i\to f} =  \left|{}_{\text{in}}\langle\, \text{final}\, |\,S\, |\,\text{initial}\, \rangle_{\text{in}}\right|^2\,.
+\end{align*}
+From now on, we will omit the subscript $\text{in}$ for the inner product with no confusion. \\
+
+\example Here we assume the interacting Lagrangian is given by
+\begin{align}
+\mathcal{L}_{\text{int}} = -\frac{\lambda}{4!}\, (\phi_{\text{in}})^4\,,
+\end{align}
+here we utilize perturbation theory that $\lambda$ is sufficiently small. Suppose we have initial state $p_1p_2$, and get scattered to final state $p_1'p_2'$, here we can write
+\begin{align*}
+\langle\, p_1'&p_2'\, |\, S\, |\, p_1p_2\,\rangle \\
+&= \left\langle\, p_1'p_2'\, \left| 1- \frac{i\lambda}{4!}\int  \, \phi^4(x) \, d^4x\, + \frac{(-i)^2}{2!}\left( \frac{\lambda}{4!}\right)^2 \int \, T\left(\phi^4(x_1)\, \phi^4(x_2)\right) \, d^4x_1\, d^4x_2 + \cdots \right|\, p_1p_2\right\rangle\,.
+\end{align*}
+Here the first nontrivial order gives
+\begin{align*}
+\left\langle\, p_1'p_2'\,\left| -\frac{i\lambda}{4!}\int \, d^4x \phi^4(x) \,\right|\,p_1p_2\right\rangle = \left\langle \, 0 \, \left| a(p_1')\,a(p_2') \left(-\frac{i\lambda}{4!}\int \, d^4x \phi^4(x)  \right)\, a^{\dagger}(p_1)\, a^{\dagger}(p_2)\,\right|\,0\,\right\rangle\,.
+\end{align*}
+We see here the lowest order term is already complicated enough. Next we want to write the time order product of fields in terms of the Feynman propagator and normal ordered products of field operators to simplify the calculations. Wick's Theorem would help us to keep the computation clean and precise.
+
+\subsection{Wick's Theorem}
+Here we need to concept of contraction of two field operators $\phi(x_1)$ and $\phi(x_2)$. For convenience, we denote $\phi(x_1) = \phi_1$ and $\phi(x_2) = \phi_2$. Here we define
+\begin{align*}
+\wick{\c1{\phi_1}\,\c1{\phi_2}} = T(\phi_1\phi_2) - :\phi_1\phi_2:
+\end{align*}
+Note here we have, assuming $x_1^0>x_2^0$,
+\begin{align*}
+\phi_1 \,\phi_2 &= \sum_{p,p'} \frac{a(p)\,a(p')\, e^{-ipx_1-ip'x_2}  + a(p)\, a^{\dagger}(p')\,e^{-ipx_1+ip'x_2}}{2V(p^0p'^0)^{1/2}}\\
+&{}\qquad\qquad + \sum_{p,p'}\frac{ a^\dagger(p)\,a(p')\,e^{ipx_1-ipx'_2} + a^\dagger(p)\,a^{\dagger}(p')\,e^{ipx_1+ip'x_2}}{2V(p^0p'^0)^{1/2}}\,,
+\end{align*}
+\begin{align*}
+ :\phi_1\phi_2:\, &= \sum_{p,p'} \frac{a(p)\,a(p')\, e^{-ipx_1-ip'x_2}  + a^{\dagger}(p')\,a(p)\, e^{-ipx_1+ip'x_2}}{2V(p^0p'^0)^{1/2}}\\
+&{}\qquad\qquad + \sum_{p,p'}\frac{ a^\dagger(p)\,a(p')\,e^{ipx_1-ipx'_2} + a^\dagger(p)\,a^{\dagger}(p')\,e^{ipx_1+ip'x_2}}{2V(p^0p'^0)^{1/2}}\,,
+\end{align*}
+The only term we need to deal with is the $a(p')\, a^\dagger(p)$ term in $\phi_1\,\phi_2$, it is not hard to observe that we have
+\begin{align*}
+\phi_1 \phi_2 - :\phi_1\phi_2:  =\sum_{p,p'}\frac{1}{\sqrt{2Vp^0}}\frac{1}{\sqrt{2Vp'^0}} [a(p),\, a^\dagger(p')]\,e^{-ipx_1+ip'x_2}= \sum_{p}\frac{1}{2Vp^0}e^{-ip(x_1-x_2)} \,.
+\end{align*}
+which is a $c$-number. Thus from the definition, we see here
+\begin{align*}
+&\wick{\c1\phi_1\c1\phi_2}  = \sum_{p}\frac{1}{2Vp^0}e^{-ip(x_1-x_2)} = \text{(a c-number)}\,,\qquad\qquad \text{when }t_1>t_2\,,\\
+&\wick{\c1\phi_1\c1\phi_2} = \sum_{p}\frac{1}{2Vp^0}e^{-ip(x_2-x_1)} = \text{(also a c number)}\,,\qquad \text{when }t_2>t_1\,.
+\end{align*}
+Then we conclude that the contraction $\wick{\c1{\phi_1}\c1{\phi_2}}$ is a c number, so when we take the vacuum expectation value,
+\begin{align*}
+\langle 0 |\wick{\c1{\phi_1}\c1{\phi_2}}|0\rangle = 
+%\wick{\c1{\phi_1}\c1{\phi_2}} = 
+\langle\, 0\, |\,T(\phi_1\phi_2)\,|\,0\,\rangle - \underbrace{\langle\, 0\, |\,:\phi_1\phi_2:\,|\,0\,\rangle}_{\text{vanish}} = i\Delta_F(x_1-x_2)\,.
+\end{align*}
+The generalization of the above result is the Wick's Theorem. That is, one can write
+\begin{align*}
+T(\phi_1&\phi_2\cdots\phi_n) -\,:\phi_1\phi_2\cdots\phi_n:  \\
+=&\wick{:\c1\phi_1 \c1\phi_2 \phi_3\cdots\phi_n: + :\c2\phi_1\phi_2\c2\phi_3\phi_4\cdots\phi_n: + }\ \text{(terms with one pair of $\phi$ contracted)}\\
+&{}\quad +\wick{:\c1\phi_1\c1\phi_2\c2\phi_3\c2\phi_4\cdots \phi_n :+
+:\c3\phi_1\c4\phi_2\c3\phi_3\c4\phi_4\cdots \phi_n : }+\ \text{(terms with two pairs of $\phi$ contracted)}\\
+&{}\quad\quad\vphantom{\wick{:\c1\phi_1\c1\phi_2\c2\phi_3\c2\phi_4\cdots \phi_n :+:\c3\phi_1\c4\phi_2\c3\phi_3\c4\phi_4\cdots \phi_n : }} +\cdots + \text{(terms with maixmal amount of pairs of $\phi$ contracted)}\,. \tag{*}
+\end{align*}
+Note that if there are two types of scalar fields, such as $\phi(x)$ and $\sigma(x)$, then we require $$\wick{\c1\phi \ \c1\sigma} = 0\,.$$ The proof of the (*) is done by induction. \\
+
+Note that the first nontrivial $S$ matrix element in $\langle\, p_1'p_2'\,|\,S\,|\,p_1p_2\,\rangle$ from interaction Lagrangian (3.6) is given by
+\begin{align*}
+\left\langle \, 0 \, \left| a(p_1')\,a(p_2') \left(-\frac{i\lambda}{4!}\int \, d^4x \,\phi^4(x)  \right)\, a^{\dagger}(p_1)\, a^{\dagger}(p_2)\,\right|\,0\,\right\rangle\,.
+\end{align*}
+Here we call $a(k)\, e^{-ikx} = A$ and $a^{\dagger}e^{ikx} = A^\dagger$. We ignore the contractions of fields at the same spacetime points as they will be accounted for in renormalization. The terms in $\phi^4(x) $ can be written of the form
+\begin{align*}
+(A_1 + A_1^\dagger) (A_2+A_2^\dagger)(A_3+A_3^\dagger)(A_4+A_4^\dagger)\,,
+\end{align*}
+and the terms with two $A$'s and two $A^\dagger$'s are the one that we are interested in as one would find they are the only non-vanishing terms when one commute these operators past the $a$ and $a^dagger$ operators of the initial and final states. That is, by Wick's theorem, we are only interested in the terms in $: \phi^4(x) : $ with two $A$'s and two $A^\dagger$'s, 
+\begin{align}
+\underbrace{A^{\dagger}_1 A^{\dagger}_2 A_3 A_4 + A_3^\dagger A_4^\dagger A_1A_2 + A_2^\dagger A_4^\dagger A_1A_3 + A_1^\dagger A_4^\dagger A_2A_3 + \cdots}_{\text{a total of 6 terms}}
+\end{align}
+For a typical term in (3.7), we can write
+\begin{align*}
+&\left\langle\,0\,\left|\, a(p_1')\,a(p_2')\,\left( \sum_{k_1,k_2,k_3,k_4}a^\dagger(k_1)\,e^{ik_1x}\, a^\dagger(k_2) \, e^{ik_2x}\, a(k_3) e^{-ik_3x}\, a(k_4)\, e^{-ik_4x}\right) a^\dagger(p_1)\, a^\dagger(p_2)\, \right|\,0\,\right\rangle\\
+&{}\qquad\quad  =\sum_{k_1,k_2,k_3,k_4}\underbrace{(\delta_{p_1'k_1}\delta_{p_2'k_2} + \delta_{p_2'k_1}\delta_{p_1'k_2}) (\delta_{k_3}p_1\delta_{k_4p_2}+ \delta_{k_3p_2}\delta_{k_4p_1})\,e^{i(k_1+k_2 - k_3 - k_4)x}}_{\text{a contribution of 4 terms}} \,.
+\end{align*}
+All the typical terms, a total of $4\cdot 6 = 24 = 4!$ terms, should give the same value, as we have a factor $1/4!$ in the expression, we obtain the final answer, combining all,
+\begin{align*}
+&\left\langle \,0 \, \left|\, a(p_1')\,a(p_2')\, \left(\frac{-i\lambda}{4!}\int d^4x\, \phi^4(x)\right)\, a^\dagger(p_1)\, a^\dagger(p_2)\, \right| \,0 \,\right\rangle\\
+&{}\quad =-\frac{i\lambda}{4!}\cdot \frac{1}{\sqrt{2Vp_1^0}}\frac{1}{\sqrt{2Vp_2^0}}\frac{1}{\sqrt{2Vp_1'^0}}\frac{1}{\sqrt{2Vp_2'^0}} \int \, d^4 x\, e^{i(p_1'+p_2' - p_1-p_2)} \cdot 4! \\
+&{}\quad =-i\lambda\cdot \frac{1}{\sqrt{2Vp_1^0}}\frac{1}{\sqrt{2Vp_2^0}}\frac{1}{\sqrt{2Vp_1'^0}}\frac{1}{\sqrt{2Vp_2'^0}}\, (2\pi)^4 \,\delta^4(p_1+p_2 - p_1' - p_2')\,.
+\end{align*}
+Another more straightforward way to see this is that each $\phi(x)$ operator in the interaction Lagrangian can be passed to commute with one of the \textit{in} or \textit{out} states, leaving $4\cdot 3 \cdot 2 \cdot 1 = 4!$ possible ways of passing, yielding the same result.\\
+
+
+\example Now consider another example where we have two fields $\sigma(x)$ and $\phi(x)$. The interaction Lagrangian here is given by
+\begin{align*}
+\mathcal{L}_{\text{int}} = -g\phi^2 \sigma\,,
+\end{align*}
+while the full Lagrangian is
+\begin{align*}
+\mathcal{L} = \frac{1}{2}(\pd_\mu \phi)(\pd^\mu \phi) -\frac{1}{2}m^2 \phi^2 + \frac{1}{2}(\pd_\mu \sigma)(\pd^\mu \sigma) - \frac{1}{2}m^2\sigma^2 + \mathcal{L}_{\text{int}}\,.
+\end{align*}
+We denote the annihilation operator of the $\phi$ field as $a$, and that of the $\sigma$ field as $b$. In the process of $\phi\phi\to \phi \phi$, that is two incoming $\phi$ particles with momenta $p_1$ and $p_2$, and two outgoing $\phi$ particles with momenta $p_1'$ and $p_2'$, the lowest nontrivial order in the $S$-matrix element $\langle \,p_1' p_2'\, |\,S\,|\,p_1p_2\,\rangle$ is given by
+\begin{align}
+\left\langle\, 0 \, \left|\, a(p_1')\, a(p_2')\, \left(\int \frac{(-ig)^2}{2!}T\left(\phi^2(x_1)\,\sigma(x_1)\,\phi^2(x_2)\, \sigma(x_2)\right)\, d^4x\right)\, a^\dagger(p_1)\, a^\dagger(p_2)\,\right|\,0\,\right\rangle
+\end{align}
+as the term 
+\begin{align*}
+\left\langle\, 0 \, \left| a(p_1')\, a(p_2')\, \left(\int -ig\,\phi^2 \sigma\, d^4x\right)\, a^\dagger(p_1)\, a^\dagger(p_2)\,\right|\,0\,\right\rangle
+\end{align*}
+does not contribute by the fact that creation and annihilation operators of the $\sigma$ field commute with that of the $\phi$ field. Expanding (3.8) using the Wick's Theorem, the only nonvanishing term of interest is 
+\begin{align*}
+:\phi^2(x_1)\, \phi^2(x_2):\, \wick{\c1 \sigma(x_1)\, \c1\sigma(x_2)}\,,
+\end{align*}
+thus the nonvanishing $S$ matrix element reads
+\begin{align*}
+\frac{(-ig)^2}{2!}\int\, d^4x_1\,d^4x_2 \, i\Delta_F(x_1-x_2,\,\mu^2) \cdot \left\langle \,0\,\left| a(p_1')\,a(p_2')\, :\phi^2(x_1) \, \phi^2(x_2):\, a^\dagger(p_1) \, a^\dagger(p_2)\, \right|\,0\,\right\rangle\,,
+\end{align*}
+where $\mu$ denotes the mass of the $\sigma$ particle, and $\Delta_F(x_1-x_2,\,\mu^2)$ denotes the propagator of the $\sigma$ particle. The relevant terms in $:\phi_1^2\phi_2^2:$ such that the inner product does not vanish, are
+\begin{align*}
+ A_2^\dagger A_2^\dagger A_1A_1 + A_1^\dagger A_1^\dagger A_2A_2 + 4A_1^\dagger A_2^\dagger A_1A_2\,.
+\end{align*}
+Now we can write
+\begin{align*}
+\langle \, 0\, | &a(p_1') \, a(p_2')\, 
+				(A_2^\dagger A_2^\dagger A_1A_1)\,
+		 		 a^\dagger(p_1) \, a^\dagger(p_2)\,
+		 	   |\, 0 \, \rangle\\
+&= 4\cdot \frac{1}{\sqrt{2p_1^0 V}} \frac{1}{\sqrt{2p_2^0 V}}\frac{1}{\sqrt{2p'^0_1 V}}\frac{1}{\sqrt{2p_2'^0 V}} e^{ip_1'x_2}e^{ip_2'x_2} e^{-ip_1x_1} e^{-ip_2x_1}\,,
+\end{align*}
+which corresponds to the diagram:\\
+
+\begin{center}
+\begin{fmffile}{feyngraph0}
+  \begin{fmfgraph*}(110,60)
+\fmfleft{i1,i2}
+\fmfright{o1,o2}
+\fmflabel{$p_1$}{i1}
+\fmflabel{$p_2$}{i2}
+\fmflabel{$p'_1$}{o1}
+\fmflabel{$p'_2$}{o2}
+\fmflabel{$x_1$}{v1}
+\fmflabel{$x_2$}{v2}
+\fmf{fermion}{i1,v1}
+\fmf{fermion}{i2,v1}
+\fmf{fermion}{v2,o1}
+\fmf{fermion}{v2,o2}
+\fmf{dashes}{v1,v2}
+  \end{fmfgraph*}
+\end{fmffile}.\\
+\end{center}
+
+The second term gives
+\begin{align*}
+\langle \, 0\, | &a(p_1') \, a(p_2')\, (A_1^\dagger A_1^\dagger A_2A_2)\, a^\dagger(p_1) \, a^\dagger(p_2)\,|\, 0 \, \rangle\\
+&= 4\cdot \frac{1}{\sqrt{2p_1^0 V}} \frac{1}{\sqrt{2p_2^0 V}}\frac{1}{\sqrt{2p'^0_1 V}}\frac{1}{\sqrt{2p_2'^0 V}} e^{-ip_1x_2}e^{-ip_2x_2} e^{ip_1'x_1} e^{ip_2'x_1}\,,
+\end{align*}
+which corresponds to the diagram:\\
+
+\begin{center}
+\begin{fmffile}{feyngraph1}
+  \begin{fmfgraph*}(110,60)
+\fmfleft{i1,i2}
+\fmfright{o1,o2}
+\fmflabel{$p_1$}{i1}
+\fmflabel{$p_2$}{i2}
+\fmflabel{$p'_1$}{o1}
+\fmflabel{$p'_2$}{o2}
+\fmflabel{$x_2$}{v1}
+\fmflabel{$x_1$}{v2}
+\fmf{fermion}{i1,v1}
+\fmf{fermion}{i2,v1}
+\fmf{fermion}{v2,o1}
+\fmf{fermion}{v2,o2}
+\fmf{dashes}{v1,v2}
+  \end{fmfgraph*}
+\end{fmffile}.\\
+\end{center}
+
+The last term gives
+\begin{align*}
+4\langle &\, 0\, | a(p_1') \, a(p_2')\, (A_1^\dagger A_2^\dagger A_1A_2) a^\dagger(p_1) \, a^\dagger(p_2)\,|\, 0 \, \rangle\\
+&=4\cdot \sum_{k_1,k_2,k_3, k_4}
+\frac{e^{ik_1x_1+ik_2x_2-ik_3x_1-ik_4x_2}}{\sqrt{2k_1^0V}\sqrt{2k_2^0V}\sqrt{2k_3^0V}\sqrt{2k_4^0V}}
+\langle \,0\,| a(p_1') \, a(p_2')\, a^\dagger(k_1)\, a^\dagger(k_2)\, a(k_3)\, a(k_4)\, a^\dagger(p_1)\, a^\dagger(p_2)\, |\,0\,\rangle \\
+&= 4\cdot \frac{1}{\sqrt{2p_1^0V}}\frac{1}{\sqrt{2p_2^0V}}\frac{1}{\sqrt{2p_1'^0V}}\frac{1}{\sqrt{2p_2'^0V}}\left( e^{ip_2'x_1}e^{ip_1'x_2}e^{-ip_2x_1}e^{-ip_1x_2} + e^{ip_2'x_2}e^{ip_1'x_1}e^{-ip_2x_2}e^{-ip_1x_1}\right)\\
+&{}\qquad\quad+4\cdot \frac{1}{\sqrt{2p_1^0V}}\frac{1}{\sqrt{2p_2^0V}}\frac{1}{\sqrt{2p_1'^0V}}\frac{1}{\sqrt{2p_2'^0V}}\left( e^{ip_2'x_1}e^{ip_1'x_2}e^{-ip_1x_1}e^{-ip_2x_2}+e^{ip_2'x_2}e^{ip_1'x_1}e^{-ip_1x_2}e^{-ip_2x_1}\right)\,,
+\end{align*}
+here the first two terms correspond to the two diagrams, respectively,\\
+
+\begin{center}
+\begin{fmffile}{feyngraph3}
+  \begin{fmfgraph*}(110,60)
+\fmfleft{i1,i2}
+\fmfright{o1,o2}
+\fmflabel{$p_2$}{i1}
+\fmflabel{$p_1$}{i2}
+\fmflabel{$p'_2$}{o1}
+\fmflabel{$p'_1$}{o2}
+\fmflabel{$x_2$}{v2}
+\fmflabel{$x_1$}{v1}
+\fmf{fermion}{i1,v1,o1}
+\fmf{fermion}{i2,v2,o2}
+\fmf{dashes}{v1,v2}
+  \end{fmfgraph*}
+\end{fmffile} ,\qquad\qquad\qquad
+\begin{fmffile}{feyngraph4}
+  \begin{fmfgraph*}(110,60)
+\fmfleft{i1,i2}
+\fmfright{o1,o2}
+\fmflabel{$p_2$}{i1}
+\fmflabel{$p_1$}{i2}
+\fmflabel{$p'_2$}{o1}
+\fmflabel{$p'_1$}{o2}
+\fmflabel{$x_1$}{v2}
+\fmflabel{$x_2$}{v1}
+\fmf{fermion}{i1,v1,o1}
+\fmf{fermion}{i2,v2,o2}
+\fmf{dashes}{v1,v2}
+  \end{fmfgraph*}
+\end{fmffile}.\\
+\end{center}
+
+and the last two terms correspond to the two diagrams, respectively,\\
+
+
+\begin{center}
+\begin{fmffile}{feyngraph5}
+  \begin{fmfgraph*}(110,60)
+\fmfleft{i1,i2}
+\fmfright{o1,o2}
+\fmflabel{$p_2$}{i1}
+\fmflabel{$p_1$}{i2}
+\fmflabel{$p'_1$}{o1}
+\fmflabel{$p'_2$}{o2}
+\fmflabel{$x_2$}{v2}
+\fmflabel{$x_1$}{v1}
+\fmf{fermion}{i1,v1,o1}
+\fmf{fermion}{i2,v2,o2}
+\fmf{dashes}{v1,v2}
+  \end{fmfgraph*}
+\end{fmffile} ,\qquad\qquad\qquad
+\begin{fmffile}{feyngraph6}
+  \begin{fmfgraph*}(110,60)
+\fmfleft{i1,i2}
+\fmfright{o1,o2}
+\fmflabel{$p_2$}{i1}
+\fmflabel{$p_1$}{i2}
+\fmflabel{$p'_1$}{o1}
+\fmflabel{$p'_2$}{o2}
+\fmflabel{$x_1$}{v2}
+\fmflabel{$x_2$}{v1}
+\fmf{fermion}{i1,v1,o1}
+\fmf{fermion}{i2,v2,o2}
+\fmf{dashes}{v1,v2}
+  \end{fmfgraph*}
+\end{fmffile}.\\
+\end{center}
+
+Note that $\Delta_F(x_1-x_2,\,\mu^2) = \Delta_F(x_2-x_1,\,\mu^2)$, thus the diagrams that are related by interchanging $x_1$ and $x_2$ have the same value, giving a factor of $2$, which is canceled by the $1/2$ factor in front. This type of cancellation holds in general for diagrams without loops. \\
+
+\newpage
+\section[Feynman Diagrams]{\color{red} Feynman Diagrams\color{black}}
+Following the example in the last section (the last example in Section (3.3) Scattering Amplitude), with interaction Lagrangian given by
+\begin{align*}
+\mathcal{L}_{\text{int}} = -g\phi^2\sigma\,,
+\end{align*}
+we will now consider its diagrams in the momentum space, which are the Feynman diagrams. We have seen the $S$-matrix element is a composition of the vertex terms and the propagator terms, that is, in our example, denoting $$\mathcal{S} = \sqrt{2p_1^0V\cdot 2p_2^0V \cdot 2p_1'^0 V \cdot 2p_2'^0V}\,,$$ the first non-vanishing term in the $S$-matrix element reads
+\begin{align*}
+(-2ig)^2&\int d^4x_1\, d^4x_2\, i\Delta_F(x_1-x_2,\mu^2)\, \frac{e^{ip_2'x_2+ip_1'x_2 -ip_2x_1 - ip_1x_1}+\cdots }{\mathcal{S}}\\
+&= (-2ig)^2 \int \, d^4x_1\, d^4x_2\,d^4p\,\frac{1}{\mathcal{S}(2\pi)^4}\frac{1}{p^2 - \mu^2 + i\epsilon}
+\left(e^{-ix_1(p + p_1 + p_2)}e^{ix_2(p+p_1' + p_2')}+\cdots \right)\\
+&= \frac{(-2ig)^2}{\mathcal{S} }\int \frac{d^4p}{(2\pi)^4}\frac{i}{p^2 - \mu^2 + i\epsilon}\cdot \mathcal{M}\,,
+\end{align*}
+where $\mathcal{M}$ has three terms
+\begin{align*}
+\mathcal{M} &= (2\pi)^4\delta^4(p+p_1+p_2)\,(2\pi)^4 \delta^4(p+p_1' + p_2') \\
+&{}\qquad +  (2\pi)^4 \delta^4(p + p_2 - p_2')\,(2\pi)^4\delta^4(p+p_1'-p_1)\\
+&{}\qquad\qquad + (2\pi)^4 \delta^4(p+p_1 - p_2')\,(2\pi)^4\delta^4(p+p_1' - p_2) \,,
+\end{align*}
+each correspond to a diagram in the followings, respectively,\\
+
+\begin{center}
+\begin{fmffile}{feyngraph9}
+  \begin{fmfgraph*}(110,60)
+\fmfleft{i1,i2}
+\fmfright{o1,o2}
+\fmflabel{$p_1$}{i1}
+\fmflabel{$p_2$}{i2}
+\fmflabel{$p'_1$}{o1}
+\fmflabel{$p'_2$}{o2}
+\fmf{fermion}{i1,v1}
+\fmf{fermion}{i2,v1}
+\fmf{fermion}{v2,o1}
+\fmf{fermion}{v2,o2}
+\fmf{dashes_arrow, label=$p$}{v2,v1}
+  \end{fmfgraph*}
+\end{fmffile} ,\qquad
+\begin{fmffile}{feyngraph7}
+  \begin{fmfgraph*}(110,60)
+\fmfleft{i1,i2}
+\fmfright{o1,o2}
+\fmflabel{$p_2$}{i1}
+\fmflabel{$p_1$}{i2}
+\fmflabel{$p'_2$}{o1}
+\fmflabel{$p'_1$}{o2}
+\fmf{fermion}{i1,v1,o1}
+\fmf{fermion}{i2,v2,o2}
+\fmf{dashes_arrow, label=$p_2-p_2'$}{v1,v2}
+  \end{fmfgraph*}
+\end{fmffile} ,\qquad
+\begin{fmffile}{feyngraph8}
+  \begin{fmfgraph*}(110,60)
+\fmfleft{i1,i2}
+\fmfright{o1,o2}
+\fmflabel{$p_2$}{i1}
+\fmflabel{$p_1$}{i2}
+\fmflabel{$p'_1$}{o1}
+\fmflabel{$p'_2$}{o2}
+\fmf{fermion}{i1,v1,o1}
+\fmf{fermion}{i2,v2,o2}
+\fmf{dashes_arrow, label=$p_2-p_1'$}{v1,v2}
+  \end{fmfgraph*}
+\end{fmffile}.\\
+\end{center}
+
+Here we see that the building blocks of the Feynman diagrams are the propagators and the vertices. For the vertex, we have terms like
+\begin{align*}
+(-2ig)(2\pi)^4 \delta^4(q_1 + q_2 - q_3)\,,
+\end{align*}
+correspond to the diagram
+\begin{center}
+\begin{fmffile}{feyngraph10}
+  \begin{fmfgraph*}(110,60)
+\fmfleft{i1,i2}
+\fmfright{o1}
+\fmflabel{$q_1$}{i1}
+\fmflabel{$q_2$}{i2}
+\fmflabel{$q_3$}{o1}
+\fmf{fermion}{i1,v1}
+\fmf{fermion}{i2,v1}
+\fmf{dashes_arrow}{v1,o1}
+  \end{fmfgraph*}
+\end{fmffile}.\\
+\end{center}
+
+For each propagators, we have terms like
+\begin{align*}
+\int \frac{d^4 p}{(2\pi)^4}\frac{i}{p^2 - m^2 + i\epsilon}\,,
+\end{align*}
+corresponding to lines, or dashed lines depending on which type of particle is representing, connecting vertices. \\
+
+To calculate the $S$ matrix elements, one uses the building blocks to draw all topologically distinct Feynman diagrams. For instance the following two diagrams are not topologically invariant,\\
+
+\begin{center}
+\begin{fmffile}{feyngraph9}
+  \begin{fmfgraph*}(110,60)
+\fmfleft{i1,i2}
+\fmfright{o1,o2}
+\fmflabel{$p_1$}{i1}
+\fmflabel{$p_2$}{i2}
+\fmflabel{$p'_1$}{o1}
+\fmflabel{$p'_2$}{o2}
+\fmf{fermion}{i1,v1}
+\fmf{fermion}{i2,v1}
+\fmf{fermion}{v2,o1}
+\fmf{fermion}{v2,o2}
+\fmf{dashes_arrow, label=$p$}{v2,v1}
+  \end{fmfgraph*}
+\end{fmffile},\qquad\qquad
+\begin{fmffile}{feyngraph11}
+  \begin{fmfgraph*}(110,60)
+\fmfleft{i1,i2}
+\fmfright{o1,o2}
+\fmflabel{$p_1$}{i1}
+\fmflabel{$p_2$}{i2}
+\fmflabel{$p'_2$}{o1}
+\fmflabel{$p'_1$}{o2}
+\fmf{fermion}{i1,v1}
+\fmf{fermion}{i2,v1}
+\fmf{fermion}{v2,o1}
+\fmf{fermion}{v2,o2}
+\fmf{dashes_arrow, label=$p$}{v2,v1}
+  \end{fmfgraph*}
+\end{fmffile},
+\end{center}
+as flipping the right-hand side of any one of the two with respect to the right-vertex gives the other one. However, the following two diagrams are topologically distinct, \\
+
+\begin{center}
+\begin{fmffile}{feyngraph7}
+  \begin{fmfgraph*}(110,60)
+\fmfleft{i1,i2}
+\fmfright{o1,o2}
+\fmflabel{$p_2$}{i1}
+\fmflabel{$p_1$}{i2}
+\fmflabel{$p'_2$}{o1}
+\fmflabel{$p'_1$}{o2}
+\fmf{fermion}{i1,v1,o1}
+\fmf{fermion}{i2,v2,o2}
+\fmf{dashes_arrow, label=$p_2-p_2'$}{v1,v2}
+  \end{fmfgraph*}
+\end{fmffile} ,\qquad
+\begin{fmffile}{feyngraph8}
+  \begin{fmfgraph*}(110,60)
+\fmfleft{i1,i2}
+\fmfright{o1,o2}
+\fmflabel{$p_2$}{i1}
+\fmflabel{$p_1$}{i2}
+\fmflabel{$p'_1$}{o1}
+\fmflabel{$p'_2$}{o2}
+\fmf{fermion}{i1,v1,o1}
+\fmf{fermion}{i2,v2,o2}
+\fmf{dashes_arrow, label=$p_2-p_1'$}{v1,v2}
+  \end{fmfgraph*}
+\end{fmffile}.\\
+\end{center}
+\hfill\break
+Now we have seen that the $S$-matrix elements $\langle\, \text{final}\, |\, S\, |\, \text{initial}\, \rangle \coloneqq S_{i\to f}$ can be pictorially expressed in terms of certain building blocks. The building blocks are the vertices and propagators constructed out of the Lagrangian of the theory. The vertices and the propagators constitute the Feynman rule. In other words, the vertices and propagators are mapped onto the formulas given by the Feynman rules. Putting all together in topologically distinct ways, and assigning the values given by the Feynman rules, we immediately obtain the amplitudes of the $S$-matrix elements. Next we will discuss the way to obtain Feynman rules directly from the Lagrangian.\\
+
+The vertices are completely determined by the form of interacting Lagrangian. \\
+\example For instance, we could have
+\begin{align*}
+\mathcal{L}_{\text{int}} = -g \phi^2 \sigma\,,
+\end{align*}
+where we have the fields
+\begin{align*}
+\sigma(x) = \sum_{p}\frac{1}{\sqrt{2Vp^0}}\left( b(p)\,e^{-ipx} + b^\dagger(p)\, e^{ipx}\right)\,,\\
+\phi(x) = \sum_{q}\frac{1}{\sqrt{2Vq^0}}\left( a(q)\,e^{-iqx} + a^\dagger(q)\, e^{iqx}\right)\,.
+\end{align*}
+Note that in any process, the incoming particles get destroyed and outgoing particles are created. Here we can have a vertex \\
+
+\begin{center}
+\begin{fmffile}{feyngraph12}
+  \begin{fmfgraph*}(110,60)
+\fmfleft{i1}
+\fmfright{o1,o2}
+\fmflabel{$p_3$}{i1}
+\fmflabel{$p_1$}{o1}
+\fmflabel{$p_2$}{o2}
+\fmf{dashes_arrow}{i1,v1}
+\fmf{fermion}{v1,o1}
+\fmf{fermion}{v1,o2}
+  \end{fmfgraph*}
+\end{fmffile},\\
+\end{center}
+
+where the dash line represents the $\sigma$-particle and the solid lines are the $\phi$-particle. Thus we are required to write, for this vertex
+\begin{align*}
+-ig\langle p_1p_2| \phi\phi \sigma|p_3\rangle = -2ig(2\pi)^4 \delta^4(p_3 - p_1-p_2)\,,
+\end{align*}
+where $p_3$ is a $\sigma$-particle to be annihilated by $\sigma$, $p_1$ and $p_2$ are $\phi$-particles to be created by $\phi$, and as there are $2!$ ways that $\phi$ can create $p_1$ and $p_2$, a factor of $2$ is appended. Note that the $\phi\phi\sigma$ operator comes from the interaction $\phi^2 \sigma$ factor in the interaction momentum. The propagators in this case are given by, for the $\phi$-particle,
+\begin{align*}
+\int\frac{dp^4}{(2\pi)^4}\frac{i}{p^2 - m^2 + i\epsilon}\,,
+\end{align*}
+and for the $\sigma$-particle,
+\begin{align*}
+\int\frac{dp^4}{(2\pi)^4}\frac{i}{p^2 - \mu^2 + i\epsilon}\,,
+\end{align*} 
+Here we can consider the $\phi \phi \to \phi\phi$ process, all the topological distinct cases are\\
+
+
+\begin{center}
+\begin{fmffile}{feyngraph13}
+  \begin{fmfgraph*}(110,60)
+\fmfleft{i1,i2}
+\fmfright{o1,o2}
+\fmflabel{$p_1$}{i1}
+\fmflabel{$p_2$}{i2}
+\fmflabel{$p_3$}{o1}
+\fmflabel{$p_4$}{o2}
+\fmf{fermion}{i1,v1}
+\fmf{fermion}{i2,v1}
+\fmf{fermion}{v2,o1}
+\fmf{fermion}{v2,o2}
+\fmf{dashes_arrow, label=$p=p_1 + p_2$}{v1,v2}
+  \end{fmfgraph*}
+\end{fmffile} ,\qquad
+\begin{fmffile}{feyngraph14}
+  \begin{fmfgraph*}(110,60)
+\fmfleft{i1,i2}
+\fmfright{o1,o2}
+\fmflabel{$p_1$}{i1}
+\fmflabel{$p_2$}{i2}
+\fmflabel{$p_3$}{o1}
+\fmflabel{$p_4$}{o2}
+\fmf{fermion}{i1,v1,o1}
+\fmf{fermion}{i2,v2,o2}
+\fmf{dashes_arrow, label=$p=p_1-p_3$}{v1,v2}
+  \end{fmfgraph*}
+\end{fmffile} ,\qquad
+\begin{fmffile}{feyngraph15}
+  \begin{fmfgraph*}(110,60)
+\fmfleft{i1,i2}
+\fmfright{o1,o2}
+\fmflabel{$p_1$}{i1}
+\fmflabel{$p_2$}{i2}
+\fmflabel{$p_4$}{o1}
+\fmflabel{$p_3$}{o2}
+\fmf{fermion}{i1,v1,o1}
+\fmf{fermion}{i2,v2,o2}
+\fmf{dashes_arrow, label=$p=p_1-p_4$}{v1,v2}
+  \end{fmfgraph*}
+\end{fmffile}.\\
+\end{center}
+
+Now we use the Feynman rules to write down the $S$-matrix element.\\ 
+
+(1) First we integrate over all momenta for each propagator, that is, in our case, the propagator is the $\sigma$-particle only, so we only have the factor
+$$\int\, \frac{d^4p}{(2\pi)^4}\frac{i}{p^2 - \mu^2 + i\epsilon}\,.$$ 
+(2) Then at each vertex we require a factor 
+$$-2ig(2\pi)^4 \delta (p_{\text{in}} - p_{\text{out}})\,.$$
+(3) Lastly, for each external line, we need a coefficient of 
+$$\mathcal{S}_{p}\coloneqq \frac{1}{\sqrt{2Vp^0}}\,.$$ 
+For clearness, we denote here
+\begin{align*}
+\mathcal{S}_{p_1p_2\cdots p_n} \coloneqq \mathcal{S}_{p_1}\cdot \mathcal{S}_{p_2}\cdot \cdots \cdot \mathcal{S}_{p_n}\,.
+\end{align*}
+In particular, from the second diagram in the three, we have
+\begin{align*}
+& \mathcal{S}_{p_1p_2p_3p_4}
+\int \, d^4p\, \left( -2ig\right) (2\pi)^4 \delta^4(p_1 - p - p_3) \frac{i}{(2\pi)^4}\frac{1}{p^2 - \mu^2 +i\epsilon} (-2ig) (2\pi)^4 \delta^4(p+p_2 - p_4)\\
+&{}\qquad= \mathcal{S}_{p_1p_2p_3p_4}
+i(-2ig)^2(2\pi)^4\delta^4(p_1+p_2 - p_3 - p_4) \frac{1}{(p_1-p_3)^2 - \mu^2 + i\epsilon}\,.
+\end{align*}
+
+\example For another example, we consider the Lagrangian
+\begin{align*}
+\mathcal{L}_{\text{int}} = -\frac{g}{3!} \phi^3 - \frac{\lambda}{4!}\phi^4\,.
+\end{align*}
+There are two types of vertices that we could have here,
+
+\begin{center}
+\begin{fmffile}{feyngraph16}
+  \begin{fmfgraph*}(110,60)
+\fmfleft{i1,i2}
+\fmfright{o1,o2}
+\fmflabel{$p_1$}{i1}
+\fmflabel{$p_2$}{i2}
+\fmflabel{$p_3$}{o1}
+\fmf{fermion}{i1,v1}
+\fmf{fermion}{o1,v1}
+\fmf{fermion}{i2,v1}
+  \end{fmfgraph*}
+\end{fmffile} ,\qquad\qquad
+\begin{fmffile}{feyngraph17}
+  \begin{fmfgraph*}(110,60)
+\fmfleft{i1,i2}
+\fmfright{o1,o2}
+\fmflabel{$p_1$}{i1}
+\fmflabel{$p_2$}{i2}
+\fmflabel{$p_3$}{o1}
+\fmflabel{$p_4$}{o2}
+\fmf{fermion}{i1,v1}
+\fmf{fermion}{i2,v1}
+\fmf{fermion}{o1,v1}
+\fmf{fermion}{o2,v1}
+  \end{fmfgraph*}
+\end{fmffile}.\\
+\end{center}
+
+with their corresponding $S$-matrix element factors, for the first vertex
+\begin{align*}
+-\frac{(ig)}{3!} \cdot 3!\cdot (2\pi)^4 \,\delta^4(p_1 + p_2 + p_3) = (-ig)\,(2\pi)^4\,\delta^4(p_1+p_2+p_3)\,,
+\end{align*}
+and for the second vertex
+\begin{align*}
+(-i\lambda)(2\pi)^4 \delta^4(p_1 + p_2 + p_3 + p_4)\,.
+\end{align*}
+
+For the $\phi\phi \to \phi \phi$ process, we have four topological distinct diagrams,\\
+
+\begin{center}
+\begin{fmffile}{feyngraph18}
+  \begin{fmfgraph*}(110,60)
+\fmfleft{i1,i2}
+\fmfright{o1,o2}
+\fmflabel{$p_1$}{i1}
+\fmflabel{$p_2$}{i2}
+\fmflabel{$p_3$}{o1}
+\fmflabel{$p_4$}{o2}
+\fmf{fermion}{i1,v1}
+\fmf{fermion}{i2,v1}
+\fmf{fermion}{v1,o1}
+\fmf{fermion}{v1,o2}
+  \end{fmfgraph*}
+\end{fmffile},\qquad\qquad\qquad
+\begin{fmffile}{feyngraph19}
+  \begin{fmfgraph*}(110,60)
+\fmfleft{i1,i2}
+\fmfright{o1,o2}
+\fmflabel{$p_1$}{i1}
+\fmflabel{$p_2$}{i2}
+\fmflabel{$p_4$}{o1}
+\fmflabel{$p_3$}{o2}
+\fmf{fermion}{i1,v1}
+\fmf{fermion}{i2,v1}
+\fmf{fermion}{v2,o1}
+\fmf{fermion}{v2,o2}
+\fmf{fermion}{v1,v2}
+  \end{fmfgraph*}
+\end{fmffile},\\
+\hfill\break
+\hfill\break
+\hfill\break
+\begin{fmffile}{feyngraph20}
+  \begin{fmfgraph*}(110,60)
+\fmfleft{i1,i2}
+\fmfright{o1,o2}
+\fmflabel{$p_1$}{i1}
+\fmflabel{$p_2$}{i2}
+\fmflabel{$p_4$}{o1}
+\fmflabel{$p_3$}{o2}
+\fmf{fermion}{i1,v1}
+\fmf{fermion}{i2,v2}
+\fmf{fermion}{v1,o1}
+\fmf{fermion}{v2,o2}
+\fmf{fermion}{v1,v2}
+  \end{fmfgraph*}
+\end{fmffile},\qquad\qquad\qquad
+\begin{fmffile}{feyngraph21}
+  \begin{fmfgraph*}(110,60)
+\fmfleft{i1,i2}
+\fmfright{o1,o2}
+\fmflabel{$p_1$}{i1}
+\fmflabel{$p_2$}{i2}
+\fmflabel{$p_3$}{o1}
+\fmflabel{$p_4$}{o2}
+\fmf{fermion}{i1,v1}
+\fmf{fermion}{i2,v2}
+\fmf{fermion}{v1,o1}
+\fmf{fermion}{v2,o2}
+\fmf{fermion}{v1,v2}
+  \end{fmfgraph*}
+\end{fmffile}.
+\end{center}
+
+
+
+
+
+
+
+
+\newpage
+\chapter{Incomplete}
+Suppose we have a Lagrangian
+\begin{align*}
+\mathcal{L} = \frac{1}{2}\,\pd_\mu \phi\, \pd^\mu \phi - \frac{1}{2}m^2 \phi^2\,.
+\end{align*}
+Since $\mathcal{L}$ only occurs as $S = \int \, \mathcal{L}\, d^4x$, we can integrate by parts and write
+\begin{align*}
+\mathcal{L} = -\frac{1}{2}\phi \left( \pd^2 + m^2\right) \phi 
+\end{align*}
+and in the momentum space, we obtain
+\begin{align*}
+\frac{1}{2}\phi(p^2 - m^2) \phi\,,
+\end{align*}
+and the propagators are 
+\begin{align*}
+\frac{1}{(2\pi)^4}M^{-1} = \frac{1}{(2\pi)^4}\frac{1}{p^2 - m^2}\,.
+\end{align*}
+Recall that the $S$-matrix is characterized by
+\begin{align*}
+e^{i \int \mathcal{L}\, d^4x}\,,
+\end{align*}
+if one has $m^2 \to m^2 - i\epsilon$, then one can write
+\begin{align*}
+e^{i \int \mathcal{L}\, d^4x} = e^{i\int \pd_\mu \phi\, \pd^\mu \phi  - \frac{1}{2}m^2 \phi^2}e^{-\epsilon \phi^2/2}
+\end{align*}
+Thus the propagators can the written as 
+\begin{align*}
+\frac{1}{(2\pi)^4}\frac{1}{p^2 - m^2}
+\end{align*}
+with $m^2 \to m^2 - i\epsilon$ to obtain the right contour, where the factor $e^{-i\epsilon\phi^2/2}$ will be damped as $\phi \gg 1$.
+
+
+
+\newpage
+For Lagrangian with derivative interactions, we consider here the interaction Lagrangian
+\begin{align*}
+\mathcal{L}_{\text{int}}  = \lambda (\pd_\mu \phi_2)\, (\pd^\mu \phi_3) \, \phi_1\,, \tag{*}
+\end{align*}
+the vertex are the same as if without the derivatives, but the magnitude of the vertex in the Feynman rule will be different from those without the derivatives,\\
+
+If $p_\mu$ is the momentum, then for a created particle, we obtain a factor of $ip_\mu$ in the Feynman rule, and for a annihilated particle, we obtain a factor of $ip_\mu$ in the Feynman rule. For instance, for the case $\phi_1 \phi_2 \to \phi_1 \phi_2$, we could have
+\textbf{Add Diagram}\\
+
+and for this diagram, we have, suppose the particles are massless $(m=0)$,
+\begin{align*}
+\frac{1}{\sqrt{•}}
+\frac{1}{\sqrt{•}}
+\frac{1}{\sqrt{•}}
+\frac{1}{\sqrt{•}}
+\int d^4k\, (i\lambda)^2(-ip_2^\mu)(+ik_\mu)\frac{i}{(2\pi)^4k^2}(2\pi)^4 \delta^4(p_1+p_2 -k)\, (-ik_\mu) (ip_2'^\mu) (2\pi)^4 \delta^4(k-p_1' - p_2')
+\end{align*}
+Integrating we obtain the $S$-matrix element, 
+\begin{align*}
+s_{\text{fi}} = -i\lambda^2 p_2\cdot (p_1+p_2) \frac{1}{(p_1+p_2)^2} p_2'\cdot (p_1' + p_2') (2\pi)^4 \delta^4(p_1 + p_2 - p_1' -p_2')\,.
+\end{align*}
+Note that we could have also integrated by parts to get 
+\begin{align*}
+\mathcal{L}_{\text{int}} = -\lambda \phi_3(\pd_\mu \phi_1 \, \pd^\mu \phi_2 + \phi_1 \square \phi_2)\,,
+\end{align*}
+which is equivalent to (*). In which case we obtain
+\begin{align*}
+\frac{1}{\sqrt{•}}\int \, d^4k \, \left( -i\lambda\right)^2\left( (-ip_1^\mu )(-i(p_2)_{\mu}) + (-ip_2^\mu)^2\right) ( 2\pi)^4 \delta^4(p_1 + p_2 -k) \, \frac{i}{(2\pi)^4 k^2}\left( (i{p_1'}^\mu)(i(p_2')_{\mu}) + (i{p'_2}^\mu)^2 \right) (2\pi)^4 \delta^4(\textbf{ADD}) 
+\end{align*}
+Another example, we can consider the interaction Lagrangian
+\begin{align*}
+\mathcal{L}_{\text{int}} = \frac{g}{4!}\phi^2 \,\square \phi^2 = -\frac{g}{4!}\cdot 4 \phi^2(\pd_\mu \phi)^2 = -\frac{g}{3!}\phi^2 (\pd_\mu \phi)^2\,.
+\end{align*}
+Here we can perform a Fourier transform on
+\begin{align*}
+i\int \mathcal{L}_{\text{int}}\, d^4 x\,,
+\end{align*}
+from which we obtain
+\begin{align*}
+-i \iiiint_{k_1,k_2,k_3,k_4} d^4 x\, \frac{g}{4!}\that{\phi}(k_1) \, \that{\phi}(k_2) \, \left( -(k_3 + k_4)^4\right) \that{\phi}(k_3) \, \that{\phi}(k_4) e^{-i(k_1 + k_2 + k_3 + k_4)x}
+\end{align*}
+For the $\phi \phi \to \phi \phi$ process, we have \textbf{ADD diagram}\\
+
+To avoid keeping track of the extra factors generated by derivatives, one can use the momentum conservation, such as $(k_3 + k_4)^2 = (k_1 + k_2)^2$ and so on, such that
+\begin{align*}
+i \int \mathcal{L}_{\text{int}}\, d^4 x = i \left( \frac{-g}{4!}\right)\iiiint_{k_1,k_2,k_3,k_4}\left( (k_1 + k_2)^2 + (k_1 +k_3)^2 + (k_1 + k_4)^2 \right) \frac{1}{3} \that{\phi}(k_1)\, \that{\phi}(k_2)\, \that{\phi}(k_3)\, \that{\phi}(k_4) \, (2\pi)^4 \delta^4(k_1+k_2 + k_3 + k_4)\,.
+\end{align*}
+Now the Lagrangian is completely symmetric, and thus we have
+\begin{align*}
+\langle p_1' p_2' | S | p_1p_2\rangle = \textbf{ADD}
+\end{align*}
+\newpage
+
+\section[Construction of the Interaction Lagrangian]{\color{red} Construction of the Interaction Lagrangian\color{black}}
+First one would like to write down all interaction terms that are allowed by the symmetry of one's theory. Then grouping the terms according to whether they are marginal, relevant, and irrelevant. Recall that the mass dimension of $\phi$ is $1$, the action is dimensionless, and $\mathcal{L}$ should have mass dimension $4$, then we can find the dimension of the couplings. For instance, in the interaction Lagrangian
+\begin{align*}
+\mathcal{L}_{\text{int}} = \lambda \phi^4 \tag{EX1}
+\end{align*}
+has $\lambda$ being dimensionless, and thus is said to be marginal. The type which the interaction Lagrangian is given by
+\begin{align*}
+\mathcal{L}_{\text{int}} = -g \phi^2 \sigma \tag{EX2}
+\end{align*}
+has $g$ having mass dimension $1$, thus is said to be relevant. 
+The type which the interaction Lagrangian is given by
+\begin{align*}
+\mathcal{L}_{\text{int}} = g' \phi^5 \tag{EX3}
+\end{align*}
+has $g'$ having mass dimension $-1$, thus is said to be irrelevant. In (EX1), choosing $\lambda \ll 1$ one can proceed with perturbation theory. In (EX2), if $E$ is a typical energy scalar in the theory, then $g/E$ is dimensionless, and if $g/E \ll 1$, one can also apply perturbation theory. In (EX3),if $E$ is a typical energy scale in the theory, then $g'E$ is dimensionless. Similarly for coupling with mass dimension $-2$ $g'E^2$ is dimensionless, and so on. For perturbative theory, $g'E$ to bbe small, irreverent coupling have a good perturbative explanation for low energy.  \\
+
+Next we will discuss how to obtain crosssection and decay rate from the $S$-matrix element. We can find here the transition probability $i \to f$, where $i $ happens at $t= -\infty$ and $f$ happens at $t = \infty$, is given by
+\begin{align*}
+\mathbb{P}_{i \to f}\left|\langle f | S | i \rangle \right|^2\,,
+\end{align*}
+the transition rate is the transition probability per unit time. Let $T$ be the time for which the interaction is on. \\
+
+Consider first a fixed target experiment, where we have a beam illuminating a target square wall, let $\rho_1$ denote the number density in the beam, and $\rho_2$ denote the number density in the target. Let $v_1$ be the velocity of the beam particles, $A$ be the cross-sectional area of the beam, and $L$ be the length the target. The flux is the number of particle crossing unit area in unit time. The counting rate is thus given by
+\begin{align*}
+\frac{P_{i\to f}}{T} = \Omega_{i \to f}
+\end{align*}
+here we note that $\Omega$ satisfies
+\begin{align*}
+\Omega \propto \rho_1 \cdot v_1 \cdot A \cdot \rho_2 \cdot L
+\end{align*}
+dimensional analysis of $\Omega$ gives
+\begin{align*}
+[ \rho_1 \cdot v_1 \cdot A \cdot \rho_2 \cdot L] =\left[\frac{1}{\text{Length}^3} \cdot \frac{\text{Length}}{\text{Time}}\cdot \text{Length}^2 \cdot \frac{1}{\text{Length}^3} \cdot \text{Length} \right] =\frac{1}{\text{Length}^2\cdot \text{Time}}
+\end{align*}
+but instead, $\Omega$ should have unit $1/\text{Time}$, and thus we append $\sigma$, called the crosssection, that has unit $L^2$, to account for the counting rate per target particle per unit flux, and our job is to calculate $\sigma$. \\
+
+For colliding beams, the incident flux is 
+\begin{align*}
+\rho_1 | \vec{v}_1 - \vec{v}_2|\,,
+\end{align*}
+
+and thus we have
+\begin{align*}
+d\sigma_{i\to f} = \frac{\mathbb{P}_{i\to f}}{T N_2 \rho_1 |\vec{v}_1 - \vec{v}_2|}
+\end{align*}
+where $N_2$ is the number of taraget particles. Here we take $N_2 = 1$, and $\rho_1 = 1/V$, to consider the case where there is $1$ incident and $1$ target particle, giving $n$ final state ($1 + 1 \to n$). Here we have
+\begin{align*}
+\mathbb{P}_{i\to f} = |\langle f|S | i\rangle|^2\,.
+\end{align*}
+In most experiment, the momenta of outgoing particle are not picked out. The detector registers an outgoing particle irrespective of its momentum, then one is measuring the total crossection instead, defined by
+\begin{align*}
+\sigma = \sum_{f} d\sigma_{i\to f} = \sum_{\substack{\text{final}\\ \text{momneta}}} \frac{\mathbb{P}_{i\to f}}{TV^{-1}|\vec{v}_1 - \vec{v}_2|}\,.
+\end{align*}
+If there are $n$ identical particles in the final state, then we have
+\begin{align*}
+\sigma = \frac{1}{n!}\sum_{\substack{\text{final}\\\text{momenta}}}\textbf{ADD}
+\end{align*}
+We may sometimes choose to detect particles only within a solid angle $\Delta \Omega$, then we need to calculate the differential crosssection
+\begin{align*}
+\frac{d\sigma}{d\Omega}\,.
+\end{align*}
+Here one can also define the decay rate, let $N$ denote the number of particle at time $t$, which satisfies
+\begin{align*}
+N = N_0 e^{-t/\tau}\,,
+\end{align*}
+then the decay rate is defined by $1/\tau$, where $\tau$ is the lifetime of the particle and the decay rate is then the transition rate per decaying, given by
+\begin{align*}
+\frac{1}{\tau} = \sum_{\text{final momenta}} \frac{|\langle f|S|i\rangle|^2}{TN}
+\end{align*}
+where $N$ is the number of decaying particles. Let us consider here a $2\to 2$ scattering in more detail, where we have
+\begin{align*}
+ \langle f | S | i\rangle = \frac{1}{\sqrt{2Vp_1^0}}\frac{1}{\sqrt{2Vp_2^0}}\frac{1}{\sqrt{2Vk_1^0}}\frac{1}{\sqrt{2Vk_2^0}} (2\pi)^4 \delta^4(p_1 + p_2-k_1 -k_2)\,|m| 
+\end{align*}
+where $|m|$ is a quantity that is different for different interactions.\\
+
+To find $\sigma$, we write here
+\begin{align*}
+\sum_{\text{final momenta}} \frac{|\langle f |S | i\rangle|^2}{TV^{-1}|\vec{v}_1 - \vec{v}_2|}\,,
+\end{align*}
+taking the continuum limit $\sum_p \to V(2\pi)^{-3}\int \, d^3p$, we have
+\begin{align*}
+\sigma &= \frac{V}{(2\pi)^3}\int\, d^3k_1 \, \frac{V}{(2\pi)^3}\int \, d^3k_2 \, \frac{|\langle f|S|i\rangle|^2}{TV^{-1}|\vec{v}_1 - \vec{v}_2|}\\
+&= \frac{V^2}{(2\pi)^3(2\pi)^3}\int \, d^3k_1\, d^3k_2 \frac{1}{V^4(4p_1^0 p_2^0)(4k_1^0k_2^0)}\left|(2\pi)^4 \, \delta^4(p_1 + p_2 -k_1-k_2)\right|^2 \frac{V}{T|\vec{v}_1 - \vec{v}_2|}|m|^2\,.
+\end{align*}
+\textbf{ADD}\\
+Here we have
+\begin{align*}
+\delta^4(0) = \frac{1}{(2\pi)^4}\int\, d^4 x = \frac{1}{(2\pi)^4}VT
+\end{align*}
+Combining we obtain
+\begin{align*}
+\sigma 
+&= \frac{V^2}{(2\pi)^6}\int\, \int 
+\frac{d^3k_1}{2k_1^0}\frac{d^3k_2}{2k_2^0}
+\frac{(2\pi)^8}{V^4}  \,  \, \frac{V}{T}\frac{VT}{(2\pi)^4}\, \frac{|m|^2}{4p_1^0p_2^0|\vec{v}_1 - \vec{v}_2|}\, \delta^4(p_1+p_2 -k_1-k_2)\\
+&= \int\, \int \frac{d^3k_1}{(2\pi)^32k_1^0}\frac{d^3k_2}{(2\pi)^32k_2^0}
+ \frac{|m|^2}{4p_1^0p_2^0|\vec{v}_1 - \vec{v}_2|}\, (2\pi)^4 \, \delta^4(p_1+p_2 -k_1-k_2)
+\end{align*}
+Note that the quantity
+\begin{align*}
+\int \frac{d^3k_1}{(2\pi)^3\, 2k_1^0} = \int\, d^4k_1 \delta(k_1^2 -m^2) \, \theta(k^0)
+\end{align*}
+is Lorentz invariant, here $\vec{v} = \vec{p}/p^0$, and one can show that, in the collinear frame, 
+\begin{align*}
+4p_1^0 p_2^0 |\vec{v}_1 -\vec{v}_2| = \textbf{ADD}
+\end{align*}
+Thus now we see that $\sigma$ is Lorentz invariant. One can write
+\begin{align*}
+d\sigma = (2\pi)^4 \delta^4(p_1 +p_2 -k_1-k_2) \ \frac{1}{4\sqrt{(p_1\cdot p_2)^2 - m_1^2m_2^2}} \, \underbrace{\frac{d^3k_1}{(2\pi)^3 2k_1^0}\frac{d^3k_2}{(2\pi)^3 \, 2k_2^0}}_{\text{two-body phase phase space}} \cdot (\text{gibbs factor})\cdot |m|^2
+\end{align*}
+where the gibbs factor account for over-counting in the integration, we can generalize this formula to $2\to n$ scattering, 
+\begin{align*}
+\sigma =  \frac{(2\pi)^4 \, \delta^4(p_1 +p_2 - k_1-k_2 \cdots-k_n)}{4\sqrt{(p_1\cdot p_2)^2 - m_1^2 m_2^2}} \int \frac{d^3k_1}{(2\pi)^3 2k_1^0}\cdots \int \frac{d^3k_n}{(2\pi)^3 2k_n^0} |m|^2 \cdot (\text{gibbs factor})\,.
+\end{align*}
+For the $2\to 2$ scattering, we define $s,t,$ and $u$ variables, by
+\begin{align*}
+s &\coloneqq (p_1 + p_2)^2 = (k_1 + k_2)^2 \,,\\
+t&\coloneqq (p_1-k_1)^2\,,\\
+u &\coloneqq (p_1 - k_2)^2\,.
+\end{align*}
+One can check that wehave
+\begin{align*}
+s+t + u = m_1^2 + m_2^2 + m_3^2 + m_4^2\,.
+\end{align*}
+In the center of mass frame, we have $\vec{p}_1 + \vec{p}_2 = 0$, thus $s = (k_1 + k_2)^2$. \\
+
+\example Here we will calculate the lifetimes and decay rate. Suppose we have a interaction Lagrangian
+\begin{align*}
+\mathcal{L}_{\text{int}} = -g \phi^2 \sigma\,,
+\end{align*}
+and suppose further that the masses of the particles satisfy
+\begin{align*}
+M \coloneqq m_\sigma > 2m_{\phi} \coloneqq 2m\,,
+\end{align*}
+then the decay $\sigma(k) \to \phi(p) + \phi(q)$ is possible. \\
+\textbf{ADD diagram}\\
+Here we can evaluate
+\begin{align*}
+\langle f|Si\rangle = \langle pq|S|k\rangle = \frac{(2ig)(2\pi)^4 \, \delta^4( k-p-q)}{\sqrt{8 p^0q^0k^0V^3}}\,.
+\end{align*}
+Thus we have the probability
+\begin{align*}
+|\langle f|S|i\rangle|^2 = \textbf{ADD}
+\end{align*}
+and the transition rate $\Gamma$ is then given by
+\begin{align*}
+\Gamma = \frac{V}{(2\pi)^3}\int \, d^3p \, \frac{V}{(2\pi)^3}\, \int \, d^3q \, \frac{|\langle f|S|i\rangle|^2}{T} \frac{1}{2!}
+\end{align*}
+where the factor $1/2!$ accounts for the two identical particles in the final state. Integrating we obtain
+\begin{align*}
+\Gamma = \frac{g^2}{(2\pi)^2k^0}\int \frac{d^3p}{2p^0}\frac{d^3q}{2q^0}\, \delta^4(k-p-q)\,.
+\end{align*}
+Usually, $\Gamma$ is evaluated in the rest frame of the decaying particle, with $k = (M,0,0,0)$, then the $\delta$-function gives $\vec{p}+\vec{q} = 0$, and that
+\begin{align*}
+p^0 = \sqrt{\vec{p}^2 + m^2} = q^0 = \sqrt{\vec{q}^2 +m^2}\,,
+\end{align*}
+and thus, as we have $\vec{p} = -\vec{q}$, we conclude that 
+\begin{align*}
+\Gamma = \frac{g^2}{(2\pi)^2 M}\int \frac{d^3 p}{4p^0}\,\delta(M - 2p^0)\,,
+\end{align*}
+one can write further that
+\begin{align*}
+\delta\left( 2\left( \frac{M}{2} - p^0 \right)\right) = \frac{1}{2}\delta\left( \frac{M}{2} - p^0\right)\,,
+\end{align*}
+thus we obtain
+\begin{align*}
+\Gamma = \frac{g^2}{4\pi M}\frac{|\vec{p}|^2}{p^0}\frac{1}{2}|_{p^0 = M/2} = \frac{g^2}{8\pi M^2}\sqrt{M^2 - 4m^2}\,,
+\end{align*}
+where we see that $|\vec{p}| = \sqrt{(p^0)^2 - m^2} = \sqrt{M^2 - 4m^2}/2$. \\
+
+Next we will discuss the relationship between the Feynman propagator and non-relativistic scattering theory. Here we consider a theory with three types of particles, $p$, $\sigma$, and $\phi$, which are all scalar particles. Here we consider the interaction
+\begin{align*}
+\mathcal{L}_{\text{int}} = -g p^2 \sigma + g\phi^2 \sigma\,,
+\end{align*}
+Thus we have the Feynman rule \textbf{ADD Diagram}\\
+Here we call the $p$ as \textit{proton}, $\sigma$ as \textit{photon}, and $\phi$ as \textit{electron}. We look at the electron proton scattering, $\phi p \to \phi p$.\\ 
+\textbf{ADD Diagram}\\
+As proton is heavy, we consider $p_2^2 = k_2^2 = m_p^2$, and $p_1^2 = k_1^2 \approx 0$. Thus the $S$-matrix element is given by
+\begin{align*}
+\frac{1}{\sqrt{2Vp_1^0}}\frac{1}{\sqrt{2Vp_2^0}}\frac{1}{\sqrt{2Vk_1^0}}\frac{1}{\sqrt{2Vk_2^0}} (2\pi)^4\, \delta(p_1 + p_2 - k_1 - k_2)\, 4g^2 \frac{i}{(p_1-k_1)^2 - m_\sigma^2}
+\end{align*}
+where $m_\sigma$ is the mass of the particle $m_\sigma$. This is derived by relativistic quantum field theory.\\
+
+We will see how the potential picture of non-relativistic quantum mechanics is related to the Feynman diagrams. Consider again such scattering in non-relativistic quantum mechanics, with Born approximation, from a Yukawa potential
+\begin{align*}
+V(r) = g^2 \frac{e^{-mr}}{r}\,,
+\end{align*}
+the scattering amplitude in the First Born Approximation is the Fourier transform of the potential
+\begin{align*}
+g^2 \int \, d^3r \, e^{i \vec{q} \cdot \vec{r}}\, \frac{e^{-mr}}{r} = 2\pi g^2 \int_0^\infty r^2\, dr \int_0^\pi -e^{igr(\cos(\theta)}\frac{e^{-mr}}{r} \, d(\cos(\theta)) = \frac{4\pi g^2}{\vec{q}^2 + m^2} = \frac{4\pi g^2}{(\vec{p}_1 - \vec{k}_1)^2 + m^2} \,,
+\end{align*}
+where we have denoted $\vec{q} = \vec{p}_1 - \vec{k}-1$, \textbf{ADD}\\
+
+In relativistic quantum field theory, 
+\begin{align*}
+\frac{4g^2}{(p_1-k_1)^2 - m_\sigma^2} = \frac{4g^2}{(k-2 - p-2)^2 - m_\sigma^2} = \frac{4g^2}{(p_2^0 - k_2^0)^2 - (\vec{p}_2 - \vec{k}_2)^2 - m_\sigma^2}
+\end{align*}
+here $k_2^0  = \sqrt{\vec{k}_2^2 + m_p^2}$ and $p_2^0 = \sqrt{\vec{p}_2^2 + m_p^2}$, and $k_2^0 \approx p_2^0$ as $m_p\gg \text{all momenta}$ in the static limit. Thus we have
+\begin{align*}
+m = -\frac{4g^2}{(\vec{k}_2 - \vec{p}_2)^2 + m_\sigma^2}
+\end{align*}
+which is the same as in non-relativistc scattering from the Yukawa potential. 
+
+
+\chapter{Field for Spin-half Particles}
+First we would like to find the analogue of the Klein-Gordon equation for a spin-half particle, that is the relativistic wave equation for the spin-half particle. From our discussion of the Lorentz group, there are two irreducible representation for spin-half, that is the $(1/2,0)$ and the $(0,1/2)$ representations. Note that the two representation are inequivalent. Here we start with the $(1/2,0)$ representation, where the rotation operator is given by
+\begin{align*}
+J_i = \frac{\sigma_i}{2}\,,
+\end{align*}
+and the boost operator is given by
+\begin{align*}
+K_i = -\frac{i\sigma_i}{2}\,.
+\end{align*}
+From which we can find the general form of Lorentz transformation
+\begin{align*}
+L(\Lambda) = D^{(1/2,0)} = e^{i\sigma_i \theta_i /2 + \sigma_i \delta_i / 2}\,,
+\end{align*}
+where $\theta_i$ is the amount of rotation and $\delta_i$ is the amount of boost. Here $L(\Lambda)$ acts on the wavefunction $\psi$. We would like to find constant matrices $A^\mu$ and $B$ such that the equation
+\begin{align}
+(A^\mu \pd_\mu + B ) \psi = 0\,
+\end{align}
+has the same form in all inertial frames. \\
+
+Consider a primed frame, where we require
+\begin{align*}
+A^\mu\, \pd_\mu' \, \psi'(x') + B\, \psi'(x') = 0
+\end{align*}
+with the definition
+\begin{align*}
+\psi'(x') = L(\Lambda)\, \psi(x)\,, \qquad
+\pd_\mu' = \frac{\pd x^\nu}{\pd x'^\mu}\,\pd_\nu = (\Lambda^{-1})_\mu{}^{\nu}\pd_\nu\,.
+\end{align*}
+Thus in the primed frame, we have
+\begin{align*}
+A^\mu \, L(\Lambda^{-1})_\mu{}^{\nu}\,\pd_\nu \, \psi(x) + B \, L\,\psi(x) = 0\,.
+\end{align*}
+Acting $L^\dagger = L^{-1}$ on both sides, we obtain
+\begin{align*}
+(L^\dagger A^\mu L ) ( \Lambda^{-1})_{\mu}{}^\nu\pd_\nu \psi(x) + L^\dagger BL\psi(x) =0\,,
+\end{align*}
+we obtain
+\begin{align*}
+L^\dagger A^\mu L = \Lambda^\mu{}_{\nu}A^\nu \,,\qquad L^\dagger BL = B\,.
+\end{align*}
+Consider infinitesimal boosts and rotations separately, one would find that
+\begin{align*}
+[\sigma_i/2,\, A_j] = i\epsilon_{ijk} A_k\,,\qquad [\sigma_i/2, A_0] = 0\,.
+\end{align*} 
+and here
+\begin{align*}
+\{\sigma_i/2,\, A_j\}  = -\delta_{ij}A_0\,,\qquad
+\{\sigma_i/2,\, A_0\} = -A_i\,.
+\end{align*}
+Furthermore, we have
+\begin{align*}
+[\sigma_i/2, B] = 0\,,\qquad \{\sigma_i/2,\,B\} = 0
+\end{align*}
+Concluding, one finds that we have
+\begin{align*}
+A_i = -\sigma_i\,,\qquad A_0 = 0\,.
+\end{align*}
+Thus we obtain the wave equation
+\begin{align}
+\left(\pd_0 + \vec{\sigma}\cdot \nabla\right) \,\psi(x)  = 0\,.
+\end{align}
+Here (5.2) is called the Weyl equation. Notice that, if one apply $(\pd_0 - \vec{\sigma}\cdot \nabla)$ on both sides of (5.2), we obtain
+\begin{align}
+(\pd_0^2 - \nabla^2) \, \psi(x) = 0\,.
+\end{align}
+Here (5.3) has solutions 
+\begin{align*}
+\psi(x) = u(p)\, e^{-ipx}\,,
+\end{align*}
+and we can apply (5.3) to obtain
+\begin{align*}
+(E^2 - \vec{p}^2) \, u(p) = 0\,,
+\end{align*}
+that is $E = \pm |\,\vec{p}\,|$, the particles are massless. Here the wave equation for $u(p)$, which is a two-component operator, is given by
+\begin{align*}
+i(E - \vec{\sigma} \cdot \vec{p})\, u(p) = 0\,.
+\end{align*}
+One can take a representation of $\sigma$ where $\vec{\sigma}\cdot \vec{p}$ is diagonal, \textbf{ADD} one would get
+\begin{align*}
+\bmat{E - |\, \vec{p}\,| & 0 \\
+0 & E + |\,\vec{p}\,|} \bmat{u_1\\ u_2} = 0\,,
+\end{align*}
+If we have $E = |\,\vec{p}\,|$ here, then $u_2 = 0$, and thus
+\begin{align*}
+u^+ = \bmat{1 \\ 0}\,.
+\end{align*}
+If $E = -|\,\vec{p}\,|$, $u_1 = 0$, we have
+\begin{align*}
+u^- = \bmat{0 \\ 1}\,.
+\end{align*}
+From here one sees that we have
+\begin{align*}
+\vec{\sigma} \cdot \hat{p} \, u^+ = u^+\,,\qquad
+\vec{\sigma} \cdot \hat{p} \, u^- = -u^-\,.
+\end{align*}
+\remark The spirit of quantum mechanics is the Hamiltonian formulation, as operators, we have, in quantum mechanics \textbf{(Might need to change the notation of $\vec{p}$, and $H$ here)}
+\begin{align*}
+\hat{p} = \frac{\nabla}{i}\,,\qquad \hat{H} = i \,\frac{\pd}{\pd t}\,.
+\end{align*}
+\begin{align*}
+\hat{L} + \hat{s} = (\hat{x} \times \hat{p}) + \frac{\sigma_i}{2} = \hat{J}_i\,,
+\end{align*}
+\textbf{ADD}, thus in a plane wave state, we have
+\begin{align*}
+\vec{J}\cdot \hat{p} = (\hat{x}\times \vec{p})\cdot \hat{p} + \frac{\vec{\sigma}\cdot \vec{p}}{2|\,\vec{p}\,|} = \vec{s}\cdot \hat{p} = \text{helicity}\,,
+\end{align*}
+which defines the projection of spin along motion. \\
+
+From our previous result, we have that
+\begin{align*}
+\frac{\vec{\sigma}\cdot \hat{p}}{2} \, u^+ = \frac{1}{2}\, u^+\,,\qquad
+\frac{\vec{\sigma}\cdot \hat{p}}{2} \, u^- = -\frac{1}{2}\, u^-\,.
+\end{align*}
+that is party is not conserved here. That is, in conclusion here, the Weyl equation describe particles with zero mass, spin-half, and the parity is not conserved. Note that we have not yet found any physical particle that can be described by the Weyl equation. \\
+
+Next we consider the $(0,1/2)$ representation group, where we would like to find an covariant equation of the form
+\begin{align*}
+\bar{A}^\mu \,\pd_\mu \psi + \bar{B}\,\psi = 0\,.
+\end{align*}
+where the equation is covariant under the transformation
+\begin{align*}
+\psi'(x') = \bar{L}(\Lambda) \psi(x)\,,\qquad
+\bar{L} = e^{i\sigma_i\theta_i/2 - \sigma_j \delta_j /2}\,.
+\end{align*}
+Following similar procedure, one obtain
+\begin{align*}
+[\sigma_i/2, \, \bar{A}_j] = -\epsilon_{ijk}\bar{A}_k\,,\qquad
+[\sigma_i/2],\, \bar{A}_0] = 0\,.
+\end{align*}
+\begin{align*}
+\{\sigma_i/2,\, \bar{A}_j\} = -\delta_{ij}\,\bar{A}_0\,,\qquad
+\{ \sigma_i/2,\, \bar{A}_0\} = -\bar{A}_j
+\end{align*}
+\textbf{ADD}.\\
+
+Thus we obtain the wave equation
+\begin{align*}
+\left(\pd_0 - \vec{\sigma}\cdot \nabla\right) \,\psi(x) =0\,,
+\end{align*}
+where one can multiply $(\pd_0  + \vec{\sigma}\cdot \nabla)$ on both side in order to look for plane wave solution of the form
+\begin{align*}
+\psi(x) = u(p) \, e^{-ipx}
+\end{align*}
+as discussed above. Evaluating one sees that $E^2 = \vec{p}^2$, thus $E = \pm |\,\vec{p}\,|$. When $E = |\,\vec{p}\,|$, one finds that
+\begin{align*}
+\vec{\sigma}\cdot \hat{p}u^+ = -u^+ \,,\qquad
+\vec{\sigma}\cdot \hat{p}u^- = u^-\,,
+\end{align*}
+which also violates parity as expected.\\
+
+Under parity, we note that $x^0 \to x^0$, and $\vec{x}\to -\vec{x}$, and thus the parity operator is
+\begin{align*}
+\bmat{1 & 0 & 0 & 0\\
+0 & -1 & 0 & 0\\
+0 & 0 & -1 & 0\\
+0 & 0 & 0 & -1}\,.
+\end{align*}
+We have seen that $PJ_iP^{-1} = J_i$, \textbf{ADD}\,.
+This can be made more general, that is, we have
+\begin{align*}
+P\, |j_1m_1j_2m_2\rangle = |j_2m_2j_1m_1\rangle\,.
+\end{align*}
+Thus to incorporate parity, spinor must be of the form $(J,J)$ or $(J_1,J_2) \oplus (J_2, J_1)$, so for spin-half particles, we need a reducible representation, that is $(1/2,0) \oplus (0,1/2)$, of the Lorentz group. That is, we have a $4$-component spinor $\psi$, whose first two components transform as in the $(1/2,0)$ representation, and the last two components transform as in the $(0,1/2)$ representation,
+\begin{align*}
+\psi = (\underbrace{\psi_1,\,\psi_2}_{(1/2,0)},\, \underbrace{\psi_3,\,\psi_4}_{(0,1/2)})\,.
+\end{align*}
+The full transformation rule is thus
+\begin{align*}
+\bmat{\psi_1'\\ \psi_2' \\ \psi_3' \\ \psi_4'} = \bmat{D^{(1/2,0)} & 0 \\ 0 & D^{(0,1/2)}} \bmat{\psi_1\\ \psi_2 \\ \psi_3 \\ \psi_4}\,. 
+\end{align*}
+The wave equation of $(1/2,0) \oplus (0,1/2)$ representation should take the form
+\begin{align*}
+(A^\mu \, \pd_\mu + B) \, \psi(x) = 0\,.
+\end{align*}
+Note that we have here
+\begin{align*}
+J_i = \bmat{\sigma_i/2 & 0 \\ 0 & \sigma_i/2}\,,\qquad
+K_i = -i \bmat{\sigma_i/2 & 0 \\ 0 & -\sigma_i/2}\,.
+\end{align*}
+Then one finds that
+\begin{align*}
+A^0 = \bmat{\mathbb{I} & 0 \\ 0 & \mathbb{I}}\,, \qquad \vec{A} = \bmat{-\vec{\sigma} & 0 \\ 0 & \vec{\sigma}} \coloneqq \vec{\alpha}\,.
+\end{align*}
+For $B$, we now have
+\begin{align*}
+[J_i, B] = 0\,,\qquad\{K_i, B\} = 0
+\end{align*}
+thus one finds that the solution of $B$ is 
+\begin{align*}
+B = i\beta m = i \bmat{0 & \mathbb{I} \\ \mathbb{I}& 0} m\,,
+\end{align*}
+where $m$ is a constant and $\mathbb{I}$ is the $2\times 2$ identity matrix. \\
+The full wave equation now reads
+\begin{align*}
+\left( \pd_0 + \vec{\alpha} \cdot \nabla  + i\beta m\right) \, \psi(x) = 0\,,
+\end{align*}
+called the Dirac equation. Now one notice that we have
+\begin{align*}
+i\pd_0 \psi = \vec{\alpha} \cdot \frac{\nabla}{i} \, \psi + \beta m \psi\,,
+\end{align*}
+thus one can further define the Hamiltonian operator
+\begin{align*}
+H_{\text{op}} = \vec{\alpha}\cdot \vec{p}_{\text{op}} + \beta m\,.
+\end{align*}
+Also notice that, we have
+\begin{align*}
+\alpha_i^2 = 1 \,,\qquad
+\beta^2 = 1\,,
+\end{align*}
+for $i \in \{1,2,3\}$, and that 
+\begin{align*}
+\{\beta, \alpha_i\} = 0\,,\textbf{ADD}
+\end{align*}
+
+Next we iterate the wave equation in vacuum. We write
+\begin{align*}
+i \pd_0 \psi &= \left( \vec{\alpha}\cdot \frac{\nabla}{i}+\beta m\right) \psi\\
+- \pd_0^2 \psi &= \left( \vec{\alpha}\cdot \frac{\nabla}{i}+\beta m\right)^2 \psi\\
+- \pd_0^2 \psi &= \left(-\alpha_i \alpha_j \pd_i \pd_j + \frac{1}{i}\left( \alpha_i \beta + \beta \alpha_i \right) m \nabla_i + m^2 \right) \psi\\
+- \pd_0^2 \psi&= \left(-\nabla^2 + m^2\right) \psi\,, \tag{5.4}
+\end{align*}
+\setcounter{equation}{4}
+recovering the Klein-Gordon equation. Now we consider a plane wave solution
+\begin{align*}
+\psi(x) =u(p)\, e^{-ipx}\,,
+\end{align*}
+where $u(p)$ is a $4$-component spinor. Using (5.4) we find that
+\begin{align*}
+p^2 = p_\mu p^\mu = m^2\,,
+\end{align*}
+which indicates that $\psi(x)$ describes spin-half particle with mass $m$. Next we will show that, if $\psi(\vec{x},t)$ is a solution to the wave equation, so is $\beta \psi(-\vec{x},t)$. Notice that we can write
+\begin{align*}
+P\psi(\vec{x},t) = \psi'(\vec{x}', t')
+\end{align*} 
+where $P$ is the parity operator, $\vec{x}' =- \vec{x}$, and $t' = t$, then we have
+\begin{align*}
+i\pd_0'\psi'(\vec{x}', t') = \left( \frac{1}{i}\vec{\alpha}\cdot \nabla' + \beta m\right) \psi'(\vec{x}', t')\,,
+\end{align*}
+where $\pd_0' = \pd_0$, and $\alpha\beta = -\beta \alpha$, and thus
+\begin{align*}
+i\pd_0 \beta\psi(-\vec{x}, t) &= \left(-\frac{1}{i}\vec{\alpha}\cdot \nabla + \beta m\right) \beta\psi(-\vec{x}, t)\\
+\beta i\pd_0 \psi(\vec{x}, t) &= \beta\left(\frac{1}{i}\vec{\alpha}\cdot \nabla + \beta m\right) \psi(\vec{x}, t)\\
+\beta i\pd_0 \psi(\vec{x}, t) &= \beta\left(\frac{1}{i}\vec{\alpha}\cdot \nabla + \beta m\right) \psi(\vec{x}, t)\,.
+\end{align*}
+Here we define
+\begin{align*}
+\gamma^0 = \beta\,,\qquad
+\vec{\gamma} = \beta \vec{\alpha}\,.
+\end{align*}
+and thus we have
+\begin{align*}
+\gamma^0 = \bmat{0 & 1 \\ 1 &0}\,,\qquad
+\gamma^i = \bmat{0 & \vec{\sigma} \\ -\vec{\sigma} & 0}\,,
+\end{align*}
+then the wave equation becomes
+\begin{align*}
+(-i\beta \pd_0 - i\beta \vec{\alpha}\cdot \nabla + m) \psi &= 0\\
+(-i \gamma^0 \pd_0 - i\gamma^i \nabla_i + m)\psi &= 0\\
+(-i \gamma^\mu \pd_\mu + m)\psi &=0
+\end{align*}
+the $\gamma$ matrices satisfy \textbf{ADD}\\
+
+Furthermore, notice that $L^\dagger = \bar{L}^{-1}$, and $\bar{L}^{\dagger} = L^{-1}$, if one defines
+\begin{align*}
+\mathcal{L} = \bmat{L & 0 \\ 0 & \bar{L}}\,,
+\end{align*}
+then one can check that we have
+\begin{align*}
+\mathcal{L}^{-1} = \beta \mathcal{L}^{\dagger} \beta \,,
+\end{align*}
+such that 
+\begin{align*}
+\mathcal{L}^{\dagger}\beta = \beta \mathcal{L}^{-1}\,.
+\end{align*}
+We can also write
+\begin{align*}
+\mathcal{L}^{-1} \gamma^\mu \mathcal{L} = \mathcal{L}^{-1} \beta A^\mu \mathcal{L} = \beta \mathcal{L}^{\dagger} A^\mu \mathcal{L} = \Lambda^{\mu}{}_{\nu} \gamma^\nu\,.
+\end{align*}
+Now the covariance of Dirac equation is \textbf{ADD}. Here we introduce a new matrix
+\begin{align*}
+\gamma_5 = i\gamma^0 \gamma^1 \gamma^2 \gamma^3 = \bmat{-1 & 0 \\ 0 &1}\,,
+\end{align*}
+one would find that we have $\{\gamma^\mu, \gamma_5\} = 0$. One can also check that we have
+\begin{align*}
+\frac{i}{4}[\gamma^i, \gamma^j] = \epsilon_{ijk}J_k\,,\qquad
+\frac{i}{4}[\gamma^0, \gamma^i] = K^i\,.
+\end{align*}
+if we define $s^{\mu\nu} = \frac{i}{4}[\gamma^\mu, \gamma^\nu] = \frac{1}{2}\Sigma^{\mu\nu}$, then we can write
+\begin{align*}
+\mathcal{L} \approx 1 + \frac{i}{2}\, \delta\omega_{\mu\nu}\, s^{\mu\nu}
+\end{align*}
+In the construction of Lagrangian from the spinors, we will need combination of spinors which are Lorentz invariant. One would like to find the Lorentz scalar that we can construct. Under a Lorentz transformation, $\psi	\to \mathcal{L}\psi$. Here we define 
+\begin{align*}
+\bar{\psi} = \psi^{\dagger}\psi^0 \,.
+\end{align*}
+then we have
+\begin{align*}
+\bar{\psi}'(x') ={\psi^\dagger}'(x') \gamma^0 = \psi^\dagger(x) \, \mathcal{L}^\dagger \gamma^0 = \psi^\dagger \mathcal{L}^\dagger \beta = \psi^\dagger \beta \mathcal{L}^{-1} = \bar{\psi}\mathcal{L}^{-1}\,,
+\end{align*}
+so we have
+\begin{align*}
+\bar{\psi}'(x') \, \psi'(x') = \bar{\psi}(x) \mathcal{L}^{-1}\mathcal{L}\, \psi(x) = \bar{\psi}(x) \, \psi(x)\,
+\end{align*}
+which is a Lorentz invariant quantity. We claim further that $\bar{\psi}\gamma^\mu \psi$ transform like a Lorentz vector, here we define
+\begin{align*}
+J^\mu(x) = \bar{\psi}(x) \gamma^\mu \, \psi(x) \,,
+\end{align*}
+then in the primed frame, we can write
+\begin{align*}
+\bar{\psi}'(x') \, \gamma^\mu \,\psi'(x') =\bar{\psi}(x) \mathcal{L}^{-1} \gamma^\mu \mathcal{L}\, \psi(x) =\Lambda^\mu{}_\nu \,\bar{\psi}(x) \, \gamma^\mu \psi(x)\,.
+\end{align*}
+Thus we see that $J^\mu$ transforms like a Lorentz vector. Next, we would like to show that the quantity 
+$$\bar{\psi}'(x') \gamma^\mu \gamma^\nu \psi'(x')$$
+is a Lorentz tensor. Note here we can write
+\begin{align*}
+\bar{\psi}' \gamma^\mu \gamma^\nu \psi' = \bar{\psi} \mathcal{L}^{-1} \gamma^\mu \gamma^\nu \mathcal{L}\, \psi=  \bar{\psi} \mathcal{L}^{-1} \gamma^\mu \mathcal{L}\mathcal{L}^{-1 }\gamma^\nu \mathcal{L}\, \psi = \Lambda^{\mu}{}_\sigma\Lambda^\nu{}_{\rho}\,\bar{\psi} \gamma^\sigma\gamma^\rho \psi\,.
+\end{align*}
+An example of a Lorentz invariant coupling of fermion to the electromagnetic field is given by 
+\begin{align*}
+\bar{\psi} \gamma^{\mu}\gamma^{\nu}\psi\, F_{\mu\nu}\,.
+\end{align*}
+
+Note that we have
+\begin{align*}
+\gamma^\mu \gamma^\nu = \frac{1}{2}[\gamma^\mu, \gamma^\nu] + \frac{1}{2}\{\gamma^\mu , \gamma^\nu\}\,.
+\end{align*}
+
+Defining here
+\begin{align*}
+\sigma_{\mu\nu} = \frac{i}{2}[\gamma^\mu , \gamma^\nu]\,,
+\end{align*}
+we see that $\bar{\psi} \sigma^{\mu\nu}\psi$ transform like an anti-symmetric tensor. \\
+
+
+Next we would like to construct Pseudoscalar and Pseudovector which will couple spinor to parity odd objects. Here we define
+\begin{align*}
+P(x) = i \bar{\psi} \gamma_5 \psi \,,
+\end{align*}
+where we see that we have
+\begin{align*}
+P'(x') = i\bar{\psi}'(x') \gamma_5 \psi'(x') = i\bar{\psi}(x) \mathcal{L}^{-1} \gamma_5 \mathcal{L}\psi(x)\,,
+\end{align*}
+one can check that we have
+\begin{align*}
+\mathcal{L}\gamma_5 = \gamma_5 \mathcal{L}\,,
+\end{align*}
+so we have
+\begin{align*}
+P'(x') = i \bar{\psi} \mathcal{L}^{-1}\mathcal{L}\gamma_5 \psi =i \bar{\psi} \gamma_5 \psi\,,
+\end{align*}
+which is Lorentz invariant, but has different parity transformation than $P(x)$. Consider parity, we have that
+\begin{align*}
+\psi'(x') = \beta \psi(x)
+\end{align*}
+under parity. Then we can write
+\begin{align*}
+P'(x') = \bar{\psi}(x) \, \beta \gamma_5 \beta \psi = -\bar{\psi}\gamma_5 \psi = -P(x)\,.
+\end{align*}
+So we see here $P(x)$ is a pseudoscalar. \\
+
+
+Here we note that $\psi'(x') = \mathcal{L}\psi(x)$, then we can write
+\begin{align*}
+\bar{\psi}'(x')\gamma^\mu \gamma^5 \psi'(x') = \bar{\psi}(x) \mathcal{L}^{-1} \gamma^\mu \gamma_5 \mathcal{L}\psi(x)\,,
+\end{align*}
+then we use $\gamma_5 \mathcal{L} = \mathcal{L}\gamma_5$ and $\mathcal{L}^{-1} \gamma^\mu \mathcal{L} = \Lambda^{\mu}{}_{\nu}\gamma^\nu$, one can see that
+$\bar{\psi}\gamma^\mu \gamma^5\psi$ transform like a vector under Lorentz transformation, but transform like a pseudovector under parity. \\
+
+For a usual vector $J(x)$, under parity, we have
+\begin{align*}
+J_0'(x') = J_0(x) \,,\qquad 
+J_i'(x') = -J_i(x)\,.
+\end{align*}
+While for a pseudovector $P(x)$, under parity, we have
+\begin{align*}
+P_0'(x') = -P_0(x)\,,\qquad
+P_0'(x') = P_i(x)\,.
+\end{align*}
+Here we have found $16$ fermion bilinears in the Dirac theory,
+\begin{align*}
+\bar{\psi}\psi\,,\
+\bar{\psi}\gamma^\mu \psi\,,\
+\bar{\psi}\sigma^{\mu\nu}\psi\,,\
+\bar{\psi}\gamma_5\psi\,,\
+\bar{\psi}\gamma^\mu \gamma_5 \psi
+\end{align*}
+\textbf{ADD}
+
+Note that what enters into these bilinears with definite Lorentz and parity transformation is $\bar{\psi} = \psi^\dagger\, \gamma^0$, because under Lorentz transformation, we have $\psi \to \mathcal{L}\psi$ and $\bar{\psi} \to \bar{\psi}\mathcal{L}^{-1}$. \\
+
+Furthermore, any $4\times 4$ matrix can be expanded on a basis of $16$ matrices elements, that is, here we can write
+\begin{align*}
+M = a\mathbb{I} + b_\mu \gamma^\mu + c_\mu \gamma^\mu  \gamma^5 + d\gamma^6 +e_{\mu\nu}\sigma^{\mu\nu}\,.
+\end{align*}
+A bilinear is a composite of two fermions, each fermion is $(1/2,0) \oplus (0,1/2)$, so for a composite, 
+$$\{(1/2,0) \oplus (0,1/2)\} \otimes \{(1/2,0) \oplus (0,1/2)\} = \underbrace{(0,0)}_{\text{sccalar}}\oplus (1,0) \oplus \underbrace{(1/2,1/2)}_{\text{vector}} \oplus \underbrace{(1/2,1/2)}_{\text{pseudovector}} \oplus \underbrace{(0,0)}_{\text{pseudoscalar}} \oplus (0,1)$$
+and that $(1,0) \oplus (0,1)$ describes tensor.\\
+
+\newpage
+Next we will look at plane wave solutions of the Dirac equation,
+\begin{align*}
+(-i\gamma^\mu \pd_\mu + m)\psi = 0\,.
+\end{align*}
+Here we denote $A_\mu \gamma^\mu =\slashed{A}$, thus we write
+\begin{align*}
+(-i \slashed{\pd} + m)\psi = 0\,.
+\end{align*}
+The plane wave solution reads
+\begin{align*}
+\psi = a\, u(p)\, e^{-ipx} + b\, v(p)\, e^{ipx}\,.
+\end{align*}
+and thus we have
+\begin{align*}
+a( -\slashed{p} + m) u e^{-ipx} + b(\slashed{p}+m) ve^{ipx}\,,
+\end{align*}
+\textbf{Add}\\
+
+First we find the solution in the rest frame and boost to an arbitrary frame. In rest frame, we have $\vec{p} = 0$. We choose the normalization here $\bar{u}_s \, u_{s'} = 2m \delta_{ss'}$, thus we have
+\begin{align*}
+(m \gamma^0 -m ) u_s(p)
+\end{align*}
+where one finds
+\begin{align*}
+u_s(p) = \sqrt{m} \bmat{\xi_s \\ \xi_s}\,,
+\end{align*}
+\textbf{add}
+thus the solution that we will be using is
+\begin{align*}
+u_s(p) = \bmat{\sqrt{\vec{p}\cdot \vec{\sigma}}\, \xi^s \\ 
+\sqrt{\vec{p}\cdot \vec{\bar{\sigma}}}\, \xi^s}\,,
+\end{align*}
+where we have
+\begin{align*}
+\sigma^\mu = (1, \vec{\sigma}) \,,\qquad
+\bar{\sigma}^\mu = (1, -\vec{\sigma})\,.
+\end{align*}
+For the antiparticle, we have that 
+\begin{align*}
+(\slashed{p} + m) \, v(p) = 0\,,
+\end{align*}
+following the same procedure, with normalization
+\begin{align*}
+\bar{v}_s(p) \,v_{s'}(p) = 2m\delta_{ss'}\,,
+\end{align*}
+we obtain
+\begin{align*}
+v^s = \bmat{\sqrt{\vec{p}\cdot \vec{\sigma}} \,\eta_s \\ -\sqrt{\vec{p}\cdot \vec{\sigma}}\, \eta_s}\,.
+\end{align*}
+One has the Gordon identities that
+\begin{align*}
+2m\, \bar{u}_{s'}(p') \, \gamma^{\mu} u_s(p) = \bar{u}_{s'}(p') \left((p',p)^{\mu} + 2is^{\mu\nu}(p'-p)_{\nu}  \right) \, u_s(p)\,,
+\end{align*}
+\begin{align*}
+-2m\, \bar{v}_{s'}(p') \, \gamma^{\mu} v_s(p) = \bar{v}_{s'}\left((p'+p)^{\mu} + 2i s^{\mu\nu}(p' - p)_{\nu} \right)\, v_{s}(p)\,,
+\end{align*}
+in the special case where $p' = p$, we have
+\begin{align*}
+\bar{u}_{s'}(p) \, \gamma^\mu \, u_s(p) = 2p^{\mu} \delta_{ss'}\,,\qquad
+\bar{v}_{s'}(p) \, \gamma^\mu \, v_s(p) = 2p^{\mu} \delta_{ss'}\,. 
+\end{align*} 
+
+
+\section[Spin Sums and Projection Operators]{Spin Sums and Projection Operators}
+One would frequently encounter the following spin sums, 
+\begin{align*}
+P_+(\vec{k}) = \sum_s \, u_s(\vec{k}) \, \bar{u}_s(\vec{k})\,,\qquad
+P_-(\vec{k}) = \sum_s \, v_s(\vec{k}) \, \bar{v}_s(\vec{k})\,,
+\end{align*}
+which are $4\times 4$ matrices. There are projection operators that project out the 
+positive and negative energy solutions, respectively, of the Dirac equation. That is, we have here
+\begin{align*}
+P_+(\vec{k}) \, u_{s'}(\vec{k}) = \sum_s u_s(\vec{k})\, \bar{u}_s(\vec{k}) \, u_{s'}(\vec{k}) = 2m\, u_{s'}(k)\,,
+\end{align*}
+and similarly we have
+\begin{align*}
+P_+(\vec{k}) \, v_{s'}(\vec{k}) = 0\,,\qquad
+P_-(\vec{k}) \, v_{s'}(\vec{k}) = -2m\, v_{s'}(\vec{k})\,,\qquad
+P_-(\vec{k})\, u_{s'}(\vec{k}) = 0\,.
+\end{align*}
+Denoting
+\begin{align*}
+\Gamma^A \in \{ 1, \gamma^\mu, \gamma^\mu \gamma^5\, \gamma^5, \sigma^{\mu\nu}\}\,,
+\end{align*}
+we can write
+\begin{align*}
+P_+(\vec{k}) = \sum_{A= 1}^{16}\, a_A \, \Gamma^A\,.
+\end{align*}
+In a parity conserving theory, we can write
+\begin{align*}
+P_+(\vec{k}) = a(\vec{k})\, \mathbb{1} + b_\mu(\vec{k})\, \gamma^\mu + c_{\mu\nu}(\vec{k}) \, \sigma^{\mu\nu}\,.
+\end{align*}
+While there is only one $4$-vector $k^|mu$ available, thus we have
+\begin{align*}
+b_\mu(k) = bk_\mu \,,\qquad 
+c_{\mu\nu}(k) = c\, k_\mu k_\nu\,. 
+\end{align*}
+Note further that 
+\begin{align*}
+C_{\mu\nu}\sigma^{\mu\nu} = ck_\mu k_\nu \sigma^{\mu\nu} = 0\,,
+\end{align*}
+thus we have
+\begin{align}
+P_+(k) = a\mathbb{I} + b \gamma^\mu k_\nu = \sum_s u_s(k)\, \bar{u}_s(k)\,.
+\end{align}
+Taking the trace of both sides we obtain
+\begin{align*}
+a\, \text{Tr}(\mathbb{I}) + bk_\mu \text{Tr}(\gamma^\mu) = 4m\,,
+\end{align*}
+thus we have
+\begin{align*}
+\text{Tr}(\gamma^\mu) = 0
+\end{align*}
+as we have $4a = 4m$, we find $a = m$. Next we multiply both sides of (5.5) by $\gamma^\mu$ and take the trace, form which we obtain
+\begin{align*}
+\text{Tr}(P_+\, \gamma^\nu) = \text{Tr}\left(b\, \gamma^\mu k_\mu \gamma^\nu\right) = \text{Tr}\left( \sum_s u_s(k) \, \bar{u}_s(k) \, \gamma^\nu\right) = \sum_s \, \bar{u}_s(k) \, \gamma^\nu \, u_s(k) = 4k^\nu
+\end{align*}
+Note that we have
+\begin{align*}
+\gamma^\mu \gamma^\nu + \gamma^\nu \gamma^\mu = 2g^{\mu\nu}\mathbb{I}\,,
+\end{align*}
+thus we have
+\begin{align*}
+\text{Tr}(\gamma^\mu \gamma^\nu) = 4g^{\mu\nu}\,,
+\end{align*}
+and thus here we have
+\begin{align*}
+4b k_\mu g^{\mu\nu} = 4k^\nu\,,
+\end{align*}
+which implies $b = 1$, concluding we have
+\begin{align*}
+P_+(k) =\sum_s u_s(k) \, \bar{u}_{s'}(k) = \slashed{k} + m\,.
+\end{align*}
+Similarly, one obtain
+\begin{align*}
+P_-(k) = \sum_{s}v_s(k) \, \bar{v}_s(k) = \slashed{k} - m\,.
+\end{align*}
+
+\newpage
+\section[Quantization of the Dirac Field]{\color{red} Quantization of the Dirac Field\color{black}}
+Just as for the scalar field, one expand $\psi$ on a basis of the free particle solution of the wave equation. Considering both momenta $\vec{p}$ and projections of spin $\sigma$, we have
+\begin{align*}
+\psi(x) &= \sum_{\vec{p}}\sum_{\sigma} \frac{1}{\sqrt{2Vp^0}}\left(a_{\sigma}(p) \, u_\sigma(p)\, e^{-ipx} + b_{\sigma}^\dagger(p) \, v_\sigma(p)\, e^{ipx}\right)\,,\\
+\bar{\psi}(x) &= \sum_{\vec{p}}\sum_{\sigma} \frac{1}{\sqrt{2Vp^0}}\left(a_{\sigma}^\dagger(p) \, \bar{u}_\sigma(p)\, e^{ipx} + b_{\sigma}(p) \, \bar{v}_\sigma(p)\, e^{-ipx}\right)\,.
+\end{align*}
+where $a_{\sigma}$ and $a_{\sigma}^\dagger$ are the particle annihilation and creation operators, respectively, and $b_\sigma$ and $b_\sigma^{\dagger}$ are the antiparticle annihilation and creation operators, respectively. \\
+
+The quantization of the field needs to be consistent with the exclusion principle. Encoded in the spin-statistic theorem, for half-integer spin, we need anti-commutation relation. For integer spin, we need commutation relations. Introducing the need for anti-commutation relations, consider particle with fixed momentum $\vec{p}$ and spin state $\sigma$ (thus we drop the labels in the operators), obtained from $|0\rangle$,
+\begin{align*}
+a^\dagger \, |0\rangle = c\, |1\rangle\,,\qquad
+|2\rangle = (a^\dagger)^2 \, |0\rangle = 0\,,
+\end{align*}
+where $c$ is the normalization constant, and $|2\rangle = 0$ is required by the exclusion principle, as there cannot be two particles occupying the same momentum and spin state. That is, similarly, we have
+\begin{align*}
+(a^\dagger)^2 = (b^\dagger)^2 = a^2 = b^2 = 0\,.
+\end{align*}
+As $a^\dagger|0\rangle = c|1\rangle$, then $a|1\rangle =(1/c) |0\rangle$, thus $|c|^2 = 1$, and we can write
+\begin{align*}
+\langle 0 |aa^\dagger|0 \rangle = |c|^2 = 1\,.
+\end{align*}
+Note also
+\begin{align*}
+\langle 1 | aa^\dagger | 1\rangle = 0
+\end{align*}
+and further that we have
+\begin{align*}
+a|0\rangle = 0 \,,\qquad b|0\rangle = 0\,,
+\end{align*}
+so we can write
+\begin{align*}
+a^\dagger a|0\rangle = 0\,,\qquad
+a^\dagger a|1\rangle = |1\rangle\,.
+\end{align*}
+From here we see that the commutation relation $aa^\dagger  + a^\dagger a = 1$ needs to be satisfied in both states $|0\rangle $ and $|1\rangle$. Thus in this system, one would expect oscillators obey anti-commutation relation. \\
+
+Putting in the momenta and spin, that we expect to have
+\begin{align*}
+\{a_r(\vec{p}), \, a_s^\dagger(\vec{k}) \} = \delta_{r,s}\, \delta_{\vec{p},\vec{k}}\,,\qquad
+\{b_r(\vec{p}), \, b_s^\dagger(\vec{k}) \} = \delta_{r,s}\, \delta_{\vec{p},\vec{k}}\,,
+\end{align*}
+and all other anti-commutators vanish. A general fermion state has the form
+\begin{align*}
+|\vec{p}_1\sigma_1,\vec{p}_2&\sigma_2,\cdots \vec{p}_m \sigma_m,\ \vec{\bar{p}}_1\bar{\sigma}_1,\vec{\bar{p}}_2\bar{\sigma}_2,\cdots \vec{\bar{p}}\bar{\sigma}_n\rangle \\
+&= a_{\sigma_1}^\dagger(\vec{p}_1)\,a_{\sigma_2}^\dagger(\vec{p}_2) \cdots a_{\sigma_m}^\dagger(\vec{p}_m) \, b_{\bar{\sigma}_1}^\dagger(\vec{\bar{p}}_1)\,  b_{\bar{\sigma}_2}^\dagger(\vec{\bar{p}}_2)\cdots b_{\bar{\sigma}_n}^\dagger(\vec{p}_n)\, |0\rangle\,.
+\end{align*}
+Anti-commutation relation requires that we have
+\begin{align*}
+|\vec{p}_1\sigma_1,\, \vec{p}_2\sigma_2,\, \vec{p}_3\sigma_3,\, \vec{p}_4\sigma_4 \cdots\rangle = -|\vec{p}_1 \sigma_1,\, \vec{p}_3 \sigma_3,\, \vec{p}_2\sigma_2,\, \vec{p}_4\sigma_4,\cdots\rangle\,.
+\end{align*}
+For a scalar field, connection between quantization procedure and causality was seen via having
+\begin{align*}
+[\phi(x),\, \phi(y)]|_{x^0 = y^0} = 0\,.
+\end{align*}
+For fermions, we will now see that 
+\begin{align*}
+\{\psi(x),\, \bar{\psi}(y) \}|_{x^0 = y^0} = 0
+\end{align*}
+to be consistent with causality. \\
+
+One should be able to show that we have
+\begin{align*}
+\{\psi_\alpha(x),\, \bar{\psi}_\beta(y)\} = 
+\sum_{k}\sum_{\sigma} \frac{1}{2Vk^0}
+\left(u^{\alpha}_{\sigma}(k)\, \bar{u}^{\beta}_{\sigma}(k)\, e^{-ik(x-y)} \right) 
++ 
+\sum_{\vec{k}}\sum_\sigma \frac{1}{2Vk^0}\left( v_{\sigma}^\alpha(k)\, \bar{v}_\sigma^\beta(k) \, e^{ik(x-y}\right)\,.
+\end{align*}
+As we know previously that we have
+\begin{align*}
+\sum_{\sigma}u_\sigma^\alpha(k) \, \bar{u}_\sigma^\beta(k) = (\slashed{k} + m)_{\alpha\beta}\,,\qquad
+\sum_{\sigma}v_\sigma^\alpha(k) \, \bar{v}_\sigma^\beta(k) = (\slashed{k} - m)_{\alpha\beta}\,,
+\end{align*}
+we can write
+\begin{align*}
+\{\psi_\alpha(x),\, \bar{\psi}_\beta(y)\} 
+&= \sum_{k}(i\slashed{\pd}_x + m) \frac{1}{2Vk^0}\left( e^{ik(x-y)} - e^{ik(x-y)}\right) \\
+&= (i\slashed{\pd}_x + m) \, \Delta_c(x-y)
+\end{align*}
+where $\Delta_c(x-y)$ denote the scalar causal function computed in previous chapter. Since the causal function has the property that
+\begin{align*}
+\Delta_c(x-y)|_{x^0 = y^0} = 0\,,
+\end{align*}
+so we conclude here
+\begin{align}
+\{\psi_a(x),\, \bar{\psi}_\beta(y) \}_{x^0 = y^0} = 0\,.
+\end{align}
+Notice that this is only the first step showing causality in the theory, we next need to show that the physical observable commute at space-like separations. An observation here is that physical observables, which are Lorentz invariant, are fermion bilinears, such that $\pi(x) \coloneqq \bar{\psi}(x)\, \psi(x) \, f(x)$ for some scalar-valued Lorentz invariant function $f(x)$. That is, we need to show
+\begin{align*}
+[\pi(x),\, \pi(y)]|_{x^0 = y^0} = 0\,.
+\end{align*}
+Here we see that
+\begin{align*}
+[\pi(x), \, \pi(y)] = f(x) \, f(y) \, [\bar{\psi}(x) \, \psi(x) ,\ \bar{\psi}(y) \, \psi(y)]\,,
+\end{align*}
+with the fact that we have
+\begin{align*}
+[AB,\, CD] = A\{B,C\} D - \{A,C\}BD+ CA\{B,D\} - C\{A,D\} B\,,
+\end{align*}
+it follows from (5.6) that we have
+\begin{align*}
+[\pi(x),\, \pi(y)]|_{x^0 = y^0} = 0\,.
+\end{align*}
+\section[Propagators for Fermions]{\color{red} Propagators for Fermions\color{black}}
+Here we first define a time order product,
+\begin{align*}
+T(\psi(x)\, \bar{\psi}(y)) = \begin{cases}
+\psi(x) \, \bar{\psi}(y)  & x^0>y^0\\
+-\bar{\psi}(y)\, \psi(x)  & y^0>x^0
+\end{cases}\ .
+\end{align*}
+The fermion propagator is thus defined by
+\begin{align*}
+iS_F^{\alpha\beta}(x-y) 
+&= \langle 0 | T(\psi_\alpha(x)\, \bar{\psi}_\beta(y))\, |0\rangle\\
+&= \langle 0 | \psi_\alpha(x) \, \bar{\psi}_\beta(y) |0\rangle \,\theta(x^0 - y^0) - 
+\langle 0 |   \bar{\psi}_\beta(y)\,\psi_\alpha(x) |0\rangle \,\theta(y^0 -x^0) \\
+&= \sum_{\vec{k}}\frac{1}{2Vk^0}\left(
+\sum_\sigma u_\sigma^\alpha(k) \, \bar{u}_\sigma^\beta (k)\, \theta(x^0 - y^0) \, e^{-ik(x-y)}\, - \sum_\sigma v_\sigma^\alpha(k) \, \bar{v}_\sigma^\beta(k) \, \theta(y^0 - x^0) \, e^{-k(x-y)}
+\right)\\
+&= \sum_{\vec{k}} \frac{1}{2Vk^0}\left( \theta(x^0 - y^0)\, (\slashed{k}+m)\,e^{-ik(x-y)} - \theta(y^0 - x^0)\, (\slashed{k}-m)\, e^{ik(x-y)} \right)\\
+&= (i\slashed{\pd}_x + m) \sum_{\vec{k}}\frac{1}{2Vk^0}\left( \theta(x^0 - y^0)\,e^{-ik(x-y)} - \theta(y^0 - x^0)\, e^{ik(x-y} \right)\,.
+\end{align*}
+Thus we see that we have
+\begin{align*}
+iS_F(x-y) 
+&= (i\slashed{\pd}_X + m) \, i\Delta_F(x-y) \\
+&= (i\slashed{\pd}_X + m) \, \int \frac{d^4p}{(2\pi)^4}\frac{i}{p^2 - m^2 + i\epsilon}\, e^{ip(x-y)}
+= \int \frac{d^4p}{(2\pi)^4}\, \frac{i(\slashed{p} + m) }{p^2 -m^2 + i\epsilon}\, e^{ip(x-y)}\,,
+\end{align*}
+which can be written differently by noting that, as $\{\gamma^\mu, \gamma^\nu\} = 2g^{\mu\nu}$, we have
+\begin{align*}
+(\slashed{p} + m)(\slashed{p} -m ) &=
+\slashed{p}\slashed{p} - m^2 = p_\mu p_\nu \gamma^\mu \gamma^\nu - m^2 = p_\mu p_\nu\left(\frac{1}{2}\{\gamma^\mu, \gamma^\nu\} + \frac{1}{2}[\gamma^\mu, \gamma^\nu]\right) - m^2 = p^2 - m^2\,,
+\end{align*}
+thus we have
+\begin{align*}
+iS_F(x-y) = \int \frac{d^4p}{(2\pi)^4} \frac{i}{\slashed{p}-m+i\epsilon}\,e^{ip(x-y)}\,.
+\end{align*}
+\note The Feynman rule derived from here, as particle and anti-particle carry different charges, should also reflect the relation between the direction of charge flow and the direction of momentum flow.\\
+
+\subsection{Wick's Theorem for fermions}
+Let $X$ be the field operator, either fermionic or bosonic, here we denote $X_i = X(x_i)$. Then by Wick's theorem we have that
+\begin{align*}
+T(&X_1X_2\cdots X_n)-:X_1X_2\cdots X_n:\ = \\
+&{}\quad+ 
+\wick{:\c1 X_1 \c1 X_2  X_3\cdots X_n: + :\c2 X_1 X_2\c2 X_3 X_4\cdots X_n: + }\ \text{(terms with one pair of $ X$ contracted)}\\
+&{}\quad\quad +\wick{:\c1 X_1\c1 X_2\c2 X_3\c2 X_4\cdots  X_n :+
+:\c3 X_1\c4 X_2\c3 X_3\c4 X_4\cdots  X_n : }+\ \text{(terms with two pairs of $ X$ contracted)}\\
+&{}\quad\quad\quad\vphantom{\wick{:\c1 X_1\c1 X_2\c2 X_3\c2 X_4\cdots  X_n :+:\c3 X_1\c4 X_2\c3 X_3\c4 X_4\cdots  X_n : }} +\cdots + \text{(terms with maixmal amount of pairs of $X$ contracted)}
+\end{align*}
+Here we take a look at the examples for normal product, $:X_1X_2:$. When both $X_1$ and $X_2$ are fermionic, as we have $\psi = \psi^+ + \psi^-$ where $\psi^+$ has $a,b$ operators and $\psi^-$ has $a^\dagger, b^\dagger$ operators, we see that we have
+\begin{align*}
+:\psi_1\psi_2:\ &=\ :(\psi_1^+\psi_2^+ + \psi_1^+\psi_2^- + \psi_1^-\psi_2^- + \psi_1^-\psi_2^+): \\
+&=\ \psi_1^+ \psi_2^+ - \psi_2^- \psi_1^+ + \psi_1^-\psi_2^- + \psi_1^- \psi_2^+\,. 
+\end{align*}
+We can also take a look at an example for the contraction of fields. Here we can write
+\begin{align*}
+:\wick{\c1X_1 X_2 \c1X_3 \cdot X_n}: = \delta_p  \wick{\c1X_1 \c1X_3}\, : X_2X_4\cdots X_n:\,,
+\end{align*}
+where we have $\delta_p = 1$ if $X_2$ and $X_3$ are bosonic, and $\delta_p = -1$ if $X_2$ and $X_3$ are fermonic. Lastly, to write down the propagator, we have that
+\begin{align*}
+\wick{\c1{\bar{\psi}_2} \c1{\psi_1}} = -\psi_1 \bar{\psi_2} = iS_F(x_1-x_2) \,,\qquad
+\wick{\c1\psi_1 \c1{\bar{\psi}_2}} = iS_F(x_1-x_2)\,
+\end{align*}
+
+Now we conisder the theory with interaction of fermoins and scalars. From Dirac equation, we have that
+\begin{align*}
+(i\slashed{\pd} - m) \, \psi = 0\,.
+\end{align*}
+We have that $\psi$ and $\bar{\psi}$ being independent variables, so the free Lagrangian density is \begin{align*}
+\mathcal{L}=\bar{\psi}\,(i\slashed{\pd} - m) \,\psi
+\end{align*}
+the free Lagrangian of a \textbf{ADD}\\
+
+The dimension of $\phi$ is $[\phi] = 1$. From the fact that $m\bar{\psi}\psi$ should have mass dimension $4$, we require that $[\psi] = [\bar{\psi}] = 3/2$. Thus the interaction Lagrangian of fermions with scalars can have terms like
+\begin{align*}
+g\, \bar{\psi}\, \psi \,\phi\,,
+\end{align*}
+where $[g] = 0$, that is $g$ is dimensionless. For fermions with pseudoscalars, the interaction Lagrangian has terms like
+\begin{align*}
+\lambda \bar{\psi} \,\gamma_5\, \psi \, \pi\,,
+\end{align*}
+where $\lambda$ is dimensionless and $\pi$ is a pseudoscalar field, as we require that $S$ to be a scalar. For fermions with vectors, the interaction Lagrangian can have terms like
+\begin{align*}
+\lambda_1\,\bar{\psi}\, \gamma^\mu \, \psi \, \pd_\mu \phi\,,\qquad
+\lambda_2\,\bar{\psi}\,\gamma^\mu\, \psi\, A_\mu
+\end{align*}
+where $A_\mu$ is a vector field, and $\lambda_2$ is dimensionless, $[\lambda_1] = 1$, $[A_\mu] = 1$. For fermions with pseudovectors, the interaction Lagrangian can have terms like
+\begin{align*}
+g'\, \bar{\psi}\, \gamma_5 \, \psi^\mu \,\psi\, W_\mu
+\end{align*}
+where $W_\mu$ is a pseudovector field, and $[g'] = 0$. The interaction Lagrangian can have operators with higher dimensions, but the coupling coefficients of those terms should have the correct dimension to match the typical mass scale of the theory, but those couplings are usually suppressed at low-energy limit. \\
+
+\example Consider here the interaction Lagrangian
+\begin{align*}
+\mathcal{L}_{\text{int}} = g\,\bar{\psi}\, \psi \, \phi\,,
+\end{align*}
+we are interested in obtaining the Feynman rules for the scattering $e^-\phi \to e^- \phi$. In Dyson's formula, the first non-trivial contribution arises at the second order, which is
+\begin{align*}
+\frac{(ig)^2}{2!}\,\int d^4x_1\, d^4x_2\, T\left(\bar{\psi}(x_1)\, \psi(x_1)\, \phi(x_1) \,\bar{\psi}(x_2)\, \psi(x_2) \, \phi(x_2) \right)\,.
+\end{align*}
+Here we call the initial state as
+\begin{align*}
+|ps, k\rangle = a_s^\dagger(p) \, a^\dagger(k) \, |0\rangle\,,
+\end{align*}
+where $p_s$ is the momentum of $e^-$ and $k$ is the momentum of the scalar. Similarly, for the final state, we write
+\begin{align*}
+\langle p's', k'| = \langle 0 |\, a(k')\, a_{s'}(p')\,.
+\end{align*}
+We are interested in the leading contribution to 
+\begin{align*}
+\langle p's', k'\,| S |\, ps,k\rangle\,.
+\end{align*}
+Here we can write
+\begin{align*}
+T(\bar{\psi}_1 \, \psi_1 \,\phi_1 \, \bar{\psi}_2\, \psi_2\, \phi_2) &= 
+\ :\bar{\psi}_1 \, \psi_1 \,\phi_1 \,\bar{\psi}_2 \, \psi_2 \, \phi_2:\ +\
+: \bar{\psi}_1 \, \wick{\c1{\psi_1} \, \phi_1\, \c1{\bar{\psi}_2}\, \psi_2 \, \phi_2}:\ + 
+: \wick{\c1{\bar{\psi}_1} \, \psi_1 \, \phi_1\, \bar{\psi}_2\, \c1{\psi_2} \, \phi_2}:\,,
+\end{align*}
+where we see that the second and the third terms are identical except interchanging $1$ and $2$, which cancels with the $1/2!$ factor in the Dyson's formula. \textbf{ADD}\\
+
+Now we can look at
+\begin{align*}
+\langle 0 |\, \psi(x_2)\, |ps\rangle = e^{ipx_2}\, u_s(p) \, \frac{1}{\sqrt{2Vp^0}}\,.
+\end{align*}
+Similarly we have
+\begin{align*}
+\langle p's'|\, \bar{\psi}(x_1) \, |0\rangle = e^{ip'x_1}\,\bar{u}_{s'}(p')\, \frac{1}{\sqrt{2Vp'^0}}\,.
+\end{align*}
+Here we have the Feynman diagrams,
+
+\begin{center}
+\begin{fmffile}{feyngraph50}
+  \begin{fmfgraph*}(110,60)
+\fmfleft{i1,i2}
+\fmfright{o1,o2}
+\fmflabel{$p$}{i1}
+\fmflabel{$k$}{i2}
+\fmflabel{$p'$}{o1}
+\fmflabel{$k'$}{o2}
+\fmf{fermion}{i1,v1}
+\fmf{dashes}{i2,v1}
+\fmf{fermion}{v2,o1}
+\fmf{dashes}{v2,o2}
+\fmf{fermion, label=$q$}{v1,v2}
+  \end{fmfgraph*}
+\end{fmffile} \ , \qquad\qquad
+\begin{fmffile}{feyngraph51}
+  \begin{fmfgraph*}(110,60)
+\fmfleft{i1,i2}
+\fmfright{o1,o2}
+\fmflabel{$p$}{i1}
+\fmflabel{$k$}{i2}
+\fmflabel{$k'$}{o1}
+\fmflabel{$p'$}{o2}
+\fmf{fermion}{i1,v1}
+\fmf{dashes}{i2,v2}
+\fmf{dashes}{v1,o1}
+\fmf{fermion}{v2,o2}
+\fmf{fermion, label=$q$}{v1,v2}
+  \end{fmfgraph*}
+\end{fmffile} 
+\end{center}
+\textbf{check diagram}\\
+Denoting here
+\begin{align*}
+\mathcal{C} = \frac{1}{\sqrt{2Vp^0}}\frac{1}{\sqrt{2Vp'^0}}\frac{1}{\sqrt{2Vk^0}}\frac{1}{\sqrt{2Vk'^0}} \,.
+\end{align*}
+Then for the first diagram, we have a contribution to the $S$-matrix element,
+\begin{align*}
+\mathcal{C} 
+\int \frac{d^4q}{(2\pi)^4}\, \bar{u}_{s'}(p')\, (2\pi)^4\, (ig)\,\delta^4(q-p'-k')\,
+\frac{i}{\slashed{q}-m}\, (2\pi)^4\,(ig)\, \delta^4(p+k-q) \, u_s(p)\,.
+\end{align*}
+For the second diagram, we have a contribution to the $S$-matrix element,
+\begin{align*}
+\mathcal{C}\int\frac{d^4q}{(2\pi)^4}\, \bar{u}_{s'}(p') \, (2\pi)^4\,(ig)\, \delta^4(k+q-p') \, \frac{i}{\slashed{q} - m} \, (2\pi)^4\,(ig)\, \delta^4(p-k'-q)\, u_s(p)\,.
+\end{align*}
+Performing the integration and summing the two diagrams we obtain the $S$-matrix element,
+\begin{align*}
+\mathcal{C}\left(
+ \bar{u}_s(p')\, u_s(p)\, \frac{(2\pi)^4\,\delta^4(p+k-p'-k')\, i(ig)^2\,}{\slashed{p}+\slashed{k} - m}  +  \bar{u}_{s'}(p') \, u_s(p)\, \frac{(2\pi)^4\, \delta^4(p+k-p'-k') \, i(ig)^2}{\slashed{p}' - \slashed{k} -m}
+\right)
+\end{align*}
+
+For the Feynman rule of the scattering process $e^+\phi \to e^+\phi$, the relevant terms in the Dyson expression is then
+\begin{align*}
+\wick{\c1{\psi_1}\, \c2{\bar{\psi}_2} } \, :\bar{\psi}_1\,\phi_1\, \psi_2\, \phi_2:\,\,.
+\end{align*}
+The initial state here reads
+\begin{align*}
+|ps, k\rangle = a^\dagger(k) \, b_s^\dagger(p) \, |0\rangle\,,
+\end{align*}
+and the final state here reads
+\begin{align*}
+\langle p's', k'| = \langle 0 | b_{s'}(p')\, a(k')\,.
+\end{align*}
+Notice that we have
+\begin{align*}
+\langle 0 |\, \bar{\psi}(x_1) \, |ps\rangle = e^{-ipx_1}\, \bar{v}_s(p) \, \frac{1}{\sqrt{2Vp^0}}\,,\qquad
+\langle p's'|\, \psi(x_2) \, |0\rangle = e^{ip'x_2}v_s(p) \, \frac{1}{\sqrt{2Vp'^0}}\,. 
+\end{align*}
+\textbf{ADD diagrams}\\
+Here the first diagram gives
+\begin{align*}
+\mathcal{C}\int \frac{d^4q}{(2\pi)^4}\, \bar{v}_s(p)\, (2\pi)^4\, (ig)\, \delta^4(p+k-q) \, \frac{i}{-\slashed{q} - m} \, (2\pi)^4\,(ig)\, \delta^4(q-p'-k') \, v_{s'}(p') \,.
+\end{align*}
+The second diagram gives
+\begin{align*}
+\mathcal{C}\int \frac{d^4q}{(2\pi)^4}\, \bar{v}_s(p) \, (2\pi)^4\, (ig) \, \delta^4(p-q-k') \, \frac{i}{-\slashed{q} - m} \, (2\pi)^4 \, (ig)\, \delta^4(q+k-p') \, v_{s'}(p')\,.
+\end{align*}
+
+\newpage
+For incoming fermion, we have seen that we obtain a factor of 
+\begin{align*}
+\frac{u_s(p)}{\sqrt{2Vp^0}}
+\end{align*}
+in the $S$-matrix element. For the outgoing fermion, the factor is
+\begin{align*}
+\frac{\bar{u}_{s'}(p')}{\sqrt{2V{p'}^0}}\,.
+\end{align*}
+On the other hand, for the incoming anti-fermion, the factor is
+\begin{align*}
+\frac{\bar{v}_s(p)}{\sqrt{2Vp^0}}\,,
+\end{align*}
+and for the outgoing anti-fermion, the factor is
+\begin{align*}
+\frac{v_s(p')}{\sqrt{2V{p'}^0}}\,.
+\end{align*}
+\textbf{ADD diagrams and vertex}.\\
+
+Next we will consider the scattering process $e^- e^- \to e^- e^-$. The Dyyson expression in the lowest nontrivial order is 
+\begin{align*}
+\left\langle\, p'_2 p'_1 \,\left|\, \frac{(ig)^2}{2}\, \int \, d^4x_1\, d^4x_2\, : \bar{\psi}_1 \psi_1 \wick{\c1{\phi_1} \bar{\psi}_2\psi_2\c1{\phi_2}}:\, \right|\,p_1p_2\,\right\rangle\,,
+\end{align*}
+which gives the terms
+\begin{align*}
+\left\langle \, 0 \, \left|
+\, a_{s_1'}(p_1')\, a_{s_2'}(p_2')\, :\bar{\psi}_1\psi_1\bar{\psi}_2\psi_2 : \, a^\dagger_{s_1}(p_1) \, a^\dagger_{s_2}(p_2) \, \right|\, 0 \, \right\rangle \,.
+\end{align*}
+The two topologically distinct diagrams are
+\begin{fmffile}{feyngraph52}
+  \begin{fmfgraph*}(110,60)
+\fmfleft{i1,i2}
+\fmfright{o1,o2}
+\fmflabel{$p_1$}{i1}
+\fmflabel{$p_2$}{i2}
+\fmflabel{$p_1'$}{o1}
+\fmflabel{$p_2'$}{o2}
+\fmf{fermion}{i1,v1}
+\fmf{fermion}{i2,v2}
+\fmf{fermion}{v2,o2}
+\fmf{fermion}{v1,o1}
+\fmf{dashes_arrow, label=$p_1-p_1'$}{v1,v2}
+  \end{fmfgraph*}
+\end{fmffile} \ , \qquad\qquad
+\begin{fmffile}{feyngraph53}
+  \begin{fmfgraph*}(110,60)
+\fmfleft{i1,i2}
+\fmfright{o1,o2}
+\fmflabel{$p_1$}{i1}
+\fmflabel{$p_2$}{i2}
+\fmflabel{$p_2'$}{o1}
+\fmflabel{$p_1'$}{o2}
+\fmf{fermion}{i1,v1}
+\fmf{fermion}{i2,v2}
+\fmf{fermion}{v2,o2}
+\fmf{fermion}{v1,o1}
+\fmf{dashes, label=$q$}{v1,v2}
+  \end{fmfgraph*}
+\end{fmffile} 
+The contribution of the first diagram is thus
+\begin{align*}
+\mathcal{C} \int \frac{d^4 q}{(2\pi)^4}\,\bar{u}_{s_1'}(p_1')\, (ig)\, (2\pi)^4\, \delta^4(p_1-q-p_1')\, \frac{i}{q^2 - \mu^2}\, u_{s_1}(p_1) \, \bar{u}_{s_2'}(p_2') \, (ig)\, (2\pi)^4\, \delta^4(q+p_2 - p_2')\,u_{s_2}(p_2)\,.
+\end{align*}
+The second diagram gives a contribution
+\begin{align*}
+-\mathcal{C} \int \frac{d^4q}{(2\pi)^4}\, \bar{u}_{s_2'}(p_2') \, (ig)\, (2\pi)^4\, 
+\delta^4(p_1-q-p_2')\, u_{s_1}(p_1)\, \frac{i}{q^2 - \mu^2}\, \bar{u}_{s_1'}(p_1') \, (ig)\, (2\pi)^4\, \delta^4(q+p_2-p_1') \, u_{s_2}(p_2)\,.
+\end{align*}
+Note here we do not have the diagram \textbf{add diagram} due to the conservation of charge.\\
+
+
+
+For the scattering process $e^- e^+ \to \phi \phi$, we have the diagrams,
+\begin{center}
+\begin{fmffile}{feyngraph54}
+  \begin{fmfgraph*}(110,60)
+\fmfleft{i1,i2}
+\fmfright{o1,o2}
+\fmflabel{$p_1$}{i1}
+\fmflabel{$p_2$}{i2}
+\fmflabel{$k_1$}{o1}
+\fmflabel{$k_2$}{o2}
+\fmf{fermion}{i1,v1}
+\fmf{fermion}{i2,v2}
+\fmf{dashes_arrow}{v2,o2}
+\fmf{dashes_arrow}{v1,o1}
+\fmf{fermion, label=$q$}{v1,v2}
+  \end{fmfgraph*}
+\end{fmffile} \ , \qquad\qquad
+\begin{fmffile}{feyngraph55}
+  \begin{fmfgraph*}(110,60)
+\fmfleft{i1,i2}
+\fmfright{o1,o2}
+\fmflabel{$p_1$}{i1}
+\fmflabel{$p_2$}{i2}
+\fmflabel{$k_2$}{o1}
+\fmflabel{$k_1$}{o2}
+\fmf{fermion}{i1,v1}
+\fmf{fermion}{i2,v2}
+\fmf{dashes_arrow}{v2,o2}
+\fmf{dashes_arrow}{v1,o1}
+\fmf{fermion, label=$q$}{v1,v2}
+  \end{fmfgraph*}\,.
+\end{fmffile} 
+\end{center}
+The $S$-matrix element contribution for the first diagram is
+\begin{align*}
+\mathcal{C} \int \frac{d^4q}{(2\pi)^4}\, \bar{v}_{s_2}(p_2) \, (2\pi)^4\, \delta^4(p_2 +q-k_2) \, (ig) \, \frac{i}{\slashed{q} - m} \, (2\pi)^4\, \delta^4(p_1 -k_1 - q) \, (ig) \, u_{s_1}(p_1)\,.
+\end{align*}
+Interchanging $k_1$ and $k_2$ gives the contribution of the second diagram.\\
+
+Lastly, for the $e^+  e^-  \to e^- e^+$ process,  we have diagrams
+\begin{center}
+\begin{fmffile}{feyngraph56}
+  \begin{fmfgraph*}(110,60)
+\fmfleft{i1,i2}
+\fmfright{o1,o2}
+\fmflabel{$p_1$}{i1}
+\fmflabel{$p_2$}{i2}
+\fmflabel{$p_1'$}{o1}
+\fmflabel{$p_2'$}{o2}
+\fmf{fermion}{i1,v1}
+\fmf{fermion}{i2,v1}
+\fmf{fermion}{v2,o2}
+\fmf{fermion}{v2,o1}
+\fmf{dashes_arrow, label=$q$}{v1,v2}
+  \end{fmfgraph*}
+\end{fmffile} \ , \qquad\qquad
+\begin{fmffile}{feyngraph57}
+  \begin{fmfgraph*}(110,60)
+\fmfleft{i1,i2}
+\fmfright{o1,o2}
+\fmflabel{$p_1$}{i1}
+\fmflabel{$p_2$}{i2}
+\fmflabel{$p_1'$}{o1}
+\fmflabel{$p_2'$}{o2}
+\fmf{fermion}{i1,v1}
+\fmf{fermion}{i2,v2}
+\fmf{fermion}{v2,o2}
+\fmf{fermion}{v1,o1}
+\fmf{dashes_arrow, label=$q$}{v1,v2}
+  \end{fmfgraph*}\,.
+\end{fmffile} 
+\end{center}
+Note here, one can verify from the Wick's theorem that the two diagrams have contribution differ by a sign. \\
+
+\newpage
+Now we consider the interaction Lagrangian
+\begin{align*}
+\mathcal{L}_{\text{int}} = ig\, \bar{\psi}\, \gamma_5\, \psi \, \pi
+\end{align*}
+where $\pi$ is a pseudo-scalar, and such an interaction Lagrangian can be used to describe the electron-pion scattering, $e^- \pi \to e^- \pi$, where we have the diagrams
+\begin{center}
+\textbf{ADD diagrams}\\
+\end{center}
+The $S$-matrix element is thus
+\begin{align*}
+\mathcal{C}\int \frac{d^4q}{(2\pi)^4} \bar{u}_{s'}(p') \, (-g\gamma_5)\, (2\pi)^4\, \delta^4(p'+q-k') \, \frac{i}{\slashed{q} - m} \, (-g\gamma_5) \, (2\pi)^4\, \delta^4(p+k-q) \, u_s(p) 
+\end{align*}
+\textbf{ADD}\,.\\
+
+
+\newpage
+\section{Crosssection}
+Here we first consider the $e^- \phi \to e^- \phi$ process. We have seen that the scattering matrix element is given by
+\begin{align*}
+\mathcal{M} = ig^2\bar{u}_{s'}(p') \, \underbrace{\left(\frac{\slashed{p} + \slashed{k} + m}{(p+k)^2-m^2} + \frac{\slashed{p} - \slashed{k}' + m}{(p-k')^2 - m^2} \right)}_A\, u_s(p)\,.
+\end{align*}
+For the crosssection, we are interested in $|\mathcal{M}|^2$ only. For the unpolarized crosssection, you further need to average over all initial spins and sum over all final spins. That is, we are interested in
+\begin{align*}
+\overline{\sum_{\text{initial spins}}}\sum_{\text{final spins}}|\mathcal{M}|^2 = \frac{1}{2}\sum_{\text{initial spins}}\sum_{\text{final spins}}|\mathcal{M}|^2\,.
+\end{align*}
+Here we can calculate
+\begin{align*}
+|\mathcal{M}|^2 
+&= g^2 | \, \bar{u}_{s'}(p') \, A \, u_s(p) \, |^2 \\
+&= g^4 \, \bar{u}_{s'}(p') \, A \, u_s(p) \, u_s(p) \, u_s^\dagger(p)\, (\gamma^0)^2\, A^\dagger \, (\gamma^0)^\dagger \, u_{s'}(p') \\
+&= \textbf{ADD}\,,
+\end{align*}
+Here we define $\gamma^0 A^\dagger \gamma^0 = \bar{A}$, and one can verify that we have $\bar{A} = A$. Then we obtain
+\begin{align*}
+|\mathcal{M}|^2 = g^4 \, \bar{u}_{s'}(p') \, A \, u_{s}(p) \, \bar{u}_s(p) \, A u_{s'}(p')\,.
+\end{align*}
+With the indices, we have
+\begin{align*}
+g^4 \, \bar{u}_{s'}^\alpha(p') \, A_{\alpha\beta} \, u_{s}(p)^\beta \, \bar{u}_s^\gamma(p) \, A_{\gamma\delta} u_{s'}^\delta(p')\,,
+\end{align*}
+and thus summing over we obtain
+\begin{align*}
+\frac{1}{2}\sum_s \sum_{s'}|\mathcal{M}|^2 
+&= \frac{1}{2}g^4 \sum_{s}\sum_{s'}u_{s'}^\delta(p')\, u^\alpha_{s'}(p') \, A_{\alpha\beta}\, u_s^\beta(p) \, \bar{u}^\gamma_{s}(p) \, A_{\gamma\delta}\\
+&= \frac{1}{2}g^4(\slashed{p'} + m)_{\delta \alpha}A_{\alpha\beta}(\slashed{p} + m)_{\beta\gamma}A_{\gamma\delta}\\
+&= \frac{1}{2}g^4\, \text{Tr}\left((\slashed{p'} + m)\,A\,(\slashed{p}+m) \, A \right)
+\end{align*}
+Here we appeal to the theorems
+\begin{thm}
+The trace of odd number of $\gamma^\mu$ matrices is zero.
+\end{thm}
+\begin{proof}
+Here denoting $\slashed{a} = \gamma_\mu a^\mu$, here we see that
+\begin{align*}
+\text{Tr}(\slashed{a_1}\slashed{a_2}\cdots \slashed{a_n}) = \text{Tr}(\gamma_5 
+\slashed{a_1}\slashed{a_2}\cdots \slashed{a_n} \, \gamma_5)  = (-1)^n \text{Tr}(\slashed{a_1}\slashed{a_2}\cdots \slashed{a_n})\,.
+\end{align*}
+for $n$ being odd.
+\end{proof}
+
+\begin{thm}
+$\text{Tr}(\slashed{a_1} \slashed{a_2})=\text{Tr}(\slashed{a_2} \slashed{a_1})$.
+\end{thm}
+\begin{proof}
+Here we have that
+\begin{align*}
+\text{Tr}(\slashed{a_1}\slashed{a_2}) = \frac{1}{2}(a_{1})_\mu (a_2)_{\nu} \text{Tr}(\{\gamma^\mu, \, \gamma^\nu \}) = 4a_1\cdot a_2\,.
+\end{align*}
+\end{proof}
+
+\begin{thm}
+\begin{align*}
+\text{Tr}(\slashed{a_1} \slashed{a_2}\slashed{a_3}\slashed{a_4}) = -\text{Tr}(\slashed{a_2}\slashed{a_1}\slashed{a_3}\slashed{a_4}) + 2a_1\cdot a_2\, \text{Tr}(\slashed{a_3}\slashed{a_4})\,.         
+\end{align*}
+\end{thm}
+\begin{proof}
+As we have that $\slashed{a_1}\slashed{a_2} = -\slashed{a_2}\slashed{a_1} + 2a_1\cdot a_2$. Using such condition repeatedly, we obtain
+\end{proof}
+
+\begin{thm}
+$\text{Tr}(\gamma_5) = 0$. 
+\end{thm}
+
+\begin{thm}
+$\text{Tr}(\gamma_5 \slashed{a_1} \slashed{a_2}) = ?$
+\end{thm}
+
+\begin{thm}
+$\text{Tr}(\gamma_5 \slashed{a}\slashed{b}\slashed{c} \slashed{d}) = a_\mu b_\nu c_\epsilon d_\gamma \text{Tr}(\gamma_5 \gamma^\mu \gamma^\nu \gamma^\epsilon \gamma^\gamma) = -4 i\epsilon^{\mu \nu \alpha\beta} a_\mu b_\nu c_\alpha d_\beta$. 
+\end{thm}
+
+
+\newpage
+\chapter{Quantum Electrodynamics}
+One main topic in quantum electrodynamics is to describes the interaction of electrons and photons. First we need a theory of free photons, which are spin-$1$ objects. 
+
+\section[Gauge-fixing Procedure]{\color{red} Gauge-fixing Procedure\color{black}}
+The Lagrangian density of photon is
+\begin{align}
+\mathcal{L} = -\frac{1}{4}F_{\mu\nu}F^{\mu\nu}\,,
+\end{align}
+here we have $F_{\mu\nu} = \pd_\mu A_\nu - \pd_\nu A_\mu$. Thus one obtains the Euler-Lagrangian equations
+\begin{align}
+\pd_\mu F^{\mu\nu} = 0\,.
+\end{align}
+Note here $F^{0i} = E^i$ and $F^{ij} = \epsilon^{ijk}B_k$, then (6.2) gives the Maxwell's equations
+\begin{align*}
+\nabla \cdot \vec{E} = 0\,,\qquad
+\frac{\pd \vec{E}}{\pd t} = \nabla \times \vec{B}\,.
+\end{align*}
+Furthermore, since $F_{\mu\nu}$ is of the form $F_{\mu\nu} = \pd_\mu A_\nu - \pd_\nu A_\mu$, it also satisfies the Bianchi identity
+\begin{align*}
+\pd_\mu F_{\mu\nu} + \pd_\mu F_{\nu\lambda} + \pd_\nu F_{\lambda \mu} = 0\,,
+\end{align*}
+which gives the other two Maxwell's equations
+\begin{align*}
+\nabla \cdot \vec{B} = 0\,,\qquad
+\frac{\pd \vec{B}}{\pd t} = -\nabla \times \vec{E}\,.
+\end{align*}
+Here $A_\mu$ naively appears to have $4$ degrees of freedom, but the physical photon has only $2$ degrees of freedom, so the description above has a redundancy. Furthermore, one would see that the redundancy causes problem in quantization. \\
+
+By integration by part, one can check the Lagrangian density (6.1) can be written as
+\begin{align*}
+\mathcal{L} = \frac{1}{2}\, A_\mu\left( g^{\mu\nu}\square - \pd^\mu \pd^\nu \right) A_\nu - \pd^\mu K_\mu\,,
+\end{align*}
+where we have
+\begin{align*}
+K_\mu = \frac{1}{2}A^\mu \left( \pd_\mu A_\nu - \pd_\nu A_\mu\right)
+\end{align*}
+Thus here
+\begin{align*}
+\mathcal{L} = \frac{1}{2}\, A_\mu\left( g^{\mu\nu}\square - \pd^\mu \pd^\nu \right)
+\end{align*}
+gives the same physics as the original Lagrangian density described by (6.1). In this form, there is no  $\dot{A}_0^2$ piece, so $A_0$ is not a dynamical variable and we have initial data only for $A_i$ and $\dot{A}_i$. They together will determine $A_0$ completely. Note that $\nabla \cdot \vec{E} = 0$ gives
+\begin{align*}
+\pd_t^2 A_0 + \nabla \cdot \frac{\pd \vec{A}}{\pd t} = 0\,,
+\end{align*}
+and thus we obtain
+\begin{align}
+A_0(\vec{x}) = \frac{1}{4\pi}\int d^3x'\, \frac{\nabla\cdot (\pd \vec{A}/\pd t)|_{x'}}{|\vec{x} - \vec{x}'|}\,.
+\end{align}
+Thus we have eliminated one degree of freedom in $A_\mu$ by defining $A_0$. Furthermore, $\mathcal{L}$ is required to have the gauge symmetry, $A_\mu \to A_\mu + \pd_\mu \lambda$, $F_{\mu\nu}\to F_{\mu\nu}$. This is a redundancy for those $\lambda$ that vanish at infinity. Those states related by gauge transformation should be identified, there is no new physics or conserved charges.  One aspect of this redundancy is that the operator $g^{\mu\nu}\square - \pd^\mu \pd^\nu$ is not invertible. Here to show $g^{\mu\nu}\square - \pd^\mu \pd^\nu$ being not invertible, it suffices to show that it has a zero eigenvalue, notice that we have
+\begin{align*}
+(g^{\mu\nu}\square - \pd^\mu \pd^\nu) \pd_\nu \lambda = 0
+\end{align*}
+as required by the equation of motion
+\begin{align*}
+(g^{\mu\nu}\square - \pd^\mu \pd^\nu) A_\mu = 0\,,
+\end{align*}
+and thus we cannot distinguish between $A_\mu$ and $A_\mu + \pd_\mu \lambda$. Thus if we can identify $A_\mu$ and $A_\mu + \pd_\mu \lambda$ as giving the same physics, then our problem will be resolved. \\
+
+To sharpen the problem, we look at the space of all gauge fields. In such a space we have curves describing $A_\mu$ related by gauge transformation, which are called the gauge orbits. We need to pick a representative from each gauge orbit, which is done by the \textit{gauge-fixing procedure}. Different choice of representatives are called different gauges. These gauge fixing eliminates another degree of freedom in $A_\mu$, and thus we only have $2$ independent degrees of freedom in $A_\mu$. \\
+
+Different choices of gauges, for instance, we have the Lorentz gauge,
+\begin{align*}
+\pd_\mu A^\mu = 0\,,
+\end{align*}
+and the Coulomb gauge,
+\begin{align*}
+\nabla \cdot \vec{A} = 0\,.
+\end{align*}
+Note that for the Coulomb gauge, using (6.3) we find that we have $A_0 = 0$ in free theory. Thus it is obvious that only two degrees of freedom exists for $A_\mu$ in the Coulomb gauge.\\
+
+In the Lorentz gauge, the equation of motion gives
+\begin{align*}
+\square A^\mu = 0\,,
+\end{align*}
+and thus we have
+\begin{align*}
+A_\mu = N e_\mu e^{-ipx}\,,
+\end{align*}
+where $\epsilon_\mu$ is called the polarization vector of the photon. The requirement $\pd_\mu A^\mu = 0$ further gives $\epsilon \cdot p = 0$. In this gauge, even after fixing $\pd_\mu A^\mu = 0$, we are still allowed to perform a gauge transformation $A_\mu \to A'_\mu = A_\mu -\pd_\mu \lambda$ with $\lambda$ satisfying $\square \lambda = 0$. That is $\lambda =\alpha e^{-ipx}$. For plane waves, this redundancy means that we have
+\begin{align*}
+A'_\mu = A_\mu - \pd_\mu \lambda 
+&= N \epsilon_\mu e^{-ipx} - \alpha \pd_\mu (e^{-ipx})\\
+&=N \left( \epsilon_\mu + \frac{i\alpha}{N}\, p_\mu\right) e^{-ipx}\\
+&= N \epsilon'_\mu e^{-ipx}\,,
+\end{align*}
+where we have defined
+\begin{align*}
+\epsilon'_\mu = \epsilon_\mu + \frac{i\alpha}{N}\, p_\mu\,,
+\end{align*}
+that is, by additional gauge transformation, we can change polarization vectors. Notice that we have $\epsilon_\mu p^\mu = 0$ and $p_\mu p^\mu = 0$ for photon, thus we have
+\begin{align*}
+\epsilon'_\mu p^\mu = 0\,.
+\end{align*}
+We can choose the appropriate $i\alpha /N$ such that 
+\begin{align*}
+\epsilon_\mu' = (0 , \vec{\epsilon}')
+\end{align*}
+where $\epsilon_\mu = (\epsilon^0, \vec{\epsilon})$, and $p^\mu = (p^0, \vec{p})$. In this case, $\epsilon_\mu' p^\mu = 0$ implies $\vec{\epsilon}'\cdot \vec{p} = 0$, and these are really $2$ independent polarization states, thus two degrees of freedom. 
+
+\newpage
+\section[Quantum Theory for Free Photon]{\color{red}
+Quantum Theory for Free Photon\color{black}}
+Here we proceed with using the Coulomb gauge, it follows from the result above that we can quantize the theory by defining
+\begin{align*}
+\vec{A} = \sum_{\vec{p}} \frac{1}{\sqrt{2V p^0}}\left( \sum_{r=1}^2\left(
+\vec{\epsilon}_r(p)\, a_r(p) e^{-ipx} + \vec{\epsilon}_r^*(p) \, a_r^\dagger(p)\, e^{ipx}\right)\right)\,.
+\end{align*}
+For convenience, we choose a frame where the polarization vectors are real, that is $\vec{\epsilon}_r \cdot \vec{p} = 0$, and $\vec{r}_r(p) \cdot \vec{\epsilon}_s(p) = \delta_{rs}$ where $r,s \in \{1,2\}$. They satisfy the completion relation, that is
+\begin{align*}
+\sum_{r=1}^2 \epsilon_r^i(p) \, \epsilon_r^j(p) = \delta^{ij} - \frac{p^i p^j}{|\vec{p}^2|}\,.
+\end{align*}
+The quantization in this case is thus
+\begin{align*}
+[a_r(p) ,\, a_s^\dagger(q)] = \delta_{rs}\, \delta_{\vec{p}, \vec{q}}\,.
+\end{align*}
+Now one can show that we have
+\begin{align*}
+[A_i(x),\, A_j(y)] = \delta_{ij} - \left(\frac{\pd_i \pd_j}{|\vec{\pd}^2|}\right)\, \Delta_c(x-y)
+\end{align*}
+where $\Delta_c(x-y)$ is the causal scalar function, and so the commutation vanishes for space-like separation. Here we define the transverse propagator, 
+\begin{align*}
+D_{ij}^{\text{tr}} = \langle 0 | T(A_i(x) A_j(y))|0\rangle = \int \frac{d^4p}{(2\pi)^4 i} \frac{e^{ip(x-y)}}{p^2 - i\epsilon}\left( \delta_{ij} - \frac{p_i p_j}{|\vec{p}^2|}\right)
+\end{align*}
+
+\end{document}
+
+

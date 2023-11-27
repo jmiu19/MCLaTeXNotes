@@ -1,0 +1,455 @@
+\documentclass[11pt, onesided]{book}
+
+%%%%%%%%%%%%%%Include Packages%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{xcolor}
+\usepackage{mathtools}
+\usepackage[a4paper, total={6in, 8in}, margin=1.25in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{paralist}
+\usepackage{rsfso}
+\usepackage{amsthm}
+\usepackage{wasysym}
+\usepackage[inline]{enumitem}   
+\usepackage{hyperref}
+\usepackage{tocloft}
+\usepackage{wrapfig}
+\usepackage{titlesec}
+\usepackage{colortbl}
+\usepackage{stackengine} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%Chapter Setting%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{gray75}{gray}{0.75}
+\newcommand{\hsp}{\hspace{20pt}}
+\titleformat{\chapter}[hang]{\Huge\bfseries}{\thechapter\hsp\textcolor{gray75}{$\mid$}\hsp}{0pt}{\Huge\bfseries}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%Theorem environments%%%%%%%%%%%%%%%%%%%
+\newtheoremstyle{break}
+  {\topsep}{\topsep}%
+  {\itshape}{}%
+  {\bfseries}{}%
+  {\newline}{}%
+\theoremstyle{break}
+\theoremstyle{break}
+\newtheorem{axiom}{Axiom}
+\newtheorem{thm}{Theorem}[section]
+\renewcommand{\thethm}{\arabic{section}.\arabic{thm}}
+\newtheorem{lem}{Lemma}[thm]
+\newtheorem{cor}{Corollary}[thm]
+\newtheorem{defn}{Definition}[thm]
+\newenvironment{indEnv}[1][Proof]
+  {\proof[#1]\leftskip=1cm\rightskip=1cm}
+  {\endproof}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%Integral%%%%%%%%%%%%%%%%%%%%%%%
+\def\upint{\mathchoice%
+    {\mkern13mu\overline{\vphantom{\intop}\mkern7mu}\mkern-20mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+  \int}
+\def\lowint{\mkern3mu\underline{\vphantom{\intop}\mkern7mu}\mkern-10mu\int}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\T}{\mathcal{T}}
+\newcommand{\M}{\mathcal{M}}
+\newcommand{\Symm}{\text{Symm}}
+\newcommand{\Alt}{\text{Alt}}
+\newcommand{\Int}{\text{Int}}
+\newcommand{\Bd}{\text{Bd}}
+\newcommand{\Power}{\mathcal{P}}
+\newcommand{\ee}[1]{\cdot 10^{#1}}
+\newcommand{\spa}{\text{span}}
+\newcommand{\sgn}{\text{sgn}}
+\newcommand{\degr}{\text{deg}}
+\newcommand{\pd}{\partial}
+\newcommand{\that}[1]{\widetilde{#1}}
+\newcommand{\lr}[1]{\left(#1\right)}
+\newcommand{\vmat}[1]{\begin{vmatrix} #1 \end{vmatrix}}
+\newcommand{\bmat}[1]{\begin{bmatrix} #1 \end{bmatrix}}
+\newcommand{\pmat}[1]{\begin{pmatrix} #1 \end{pmatrix}}
+\newcommand{\rref}{\xrightarrow{\text{row\ reduce}}}
+\newcommand{\txtarrow}[1]{\xrightarrow{\text{#1}}}
+\newcommand\oast{\stackMath\mathbin{\stackinset{c}{0ex}{c}{0ex}{\ast}{\Circle}}}
+\newcommand{\txt}{Wald's \textit{General Relativity}}
+
+\newcommand{\note}{\color{red}Note: \color{black}}
+\newcommand{\remark}{\color{blue}Remark: \color{black}}
+\newcommand{\example}{\color{green}Example: \color{black}}
+\newcommand{\exercise}{\color{green}Exercise: \color{black}}
+
+%%%%%%%%%%%%%%%%%%%%%%Roman Number%%%%%%%%%%%%%%%%%%%%%%%
+\makeatletter
+\newcommand*{\rom}[1]{\expandafter\@slowromancap\romannumeral #1@}
+\makeatother
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%table of contents%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\setlength{\cftchapindent}{0em}
+%\cftsetindents{section}{2em}{3em}
+%
+%\renewcommand\cfttoctitlefont{\hfill\huge\bfseries}
+%\renewcommand\cftaftertoctitle{\hfill\mbox{}}
+%
+%\setcounter{tocdepth}{2}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%Footnotes%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand\blfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%Section%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\makeatletter
+\def\@seccntformat#1{%
+  \expandafter\ifx\csname c@#1\endcsname\c@section\else
+  \csname the#1\endcsname\quad
+  \fi}
+\makeatother
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Enumerate%%%%%%%%%%%%%%
+\makeatletter
+% This command ignores the optional argument 
+% for itemize and enumerate lists
+\newcommand{\inlineitem}[1][]{%
+\ifnum\enit@type=\tw@
+    {\descriptionlabel{#1}}
+  \hspace{\labelsep}%
+\else
+  \ifnum\enit@type=\z@
+       \refstepcounter{\@listctr}\fi
+    \quad\@itemlabel\hspace{\labelsep}%
+\fi}
+\makeatother
+\parindent=0pt
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\begin{document}
+
+	\begin{titlepage}
+		\begin{center}
+			\vspace*{0.5cm}
+			\Huge \color{red}
+				\textbf{Practice Problems}\\
+			\vspace{0.5cm}			
+			\Large \color{black}
+			\textit{General Relativity} by Robert Wald\\
+			\vspace{1.5cm}
+
+			\includegraphics[scale=1.15]{hmm.pdf}
+			
+			
+			\vspace{2cm}
+			\LARGE
+				\textbf{Jinyan Miao}\\
+				\hfill\break
+				\LARGE Winter 2023\\
+			\vspace{1cm}
+
+		\vspace*{\fill}
+		\end{center}			
+	\end{titlepage}
+
+
+\newpage
+\section{Chapter 3 Problem 1}
+Consider a derivative operator $\nabla_a$ on manifold $M$, not necessarily torsion free. \\
+
+(a) Show that there exists a tensor $T^c{}_{ab}$ such that for all $f \in C^\infty(M, \R)$, we have $\nabla_a \nabla_b f  - \nabla_b\nabla_a f = -T^c{}_{ab} \nabla_cf$. 
+\begin{proof}
+For arbitrary torsion free tensor $\bar{\nabla}_b$, we have the following holds by Eq. (3.1.7):
+\begin{align*}
+\nabla_a \omega_b = \bar{\nabla}_a \omega_b - C^c{}_{ab}\omega_c
+\end{align*}
+where $\omega_a$ is an arbitrary dual vector field, and $C_{ab}{}^c$ is a tensor. As $ {\nabla_b} f =\bar{\nabla}_b f $ by tensor property (4), we can set $\omega_b = {\nabla_b} f =\bar{\nabla}_b f $ and get:
+\begin{align*}
+\nabla_a \nabla_b f &= \bar{\nabla}_a \bar{\nabla} f_b - C^c{}_{ab}\nabla_c f \qquad\qquad\qquad 
+\nabla_b \nabla_a f = \bar{\nabla}_b \bar{\nabla} f_a - C^c{}_{ba}\nabla_c f 
+\end{align*}
+Here $\bar{\nabla}$ is torsion free, that is we can write:
+\begin{align*}
+\nabla_a \nabla_b f - \nabla_b \nabla_a f = -C^c{}_{ab}\nabla_c f + C^c{}_{ba}\nabla_c f = (C^c{}_{ba}\nabla_c -C^c{}_{ab}\nabla_c)f
+\end{align*}
+Setting $-T^c{}_{ab} = C^c{}_{ba} -C^c{}_{ab}{}$ yields the result. 
+\end{proof}
+(b) Show that for any smooth vector fields $X^a$ and $Y^a$, we have the following holds:
+\begin{align*}
+T^{c}_{ab} X^aY^b = X^a\nabla_aY^c - Y^a \nabla_a X^c - [X,Y]^c
+\end{align*}
+\begin{proof}
+\color{red}
+Follows from direct computations:
+\begin{align*}
+[v,w]f = v^a \nabla_a (w^b \nabla_b f)- w^a \nabla_a (v^b \nabla_b f)= -T^c{}_{ab}v^aw^b \nabla_c f + (v^a \nabla_a w^c - w^a \nabla_a v^c) \nabla_c f
+\end{align*}
+from which is not hard to see that the result follows. 
+\color{black}
+\end{proof}
+
+(c) Given a metric $g_{ab}$, show that there exists a unique derivative operator with torsion $T^c{}_{ab}$ such that $\nabla_cg_{ab} = 0$. Derive the analog of equation (3.1.29) expressing this derivative operator in terms of ordinary derivative and $T^c{}_{ab}$.\\
+
+\begin{proof}
+Let $\bar{\nabla}_a$ be any derivative operator. It suffices to show that there exists tensor $C_{ac}{}^d$ such that we have:
+\begin{align*}
+0 = \nabla_a g_{bc} = \bar{\nabla}_a g_{bc} - C^d{}_{ab}g_{dc} - C^d{}_{ac}g_{bd} = \bar{\nabla}_a g_{bc} - C_{cab} - C_{bac}
+\end{align*}
+Rearranging, we have:
+\begin{align*}
+\bar{\nabla}_a g_{bc} = C_{cab} + C_{bac}
+\end{align*}
+hence we can write:
+\begin{align*}
+\bar{\nabla}_a g_{bc} + \bar{\nabla}_bg_{ac} - \bar{\nabla}_cg_{ab} = C_{cab} + C_{bac} + C_{cba} + C_{abc} - C_{bca} - C_{acb} = T_{bac} + T_{abc} + 2C_{c(ab)}
+\end{align*}
+from which we see that the tensor $C$ is well-defined by rearrangement of the above equations, and making use of the fact $C_{abc} = C_{c(ab)} + C_{c[ab]} = C_{c(ab)} +T_{cab}/2$. Letting $\bar{\nabla}_a = \pd_a$, we obtain the following:
+\begin{align*}
+C_{abc} = \frac{1}{2}\left( \pd_a g_{bc} + \pd_b g_{ac} - \pd_c g_{ab} - T_{bac} + T_{abc} - T_{cab}\right)
+\end{align*}
+This gives the result.
+\end{proof}
+
+
+\newpage
+\section{Chapter 3 Problem 4}
+(a) Show that in $2$-dimensional manifold $M$, the Riemannian curvature tensor takes the form $R_{abcd} = Rg_{a[c}g_{d]b}$. 
+
+\begin{proof}
+By Chapter 3 Problem 3(b), we see that the Riemannian curvature tensor in $2$ dimension has $2^2(2^2-1)/12 = 1$ free component. Here we would like to show that $g_{a[c}g_{d]b}$ spans the vector space of tensors having the symmetries of the Riemannian tensor, we can write the following:
+\begin{align*}
+M_{abcd} =  g_{a[c}g_{d]b} = \frac{1}{2}\left( g_{ac}g_{db}-g_{ad}g_{cb}\right)
+\end{align*}
+by the symmetry of $g_{ab}$, we have $g_{ac} = g_{ca}$, hence we can write:
+\begin{align*}
+M_{abcd} = \frac{1}{2}\left( g_{ac}g_{db}-g_{ad}g_{cb}\right) 
+&= -\frac{1}{2}\left( g_{bc}g_{da}-g_{bd}g_{ca}\right) = -M_{bacd}\\
+&= -\frac{1}{2}\left( g_{ad}g_{cb}-g_{ac}g_{db}\right) = -M_{abdc}\\
+&= \frac{1}{2}\left( g_{ca}g_{bd}-g_{cb}g_{ad}\right) = M_{cdab}
+\end{align*}
+Hence we have shown that tensor $M_{abcd}$ satisfies all symmetries required by $R_{abcd}$. It follows that we have $R_{abcd} = \mu M_{abcd}$ for some $\mu \in \R$ as both tensors have only $1$ free component, where we have $\mu = R$ follows from the definition of scalar curvature:
+\begin{align*}
+R =\mu g^{bd}g^{ac}M_{abcd} = \mu \left( (\text{tr}(g))^2 - (\text{tr}(g))\right)/2 = \mu
+\end{align*}
+This completes the proof. 
+\end{proof}
+
+(b) Show that in $3$-dimensions, the Weyl tensor vanishes identically. 
+\begin{proof}
+Here we have $R_{abcd} = C_{abcd}+M_{abcd}$ with $M_{abcd}$ as defined similarly in part (a). $C_{abcd}$ is traceless, hence contracting the second and fourth indices yields $R_{ac} = M_{ac}$ whose components satisfy the following: 
+\begin{align}
+R_{\alpha\gamma} =\sum_{\sigma} M_{\alpha\sigma\gamma}{}^\sigma 
+\end{align}
+here Eq. (1) is a system of $3(3+1)/2 = 6$ equations by the symmetry of $R_{ac}$. On the other hand, $R_{abcd}$ has $3^2(3^3-1)/12 = 6$ free components, which are completely determined by the system of equations described by Eq. (1), from which we conclude that the components of $C_{abcd}$ vanish identically. 
+\end{proof}
+
+\newpage
+\section{Chapter 3 Problem 6}
+The metric of Euclidean space $\R^3$ in spherical coordinates is defined by:
+$$ds^2=  dr^2 + r^2(d\theta^2 + \sin^2(\theta) d\phi^2)$$
+(a) Calculate the Christoffel components $\Gamma^\sigma{}_{\mu \nu}$ in spherical coordinate system. \\
+
+Here we have:
+\begin{align*}
+\Gamma^\sigma{}_{\mu\nu} = \frac{1}{2}\sum_\sigma g^{\rho \sigma}\left( \frac{\pd g_{\nu \sigma}}{\pd x^\mu} + \frac{\pd g_{\mu \sigma}}{\pd x^\nu} - \frac{\pd g_{\mu\nu}}{\pd x^\sigma}\right)
+\end{align*}
+The nontrivial derivatives of the metric are the followings:
+\begin{align*}
+\frac{\pd g_{\theta\theta}}{\pd r} = 2r \qquad\qquad \frac{\pd g_{\phi\phi}}{\pd r} = 2r\sin^2(\theta) \qquad\qquad \frac{\pd g_{\phi\phi}}{\pd \theta} = 2r^2 \sin(\theta)\cos(\theta)
+\end{align*}
+Hence the only nontrivial components of the Christoffel symbol are the followings:
+\begin{align*}
+\Gamma^r{}_{\phi\phi}&=\frac{1}{2}\left( -g^{rr} \frac{\pd g_{\phi\phi}}{\pd r}\right) = - \frac{2r \sin^2(\theta)}{2}=-r\sin^2(\theta) \\
+\Gamma^r{}_{\theta\theta}&= \frac{1}{2}\left(- g^{rr}\frac{\pd g_{\theta\theta}}{\pd r}\right) = -\frac{2r}{2} = -r  \\
+\Gamma^\theta_{\phi\phi}&= \frac{1}{2}\left( -g^{\theta\theta} \frac{\pd g_{\phi\phi}}{\pd \theta}\right) =- \frac{1}{2}\frac{2r^2 \sin(\theta)\cos(\theta)}{r^2} = -\sin(\theta)\cos(\theta)\\
+\Gamma^{\theta}{}_{r\theta} &= \frac{1}{2}\left(g^{\theta\theta} \frac{\pd g_{\theta\theta}}{\pd r} \right) =\frac{1}{2} \frac{2r}{r^2} = \frac{1}{r} \\
+\Gamma^{\phi}{}_{\theta\phi} &= \frac{1}{2}\left(  g^{\phi\phi}\frac{\pd g_{\phi\phi}}{\pd \theta}\right) = \frac{1}{2}\frac{2r^2 \sin(\theta) \cos(\theta)}{r^2\sin^2(\theta)} = \cot(\theta)\\
+\Gamma^{\phi}{}_{r\phi} &= \frac{1}{2}\left(  g^{\phi\phi}\frac{\pd g_{\phi\phi}}{\pd r}\right) = \frac{1}{2}\frac{2r \sin^2(\theta)}{r^2\sin^2(\theta)} = \frac{1}{r}
+\end{align*}
+(b) Write the components of the geodesic equation and verify the solution correspond to straight lines in Cartesian coordinates. \\
+
+From Eq. (3.3.5), we have:
+\begin{align*}
+\frac{d^2 x^\mu}{dt}+ \sum_{\sigma,\mu} \Gamma^\nu{}_{\sigma\nu}\frac{d x^\sigma}{d t} \frac{d x^\nu}{d t}=0
+\end{align*}
+Utilizing part (a) we obtain the following system:
+\begin{align*}
+0&=\ddot{r} - r\dot{\theta}^2 - r\sin^2(\theta) \dot{\phi}^2 \\
+0&=\ddot{\theta}+ {2\dot{r}\dot{\theta}}/{r} - \sin(\theta) \cos(\theta) \dot{\phi}^2 \\
+0&= \ddot{\phi}+2\dot{r}\dot{\theta}/r + 2\cot(\theta) \dot{\theta}\dot{\phi}
+\end{align*}
+Setting $\dot{\theta} = \dot{\phi} = 0$ and letting $\dot{r}$ be an arbitrary constant is an obvious solution to the system, from which case we see that straight lines in Cartesian coordinates are solutions to the system. 
+
+\newpage
+\section{Chapter 4 Problem 1}
+Show that Maxwell's Equations implies strict charge conservation $\nabla_aj^a = 0$.
+\begin{proof}
+From Maxwell's Equations, we can write:
+\begin{align*}
+\nabla^a F_{ab} = -4\pi j_b \qquad\Rightarrow \qquad \nabla^b\nabla^a F_{ab} = -4\pi\nabla^b j_b
+\end{align*}
+Here $F_{ab}$ is anti-symmetric, hence we have:
+\begin{align}
+\nabla^b\nabla^a F_{ab} -\nabla^a\nabla^b F_{ba} = -8\pi \nabla^b j_b
+\end{align}
+it suffices to show that the LHS of (2) vanishes. Here we can write:
+\begin{align*}
+\nabla^b\nabla^a F_{ab} -\nabla^a\nabla^b F_{ba} &= g^{ae}g^{bf}(\nabla_b\nabla_a - \nabla_a\nabla_b)F_{ef}\\
+&= -g^{ae}g^{bf}(R_{abe}{}^dF_{df} + R_{abf}{}^dF_{ed})\\
+&= -R^{fd}F_{df}-R^{ed} F_{ed}
+\end{align*}
+This completes the result as the Ricci curvature tensor is symmetric and $F_{ab}$ is anti-symmetric, that is $\nabla^b\nabla^a F_{ab} -\nabla^a\nabla^b F_{ba} = 0$.
+\end{proof}
+
+\newpage
+\section{Chapter 4 Problem 8}
+Two point masses of mass $M$ are attached to the ends of a spring of spring constant $K$. The spring is set into oscillation. In the quadrupole approximation, equation (4.4.58), what fraction of the energy of oscillation of the spring is radiated away during one cycle of oscillation?\\
+
+Here let $L$ denote the distance between the masses, as $K$ is the spring constant, we have $L = L_0 + A \sin(\omega t)$ with $L_0$ being the equilibrium length of the spring, $\omega = \sqrt{2K/M}$, and $A$ being the amplitude of oscillation. From the quadrupole moment tensor, we have:
+\begin{align*}
+q_{\mu\nu} = 3 \sum_{i=1}^2 T^{00} x^{\mu}_i x^{\nu}_i 
+\end{align*}
+where $x_i^{\mu}$ is the position of the $i$-th mass. Here $T^{00} = \rho u_0u_0 + P(g_{00} + u_0u_0)$.
+
+
+
+\hfill\break\hfill\break\hfill\break
+\section{Chapter 4 Problem 9}
+A binary star system consists of two star of mass $M$ and of negligible size in a nearly Newtonian circular orbit of radius $R$ around each other. Assuming the validity of equation (4.4.58), calculate the rate of increase of the orbital frequency due to emission of gravitational radiation.\\
+
+\color{red}
+Establish a relation between energy and frequency. Here we have: 
+$$\text{Force}_{\text{centripetal}} = MR\omega^2 = M^2/(4R)$$
+$$\text{KE} = MV^2 = M\omega^2 R^2 = M(M/(4R^3)) R^2 =M^2 /(4R) $$
+\color{black}
+
+
+
+
+\newpage
+\section{Chapter 5 Problem 1}
+The Robertson-Walker metric can be expressed in the following form:
+\begin{align*}
+ds^2 = -d\tau^2 + a^2(\tau)\left( \frac{dr^2}{1-kr^2} + r^2(d\theta^2 + \sin^2(\theta)\, d\phi^2\right)
+\end{align*}
+The case for flat space $k=0$ is trivial as one can perform change of variable $r = \psi$. Here we show the case for $k=1$, in which case we perform a change of variable $r = \sin(\psi)$ in Eq. (5.1.11), via tensor transformation, we can write the following:
+\begin{align*}
+(ds^2)_{rr} = \sum_{\mu, \nu} (ds^2)_{\mu\nu}\frac{\pd x^{\mu}}{\pd r}\frac{\pd x^{\nu}}{\pd r} = (ds^2)_{\psi\psi}\left( \frac{\pd \psi}{\pd r}\right)^2 = \frac{1}{\cos^2(\psi)} = \frac{1}{1-r^2}
+\end{align*}
+where we see the result follows as other components of $ds^2$ transform trivially. The transformation of Eq. (5.1.11) to the desired form for the case $k=-1$ can be obtained by letting $r = \sinh(\psi)$, in which case the similar calculation get:
+\begin{align*}
+(ds^2)_{rr} = \sum_{\mu, \nu} (ds^2)_{\mu\nu}\frac{\pd x^{\mu}}{\pd r}\frac{\pd x^{\nu}}{\pd r} = (ds^2)_{\psi\psi}\left( \frac{\pd \psi}{\pd r}\right)^2 = \frac{1}{\cosh^2(\psi)} = \frac{1}{1+r^2}
+\end{align*}
+This completes the result. \\
+
+With $r$ ranging in $(-1,1)$, $\theta, \phi$ ranging in $(0,\pi)$, essentially half of the $3$-sphere is covered by the coordinate system $(r,\theta \phi)$. 
+\newpage
+\section{Chapter 5 Problem 2}
+Here we derive Einstein's Equations (5.2.14) and (5.2.15) for the $3$-sphere and hyperboloid cases.\\
+
+Choosing the coordinate system $(r,\theta,\phi)$ as in Chapter 5 Problem 1. Using Eq. (3.1.30), we can compute the Christoffel components, and applying Eq. (3.4.5), we obtain the nonvanishing Ricci components:
+\begin{align*}
+R_{\tau\tau} &= -{3\dot{a}'}/{a}\\
+R_{rr} &= ({2k + 2\dot{a}^2 + \dot{a}\ddot{a}})/({1 - kr^2})\\
+R_{\phi\phi} &= r^2 \sin^2(\theta)(2k+2\dot{a}^2 + a\ddot{a})\\
+R_{\theta\theta} &= -1 + 2kr^2 - \cot^2(\theta) +\csc^2(\theta) + 2r^2 \dot{a}^2 + r^2 a\ddot{a}\\
+\end{align*}
+Using (3.2.32), we obtain:
+\begin{align*}
+R_{\tau\tau}+ \frac{1}{2}R = 8\pi \rho \qquad\qquad\qquad R_{**} - \frac{1}{2}R = 8\pi P
+\end{align*}
+where we have $R_{**} = R_{ab}u^au^b$ for $u^a$ being any unit vector tangent to the homogeneous hypersurfaces. Hence we have $R_{**} = (R_{ab}X^aX^b)/(g_{ab}X^aX^b) = R_{\phi\phi}/g_{\phi\phi}$ for the case $X^a = (\pd /\pd \phi)^a$. Combining the results yields the following expressions:
+\begin{align*}
+\frac{3k}{a^2} + \frac{3\dot{a}^2}{a^2} = 8\pi \rho \qquad\qquad\qquad
+-\frac{k}{a^2} - \frac{\dot{a}^2}{a^2} - \frac{2\ddot{a}}{a} = 8\pi P
+\end{align*}
+
+
+\newpage
+\section{Chapter 5 Problem 3}
+Consider the modified Einstein's Equation with cosmological constant $\Lambda$. Write out the analogs of equations (5.2.14) and (5.2.15) with the $\Lambda$-terms. Show that static solutions of these equations are possible if and only if $k = 1$ and $\Lambda >0$. For a dust filled Einstein universe, relate the radius of the universe $a$ to the density $\rho$, and examine small perturbations from the equilibrium value of $a$ to show that the Einstein static universe is unstable.\\
+
+Here we have:
+\begin{align*}
+G_{ab} + \Lambda g_{ab} = 8\pi T_{ab}
+\end{align*}
+and hence we have:
+\begin{align*}
+G_{\tau\tau} - \Lambda = 8\pi \rho\qquad\qquad\qquad G_{**}+\Lambda = 8\pi P
+\end{align*}
+As in Chapter 5 Problem 2, we see that we can write:
+\begin{align}
+\frac{3\dot{a}^2}{a^2}+ \frac{3k}{a^2} = 8\pi \rho + \Lambda\qquad\qquad\qquad
+-\frac{k}{a^2} - \frac{\dot{a}^2}{a^2}-\frac{2\ddot{a}}{a} = 8\pi P - \Lambda\tag{*}
+\end{align}
+Suppose now static solution to (*) exists, that is $\dot{a} = 0$. From (*), eliminating $k$ we obtain:
+\begin{align}
+\frac{3\ddot{a}}{a} = -4\pi (\rho + 3P) +\Lambda\tag{**}
+\end{align}
+hence we see that (**) holds with $\ddot{a}=0$ only if $\Lambda>0$ as $\rho + 3P$ is positive. Then from (*), we deduce $k = 1$. Showing (**) admits a solution of $\dot{a} = 0$ is trivial. \\
+
+
+
+
+
+
+\newpage
+\section{Chapter 5 Problem 5}
+Consider a radial null geodesic propagating in a Robertson-Walker cosmology. \\
+
+(a) Show that for all three spatial geometries, the change in coordinate $\psi$ of the ray between times $\tau_1$ and $\tau_2$ is $\Delta \psi = \int_{\tau_1}^{\tau_2} d\tau/a$. \\
+
+Suppose the geodesic is parametrized by $\lambda$, we can write the following along the geodesic as it is null:
+\begin{align*}
+0 = -\left( \frac{d\tau}{d\lambda}\right)^2 + a^2\left(\frac{d\psi}{d\lambda}\right)^2 \qquad \Rightarrow \qquad \frac{d\tau}{d\lambda} = \pm a \frac{d\psi}{d\lambda}
+\end{align*}
+With $\lambda_1$ and $\lambda_2$ be the parameter corresponds to $\tau_1$ and $\tau_2$, we can compute:
+\begin{align*}
+\Delta \psi = \int_{\lambda_1}^{\lambda_2} \frac{d\psi}{d\lambda}\, d\lambda = \pm \int_{\lambda_1}^{\lambda_2} \frac{1}{a} \frac{d\tau}{d\lambda}\, d\lambda = \pm \int_{\tau_1}^{\tau_2} \frac{d\tau}{a}
+\end{align*}
+where the last equality in the equation resulted from the theorem of change of variable. This gives the result.\\
+
+(b) Show that in the dust filled spherical model, a light ray emitted at the big bang travels precisely all the way around the universe by the time of the big crunch.\\
+
+From Table 5.1, we have:
+\begin{align*}
+a = \frac{C}{2}(1-\cos(\eta)) \qquad\qquad\qquad \tau = \frac{C}{2}(\eta - \sin(\eta))
+\end{align*}
+Here from $\eta = 0$ to $\eta = 2\pi$, we have $a(\eta)$ going a full cycle such that $a(0) = a(2\pi) =0$. Here it is not hard to observe that we have:
+\begin{align*}
+\Delta \psi = \int_0^{2\pi} \frac{1}{a(\eta)}\frac{d\tau}{d\eta}  \,d\eta = \int_0^{2\pi} \frac{1-\cos(\eta)}{1-\cos(\eta)}\, d\eta = 2\pi
+\end{align*}
+As $\psi$ ranges from $0$ to $2\pi$, this gives the result. \\
+
+(c) Show that in the radiation filled spherical model, a light ray emitted at the big bang travels precisely halfway around the universe by the time of the big crunch. \\
+
+From Table 5.1, we have:
+\begin{align*}
+a = B \left( 1- (1- \tau/B)^2 \right)^{1/2}
+\end{align*}
+Here from $\tau = 0$ to $\tau = 2B$, we have $a(\tau)$ going a full cycle such that $a(0) = a(2B) =0$. Here it is not hard to observe that we have:
+\begin{align*}
+\Delta \psi  = \int_0^{2\pi} \frac{d\tau}{B \left( 1- (1- \tau/B)^2 \right)^{1/2}} = -\pi
+\end{align*}
+this completes the result. 
+\end{document}
+
+

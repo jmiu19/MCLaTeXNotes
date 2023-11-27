@@ -1,0 +1,456 @@
+\documentclass[11pt]{book}
+
+%%%%%%%%%%%%%%Include Packages%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{xcolor}
+\usepackage{mathtools}
+\usepackage[a4paper, total={6in, 8in}, margin=1.25in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{paralist}
+\usepackage{rsfso}
+\usepackage{amsthm}
+\usepackage{wasysym}
+\usepackage[inline]{enumitem}   
+\usepackage{hyperref}
+\usepackage{tocloft}
+\usepackage{wrapfig}
+\usepackage{titlesec}
+\usepackage{colortbl}
+\usepackage{stackengine} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%Chapter Setting%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{gray75}{gray}{0.75}
+\newcommand{\hsp}{\hspace{20pt}}
+\titleformat{\chapter}[hang]{\Huge\bfseries}{\thechapter\hsp\textcolor{gray75}{$\mid$}\hsp}{0pt}{\Huge\bfseries}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%Theorem environments%%%%%%%%%%%%%%%%%%%
+\newtheoremstyle{break}
+  {\topsep}{\topsep}%
+  {\itshape}{}%
+  {\bfseries}{}%
+  {\newline}{}%
+\theoremstyle{break}
+\theoremstyle{break}
+\newtheorem{axiom}{Axiom}
+\newtheorem{thm}{Theorem}[section]
+\renewcommand{\thethm}{\arabic{section}.\arabic{thm}}
+\newtheorem{lem}{Lemma}[thm]
+\newtheorem{prop}[lem]{Proposition}
+\newtheorem{corL}{Corollary}[lem]
+\newtheorem{corT}[lem]{Corollary}
+\newtheorem{defn}{Definition}[corL]
+\newenvironment{indEnv}[1][Proof]
+  {\proof[#1]\leftskip=1cm\rightskip=1cm}
+  {\endproof}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%Integral%%%%%%%%%%%%%%%%%%%%%%%
+\def\upint{\mathchoice%
+    {\mkern13mu\overline{\vphantom{\intop}\mkern7mu}\mkern-20mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+  \int}
+\def\lowint{\mkern3mu\underline{\vphantom{\intop}\mkern7mu}\mkern-10mu\int}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\T}{\mathcal{T}}
+\newcommand{\M}{\mathcal{M}}
+\newcommand{\Symm}{\text{Symm}}
+\newcommand{\Alt}{\text{Alt}}
+\newcommand{\Int}{\text{Int}}
+\newcommand{\Bd}{\text{Bd}}
+\newcommand{\Power}{\mathcal{P}}
+\newcommand{\ee}[1]{\cdot 10^{#1}}
+\newcommand{\spa}{\text{span}}
+\newcommand{\sgn}{\text{sgn}}
+\newcommand{\degr}{\text{deg}}
+\newcommand{\pd}{\partial}
+\newcommand{\that}[1]{\widetilde{#1}}
+\newcommand{\lr}[1]{\left(#1\right)}
+\newcommand{\vmat}[1]{\begin{vmatrix} #1 \end{vmatrix}}
+\newcommand{\bmat}[1]{\begin{bmatrix} #1 \end{bmatrix}}
+\newcommand{\pmat}[1]{\begin{pmatrix} #1 \end{pmatrix}}
+\newcommand{\rref}{\xrightarrow{\text{row\ reduce}}}
+\newcommand{\txtarrow}[1]{\xrightarrow{\text{#1}}}
+\newcommand\oast{\stackMath\mathbin{\stackinset{c}{0ex}{c}{0ex}{\ast}{\Circle}}}
+
+
+\newcommand{\note}{\color{red}Note: \color{black}}
+\newcommand{\remark}{\color{blue}Remark: \color{black}}
+\newcommand{\example}{\color{green}Example: \color{black}}
+\newcommand{\exercise}{\color{green}Exercise: \color{black}}
+
+%%%%%%%%%%%%%%%%%%%%%%Roman Number%%%%%%%%%%%%%%%%%%%%%%%
+\makeatletter
+\newcommand*{\rom}[1]{\expandafter\@slowromancap\romannumeral #1@}
+\makeatother
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%table of contents%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setlength{\cftchapindent}{0em}
+\cftsetindents{section}{2em}{3em}
+
+\renewcommand\cfttoctitlefont{\hfill\huge\bfseries}
+\renewcommand\cftaftertoctitle{\hfill\mbox{}}
+
+\setcounter{tocdepth}{2}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%Footnotes%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand\blfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%Section%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\makeatletter
+\def\@seccntformat#1{%
+  \expandafter\ifx\csname c@#1\endcsname\c@section\else
+  \csname the#1\endcsname\quad
+  \fi}
+\makeatother
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Enumerate%%%%%%%%%%%%%%
+\makeatletter
+% This command ignores the optional argument 
+% for itemize and enumerate lists
+\newcommand{\inlineitem}[1][]{%
+\ifnum\enit@type=\tw@
+    {\descriptionlabel{#1}}
+  \hspace{\labelsep}%
+\else
+  \ifnum\enit@type=\z@
+       \refstepcounter{\@listctr}\fi
+    \quad\@itemlabel\hspace{\labelsep}%
+\fi}
+\makeatother
+\parindent=0pt
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\begin{document}
+
+	\begin{titlepage}
+		\begin{center}
+			\vspace*{1cm}
+			\Huge \color{red}
+				\textbf{Class Notes}\\
+			\vspace{0.5cm}			
+			\Large \color{black}
+				Math 525 - Probability Theory\\
+				Professor Tao Chen\\	
+				University of Michigan\\
+			\vspace{2cm}
+
+			\includegraphics[scale=1.15]{hmm.pdf}
+			
+			
+			\vspace{4cm}
+			\LARGE
+				\textbf{Jinyan Miao}\\
+				\large \textbf{and his friends from UMich Honors Math}\\
+				\hfill\break
+				\LARGE Fall 2022\\
+			\vspace{1cm}
+
+		\vspace*{\fill}
+		\end{center}			
+	\end{titlepage}
+
+\newpage 
+\tableofcontents
+\addtocontents{toc}{~\hfill\textbf{Page}\par}
+
+\newpage
+\setcounter{page}{1}
+\vspace*{\fill}
+
+
+\newpage
+
+
+\chapter{}
+\section[Probability Space]{\color{red} Probability Space\color{black}}
+Probability is a study of mathematical models of random events. 
+\begin{defn}
+For a mathematical model of an experiment of random events, let $\Omega$ be the set of all possible outcomes, $\Omega$ is called the sample space. An event is some subset of $\Omega$, but not all subsets of $\Omega$ are considered to be events. 
+\end{defn}
+\example For flipping a coin, $\Omega = \{H, T\}$, where $H$ is getting a head and $T$ is getting a tail. For flipping two coins one by one, $\Omega = \{ HH, HT, TH, TT\}$. For rolling a die, $\Omega = \{ 1,2,3,4,5,6\}$, each number corresponds to the event of getting that number from the die rolling. For randomly picking a ball from a box that has one red ball and two blue balls, $\Omega = \{ R,B\}$. Notice that for the last example, there are three balls in the box, but the sample space has only two elements.\\
+
+\example The process of randomly picking a positive integer, the sample space is a countable infinite set $\Omega = \N$.\\
+
+\example The process of randomly throwing a dart at a dart board, and assuming that the dart will always land on the board, then $\Omega$ is a uncountable infinite set.\\
+
+\begin{defn}
+For a mathematical model of an experiment of random events, $\mathcal{F}$ is the set of events, and mathematically, $\mathcal{F}$ is a $\sigma$-algebra on the sample space $\Omega$. 
+\end{defn}
+
+\example Consider the experiment of flipping two coins one by one. If the event is \textit{first coin is head}, then the corresponding mathematical representation of such event is $\{HH, HT\}$. If the event is \textit{getting at least one head}, then the mathematical representation of such event is $\{ HH, HT, TH\}$. If the event is \textit{at least one head or at least one tail}, then the mathematical representation of such event is $\{ HH, HT, TH, TT\} = \Omega$. The event of \textit{getting three heads} is represented by $\emptyset$ because it is clearly impossible to get such outcome. Notice that, the union of the representation of the event \textit{getting at least one head}, with that of the event \textit{getting at least one tail}, is $\Omega$:
+\begin{align*}
+\{ HH, HT, TH\} \cup \{ HT, TH, TT\} = \{ HH, HT, TH, TT\} = \Omega
+\end{align*}
+
+\newpage
+\example Consider the experiment of rolling a die. 
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+Event & Representation\\
+\hline
+\textit{Getting even number} & $\{2,4,6\}$\\
+\hline
+\textit{Getting even number that is greater than or equal to $4$} & $\{4,6\}$\\
+\hline	
+\textit{Getting a number that is greater or equal to $4$} & $\{4,5,6\}$\\
+\hline
+\end{tabular}
+\end{center}
+Note that, for the first and the last events, the intersection of their representation gets us the second event. \\
+
+\example Consider throwing a dart at a dart board, and consider the dart board to have $1$ meter radius. Event examples of such experiment includes \textit{the dart lands on the board less than or equal to $0.3$ meter distance from the center}, and \textit{the dart lands on the board more than or equal to $0.7$ meter distance from the center}.\\
+
+\note When we say an event $A$ happens, that means that we get some outcome $\omega \in \Omega$ such that $\omega \in A$. On the other hand, $A$ does not happen if $\omega \notin A$. \\
+
+\remark We can do set operation of the representations of two events $A$, $B$ as follows:
+\begin{align*}
+A \cup B \tag{at least one of $A$ and $B$ happens}\\
+A \cap B \tag{both $A$ and $B$ happens}\\
+A^c \coloneqq \Omega-A \tag{$A$ does not happen}\\
+\end{align*}
+
+\remark For a mathematical model of experiment outcomes, if the sample space $\Omega$ is finite, then one possible choice of the set of events $\mathcal{F}$ is $\mathcal{F}\coloneqq 2^\Omega$, where $2^\Omega$ is the set of all subsets of $\Omega$ called the power set of $\Omega$.\\
+
+\example For the experiment of flipping a coin, $\Omega = \{ H, T\}$ defines the sample space, and hence $2^\Omega = \{ \emptyset, \Omega, \{H\}, \{T\}\}$ can be chosen as $\mathcal{F}$.\\
+
+\note If the sample space $\Omega$ for a mathematical model is infinite or uncountable, then $\mathcal{F} $ cannot be chosen as $2^\Omega$. 
+
+\begin{defn}
+For a mathematical model of an experiment of random events, $\mathbb{P}:\mathcal{F}\to [0,1]$ defines a measure on the sample space and it measures the likelihood of an event to occur. In other words, any input of $\mathbb{P}$ should be an event, we can only talk about probability of an event.
+\end{defn}
+
+\note For sample space $\Omega$, event $A \subseteq \Omega$, and outcome $\omega \in \Omega$, we note here $\mathbb{P}(\omega)$ is not well-defined, while $\mathbb{P}(A)$ and $\mathbb{P}(\{\omega\})$ might be well-defined. \\
+
+\example Now consider flipping two fair coins one by one, and consider the event of \textit{getting at least one head}, denote such event as $A$. Here $A = \{ HH, HT, TH\}$, and the sample space $\Omega = \{ HH, HT, TH, TT\}$. $\mathbb{P}$ can be defined as the following:
+\begin{align}
+\mathbb{P}(A) \coloneqq \frac{\#(E)}{\#(\Omega)} \text{ for any event }E\subseteq \Omega
+\end{align}
+in which case we get $\mathbb{P}(A) = 3/4$. For the event of \textit{getting two heads}, denoted as $B$, we write $\mathbb{P}(B) = 1/4$. \\
+
+\note The definition of $\mathbb{P}$ proposed by (1.1) in fact does not solve all problems in all models. We consider a simple example of flipping an unfair coin, which has $60\%$ of getting a head. The event $A = \{H\}$ of \textit{getting a head} should have probability of $\mathbb{P}(A) = 0.6 \neq 1/2$. Moreover, we see that (1.1) only defines $\mathbb{P}$ when both $\Omega$ and $E$ are finite, that is, (1.1) fails for infinite sample space $\Omega$. 
+
+In the following, we revise Definition 1.0.0.0.2 in a general way:
+\begin{defn}
+Let $\Omega$ be a set, $\mathcal{F}$ is called a $\sigma$-algebra on $\Omega$ provided that it satisfies:
+\begin{enumerate}[topsep=3pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
+\item $\emptyset \in \mathcal{F}$
+\item If $A_n \in \mathcal{F}$ for all $n \in \N$, then $\bigcup_{n\in \N}A_n \in \mathcal{F}$
+\item If $A \in \mathcal{F}$, then $A^c \in \mathcal{F}$
+\end{enumerate} 
+\end{defn}
+
+
+\remark For a sample space $\Omega$, the $\sigma$-algebra $\mathcal{F}$ on $\Omega$ is usually chosen as the set of all possible events.\\
+
+\example Consider a sample space $\Omega$, one can choose $\mathcal{F} = \{\emptyset,\Omega\}$. For a subset $A\subseteq \Omega$, one can also choose $\mathcal{F} = \{ \emptyset, A, A^c, \Omega\}$. If $\Omega$ is finite, then one can take $\mathcal{F} = 2^\Omega$. 
+
+
+\begin{prop}
+Let $\mathcal{F}$ be a $\sigma$-algebra on a sample space $X$, and let $A_n \in \mathcal{F}$ for all $n \in \N$, then we have:
+\begin{align*}
+\bigcap_{n=1}^\infty A_n \in \mathcal{F}
+\end{align*}
+\end{prop}
+\begin{proof}
+Since $A_n \in \mathcal{F}$ for all $n \in \N$, then by definition of $\sigma$-algebra, we have $A_n^c \in \mathcal{F}$ for all $n \in \N$, and we can write the following according to De Morgan's Law:
+\begin{align*}
+\bigcap_{n=1}^\infty A_n = \left( \left(\bigcap_{n=1}^\infty A_n\right)^c\right)^c  = \left( \bigcup_{n=1}^\infty A_i^c\right)^c \in \mathcal{F} 
+\end{align*}
+This competes the proof.
+\end{proof}
+
+\begin{defn}
+A probability measure on a sample space $\Omega$ equipped with the $\sigma$-algebra $\mathcal{F}$ is a function $\mathbb{P}: \mathcal{F} \to [0,1]$ that satisfies the followings:
+\begin{enumerate}[topsep=3pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
+\item $\mathbb{P}(\emptyset) = 0$, $\mathbb{P}(\Omega) =  1$
+\item If $A_n \in \mathbb{F}$ for all $n \in \N$ with $A_i \cap A_j = \emptyset$ for all $i\neq j$, then we have: 
+$$\sum_{n=1}^\infty \mathbb{P}(A_n) = \mathbb{P}\left(\bigcup_{n=1}^\infty A_n\right)$$
+\end{enumerate} 
+\end{defn}
+
+\begin{defn}
+For sample space $\Omega$, $\sigma$-algebra $\mathcal{F}$ on $\Omega$, and probability function $\mathbb{P}:\mathcal{F} \to [0,1]$, the triple $(\Omega, \mathcal{F}, \mathbb{P})$ is called a probability space. 
+\end{defn}
+
+\remark Any random event is uniquely described by a triple $(\Omega, \mathcal{F}, \mathbb{P})$.\\
+
+\example Consider an experiment of flipping a fair coin. Here we can write $\Omega = \{H, T\}$, $\mathcal{F} =\{\emptyset, \{H\}, \{T\}, \Omega\}$, and $\mathbb{P}$ be defined by:
+\begin{align*}
+\mathbb{P}(\{H\}) = \mathbb{P}(\{T\}) = \frac{1}{2}
+\end{align*}
+On the other hand, if the coin is not fair, we can instead make $\mathbb{P}$ be defined by:
+\begin{align*}
+\mathbb{P}(\{H\}) = 0.4 \qquad\qquad\qquad \mathbb{P}(\{T\}) = 0.6
+\end{align*}
+
+\begin{prop}
+Let $(\Omega, \mathcal{F}, \mathbb{P})$ be a probability space, and let $A,B \in \mathbb{F}$. We have the followings:
+\begin{enumerate}[topsep=3pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
+\item $\mathbb{P}(A^c) = 1- \mathbb{P}(A)$.
+\item If $A\subseteq B$, then we have $\mathbb{B} = \mathbb{A}+ \mathbb{P}(B\setminus A) \geq \mathbb{P}(A)$.
+\item If $A_1,A_2,\cdots, A_n \in \mathcal{F}$, then we can write:
+\begin{align*}
+\mathbb{P}\left( \bigcup_{i=1}^n A_i\right) = \sum_{i=1}^n \mathbb{P}(A_i) - \sum_{i\leq j}\mathbb{P}(A_i\cap A_j) + \sum_{i<j<k}\mathbb{P}(A_i \cap A_j \cap A_k) - \cdots +(-1)^{n-1}\mathbb{P}\left( \bigcap_{i=1}^n A_i\right)
+\end{align*}
+\item If $A_i \in \mathcal{F}$ for all $i \in \N$ with $A_i \subseteq A_{i+1}$, then we have:
+\begin{align*}
+\lim_{i\to \infty}\mathbb{P}(A_i) = \mathbb{P}\left( \bigcup_{i=1}^\infty A_i\right)
+\end{align*}
+\item If $A_i \in \mathcal{F}$ for all $i \in \N$ with $A_i \supseteq A_{i+1}$, then we have:
+\begin{align*}
+\lim_{i\to \infty }\mathbb{P}(A_i) = \mathbb{P}\left( \bigcap_{i=1}^\infty A_i \right)
+\end{align*}
+\end{enumerate}
+\end{prop}
+
+\begin{proof}
+Let $A\in\mathcal{F}$, then $A$ and $A^c$ are disjoint and $A\cup A^c = \Omega$, then we can write:
+\begin{align*}
+1 = \mathbb{P}(\Omega) = \mathbb{P}(A) + \mathbb{P}(A^c)\qquad \Rightarrow \qquad \mathbb{P}(A^c) = 1 - \mathbb{P}(A)
+\end{align*}
+This proves (1). For (2), since $A\subseteq B$, then we can write $B = A\cup (B\setminus A)$, and hence we can write the following with the fact that $\mathbb{P}(B\setminus A) \geq 0$:
+\begin{align*}
+\mathbb{P}(B) = \mathbb{P}(A) + \mathbb{P}(B\setminus A) \geq \mathbb{P}(A)
+\end{align*}
+For (3), one can proceed by induction, here we do the base case where $n=2$, note that we can write the following for the case where $n=2$:
+\begin{align*}
+A_1 \cup A_2 = A_2 \cup (A_1 \setminus A_2) \qquad\qquad\qquad A_1 = (A_1 \cap A_2) \cup (A_2 \setminus A_2)
+\end{align*}
+Then we can write:
+\begin{align*}
+\mathbb{P}(A_1\cup A_2) = \mathbb{P}(A_2) + \mathbb{P}(A_1\setminus A_2) \qquad\qquad \mathbb{P}(A_1) = \mathbb{P}(A_1 \cap A_2) + \mathbb{P}(A_1\setminus A_2)
+\end{align*}
+and hence combining we see that we have:
+\begin{align*}
+\mathbb{P}(A_1 \cup A_2) = \mathbb{P}(A_2) + \mathbb{P}(A_1) - \mathbb{P}((A_1 \cap A_2)
+\end{align*}
+For (4), we define $B_1 = A_1$, $B_2 = A_2 \setminus A_1$, and $B_i = A_i \setminus A_{i-1}$ for $i \geq 2$. Then we can write the following as $B_i$  are pairwise disjoint and $\bigcup_{i=1}^\infty  = \bigcup_{i=1}^\infty A_i$:
+\begin{align*}
+\mathbb{P}\left(\bigcup_{i=1}^\infty A_i\right) = \mathbb{P}\left( \bigcup_{i=1}^\infty B_i\right) &= \sum_{i=1}^\infty \mathbb{P}(B_i)\\ 
+&= \lim_{n\to \infty}\sum_{i=1}^n \mathbb{P}(B_i) \\
+&= \lim_{n\to \infty}\left( \mathbb{P}(A_1) + \sum_{i=2}^n \left( \mathbb{P}(A_i) - \mathbb{P}(A_{i-1}) \right) \right)\\
+&= \lim_{n\to \infty}\mathbb{P}(A_n)
+\end{align*}
+One can show (5) with similar argument, and that completes the proof of the proposition.
+\end{proof}
+
+\newpage
+\section[Conditional Probability]{\color{red} Conditional Probability\color{black}}
+Conditional probability is the probability with given information. For example, consider the experiment of flipping a fair coin $3$ times independently. Consider the event of \textit{getting exactly two heads}, denoted as $A = \{HHT,HTH, THH\}$, and consider the event of \textit{first is head}, denoted as $B = \{HHT, HTT, HTH, HHH\}$. Given that the first is head, the probability of having exactly $2$ heads is an example of conditional probability:
+\begin{align*}
+\text{probability of having eaxtly 2 heads given that the fist is head} = \frac{2}{4} = \frac{1}{2}
+\end{align*}
+
+\begin{defn}
+Let $A$ and $B$ be two events such that $\mathbb{P}(B)>0$, then the conditional probability of $A$ given $B$ is defined by the following:
+\begin{align*}
+\mathbb{P}(A|B) = \frac{\mathbb{P}(A\cap B)}{\mathbb{P}(B)}
+\end{align*}
+\end{defn}
+
+For the example of flipping a fair coin $3$ times given above, we have $A\cap B = \{ HHT, HTH\}$, and hence we can write:
+\begin{align*}
+\mathbb{P}(A|B) = \frac{\mathbb{P}(A\cap B)}{\mathbb{P}(B)} = \frac{ \frac{\#(A\cap B)}{\#(\Omega)}}{\frac{\#(B)}{\#(\Omega)}} = \frac{\#(A\cap B)}{\#(B)} = \frac{2}{4} = \frac{1}{2}
+\end{align*}
+
+\begin{thm}[Law of Total Probability]
+Let $B_1,B_2,\cdots, B_n$ be a partition of a set $\Omega$, that is, we write:
+\begin{align*}
+\bigcup_{i=1}^n B_i = \Omega \qquad\qquad B_i \cap B_j =\emptyset\text{ for }i\neq j, \qquad\qquad \text{and }\mathbb{P}(B_i) >0 \text{ for all }1\leq i \leq n
+\end{align*}
+Then we have the following holds:
+\begin{align*}
+\mathbb{P}(A) = \sum_{i=1}^n \mathbb{P}(A|B_i) \cdot \mathbb{P}(B_i) = \sum_{i=1}^n \mathbb{P}(A\cap B_i)
+\end{align*}
+\end{thm}
+
+From Theorem 2.1, in particular, let $B$ be such that $0 < \mathbb{P}(B) <1$, then we can write:
+\begin{align*}
+\mathbb{P}(A) = \mathbb{P}(A|B) \cdot \mathbb{P}(B) + \mathbb{P}(A|B^c) \cdot \mathbb{P}(B^c)
+\end{align*}
+where $B$ and $B^c$ together form a partition of $\Omega$. \\
+
+\example Suppose we have $3$ urns. The first urn has three red balls and a blue ball,  the second urn has one blue ball and one red ball, the third urn has three blue balls and two red balls. Here we pick an urn at random, then pick a ball from that urn at random. Define event $A$ as \textit{picking a red ball}, here we want to find $\mathbb{P}(A)$:
+\begin{align*}
+\mathbb{P}(A) &= \mathbb{P}(A|U_1)\cdot \mathbb{P}(U_1) +\mathbb{P}(A|U_2)\cdot \mathbb{P}(U_2) + \mathbb{P}(A|U_3)\cdot \mathbb{P}(U_3) \\
+&=\frac{3}{4}\cdot \frac{1}{3} + \frac{1}{2}\cdot \frac{1}{3} + \frac{2}{5}\cdot \frac{1}{3} = \frac{11}{20}
+\end{align*}
+where $U_i$ denote the event of \textit{picking the $i$-th urn}.\\
+
+\begin{thm}[Bayes Formula]
+Let $A$ and $B$ be events such that $\mathbb{P}(A) >0$ and $\mathbb{P}(B)>0$, then we can write the following:
+\begin{align*}
+\mathbb{P}(A|B) = \frac{\mathbb{P}(B|A)\cdot \mathbb{P}(A)}{\mathbb{P}(B)}
+\end{align*} 
+\end{thm}
+\begin{proof}
+Here we can write the following:
+\begin{align*}
+\mathbb{P}(A|B) = \frac{\mathbb{P}(A\cap B)}{\mathbb{P}(B)} = \frac{\mathbb{P}(B\cap A)}{\mathbb{P}(B)} = \frac{\mathbb{P}(B|A) \cdot \mathbb{P}(A)}{\mathbb{P}(B)}
+\end{align*}
+and that completes the proof.
+\end{proof}
+
+
+\example Suppose that $0.5\%$ of the population has some disease $D$, and there is a test that detects $D$. $96\%$ of the time, the test will detect $D$ given that a person gets $D$. The test might also give false positives $2\%$ of the time. Suppose someone takes the test and gets positive result. Here we denote $B$ as the event \textit{the person has the disease}, and denote $A$ as the event \textit{the test is positive}. The probability that such person has the disease $D$ for given information is given by the following:
+\begin{align*}
+\mathbb{P}(B|A) =  \frac{\mathbb{P}(A|B)\cdot \mathbb{P}(B)}{\mathbb{P}(A)}&=\frac{\mathbb{P}(A|B)\cdot \mathbb{P}(B)}{\mathbb{P}(A|D)\cdot\mathbb{P}(D)+\mathbb{P}(A|D^c)\cdot\mathbb{P}(D^c)} \\
+&= \frac{0.96 \cdot 0.005}{0.005\cdot 0.96 + 0.995 \cdot 0.02} =0.1943 
+\end{align*}
+
+\newpage
+\section[Independence]{\color{red}Independence\color{black}}
+\textit{Independence says that one event happens or not does not effect other events.}
+\begin{defn}
+Event $A$ and event $B$ are independent provided that we have:
+\begin{align*}
+\mathbb{P}(A\cap B) = \mathbb{P}(A) \cdot \mathbb{P}(B)
+\end{align*}
+\end{defn}
+
+\begin{defn}
+For a set of events $\mathcal{A} = \{A_i \mid i \in \mathcal{J}\}$ where $\mathcal{J} = \{1,2,\cdots, n\}$ is a finite index set. Events in $\mathcal{A}$ are said to be independent of each other provided that we have pairwise independence, that is, we have $A_i$ being independent of $A_j$ for all $i,j \in \mathcal{J}$ that satisfy $i\neq j$. Equivalently, events in $\mathcal{A}$ are said to be independent provided that we have mutual independence, that is the following holds:
+\begin{align*}
+\mathbb{P}\left( \bigcap_{i=1}^n A_i \right) = \prod_{i=1}^n \mathbb{P}(A_i)
+\end{align*}
+\end{defn}
+
+\note Event $A$ and event $B$ are independent does not mean $A\cap B = \emptyset$. \\
+
+\note If event $B$ satisfies $\mathbb{P}(B)>0$, then from definition, we have:
+\begin{align*}
+\mathbb{P}(A\cap B) = \mathbb{P}(A|B) \cdot \mathbb{P}(B)
+\end{align*}
+If in addition, $A$ and $B$ are independent, then we can write:
+\begin{align*}
+\mathbb{P}(A|B) = \mathbb{P}(A)
+\end{align*}
+
+\end{document}
