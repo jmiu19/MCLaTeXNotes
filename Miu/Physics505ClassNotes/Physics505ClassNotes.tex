@@ -681,7 +681,7 @@ Consider a time translation symmetry $t \to t' = t + \delta t$, and similarly a 
 \begin{align*}
 r^\nu \to r'^{\nu} = r^\nu + \epsilon^\nu\,,
 \end{align*}
-where we assume $\epsilon^\nu$ to be constant here, and here we makes use of the notation $\pd_\mu = (\pd_0, \pd_1, \pd_2, \pd_3)=(\pd_t, \pd_x, \pd_y, pd_z)$. Note further here $r$ is a $4$-dimensional object, including time and spatial coordinates. Thus we can write
+where we assume $\epsilon^\nu$ to be constant here, and here we makes use of the notation $\pd_\mu = (\pd_0, \pd_1, \pd_2, \pd_z)=(\pd_t, \pd_x, \pd_y, pd_z)$. Note further here $r$ is a $4$-dimensional object, including time and spatial coordinates. Thus we can write
 \begin{align*}
 S = \iiiint \, dr \, \mathcal{L}\left(\varphi(r),\, \pd\varphi(r)\right)\,,\qquad 
 S' = \iiiint \, dr' \, \mathcal{L}\left(\varphi'(r'),\, \pd'\varphi'(r')\right)\,.
@@ -2050,12 +2050,12 @@ Thus chain rule gives
 +\frac{\pd x^2}{\pd x'^0} \frac{\pd}{\pd x^2}
 +\frac{\pd x^3}{\pd x'^0} \frac{\pd}{\pd x^3}=\gamma\,\pd_0 + \frac{v}{c}\gamma \, \pd_1 \,.
 \end{align*}
-Similarly for $\pd'_1, \pd_2'$, and $\pd_3'$, we obtain
+Similarly for $\pd'_1, \pd_2'$, and $\pd_z'$, we obtain
 \begin{align*}
 \bmat{\pd_0'\\
 \pd_1'\\
 \pd_2'\\
-\pd_3'} = 
+\pd_z'} = 
 \bmat{\gamma & v\gamma/c & 0 & 0\\
 v\gamma/c & \gamma &0 &0\\
 0 &0 &1 &0\\
@@ -2063,19 +2063,19 @@ v\gamma/c & \gamma &0 &0\\
 \bmat{\pd_0\\
 \pd_1\\
 \pd_2\\
-\pd_3}\,.
+\pd_z}\,.
 \end{align*}
 One can show similarly for spatial rotation to obtain
 \begin{align*}
 \bmat{\pd_0'\\
 \pd_1'\\
 \pd_2'\\
-\pd_3'} = 
+\pd_z'} = 
 (R^{-1})^T 
 \bmat{\pd_0\\
 \pd_1\\
 \pd_2\\
-\pd_3}\,.
+\pd_z}\,.
 \end{align*}
 Here the derivative vector $\pd_\mu$ is called a covariant vector, and thus the \textbf{covariant vectors} are the objects that follow the inverse transpose transformation of coordinates. Note here we have used subscripts to denote covariant vectors.\\
 
@@ -2084,7 +2084,7 @@ It is not hard to observe that we have
 \bmat{\pd_0'\\
 -\pd_1'\\
 -\pd_2'\\
--\pd_3'} = 
+-\pd_z'} = 
 \bmat{\gamma & -v\gamma/c & 0 & 0\\
 -v\gamma/c & \gamma &0 &0\\
 0 &0 &1 &0\\
@@ -2092,9 +2092,9 @@ It is not hard to observe that we have
 \bmat{\pd_0\\
 -\pd_1\\
 -\pd_2\\
--\pd_3}\,,
+-\pd_z}\,,
 \end{align*}
-thus the vector $(\pd_0, -\pd_1,-\pd_2,-\pd_3)$ is a contravariant vector. \\
+thus the vector $(\pd_0, -\pd_1,-\pd_2,-\pd_z)$ is a contravariant vector. \\
 
 \example If we have a plane wave $\psi = Ae^{i\vec{k}\cdot \vec{r}-i\omega t}$, then combined with the contravariant derivative operator, $ic\,\pd^\mu \psi$ gives a contravariant vector of frequency and wave-vector $k^\mu = (\omega, ck_1, ck_2, ck_3)$, and the covariant derivative operator can be used to obtain a covariant vector $k_\mu = (\omega, -ck_1, -ck_2,-ck_3)$. From particle-wave duality, we know that $\hbar \omega$ is energy and $\hbar k$ is momentum, and thus the contravariant vector $(\omega, ck_1, ck_2, ck_3)$ tells us that $(\hbar \omega, c\hbar k_1, c\hbar k_2, c\hbar k_3)$ should be a contravariant vector, and this is in fact, the energy-momentum $4$-vector $(E, cP_1, cP_2, cP_3)$. \\
 
@@ -2132,8 +2132,8 @@ Now that inner product of $X^\mu$ and $Y^\mu$ can then be written in the way
 \begin{align*}
 X^\mu g_{\mu\nu} Y^\nu=X^\mu Y_\mu = X_\mu Y^\mu \,.
 \end{align*}
-\example Here we consider $x^\mu = (x^0,x^1,x^2,x^3)$ and $\pd_\mu = (\pd_0,\pd_1,\pd_2,\pd_3)$, we thus have $\pd_\mu x^\mu = 4$, and that 
-$$\pd_\mu \pd^\mu = \pd_0^2 - \pd_1^2 - \pd_2^2 - \pd_3^2 = \pd_0^2 - \nabla^2 \coloneqq \square\,.$$
+\example Here we consider $x^\mu = (x^0,x^1,x^2,x^3)$ and $\pd_\mu = (\pd_0,\pd_1,\pd_2,\pd_z)$, we thus have $\pd_\mu x^\mu = 4$, and that 
+$$\pd_\mu \pd^\mu = \pd_0^2 - \pd_1^2 - \pd_2^2 - \pd_z^2 = \pd_0^2 - \nabla^2 \coloneqq \square\,.$$
 \example The product between the covariant vector $(\omega, -ck_1, -ck_2, -ck_3)$ and the contravariant vector $(\omega, ck_1, ck_2, ck_3)$ is a Lorentz invariant scalar
 \begin{align*}
 \omega^2 -( ck_1)^2 - (ck_2)^2 - (ck_3)^2\,,
@@ -2208,12 +2208,12 @@ expanding we have the form
 \end{align*}
 With our convention that $\pd_0 = (1/c)\,\pd_t$, we obtain
 \begin{align*}
-\pd_0 (c\rho) + \pd_1 \,j_x + \pd_2 \, j_y + \pd_3 \, j_z = 0\,.
+\pd_0 (c\rho) + \pd_1 \,j_x + \pd_2 \, j_y + \pd_z \, j_z = 0\,.
 \tag{*}
 \end{align*}
 One might have noticed that, the RHS of (*) is a scalar, thus in order for (*) to retain its form under rotation, the LHS of (*) should also be a scalar. Thus, written in a more rigorous way, with the right subscripts and superscripts, we should have written 
 \begin{align*}
-\pd_\mu j^\mu =\pd_0 j^0 + \pd_1 \,j^1 + \pd_2 \, j^2 + \pd_3 \, j^3 = 0\,,
+\pd_\mu j^\mu =\pd_0 j^0 + \pd_1 \,j^1 + \pd_2 \, j^2 + \pd_z \, j^3 = 0\,,
 \end{align*}
 where we define
 \begin{align*}
@@ -2852,7 +2852,294 @@ Combining we have
 \begin{align*}
 \frac{d\vec{p}}{dt} = -q\left(  \nabla \phi + \frac{\pd \vec{A}}{\pd t}\right) + q \vec{v}\times (\nabla \times\vec{A}) =  q\vec{E}  + q (\vec{v}\times \vec{B})\,,
 \end{align*}
-which agrees with the classical limit.
+which agrees with the classical limit.\\
+
+
+Now we can look at the quantity
+\begin{align*}
+\frac{dE}{dt} &= \frac{d}{dt}\, \sqrt{p^2 c^2  + m_0^2 c^4} = \frac{c^2 \vec{p}}{\sqrt{p^2 c^2 + m_0^2 c^4}}\cdot \frac{d\vec{p}}{dt} = \frac{c^2 \vec{p}\cdot (q\vec{E} + q\vec{v}\times \vec{B})}{m_0 \gamma c^2} \\
+&= \frac{\vec{p}}{m_0 \gamma}\cdot (q\vec{E} + q\vec{v}\times \vec{B}) 
+= \vec{v}\cdot (q\vec{E} + q\vec{v}\times \vec{B}) = \text{Power}\,,
+\end{align*}
+which agrees with $\text{Power} = \vec{F}\cdot \vec{v}$. 
+
+\section{Noether's Theorem}
+Previously we looked at Noether's Theorem and saw that any continuous symmetry gives rise to a conservation law. There we considered a small deformation $\delta w^b$. In which case we had the change of coordinates
+\begin{align*}
+r^\nu \to r'^\nu =r^\nu + \frac{\delta \epsilon^\nu}{\delta w^b}\, \delta w^b\,,
+\end{align*}
+and a change of the field
+\begin{align*}
+\phi_a(r) \to \phi'_a(r') = \phi_a(r) + \frac{\delta \phi_a}{\delta w^b}\, \delta w^b\,.
+\end{align*}
+If in such case we had $S \to S' = S$, then from results in the we derived, we had that
+\begin{align*}
+\pd_\mu j^\mu = \pd_t \left( \frac{j^0}{c}\right) + \nabla \cdot \vec{j} = 0\,,
+\end{align*}
+where we had defined in this case
+\begin{align}
+j^\mu = \left( \frac{\delta \mathcal{L}}{\delta\, \pd_\mu \phi_a} \, \pd_\nu \phi_a - \delta^\mu{}_\nu \mathcal{L}\right) \frac{\delta \epsilon^\nu}{\delta w^b} - \frac{\delta \mathcal{L}}{\delta \pd_\mu \phi_a}\frac{\delta \phi_a}{\delta w^b}\,.
+\end{align}
+
+\subsection*{Gauge symmetry}
+Here we first consider the gauge symmetry, here we have $\phi \to \phi' = \phi - \pd_t \Lambda$ and $\vec{A} \to \vec{A}' = \vec{A} + \nabla \Lambda$. Under such gauge transformation, $E \to E' = E$ and $B \to B' = B$, and we should also have $S = S' = S$. That is, we should also have $S = S'$. Note here it is immediate that
+\begin{align*}
+S_{\text{matter}} = S'_{\text{matter}}
+\end{align*}
+as the gauge transformation does not affect the matter. Furthermore, we should also have
+\begin{align*}
+S_{\text{EM field}} = S'_{\text{EM field}} = \iiiint dt\,dx\,dy\,dz \left( \frac{\epsilon_0^2}{2}E^2 - \frac{1}{2\mu_0}B^2\right)\,.
+\end{align*}
+This forces that we should have
+\begin{align*}
+S_{\text{coupling}} &= S'_{\text{coupling}}\,.
+\end{align*}
+Expanding we have
+\begin{align*}
+-\iiiint dt\,dx\,dy\,dz\left( \rho \phi - \vec{j}\cdot \vec{A}\right) &= -\iiiint dt\,dx\,dy\, dz\left( \rho (\phi - \pd_t\Lambda - \vec{j}\cdot (\vec{A} + \nabla \Lambda)\right)\\
+&= 
+-\iiiint dt\,dx\,dy\,dz\left( \rho \phi - \vec{j}\cdot \vec{A}\right) \\
+&{}\qquad + \iiiint dt\,dx\,dy\,dz\left( \rho \pd_t \Lambda  + \vec{j}\cdot \nabla \Lambda\right)\,.
+\end{align*}
+That is, we have
+\begin{align*}
+0 
+&= \iiiint dt\,dx\,dy\,dz\left( \rho \pd_t \Lambda  + \vec{j}\cdot \nabla \Lambda\right)\\
+&= \iiiint dt\,dx\,dy\,dz\left( (\pd_t\rho)  \Lambda  + (\nabla \cdot\vec{j}) \Lambda\right)\\
+&= \iiiint dt\,dx\,dy\,dz\left( \pd_t\rho  + \nabla \cdot\vec{j} \right)\Lambda\,,
+\end{align*}
+which gives rise to the continuity equation for charge conservation law
+\begin{align*}
+\pd_t \rho  + \nabla \cdot \vec{j} = 0\,.
+\end{align*}
+\note Gauge symmetry here is in fact equivalent to the $U(1)$ phase symmetry of quantum wavefunction in quantum mechanics. As we have mentioned that gauge transformation must be accompanied with a phase shift in the quantum wavefunctions
+\begin{align*}
+\psi \to \psi' = \psi e^{iq\Lambda/\hbar}\,.
+\end{align*} 
+
+Here we note further that gauge symmetry is an internal symmetry, that is in this case the coordinates are unchanged $r^\nu \to r'^\nu = r^\nu$, while the field would change. On the other hand we have spacetime symmetry, in which case both the coordinates and field would change.\\
+
+\subsection*{Translation symmetry}
+Here we consider the transformation
+\begin{align*}
+r^\nu \to r'^\nu = r^\nu + \epsilon^\nu\,,\qquad
+\phi_a(r) \to \phi'_a(r') = \phi_a(r)\,.
+\end{align*}
+In this case, from (4.10), we obtain
+\begin{align*}
+j^\mu{}_\nu = \frac{\delta \mathcal{L}}{\delta\, \pd_\mu \phi_a} \, \pd_\nu \phi_a - \delta^\mu{}_\nu \mathcal{L}\,.
+\end{align*}
+Raising index, we can define
+\begin{align*}
+\that{T}^{\mu\nu} = 
+\frac{\delta \mathcal{L}}{\delta\, \pd_\mu \phi_a} \, \pd^\nu \phi_a - g^{\mu\nu} \mathcal{L}\,,
+\end{align*}
+which satisfies
+\begin{align*}
+\pd_\mu \that{T}^{\mu\nu} = 0\,.
+\end{align*}
+Here expanding we obtain
+\begin{align*}
+\pd_0 \that{T}^{00} + \pd_1 \that{T}^{10} + \pd_2 \that{T}^{20} + \pd_z \that{T}^{30} &= 0\,,\\
+\pd_0 \that{T}^{01} + \pd_1 \that{T}^{11} + \pd_2 \that{T}^{21} + \pd_z \that{T}^{31} &= 0\,,\\
+\pd_0 \that{T}^{02} + \pd_1 \that{T}^{12} + \pd_2 \that{T}^{22} + \pd_z \that{T}^{32} &= 0\,,\\
+\pd_0 \that{T}^{03} + \pd_1 \that{T}^{13} + \pd_2 \that{T}^{23} + \pd_z \that{T}^{33} &= 0\,,\\
+\end{align*}
+or in other words,
+\begin{align*}
+\pd_t \that{T}^{00} /c+ \pd_x \that{T}^{10} + \pd_y \that{T}^{20} + \pd_z \that{T}^{30} &= 0\,,\\
+\pd_t \that{T}^{01} /c+ \pd_x \that{T}^{11} + \pd_y \that{T}^{21} + \pd_z \that{T}^{31} &= 0\,,\\
+\pd_t \that{T}^{02} /c+ \pd_x \that{T}^{12} + \pd_y \that{T}^{22} + \pd_z \that{T}^{32} &= 0\,,\\
+\pd_t \that{T}^{03} /c+ \pd_x \that{T}^{13} + \pd_y \that{T}^{23} + \pd_z \that{T}^{33} &= 0\,.\\
+\end{align*}
+Each equation here is a conservation law, the first equation ($\nu$ = 0) is the energy conservation, and the rest are the momentum conservation laws for the $x$, $y$ and $z$ components, respectively.\\
+
+We can define here
+\begin{align*}
+P^\mu = \iiint dx\,dy\,dz \, \that{T}^{0\mu}/c\,,
+\end{align*}
+then we see here $P^\mu = (E/c,P_x,P_y,P_z)$ forms a $4$-vector, and $\that{T}^{0\nu}/c$ is the density of the conserved quantity in the conservation laws.\\
+
+Furthermore, one can define
+\begin{align*}
+(\that{T}_B)^{\mu\nu} = \that{T}^{\mu\nu} + \pd_\rho B^{\rho \mu\nu}\,,
+\end{align*}
+where we have an arbitrary tensor $B^{\rho \mu\nu}$ that satisfies $B^{\rho \mu \nu} = -B^{\rho \nu \mu}$. One can show that in this case we also have
+\begin{align*}
+\pd_\mu (\that{T}_B)^{\mu\nu} = 0\,.
+\end{align*}
+That is, there are degree of freedom of the definition of $\that{T}^{\mu\nu}$, we can always choose appropriate $B^{\rho\mu\nu}$ such that $\that{T}^{\mu\nu} = \that{T}^{\mu\nu}$, that is $\that{T}^{\mu\nu}$ is symmetric, to reduce the the degrees of freedom in $\that{T}^{\mu\nu}$ (now it only has $10$ free components as it is symmetric). Such definition of $\that{T}^{\mu\nu}$, usually denoted as $T^{\mu\nu}$, is in fact the symmetry energy momentum tensor for the electrodynamics. \\
+
+Furthermore, note that we have
+\begin{align*}
+\mathcal{L}_{\text{EM field}} = \frac{\epsilon_0}{2}E^2 - \frac{1}{2\mu_0}B^2\,,
+\end{align*}
+after symmetrization by appropriate $B^{\rho \mu\nu}$, one obtains
+\begin{align*}
+T^{\mu\nu} = \frac{1}{\mu_0}F^{\mu\alpha}F^{\nu}_\alpha + \frac{1}{4}g^{\mu\nu}F^{\alpha\beta}F_{\alpha\beta}\,,
+\end{align*}
+where we have
+\begin{align*}
+F^{\mu\nu} = \pd^\mu A^\nu - \pd^\nu A^\mu\,.
+\end{align*}
+Then one can compute that we have the energy density
+\begin{align*}
+T^{00} = \frac{\epsilon_0}{2}E^2 + \frac{1}{2\mu_0}B^2\,,
+\end{align*}
+total energy
+\begin{align*}
+E = \iiint dx\,dy\,dz \left( \frac{1}{2}\epsilon_0 E^2 + \frac{1}{2\mu_0}B^2\right)\,,
+\end{align*}
+energy momentum density
+\begin{align*}
+\vec{S} = c(T^{10}, T^{20}, T^{30}) = \frac{\vec{E} \times \vec{B}}{\mu_0}\,,
+\end{align*}
+momentum density
+\begin{align*}
+\vec{g} = \frac{1}{c}(T^{01}, T^{02}, T^{03}) = \epsilon_0 \vec{E}\times \vec{B}\,,
+\end{align*}
+and momentum
+\begin{align*}
+\vec{P} = \iiint dx\,dy\,dz \left(\epsilon_0 \vec{E}\times \vec{B}\right)\,.
+\end{align*}
+From here, as $T^{\mu\nu}$ is symmetric, it is obvious that we have
+\begin{align*}
+\vec{g} = \frac{1}{c^2}\vec{S} = \epsilon_0\mu_0\left( \frac{\vec{E}\times \vec{B}}{\mu_0}\right) = \epsilon_0 \left( \vec{E}\times \vec{B}\right)\,.
+\end{align*}
+\note Newton's Third Law does not hold for Coulomb force in relativity theory as the electric and magnetic fields carry momentum as shown above. From conservation of momentum, with particles $A$ and $B$ carrying momenta $P_A$ and $P_B$, respectively,
+\begin{align*}
+P_A + P_B + P_{\text{EM field}} = 0\,,
+\end{align*}
+but Newton's Third Law states that $P_A = - P_B$, and thus does not apply to the case here as EM field has momentum.\\
+
+\section[Energy in Electrostatics]{\color{red}Energy in Electrostatics\color{black}}
+Here we suppose there are charges $q_1$ and $q_2$ separated by a distance $R$, stationary.\\
+
+For $q_1$ at the origin, we can write the electric field product by $q_1$,
+\begin{align*}
+\vec{E}_1(\vec{r}) = \frac{1}{4\pi \epsilon_0} \frac{q_1}{r^3}\,\vec{r}\,.
+\end{align*}
+
+Thus we can compute the energy, if only $q_1$ exists, 
+\begin{align*}
+E&= \iiint dx\,dy\,dz\,\left( \frac{1}{2}\epsilon_0 E^2 + \frac{1}{2\mu_0}B^2\right) \tag{4.11}\\
+&= \frac{\epsilon_0}{2} \, \iiint dx\,dy\,dz \, \vec{E}\cdot \vec{E}\\
+&= \frac{\epsilon_0}{2} \left( \frac{q_1}{4\pi \epsilon_0}\right)^2 \iiint dx\,dy\,dz\, \frac{1}{r^4}\\
+&= \frac{q_1^2}{32\pi^2 \epsilon_0}  \iiint dx\,dy\,dz\, \frac{1}{r^4} = \infty.
+\end{align*}
+\setcounter{equation}{11}
+However, such infinity $E = \infty$ is a \textit{constant infinity}, an energy that cannot be used, and thus we can redefine $E = 0$ in this case. \\
+
+Similarly, the electric field produced by $q_2$, located at $\vec{R}=(0,0,R)$, is given by
+\begin{align*}
+\vec{E}_2(\vec{r}) = \frac{1}{4\pi \epsilon_0}\frac{q_2}{|\vec{r} - \vec{R}|^3} (\vec{r} - \vec{R})\,.
+\end{align*}
+Thus the total electric field is
+\begin{align*}
+\vec{E} = \vec{E}_1 + \vec{E}_2\,.
+\end{align*}
+The energy of such electric field is
+\begin{align*}
+E = \frac{\epsilon}{2}\iiint \, dx\,dy\,dz \, \vec{E}\cdot \vec{E}\,,
+\end{align*}
+where we have
+\begin{align*}
+E^2 = \vec{E}\cdot \vec{E}  = E_1^2 + E_2^2 + 2\vec{E}_1 \cdot \vec{E}_2\,.
+\end{align*}
+After shifting the total energy to deal with the infinity as mentioned above, we focus only on the term $ 2\vec{E}_1 \cdot \vec{E}_2$. Here, with $\vec{r} = (x,y,z)$, we can rewrite
+\begin{align*}
+\vec{E} = \vec{E}_1 + \vec{E}_2 
+=
+\frac{1}{4\pi \epsilon_0}\frac{q_1}{(x^2 + y^2 + z^2)^{3/2}}\, \vec{r} + \frac{1}{4\pi \epsilon_0} \frac{q_2}{(x^2 + y^2 + (z-R)^2)^{3/2}}\,(\vec{r} - \vec{R})\,,
+\end{align*} 
+from which we obtain
+\begin{align*}
+\vec{E}_1 \cdot \vec{E}_2 
+&= 
+\left(\frac{1}{4\pi \epsilon_0}\right)^2
+\frac{2q_1q_2(x^2 + y^2 + z(z-R))}{(x^2 + y^2 + (z-R)^2)^{3/2}(x^2 + y^2 + z^2)^{3/2}}\\
+&= \frac{q_1q_2}{16\pi^2 \epsilon_0^2}\frac{r^2 - r\cos(\theta) R}{r^3(r^2 + R^2 - 2\cos(\theta)R)^{3/2}}\,,
+\end{align*}
+where $\theta$ is the angle between $\vec{R}$ and $\vec{r}$. Thus we have
+\begin{align*}
+E&= \epsilon_0 \int_0^\infty r^2 \, dr \int_0^\pi \sin(\theta) \, d\theta \int_0^{2\pi}\, d\phi \, \frac{q_1q_2}{16\pi^2 \epsilon_0^2}
+\frac{r^2 - rR\cos(\theta)}{r^3(r^2 + R^2 - 2rR\cos(\theta))^{3/2}}\\
+&= \frac{q_1q_2}{8\pi \epsilon_0}\int_0^\infty r^2\, dr \int_{-1}^1 dx\,\frac{r^2 - rRx}{r^3(r^2 + R^2 - 2rRx)^{3/2}}\\
+&= \frac{q_1q_2}{8\pi \epsilon_0}\int_0^\infty dr\, \int_{-1}^{1}\, dx \frac{r-Rx}{(r^2 + R^2 - 2rRx)^{3/2}}\\
+&= \frac{q_1q_2}{8\pi \epsilon_0}\int_0^\infty \, dr\,\frac{\text{sign}(r-R)+1}{r^2}\,,
+\end{align*}
+where we have,
+\begin{align*}
+\text{sign}(x) = \begin{cases}
+1 & x>0\\
+0 & x= 0\\
+-1 & x<0\,.
+\end{cases}
+\end{align*}
+Thus we have
+\begin{align*}
+\frac{\text{sign}(r-R)+1}{r^2} = \begin{cases}
+\frac{2}{r^2}& r>R\\
+0 & r<R
+\end{cases}\,.
+\end{align*}
+Now combining we have
+\begin{align*}
+E =  \frac{q_1q_2}{8\pi \epsilon_0}\int_R^\infty \, dr\, \frac{2}{r^2} = \frac{1}{4\pi \epsilon_0}\frac{q_1q_2}{R}\,.
+\end{align*}
+Note that we have recovered the Coulomb potential energy, and by the nature of (4.11), we see that the Coulomb potential energy is actually \textit{stored} in the field, not associated to any one of the two particles.\\
+
+
+\section[Electric and Magnetic Fields in Media]{\color{red}Electric and Magnetic Fields in Media\color{black}}
+Here we simply suppose that the medium of interest is an isotropic insulator. Note that not all media are isotropic. Here again, we describe the electric and magnetic fields by scalar and vector potentials $\phi$ and $\vec{A}$, and we have the Lagrangian of the system described by three parts
+\begin{align*}
+\mathcal{L} = \mathcal{L}_{\text{EM field}} + \mathcal{L}_{\text{coupling}} + \mathcal{L}_{\text{matter}}\,.
+\end{align*}
+Here $\mathcal{L}_{\text{EM field}}$ should be a function of $\vec{E}$ and $\vec{B}$ to ensure gauge symmetry. While on the other hand, we now no longer have Lorentz transformation symmetry as there is a special reference frame where the average velocity of all particles in the media is zero, thus $\mathcal{L}$ has no reason to remain invariant under Lorentz boost, so $\mathcal{L}$ needs not to be a $4$-dimensional scalar. However, we do have spatial $3$-dimensional symmetry here as we assume the media to be isotropic, and thus $\mathcal{L}$ is still required to be a $3$-dimensional scalar. Ignoring the $\mathcal{L}_{\text{matter}}$ and $\mathcal{L}_{\text{coupling}}$ for now, we can write
+\begin{align*}
+\mathcal{L} = \alpha\, \vec{E}\cdot \vec{E} + \beta \, \vec{B}\cdot \vec{B} + \gamma \, \vec{E}\cdot \vec{B}
+\end{align*}
+for constants $\alpha,\beta,\gamma$. Note that the spatial-inversion and time-reversal symmetry enforce $\gamma = 0$, thus with some redefinition of $\alpha$ and $\beta$ here, we write
+\begin{align*}
+\mathcal{L} = \frac{\epsilon}{2}E^2 -\frac{1}{2\mu}B^2\,. 
+\end{align*}
+In this case, equation of motion gives
+\begin{align*}
+\nabla \cdot \vec{E} = \frac{\rho}{\epsilon}\,,\qquad
+\nabla \times \vec{E} = -\frac{\pd \vec{B}}{\pd t}\,,\qquad
+\nabla \cdot \vec{B} =0 \,,\qquad
+\nabla \times \vec{B} = \mu \vec{j} + \epsilon \mu \frac{\pd \vec{E}}{\pd t}\,,
+\end{align*}
+which is the same as what we have obtained for vacuum, except $\epsilon_0 \to \epsilon$ and $\mu_0 \to \mu$, thus in this case the speed of light in vacuum is
+\begin{align*}
+v = \frac{1}{\sqrt{\epsilon \mu}}\,.
+\end{align*}
+Here we further denote
+\begin{align*}
+n = \frac{c}{v} = \sqrt{\frac{\epsilon\mu}{\epsilon_0 \mu_0}} > 1\,.
+\end{align*}
+From experimental observation, $\mu \approx \mu_0$, thus one would take the approximation, especially in optics, 
+\begin{align*}
+n = \sqrt{\frac{\epsilon}{\epsilon_0}}\,.
+\end{align*}
+
+
+Now if the media is not isotropic, then $\mathcal{L}$ is not necessarily to be a scalar. then in general we write
+\begin{align*}
+\mathcal{L} = \frac{\epsilon_{ij}}{2}E_iE_j - \frac{1}{2\mu_{ij}}B_i B_j
+&= \vec{E}^T [\epsilon_{ij}] \vec{E} + \vec{B}^T [1/\mu_{ij}]\vec{B}\,.
+\end{align*}
+where $[\epsilon_{ij}]$ and $[1/\mu_{ij}]$ are both $3\times 3$ matrices. In some cases, when we do not have spatial-inversion and time-inversion symmetry, then the term of the form
+\begin{align*}
+\vec{B}^T [\theta_{ij} ]\, \vec{B}
+\end{align*}
+is also allowed. 
+
+
+
+
+
+
 
 
 

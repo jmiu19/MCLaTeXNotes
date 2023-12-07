@@ -1932,7 +1932,94 @@ Now in the case where $\Lambda < 0$ and $k=0$, similar computation leads to
 \begin{align}
 R^3 = -\frac{3C}{2\Lambda}\left(1 - \cos(\sqrt{-3 \Lambda}\, t) \right)\,,
 \end{align}
-from which we see that $R \to 0$ at some $t \neq 0$, the universe initially expanded and then would collapse.
+from which we see that $R \to 0$ at some $t \neq 0$, the universe initially expanded and then would collapse.\\
+
+\newpage
+\section[Modern Cosmology]{\color{red} Modern Cosmology\color{black}}
+Here we consider the perfect fluid,
+\begin{align*}
+T_{\mu\nu} = (\rho + p) u_\mu u_\nu + p g_{\mu\nu}\,,
+\end{align*}
+with small velocity $u_\mu = (1,0,0,0)$. Thus we see
+\begin{align*}
+T^\mu{}_\mu = -\rho + 3p\,.
+\end{align*}
+Here we can compute, 
+\begin{align*}
+\nabla_\mu T^\mu{}_\nu = 0
+\end{align*}
+for $\gamma = 0$,
+\begin{align*}
+\pd_\mu T^\mu{}_0 + \Gamma^\mu{}_{\mu \lambda}T^\lambda{}_0 - \Gamma^\lambda{}_{\mu 0}T^\mu{}_\lambda = 0\,,
+\end{align*}
+from which we obtain
+\begin{align*}
+\pd_0 \rho + \frac{3\dot{R}}{R}\left( \rho + p\right) = 0\,.
+\end{align*}
+If one assumes $p = w\rho$ for some time-independent $w$, then we have
+\begin{align*}
+\frac{d\rho}{dt} + \frac{3}{R}\frac{dR}{dt}\left(1 + w\right) \rho = 0\,,
+\end{align*}
+rearranging we obtain
+\begin{align*}
+\frac{dp}{\rho} = -3(1+w) \frac{dR}{R}\,,
+\end{align*}
+and thus $\rho \propto R^{-3(1+w)}$. For dust matter, $p =0$, and thus $w = 0$, so we have $\rho \propto R^{-3}$, which makes sense that spatial dimension is $3$. Furthermore, for radiation, 
+\begin{align*}
+T_{\mu\nu} = F_\mu^\lambda F_{\mu\lambda} - \frac{1}{4}g_{\mu \nu}F^2\,,
+\end{align*}
+one can compute that we have $T^\mu{}_\mu = 0$, thus $p_{\text{radiation}} = \rho_{\text{radiation}}/3$, $w = 1/3$, similar argument leads to $\rho_{\text{radiation}}\propto R^{-4}$, which makes sense as photon should redshift as the universe expands. Furthermore, for vacuum energy $p_\Lambda = -\rho_\Lambda$, and thus $w = -1$, in such case we have $\rho_\Lambda \propto 1$. \\
+
+Here we define the density parameter
+\begin{align*}
+\Omega = \frac{8\pi G}{3H^2} \rho\,,
+\end{align*}
+where we have, according to (4.6)
+\begin{align*}
+H^2 = \left( \frac{\dot{R}}{R}\right)^2 = \frac{8\pi G\rho}{3} - \frac{k}{R^2}\,,
+\end{align*}
+and thus rearranging we have
+\begin{align}
+\Omega-1 =  \frac{k}{H^2 R^2}\,.
+\end{align}
+We further define a critical density
+\begin{align*}
+\rho_c = \frac{3H^2}{8\pi G}\,,
+\end{align*}
+and thus $\Omega = \rho/ \rho_c$,  it then follows from (4.10) that we have
+\begin{align*}
+\begin{cases}
+\rho > \rho_c & k=1\\
+\rho = \rho_c & k=0\\
+\rho < \rho_c & k=-1
+\end{cases}\,.
+\end{align*}
+We further define
+\begin{align*}
+\Omega_i = \frac{8\pi G}{3H^2}\rho_i(t)\,,
+\end{align*}
+where $i$ can be matter $m$, radiation $r$, or vacuum $\Lambda$, and in reality, we have roughly $\Omega_{m0} \approx 0.3$, $\Omega_{\Lambda0} \approx 0.7$, $\Omega_{r0} \approx 5\cdot 10^{-5}$ at the 
+current time. We then can write
+\begin{align*}
+H^2 = \frac{8\pi G}{3}\sum_i \rho_i - \frac{k}{R^2}\,,
+\end{align*}
+and thus
+\begin{align*}
+\Omega= \sum_{i}\Omega_i = -\frac{k}{H^2R^2} 
+\end{align*}
+\textbf{ADD}
+
+From $(1+z) = R(t_0)/R(t)$, we can write
+\begin{align*}
+dz = -\frac{R(t_0)}{R(t)} \frac{\dot{R}(t)\, dt}{R(t)} = -(1+z) \, H(z) \, dt\,,
+\end{align*}
+and thus integrating we obtain
+\begin{align*}
+t_0-t
+&= \int_{t}^{t_0}dt = \int_0^z \frac{dz}{(1+z) \, H(z)} = \frac{1}{H_0}\int_0^z \frac{d\zeta}{(1+\zeta) \, H(\zeta)}\\
+&= \frac{1}{H_0}\int_0^z \frac{d\zeta}{1+\zeta} \frac{1}{\sqrt{\Omega_{m0}(1-\zeta)^3 + \Omega_{r0}(1+\zeta)^4 + \Omega_{\Lambda0} + \Omega_{k0}(1+\zeta)^2}}
+\end{align*}
+and one finds that $t_0 \approx 13.5\,$G years to be the age of the universe. 
 
 
 

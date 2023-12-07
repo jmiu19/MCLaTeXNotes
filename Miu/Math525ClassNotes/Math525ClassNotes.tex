@@ -1,4 +1,4 @@
-\documentclass[11pt, onesided]{book}
+ \documentclass[11pt, onesided]{book}
 
 %%%%%%%%%%%%%%Include Packages%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{xcolor}
@@ -2188,7 +2188,7 @@ or simply written as
 \end{align*}
 
 \section[Classification of Chains]{\color{red}Classification of Chains\color{black}}
-For differential equation, one seeks for solution based on the \textit{transient}, \textit{recurrent}, and \textit{periodic} properties of the equation. In probabilistic problems, we say a a state $i$ is recurrent provided that we have
+For differential equation, one seeks for solution based on the \textit{transient}, \textit{recurrent}, and \textit{periodic} properties of the equation. In probabilistic problems, we say a a state $i$ is recurrent, or persistent, provided that we have
 \begin{align*}
 \mathbb{P}\left(\{X_n = i \text{ with some }n>0 | X_0 = i\}\right) = 1\,.
 \end{align*}
@@ -2207,15 +2207,39 @@ If we define
 then the recurrent state is said to be null provided that $\mathbb{E}(T_i )= \infty$, and non-null provided that $\mathbb{E}(T_i) < \infty$. 
 
 \begin{thm}[Characterization Theorem]
-A state $j$ is persistent if and only if we have $\sum_n p_{jj}(n) = \infty$, and in this case, $\sum_n p_{ij}(n) = \infty$ as well whenever $f_{ij}>0$, that is some probability of transiting from $j$ to $i$. Here we denote 
+A state $j$ is persistent if and only if we have $\sum_n p_{jj}(n) = \infty$, and in this case, $\sum_n p_{ij}(n) = \infty$ as well whenever $f_{ij}>0$, that is some probability of transiting from $j$ to $i$. Here we denote (as they are elements of the transition matrix)
 $$
 p_{ij}(n) = \mathbb{P}(j \to i \text{ in $n$ steps})\,,\qquad
 f_{ij}(n) = \mathbb{P}(j \to i \text{ for the first time, in $n$ steps})\,.
 $$
-Furthermore, $j$ is transient iff $
-\sum_{n}p_{jj}(n) <\infty\,,$ and in such case we have $\sum_{n}p_{ij}(n) < \infty$ for all states $i$. 
+Furthermore, $j$ is transient if and only if $
+\sum_{n}p_{jj}(n) <\infty\,.$% and in such case we have $\sum_{n}p_{ij}(n) < \infty$ for all states $i$. 
 \end{thm}
 
+\example For a transition matrix $\mathbf{P}$ defined by
+\begin{align*}
+\mathbf{P} = \bmat{1 & 1 \\ 0 & 0}\,,
+\end{align*}
+we see immediately that the state $(1,0)$ is recurrent and the state $(0,1)$ is transient, and that we have also
+\begin{align*}
+\mathbf{P}^n =\cdots =  \mathbf{P}^2 = \mathbf{P}\,.
+\end{align*}
+thus we have $p_{11}(n) = 1$ and $p_{22}(n) = 0$.\\
+
+\example On the other hand, for a transition matrix $\mathbf{P}$ defined by
+\begin{align*}
+\mathbf{P} = \bmat{1 & 1/2 \\ 0 & 1/2}\,,
+\end{align*}
+we can compute
+\begin{align*}
+p_{22}(n) = \frac{1}{2^n}\,,\qquad
+p_{12}(n) = \frac{1}{2}+ \frac{1}{4} + \cdots + \frac{1}{2^n}\,.
+\end{align*}
+Thus we have
+\begin{align*}
+\sum_{n}p_{22}(n) <\infty\,,\qquad \sum_n p_{12}(n)=\infty\,,
+\end{align*}
+justifying $(0,1)$ is a transient state. 
 
 \begin{cor}
 If the phase space has dimension $|S| < \infty$, then at least one state is persistent and all states are non-null. 
@@ -2249,10 +2273,32 @@ If a state $i$ has $d(i) = 1$, then $i$ is a periodic. On the other hand, the st
 \end{defn}
 
 
-From here, we write $j \to i$ provided that $p_{ij}(n) >0$, and we say $j$ is equivalent to $i$ provided that $j\leftrightarrow i$, that is $p_{ij}(m) >0$ and $p_{ji}(n) >0$. This defines an equivalence relation for states in $S$. That is, if we have $i \leftrightarrow j$ and $j\leftrightarrow k$, then $i \leftrightarrow k$. If we have $i \leftrightarrow j$, then $j \leftrightarrow i$. Given this notion, any countable space $S$ can be decomposed as $S = T \cup C_1 \cup C_2 \cup \cdots$, where $T$ is the set of transient states, and $C_i$ are closed and irreducible sets, defined by the equivalent classes of the relation $\leftrightarrow$. Note that a set $C \subseteq S$ is said to be closed provided that for $j \in C$, i $\notin C$, we have $p_{ij} = 0$. Also note that a set $C \subseteq S$ is irreducible provided that $C$ is closed and cannot be written as $C_1 \cup C_2$ with closed and disjoint sets $C_i$. 
+From here, we write $j \to i$ provided that $p_{ij}(n) >0$ for some $n$, and we say $j$ is equivalent to $i$ provided that $j\leftrightarrow i$, that is $p_{ij}(m) >0$ and $p_{ji}(n) >0$ for some $m$ and $n$. This defines an equivalence relation for states in $S$. That is, if we have $i \leftrightarrow j$ and $j\leftrightarrow k$, then $i \leftrightarrow k$. If we have $i \leftrightarrow j$, then $j \leftrightarrow i$. Given this notion, any countable space $S$ can be decomposed as $S = T \cup C_1 \cup C_2 \cup \cdots$, where $T$ is the set of transient states, and $C_i$ are closed and irreducible sets, defined by the equivalent classes of the relation $\leftrightarrow$. Note that a set $C \subseteq S$ is said to be closed provided that for $j \in C$, i $\notin C$, we have $p_{ij} = 0$. Also note that a set $C \subseteq S$ is irreducible provided that $C$ is closed and cannot be written as $C_1 \cup C_2$ with closed and disjoint sets $C_i$. 
 \\
 
-\example Suppose $C \subseteq S$ is closed, and $j \in C$. Then if we have $ i\leftrightarrow j$, then $i \in C$, as we have $p_{ij}(n) > 0$, which is impossible if $i$ is outside of $C$.\\
+\note Suppose a class $C \subseteq S$ is closed, and $j \in C$. Then if we have $ i\leftrightarrow j$, then $i \in C$, as we have $p_{ij}(n) > 0$, which is impossible if $i$ is outside of $C$. Furthermore, if the class is not closed, then we must have
+\begin{align*}
+\mathbb{P}\left(\{X_n = j\} \cap \{X_r = i\text{ for infinitely many times}\} |X_0 = i\right) = 0
+\end{align*}
+for $i \in C$ and $j \notin C$. Here we denote
+\begin{align*}
+\mathbb{P}_i(A) = \mathbb{P}(A |X_0=i) 
+\end{align*}
+for any condition $A$.\\
+
+\note For a class $C \subseteq S$, if $i \in C$ is transient, then all $j \in C$ are transient. That is, if $i \in C$ is transient, then
+\begin{align*}
+\sum_n p_{ii}(n) < \infty\,,
+\end{align*}
+and for $j \in C$, $j \leftrightarrow i$, and thus $p_{ij}(n) > 0$, $p_{ji}(n) > 0$, so we can write, for any $r \geq 1$, 
+\begin{align*}
+p_{ji}(m+n+r) \geq p_{ji}(m)\, p_{ii}(r) \, p_{ij}(n)\,.
+\end{align*}
+Then we see that
+\begin{align*}
+\infty> \sum_{k=1}^\infty p_{ii}(k) \geq \sum_r p_{ii}(m+n+r) \geq \sum_{r=1}^\infty p_{ij}(m)\, p_{jj}(r) \, p_{ji}(n) = p_{ij}(m)\, p_{ji}(n) \, \sum_{r=1}^\infty p_{jj}(r)\,,
+\end{align*}
+the desired result thus follows. 
 
 \example For simple random walk, we have $S = \Z$ and $\Z$ is closed and irreducible. \\
 
@@ -2265,7 +2311,7 @@ is in fact an eigenvalue problem, but with extra condition that $\pi_i \geq 0$ f
 Let $\mathbb{P}$ be the transition matrix of a finite irreducible chain $S$ with period $d$, then $\lambda = 1$ is an eigenvalue of $\mathbb{P}$ with multiplicity $1$. The other eigenvalues of $\mathbf{P}$, denoted as $\lambda_i$ with $2\leq i \leq s$, satisfies $|\lambda_i | < 1$. Furthermore, there exists a unique $\pi \in \R^s$ such that $\pi_i \geq 0$, and $\sum_i \pi_i = 1$. 
 \end{thm}
 
-
+An $n\times n$ stochastic matrix is said to have boredom terms if it consists of all terms to be $1/n$. Note that for an arbitrary stochastic $n\times n$ matrix $P$ and a boredom matrix $B$, $(1-t)P + tB$ is also a stochastic matrix when $t \in [0,1]$. 
 
 \end{document}
 
