@@ -1,0 +1,380 @@
+\documentclass[11pt, onesided]{book}
+
+%%%%%%%%%%%%%%Include Packages%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{xcolor}
+\usepackage{mathtools}
+\usepackage[a4paper, total={6in, 8in}, margin=1.25in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{paralist}
+\usepackage{rsfso}
+\usepackage{amsthm}
+\usepackage{wasysym}
+\usepackage[inline]{enumitem}   
+\usepackage{hyperref}
+\usepackage{tocloft}
+\usepackage{wrapfig}
+\usepackage{titlesec}
+\usepackage{colortbl}
+\usepackage{stackengine} 
+\usepackage{simpler-wick}
+\usepackage{feynmp-auto}
+\usepackage{slashed}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%Chapter Setting%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{gray75}{gray}{0.75}
+\newcommand{\hsp}{\hspace{20pt}}
+\titleformat{\chapter}[hang]{\Huge\bfseries}{\thechapter\hsp\textcolor{gray75}{$\mid$}\hsp}{0pt}{\Huge\bfseries}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%Theorem environments%%%%%%%%%%%%%%%%%%%
+\newtheoremstyle{break}
+  {\topsep}{\topsep}%
+  {\itshape}{}%
+  {\bfseries}{}%
+  {\newline}{}%
+\theoremstyle{break}
+\theoremstyle{break}
+\newtheorem{axiom}{Axiom}
+\newtheorem{thm}{Theorem}[section]
+\renewcommand{\thethm}{\arabic{section}.\arabic{thm}}
+\newtheorem{lem}{Lemma}[thm]
+\newtheorem{cor}{Corollary}[thm]
+\newtheorem{defn}{Definition}[thm]
+\newenvironment{indEnv}[1][Proof]
+  {\proof[#1]\leftskip=1cm\rightskip=1cm}
+  {\endproof}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%Integral%%%%%%%%%%%%%%%%%%%%%%%
+\def\upint{\mathchoice%
+    {\mkern13mu\overline{\vphantom{\intop}\mkern7mu}\mkern-20mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+  \int}
+\def\lowint{\mkern3mu\underline{\vphantom{\intop}\mkern7mu}\mkern-10mu\int}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\T}{\mathcal{T}}
+\newcommand{\M}{\mathcal{M}}
+\newcommand{\Symm}{\text{Symm}}
+\newcommand{\Alt}{\text{Alt}}
+\newcommand{\Int}{\text{Int}}
+\newcommand{\Bd}{\text{Bd}}
+\newcommand{\Power}{\mathcal{P}}
+\newcommand{\ee}[1]{\cdot 10^{#1}}
+\newcommand{\spa}{\text{span}}
+\newcommand{\sgn}{\text{sgn}}
+\newcommand{\degr}{\text{deg}}
+\newcommand{\pd}{\partial}
+\newcommand{\that}[1]{\widetilde{#1}}
+\newcommand{\lr}[1]{\left(#1\right)}
+\newcommand{\vmat}[1]{\begin{vmatrix} #1 \end{vmatrix}}
+\newcommand{\bmat}[1]{\begin{bmatrix} #1 \end{bmatrix}}
+\newcommand{\pmat}[1]{\begin{pmatrix} #1 \end{pmatrix}}
+\newcommand{\rref}{\xrightarrow{\text{row\ reduce}}}
+\newcommand{\txtarrow}[1]{\xrightarrow{\text{#1}}}
+\newcommand\oast{\stackMath\mathbin{\stackinset{c}{0ex}{c}{0ex}{\ast}{\Circle}}}
+\newcommand{\txt}{Peskin's \textit{An Introduction to Quantum Field Theory}}
+
+\newcommand{\note}{\color{red}Note: \color{black}}
+\newcommand{\remark}{\color{blue}Remark: \color{black}}
+\newcommand{\example}{\color{green}Example: \color{black}}
+\newcommand{\exercise}{\color{green}Exercise: \color{black}}
+
+%%%%%%%%%%%%%%%%%%%%%%Roman Number%%%%%%%%%%%%%%%%%%%%%%%
+\makeatletter
+\newcommand*{\rom}[1]{\expandafter\@slowromancap\romannumeral #1@}
+\makeatother
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%table of contents%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\setlength{\cftchapindent}{0em}
+%\cftsetindents{section}{2em}{3em}
+%
+%\renewcommand\cfttoctitlefont{\hfill\huge\bfseries}
+%\renewcommand\cftaftertoctitle{\hfill\mbox{}}
+%
+%\setcounter{tocdepth}{2}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%Footnotes%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand\blfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%Section%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\makeatletter
+\def\@seccntformat#1{%
+  \expandafter\ifx\csname c@#1\endcsname\c@section\else
+  \csname the#1\endcsname\quad
+  \fi}
+\makeatother
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Enumerate%%%%%%%%%%%%%%
+\makeatletter
+% This command ignores the optional argument 
+% for itemize and enumerate lists
+\newcommand{\inlineitem}[1][]{%
+\ifnum\enit@type=\tw@
+    {\descriptionlabel{#1}}
+  \hspace{\labelsep}%
+\else
+  \ifnum\enit@type=\z@
+       \refstepcounter{\@listctr}\fi
+    \quad\@itemlabel\hspace{\labelsep}%
+\fi}
+\makeatother
+\parindent=0pt
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\begin{document}
+
+	\begin{titlepage}
+		\begin{center}
+			\vspace*{0.5cm}
+			\Huge \color{red}
+				\textbf{Class Notes}\\
+			\vspace{0.5cm}			
+			\Large \color{black}
+			Physics 513 - Quantum Field Theory\\
+			Professor Ratindranath Akhoury
+			\vspace{1.5cm}
+
+			\includegraphics[scale=1.15]{hmm.pdf}
+			
+			
+			\vspace{2cm}
+			\LARGE
+				\textbf{Jinyan Miao}\\
+				\hfill\break
+				\LARGE Fall 2023\\
+			\vspace{1cm}
+
+		\vspace*{\fill}
+		\end{center}			
+	\end{titlepage}
+
+
+
+\tableofcontents
+\hfill\break
+\hfill\break
+\hfill\break
+ 
+
+
+\newpage
+\chapter{Path Integrals}
+What we have been doing up to now is canonical quantization which totally relies on Hamiltonian formulation, but there is loss of manifest Lorentz covariance. In general, in the Lagrangian formulation, it is easier to implement symmetries and thus Lorentz invariance. We will discuss path integrals approach without too much technical details. \\
+
+We start with non-relativistic quantum mechanics with one degree of freedom. To quantize, we need to know the propagators, denoted as 
+$$K(q,q'; \tau) = <q; \tau | q; 0>\,,$$ where we are working in the Heisenberg picture, that is operators are time dependent $q(t)$. The eigenstates of operator $q(t)$ is denoted as $|q;t\rangle$. Then the so-defined propagator $K(q',q;\tau)$ is the amplitude for a system to propagator from $q$ to $q'$ in time $\tau$. Knowing $K(q',q;\tau)$, we can solve for the quantum system. \\
+
+Suppose $\psi(q',\tau)$ is the Schrodinger wave function of the quantum system, then we can write
+\begin{align*}
+\psi (q',\tau) = \int_{-\infty}^\infty K(q', q;\tau) \, \psi(q,0) \, dq\,.
+\end{align*} 
+The proof of this is that, in general, 
+\begin{align*}
+\psi(q_f,t_f) = \langle q_f; t_f | \psi\rangle = \int \, \langle q_f; t_f | q_i ; t_i\rangle\, dq_i \, \langle q_i; t_i |\psi\rangle = \int K(q_f,t_f; \tau) \, \psi(q_i, t_i)\, dq_i\,.
+\end{align*}
+For the calculation of $K(q',q;\tau)$, Dirac observed that we have
+\begin{align}
+\langle q+\delta q; t+\delta t\, |\, q;t\rangle \sim e^{(i/\hbar)\, L(q,\dot{q})\, \delta t}\,.
+\end{align}
+That is, the amplitude for the propagation of a system between $q+\delta q$ and $q$ in an infinitesimal time $\delta t$ can be expressed in terms of the Lagrangian. The justification of (7.1) can be seen in the following. 
+\begin{align*}
+\langle q+\delta q; t+\delta t\, |\, q;t\rangle  
+&= \langle q+\delta q \, | \, e^{(-i/\hbar)\, \hat{H}\, \delta t}\, |\, q\rangle
+= \langle q + \delta q\,| \,  e^{(-i/\hbar)\, (\hat{p}^2/(2m) + V(\hat{q}) )\, \delta t}\, |\, q\rangle\,.
+\end{align*}
+Note that we have
+\begin{align*}
+e^{A+B} = e^A e^B e^{[A,B]]}\,,
+\end{align*}
+in our case we can write
+\begin{align*}
+A = -\frac{i}{\hbar}\frac{\hat{p}^2}{2m}\, \delta t\,,\qquad
+B = \textbf{ADD}
+\end{align*}
+thus up to terms of order $\delta t^2$, we can write
+\begin{align*}
+\langle q + \delta q; t+\delta t\, |\, q;t\rangle = \langle q+\delta q\,
+|\, e^{-(i/\hbar)(\hat{p}^2/(2m))\,\delta t}e^{-(i/\hbar)\, V(\hat{q})\, \delta t}\, |\,q\rangle\,.
+\end{align*}
+Inserting a complete set of momentum eigenstate, we obtain
+\begin{align*}
+\langle q + \delta q; t+\delta t\, |\, q;t\rangle &= 
+\int \, dp \langle q+\delta q\, |
+e^{-(i/\hbar)(\hat{p}^2/(2m))\, \delta t}\, | \, p\rangle \langle p \, | 
+\, e^{-(i\hbar)\, V(\hat{q})\, \delta t}\, |\, q\rangle\\
+&= \int dp\, e^{-(i/\hbar)(p^2/(2m))\, \delta t} \langle q+ \delta q|p\rangle e^{-(i/\hbar)\, V(q)}\, \langle p|q\rangle\\
+&= \int dp\, e^{(i/\hbar)\, p\, \delta q} - \frac{i}{\hbar}\left(\frac{p^2}{2m} + V(q) \right)\, \delta t\,,
+\end{align*}
+where we have used the fact that
+\begin{align*}
+\langle p|q\rangle = \frac{e^{-(i/\hbar)pq}}{\sqrt{2\pi \hbar}}
+\end{align*}
+performing the integral we obtain
+\begin{align*}
+\langle q+\delta q ; t+\delta t\,|\, q;t\rangle = \sqrt{\frac{m}{2\pi i\hbar \delta t}}\, \exp\left(\frac{i}{\hbar}\left(\frac{m}{2}\left(\frac{\delta q}{\delta t}\right)^2 - V(q)\right)\, \delta t\right)\,.
+\end{align*}
+Note the normalization constant does not depend upon $q$, and one realizes that
+\begin{align*}
+\frac{m}{2} \left(\frac{\delta q}{\delta t}\right)^2 - V(q)\,
+\end{align*}
+is the Lagrangian of the system. Now we are set to calculate $K(q',q;\tau)$. We split the time interval $\tau$ into $N+1$ subintervals. For each of the time $\delta t = \tau/N$, we define $q_n = q(n\delta t)$ and use the implementation \textbf{ADD}
+\begin{align*}
+\int \, dq_n \, |q_n ; n \delta t\rangle \langle q_n ; n\delta t| \, dq_n = 1
+\end{align*}
+for all $n=1,2,\cdots, N$, that is, we have
+\begin{align*}
+K(q',q;\tau) =\int_{-\infty}^\infty \prod_{i=1}^\infty \,dq_i\, \langle q';\tau \, | \, q_{N-1}; (N-1) \delta t\rangle \, \cdots \langle q_1; \delta t\, |\, q; 0\rangle\,.
+\end{align*}
+On can think of this as summation over continuous descretized paths, defined by $q_n = q(n\,\delta t)$ satisfying $q(0) = q$, and $q(\tau) = q'$. 
+\textbf{add}
+So we have that
+\begin{align*}
+\langle q';\tau \, | \, q;0\rangle = N \int_{\{\text{path }q\, |\, q(0) = q,\, q(\tau) = q'\}} \, \mathcal{D}q(t) \, e^{\frac{i}{\hbar}\int_0^\tau \, dt \, L(q,\dot{q})}\,,
+\end{align*}
+where $N$ serves as a normalization constant. The quantum mechanic amplitude is obtained by summing all possible trojectories $q(t)$ jointing $q$ and $q'$ in time $\tau$. Each trajectory is weighted by a phase given by the action of the corresponding trajectory in $\hbar$ unit. 
+
+\section[Path Integrals in Quantum Field Theory]{\color{red}Path Integrals in Quantum Field Theory\color{black}}
+In quantum field theory, $\phi(\vec{x},t)$ is defined as a one-dimensional system at each point $\vec{x}$. The quantum mechanical amplitude for a system to evolve from a field configuration $\phi_0(\vec{x})$ at $t = 0$ to $\phi_1(\vec{x})$ at $t = \tau$, we write
+\begin{align*}
+\langle \phi_1(\vec{x}); \tau\,|\, \phi_0(\vec{x}); 0\rangle = 
+N \int_{\{\phi\, | \, \phi(\vec{x},0) = \phi_0(\vec{x}),\, \phi(\vec{x},\tau) = \phi_1(\vec{x})\}} \mathcal{D}\phi(\vec{x},t) \, e^{\frac{i}{\hbar}\, s[\phi(\vec{x},t)]}\,.
+\end{align*}
+Then one is possible to compute the Green's function,
+\begin{align*}
+G_n(x_1,x_2,\cdots, x_n)&= \langle \Omega \, | \,T(\hat{\phi}(x_1) \, \hat{\phi}(x_2) \, \cdots \, \hat{\phi}(x_n))\, |\, \Omega\rangle\\
+&= \frac{\int \mathcal{D}\phi(x) \, \phi(x_1) \, \phi(x_2)\, \cdots \phi(x_n) \, e^{(i/\hbar)\, s[\phi(x)]}}{\int \mathcal{D}\phi(x)\, e^{(i/\hbar)\, s[\phi(x)]}}
+\,,
+\end{align*}
+where $\Omega$ denotes the ground state, and we see that the path integral automatically implemented time ordering.\\
+
+\subsection*{Path integral quantization of free photons}
+Here we denote, the action of free photon, \textbf{ADD}
+\begin{align*}
+s_0 = \int d^4 x\ \left( -\frac{1}{4}F_{\mu\nu}F^{\mu\nu}\right) = \int \frac{d^4k}{(2\pi)^4}\, \left( - \that{A}_\mu(k) \, (k^2 g^{\mu\nu} - k^\mu k^\nu)\,\that{A}_\nu(k)\right)
+\end{align*}
+However, $k^2g^{\mu\nu} - k^\mu k^\nu$ is not invertible as it has a zero mode. To see this, we write
+\begin{align*}
+k^2 g^{\mu\nu} - k^\mu k^\nu = k^2 p^{\mu\nu}\,,
+\end{align*}
+thus we have
+\begin{align*}
+p^{\mu\nu}  = g^{\mu\nu} - \frac{k^\mu k^\nu}{k^2}
+\end{align*}
+defining the projection operator. \textbf{Add}\\
+
+Now consider the components of $\that{A}_\mu(k)$ along $k_\mu$. Since $k_\mu p^{\mu\nu} = 0$,  this component in general does not contribute to the path integral. Thus it does not make sense to integrate over this quantity in the path integral. Note that this is a consequence of gauge invariance $A_\mu \to A_\mu + \pd_\mu \Lambda$. We fixed this problem earlier by gauge fixing, we will now see how one can gauge fix in the path integral formulation. \\
+
+The bottom line is the component of $\that{A}_\mu(k)$ along $k_\mu$ does not contribute to the path integral. Then in 
+\begin{align*}
+\int \mathcal{D}A_\mu\, e^{\frac{i}{\hbar}\, s[A_\mu]}
+\end{align*}
+there is a redundancy, which can be traced back to gauge invariance. This is taken care of by gauge fixing.  \\
+
+For a similar situation, we consider an integral
+\begin{align*}
+z \sim \int \, dx\, dy\, e^{is(x)}\,.
+\end{align*}
+Here we see that $y$ does not enter the integral, thus we can simply take
+\begin{align*}
+z = \int \, dx\, dy\, \delta(y)\, e^{is(x)}\,.
+\end{align*}
+Or more generally, we can also take
+\begin{align*}
+z =  \int \, dx\, dy\, \delta(y-f(x))\, e^{is(x)}\,.
+\end{align*}
+Now suppose $y = f(x)$ is a unique solution of some equation $G(x,y) = 0$, then we can write
+\begin{align*}
+\delta(G(x,y)) = \frac{\delta(y-f(x))}{|\pd G/\pd y|}\,,
+\end{align*}
+so we have
+\begin{align*}
+z \sim \int \, dx\, dy\, \left| \frac{\pd G}{\pd y}\right|\, \delta(G)\, e^{is}\,.
+\end{align*}
+In the multivariate case, integrating over $d^n x\, d^n y$, then we need $n$ functions $G_i$ to fix all $y_i$, thus we have
+\begin{align*}
+z \sim \int d^n x\, d^n y \, \det\left( \frac{\pd G_i}{\pd y_j}\right) \,e^{is} \prod_i \delta(G_i) \, 
+\end{align*}
+Now we apply these considerations to our path integral, where $(x,y)$ becomes components of $A_\mu$, then the path integral becomes
+\begin{align*}
+\int \mathcal{D}A \, \det\left( \frac{\pd G}{\pd \Lambda}\right)\,e^{is}\, \prod_x \delta(G(x))\,,
+\end{align*}
+and here we just choose the gauge fixing by $G(x) = \pd_\mu A^\mu -\omega(x)$ with $\omega(x)$ being an arbitrary function. Under a gauge transformation, we write
+\begin{align*}
+G(x) = \pd_\mu A^\mu \to G(x) - \pd^\mu \pd_\mu \Lambda\,.
+\end{align*}
+Thus we have
+\begin{align*}
+\frac{\delta G(x)}{\delta \Lambda(y)} = \pd_\mu \pd^\mu \delta^4(x-y)\,,
+\end{align*}
+where we have imposed
+\begin{align*}
+\frac{\delta \Lambda(x)}{\delta \Lambda (y)} = \delta^4(x-y)\,.
+\end{align*}
+For this kind of gauge fixing, the determinant is thus
+\begin{align*}
+\det(\pd_\mu \pd^\mu \delta^4(x-y))\,,
+\end{align*}
+which does not depend on $A_\mu$. However, for instance, if we choose the gauge fixing as $G(x) = \pd_\mu A^\mu + A_\mu^2 = 0$, then under a gauge transformation
+\begin{align*}
+G(x) \to G(x) - \pd^\mu \pd_\mu \Lambda - 2 A_\mu \pd^\mu \Lambda\,,
+\end{align*}
+then in this case
+\begin{align*}
+\frac{\delta G}{\delta \Lambda}= \pd^\mu \pd_\mu \delta^4(x-y) - 2A_\mu \pd^\mu\,,
+\end{align*}
+which does depends on $A_\mu$. Thus the choice of fixing gauge by $G(x) = \pd_\mu A^\mu - \omega(x)$, one can pull the determinant factor out of the integral, and in this case, we can write
+\begin{align*}
+\text{path integral} \sim \int \mathcal{D}A \delta(\pd_\mu A^\mu -\omega) e^{is}\,,
+\end{align*}
+and we can multiply it by a constant $\int \mathcal{D}\omega \, e^{-i\omega^2 /(2\xi)}$, and use $\delta(\pd_\mu A^\mu - \omega)$ to do the integral over $\omega$ to obtain
+\begin{align*}
+\text{path integral} \sim \int \mathcal{D}A_\mu e^{i\left( s - \frac{1}{2\xi}\int (\pd_\mu A^\mu)^2\right)}
+\end{align*}
+Now we see that adding the gauge fixing term $- \frac{1}{2\xi}\int (\pd_\mu A^\mu)^2$ allows the quadratic form to be inverted, that is,
+\begin{align*}
+s- \frac{1}{2\xi}\int (\pd_\mu A^\mu)^2 
+&= \frac{1}{2}\int \frac{d^4 k}{(2\pi)^4}
+\left( -\that{A}_\mu (k) \left( k^2 g^{\mu\nu} - k^\mu k^\nu \right) \that{A}_\nu(k) - \frac{1}{\xi} k_\mu k_\nu \that{A}^\mu(k) \that{A}^\nu (k)\right)\\
+&= \frac{1}{2}\int d^4k \left( - \that{A}_\mu (k) \left( k^2 g_{\mu\nu} - \left( 1- \frac{1}{\xi}\right) k_\mu k_\nu \right) \that{A}_\nu (k)\right)\,.
+\end{align*}
+Then the propagator can be obtained by inverting the quantity,
+\begin{align*}
+\frac{-i}{k^2 + i\epsilon} \left( g^{\mu\nu} - (1-\xi) \frac{k^\mu k^\nu}{k^2}\right)\,,
+\end{align*}
+with $\xi = 1$ being the Feynman gauge and $\xi = 0$ being the Landau gauge. \\
+
+However, in the second type of gauge fixing, $G(x) = \pd_\mu A^\mu + A_\mu A^\mu$, the path integral has the form \textbf{equation fixing}
+\begin{align*}
+\int \mathcal{D}A_\mu \, \det\left( \pd_\mu \pd^\mu \delta^4(x-y) + A_\mu \pd^\mu\delta^4(x-y)\right) \, \delta(G(x)) \, e^{is}\,,
+\end{align*}
+the determinant term can be written in terms of fictitious field called the ghost field to resolve the problem. 
+
+\end{document}
+
+
