@@ -1,0 +1,408 @@
+\documentclass[11pt,oneside]{book}
+
+%%%%%%%%%%%%%%Include Packages%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{xcolor}
+\usepackage{colortbl}
+\usepackage{tikz}
+\usepackage{mathtools}
+\usepackage[legalpaper, margin=0.8in]{geometry}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{rsfso}
+\usepackage{wasysym}
+\usepackage{hyperref}
+\usetikzlibrary{matrix, calc, arrows,
+                arrows.meta, fit,
+                positioning, quotes,
+                shapes.geometric}
+
+
+%%%%%%%%%%%%%%%Color%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{gray75}{gray}{0.75}
+\definecolor{yellow}{RGB}{255,255,177}
+\definecolor{pink}{RGB}{250,204,224}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%Theorem environments%%%%%%%%%%%%%%%%%%%
+\newtheoremstyle{break}
+  {\topsep}{\topsep}%
+  {\itshape}{}%
+  {\bfseries}{}%
+  {\newline}{}%
+\newtheoremstyle{newStyle}
+  {\topsep}{\topsep}%
+  {\rmfamily}{}%
+  {\bfseries}{}%
+  {\newline}{}%             % Theorem head spec
+  \theoremstyle{newStyle}
+\newtheorem{thm}{Theorem}[chapter]
+\newtheorem{lem}{Lemma}[thm]
+\newtheorem{axiom}[thm]{Axiom}
+\newtheorem{prop}[lem]{Proposition}
+\newtheorem{cor}[lem]{Corollary}
+\newtheorem{defn}[thm]{Definition}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\spa}{\text{span}}
+\newcommand{\pd}{\partial}
+\newcommand{\that}[1]{\widetilde{#1}}
+\newcommand{\vmat}[1]{\begin{vmatrix} #1 \end{vmatrix}}
+\newcommand{\bmat}[1]{\begin{bmatrix} #1 \end{bmatrix}}
+\newcommand{\pmat}[1]{\begin{pmatrix} #1 \end{pmatrix}}
+\newcommand*{\Perm}[2]{{}^{#1}\!P_{#2}}
+\newcommand*{\Comb}[2]{{}^{#1}C_{#2}}
+\newcommand*{\dr}[5]{\draw ({#1}.east) --+ ({#4},{#5}) node[right] ({#2}) {{#3}};}
+
+
+
+
+\newcommand{\note}{\color{red}Note: \color{black}}
+\newcommand{\remark}{\color{blue}Remark: \color{black}}
+\newcommand{\example}{\color{purple}Example: \color{black}}
+\newcommand{\exercise}{\color{cyan}Exercise: \color{black}}
+
+
+
+
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Stat410 Sum24 Lecture 6 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\textbf{Examples of Continuous Random Variables}\\
+
+\textbf{Uniform Distribution}:
+We say that $X$ has the uniform distribution on the interval $[A,B]\subseteq \R$ provided that the pdf is given by 
+\begin{align*}
+f_X(x) = \begin{cases}
+\frac{1}{B-A} & x \in [A,B]\\
+0 & \text{otherwise}
+\end{cases}\,.
+\end{align*}
+The cdf of the uniform distribution can be computed via the forllowing: For $x \leq A$,
+\begin{align*}
+F_X(x) = \int_{-\infty}^x f_X(u) \, du = 0\,.
+\end{align*}
+For $x \in [A,B]$, 
+\begin{align*}
+F_X(x) = \int_A^x \frac{1}{B-A}\, du = \frac{x-A}{B-A} = \left(- \frac{A}{B-A}\right) + \left( \frac{1}{B-A}\right) x\,.
+\end{align*}
+Furthermore, if $x\geq B$, $F_X(x) = 1$. Thus we conclude
+\begin{align*}
+F_X(x) = \begin{cases} 0 & x\leq A \\ \frac{x-A}{B-A} & x\in [A,B] \\ 1 & x \geq B
+\end{cases}
+\,.
+\end{align*}
+Now we can calculate
+\begin{align*}
+E(X) = \frac{B+A}{2}\,,\qquad
+E(X^2) = \frac{B^2 + AB +A^2}{3} \,,\qquad
+V(X) = \frac{(B-A)^2}{12}\,,\qquad
+M_X(t) = \frac{e^{Bt}-e^{At}}{(B-A)t}\,.
+\end{align*}
+\hfill\break
+\hfill\break
+
+\textbf{Normal Distribution}: A random variable $Z$ has the standard normal distribution provided that the pdf of $Z$ is given by
+\begin{align*}
+f_Z(z) = \frac{1}{\sqrt{2\pi}}e^{-z^2/2}\,,
+\end{align*}
+for $z \in \R$. To show that $f_Z$ is a pdf, we notice that $f_Z(z) \geq 0$ for all $z$, the normalization is checked by computing
+\begin{align*}
+\int_{-\infty}^\infty \frac{1}{\sqrt{2\pi}} e^{-z^2/2}\, dz = 1\,.
+\end{align*}
+To compute this integral, we notice that
+\begin{align*}
+\left( \int_{-\infty}^\infty e^{-x^2}\, dx\right)^2 = \int_{-\infty}^\infty e^{-x^2/2}\, dx \cdot \int_{-\infty}^\infty e^{-y^2/2}\, dy = \int_{-\infty}^\infty\int_{-\infty}^\infty e^{-(x^2+y^2)/2}\, dy\, dx\,,
+\end{align*}
+where we have made use of the Fubini's Theorem. Here we switch to the polar coordinate, $x = r\cos(\theta)$ and $y = r\sin(\theta)$, with 
+\begin{align*}
+J = \pmat{\cos(\theta) & -r\sin(\theta) \\ \sin(\theta) & r\cos(\theta)}\,,\qquad
+\text{thus }\det(J) = r(\cos^2(\theta) + \sin^2(\theta) ) = r\,.
+\end{align*}
+Then we have
+\begin{align*}
+\left( \int_{-\infty}^\infty e^{-x^2}\, dx\right)^2  = \int_0^{2\pi} \int_0^{\infty}e^{-r^2/2}\, r\, dr\, d\theta &= \int_{0}^{2\pi} \left(\lim_{c\to \infty}\int_0^c re^{-r^2/2}\, dr\,\right) d\theta\\
+&= \int_{0}^{2\pi} \left(\lim_{c\to \infty}\int_0^{c^2/2}e^{-u}\, du \right)  d\theta\\
+&= \int_{0}^{2\pi} \left(\lim_{c\to \infty}\left( 1- e^{-c^2/2}\right) \right)  d\theta\\
+&= \int_0^{2\pi}\, d\theta = 2\pi\,,
+\end{align*}
+where we have set $u = r^2/2$, thus $du = r\, dr$. It follows from here that
+\begin{align*}
+\int_{-\infty}^\infty e^{-x^2/2}\, dx = \sqrt{2\pi}\,,
+\end{align*}
+and rearranging we obtain the desired result. \\
+
+On the other hand, the cdf of $Z$ has no closed form formula, 
+\begin{align*}
+\Phi(z) = F_Z(z) = \int_{-\infty}^z \frac{1}{\sqrt{2\pi}}e^{-u^2/2}\, du\,.
+\end{align*}
+To compute $\Phi(z)$, one needs numerical approximation.\\
+
+Next we compute the expected value, the variance, and the mgf for $Z$. 
+\begin{enumerate}
+\item Expected value. Here we compute
+\begin{align*}
+\mu_Z = E(Z) = \int_{-\infty}^\infty \frac{1}{\sqrt{2\pi}}\cdot ze^{-z^2/2}\, dz\,.
+\end{align*}
+We notice that $f(z) = ze^{-z^2/2}$ is an odd function, that is $f(z) = -f(-z)$, but we cannot use 
+$\int_{-c}^c f(z) \, dz = 0
+$ to calculate $
+\int_{-\infty}^\infty f(z)\, dz$. Instead, we should write
+\begin{align*}
+\int_{-\infty}^\infty z \, f_Z(z) \, dz = \int_{-\infty}^0 z\, f_Z(z) \, dz + \int_{0}^\infty zf_Z(z)\, dz\,.
+\end{align*}
+Here we have
+\begin{align*}
+\int_0^{\infty} \frac{1}{\sqrt{
+2\pi}}ze^{-z^2/2}\, dz = \lim_{c\to \infty}\int_0^c \frac{1}{\sqrt{2\pi}} ze^{-z^2/2}\, dz = \frac{1}{\sqrt{2\pi}}\lim_{c\to \infty}\int_0^c ze^{-z^2/2}\, dz = \frac{1}{\sqrt{
+2\pi}}\,.
+\end{align*}
+Similarly, 
+\begin{align*}
+\int_{-\infty}^0 zf_Z(z)\, dz = \frac{1}{\sqrt{2\pi}}\lim_{c\to -\infty}\left( \int_{c}^c ze^{-z^2/2}\,dz\right) = -\frac{1}{\sqrt{2\pi}}\,.
+\end{align*}
+Thus we conclude $E(Z) = 0$. 
+\item Now to calculate $V(Z)$, one fines that $E(Z^2) = 1$ and thus
+\begin{align*}
+V(Z) = E(Z^2) - (E(Z))^2 = 1\,.
+\end{align*}
+\item Finally, we compute the mgf. 
+\begin{align*}
+M_Z(t) = E(e^{tZ}) 
+&= \int_{-\infty}^\infty e^{tz} \cdot \frac{1}{\sqrt{2\pi}}\cdot e^{-z^2/2}\, dz\\
+&= \int_{-\infty}^\infty \frac{1}{\sqrt{2\pi}}\cdot e^{-z^2+tz}\, dz \\
+&= \int_{-\infty}^\infty \frac{1}{\sqrt{2\pi}}\cdot e^{-z^2/2 + tz+ t^2/2 - t^2/2}\, dz\\
+&= \int_{-\infty}^\infty e^{t^2/2}\cdot \frac{1}{\sqrt{2\pi}} \cdot e^{-(z-t)^2/2}\, dz\\
+&= e^{t^2/2}\int_{-\infty}^\infty \frac{1}{\sqrt{2\pi}}e^{-u^2/2}\, du \\
+&= e^{t^2/2}\,,
+\end{align*}
+where we have set $u = z-t$ and thus $du=dz$. \\
+\end{enumerate}
+
+
+\begin{defn}
+Let $Z$ has the standard normal distribution. $X$ is called a normal distribution with parameters $\mu$ and $\sigma^2$, where $\mu$ is the mean and $\sigma^2$ is the variance, provided that $X = \sigma Z + \mu$, where $\sigma = \sqrt{\sigma^2}$. Such a normal distribution is denoted as $X\sim $N$(\mu, \sigma^2)$
+\end{defn}
+ 
+To calculate the pdf of $X$, we first need to calculate the cdf $F_X(x)$, then if $F_X(x)$ is differentiable, we obtain $f_X(x) = F'_X(x)$ from $F_X(x)$. For $x \in \R$, we see that 
+\begin{align*}
+F_X(x) = P(X\leq x) = P(\sigma Z + \mu \leq x) = P(Z \leq (x-\mu)/\sigma)\,.\end{align*}
+Thus we see that 
+\begin{align*}
+F_X(x) = F_Z((x-\mu)/\sigma)\,.
+\end{align*}
+Using chain rule, we can write
+\begin{align*}
+f_X(x) = \frac{d}{dx}\left( F_X(x)\right) = \frac{d}{dx}\left( F_Z\left( \frac{x-\mu}{\sigma}\right) \right) = F'_Z\left( \frac{x-\mu}{\sigma}\right) \cdot \frac{d}{dx}\left( \frac{x-\mu}{\sigma}\right) = \frac{1}{\sqrt{
+2\pi}\sigma}\cdot e^{-\frac{(x-\mu)^2}{2\sigma^2}}\,,
+\end{align*}
+for $x \in \R$. Now we want to calculate the followings
+\begin{enumerate}
+\item The cdf of $X$. Here we write
+\begin{align*}
+F_X(x) = \int_{-\infty}^x \frac{1}{\sqrt{2\pi}\sigma}\cdot e^{-(u-\mu)^2/(2\sigma^2)}\, du = F_Z\left( \frac{x-\mu}{\sigma}\right) = \Phi\left( \frac{x-\mu}{\sigma}\right)\,,
+\end{align*}
+where $(X-\mu)/\sigma$ is the standardized normal distribution, or the $z$-score of $X$. Here we see that we can use the cdf of $Z$ to calculate the cdf of $X$. 
+\item The mean of $X\sim$N$(\mu, \sigma^2)$ is calculated via $X = \sigma Z + \mu$, 
+\begin{align*}
+E(X) = E(\sigma Z + \mu) = \sigma E(Z) + \mu = \mu\,.
+\end{align*}
+\item The variance of $X$ is calculated similarly, 
+\begin{align*}
+V(X) = V(\sigma Z + \mu) = \sigma^2 V(Z) = \sigma^2\,.
+\end{align*}
+\item The mgf of $X$, 
+\begin{align*}
+M_X(t) = M_{\sigma Z + \mu}(t) = e^{\mu t}\cdot M_{Z}(\sigma t) = e^{\mu t} \cdot e^{(\sigma t)^2 /2} = e^{\mu t + (\sigma^2 t^2)/2}\,.
+\end{align*}\\
+\end{enumerate}
+
+\textbf{Example}: Suppose John takes an exam, and he scores $72/100$ on the exam. Without additional information, John has a $C$. John is then told that $\mu = 70$ and $\sigma = 2$ for this exam. That is, if the distribution is normal, $68\%$ of the class is in the range $(68,72)$; $95\%$ of the class is in the range $(66,74)$, and $99.7\%$ of the class is in the range $(64,76)$. Thus, only $18\%$ of the class has done better than John, so John deserves a $B$. However, the fundamental problem here is that John is assuming the class grades are normally distributed, which is an incorrect assumption. \\
+
+\hfill\break
+\hfill\break
+
+
+\textbf{Gamma Distribution}:
+\begin{defn}
+Let $\alpha >0$, the function $\Gamma:\R^+\to \R_{\geq 0}$ defined by 
+\begin{align*}
+\Gamma(\alpha) \coloneqq \int_0^\infty t^{\alpha-1} e^{-t}\, dt
+\end{align*}
+is called the Gamma function. 
+\end{defn} 
+The Gamma function has the following properties:
+\begin{enumerate}
+\item $\Gamma(\alpha) >0$ for all $\alpha>0$, thus $\Gamma:\R^+ \to \R_{\geq 0}$. 
+\item $\Gamma(\alpha+1) = \alpha \Gamma(\alpha)$, this is seen from integration by parts with $u = t^\alpha$, $dv = e^{-t}$ in the integral
+\begin{align*}
+\Gamma(\alpha+1) = \int_0^\infty t^{\alpha+1-1}e^{-t}\, dt = \int_0^\infty t^{\alpha} e^{-t}\, dt\,,
+\end{align*}
+with $du = \alpha t^{\alpha-1}\, dt$ and $v = -e^{-t}$, we obtain the desired result. 
+\item $\Gamma(1) = 1$, as we have
+\begin{align*}
+\Gamma(1) = \int_{0}^\infty e^{-t}\, dt = 1\,.
+\end{align*}
+\item From (2) and (3), we obtain that for all $n \in \N$, 
+\begin{align*}
+\Gamma(n+1) = n \cdot \Gamma(n) = n\cdot (n-1) \cdot \Gamma(n-1)  = n\cdot (n-1)\cdot (n-2) \cdot \cdots \cdot 3 \cdot 2 \cdot 1 \cdot \Gamma(1) = n!\,,
+\end{align*}
+thus $\Gamma$ interpolates the factorial function.
+\item $\Gamma(1/2) = \sqrt{\pi}$, the proof of this fact is an easy exercise. 
+\end{enumerate}
+
+\begin{defn}
+We say that $T$ has the standard Gamma distribution with $\alpha$ being the shape parameter provided that the pdf of $T$ is defined by
+\begin{align*}
+f_T(t) = \begin{cases}
+\frac{1}{\Gamma(\alpha)}t^{\alpha-1} e^{-t} & t>0\\
+0 &\text{otherwise}
+\end{cases}\,.
+\end{align*}
+\end{defn}
+We observe that 
+\begin{align*}
+\int_{-\infty}^\infty f_T(t) = \int_0^{\infty}\frac{1}{\Gamma(\alpha)}\cdot t^{\alpha-1} \cdot e^{-t}\, dt = \frac{1}{\Gamma(\alpha)}\cdot \int_0^\infty t^{\alpha-1} e^{-t}\, dt = \frac{\Gamma(\alpha)}{\Gamma(\alpha)} = 1
+\,.
+\end{align*}
+Now suppose we have $T \sim$Gamma$(\alpha,1)$. We calculate $E(T)$, $V(T)$, and $M_T(t)$:
+\begin{enumerate}
+\item For the expectation value,
+\begin{align*}
+E(T) = \int_{-\infty}^\infty t\cdot f_T(t) \,dt = \int_0^\infty \frac{t}{\Gamma(\alpha)}\cdot t^{(\alpha-1)}e^{-t}\, dt = \frac{\Gamma(\alpha+1)}{\Gamma(\alpha)}\int_0^\infty \frac{t^{(\alpha+1)-1}\cdot e^{-t}}{\Gamma(\alpha+1)}\, dt = \frac{\Gamma(\alpha+1)}{\Gamma(\alpha)} = \alpha\,.
+\end{align*}
+\item For the variance,
+\begin{align*}
+E(T^2) = \int_0^\infty \frac{t^2}{\Gamma(\alpha)}\cdot t^{\alpha-1}\cdot e^{-t}\, dt = \frac{\Gamma(\alpha+2)}{\Gamma(\alpha)} \int_0^\infty \frac{t^{(\alpha+2)-1)}\cdot e^{-t}}{\Gamma(\alpha+2)}\, dt = \frac{\Gamma(\alpha+2)}{\Gamma(\alpha)} = \frac{(\alpha+1)\cdot \Gamma(\alpha+1)}{\Gamma(\alpha)} = \alpha(\alpha+1)\,.
+\end{align*}
+Thus we have
+\begin{align*}
+V(T) = E(T^2) - (E(T))^2 = \alpha(\alpha-1)-\alpha^2 = \alpha\,.
+\end{align*}
+\item Lastly we calculate $M_T(t)$,
+\begin{align*}
+M_T(s) = E(e^{sT}) = \int_{0}^\infty \frac{e^{st}}{\Gamma(\alpha)}\cdot t^{\alpha-1}e^{-t}\, dt 
+&= \int_0^\infty \frac{t^{\alpha-1}e^{-t(1-s)}}{\Gamma(\alpha)}\, dt \\
+&= \int_0^\infty \frac{1}{\Gamma(\alpha)}\cdot\left( \frac{u}{1-s}\right)^{\alpha-1}\cdot e^{-u}\frac{du}{1-s}\\
+&= \left( \frac{1}{1-s}\right)^\alpha \int_0^\infty \frac{1}{\Gamma(\alpha)}\cdot u^{\alpha-1} e^{-u}\, du \\
+&= \left( \frac{1}{1-s}\right)^\alpha\,,
+\end{align*}
+where we have used the change of variables $u = t(1-s)$ thus $du/(1-s) = dt$. 
+\end{enumerate}
+\begin{defn}
+We say $X$ has the Gamma distribution with parameters $\alpha$ and $\beta$, where $\alpha$ denotes the shape parameter and $\beta$ denotes the scale parameter, provided that $X = \beta T$ where $T$ has the standard Gamma distribution with shape $\alpha$. 
+\end{defn}
+Consider $X\sim$Gamma$(\alpha, \beta)$ and $T\sim$Gamma$(\alpha, 1)$. We would like to calculate the pdf of $X$. As usual, we first calculate the cdf then we differentiate the cdf. 
+\begin{align*}
+F_X(x) = P(X\leq x) = P(\beta T\leq x) = P(T\leq x/\beta) = F_T(x/\beta)\,,
+\end{align*}
+thus we can write
+\begin{align*}
+f_X(x) = \frac{d}{dx}(F_x(x)) = \frac{d}{dx}\left( F_T\left( \frac{x}{\beta}\right)\right) = F'_T\left( \frac{x}{\beta}\right) \cdot\frac{1}{\beta} = \begin{cases}
+\frac{1}{\Gamma(\alpha)}\cdot 
+\frac{x^{\alpha-1}}{\beta^\alpha}
+ \cdot e^{-x/\beta} & x >0 \\
+0 & \text{otherwise}
+\end{cases}\,.
+\end{align*}
+Now we would like to calculate $E(X)$, $V(X)$ and $M_X(t)$. 
+\begin{enumerate}
+\item For $E(X)$,
+\begin{align*}
+E(X) = E(\beta T) = \beta\cdot E(T) = \alpha\beta\,.
+\end{align*}
+\item For $V(X)$,
+\begin{align*}
+V(X) =  V(\beta T)  = \beta^2\cdot V(T)\,.
+\end{align*}
+\item For $M_X(t)$, 
+\begin{align*}
+M_X(t) = M_{\beta T}(t) = M_T(\beta t) = \left( \frac{1}{1-\beta t}\right)^\alpha\,.\\
+\end{align*}
+\end{enumerate}
+
+\hfill\break
+\textbf{Special Cases of the Gamma Distribution}
+\begin{enumerate}
+\item[a.] \textbf{Exponential Distribution}: We say that $X$ has the exponential distribution with $\lambda$ being the rate parameter provided that $X\sim$Gamma$(\alpha = 1,\ \beta= 1/\lambda)$. The pdf of $X$ is  defined by
+\begin{align*}
+f_X(x) = \begin{cases} \lambda e^{-\lambda x} & x>0 \\ 0 &\text{otherwise}\end{cases}
+\end{align*}
+If $X\sim$Exp$(\lambda)$, here we can calculate:
+\begin{enumerate}
+\item $E(X) = \alpha \cdot \beta = 1/\lambda$;
+\item $V(X) = \alpha\beta^2 = 1/\lambda^2$;
+\item $M_X(t) = 1/(1-t/\lambda) = \lambda/(\lambda-t)$. 
+\end{enumerate}
+Note that the cdf of $X\sim$Exp$(\lambda)$ is given by
+\begin{align*}
+F_X(x) = \int_0^x \lambda \cdot e^{-\lambda u}\, du = \lambda \cdot \left.\frac{e^{-\lambda u}}{-\lambda}\right|_0^x = 1-e^{\lambda x}\,.
+\end{align*}
+The exponential distribution has the memoryless property. That is, 
+\begin{align*}
+P(X>t+s|X>t) = \frac{P(X>t+s, X>t)}{P(X>t)} = \frac{P(X>t+s)}{P(X>t)} = \frac{1-F_X(t+s)}{1-F_X(t)} = \frac{e^{-(t+s)}}{e^{-t}} = e^{-s} = P(X>s)\,.
+\end{align*}
+\item[b.] \textbf{Chi-Squared Distribution} We say that $X$ has the Chi-squared distribution with parameter $\nu \in \N$ being the degrees of freedom provided that $X \sim$Gamma$(\alpha=\nu/2,\ \beta = 2)$. Such a Chi-squared distribution is denoted by $X\sim\chi_\nu^2$. The pdf of $X$ is defined by
+\begin{align*}
+f_X(x) = \begin{cases}
+\frac{1}{\Gamma(\nu/2) \cdot 2^{\nu/2}}x^{(\nu/2-1)}\cdot e^{-x/2}& x>0 \\ 0 &\text{otherwise}
+\end{cases}\,.
+\end{align*}
+\end{enumerate}
+Here we suppose $X \sim \chi_\nu^2$, it is not hard to compute
+\begin{enumerate}
+\item $E(X)= (\nu/2)\cdot 2 = \nu$;
+\item $V(X) = (\nu/2) \cdot 2^2 = 2\nu$;
+\item $M_X(t)= (1/(1-2t))^{\nu/2}$. 
+\end{enumerate}
+
+\begin{thm}
+Suppose $Z \sim$N$(0,1)$, then $X = Z^2$ has the distribution $\chi_1^2$. 
+\end{thm}
+
+\textbf{Example}: Measuring the height of an object. Suppose the height is $\mu$, and $X$ be the single measurement of the height. It is reasonable to assume that $X\sim$N$(\mu, \sigma^2)$. One is interested in modeling the error in the measurement, that is how $X$ deviates from the true (unknown) height $\mu$. The standardized deviation is 
+\begin{align*}
+Z = \frac{X-\mu}{\sigma}\,,
+\end{align*} 
+and the squared standardized deviation of $X$ from $\mu$ is thus
+\begin{align*}
+Z^2 = \left( \frac{X -\mu}{\sigma}\right)^2\,.
+\end{align*}
+
+\textbf{Other Continuous Random Variables}
+\begin{enumerate}
+\item \textbf{Beta Distribution}: We say $X$ has a Beta distribution on $(0,1)$ with parameters $\alpha, \beta>0$, denoted as $X \sim$Beta$(\alpha,\beta)$, provided that its pdf is defined by
+\begin{align*}
+f_X(x) = \begin{cases}
+\frac{\Gamma(\alpha+\beta)}{\Gamma(\alpha) \cdot \Gamma(\beta)} x^{\alpha-1}\cdot (1-x)^{\beta - 1} & x\in (0,1) \\ 0 &\text{otherwise}
+\end{cases}\,.
+\end{align*}
+Such a Beta distribution has 
+\begin{align*}
+E(X) = \alpha/(\alpha+\beta)\,,\qquad\text{and } V(X) = \alpha\beta/ ((\alpha+\beta)^2 \cdot (\alpha+\beta +1))\,.
+\end{align*} 
+\item \textbf{Cauchy Distribution}. We say $X$ has the Cauchy distribution provided that its pdf is defined by
+\begin{align*}
+f_X(x) = \frac{1}{\pi}\left( \frac{1}{1+x^2}\right) 
+\end{align*}
+for all $x \in \R$. The expectation value of the Cauchy distribution does not exist as the integral 
+\begin{align*}
+\frac{1}{\pi}\int_{-\infty}^\infty \frac{x}{1+x^2}\,dx
+\end{align*}
+does not converge. 
+\end{enumerate}
+
+
+
+\end{document}
+

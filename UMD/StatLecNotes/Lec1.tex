@@ -1,0 +1,640 @@
+\documentclass[11pt,oneside]{book}
+
+%%%%%%%%%%%%%%Include Packages%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{xcolor}
+\usepackage{colortbl}
+\usepackage{tikz}
+\usepackage{mathtools}
+\usepackage[legalpaper, margin=0.8in]{geometry}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{rsfso}
+\usepackage{wasysym}
+\usepackage{hyperref}
+\usetikzlibrary{matrix, calc, arrows,
+                arrows.meta, fit,
+                positioning, quotes,
+                shapes.geometric}
+
+
+%%%%%%%%%%%%%%%Color%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{gray75}{gray}{0.75}
+\definecolor{yellow}{RGB}{255,255,177}
+\definecolor{pink}{RGB}{250,204,224}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%Theorem environments%%%%%%%%%%%%%%%%%%%
+\newtheoremstyle{break}
+  {\topsep}{\topsep}%
+  {\itshape}{}%
+  {\bfseries}{}%
+  {\newline}{}%
+\newtheoremstyle{newStyle}
+  {\topsep}{\topsep}%
+  {\rmfamily}{}%
+  {\bfseries}{}%
+  {\newline}{}%             % Theorem head spec
+  \theoremstyle{newStyle}
+\newtheorem{thm}{Theorem}[chapter]
+\newtheorem{lem}{Lemma}[thm]
+\newtheorem{axiom}[thm]{Axiom}
+\newtheorem{prop}[lem]{Proposition}
+\newtheorem{cor}[lem]{Corollary}
+\newtheorem{defn}[thm]{Definition}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\spa}{\text{span}}
+\newcommand{\pd}{\partial}
+\newcommand{\that}[1]{\widetilde{#1}}
+\newcommand{\vmat}[1]{\begin{vmatrix} #1 \end{vmatrix}}
+\newcommand{\bmat}[1]{\begin{bmatrix} #1 \end{bmatrix}}
+\newcommand{\pmat}[1]{\begin{pmatrix} #1 \end{pmatrix}}
+\newcommand*{\Perm}[2]{{}^{#1}\!P_{#2}}
+\newcommand*{\Comb}[2]{{}^{#1}C_{#2}}
+\newcommand*{\dr}[5]{\draw ({#1}.east) --+ ({#4},{#5}) node[right] ({#2}) {{#3}};}
+
+
+
+
+\newcommand{\note}{\color{red}Note: \color{black}}
+\newcommand{\remark}{\color{blue}Remark: \color{black}}
+\newcommand{\example}{\color{purple}Example: \color{black}}
+\newcommand{\exercise}{\color{cyan}Exercise: \color{black}}
+
+
+
+
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Stat410 Sum24 Lecture 1 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\textbf{Examples}: 
+\begin{enumerate}
+\item Coin Toss
+\begin{enumerate}
+\item[(a).] Experiment: Toss a coin once. \\
+All possible outcomes are contained in the set $\{H,T\}$, with $H$ representing obtaining a head and $T$ representing obtaining a tail. The total number of outcomes is 2. 
+\item[(b).] Experiment: Toss the coin two times.\\
+All possible outcomes are contained in the set $\{HH, HT, TH, TT\}$. Number of outcomes is 4. 
+\item[(c).] Experiment: Toss the coin 10 times.\\
+All possible outcomes are contained in the set $\{HHH\cdots H,\ HTHH\cdots H,\ \cdots\}$. Number of outcomes is $2^{10}=1024$. 
+\end{enumerate}
+
+
+\item Die Rolls
+\begin{enumerate}
+\item[(a).] Roll a six-sided die once. 
+Outcomes are in the set $\{1,2,3,4,5,6\}$.
+\item[(b).] Roll the die two times. Outcomes are in the set
+\begin{align*}
+\left\{
+\begin{matrix}
+(1,1), & (1,2), & (1,3), & \cdots , & (1,6),\\
+(2,1), & (2,2), & (2,3), & \cdots , & (2,6),\\
+\vdots & \vdots & \vdots & \ddots  & \vdots\\
+(6,1), & (6,2), & (6,3), & \cdots , & (6,6)
+\end{matrix}
+\right\}\ .
+\end{align*}
+\end{enumerate}
+
+\item Consider the following experiment: In step 1, we toss a coin; In step 2, we roll a 6-sided die. All possible outcomes are contained in the set
+\begin{align*}
+\left\{
+\begin{matrix}
+(H,1), &(H,2), &(H,3),& (H,4),& (H,5),& (H,6), \\
+(T,1),& (T,2), &(T,3), &(T,4),& (T,5), &(T,6) \\
+\end{matrix}
+\right\}\ .
+\end{align*}
+
+\item Consider the following experiment: Pick a random student from campus, and ask if they have walked more than 3000 steps today. All possible outcomes of this experiment are contained in the set $\{``\text{Yes}",\,``\text{No}"\}$.
+
+\item Consider the following experiment: Pick a student from campus and measure their height. All possible outcomes are contained in the set of positive real numbers, that is $(0, \infty)$. 
+\end{enumerate}
+
+
+\vspace{2cm}
+
+
+\textbf{Examples:}
+\begin{enumerate}
+\item Consider the experiment that we toss the coin only once.\\ 
+ 
+	\begin{tikzpicture}[>=triangle 60,every node/.style={anchor=west}]
+        \matrix (m) [matrix of nodes, row sep=0em, column sep=3em]
+        {You\\};
+        \draw (m-1-1.east) --+ (2.5,0) node[right] (head) {tossed a head};
+        \draw (m-1-1.east) --+ (2.5,-1) node[right] (tail) {tossed a tail};
+        \draw (head.east) --+ (2.5,0) node[right] (H) {H};
+        \draw (tail.east) --+ (2.73,0) node[right] (T) {T};       
+
+	\node[xshift=4.5cm,text width=2.5cm,above=.5cm] at (m-1-1.north east) {\bf step 1};
+	\node[xshift=8cm,text width=2.5cm,above=.5cm] at (m-1-1.north east) {\bf sample space};
+        \end{tikzpicture}
+
+\item Consider the experiment that we toss the coin two times. \\
+
+\begin{tikzpicture}[>=triangle 60,every node/.style={anchor=west}]
+        \matrix (m) [matrix of nodes, row sep=0em, column sep=3em]
+        {You\\};
+        \draw (m-1-1.east) --+ (2.5,0) node[right] (h) {tossed a head};
+        \draw (m-1-1.east) --+ (2.5,-2) node[right] (t) {tossed a tail\ \ \ };
+        \draw (h.east) --+ (2.5,0) node[right] (hh) {tossed a head};
+        \draw (h.east) --+ (2.73,-1) node[right] (ht) {tossed a tail};
+        \draw (t.east) --+ (2.5,0) node[right] (th) {tossed a head};
+        \draw (t.east) --+ (2.73,-1) node[right] (tt) {tossed a tail};
+        \dr{tt}{TT}{TT}{2.5}{0}
+        \dr{th}{TH}{TH}{2.5}{0}
+        \dr{ht}{HT}{HT}{2.5}{0}
+        \dr{hh}{HH}{HH}{2.5}{0}         
+
+	\node[xshift=4.5cm,text width=2.5cm,above=.5cm] at (m-1-1.north east) {\bf step 1};
+	\node[xshift=9.5cm,text width=2.5cm,above=.5cm] at (m-1-1.north east) {\bf step 2};
+	\node[xshift=13cm,text width=2.5cm,above=.5cm] at (m-1-1.north east) {\bf sample space};
+        \end{tikzpicture}
+
+
+\item Consider the experiment: In the first step, we toss a coin; In the second step, we roll a 6-sided die.
+
+\begin{tikzpicture}[>=triangle 60,every node/.style={anchor=west}]
+        \matrix (m) [matrix of nodes, row sep=0em, column sep=3em]
+        {You\\};
+		\dr{m-1-1}{tossed a head}{tossed a head}{2.5}{0}
+		\dr{tossed a head}{H1}{rolled a 1}{2.5}{0}
+		\dr{tossed a head}{H2}{rolled a 2}{2.5}{-1}
+		\dr{tossed a head}{H3}{rolled a 3}{2.5}{-2}
+		\dr{tossed a head}{H4}{rolled a 4}{2.5}{-3}
+		\dr{tossed a head}{H5}{rolled a 5}{2.5}{-4}
+		\dr{tossed a head}{H6}{rolled a 6}{2.5}{-5}
+		\dr{m-1-1}{tossed a tail}{tossed a tail}{2.5}{-6}
+		\dr{tossed a tail}{T1}{rolled a 1}{2.73}{0}
+		\dr{tossed a tail}{T2}{rolled a 2}{2.73}{-1}
+		\dr{tossed a tail}{T3}{rolled a 3}{2.73}{-2}
+		\dr{tossed a tail}{T4}{rolled a 4}{2.73}{-3}
+		\dr{tossed a tail}{T5}{rolled a 5}{2.73}{-4}
+		\dr{tossed a tail}{T6}{rolled a 6}{2.73}{-5}
+		\dr{H1}{h1}{$(H,1)$}{2.5}{0}
+		\dr{H2}{h2}{$(H,2)$}{2.5}{0}
+		\dr{H3}{h3}{$(H,3)$}{2.5}{0}
+		\dr{H4}{h4}{$(H,4)$}{2.5}{0}
+		\dr{H5}{h5}{$(H,5)$}{2.5}{0}
+		\dr{H6}{h6}{$(H,6)$}{2.5}{0}
+		\dr{T1}{t1}{$(T,1)$}{2.5}{0}
+		\dr{T2}{t2}{$(T,2)$}{2.5}{0}
+		\dr{T3}{t3}{$(T,3)$}{2.5}{0}
+		\dr{T4}{t4}{$(T,4)$}{2.5}{0}
+		\dr{T5}{t5}{$(T,5)$}{2.5}{0}
+		\dr{T6}{t6}{$(T,6)$}{2.5}{0}
+	\node[xshift=4.5cm,text width=2.5cm,above=.5cm] at (m-1-1.north east) {\bf step 1};
+	\node[xshift=9cm,text width=2.5cm,above=.5cm] at (m-1-1.north east) {\bf step 2};
+	\node[xshift=12.5cm,text width=2.5cm,above=.5cm] at (m-1-1.north east) {\bf sample space};
+\end{tikzpicture}
+
+\item Consider the following experiment: First choose a person, ask if they have the disease (result denoted as $D$ or $D^c$), then administer the test to the person, getting positive (Pos) or negative (Neg) testing result. \\
+
+\begin{tikzpicture}[>=triangle 60,every node/.style={anchor=west}]
+        \matrix (m) [matrix of nodes, row sep=0em, column sep=3em]
+        {You\\};
+        \dr{m-1-1}{D}{$D$\,}{2.5}{0}
+        \dr{m-1-1}{Dc}{$D^c$}{2.5}{-2}
+        \dr{D}{DP}{Pos}{2.5}{0}
+        \dr{D}{DN}{Neg}{2.5}{-1}
+        \dr{Dc}{DcP}{Pos}{2.48}{0}
+        \dr{Dc}{DcN}{Neg}{2.48}{-1}
+        \dr{DP}{dp}{$(D,\text{Pos})$}{2.5}{0}
+        \dr{DN}{dn}{$(D,\text{Neg})$}{2.5}{0}
+        \dr{DcP}{dcp}{$(D^c,\text{Pos})$}{2.5}{0}
+        \dr{DcN}{dcn}{$(D^c,\text{Neg})$}{2.5}{0}
+	\node[xshift=3.5cm,text width=2.5cm,above=.5cm] at (m-1-1.north east) {\bf step 1};
+	\node[xshift=6.8cm,text width=2.5cm,above=.5cm] at (m-1-1.north east) {\bf step 2};
+	\node[xshift=10cm,text width=2.5cm,above=.5cm] at (m-1-1.north east) {\bf sample space};
+\end{tikzpicture}
+\end{enumerate}
+
+
+\vspace{2cm}
+
+\textbf{Examples}
+\begin{enumerate}
+\item
+Consider the experiment of tossing a coin once. In this case, the sample space is $S = \{H, T\}$. The event space has the following elements:
+\begin{align*}
+\emptyset\ \ &\rightarrow \text{Did not toss the coin,}\\
+S\ \ &\rightarrow \text{Tossed the coin},\\
+\{H\} &\rightarrow\text{Tossed the coin and the coin landed head},\\
+\{T\} &\rightarrow\text{Tossed the coin and the coin landed tail}.\\
+\end{align*}
+
+\item Now we consider a two-step experiment: In step 1, we toss a coin, with result $H$ or $T$; In step 2, we roll a 6-sided die. The sample space is 
+\begin{align*}0
+S = \left\{
+\begin{matrix}
+(H,1), &(H,2), &(H,3),& (H,4),& (H,5),& (H,6), \\
+(T,1),& (T,2), &(T,3), &(T,4),& (T,5), &(T,6) \\
+\end{matrix}
+\right\}\ .
+\end{align*}
+Here are some examples of events:
+\begin{enumerate}
+\item[(a).] The coin lands $H$, represented by the set $\{(H,1), (H,2), (H,3), (H,4), (H,5), (H,6) \} \subseteq S$.
+\item[(b).] The die rolls to $6$, represented by $\{(H,6), (T,6)\}$. 
+\item[(c).] The coin lands $H$ and the die rolls to an even number, represented by $\{(H,2), (H,4), (H,6)\}$.
+\item[(d).] The die rolls to an odd number, represented by $\{(H,1), (H,3), (H,5), (T,1), (T,3), (T,5)\}$.
+\end{enumerate}
+\end{enumerate}
+
+
+\vspace{2cm}
+
+\textbf{Example}\\
+Here we consider the experiment: Toss a coin followed by die roll. As discussed previously, the sample space is represented by the set
+\begin{align*}
+S = \left\{
+\begin{matrix}
+(H,1), &(H,2), &(H,3),& (H,4),& (H,5),& (H,6), \\
+(T,1),& (T,2), &(T,3), &(T,4),& (T,5), &(T,6) \\
+\end{matrix}
+\right\}\ .
+\end{align*}
+Now we consider some examples of events. Let $E$ denote the event of coin lands $H$, then
+\begin{align*}
+E = \{(H,1), (H,2), (H,3), (H,4), (H,5), (H,6) \}\,.
+\end{align*}
+Let $F$ denote the event of die rolls to an even number, then
+\begin{align*}
+F = \{(H,2), (H,4), (H,6), (T,2), (T,4), (T,6)\}\,.
+\end{align*}
+Let $G$ denote the event of die rolls to a 6, then
+\begin{align*}
+G = \{(H,6), (T,6)\}\,. 
+\end{align*}
+\begin{enumerate}
+\item Notice that 
+$E^c = \{(T,1), (T,2), (T,3), (T,4), (T,5), (T,6)\}$
+represents the event of coin landing $T$. We also observe that when $E^c$ happens, $E$ does not happen. 
+\item We also observe that $G \nsubseteq E$, and $G \subseteq F$. That is, suppose $A$ and $B$ are events and $A \subseteq B$, then $A$ happens implies $B$ happens. 
+\item The set $E \cup G = \{(H,1), (H,2), (H,3), (H,4), (H,5), (H,6), (T,6)\}$ represents the event of either $E$ happening or $G$ happening.  
+\item The set $E \cap F = \{(H,2), (H,4), (H,6)\}$ represents the event of both $E$ happening and $F$ happening.  
+\end{enumerate}
+
+\vspace{2cm}
+\textbf{Examples}:
+\begin{enumerate}
+\item Suppose $S$ is the sample space. The power set $\mathcal{P}(S)$, which is the set of all subsets of $S$, forms a sigma algebra about $S$. Furthermore, $\{\emptyset, S\}$ is also a sigma algebra about $S$, called the trivial sigma algebra. 
+\item Suppose the experiment of tossing a coin three times. The sample space is 
+\begin{align*}
+S = \{HHH,, HHT, HTH, THH, TTH, HTT, THT, TTT\}\,.
+\end{align*}
+Here we see that $|S| = 8$, and $|\mathcal{P}(S)| = 2^{|S|} = 2^8 = 256$. One might be interested in the question: ``Are there at least two $H$ in three tosses?'' This corresponds to the event $E = \{HHT, HTH, THH, HHH\}$. To assign ``probability" to $E$, we only need to consider the sigma algebra generated by $E$, that is the set $\langle E \rangle = \{\emptyset, S, E, E^c\}$. 
+\end{enumerate}
+
+
+\vspace{2cm}
+\textbf{Example}:\\
+Now we consider the experiment consisting of tossing a coin two times. The sample space is $S = \{HH, HT, TH, TT\}$. Take the largest possible sigma algebra, that is the power set of $S$, denoted as $\mathcal{P}(S)$, which contains $|\mathcal{P}(S)| = 2^4 = 16$ elements. In this experiment, if the coin is a fair coin, we can assign the following probability function $P: \mathcal{P}(S)\to \R$:
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline \rowcolor{lightgray}
+\textbf{event $E$} & $P(E)$\\
+\hline
+$\emptyset$ & 0 \\
+\hline
+$\{HH\}$ & 1/4\\
+\hline
+$\{HT\}$ & 1/4\\
+\hline
+$\{TT\}$ & 1/4\\
+\hline
+$\{TH\}$ & 1/4\\
+\hline
+$\{HH, HT\}$ & 1/4+1/4 = 1/2\\
+\hline
+\vdots & \vdots \\
+\hline
+$\{HH, HT, TH\}$ & 1/4+1/4+1/4 = 3/4\\
+\hline 
+\vdots & \vdots \\
+\hline
+$\{HH, HT, TH, TT\}$ & 1\\
+\hline
+\end{tabular}\,.
+\end{center}
+In the case where the coin is not a fair coin, the probability function can be defined in the following way:
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline \rowcolor{lightgray}
+\textbf{event $E$} & $P(E)$\\
+\hline
+$\emptyset$ & 0 \\
+\hline
+$\{HH\}$ & 1/3\\
+\hline
+$\{HT\}$ & 1/3\\
+\hline
+$\{TT\}$ & 1/3\\
+\hline
+$\{TH\}$ & 0\\
+\hline
+$\{HH, TH\}$ & 1/3+0 = 1/3\\
+\hline
+\vdots & \vdots \\
+\hline
+$\{HH, HT, TT\}$ & 1/3+1/3+1/3 = 1\\
+\hline 
+\vdots & \vdots \\
+\hline
+$\{HH, HT, TH, TT\}$ & 1\\
+\hline
+\end{tabular}\,.
+\end{center}
+Similarly, the following probability function is also allowed:
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline \rowcolor{lightgray}
+\textbf{event $E$} & $P(E)$\\
+\hline
+$\emptyset$ & 0 \\
+\hline
+$\{HH\}$ & 1/8\\
+\hline
+$\{HT\}$ & 1/8\\
+\hline
+$\{TT\}$ & 3/8\\
+\hline
+$\{TH\}$ & 3/8\\
+\hline
+$\{HH, TH\}$ & 1/8+3/8 = 1/2\\
+\hline
+\vdots & \vdots \\
+\hline
+$\{HH, HT, TT\}$ & 1/8+1/8+3/8 = 5/8\\
+\hline 
+\vdots & \vdots \\
+\hline
+$\{HH, HT, TH, TT\}$ & 1\\
+\hline
+\end{tabular}\,.
+\end{center}
+Notice that the probabilities of events like $\{HH, TH\}$ and $\{HH, HT, TT\}$ are completely determined by the probabilities of the four simple events $\{HH\}$, $\{HT\}$, $\{TH\}$ and $\{TT\}$. While for event $E$, we note that $P(E)$ must be non-negative. We also observe that $P(S) = 1$, and as $S = S\cup \emptyset$, then $P(S) = P(S\cup \emptyset) = P(S) + P(\emptyset) = 1$, from which we deduce that we must have $P(\emptyset) = 0$. The tables shown above are called the distribution tables, and we see that there can be different distribution tables for the same sample space. \\
+
+
+\newpage
+
+\textbf{Examples}:
+\begin{enumerate}
+\item Consider the experiment that we toss a fair coin two times. \\
+
+\begin{tikzpicture}[>=triangle 60,every node/.style={anchor=west}]
+\matrix (m) [matrix of nodes, row sep=0em, column sep=3em]
+{You\\};
+\draw (m-1-1.east) --+ (2.5,0) node[right] (h) {$H_1$};
+\draw (m-1-1.east) --+ (2.5,-2) node[right] (t) {$T_1$};
+\draw (h.east) --+ (2.5,0) node[right] (hh) {$H_2$};
+\draw (h.east) --+ (2.5,-1) node[right] (ht) {$T_2$};
+\draw (t.east) --+ (2.5,0) node[right] (th) {$H_2$};
+\draw (t.east) --+ (2.5,-1) node[right] (tt) {$T_2$};
+\dr{tt}{TT}{$P(TT)=1/4$}{2.5}{0}
+\dr{th}{TH}{$P(TH)=1/4$}{2.5}{0}
+\dr{ht}{HT}{$P(HT)=1/4$}{2.5}{0}
+\dr{hh}{HH}{$P(HH)=1/4$}{2.5}{0}         
+
+\node[xshift=3.5cm,text width=2.5cm,above=.5cm] at (m-1-1.north east) {\bf step 1};
+\node[xshift=7cm,text width=2.5cm,above=.5cm] at (m-1-1.north east) {\bf step 2};
+\node[xshift=11cm,text width=2.5cm,above=.5cm] at (m-1-1.north east) {$P(E)$};
+
+\draw (m-1-1.east) edge["1/2"] (h.west);
+\draw (m-1-1.east) edge node[below]{1/2} (t.west);
+\draw (h.east) edge["1/2"] (hh.west);
+\draw (h.east) edge node[below]{1/2} (ht.west);
+\draw (t.east) edge["1/2"] (th.west);
+\draw (t.east) edge node[below]{1/2} (tt.west) ;
+\end{tikzpicture}\\
+
+\qquad\qquad
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+ \cellcolor{lightgray} Event $E$ & $HH$ & $HT$ & $TH$ & $TT$\\
+\hline
+ \cellcolor{lightgray} $P(E)$ & $1/4$ & $1/4$ & $1/4$ &$1/4$\\
+\hline 
+\end{tabular}\\
+
+\item Now consider first we flip a fair coin, then an unfair coin. \\
+The second coin has probability $P(H_2) = 1/4$ and $P(T_2) = 3/4$. 
+
+\begin{tikzpicture}[>=triangle 60,every node/.style={anchor=west}]
+\matrix (m) [matrix of nodes, row sep=0em, column sep=3em]
+{You\\};
+\draw (m-1-1.east) --+ (2.5,0) node[right] (h) {$H_1$};
+\draw (m-1-1.east) --+ (2.5,-2) node[right] (t) {$T_1$};
+\draw (h.east) --+ (2.5,0) node[right] (hh) {$H_2$};
+\draw (h.east) --+ (2.5,-1) node[right] (ht) {$T_2$};
+\draw (t.east) --+ (2.5,0) node[right] (th) {$H_2$};
+\draw (t.east) --+ (2.5,-1) node[right] (tt) {$T_2$};
+\dr{tt}{TT}{$P(TT)=3/8$}{2.5}{0}
+\dr{th}{TH}{$P(TH)=1/8$}{2.5}{0}
+\dr{ht}{HT}{$P(HT)=3/8$}{2.5}{0}
+\dr{hh}{HH}{$P(HH)=1/8$}{2.5}{0}         
+
+\node[xshift=3.5cm,text width=2.5cm,above=.5cm] at (m-1-1.north east) {\bf step 1};
+\node[xshift=7cm,text width=2.5cm,above=.5cm] at (m-1-1.north east) {\bf step 2};
+\node[xshift=11cm,text width=2.5cm,above=.5cm] at (m-1-1.north east) {$P(E)$};
+
+\draw (m-1-1.east) edge["1/2"] (h.west);
+\draw (m-1-1.east) edge node[below]{1/2} (t.west);
+\draw (h.east) edge["1/4"] (hh.west);
+\draw (h.east) edge node[below]{3/4} (ht.west);
+\draw (t.east) edge["1/4"] (th.west);
+\draw (t.east) edge node[below]{3/4} (tt.west) ;
+\end{tikzpicture}\\
+
+\qquad\qquad
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+ \cellcolor{lightgray} Event $E$ & $HH$ & $HT$ & $TH$ & $TT$\\
+\hline
+ \cellcolor{lightgray} $P(E)$ & $1/8$ & $3/8$ & $1/8$ &$3/8$\\
+\hline 
+\end{tabular}\\
+
+
+
+\item Now consider first we flip an unfair coin, then a fair coin. \\
+The first coin has probability $P(H_1) = 1/4$ and $P(T_1) = 3/4$. 
+
+\begin{tikzpicture}[>=triangle 60,every node/.style={anchor=west}]
+\matrix (m) [matrix of nodes, row sep=0em, column sep=3em]
+{You\\};
+\draw (m-1-1.east) --+ (2.5,0) node[right] (h) {$H_1$};
+\draw (m-1-1.east) --+ (2.5,-2) node[right] (t) {$T_1$};
+\draw (h.east) --+ (2.5,0) node[right] (hh) {$H_2$};
+\draw (h.east) --+ (2.5,-1) node[right] (ht) {$T_2$};
+\draw (t.east) --+ (2.5,0) node[right] (th) {$H_2$};
+\draw (t.east) --+ (2.5,-1) node[right] (tt) {$T_2$};
+\dr{tt}{TT}{$P(TT)=3/8$}{2.5}{0}
+\dr{th}{TH}{$P(TH)=3/8$}{2.5}{0}
+\dr{ht}{HT}{$P(HT)=1/8$}{2.5}{0}
+\dr{hh}{HH}{$P(HH)=1/8$}{2.5}{0}         
+
+\node[xshift=3.5cm,text width=2.5cm,above=.5cm] at (m-1-1.north east) {\bf step 1};
+\node[xshift=7cm,text width=2.5cm,above=.5cm] at (m-1-1.north east) {\bf step 2};
+\node[xshift=11cm,text width=2.5cm,above=.5cm] at (m-1-1.north east) {$P(E)$};
+
+\draw (m-1-1.east) edge["1/4"] (h.west);
+\draw (m-1-1.east) edge node[below]{3/4} (t.west);
+\draw (h.east) edge["1/2"] (hh.west);
+\draw (h.east) edge node[below]{1/2} (ht.west);
+\draw (t.east) edge["1/2"] (th.west);
+\draw (t.east) edge node[below]{1/2} (tt.west) ;
+\end{tikzpicture}\\
+
+\qquad\qquad
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+ \cellcolor{lightgray} Event $E$ & $HH$ & $HT$ & $TH$ & $TT$\\
+\hline
+ \cellcolor{lightgray} $P(E)$ & $1/8$ & $1/8$ & $3/8$ &$3/8$\\
+\hline 
+\end{tabular}\\
+
+\item One might ask if it is possible to construct the following distribution table:\\
+
+\qquad\qquad
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+ \cellcolor{lightgray} Event $E$ & $HH$ & $HT$ & $TH$ & $TT$\\
+\hline
+ \cellcolor{lightgray} $P(E)$ & $1/8$ & $1/8$ & $4/8$ &$2/8$\\
+\hline 
+\end{tabular}\\
+
+To construct such a distribution table, we consider the following experiment: In step 1, we toss a coin with $P(H_1) = 1/4$; In step 2, if we got $H_1$ in step 1, then we toss a coin with $P(H_2) = 1/2$, if we got $T_1$ in step 1, then we toss a coin with $P(H_2) = 4/6$.
+
+
+\begin{tikzpicture}[>=triangle 60,every node/.style={anchor=west}]
+\matrix (m) [matrix of nodes, row sep=0em, column sep=3em]
+{You\\};
+\draw (m-1-1.east) --+ (2.5,0) node[right] (h) {$H_1$};
+\draw (m-1-1.east) --+ (2.5,-2) node[right] (t) {$T_1$};
+\draw (h.east) --+ (2.5,0) node[right] (hh) {$H_2$};
+\draw (h.east) --+ (2.5,-1) node[right] (ht) {$T_2$};
+\draw (t.east) --+ (2.5,0) node[right] (th) {$H_2$};
+\draw (t.east) --+ (2.5,-1) node[right] (tt) {$T_2$};
+\dr{hh}{HH}{$P(HH)=1/8$}{2.5}{0}         
+\dr{ht}{HT}{$P(HT)=1/8$}{2.5}{0}
+\dr{th}{TH}{$P(TH)=4/8$}{2.5}{0}
+\dr{tt}{TT}{$P(TT)=2/8$}{2.5}{0}
+
+\node[xshift=3.5cm,text width=2.5cm,above=.5cm] at (m-1-1.north east) {\bf step 1};
+\node[xshift=7cm,text width=2.5cm,above=.5cm] at (m-1-1.north east) {\bf step 2};
+\node[xshift=11cm,text width=2.5cm,above=.5cm] at (m-1-1.north east) {$P(E)$};
+
+\draw (m-1-1.east) edge["1/4"] (h.west);
+\draw (m-1-1.east) edge node[below]{3/4} (t.west);
+\draw (h.east) edge["1/2"] (hh.west);
+\draw (h.east) edge node[below]{1/2} (ht.west);
+\draw (t.east) edge["4/6"] (th.west);
+\draw (t.east) edge node[below]{2/6} (tt.west) ;
+\end{tikzpicture}\\
+
+We see that this experiment gives the desired distribution table.
+
+\item Now suppose we toss a two-headed coin two times, that is, $P(H_1) = P(H_2) = 1$.
+
+\begin{tikzpicture}[>=triangle 60,every node/.style={anchor=west}]
+\matrix (m) [matrix of nodes, row sep=0em, column sep=3em]
+{You\\};
+\draw (m-1-1.east) --+ (2.5,0) node[right] (h) {$H_1$};
+\draw (m-1-1.east) --+ (2.5,-2) node[right] (t) {$T_1$};
+\draw (h.east) --+ (2.5,0) node[right] (hh) {$H_2$};
+\draw (h.east) --+ (2.5,-1) node[right] (ht) {$T_2$};
+\draw (t.east) --+ (2.5,0) node[right] (th) {$H_2$};
+\draw (t.east) --+ (2.5,-1) node[right] (tt) {$T_2$};
+\dr{tt}{TT}{$P(TT)=0$}{2.5}{0}
+\dr{th}{TH}{$P(TH)=0$}{2.5}{0}
+\dr{ht}{HT}{$P(HT)=0$}{2.5}{0}
+\dr{hh}{HH}{$P(HH)=1$}{2.5}{0}         
+
+\node[xshift=3.5cm,text width=2.5cm,above=.5cm] at (m-1-1.north east) {\bf step 1};
+\node[xshift=7cm,text width=2.5cm,above=.5cm] at (m-1-1.north east) {\bf step 2};
+\node[xshift=11cm,text width=2.5cm,above=.5cm] at (m-1-1.north east) {$P(E)$};
+
+\draw (m-1-1.east) edge["1"] (h.west);
+\draw (m-1-1.east) edge node[below]{0} (t.west);
+\draw (h.east) edge["1"] (hh.west);
+\draw (h.east) edge node[below]{0} (ht.west);
+\draw (t.east) edge["1"] (th.west);
+\draw (t.east) edge node[below]{0} (tt.west) ;
+\end{tikzpicture}\\
+
+\qquad\qquad
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+ \cellcolor{lightgray} Event $E$ & $HH$ & $HT$ & $TH$ & $TT$\\
+\hline
+ \cellcolor{lightgray} $P(E)$ & $1$ & $0$ & $0$ & $0$\\
+\hline 
+\end{tabular}\\
+\end{enumerate}
+\hfill\break
+\hfill\break
+
+We notice in the coin toss examples, the following diagram holds:\\
+\begin{center}
+\begin{tikzpicture}[>=triangle 60,every node/.style={anchor=west}]
+\matrix (m) [matrix of nodes, row sep=0em, column sep=3em]
+{Experimentor\\};
+\draw (m-1-1.east) --+ (1,0.7) node[right] (h) {$H_1$};
+\draw (m-1-1.east) --+ (1,-0.7) node[right] (t) {$T_1$};
+\draw (h.east) --+ (1,1) node[right] (hh) {$H_2$};
+\draw (h.east) --+ (1,0) node[right] (ht) {$T_2$};
+\draw (t.east) --+ (1.05,0) node[right] (th) {$H_2$};
+\draw (t.east) --+ (1.05,-1) node[right] (tt) {$T_2$};
+\dr{tt}{TT}{$T_1T_2$}{1}{0}
+\dr{th}{TH}{$T_1H_2$}{1}{0}
+\dr{ht}{HT}{$H_1T_2$}{1}{0}
+\dr{hh}{HH}{$H_1H_2$}{1}{0}
+\dr{HH}{ohh}{$H_1$}{1}{0}
+\dr{TH}{oth}{$T_1$}{1.15}{1.4}
+\dr{HT}{oht}{$H_1$}{1.15}{-1.4}         
+\dr{TT}{ott}{$T_1$}{1.4}{0}
+\dr{oth}{oh}{}{1.1}{0}         
+\dr{ohh}{oh}{$H_2$}{1}{-1}
+\dr{ott}{ot}{}{1}{1}
+\dr{oht}{ot}{$T_2$}{1}{0}         
+\dr{ot}{obs}{Observer}{1.1}{0.7}
+\dr{oh}{obs}{}{1}{-0.7}
+
+\node[xshift=5.3cm,text width=2.5cm,above=1.9cm] at (m-1-1.north east) {sample space};
+
+\draw (m-1-1.east) edge node[above, rotate=45]{\tiny $P(H_1)$ \normalsize} (h.west);
+\draw (m-1-1.east) edge node[below, rotate=-39]{\tiny $P(T_1)$ \normalsize} (t.west);
+\draw (h.east) edge node[above, rotate=50]{\tiny $P(H_2|H_1)$ \normalsize} (hh.west);
+\draw (h.east) edge node[below, rotate=0]{\tiny $P(T_2|H_1)$ \normalsize} (ht.west);
+\draw (t.east) edge node[above, rotate=0]{\tiny $P(H_2|T_1)$ \normalsize} (th.west);
+\draw (t.east) edge node[below, rotate=-45]{\tiny $P(T_2|T_1)$} (tt.west) ;
+\draw (ohh.east) edge node[above, rotate=-45]{\tiny $P(H_1|H_2)$} (oh.west) ;
+\draw (oth.east) edge node[below, rotate=0]{\tiny $P(T_1|H_2)$} (oh.west) ;
+\draw (oht.east) edge node[above, rotate=0]{\tiny $P(H_1|T_2)$} (ot.west) ;
+\draw (ott.east) edge node[below, rotate=45]{\tiny $P(T_1|T_2)$} (ot.west) ;
+\draw (ot.east) edge node[below, rotate=45]{\tiny $P(T_2)$} (obs.west) ;
+\draw (oh.east) edge node[above, rotate=-39]{\tiny $P(H_2)$} (obs.west) ;
+
+\draw[-latex] (0,-2.5) -- ++ (5cm,0) node[midway,below,align=center]{Experiment arrow of time};
+\draw[-latex] (15,-2.5) -- ++ (-5cm,0) node[midway,below,align=center]{Observer arrow of time};
+\end{tikzpicture}
+\end{center}
+
+
+\end{document}

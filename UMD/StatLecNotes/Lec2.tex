@@ -1,0 +1,307 @@
+\documentclass[11pt,oneside]{book}
+
+%%%%%%%%%%%%%%Include Packages%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{xcolor}
+\usepackage{colortbl}
+\usepackage{tikz}
+\usepackage{mathtools}
+\usepackage[legalpaper, margin=0.8in]{geometry}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{rsfso}
+\usepackage{wasysym}
+\usepackage{hyperref}
+\usetikzlibrary{matrix, calc, arrows,
+                arrows.meta, fit,
+                positioning, quotes,
+                shapes.geometric}
+
+
+%%%%%%%%%%%%%%%Color%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{gray75}{gray}{0.75}
+\definecolor{yellow}{RGB}{255,255,177}
+\definecolor{pink}{RGB}{250,204,224}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%Theorem environments%%%%%%%%%%%%%%%%%%%
+\newtheoremstyle{break}
+  {\topsep}{\topsep}%
+  {\itshape}{}%
+  {\bfseries}{}%
+  {\newline}{}%
+\newtheoremstyle{newStyle}
+  {\topsep}{\topsep}%
+  {\rmfamily}{}%
+  {\bfseries}{}%
+  {\newline}{}%             % Theorem head spec
+  \theoremstyle{newStyle}
+\newtheorem{thm}{Theorem}[chapter]
+\newtheorem{lem}{Lemma}[thm]
+\newtheorem{axiom}[thm]{Axiom}
+\newtheorem{prop}[lem]{Proposition}
+\newtheorem{cor}[lem]{Corollary}
+\newtheorem{defn}[thm]{Definition}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\spa}{\text{span}}
+\newcommand{\pd}{\partial}
+\newcommand{\that}[1]{\widetilde{#1}}
+\newcommand{\vmat}[1]{\begin{vmatrix} #1 \end{vmatrix}}
+\newcommand{\bmat}[1]{\begin{bmatrix} #1 \end{bmatrix}}
+\newcommand{\pmat}[1]{\begin{pmatrix} #1 \end{pmatrix}}
+\newcommand*{\Perm}[2]{{}^{#1}\!P_{#2}}
+\newcommand*{\Comb}[2]{{}^{#1}C_{#2}}
+\newcommand*{\dr}[5]{\draw ({#1}.east) --+ ({#4},{#5}) node[right] ({#2}) {{#3}};}
+
+
+
+
+\newcommand{\note}{\color{red}Note: \color{black}}
+\newcommand{\remark}{\color{blue}Remark: \color{black}}
+\newcommand{\example}{\color{purple}Example: \color{black}}
+\newcommand{\exercise}{\color{cyan}Exercise: \color{black}}
+
+
+
+
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Stat410 Sum24 Lecture 2 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\textbf{Example}:
+Suppose there is a disease. Let $D$ denote the event that one has the disease. Let $D^c$ denote the event that one does not have the disease. Consider there is a test that gives positive (Pos) and negative (Neg) results. Furthermore, $P(D) = p \in (0,1)$ denotes the probability that a randomly selected person has the disease, and $q \in (0,1)$ denotes the probability that the test identifies the disease correctly. 
+\begin{center}
+\begin{tikzpicture}[>=triangle 60,every node/.style={anchor=west}]
+\matrix (m) [matrix of nodes, row sep=0em, column sep=3em]
+{Experimenter\\};
+\draw (m-1-1.east) --+ (1,0.7) node[right] (h) {$D$};
+\draw (m-1-1.east) --+ (1,-0.7) node[right] (t) {$D^c$};
+\draw (h.east) --+ (1.1,1) node[right] (hh) {$ \text{Pos} $};
+\draw (h.east) --+ (1.1,0) node[right] (ht) {$ \text{Neg} $};
+\draw (t.east) --+ (1,0) node[right] (th) {$ \text{Pos} $};
+\draw (t.east) --+ (1,-1) node[right] (tt) {$ \text{Neg} $};
+\dr{tt}{TT}{$(D^c,\, \text{Neg} )$}{1}{0}
+\dr{th}{TH}{$(D^c,\, \text{Pos} )$}{1}{0}
+\dr{ht}{HT}{$(D,\, \text{Neg} )$}{1}{0}
+\dr{hh}{HH}{$(D,\, \text{Pos} )$}{1}{0}
+\dr{HH}{ohh}{$D$}{1}{0}
+\dr{TH}{oth}{$D^c$}{1}{1.4}
+\dr{HT}{oht}{$D$}{1}{-1.4}         
+\dr{TT}{ott}{$D^c$}{1}{0}
+\dr{oth}{oh}{}{1}{0}         
+\dr{ohh}{oh}{$ \text{Pos} $}{1.5}{-1}
+\dr{ott}{ot}{}{1}{1}
+\dr{oht}{ot}{$ \text{Neg} $}{1.35}{0}         
+\dr{ot}{obs}{Observer}{1}{0.7}
+\dr{oh}{obs}{}{1}{-0.7}
+
+\node[xshift=5.3cm,text width=2.5cm,above=1.9cm] at (m-1-1.north east) {sample space};
+
+\draw (m-1-1.east) edge node[above, rotate=45]{\tiny $p$ \normalsize} (h.west);
+\draw (m-1-1.east) edge node[below, rotate=-39]{\tiny $1-p$ \normalsize} (t.west);
+\draw (h.east) edge node[above, rotate=50]{\tiny $q$ \normalsize} (hh.west);
+\draw (h.east) edge node[below, rotate=0]{\tiny $1-q$ \normalsize} (ht.west);
+\draw (t.east) edge node[above, rotate=0]{\tiny $1-q$ \normalsize} (th.west);
+\draw (t.east) edge node[below, rotate=-45]{\tiny $q$} (tt.west) ;
+\draw (ohh.east) edge node[above, rotate=-35]{\tiny $P(D| \text{Pos} )$} (oh.west) ;
+\draw (oth.east) edge node[below, rotate=0]{\tiny $P(D^c| \text{Pos} )$} (oh.west) ;
+\draw (oht.east) edge node[above, rotate=0]{\tiny $P(D| \text{Neg} )$} (ot.west) ;
+\draw (ott.east) edge node[below, rotate=45]{\tiny $P(D^c| \text{Neg} )$} (ot.west) ;
+\draw (ot.east) edge node[below, rotate=45]{\tiny $P( \text{Neg} )$} (obs.west) ;
+\draw (oh.east) edge node[above, rotate=-35]{\tiny $P( \text{Pos} )$} (obs.west) ;
+
+\draw[-latex] (0,-2.5) -- ++ (5cm,0) node[midway,below,align=center]{Experiment arrow of time};
+\draw[-latex] (15,-2.5) -- ++ (-5cm,0) node[midway,below,align=center]{Observer arrow of time};
+\end{tikzpicture}
+\end{center}
+In this setting, we want $P(\text{Pos}|D^c)$ and $P(\text{Neg}|D)$ to be small, as they correspond to the probabilities of incorrectly identifying the disease using the test. On the other hand, $P(\text{Pos}|D)$ and $P(\text{Neg}|D^c)$ should be large as they correspond to the probabilities of correctly identifying the disease using the test. For the observer, one expects $P(D|\text{Pos})$ and $P(D^c| \text{Neg})$ to be large, and $P(D^c|\text{Pos})$ and $P(D|\text{Neg})$ to be small. 
+
+
+\vspace{2cm}
+
+
+\textbf{Example}:
+Consider again the disease example. $P(D) = p$, $P(D^c) = 1-p$, and $P(\text{test is correct}) = q$. \\
+
+\qquad\begin{tikzpicture}[>=triangle 60,every node/.style={anchor=west}]
+\matrix (m) [matrix of nodes, row sep=0em, column sep=3em]
+{Experimenter\\};
+\draw (m-1-1.east) --+ (1,0.7) node[right] (h) {$D$};
+\draw (m-1-1.east) --+ (1,-0.7) node[right] (t) {$D^c$};
+\draw (h.east) --+ (1.1,1) node[right] (hh) {$ \text{Pos} $};
+\draw (h.east) --+ (1.1,0) node[right] (ht) {$ \text{Neg} $};
+\draw (t.east) --+ (1,0) node[right] (th) {$ \text{Pos} $};
+\draw (t.east) --+ (1,-1) node[right] (tt) {$ \text{Neg} $};
+\dr{tt}{TT}{$(D^c,\, \text{Neg} )$}{1}{0}
+\dr{th}{TH}{$(D^c,\, \text{Pos} )$}{1}{0}
+\dr{ht}{HT}{$(D,\, \text{Neg} )$}{1}{0}
+\dr{hh}{HH}{$(D,\, \text{Pos} )$}{1}{0}
+
+\node[xshift=5.3cm,text width=2.5cm,above=1.9cm] at (m-1-1.north east) {sample space};
+
+\draw (m-1-1.east) edge node[above, rotate=45]{\tiny $p$ \normalsize} (h.west);
+\draw (m-1-1.east) edge node[below, rotate=-39]{\tiny $1-p$ \normalsize} (t.west);
+\draw (h.east) edge node[above, rotate=50]{\tiny $q$ \normalsize} (hh.west);
+\draw (h.east) edge node[below, rotate=0]{\tiny $1-q$ \normalsize} (ht.west);
+\draw (t.east) edge node[above, rotate=0]{\tiny $1-q$ \normalsize} (th.west);
+\draw (t.east) edge node[below, rotate=-45]{\tiny $q$} (tt.west) ;
+\end{tikzpicture}
+
+
+Then we can calculate the followings:
+\begin{align*}
+P(\text{Pos}) &= P(D, \text{Pos})+P(D^c, \text{Pos}) = p \cdot q + (1-p)\cdot (1-q)\,,
+\end{align*}
+\begin{align*}
+P(D|\text{Pos}) &= \frac{P(D, \text{Pos})}{P(\text{Pos})} = \frac{pq}{pq+(1-p)(1-q)}\,, 
+\end{align*}
+\begin{align*}
+P(D^c| \text{Pos}) = \frac{P(D^c, \text{Pos})}{P(\text{Pos})} = \frac{(1-p)(1-q)}{pq+(1-p)(1-q)}\,.
+\end{align*}
+Similarly, one can calculate
+\begin{align*}
+P(\text{Neg}) = p\cdot(1-q) + q\cdot (1-p)\,, 
+\end{align*}
+\begin{align*}
+P(D^c|\text{Neg}) = \frac{q(1-p)}{q(1-p)+p(1-q)}\,,\qquad
+P(D|\text{Neg}) = \frac{p(1-q)}{q(1-p) +p(1-q)}\,.
+\end{align*}
+In this setting, we would like to have 
+\begin{align*}
+P(D|\text{Pos}) = \frac{pq}{pq+(1-p)(1-q)}\,,\qquad
+\text{and}\qquad P(D^c|\text{Neg}) = \frac{(1-p)q}{(1-p)q+p(1-q)}
+\end{align*}
+to be large.\\
+
+Here we consider some special cases: 
+\begin{enumerate}
+\item Suppose the disease is highly prevalent, for instance, $P(D) = p = 0.9999$. That is, 9999 out of 10000 people on average have the disease. Suppose further that $P(\text{test is correct})= q = 0.9999$. That is, the test is correct 9999 times out of 10000 times on average. For the test to be useful, we want to have both $P(D|\text{Pos})$ and $P(D^c|\text{Neg})$ to be large. In this case, we compute their numerical values
+\begin{align*}
+P(D|\text{Pos}) = \frac{pq}{pq+(1-p)(1-q)}  = \frac{0.9999 \cdot 0.9999}{0.9999\cdot 0.9999 + 0.0001 \cdot 0.0001}\approx 1\,.
+\end{align*}
+However, we see that
+\begin{align*}
+P(D^c|\text{Neg}) = \frac{(1-p)q}{(1-p)q+p(1-q)} = \frac{0.0001 \cdot 0.9999}{0.0001\cdot 0.9999 + 0.9999\cdot 0.0001} = 0.5\,,
+\end{align*}
+from which we see that a negative test result does not mean the person has no disease. The test is not very useful in this sense. 
+\item Now suppose we have a rare disease, for instance, $P(D) = p = 0.0001$. Suppose further that the test accuracy is $P(\text{test is correct}) = 0.9999=q$. For the test to be useful, we again want to have both $P(D|\text{Pos})$ and $P(D^c|\text{Neg})$ to be large, but we again see that 
+\begin{align*}
+P(D|\text{Pos}) = \frac{pq}{pq+(1-p)(1-q)} = \frac{0.0001\cdot 0.9999}{0.0001 \cdot 0.9999 + 0.9999 \cdot 0.0001} = 0.5\,,
+\end{align*}
+which is equivalent to a coin toss. 
+\end{enumerate}
+
+
+
+\vspace{2cm}
+\textbf{Example}:
+Consider choosing $3$ digits from the set $\{1,2,3,4,5\}$. 
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline \rowcolor{lightgray}
+ & order matters & order does not matter\\
+\hline
+\cellcolor{lightgray} with &(1,2,2) is allowed & (1,2,2) is allowed\\
+\cellcolor{lightgray} replacement &  but is different from (2,1,2) &  and is the same as (2,1,2)\\
+\hline
+\cellcolor{lightgray} without &(1,2,2) is not allowed, & (1,2,2) is not allowed,\\
+\cellcolor{lightgray} replacement & (1,2,3) is different from (1,3,2) &  (1,2,3) is the same as (1,3,2)\\
+\hline
+\end{tabular}
+\end{center}
+
+\vspace{2cm}
+\textbf{Example}:
+Consider choosing $2$ digits without replacement from the set $\{1,2,3,4\}$, order does not matter. All the options are $
+(1,2),\ (1,3),\ (1,4),\ (2,3),\ (2,4),$ and $(3,4)$. If order matters, more options are available, they are $(2,1)$, $(3,1)$, $(4,1)$, $(3,2)$, $(4,2)$, and $(4,3)$. 
+
+\vspace{2cm}
+
+\textbf{Example}: 
+Now consider again choosing $3$ digits from the set of integers $\{1,2,3,4,5\}$. In this case, $n=5$ and $k=3$. We can compute
+\begin{align*}
+^n\text{P}_k = 
+{}^5\text{P}_3 = \frac{5!}{(5-3)!} = 5\cdot 4 \cdot 3 = 60\,, \qquad\quad
+^n\text{C}_k = {}^5\text{C}_3
+=\frac{5!}{(5-3)!\, 3!} = \frac{60}{3!} = 10\,,
+\end{align*}
+\begin{align*}
+n^k  = 5^3 = 125\,,
+\qquad\quad
+^{n+k-1}\text{C}_{n-1}=
+{}^{7}\text{C}_{4} = \frac{7!}{4!\,3!} = 35\,.
+\end{align*}
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline \rowcolor{lightgray}
+ & order matters & order does not matter\\
+\hline
+\cellcolor{lightgray} with replacement & 125 & 35\\
+\hline
+\cellcolor{lightgray} without replacement & 60 & 10\\
+\hline
+\end{tabular}
+\end{center}
+
+\vspace{2cm}
+\textbf{Example}:
+Given a coin with two sides $H$ and $T$, $P(H) = P(\text{``Coin lands }H") = p \in (0,1)$. In the case where $p = 1/2$, the coin is fair, otherwise not a fair coin. 
+
+
+
+
+\newpage
+\begin{tikzpicture}
+\tikzset{
+    myrectangle/.style={
+        draw=black,
+        minimum width=8cm,
+        minimum height=4cm,
+    },
+    B/.style={
+        draw=blue,
+    },
+    A/.style={
+        draw=orange,
+    },
+    >=stealth,
+    node distance=1cm and 1cm,
+}
+
+    \node[myrectangle] (bottom) {};
+
+
+    % "contents" of bottom node
+    \node[xshift=-5cm,text width=2.5cm,above=-1.3cm, rotate=30] at (bottom.north east) {$B\cap A_2$};
+    \node[xshift=-6cm,text width=2.5cm,above=-3.5cm, rotate=-20] at (bottom.north east) {$B\cap A_1$};
+    \node[xshift=-3.2cm,text width=2.5cm,above=-3.3cm, rotate=10] at (bottom.north east) {$B\cap A_3$};
+    \node[xshift=-1.2cm,text width=2.5cm,above=-2.5cm, rotate=30] at (bottom.north east) {$B\cap A_4$};
+    \node[xshift=-3cm,text width=2.5cm,above=-1.3cm, rotate=0] at (bottom.north east) {\Large \color{blue!50} $B$};
+    \node[xshift=-6.5cm,text width=2.5cm,above=-0.8cm, rotate=0] at (bottom.north east) {\Large \color{orange} $A_1$};
+    \node[xshift=-5.3cm,text width=2.5cm,above=-0.8cm, rotate=0] at (bottom.north east) {\Large \color{orange} $A_2$};
+    \node[xshift=0.5cm,text width=2.5cm,above=-0.8cm, rotate=0] at (bottom.north east) {\Large \color{orange} $A_4$};\\
+    \node[xshift=0.5cm,text width=2.5cm,above=-4.05cm, rotate=0] at (bottom.north east) {\Large \color{orange} $A_5$};
+    \node[xshift=-2.25cm,text width=2.5cm,above=-4.05cm, rotate=0] at (bottom.north east) {\Large \color{orange} $A_3$};
+
+    \draw[A] ($(bottom.north west) ! .4 ! (bottom.north east)$) -- ($(bottom.south west) ! .35 ! (bottom.south east)$);
+    \draw[A] ($(bottom.north west) ! .6 ! (bottom.north east)$) -- ($(bottom.south west) ! .66 ! (bottom.south east)$);
+    \draw[A] ($(bottom.north west) ! .1 ! (bottom.north east)$) -- ($(bottom.south west) ! .35 ! (bottom.south east)$);
+    \draw[A] ($(bottom.south west) ! .66 ! (bottom.south east)$) -- ($(bottom.east) ! .3 ! (bottom.south east)$);
+
+    \filldraw[blue!50, opacity = .4] (bottom.center) ellipse [x radius=3.5cm, y radius=1.5cm, rotate=10];
+    \node at (bottom.north east) [anchor=south east] {S};
+
+\end{tikzpicture}
+
+
+\end{document}

@@ -1,0 +1,2272 @@
+\documentclass[11pt,oneside]{book}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%[itemsep=0pt, topsep=1pt, partopsep=0pt]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%Include Packages%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{xcolor}
+\usepackage{mathtools}
+\usepackage[legalpaper, margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{paralist}
+\usepackage{rsfso}
+\usepackage{amsthm}
+\usepackage{wasysym}
+\usepackage[inline]{enumitem}   
+\usepackage{hyperref}
+\usepackage{tocloft}
+\usepackage{wrapfig}
+\usepackage{titlesec}
+\usepackage[makeroom]{cancel}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%Chapter Setting%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{gray75}{gray}{0.75}
+\newcommand{\hsp}{\hspace{20pt}}
+\titleformat{\chapter}[hang]{\Huge\bfseries}{\thechapter\hsp\textcolor{gray75}{$\mid$}\hsp}{0pt}{\Huge\bfseries}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%5Matlab%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{listings}
+\usepackage{color} %red, green, blue, yellow, cyan, magenta, black, white
+\definecolor{mygreen}{RGB}{28,172,0} % color values Red, Green, Blue
+\definecolor{mylilas}{RGB}{170,55,241}
+
+
+\lstset{language=Matlab,%
+    %basicstyle=\color{red},
+    breaklines=true,%
+    morekeywords={matlab2tikz},
+    keywordstyle=\color{blue},%
+    morekeywords=[2]{1}, keywordstyle=[2]{\color{black}},
+    identifierstyle=\color{black},%
+    stringstyle=\color{mylilas},
+    commentstyle=\color{mygreen},%
+    showstringspaces=false,%without this there will be a symbol in the places where there is a space
+    numbers=left,%
+    numberstyle={\tiny \color{black}},% size of the numbers
+    numbersep=9pt, % this defines how far the numbers are from the text
+    emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
+    %emph=[2]{word1,word2}, emphstyle=[2]{style},    
+}
+%%%%%%%%%%%%%%%%%Theorem environments%%%%%%%%%%%%%%%%%%%
+\newtheoremstyle{break}
+  {\topsep}{\topsep}%
+  {\itshape}{}%
+  {\bfseries}{}%
+  {\newline}{}%
+\theoremstyle{break}
+\theoremstyle{break}
+\newtheorem{axiom}{Axiom}
+\newtheorem{thm}{Theorem}[section]
+\renewcommand{\thethm}{\arabic{section}.\arabic{thm}}
+\newtheorem{lem}{Lemma}[thm]
+\newtheorem{prop}[lem]{Proposition}
+\newtheorem{corL}{Corollary}[lem]
+\newtheorem{corT}[lem]{Corollary}
+\newtheorem{defn}{Definition}[corL]
+\newenvironment{indEnv}[1][Proof]
+  {\proof[#1]\leftskip=1cm\rightskip=1cm}
+  {\endproof}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%Integral%%%%%%%%%%%%%%%%%%%%%%%
+\def\upint{\mathchoice%
+    {\mkern13mu\overline{\vphantom{\intop}\mkern7mu}\mkern-20mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+  \int}
+\def\lowint{\mkern3mu\underline{\vphantom{\intop}\mkern7mu}\mkern-10mu\int}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\D}{\mathcal{D}}
+\newcommand{\J}{\mathcal{J}}
+\newcommand{\T}{\mathcal{T}}
+\newcommand{\Td}{\mathcal{T}_d}
+\newcommand{\C}{\mathcal{C}}
+\newcommand{\M}{\mathcal{M}}
+\newcommand{\Complex}{\mathbb{C}}
+\newcommand{\Power}{\mathcal{P}}
+\newcommand{\ee}{\cdot 10}
+\newcommand{\spa}{\text{span}}
+\newcommand{\pd}{\partial}
+\newcommand{\me}{\epsilon m}
+\newcommand{\that}[1]{\widetilde{#1}}
+\newcommand{\vmat}[1]{\begin{vmatrix} #1 \end{vmatrix}}
+\newcommand{\bmat}[1]{\begin{bmatrix} #1 \end{bmatrix}}
+\newcommand{\pmat}[1]{\begin{pmatrix} #1 \end{pmatrix}}
+\newcommand{\rref}{\xrightarrow{\text{row\ reduce}}}
+
+
+\newcommand{\note}{\color{red}Note: \color{black}}
+\newcommand{\remark}{\color{blue}Remark: \color{black}}
+\newcommand{\example}{\color{purple}Example: \color{black}}
+\newcommand{\exercise}{\color{cyan}Exercise: \color{black}}
+
+
+
+
+%%%%%%%%%%%%table of contents%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setlength{\cftchapindent}{0em}
+\setlength{\cftsecindent}{2em}
+
+
+\renewcommand\cfttoctitlefont{\hfill\Large\bfseries}
+\renewcommand\cftaftertoctitle{\hfill\mbox{}}
+
+\setcounter{tocdepth}{2}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%Footnotes%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand\blfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\makeatletter
+\def\@seccntformat#1{%
+  \expandafter\ifx\csname c@#1\endcsname\c@section\else
+  \csname the#1\endcsname\quad
+  \fi}
+\makeatother
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Enumerate%%%%%%%%%%%%%%
+\makeatletter
+% This command ignores the optional argument 
+% for itemize and enumerate lists
+\newcommand{\inlineitem}[1][]{%
+\ifnum\enit@type=\tw@
+    {\descriptionlabel{#1}}
+  \hspace{\labelsep}%
+\else
+  \ifnum\enit@type=\z@
+       \refstepcounter{\@listctr}\fi
+    \quad\@itemlabel\hspace{\labelsep}%
+\fi}
+\makeatother
+\parindent=0pt
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+\begin{document}
+%	\pagecolor{DarkBlue}
+	\begin{titlepage}
+		\begin{center}
+			\topskip0pt
+			\vspace*{\fill}
+			\Huge \color{red}
+				\textbf{Class Notes}\\
+				\color{black}
+			\vspace{0.5cm}			
+			\Large 
+				AMSC460 - Computational Methods \\
+				Professor Stefan\\
+				University of Maryland, College Park
+			\vspace{3cm}
+
+			
+			
+			\vspace{5cm}
+			\LARGE
+				\textbf{Wenyu Chen}\\
+				\hfill\break
+				\LARGE Spring 2023\\
+				\color{black}
+			\vspace{5cm}
+
+		\vspace*{\fill}
+		\author{Wenyu Chen} \date{Summer 2022}
+		\end{center}			
+%		\afterpage{\nopagecolor}
+	\end{titlepage}
+	\newpage
+	\tableofcontents
+	\newpage
+	\chapter[Preliminary]{Preliminary}
+	\section[Big O Notation]{Big O Notation}
+	\begin{defn}
+	$f(n)=O(g(n)) $ as $n\to \infty$ if $\exists N,M>0$ such that \begin{align*}
+	|f(n)|\leq Mg(n)\forall n\geq N
+	\end{align*}
+	\end{defn}
+	\note As $n\to 0^+$, $n^2$ dominates $n^3$ so $(n^3)=O(n^2)$ as $n\to 0^+$\\
+	\hfill\\
+	\example $n^2=O(n^3)$ as $n\to \infty.$ We want $M,N$ such that \begin{align*}
+	|n^2|\leq Mn^3,\forall n\geq N
+	\end{align*}
+	So let $M=1,N=2$ since $1\leq 1\cdot n$ holds $\forall n\geq 2$\\
+	\hfill\\
+	\example $n^2\neq O(n)$ as $n\to \infty.$ Suppose $\exists M,N$ such that $n^2\leq Mn$ for all $n\geq N$, then $n\leq M,\forall n\geq N$. However when $n=max(M+1,n+1)$,  then $n\geq M,$ a contradiction.\\
+	\hfill\\
+	\example $n^3+2n^2-n=O(n^3)$\begin{proof}
+	By triangle inequality, \begin{align*}
+	|n^3+2n^2-n|&\leq n^3+2n^2+n\\
+	&\leq n^3+2n^3+n^3\\
+	&\leq 4n^3
+	\end{align*}
+	for all $n\geq 1$
+	\end{proof}
+	\begin{defn}
+	We say $f(h)=O(g(h))$ as $h\to 0^+$ if $\exists M,\sigma >0$ such that \begin{align*}
+	|f(h)|\leq Mg(h) 
+	\end{align*}
+	$\forall h\in (0,\delta)$
+	\end{defn}
+	\example $h^2=O(h)$ as $h\to 0^+$. We want $M,\delta $ such that \begin{align*}
+	|f(h)|\leq Mg(h) \text{\qquad}\forall 0<h<\delta
+	\end{align*}
+We can set $M=2,\delta =2$.\\
+\hfill\\
+\begin{thm}
+\textbf{Properties:}\begin{enumerate}
+\item $O(n^p\pm n^q)=O(n^p)$ as $n\to \infty$ if and only if $p\geq q$. But if $n\to 0^+,$ then $O(n^p\pm n^q)=O(n^q)$
+\item $O(cn^p)=O(n^p)$ assumed c is constant dependent of $n$
+\item $O(f_1f_2)=O(f_1)O(f_2)$ 
+\end{enumerate}
+\end{thm}
+\section[Taylor Expansions]{Taylor Expansions}
+\begin{defn}
+\textbf{Taylor Expansion} \begin{align*}
+f(x)&=\sum_{k=0}^{\infty}\frac{f^{(k)(x_0)}}{k!}(x-x_0)^k
+\end{align*}
+\textbf{Another version}:\\
+Let $x=x_0+h$, then \begin{align*}
+f(x_0+h)=f(x_0)+hf'(x_0)+\frac{1}{2}h^2f''(x_0)+\cdots
+\end{align*}
+\end{defn}
+Truncating, we have \begin{align*}
+f(x)\approx f(x_0)+f'(x_0)(x-x_0)+\cdots+\frac{1}{n!}f^{(n)}(x_0)(x-x_0)^n
+\end{align*}
+\begin{defn}
+\textbf{Lagrange Remainder Term}\\
+\begin{align*}
+f(x)&=\sum_{k=0}^{n}\frac{f^{(k)(x_0)}}{k!}(x-x_0)^k+\frac{f^{n+1}(Cn_1x)}{(n+1)!}(x-x_0)^{n+1}\\
+&=\sum_{k=0}^{n}\frac{f^{(k)(x_0)}}{k!}(x-x_0)^k+O((x-x_0)^n+1)
+\end{align*}
+as $x\to x_0$. where $Cn_1x$ is between $x$ and $x_0$
+\end{defn}
+\section[Binary and Floating Point]{Binary and Floating Point}
+\begin{defn}
+\textbf{Binary}, $b_i=0$ or 1, a bit. 1 byte $=$ 8 bits. 1 kb $=2^10=1024$ bits.\\
+\hfill\\
+\begin{align*}
+x=\cdots+b_{-2}\cdot 2^{-2}+b_{-1}\cdot 2^{-1}+b_0\cdot
+ 2^0  +b_1\cdot 2^{1}+\cdots
+ \end{align*}
+\end{defn}
+\example (terminating binary)
+\begin{align*}
+(100.1)_2&=1\cdot 2^2+0\cdot 2^1 +0\cdot 2^0+1\cdot 2^{-1}\\
+&=(4.5)_{10}
+\end{align*}
+\example (non terminating binary)\\
+$x=(.\overline{10})_2=(.10101010\cdots)_2$\\
+$2^2x=(10.\overline{10})_2$, then \begin{align*}
+(2^2-1)x=(10)_2=(2)_{10}&\implies x=\left(\frac{2}{3} \right)_{10}
+\end{align*} 
+\textbf{Decimal to Binary}\\
+\example $(5.4)_{10}$\\
+Integer Part: $(5)_{10}$, note that \begin{align*}
+\frac{5}{2}&=2R1\\
+\frac{2}{2}&=1R0\\
+\frac{1}{2}&=0R1
+\end{align*}
+So we get 101 as result (keep track of remainders backward). Then, we consider the fractional part $(.4)_{10}$, \begin{align*}
+.4\times 2&=.8=.8+0\\
+.8\times 2&=1.6=.6+1\\
+.6\times 2&=1.2=.2+1\\
+.2\times 2&=.4=.4+0
+\end{align*}
+Notice it repeats to .4 So the answer is $(.\overline{0110})_2$ (keep track of remainder forward).\\
+Then the final answer is $(5.4)_{10}=(101.\overline{0110})_2$. So we can not store exactly on a computer!\\
+\hfill\\
+\textbf{Floating Point Numbers}\\
+To \textbf{Normalized Base 2 Floats}, we do \begin{align*}
+[\pm]1\cdot \text{mantissa}\times
+ 2^{E}
+\end{align*}
+where $[\pm]$ is sign and 1 is the leading 1 (normalization), mantissa consists of bites $b_i=0,1$ and $E$ is the exponent\\
+\note 0 is subnormal, i.e not normalized\\
+\example \begin{align*}
+&(101.011)_2\\
+=&+1.01011\times 2^2 \text{(note in base 2 times  }2^2\text{ will shift the decimial two times to the right} 
+\end{align*}
+\begin{center}
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+precision & sign     & mantisa & exponent & Total Bits \\ \hline
+Double    & 1 (bits) & 52      & 11       & 64         \\ \hline
+Single    & 1        & 23      & 8        & 32         \\ \hline
+\end{tabular}
+\end{center}
+\hfill\\
+So How floats are stored internally? It is the process\begin{align*}
+x\in \R \to float(x) \to \text{machine word}
+\end{align*}
+\begin{center}
+\begin{tabular}{|l|l|l|}
+\hline
+s(0,1)  & $E_1 \cdots (\text{Exponent bits $E\_i=0,1$})\cdots E_{11}$ & $b_1\cdots \text{(mantissa bits $b\_i=0,1$)} \cdots b_{52}$ \\ \hline
+\end{tabular}
+\end{center}
+\remark \begin{enumerate}
+\item True Range for $E$ is \begin{align*}
+-1022\leq E\leq 1023 \text{ in double}
+\end{align*}
+So $1023+1+1022=2046$ possible exponents. Note that $2^{11}=2048$ possible exponents, the missing two are used for special cases (0,subnormal, infty, NaN,...)
+\item The sign of the true exponent is not stored. Instead we store $E+(2023)_{10}$ where $(1023)_{10}$ is the exponent bias, which avoids storing an extra sign\\
+\example  If $E=1,$ we store $E+2023=1024=2^{10}=(01000\cdots 00)_2$
+\end{enumerate}
+\example In order to store repeating number , we have to round, so \begin{align*}
+(9.4)_{10}&=(1001.\overline{0110})_{2}\\
+fl(9.4)&= +1.(0010 1100\cdots 1100)\overline{1100}\times 2^3
+\end{align*}
+where the the number in paranthesis is $b_{52}$ and we need to somehow round the rest bits \\
+\hfill\\
+\subsection[Rounding To Nearest Rule]{Rounding To Nearest Rule}
+Given a double precision floating number, we have \begin{align*}
+\pm 1.(b_1\cdots b_{52})b_{53}b_{54}\times 2^E
+\end{align*}
+Then, \begin{enumerate}
+\item if $b_{53}=1$ and $b_n\neq 0$,for some $ n> 53.$ Then round up by adding 1 to $b_{52}$
+\item if $b_{53}=0,$ round down by cutting away $b_{n},\forall n\geq 53$
+\item if $b_{53}=1$  and $b_{n}=0,\forall n >53$, then if $b_{52}=1,$ round up by adding 1 to $b_{52}$ and cutting remainder. If $b_{52}=0,$ round down by cutting remainder.\\
+The point is to cancel out equally likely errors.
+\end{enumerate}
+\example \begin{align*}
+(9.4)_{10}&=(1001.\overline{0110})_{2}\\
+fl(9.4)&= +1.(0010 1100\cdots 1100)\overline{1100}\times 2^3
+\end{align*}
+By rounding rule (in double precision), we lose $.\overline{1100}\times 2^3\times 2^{-52}=0.8\times 2^{-49}$ and by rounding $b_{52}$ up, we gain $2^{-52}\times 2^3=2^{-49}$, and by rounding $b_{52}$ up, we gain $2^{-2}\times 2^3=2^{-49}$. Therefore \begin{align*}
+fl(9.4)&= +1.(0010 1100\cdots 1101)\times 2^3
+\end{align*}
+In decimial, \begin{align*}
+fl(9.4)&=9.4-0.8\times 2^{-49}+2^{-49}\\
+&=9.4+0.2\times 2^{-49}
+\end{align*}
+which is actually stored in double precision.\\
+\hfill\\
+\section[Machine Epsilon]{Machine Epsilon}
+\begin{defn}
+We define $\epsilon$mach (or $\me$) to be the distance between 1 and the next largest float.
+\end{defn}
+\example \begin{align*}
+fl(1)&=+1.0\cdots 0 \times 2^{0}\\
+fl(1+\epsilon)&=+1.0\cdots 01 \times 2^0\\
+&= 1+2^{-52}
+\end{align*}
+So in double precision,\begin{center}
+$\epsilon$mach$=2^{-52}$
+\end{center}
+\begin{defn}
+\textbf{Relative Error:} For normalized floats with rounding to nearest rule, \begin{align*}
+\frac{|fl(x)-x|}{|x|}\leq \frac{1}{2}\me
+\end{align*}
+for any storable $x\in \R$
+\end{defn}
+\note Some sources define $\frac{1}{2}(2^{-52})=2^{-53}$ as the machine epsilon.
+\chapter[Root Finding]{Root Finding}
+\section[Bisection Method]{Bisection Method}
+Root finding is find $x$ such that $f(x)=0$.
+\begin{thm}
+Let $f$ be a continuous function on $[a,b]$. If $f$ changes sign from positive to negative, then there is a root $c\in [a,b]$ such that $f(c)=0$
+\end{thm}
+Given a function where it change sign on $[a_0,b_0],$ then we know by IVT, $\exists r\in [a,b]$ where $f(r)=0$. Then, we bisect to get $c_0.$ If $f(a_0)f(c_0)<0,$ let $[a_1,b_1]=[a_0,c_0]$, else if $f(c_0)f(b_0)<0,$ let $[a_1,b_1]=[c_0,b_0]$. Else if $f(c_0)=0,$ let $r=c_0.$\\
+And we loop the entire process, until error tolerance reached. \\
+\hfill\\
+\textbf{Error Analysis:}\\
+$c_0=\frac{a_i+b_i}{2}$\begin{align*}
+\text{error }e_0&:=|r-c_0|\leq \frac{b_0-a_0}{2}\\
+\text{error }e_1&:=|r-c_1|\leq \frac{b_0-a_0}{2^2}\\
+\vdots&\\
+\text{error }e_n&:=|r-c_n|\leq \frac{b_0-a_0}{2^{n+1}}
+\end{align*}
+If tolerence given, \begin{align*}
+\frac{b_0-a_0}{2^{n+1}}<Tol
+\end{align*}
+and solve for $n$ to get number of steps needed.\\
+\hfill\\
+Note that bisection can fail. For example, $|x|$
+\section[Fixed Point Iteration]{Fixed Point Iteration}
+Consider $\cos(x)=0$, then $cos(x)+x=x$. Setting $g(x)=\cos x +x,$ we have $g(x)=x$ \begin{defn}
+A point $x^*$ such that \begin{align*}
+f(x^*)=x^*
+\end{align*}
+is called a fixed point of $f$
+\end{defn}
+FPI: We guess $x_0$ for a solution, and \begin{align*}
+f(x_0)&=x_1\\
+f(x_1)&=x_2\\
+f(x_2)&=x_3
+\end{align*}
+In general, evaluate $x_{n+1}=f(x_n),x_0=$ starting guess. Then loop until error less than TOL. The code will be something like \\
+\text{\qquad} $x=x_0$\\
+\text{\qquad} While error $<$ TOL:\\
+\text{\qquad} \text{\qquad} $x=f(x)$\\
+\begin{thm}
+Let $f\in C[a,b].$ If FPI converges, it converges to solution.
+\end{thm}
+Let $x_n\to x,$ then \begin{align*}
+&\lim_{n\to \infty} x_{n+1}=f(x_n)\\
+\implies& x=f(x)
+\end{align*}
+\example \\
+1. $x=g(x)=\frac{1}{10}x+1$. Then $\begin{cases}
+x_{n+1}=\frac{1}{10}x_n+1\\
+x_0=0
+\end{cases}$. So we have \begin{align*}
+x_0&=0\\
+x_1&=1\\
+x_2&=1.11\\
+\vdots\\
+x_{\infty}&=1.\bar{1}=\frac{10}{9}
+\end{align*}
+2.$x=g(x)=3x+1$. Then $\begin{cases}
+x_{n+1}=3x_n+1\\
+x_0=0
+\end{cases}$. So we have \begin{align*}
+x_0&=0\\
+x_1&=1\\
+x_2&=4\\
+x_3&=13\\
+\vdots\\
+&\text{diverges!}
+\end{align*}
+Even though $x=-\frac{1}{2}$ is a solution, but we fail to find it with the method.\\
+\subsection[Convergence of FPI]{Convergence of FPI}
+\begin{defn}
+A contraction on $[a,b]$ $f(x)$ satisifies that \begin{align*}
+|f(x)-f(y)|&<L|x-y|
+\end{align*}
+For all $x,y\in [a,b]$ where $0\leq L<1$
+\end{defn}
+\begin{thm}
+\textbf{Contraction Mapping Theorem:}\\
+Let $g:[a,b]\to [a,b]$ be a contraction on $[a,b].$ Then, \begin{enumerate}
+\item $\exists x^*\in [a,b]$ such that $g(x^*)=x^*$
+\item FPI converges starting from any $x_0\in [a,b]$
+\end{enumerate}
+\end{thm}
+\remark Suppose $|g'(x)|<1$ for all $x\in [a,b]$. Then $g$ is a contradiction.
+\begin{proof}
+\begin{align*}
+|g(x)-g(y)|&=|g'(c)(x-y)|
+\end{align*}
+By mean value theorem that $g'(c)=\frac{g(x)-g(y)}{x-y}$ for some $c$ between $x$ and $y$. Then \begin{align*}
+&\leq L|x-y|
+\end{align*}
+since $|g'(x)|<1$ for all $x\in [a,b]$
+\end{proof}
+\remark If we know $g'(x^*)<1$ at the fixed point, then FPI is logically convergent, i.e $\exists$ a possibly small interval in $[a,b]$ such that with any $x_0$ in the interval, FPI works.\\
+\remark Stooping criterion \begin{enumerate}
+\item $|x_n-x_{n-1}|<$TOL (absolute error)
+\item $|g(x_n)-x_n|<$TOL (backward error)
+\item $\left|\frac{x_n-x_{n-1}}{x_n} \right|<$TOL (relative error)
+\end{enumerate}
+\section[Newton Method]{Newton Method}
+Recall, Taylor Expansion is \begin{align*}
+f(r)&=f(x_0)+f'(x_0)(x-x_0)+O((x-x)^2)\\
+&\approx f(x_0)+f'(x_0)(x-x_0)\\
+&=: \lambda(x)
+\end{align*}
+So \begin{align*}
+\lambda(x_1)=f(x_0)+f'(x_0)(x_1-x_0)
+\end{align*}
+So \begin{align*}
+x_1=x_0-\frac{f(x_0)}{f'(x_0)}
+\end{align*}
+Here is the method, \begin{align*}
+&\begin{cases}
+x_0&=\text{starting guess}\\
+x_{n+1}&=x_n-\frac{f(x_n)}{f'(x_n)}
+\end{cases}
+=&g(x_n)
+\end{align*}
+Local Convergence?\\
+Let $r$ be the solution.\begin{align*}
+g'(r)&=\left|1-\frac{(f'(r))^2-f(r)f''(r)}{[f'(r)]^2}\right|=0
+\end{align*}
+locally convergent!
+\section[Secant Method]{Secant Method}
+Recall Newton, $x_{n+1}=x_n-\frac{f(x_n)}{f'(x_n)}$. Then, we can approximate \begin{align*}
+f'(x_n)\approx \frac{f(x_n)-f(x_{n-1})}{f(x_n)-f(x_{n-1})}
+\end{align*}
+Therefore, the method is \begin{align*}
+\begin{cases}
+x_{n+1}=x_n-(x_n-x_{n-1})\frac{f(x_n)}{f(x_n)-f(x_{n-1})}\\
+x_0,x_1=\text{starting guesses}
+\end{cases}
+\end{align*}
+\textbf{Rate of Convergence:}\\
+Let $e_n:=|x_n-r|,$ the absolute error. We say an iterative method convergence with order $p$ if for some $c\in \R,$ we have \begin{align*}
+\lim_{n\to \infty}\frac{e_{n+1}}{e_n^p}=c
+\end{align*}
+For $p=1,$ we need $0<c<1$
+\chapter[Linear Systems]{Linear Systems}
+\example %%%%Be Added%%\\
+\hfill\\
+We want find $p\in P_{n-1}$
+ such that \begin{align*}
+ y_i=p(x_i),\leq i\leq n
+ \end{align*}
+ 
+ Let \begin{align*}
+p(x)&=a_{n-1}x^{n-1}+a_{n-2}x^{n-2}+\cdots+a_1x+a_0
+\end{align*}
+Find $\{a_{i}\}_{i=0}^{n-1}=\vec{a}$ is a susyem of sequences in $n$ unkown\begin{align*}
+A\vec{a}=\vec{y}
+\end{align*}
+with $A\in \R^{n\times n}$. \begin{align*}
+\vec{x}\in R^n,\vec{b}\in \R^n,A\in R^{n\times n}
+\end{align*}
+Solve \begin{align*}
+A\vec{x}=\vec{b}
+\end{align*}
+\textbf{Componentwise Calculations}\begin{enumerate}
+\item $\vec{x}\cdot \vec{y}=\sum_{i=1}^{n}x_iy_i$
+\item $(A\vec{x})_i=\sum_{i=1}^na_{ij}x_j$
+\item $(AB)_{ij}=\sum_{k=1}^nA_{ik}B_{kj}$
+\end{enumerate}
+\section[Flop Count]{Flop Count}
+To computer $A\vec{x},$ for every $i\in \{i,\cdots,n\}$, we need \textbf{$n-1$} additions, \textbf{n} mulplications. So Total is $2n-1=O(n)$. Grand Total \begin{align*}
+n(2n-1)&=2n^2-n\\
+&=O(n^2)
+\end{align*}
+Cost to obtain $AB$ is $O(n^2)$ i.e $(AB)x$ cost $O(n^3)$ while $A(Bx)$ costs $O(n^2)$\\
+\hfill\\
+\subsection[Gaussian Elimination]{Gaussian Elimination}\begin{align*}
+\begin{pmatrix}
+1&2&-1&\vline &2\\
+0&3&1&\vline&4\\
+2&-2&1&\vline&2
+\end{pmatrix}\xrightarrow[R_3-2R_1]{}\begin{pmatrix}
+1&2&-1&\vline &2\\
+0&3&1&\vline&4\\
+0&-6&3&\vline&-2
+\end{pmatrix}\xrightarrow[R_3+2R_3]{}\begin{pmatrix}
+1&2&-1&\vline &2\\
+0&3&1&\vline&4\\
+0&0&5&\vline&6
+\end{pmatrix}
+\end{align*}
+From here, backsolve to get \begin{align*}
+x_3&=\frac{6}{5}\\
+x_2&=\frac{4-x_3}{3}=\frac{14}{15}\\
+x_1&=\frac{2+x_3-2x_2}{1}\\
+&=2+\frac{14}{15}-2\frac{6}{5}=\frac{4}{3s}
+\end{align*}
+Note that elimination step is $O(n^3)$ but backsolving is $O(n^2)$\\
+\textbf{Algorithm:}\\
+Suppose have $A\vec{x}=\vec{c},$ and have eliminated to get \begin{align*}
+U\vec{x}&=\vec{b}
+\end{align*}
+where $U$ is upper triangular\\
+ Then \begin{align*}
+U_{11}x+1+U_{12}x_2+\cdots +U_{1n}x_n&=b_1\\
+U_{22}x_2+\cdots+U_{2n}x_n&=b_2\\
+\ddots\vdots&=\vdots\\
+u_{(n-1)(n-1)}x_{n-1}+u_{(n-1)n}x_n&=b_{n-1}\\
+u_{nn}x_n&=b_n
+\end{align*}
+Bavksolving: we will have \begin{align*}
+x_n&=\frac{b_n}{u_{nn}}\\
+\end{align*}
+Then, for $i=n-1,n-2,\cdots,2,1$ we have \begin{align*}
+x_i&=\frac{1}{u_{ii}}\left(b_i-\sum_{j=i+1}^nu_{ij}x_j \right)
+\end{align*}
+\exercise Show flop count to consturct $\vec{x}$ is exactly $n^2$.\\
+\hfill\\
+\textbf{MATLAB Code}:\begin{lstlisting}
+\end{lstlisting}  \begin{lstlisting}[frame=single]
+    % Backsolving
+    x(n) = b(n)/u(n,n);
+    for i = n-1:-1:1
+    	x(i)=(1/(u(i,i)))[b(i)-u(i,i+1:n)*x(i+1:n)];
+    end
+  \end{lstlisting}
+  \subsection[Lu Decomposition]{Lu Decomposition}
+  Matrix representation of Guass elmination: \begin{align*}
+  A&=LU
+  \end{align*}
+  where $L$ is lower triangular matrix and $U$ is upper triangular matrix. \\
+  To solve $A\vec{x}=b,$ we have \begin{align*}
+  LU\vec{x}&=\vec{b}
+\end{align*}   
+Let $\vec{c}=U\vec{x},L\vec{c}=\vec{b}.$ Solve $L\vec{c}=\vec{b}$ for $\vec{c}$ by forward substitution (costs $O(n^2)$)\\
+Then solve $U\vec{x}=\vec{c}$ by back substitution (costs $O(n^2)$)\\
+\hfill\\
+\example \begin{align*}
+A\vec{x}^{1}&=\vec{b}^{1}\\
+A\vec{x}^{2}&=\vec{b}^{2}\\
+\vdots&=\vdots\\
+A\vec{x}^{r}&=\vec{b}^{r}\\
+\end{align*}
+Suppose $r\approx n$. If using LU, costs to solve is \begin{align*}
+O(n^3+n^2(2r))&=O(n^3)
+\end{align*}
+where $n^2$ is elmination and $n^2(2r)$ is backward/forward solve.\\
+\hfill\\
+If elminating each time, it cost \begin{align*}
+O(n^3\cdot r+n^2(2r))&=O(n^4)
+\end{align*}
+Obtaining LU \\
+\example \begin{align*}
+A&=\begin{pmatrix}
+1&2&-1\\
+0&3&1\\
+2&-2&1
+\end{pmatrix}
+\end{align*}
+1 is the pivot entry. Subtract $2R_1$ from $R_3$, $0R)1$ from $R_2$ we have \begin{align*}
+\begin{pmatrix}
+1&2&-1\\
+(0)&3&1\\
+(2)&-6&3
+\end{pmatrix}
+\end{align*}
+for the number in $(),$ there are really 0 here, we are just storing the multipliers. Then, subtract $(-2)*R_2$ from $R_3,$ we have \begin{align*}
+\begin{pmatrix}
+1&2&-1\\
+(0)&3&1\\
+(2)&(-2)&5
+\end{pmatrix}
+\end{align*}
+Then, we get \begin{align*}
+A&=\begin{pmatrix}
+1&0&0\\
+0&1&0\\
+2&-2&1
+\end{pmatrix}\begin{pmatrix}
+1&2&-1\\
+0&3&1\\
+0&0&5
+\end{pmatrix}
+\end{align*}
+\section[Pitfalls]{Pitfalls}
+\begin{align*}
+A=\begin{pmatrix}
+0&1\\
+1&0
+\end{pmatrix}
+\end{align*}
+Since 1 can not be eliminated, so $A$ has no LU decomposition.
+\begin{align*}
+A&=\begin{pmatrix}
+\epsilon &1\\
+1&1
+\end{pmatrix}=\begin{pmatrix}
+1&0\\
+\frac{1}{\epsilon}&1
+\end{pmatrix}\begin{pmatrix}
+\epsilon &1\\
+0&1-\frac{1}{\epsilon}
+\end{pmatrix}
+\end{align*}
+with $\epsilon =10^{-20}$ which is less than $\epsilon_m\approx 10^{-16}$. Therefore, in double precision \begin{align*}
+\begin{pmatrix}
+1&0\\
+\frac{1}{\epsilon}&1
+\end{pmatrix}\begin{pmatrix}
+\epsilon &1\\
+0&-\frac{1}{\epsilon}
+\end{pmatrix}=\begin{pmatrix}
+\epsilon &1\\
+1&0
+\end{pmatrix}\neq A
+\end{align*}
+Since $1-\frac{1}{\epsilon}=1-10^{20}$ which is stored as $=10^{20}$.\\
+But if \begin{align*}
+\begin{pmatrix}
+1&1\\
+\epsilon &1
+\end{pmatrix}&=\begin{pmatrix}
+1&0\\
+\epsilon&1
+\end{pmatrix}\begin{pmatrix}
+1&1\\
+0&1-\epsilon
+\end{pmatrix}=\begin{pmatrix}
+1&0\\
+\epsilon&1
+\end{pmatrix}\begin{pmatrix}
+1&1\\
+0&1
+\end{pmatrix}=\begin{pmatrix}
+1&1\\
+\epsilon &1+\epsilon
+\end{pmatrix}=\begin{pmatrix}
+1&1\\
+\epsilon&1
+\end{pmatrix}
+\end{align*}
+\textbf{Pa=LU Decomposition}\begin{align*}
+A&=\begin{pmatrix}
+\epsilon&1\\
+1&1
+\end{pmatrix}\implies PA=\begin{pmatrix}
+0&1\\
+1&0
+\end{pmatrix}\begin{pmatrix}
+\epsilon&1\\
+1&1
+\end{pmatrix}=\begin{pmatrix}
+1&1\\
+\epsilon&1
+\end{pmatrix}=\begin{pmatrix}
+1&0\\
+\epsilon&1
+\end{pmatrix}\begin{pmatrix}
+1&1\\
+0&1
+\end{pmatrix}=LU
+\end{align*}
+$P=\begin{pmatrix}
+0&1\\
+1&0
+\end{pmatrix}$ is the permutation matrix, a matrix with a single 1 in each row and column.\\
+Therefore, $PA=LU$.\\
+To solve $Ax=b$ effectively by $PA=LU,$ we do \begin{align*}
+Ax&=b\\
+PAx&-Pb\\
+LUx&=Pb
+\end{align*}
+Let $Ux=c.$ First solve $Lc=Pb$ for $c,$ cost is $O(n^2)$. Then, solve $Ux=c$ for $x,$ cost $O(n^2)$\\
+\example $3\times 3$ example \begin{align*}
+A&=\begin{pmatrix}
+2&1&5\\
+4&4&-4\\
+1&3&1
+\end{pmatrix}
+\end{align*}
+Swap $R_1$ and $R_2$ using $P_1=\begin{pmatrix}
+0&1&0\\
+1&0&\\
+0&0&0
+\end{pmatrix}$. Then, we have \begin{align*}
+P_1A&=\begin{pmatrix}
+4&4&-4\\
+2&1&5\\
+1&3&1
+\end{pmatrix}
+\end{align*}
+And elminated, we get \begin{align*}
+\begin{pmatrix}
+4&4&-4\\
+(\frac{1}{2})&-1&7\\
+(\frac{1}{4})&2&2
+\end{pmatrix}
+\end{align*}
+And Swap $R_2$ and $R_3$ using $P_2=\begin{pmatrix}
+1&0&0\\
+0&0&1\\
+0&1&0
+\end{pmatrix}$, we get \begin{align*}
+\begin{pmatrix}
+4&4&-4\\
+(\frac{1}{4})&2&2\\
+(\frac{1}{2})&-1&7\\
+\end{pmatrix}
+\end{align*}
+And subtract $(-\frac{1}{2})R_2$ from $R_3,$ \begin{align*}
+\begin{pmatrix}
+4&4&-4\\
+(\frac{1}{4})&2&2\\
+(\frac{1}{2})&(-\frac{1}{2})&8\\
+\end{pmatrix}
+\end{align*}
+Now, $P_2P_1A=LU=\begin{pmatrix}
+1&0&0\\
+(\frac{1}{4})&1&0\\
+(\frac{1}{2})&(-\frac{1}{2})&1\\
+\end{pmatrix}\begin{pmatrix}
+4&4&-4\\
+0&2&2\\
+0&0&8\\
+\end{pmatrix}$
+and $P_2P_1=P$\\
+\section[Errors in Linear Systems]{Errors in Linear Systems}
+$x_a=$ approximate solutions. $Ax=b, x,b\in R^n.$ Yhen \begin{defn}
+\textbf{Residual:}\begin{align*}
+r:=Ax_n-b
+\end{align*}
+\end{defn}
+\begin{defn}
+\textbf{Backward error}\begin{align*}
+||r||=||Ax_a-b||
+\end{align*}
+\end{defn}
+\begin{defn}
+\textbf{Forward Error}\begin{align*}
+|x-x_a|||
+\end{align*}
+\end{defn}
+\begin{defn}
+Norms on $R^n$:\begin{enumerate}
+\item Euclian or 2-norm \begin{align*}
+||u||_2&=\left(\sum_{i=1}^n|u_i|^2 \right)^{\frac{1}{2}}
+\end{align*}
+\item 1-norm \begin{align*}
+||u||_1&=\sum_{i=1}^n|u_i|
+\end{align*}
+\item Max norm \begin{align*}
+||u||_{\infty}&=\text{max}_{i\leq \leq n}|u_i|
+\end{align*}
+\item p norm, $1\leq <\infty$\begin{align*}
+||u||_p&=\left(\sum_{i=1}^n|u_i|^p \right)^{\frac{1}{p}}
+\end{align*}
+\end{enumerate}
+\end{defn}
+\begin{defn}
+\textbf{Matrix Norms:}\begin{enumerate}
+\item Frobeneous norm\begin{align*}
+||A||_F&=\left(\sum_{i,j=1}^n |a_{ij}|^2 \right)^{\frac{1}{2}}
+\end{align*}
+\item \textbf{Operator p-norm}\begin{align*}
+||A||_p&:=\text{max} \frac{||Ax||_p}{||x||_p}\\
+&=\text{max}_{||x||=1}||Ax||_p
+\end{align*}
+where $x\neq 0$
+\end{enumerate}
+\end{defn}
+\example \begin{align*}
+||A||_1&=\text{max}_{1\leq j\leq n}\left(\sum_{i=1}^n|a_{ij}| \right)\\
+&=\text{maximum absolute column sum}
+\end{align*}
+\example \begin{align*}
+||A||_{\infty}&=\text{max}_{1\leq i\leq n}\left(\sum_{i=j}^n|a_{ij}| \right)\\
+&=\text{max absolute row sum}
+\end{align*}
+\example \begin{align*}
+||A||_2&=\sqrt{p(A^tA)}
+\end{align*}
+where $p(b)=\text{max}_{1\leq i\leq n}|\lambda_i|$ where $\lambda_i$ is an eigenvalue of $B$.\\
+\hfill\\
+\subsection[Errors for Ax=b]{Errors for Ax=b}
+Let $A\widetilde{x}=\widetilde{b}$, where $\widetilde{b}$ is computer store $b$ in double precision.\\
+Then \begin{align*}
+A(x-\widetilde{x})&=b-\widetilde{b}\\
+x-\widetilde{x}&=A^{-1}(b-\widetilde{b})\\
+||x-\widetilde{x}||&\leq ||A^{-1}||||b-\widetilde{b}||
+\end{align*}
+Also, \begin{align*}
+||b||&=||Ax||\leq ||A||||x||
+\end{align*}
+Combine them, we have \begin{align*}
+\frac{||x-\widetilde{x}||}{||A||||x||}\leq \frac{||A^{-1}||||b-\widetilde{b}||}{||b||}
+\end{align*}
+Then, \begin{align*}
+\frac{||x-\widetilde{x}||}{||A||||x||}&\leq \frac{||A||_p||A^{-1}||_p||b-\widetilde{b}||_p}{||b||_p}
+\end{align*}
+A matrix with large condition number is called ill conditioned
+\begin{thm}
+In finite dimensions, all norms are equivalent
+\end{thm}
+\section[Iterative Methods]{Iterative Methods}
+$A\vec{x}=\vec{b}$. Then if $A\in \R^{10^5\times 10^5}$, $A$ has $10^10$ entries. In double precision, each $a_{ij} $is $8$ bytes of memory. Therefore, $8\times 10^10=80$ Gb memory. So, we can only store $\approx 30\times 10^3$ entries, which is \begin{align*}
+8(30\times 10^3)=24\times 10^4 \text{bytes}
+\end{align*}
+Therefore, we had to store $A$ as a sparse data structure.\\
+\hfill\\
+\textbf{Goal:} We want to solve of the form \begin{align*}
+\vec{x}^{(n+1)}&=\vec{g}(\vec{x}^{n})\\
+\vec{x}^(0)&=\text{starting guess}
+\end{align*}
+\subsection[Jacobi Method]{Jacobi Method}:\begin{align*}
+Ax=b
+\end{align*}
+Split $A=D+R,$ where $D$ is a diagonal matrix and $R$ is matrix with 0 in diagonal line. Then, We have \begin{align*}
+(D+R)x&=b\\
+Dx&=b-R_x\\
+\implies x&=D^{-1}(b-Rx)
+\end{align*}
+\example \begin{align*}
+\begin{pmatrix}
+1&2\\
+3&4
+\end{pmatrix}&=\begin{pmatrix}
+1&0\\
+0&4
+\end{pmatrix}+\begin{pmatrix}
+0&2\\
+3&0
+\end{pmatrix}
+\end{align*}
+So Jacobi method: \begin{align*}
+\begin{cases}
+\vec{x}^{(n+1)}=D^{-1}(\vec{b}-R\vec{x}^n)\\
+x\vec{0}=\text{starting guess}
+\end{cases}
+\end{align*}
+\remark $D^{-1}$ is just take recipical of diagonal elements.\\
+\remark Convergence guranteed if \begin{align*}
+p(D^{-1}R)<1
+\end{align*}
+where p is spectral radius of $D^{-1}R$.\\
+\hfill\\
+\remark Convergence guranteed also If $A$ is strictly diagonally dominant, i.e \begin{align*}
+|a_{ii}|>\sum_{j\neq i}|a_{ij}|,\forall i
+\end{align*}
+\remark Componentwise version: \begin{align*}
+\vec{x}_i^{(n+1)}&=\frac{1}{a_{ii}}\left(b_i-\sum_{j\neq i}a_{ij}\vec{x}_j^n \right)
+\end{align*}
+$1\leq i\leq n$
+\example \begin{align*}
+2x+y&=5\\
+x+3y&=4
+\end{align*}
+Starting guess $x^0= \begin{pmatrix}
+0\\
+0\\
+\end{pmatrix}
+$. Then note that \begin{align*}
+\begin{cases}
+x&=\frac{5-y}{2}\\
+y&=\frac{4-x}{3}
+\end{cases}
+\end{align*}
+We get $x^1=\begin{pmatrix}
+\frac{5}{2}\\
+\frac{4}{3}
+\end{pmatrix}$. 
+\remark When we stop? check if \begin{enumerate}
+\item $||A\vec{x}^n -\vec{b}||<$TOl\\
+or $\frac{||\vec{x}^{n+1}-\vec{x}^{n}}{||\vec{x}^n||}$
+\item or if $n>N=(100)$
+\end{enumerate}
+\subsection[Gauss-Sedel Method]{Gauss-Sedel Method}
+Let $A=L+D+U,$ then \begin{align*}
+\begin{cases}
+\vec{x}^{(n+1)}=(L+D)^{-1}L\vec{b}-U\vec{x}^{(b)}
+\\
+\vec{x}^{(0)}=\text{starting guess}
+\end{cases}
+\end{align*}
+Componentwise \begin{align*}
+\vec{x}_{i}^{(n+1)}=\frac{1}{a_{ii}}\left(b_i-\sum_{j<i}a_{ij}\vec{x}_j^{(n+1)}-\sum_{j>i}a_{ij}\vec{x}_i^{n} \right)
+\end{align*}
+\chapter[Nonlinear Systems]{Nonlinear Systems}
+$\begin{cases}
+\vec{x}=\vec{g}(\vec{x})\\
+\vec{x}\in \R^n\\
+\vec{F}(\vec{x})=\vec{0}
+\end{cases}$, and $\vec{g}$ is possibly non linear. \\
+\example \begin{align*}
+f_1(x,y)&=e^x-y=0\\
+f_2(x,u)&=xy-e^x=0
+\end{align*}
+Then, \begin{align*}
+\vec{F}(\vec{x})&=\begin{pmatrix}
+f_1(\vec{x})\\
+f_2(\vec{x})
+\end{pmatrix}=0\vec{0}
+\end{align*}
+with $\vec{x}=\begin{pmatrix}
+x\\
+j\\
+\end{pmatrix}=\R^2$.\\
+\hfill\\
+Recall the 1d newton, $f(x)=0$. And \begin{align*}
+f(x_1)&=f(x_0)+f'(x_0)(x_1-x_0)+O((x_1-x_0)^2)
+\end{align*}
+as $x_1\to x_0$. Set $L(x_1)=f(x_0)+f'(x_0)(x_1-x_0).$ Note that \begin{align*}
+x_1=x_0-\frac{f(x_0)}{f'(x_0)}
+\end{align*}
+\section[Multivariable Newton's Method]{Multivariable  Newton's Method}
+\begin{align*}
+\vec{F}(\vec{x})&=\vec{F}(\vec{x_0})+D\vec{F}(\vec{x_0})(\vec{x}-\vec{x_0})+\text{higher order terms}
+\end{align*}
+Where \begin{align*}
+D\vec{F}(\vec{x_0})&=\begin{pmatrix}
+\partial_{x_1}f_1& \partial_{x_2}f_1&\cdots &\partial_{x_n}f_1\\
+\partial_{x_1}f_2& \partial_{x_2}f_2&\cdots &\partial_{x_n}f_2\\
+\vdots &\vdots &\ddots &\vdots\\
+\partial_{x_1}f_m& \partial_{x_2}f_m&\cdots &\partial_{x_n}f_m
+\end{pmatrix}=\begin{pmatrix}
+\Delta f_1\\
+\Delta f_m\\
+\vdots\\
+\Delta f_m
+\end{pmatrix}
+\end{align*}
+Set $\vec{x_1}$ such that \begin{align*}
+\vec{0}&=\vec{L}(\vec{x_1})\\
+&=\vec{F}(x_0)+D\vec{F}(\vec{x_0})(\vec{x_1}-\vec{x_0})\\
+-\vec{F}(x_0)&=D\vec{F}(\vec{x_0})(\vec{x_1}-\vec{x_0})
+\end{align*}
+Therefore, \begin{align*}
+\vec{x_0}-[D\vec{F}(\vec{x_0})]^{-1}\vec{F}(\vec{x_0})&=\vec{x_1}
+\end{align*}
+ \subsection[Netwon Method]{Netown Method}
+To solve $(\vec{F}(\vec{x})=\vec{0}),$ we do the following \begin{enumerate}
+\item Starting guess $\vec{x_0}\in \R^n$
+\item At step $n,$ have $\vec{x_n},$ to update, use \begin{align*}
+\vec{x_n}-[D\vec{F}(\vec{x_n})]^{-1}\vec{F}(\vec{x_0})&=\vec{x_{n+1}}
+\end{align*}
+To avoid inverse, substitute $[D\vec{F}(\vec{x_n})]^{-1}\vec{F}(\vec{x_0})$ as $\vec{s}.$ Then, solve \begin{align*}
+DF(\vec{x_n})\vec{s}=\vec{F}(\vec{x_n})
+\end{align*}
+for $\vec{s}$. And then update \begin{align*}
+\vec{x_{n+1}}&=\vec{x_n}-\vec{s}
+\end{align*}
+\end{enumerate}
+\example \begin{align*}
+f_1(x,y)&=e^x-y=0\\
+f_2(x,u)&=xy-e^x=0
+\end{align*}
+Then \begin{align*}
+\vec{F}(x,y)&=\begin{pmatrix}
+e^x-y\\
+xy-e^x
+\end{pmatrix}\\
+D\vec{F}(x,y)&=\begin{pmatrix}
+\partial_xf_1&\partial_yf_1\\
+\partial_xf_2&\partial_yf_2
+\end{pmatrix}\\
+&=\begin{pmatrix}
+e^x &-1\\
+y-e^x&x
+\end{pmatrix}
+\end{align*}
+Let's try $\vec{x_0}=\begin{pmatrix}
+0\\
+0\\
+\end{pmatrix} $ to start solve $D\vec{F}(0,0)\vec{s}=\vec{F}(0,0) $. Then \begin{align*}
+\begin{pmatrix}
+1&-1\\
+-1&0
+\end{pmatrix}\begin{pmatrix}
+s_1\\
+s_2
+\end{pmatrix}&=\begin{pmatrix}
+1\\
+-1
+\end{pmatrix}\\
+\implies s_1=1, s_2=0, \vec{s}=\begin{pmatrix}
+1\\
+0\\
+\end{pmatrix}
+\end{align*}
+Now $\vec{x}_1=\vec{x_0}-\vec{s}=\vec{0}-\begin{pmatrix}
+1\\
+0\\
+\end{pmatrix}=\begin{pmatrix}
+-1\\
+0
+\end{pmatrix}$\\
+\hfill\\
+\subsection[Convergence Theory]{Convergence Theory}
+Get local convergence provided that \begin{align*}
+p(D\vec{G}(\vec{r}))<1
+\end{align*}
+where $p()$ is the spectral radius, Then \begin{align*}
+\vec{G}(\vec{x})&=\vec{x}-[D\vec{F}(\vec{x})]^{-1}\vec{F}(\vec{x})
+\end{align*}
+and $\vec{r}$ is the actual solution.
+\chapter[Interpolation]{Interpolation}
+\section[Polynomial Interpolation]{Polynomial Interpolation}
+Suppose there are $n+1$ points. We can fit a unique $p_n\in P_n$ provided $\{x_i\}^n_{i=0}$ are distinct.
+\begin{proof}
+Suppose both $p,q\in P_n$ interpolate. Let $h(x)=p(x)-q(x).$ Then, $h\in P_n$ and $h(x)=0$ for all $\{x_i\}^n_{i=0}$ (i.e at $n+1$ points.)\\
+Then, by fundemental theorem of algebra, $h$ is zero polynomial. Therefore, $p=q.$
+\end{proof}
+
+To find $P_n\in P_n$ interplotating $\{(x_i,y_i)\}^n_{i=0},$ we need a basis of $P_n$, which is \begin{align*}
+\mathcal{B}&=\{1,x,x^2,\cdots,x^n\}
+\end{align*}
+spans $P_n$ and is linearly independent.  So let \begin{align*}
+p(x)&=a_0+a_1x+a_2x^2+\cdots+a_nx^n
+\end{align*}
+for unknown $\{a_i\}^n_{i=0}$. We force $y_i=p(x_i),\forall i,$ to get \begin{align*}
+\begin{pmatrix}
+1 &x_0&x_0^2&\cdots&x_0^n\\
+1 &x_1&x_1^2&\cdots&x_1^n\\
+\vdots &\vdots&\vdots&\ddots &\vdots\\
+1 &x_n&x_n^2&\cdots&x_n^n\\
+\end{pmatrix}
+\begin{pmatrix}
+a_0\\
+a_1\\
+\vdots\\
+a_n
+\end{pmatrix}=\begin{pmatrix}
+y_0\\
+y_1\\
+\vdots\\
+y_n
+\end{pmatrix}
+\end{align*}
+Solve $V\vec{a}=\vec{y}$ for $\vec{a}.$\\
+\remark If $\{x_i\}$ distinct, then $V^{-1}$ exists, so we can find $\vec{a}$\\
+\remark V is called a Vandermonde matrix which becomes very ill-conditioned for large $n.$\\
+\hfill\\
+Intutively, for large $n,$ basis vectors $x^n$ become very similar, so columns of $V$ get close to linear dependence (so $V$ close to being singular)
+\section[Lagrange Basis]{Lagrange Basis}
+\begin{align*}
+P_1\to p_1(x)=y_0\frac{x-x_1}{x_0-x_1}+y_1\frac{x-x_0}{x_1-x_0}
+\end{align*}
+$\frac{x-x_1}{x_0-x_1}=l_0(x)$ and $y_1\frac{x-x_0}{x_1-x_0}=l_1(x).$ They are called Lagrange Basis of $P_1$.\\
+\hfill\\
+\note \begin{align*}
+l_i(x_k)&=\delta _{ij}=\begin{cases}1 &i=j\\
+0 &i\neq j \end{cases}
+\end{align*}\\
+\note $p=a_0l_0(x)+a_1l_1(x),$ we get the systm\begin{align*}
+\begin{pmatrix}
+1&0\\
+0&1
+\end{pmatrix}\begin{pmatrix}
+a_0\\
+a_1
+\end{pmatrix}&=\begin{pmatrix}
+y_0\\
+y_1
+\end{pmatrix}
+\end{align*} 
+where $\text{cond}(I)=1$, best possible.\\
+\hfill\\
+In general, for $n+1$ data point, \begin{align*}
+p(x)&=\sum_{i=0}^ny_il_i(x)
+\end{align*}
+where \begin{align*}
+l_i(x)&=\prod _{i=0,j\neq i}^n\left(\frac{x-x_j}{x_i-x_j} \right)
+\end{align*}
+\example $(1,2),(3,7),(5,8)$\\
+\begin{align*}
+p(x)&=2\frac{(x-3)(x-5)}{(1-3)(1-5)}+7\frac{(x-1)(x-5)}{(3-1)(3-5)}+8\frac{(x-1)(x-3)}{(5-1)(5-3)}
+\end{align*}
+\section[Newton Basis]{Newton Basis} 
+\begin{align*}
+\{(x_n,y_n)\}_{n=0}^{n+1}
+\end{align*}
+$p\in P_n$ interplotion. Then, \begin{align*}
+p(x)&=a_0+a_1(x-x_0)+a_2(x-x_0)(x-x_1)+\cdots+a_n(x-x_0)\cdots(x-x_{n-1})
+\end{align*}
+or, if prefered we can said \begin{align*}
+\begin{cases}
+N_0(x)=1\\
+N_i(x)=\sum_{j=0}^{i-1}(x-x_j)\text{for }1\leq i\leq n
+\end{cases}
+\end{align*}
+\example 3 points case.\\
+\begin{align*}
+y_0&=p(x_0)=a_0\\
+y_1&=p(x_1)=a_0+a_1(x_1-x_0)\\
+y_2&=p(x_2)=a_0+a_1(x_1-x_0)+a_2(x_2-x_0)(x_2-x_1)
+\end{align*}
+can eficently solve in $O(n^3)$ time by forward solving.\\
+\hfill\\
+\subsection[Divided differences]{Divided differences}\begin{center}
+\begin{tabular}{|l|l|l|l|}
+\hline
+$x$ & $y$ & 1st div difference  & 2nd div difference \\ \hline
+1 & 1 &  &  \\ \hline
+2 & 5 & $\frac{5-1}{2-1}=\frac{4}{1}$ &  \\ \hline
+3 & 4 & $\frac{4-5}{3-2}=-1$  & $\frac{-1-4}{3-1}=-\frac{5}{2}$ \\ \hline
+\end{tabular}
+\end{center}
+We will use the diagonal lines. Therefore, \begin{align*}
+p(x)&=1+4(x-1)\\
+&=-\frac{5}{2}(x-1)(x-2)
+\end{align*}
+Since \begin{align*}
+f(x)&=a_0+a_1(x-x_0a_2(x-x_0)(x-x_1)
+\end{align*}
+\begin{enumerate}
+\item $y_0=f(x_0)=a_0$\\
+We define $f[x_0]:=f(x_0),$ the 0th divided difference.
+\item $y_1=f(x_1)=a_0+a_1(x_1-x_0)$\\
+This implies \begin{align*}
+a_1&=\frac{f(x_1)-f(x_0)}{x_1-x_0}\\
+&=\frac{f[x_1]-f[x_0]}{x_1-x_0}=f[x_0,x_1]
+\end{align*}
+the second divided difference.
+\end{enumerate}
+\textbf{General Theory}\\
+Let \begin{align*}
+f[x_0]&=a_0\\
+f[x_0,x_1]&=a_1\\
+f[x_0,x_1,x_2]&=a_2\\
+\vdots
+\end{align*}
+where $f[x_0]=f(x_0)$ and we recursively define\begin{align*}
+f[x_i,\cdots,x_j]&=\frac{f[x_{i+1},\cdots,x_j]-f[x_i,\cdots,x_{j-1}]}{x_j-x_i}
+\end{align*}
+for $0\leq i<j\leq n$.\\
+Then, the interploent is \begin{align*}
+p(x)&=\sum_{k=0}^nf[x_0,\cdots,x_j]\prod_{i=0}^{j-1}(x-x_j)
+\end{align*}
+with $\prod_{i=0}^{-1}(x-x_1):=1$\\
+\section[Interpolation Error and Chebyshev Interpolation]{Interpolation Error and Chebyshev Interpolation}
+Error \begin{enumerate}
+\item $||f-p||_{L^2(a,b)}=\left(\int_{a}^b |f(x)-p(x)|^2dx \right)$
+\item $||f-p||_{L^{\infty}[a,b]}=\text{max}_{x\in [a,b]}|f(x)-p(x)|$
+\end{enumerate}
+\begin{thm}
+Let $f\in C^{n+1}[a,b],$ and let $p\in P_n$ interpolate $f$ at $\{x_0,x_1,\cdots,x_n\}$ (distinct points.)\\
+Then, $\forall x\in [a,b],$ we have \begin{align*}
+e(x):=f(x)-p(x)=\frac{f^{(n+1)}(C_{n,x})}{(n+1)!}\prod_{j=0}^{n}(x-x_j)
+\end{align*}
+Where $C_{n,x}\in (a,b)$
+\end{thm}
+\note \begin{align*}
+||f-p||_{L^{\infty}[a,b]}\leq \frac{||f^{(n+1)}||_{L^{\infty}[a,b]}}{(n+1)!}\prod_{j=0}^{n}(x-x_j)
+\end{align*}
+Which $\{x_j\}^n_{j=0}$ minimize \begin{align*}
+\omega(x)&=\prod_{j=0}^{n}(x-x_j)
+\end{align*}
+Note the polynomial.
+\begin{thm}
+\textbf{Optimal Node Spacing} for $P_n$interpolation\\
+Fix $f.$ Fix $n\in \N$(degree of polynomial in $P_{n-1}$)
+\end{thm}
+\begin{thm}
+\textbf{Chebyshev's Theorem}\\
+The choice of $\{x_j\}^n_{j=1}$ that minimize $|\omega(x)|$ on $[-1,1]$ is \begin{align*}
+x_j=\cos \frac{(2i-1)\pi}{2n}(i=1,1,2,\cdots,n)
+\end{align*}
+and \begin{align*}
+||\omega||_{L^{\infty}[-1,1]}\leq \frac{1}{2^{n-1}}
+\end{align*}
+\end{thm}
+\example Find an upper bound on error for approxinating $f(x)=e^x$ on $[-1,1]$ using $p\in P_4$.\\
+\hfill Using Chebyshev nodes, we know $x_j=\cos \frac{(2i-1)\pi}{2(5)},$\\
+We get $p\in P_r$ satisifying $j=1,\cdots,n$. Then \begin{align*}
+||e^x-p||_{L^{\infty}[-1,1]}&\leq \frac{||f^{(5)}||_{L^{\infty}[-1,1]}}{5!}\prod_{j=1}^{5}|x-x_k|\\
+&\leq \frac{e^{1}}{5!}\frac{1}{2^{5-1}}
+\end{align*} 
+Let $y=T(x)=\frac{b-a}{2}x+\frac{b+a}{2}.$ Then $T:[-1,1]\to [a,b]$ is linear. So $\{x_j\}^n_{k=1}$ Chebyshev on $[-1,1],$ become $\{y_j\}=\{T(x_j)\}^n_{j=1}$ on $[a,b]$.\\
+\hfill\\
+How does error transform? \begin{align*}
+|\omega(y)|&=\left|\prod_{j=1}^n (y-y_j)\right|\\
+&=\left|\left(\frac{b-a}{2}\right)^n\prod_{j=1}^n(x-x_j) \right|\\
+&\leq \left(\frac{b-a}{2}\right)^n\frac{1}{2^{n-1}}
+\end{align*}
+upper bound for $|\omega(y)|$ on $[a,b]$\\
+\hfill\\
+\section[Hermite Interploation]{Hermite Interpolation}
+\color{red}Goal:\color{black} Interploate $f(x_i)$ and also $f^{(e)}(x_i)$.\\
+\hfill\\
+Let \begin{align*}
+p(x)&=a+bx+cx^2
+\end{align*}
+and force $p$ to nterpolate $(0,1),(1,-1)$ and $p'(1)=-1$ and solve for $a,b,c$\\
+\example Taylor polynomial \begin{align*}
+p(x)&=\sum_{k=0}^n \frac{f^{k}(x_0)}{k!}(x-x_0)^k
+\end{align*}
+is a Hermite interpolent satisfying $p^{l}(x_0)=f^{l}(x_0)$  for $0\leq l\leq n$\begin{center}
+
+\begin{tabular}{|l|l|l|l|}
+\hline
+$x_1$ & $y_1=f[x_1]$ &  &  \\ \hline
+$x_2$ & $y_2=f[x_2]$ & $f[x_1,x_2]$ &  \\ \hline
+$x_3$ & $y_3=f[x_3]$ & $f[x_2,x_3]$ & $f[x_1,x_2,x_3]$ \\ \hline
+\end{tabular}
+\end{center}
+circle the diagonal entries, we have Newton form of $P_2(x),$ which is \begin{align*}
+p_2(x)&=f[x_1]+f[x_1,x_2](x-x_1)+f[x_1,x_2,x_3](x-x_1)(x-x_2)
+\end{align*}
+Let $x_2\to x_1$, we have \begin{align*}
+p_2(x)&=f[x_1]+\lim_{x_2\to x_1}f[x_1,x_2](x-x_1)+\lim_{x_2\to x_1}f[x_1,x_2,x_3](x-x_1)(x-x_2)\\
+p_2(x)&=f[x_1]+f[x_1,x_1](x-x_1)f[x_1,x_2,x_3](x-x_1)(x-x_2)\\
+\end{align*}
+\example \begin{center}
+
+\begin{tabular}{|l|l|l|l|}
+\hline
+$x$ &$y$\\
+$1$ & $y_1=-1$ &  &  \\ \hline
+$0$ & $y_2=-1$  slope constraint at $x=1$& $-1$ &  \\ \hline
+$0$ & $y_3=1$ & $\frac{1-(-1)}{0-1}=-2$ & $\frac{-2-(-1)}{0-1}=1$ \\ \hline
+\end{tabular}
+\end{center}
+So $P_2=-1-1(x-1)+1(x-1)^2$\\
+\hfill\\
+\remark \begin{enumerate}
+\item Repeated points have to be grouped together
+\item For points with mulpllicity of m (m copies of $x_i$), we suppose we know \begin{align*}
+f^{(l)}(x_i)
+\end{align*}
+for $0\leq l\leq m-1$. for Existinces, uniquness
+\item $f[x_j,\cdots,x_j]=\frac{f^{m-1}(x_j)}{(m-1)!}$ where $x_j$  has $m$ repeations.
+\end{enumerate}
+\example Interpolate $f^{(l)}(x_0),0\leq l\leq 2$ with $p_2\in \mathbf{P}_2$, note that
+ then \begin{center}
+\begin{tabular}{|l|l|l|l|}
+\hline
+$x$ & $f[x_i]$ & $f[x_i,x_{i+1}]$  & $f[x_{i-1},x_i,x_{i+1}]$  \\ \hline
+$x_0$ & $f(x_0)$ &  &  \\ \hline
+$x_0$ & $f(x_0)$ & $\frac{f'(x_0)}{1!}$  &  \\ \hline
+$x_0$ & $f(x_0)$ & $\frac{f'(x_0)}{1!}$  & $\frac{f''(x_0)}{2!}$  \\ \hline
+\end{tabular}
+\end{center}
+ then \begin{align*}
+p_2(x)&=f(x_0)+f'(x_0)(x-x_0)+\frac{f''(x_0)}{2!}(x-x_0)^2
+\end{align*}
+\section[Piecewise Polynomial Interpolation]{Piecewise Polynomial Interpolation}
+Have an $[x_{i-1},x_i]$ the interpolant where \begin{align*}
+s_i(x)&=f(x_{i-1})+f[x_{n-1},x_i](x-x_{i-1})
+\end{align*}
+We want to check at $x_{i-1},$ we will have $\begin{cases}
+s_i(x_{i-1})=f(x_{i-1})\\
+s_i(x_i)=f(x_i)
+\end{cases}
+$\\
+\hfill\\
+\subsection[Error]{Error}
+Suppose $\{(x_i,y_i)\}$ are obtained from some $f(x)$ and let $s(x)$ be the piecewise linear interpolant on $[a,b]$. \\
+We know that $[x_{i-1},x_i]$ \begin{align*}
+\left| f(x)-s_i() \right|&=\left| \frac{f^{(2)(c_i)}}{2!} \right||(x-x_i)(x-x_{i-1})|
+\end{align*}
+Note that \begin{align*}
+ \frac{f^{(2)(c_i)}}{2!}&\leq \frac{||f''||_{L^{\infty}[a,b]}}{2}
+\end{align*}
+Set $\phi(x)=(x-x_i)(x-x_{i-1})$.\\
+\note \begin{align*}
+|\phi'(x)|&=0\\
+\implies (x-x_i)+(x-x_{i-1})&=0\\
+\implies x&=\frac{x_i+x_{i-1}}{2}
+\end{align*}
+so max of $|\phi|$ is $\left| \phi\left(\frac{x_i+x_{i-1}}{2} \right)\right|=\left|\left( \frac{x_{i-1}-x_{i}}{2}\right)\left(\frac{x_i-x_{i-1}}{2} \right) \right|$\\
+\hfill\\
+So Let's set $h:=\text{max}_i(x_i-x_{i-1}),$ so $|f(x)-Si(x)|\leq \frac{||f''||_{\infty}}{2}\frac{h^2}{4}$, this implies that \begin{align*}
+||f-s||_{L^{\infty}[a,b]}&\leq \frac{h^2}{8}||f'||_{L^{\infty}}[a,b]]
+\end{align*}
+\subsection[Cubic Spline]{Cubic Spline}
+\begin{defn}
+A \textbf{spline} is a piecewise $c^k[a,b]$ function that is globally in $c^{k-1}[a,b]$
+\end{defn} 
+\begin{align*}
+s_1(x)&=y_1+b_1(x-x_1)+c_1(x-x_1)^2+d_1(x-x_1)^3 &x_1\leq x\leq x_2\\
+\cdots\\
+s_{n-1}(x)&=y_{n-1}+b_{n-1}(x-x_{n-1})+c_{n-1}(x-x_{n-1})^2+d_{n-1}(x-x_{n-1})&x_{n-1}\leq x\leq x_n
+\end{align*}
+unknowns are $\{(b_i,c_i,d_i)\}_{i=1}^{n-1},$ so there are $3n-3$ unknowns. \begin{enumerate}
+\item Enforce continuity at interior points, $s_i(x_i)=s_{i+1}(x_i)$ for $1\leq i\leq n-1.$ Get $n-1$ equations
+\item Enforce $s_i'(x_i)=s_{i+1}'(x_i),2\leq i\leq n-2$, $n-2$ equations
+\item Enforce $s_i''(x_i)=s_{i+1}''(x_i),2\leq i \leq n-1,$ $n-2$ equations
+\end{enumerate}
+So there are total of $3n-5$ equations
+\chapter[Linear Least Squares]{Linear Least Squares}
+\example $\{x_i,y_i\}_{i=1}^n$ where $n>>1$, we want to fit a line $y=mx+c$, where $m,c$ appear linearly. And we force the data to fit model \begin{align*}
+\begin{cases}
+mx_c=y_1\\
+\vdots
+mx_n+c=y
+\end{cases}
+\end{align*}
+We get \begin{align*}
+&\begin{pmatrix}
+x_1 &1\\
+\vdots &\vdots\\
+x_n&1
+\end{pmatrix}\begin{pmatrix}
+m\\
+c\\
+\end{pmatrix}=\begin{pmatrix}
+y_1\\
+\vdots\\
+y_n
+\end{pmatrix}\\
+\implies& A\begin{pmatrix}
+m\\
+c\\
+\end{pmatrix}=\vec{b}
+\end{align*}
+We want to find $\vec{x}\in R^n$ such that $A\vec{x}-b$ is minimized in the $2-norm$, i.e \begin{align*}
+\vec{x}&=\text{argmin}_{x\in \R^n}||Ax-b||_2
+\end{align*}
+where $||Ax-b||_2$ is the residual error.\\
+\hfill\\
+\textbf{Calc III:}\\
+Set $\delta_x||Ax0b||_2=\vec{0}$ and solve for $x.$ We get \begin{align*}
+A^TA\vec{x}=A^Tb
+\end{align*}
+the normal equation, which can be solved for $\vec{X}$\\
+\section[Derivation]{Derivation}
+Derivation of $A^TA\vec{x}=A^Tb$.\\
+We force $b-A\bar{x}\perp Ax,\forall x \in \R^n$ in order to minimize the residual error. Also note that $||x||_2=<x,x>,$ the dot inner product and $<x,y>=x^Ty$ And because $b-A\bar{x}\perp Ax$\begin{align*}
+<b-A\bar{x},Ax>&=0\\
+(b-A\bar{x})^TAx&=0\\
+(b^T-\bar{x}^TA^T)Ax&=0\\
+(b^TA-\bar{x}^TA^TA)x&=0\\
+X^T(Ab^T-A^TA\bar{x})&=0
+\end{align*}
+for all $x\in \R^n$
+By lemma below, we get \begin{align*}
+A^Tb-A^TA\vec{x}&=0
+\end{align*}
+\begin{lem}
+If $<x,y>=0,$  for all $\vec{x}\in R^n,$ then $\vec{y}=\vec{0}$
+\end{lem}
+\begin{proof}
+Let $x=y,$ then $<y,y>=0\implies y=0$
+\end{proof}
+\begin{thm}
+If columns of $A$ are linearly independent, then $A^TA$ is invertible
+\end{thm}
+\example $A=\begin{pmatrix}
+\epsilon &0\\
+0&\epsilon\\
+1&1
+\end{pmatrix}$, where $0<\epsilon <\sqrt{\epsilon_{mach}}\approx 10^{-8}$, then \begin{align*}
+A^TA&=\begin{pmatrix}
+\epsilon &0 &1\\
+0&\epsilon &1
+\end{pmatrix}\begin{pmatrix}
+\epsilon &0\\
+0&\epsilon\\
+1&1
+\end{pmatrix}\\
+&=\begin{pmatrix}
+1+\epsilon^2&1\\
+1&1+\epsilon^2
+\end{pmatrix}=\begin{pmatrix}
+1&1\\
+1&1
+\end{pmatrix}
+\end{align*}
+So $A^TAx=A^Tb$ is a singular system numerically
+\section[QR Decomposition]{QR Decomposition}
+Let $A\in \R^{m\times n},m\geq n$ so it is overdetermined system. Then, we can decompose $A$ in the following \begin{align*}
+A&=QR
+\end{align*}
+where $Q$ is orthogonal $Q\in \R^{m\times n}$ and $R=\begin{pmatrix}
+r_{11} &\cdots &c_{1n}\\
+\vdots&\ddots&\vdots\\
+O&\cdots&r_{nn}\\
+\hline O&\ddots &O\\
+&\ddots&\vdots
+\end{pmatrix}$ 
+where the upper part is size $n\times n$ and the bottom part is size $(m-n)\times n$.
+\begin{defn}
+Orthogonal matrix means \begin{enumerate}
+\item $Q^{-1}=Q^T$
+\item columns of $Q$ are orthogonormal  and $Q$ is square matrix
+\end{enumerate}
+\end{defn}
+\textbf{Idea:} Qr encodes the gram schmidt  process\\
+\hfill\\
+\textbf{Matlab Code:} $[Q,R]=qr(A)$\\
+\hfill\\
+We can also write as \begin{align*}
+A=QR=\begin{bmatrix}
+\hat{Q}&\overline{Q}
+\end{bmatrix}\begin{bmatrix}
+\hat{R}\\
+0
+\end{bmatrix}=\hat{Q}\hat{R}\text{ Reduced QR}
+\end{align*}
+where $\hat{R}= \begin{pmatrix}
+r_{11} &\cdots &c_{1n}\\
+\vdots&\ddots&\vdots\\
+O&\cdots&r_{nn}\\
+\end{pmatrix}\in \R^{n\times n}$ and $\hat{Q}\in \R^{m\times n}$, this potentially not square but still has orthonormal columns.\\
+\hfill\\
+\textbf{Matlab Code:} $[\hat{Q},\hat{R}]=qr(A,0)$ for reduced $QR$
+\begin{thm}
+Orthogonal matrices $Q$ are isometries. i.e \begin{align*}
+||Qx||_2=||x||_2
+\end{align*}
+\end{thm}
+\begin{corT}
+\begin{align*}
+||Q^Tx||_2=||x||_2
+\end{align*}
+\end{corT}
+\section[Least Squares]{Least-Sqaures}
+Back to the least=sqaures, \begin{align*}
+Ax=b
+\end{align*}
+Note that \begin{align*}
+\overline{x}&=\text{argmin}_{x\in \R^n}||Ax-b||_2
+\end{align*}
+Suppose we have $A=QR,$ so \begin{align*}
+&||Ax-b||_2\\
+=&||QRx-b||_2\\
+=&||Q^T(QRx-b)||_2\\
+=&||Rx-Q^Tb||_2
+\end{align*}
+which is the min.\\
+\example Let $A\in \R^{4\times 2},b\in \R^4$ then \begin{align*}
+||Rx-Q^Tb||_2&=\left| \left|\begin{pmatrix}
+r_{11}&r_{12}\\
+0&r_{22}\\
+0&0\\
+0&0\\
+\end{pmatrix}\begin{pmatrix}
+x_1\\
+x_2
+\end{pmatrix}-
+\begin{pmatrix}
+c_1\\
+c_2\\
+c_3\\
+c_4
+\end{pmatrix}
+ \right|\right|_{2}
+\end{align*}
+Then, choose $x=\begin{pmatrix}
+x_1\\
+x_2
+\end{pmatrix}$ such that \begin{align*}
+\begin{pmatrix}
+r_{11}&r_{12}\\
+0&r_{22}
+\end{pmatrix}\begin{pmatrix}
+x_1\\
+x_2
+\end{pmatrix}&=\begin{pmatrix}
+c_1\\
+c_2
+\end{pmatrix}
+\end{align*}
+or $\hat{R}\vec{x}=\vec{c}_{1:2}$. Then we end up with $||Ax-b||_2= \left|\left|\begin{pmatrix}
+0\\
+0\\
+c_3\\
+c_4
+\end{pmatrix}
+ \right|\right|=\sqrt{c_3^2+c_4^2}$ as the minimal value\\
+ \subsection[Method]{Method}
+ To solve $A\vec{x}=\vec{b}$ in the least square sense, form $A=QR=\hat{Q}\hat{R}$ and let $\vec{c}=Q^T\vec{b},$ and solve $\hat{R}\vec{x}=\vec{c}_{1:n}$ for $\bar{x},$ which is the least square solution
+ \section[Approximation Theory]{Approximation Theory}
+ \textbf{Goal:} Approximate $f$ by some simpler function in the sense of least squares
+ \begin{defn}
+ Let $V$ be a vector space. A \textbf{norm} $||\cdot||:V\to \R$ satisifies:\begin{enumerate}
+ \item $||f||\geq 0,$ and $||f||=0$ if and only if $f=0$
+ \item $||\alpha f||=|\alpha|||f||$ for all $\alpha \in \R$
+ \item $||f+g||\leq ||f||+||g||$
+ \end{enumerate}
+ \end{defn}
+ Let $f\in C[a,b]$, then the norm choices can be \begin{enumerate}
+ \item $||f||_{L^2[a,b]}=\left(\int_{a}^b|f(x)|^2dx \right)^{\frac{1}{2}}$
+ \item  $||f||_{L^1[a,b]}=\int_{a}^{b}|f(x)|dx$
+ \item $||f||_{L^{\infty}[a,b]}=\text{max}_{x\in [a,b]}|f(x)|$
+ \end{enumerate}
+ \begin{defn}
+ \textbf{Distance:} \begin{align*}
+ ||f-g||_{L^2[a,b]} 
+ \end{align*}
+ \end{defn}
+ \begin{defn}
+ \textbf{Inner Product}\begin{align*}
+ <f,g>:=\int_{a}^b f(x)g(x)dx
+ \end{align*}
+ \textbf{Axioms}\begin{enumerate}
+ \item $<f,g>=<g,f>$
+ \item $<f+g,h>=<f,h>+<g,h>$
+ \item $<\alpha f,g>=\alpha<f,g>=<f,\alpha g>,\forall \alpha \in \R$
+ \item $<f,f>\geq 0$ and $<f,f>=0$ if and only if $f=0$
+ \end{enumerate}
+ \end{defn}
+ \subsection[Problem]{Problem}
+ Let $f\in V$ , and let $V_n$ be a finite dimensional space with basis $\{g_i\}_{i=1}^n$, so \begin{align*}
+ V_n&=\spa\{g_1,\cdots,g_n\}
+ \end{align*}
+ \textbf{Goal:} Find $v\in V_n$ such that the error \begin{align*}
+ ||f=v||_{L^2[a,b]}
+ \end{align*}
+  is minimal\\
+  \hfill\\
+  Let \begin{align*}
+  v(x)&=\sum_{i=1}^nc_ig_i(x)
+  \end{align*}
+  where $c_i$ is unkown coefficients. Then \begin{align*}
+  &||f-v||^2_{L^2}\\
+  =&||f||_{L^2}^2-2<f_1,v>+||v||_{L^2}^2\\
+  =&||f||_{L^2}^2-2<f_1,\sum_{i=1}^n c_ig_i>+<\sum_{i=1}^nc_ig_i,\sum_{j=1}^nc_ig_i>\\
+  =&||f||^2_{L^2}-2\sum_{i=1}^nc_i<f,g_i>+\sum_{i=1}^n\sum_{j=1}^nc_ig_i<g_i,g_j>\\
+  =&\phi(\vec{c})
+  \end{align*}
+  where $\vec{c}=(c_1,\cdots,c_n).$ To minimize, set \begin{align*}
+  \Delta_c\phi(\vec{c})&=\vec{0}
+  \end{align*}
+  We will do this componentwise, i.e show $\frac{\partial}{\partial c_k}\phi(\vec{c})=0,\forall k=1,\cdots,n$. Note that \begin{align*}
+  \phi(\vec{c})&=||f||^2_{L^2}-2\sum_{i=1}^nc_i<f,g_i>+\sum_{i=1}^n\sum_{j=1}^nc_ig_i<g_i,g_j>\\
+  \frac{\partial}{\partial c_k}\phi(\vec{c})&=0=2\sum_{i=1}^n \frac{\partial c_i}{\partial c_k}<f,g_i>+\sum_{i=1}^n\sum_{j=1}^n\frac{\partial}{\partial c_k} (c_ic_j)<g_i,g_j>
+  \end{align*}
+  Note that $\frac{\partial c_i}{\partial c_k}=\delta_{ki}=\begin{cases}
+  1 &i=k\\
+  0 &i\neq k
+  \end{cases}
+  $ and $\frac{\partial}{\partial c_k}(c_ic_j)=c_j\delta_{kj}+c_j\delta_{ki}$.\\
+  Therefore, \begin{align*}
+  0&=-2<f,g_k>+\sum_{i=1}^nc_i<g_i,g_k>+\sum_{j=1}^nc_j<g_k,g_j>\\
+  &=-2<f,g_k>+2\sum_{i=1}^nc_i<g_i,g_k>
+  \end{align*}
+  Finally, \begin{align*}
+  \sum_{i=1}^nc_i<g_i,g_k>&=<f,g_h>
+  \end{align*}
+  This is a linear system for unknowns $\vec{c}=\begin{pmatrix}
+  c_1\\
+  \vdots\\
+  v_n
+  \end{pmatrix}, A\vec{c}=\vec{b},$ where $A_{ik}=<g_i,g_k>$ and $b_k=<f,g_k>$.\\
+  If we have an orthonormal basis of $V_n,$ say $\{g_1,\cdots,g_n\}$ with $<g_i,g_j>=0$ if $i\neq j$ and $<g_i,g_i>=1$\\
+  Then, $<g_i,g_k>=\delta_{ij},$ and so \begin{align*}
+  c_k=<f,g_k>
+  \end{align*}
+  and we get \begin{align*}
+  v=\sum_{k=1}^n<f,g_k>g_k=\text{proj}_{v_n}f
+  \end{align*}
+  as our least squares solution. Note that \begin{align*}
+  \text{proj}_{\vec{x}}\vec{y}&=\frac{<\vec{y},\vec{x}>}{||\vec{x}||}\vec{x}
+  \end{align*}
+\section[Weighted Least-Squares]{Weighted Least-Squares}
+
+\begin{align*}
+||f||_w&=||f||_{L^2_{w}[a,b]}=\left(\int_{a}^b |f(x)|^2w(x)dx \right)^{\frac{1}{2}}
+\end{align*}
+and \begin{align*}
+\langle f,g\rangle &=\int_{a}^{b}f(x)g(x)w(x)dx
+\end{align*}
+To find $v\in V_n$, the finite dimensional space best approximating $f$ in the $L^2+w$-sense, i.e \begin{align*}
+v&=\text{argmin}_{u\in V_n}||f-u||_{L^2_w}
+\end{align*}
+Set $V(x)=\sum_{i=1}^n\langle f,g_i\rangle _{L^2_w}g_i(x)=\text{proj}_{V_n}f$, where $\{g_i\}^n_{i=1}$ is a basis of $V_n$.\\
+\hfill\\
+Here are some \textbf{assumptions }on $w$ \textbf{weighted function:}\begin{enumerate}
+\item $w(x)\geq 0$
+\item $w(x)=0$ at atmost a finite number of $x$
+\end{enumerate}
+\example $w(x)=\frac{1}{\sqrt{1-x^2}}$ on $(-1,1)$ (chebyshev weight)\\
+\hfill\\
+Note that \begin{align*}
+\text{min}_{u\in V_n}\int_{-1}^{1}|f(x)-u(x)|^2 \frac{1}{\sqrt{1-x^2}} dx
+\end{align*}
+The weight ensures that our least-sqaures solution approximation $f$ much more closely near endpoints $-1$ and $1$. It is to choose a weight that is large on $[a,b]$ (where good datas lie) and small on $[b,c]$ (where bad data lie)\\
+\hfill\\
+\example Let $w(x)=x$ on $[0,1]$, approximate $e^x$ on $[0,1]$ in $L^2_{w}$-sense with $p\in P_1$. \\
+We need ONB of $P_1$ on $[0,1]$ with $w(x)=x$. Give a basis $\{1,x\},$ note that $\langle 1,x\rangle =\int_{0}^{1}1\cdot x\cdot xdx\neq 0.$ Therefore, we need Gram-Schmiat. \begin{align*}
+v_1&=1\\
+v_2&=x-\frac{\langle x,1\rangle}{||1||^2}\cdot 1 \text{ (proj}_1x)=x\cdot \frac{\int_{0}^1x\cdot 1\cdot xdx}{\int_{0}^1xdx}\cdot 1\\
+&= x-\frac{\frac{1}{3}}{\frac{1}{2}}\\
+&= x-\frac{2}{3}
+\end{align*}
+Then, we need normalized. \begin{align*}
+e_1&=\frac{v_1}{||v_1||_w}=\frac{1}{\left(\int_{0}^11^2\cdot x dx\right)^{\frac{1}{2}}}=\sqrt{2}\\
+e_2&=\frac{v_1}{||v_1||_2}=\frac{x-\frac{2}{3}}{\left(\int_{0}^{1}\left(x-\frac{2}{3}\right)\right)^2xdx}^{\frac{1}{2}}=K(x-\frac{2}{3})
+\end{align*}
+Just to check orthogonality, \begin{align*}
+\langle x-\frac{2}{3},1\rangle&= \int_{0}^{1}\left(x-\frac{2}{3} \right)xdx\\
+&=\frac{1}{3}-\frac{2}{3}\frac{1}{2}=0
+\end{align*}
+Then solution is \begin{align*}
+v&=\langle e^x,\sqrt{2}\rangle_{w}\sqrt{2}+\langle e^x,K\left(x-\frac{2}{3} \right)\rangle K\left(x-\frac{2}{3} \right)
+\end{align*}
+\textbf{Projection formula}\begin{align*}
+\text{proj}_{\vec{x}}\vec{y}&=\frac{\langle \vec{y},\vec{x}\rangle}{||\vec{x}||^2}\vec{x}
+\end{align*}
+The orthogonal is \begin{align*}
+\langle x,y-\frac{\langle y,x\rangle}{||x||^2}x\rangle
+\end{align*}
+\subsection[Gram-Schmidt]{Gram-Schmidt}
+Suppose $\{w_1,w_2,w_3\}$ is a basis for vector space $V$. To orthogonolize, use new basis $\{v_1,v_2,v_3\},$ where \begin{align*}
+v_1&=w_1\\
+v_2&=w_2-\text{proj}_{v_1}w_2\\
+v_3&=v_3-\text{proj}_{v_1}w_3-\text{proj}_{v_2}w_3
+\end{align*}
+\subsection[Legendre Polynomials]{Legendre Polynomials}
+$w(x)=1$ on $[-1,1]$\\
+$P_0(x)=1$, $P_1(x)=x$. Then \begin{align*}
+(n+1)P_{n+1}(x)-(2n+1)xP_n(x)+nP_{n-1}(x)=0 &n\geq 1
+\end{align*}
+when $n=1,$ $2P_2(x)-3x\cdot x+1\cdot 1=0$, so $P_2(x)=\frac{3x^2-1}{2}$.\\
+\hfill\\
+To get Legendre $p(x)$ on $[a,b],$ use a linear change of variable. So on $[a,b],$ with $w(x)=1$, an orthogonal basis of $P_1$ is $\{1,2t-1\}$
+\chapter[Numerical Differentiation]{Numerical Differentiation}
+Note that slope $f'(x)\approx \frac{f(x_2)-f(x_1)}{x_2-x_1}$, and \begin{align*}
+f'(x)=\lim_{h\to 0}\frac{f(x+h)-f(x)}{h}
+\end{align*}
+\section[Two Point Forward Difference Quotient]{Two Point Forward Difference Quotient}
+given $x,x+h,$ then \begin{align*}
+f'(x)\approx \frac{f(x+h)-f(x)}{h}
+\end{align*}
+\textbf{Error}\begin{align*}
+\frac{f(x+h)-f(x)}{h}&=\frac{f(x)+hf'(x)+\frac{h^2}{2}f''(\xi)-f(x)}{h}\\
+&=f'(x)+\frac{h}{2}f''(\xi)
+\end{align*}
+The error term. And error estimate will be \begin{align*}
+||f'(x)-D_hf(x)||_{L^{\infty}[a,b]}\leq \frac{h}{2}||f''||_{L^{\infty}[a,b]}
+\end{align*}
+So Theoretically, as $h\to 0,$ we get $D_hf\to f'$\\
+\section[Two Point Backward Difference Quotient]{Two Point Backward Difference Quotient}
+given $x,x+h,$ then \begin{align*}
+f'(x)\approx \frac{f(x)-f(x-h)}{h}
+\end{align*}
+Have \begin{align*}
+\frac{f(x)-f(x+h)}{h}&=\frac{f(x)-(f(x)-hf'(x)+\frac{h^2}{2}f''(\xi))}{h}\\
+&=f'(x)-\frac{h}{2}f''(\xi)
+\end{align*}
+So for backward error, we still get\begin{align*}
+||f'(x)-\frac{f(x)-f(x-h)}{h}||_{L^{\infty}[a,b]}\leq \frac{h}{2}||f''||_{L^{\infty}[a,b]}
+\end{align*}
+\section[Centered Differencing]{Centered Differencing}
+Given $x-h,x,x+h$.
+Note that using taylor, \begin{align*}
+f(x+h)&=f(x)+hf'(x)+\frac{h^2}{2}f''(x)+\frac{h^3}{3!}f'''(\xi_1)\\
+f(x-h)&=f(x)-hf'(x)+\frac{h^2}{2}f''(x)-\frac{h^3}{3!}f'''(\xi_2)\\
+\end{align*}
+Subtracting them, we have \begin{align*}
+f(x+h)-f(x-h)&=2hf'(x)+\frac{h^3}{6}(f'''(\xi_1)+f'''(\xi_2))
+\end{align*}
+So \begin{align*}
+f'(x)&=\frac{f(x+h)-f(x-h)}{2h}+\frac{h^2}{12}[f'''(\xi_1)+f'''(\xi_2)] \\
+f'''(\xi_1)+f'''(\xi_2)&=2f'''(\xi) \text{ by Intermediate value theorem with $\xi$ between $\xi_1$ and $\xi_2$}
+\end{align*}
+Therefore \begin{align*}
+f'(x)&=\frac{f(x+h)-f(x-h)}{2h}+\frac{h^2}{6}[2f'''(\xi)]
+\end{align*}
+So \begin{align*}
+||f'(x)-\frac{f(x+h)-f(x-h)}{2h}||\leq \frac{h^2}{6}||f'''||_{\inf}=O(h^2)
+\end{align*}
+\begin{thm}
+\textbf{Intermediate Value Theorem}\\
+Let $f\in C[a,b]$ and $a_i>0$ or $(a_i<0)$ for all $i$. Then, $\exists d\in [a,b]$ such that \begin{align*}
+\sum_{i=1}^nn a_if(x_i)&=f(d)\sum_{i=1}^na_i
+\end{align*}
+\end{thm}
+\section[Method of Undetermined Coefficient]{Method of Undetermined Coefficient}
+Supposed we want $f'(x)$ approximation using $f(x),f(x+h)$. Find best possible formula
+\begin{align*}
+f'(x)&=Af(x)+Bf(x+h)
+&=Af(x)+B[f(x)+hf'(x)+\frac{h^2}{2}f''(\xi)]
+\end{align*}
+Let's set \begin{align*}
+A+B&=0\\
+Bh&=1
+\end{align*}
+This implies $B=\frac{1}{h},A=-\frac{1}{h}$. So we get \begin{align*}
+f'(x)&=-\frac{1}{h}f(x)+\frac{1}{h}f(x+h)+\frac{h}{2}f'''(\xi)\\
+&=\frac{f(x+h)-f(x)}{h}+\frac{h}{2}f''(\xi)
+\end{align*}
+\section[Error]{Error}
+Recall if \begin{align*}
+D_hf(x)&:=\frac{f(x+h)-f(x)}{h}
+\end{align*}
+then \begin{align*}
+||f'-D_hf||_{L^\infty}&\leq \frac{h}{2}||f''||_{L^{\infty}}
+\end{align*}
+In finite preicsion \begin{align*}
+\widetilde{f}(x)&=f(x)+e(x)
+\end{align*}
+Since $D_h$ is a linear operation, then \begin{align*}
+D_h\widetilde{f}(x)&=D_hf(x)-G_he(x)
+\end{align*}
+And note that \begin{align*}
+D_he(x)&=\frac{e(x+h)-e(x)}{h}
+\end{align*}
+And \begin{align*}
+|D_he(x)|&=\left|\frac{e(x+h)-e(x)}{h} \right|\\
+&\leq \frac{|e(x+h)|+|e(x)|}{h}\\
+&\leq \frac{2\epsilon}{h}
+\end{align*}
+where $\epsilon \approx \epsilon_{mach}$.\\
+So \begin{align*}
+||D_h\widetilde{f}-D_hf||_{L^{\infty}}&\leq \frac{2\epsilon}{h}
+\end{align*}
+Then, \begin{align*}
+&||f'-D_h\widetilde{f}||_{L^{\infty}}\\
+=&||f'-D_hf+D_hf-D_h\widetilde{f}||_{L^{\infty}}\\
+\leq &||f'-D_hf||_{L^{\infty}}+||D_hf-D_h\widetilde{f}||_{L^{\infty}}\\
+\leq & \frac{h}{2}||f''||_{L^{\infty}}+\frac{2\epsilon}{h}
+\end{align*}
+Set $m=||f''||_{L^{\infty}}$.\\
+To minimize error bound, set \begin{align*}
+\frac{d}{dh}\left(\frac{h}{2}m+\frac{2\epsilon}{h} \right)&=0\\
+\frac{m}{2}-\frac{2\epsilon}{h^2}&=0\\
+h&=\sqrt{\frac{4\epsilon}{m}}\approx 10^{-8}
+\end{align*}
+\section[Richordson Extrapolation]{Richordson Extrapolation}
+Recall \begin{align*}
+f'(x)&=\frac{f(x+h)-f(x-h)}{2h}-\frac{h^2}{6}f'''(\xi)\\
+Q&=F_2(h)+O(h^2)
+\end{align*}
+where $2$ for $F_2(h)$ is the error order. \\
+The extrapolation formula is \begin{align*}
+Q\approx \frac{2^nF_n\left(\frac{h}{2} \right)-F_n(h)}{2^n-1}
+\end{align*}
+Here, $F_n(h)$has $O(h^n)$ error, and approximates $Q$.\\
+And $F_{n+1}(h)$ is an (at least) $O(h^{+1}) $ method for approx Q, i.e $F_{n+1}(h)+O(h^{n+1})$\\
+For centered differences, get \begin{align*}
+f'(x)&=\frac{2^2\left(\frac{f(x+\frac{h}{2})-f(x-\frac{h}{2})}{2(\frac{h}{2})} \right)-\frac{f(x+h)-f(x-h)}{2h}}{2^2-1}+O(h^3)
+\end{align*}
+using $n=2$,\begin{align*}
+&=\frac{1}{6h}\left(f(x-h)-9f\left(x-\frac{h}{2} \right)+8f\left(x+\frac{h}{2} \right)-f(x+h) \right)
+\end{align*}
+Note that Error is $O(n^4).$ This since the above equation as unchanged when replacing $h$ with $-h$, so error can only depend on even powers of $h$\\
+\hfill\\
+\begin{proof}
+Supposed \begin{align*}
+Q&=F_n(h)+Kh^n+O(h^m)\\
+2^nQ&=2^nF_n\left(\frac{h}{2} \right)+K\left(\frac{h}{2} \right)^n+O(h^m)\\
+\end{align*}
+subtract to get \begin{align*}
+(2^n-1)Q&=2^nF_n\left(\frac{h}{2} \right)+F_n(h)+O(h^m)\\
+Q&=\frac{2^nF_n\left(\frac{h}{2} \right)-F_n(h)}{2^n-1}+O(h^m)
+\end{align*}
+\end{proof}
+\chapter[Quadrature]{Quadrature}
+Quadrature numerical integration. The common way is \begin{align*}
+\int_{a}^{v}f(x)dx&\approx \sum_{i=0}^{n-1}f(x_i^*)(x_{i+1}-x_i)\\
+\int_{a}^{v}f(x)dx&=\lim_{n\to \infty}\sum_{i=0}^nf(x_i^*)\delta x_i
+\end{align*}
+Note that \begin{align*}
+\int_{a}^{b}f(x)dx&=\sum_{i=1}^nf(x_i)w_i+\text{ Error}
+\end{align*}
+where $x_i$ is nodes and $w_i$ is weights.\section[Newton-Cotes Quadrature]{Newton-Cotes Quadrature}
+Uses $$
+\int_{a}^{v}f\approx \int_{a}^{b}p
+$$, where $P$ is an interpolating polynomial at equally spaced nodes. \\
+\hfill\\
+ closed rules includes endpoints values $f(a),f(b)$. open rule is  do not use the endpoints values $f(a),f(b)$\\
+\hfill\\
+\subsection[Midpoint Rule]{Midpoint Rule}
+use the mid point $\frac{a+b}{2}$. By Taylor, \begin{align*}
+f(x)&=f(m)+(x-m)f'(m)+\frac{(x-m)^2}{2}f''(\xi_{x})\\
+\int_{a}^{b}f(x)&=\int_{a}^{b}f(m)+\int_{a}^{b}(x-m)f'(m)+\int_{a}^{b}\frac{(x-m)^2}{2}f''(\xi_{x})\\
+&=f(m)(b-a)+0+\frac{f''(\xi)}{2}\int_{a}^{b}(x-m)^2dx\\
+&=f(m)(b-a)+0+\frac{1}{2}f''(\xi) \frac{(b-a)^3}{12}
+\end{align*}
+we used Intgeral Mean Value Theorem. \begin{thm}
+IF $f\in C[a,b]$ and $g\geq 0$ or $g\leq 0$ on $[a,b],$ then $\exists \xi\in (a,b)$ such that \begin{align*}
+\int_{a}^{b}fg=f(\xi)\int_{a}^bg
+\end{align*}
+
+\end{thm}
+So Mid point rule tells us \begin{align*}
+\int_{a}^{b}=f(m)(b-a)+\frac{1}{24}f''(\xi)(b-a)^3
+\end{align*}
+or \begin{align*}
+\left|\int_{a}^{b}fdx-f(m)(b-a) \right|\leq \frac{(b-a)^3}{24}||f''||_{L^{\infty}[a,b]}
+\end{align*}
+\section[Trapezoid Rule]{Trapezoid Rule}
+Recall langurage remainder interpolate is \begin{align*}
+f(x)&=f(a)\frac{x-b}{a-b}+f(b)\frac{x-a}{b-a}+\frac{f''(\xi)}{2!}(x-a)(x-b)
+\end{align*}
+where $\xi\in (a,b)$. We do integrate, we have \begin{align*}
+\int_{a}^{b}f&=\int_{a}^{b}f(a)\frac{x-b}{a-b}+f(b)\frac{x-a}{b-a}+\int_{a}^{b}\frac{f''(\xi)}{2!}(x-a)(x-b)\\
+&=\frac{1}{2}(b-a)(f(a)+f(b))+\frac{1}{2}f''(\xi)\int_{a}^b(x-a)(x-b)dx\\
+&=\frac{1}{2}(b-a)(f(a)+f(b))+\frac{1}{2}f''(\xi)-\frac{1}{6}(b-a)^3\\
+\end{align*}
+So Trapezoid rule give us \begin{align*}
+\int_{a}^{b}&=\frac{b-a}{2}(f(a)+f(b))-\frac{1}{12}(b-a)^3f''(\xi)
+\end{align*}
+\section[Simpson's Rule]{Simpson's Rule}
+Given $a,b, m=\frac{a+b}{2}$\\
+Then, \begin{align*}
+\int_{a}^{b}&=\frac{b-a}{6}[f(a)+f(b)+4f(m)]-\frac{(b-a)^5}{90(32)}f^{5}(\xi)
+\end{align*}
+\note Simpsons is exact for $p\in P_e$. So \begin{align*}
+\left|\int_{a}^{b}f-\sum w_if(x_i) \right|&\leq \frac{|b-a|^5}{90(32)}||f^{4}||_{\infty}
+\end{align*}
+we have Given $2n+1$ nodes, we have $2n$ subintervals, and $h=\frac{b-a}{2n}=$ cosnstant. Then Simpsons' Rule on $[x_{2i},x_{2i+1}]$ is \begin{align*}
+\int_{x_{2i}}^{x_{2i+2}}&\approx \frac{2h}{6}[f(x_{2i})+4f(x_{2i+1})+f(x_{2i+2})-\frac{(2h)^5}{90\cdot 32}f^{(4)}(\xi_{i})
+\end{align*}
+where $\xi_{i}$ is between $x_{2i}$ and $x_{2i+2}$\\
+So, \begin{align*}
+\int_{a}^{b}f&=\sum_{i=0}^{n-1}\int_{x_{2i}}^{x_{2i+2}}f\\
+&=\frac{h}{3}\sum_{i=0}^{n-1}[f(x_{2i})+4f(x_{2i+1})+f(x_{2i+2})]-\frac{h^5}{90}\sum_{i=0}^{n-1}f^{4}(\xi_i)
+\end{align*}
+where $\sum_{i=0}^{n-1}f^{4}(\xi_i)=nf^{4}(\xi)$ by IVT for some $\xi \in (a,b)$. Therefore \begin{align*}
+&=\frac{h}{3}\sum_{i=0}^{n-1}[f(x_{2i})+4f(x_{2i+1})+f(x_{2i+2})]-\frac{h^5n}{90}f^{4}(\xi)
+\end{align*}
+use $hn=\frac{b-a}{2},$ we have \begin{align*}
+&=\frac{h}{3}\sum_{i=0}^{n-1}[f(x_{2i})+4f(x_{2i+1})+f(x_{2i+2})]-\frac{b-a}{180}h^4f^{4}(\xi)
+\end{align*}
+Therefore, erros is $-\frac{b-a}{180}h^4f^{4}(\xi)$.\\
+And also \begin{align*}
+x_i&=a+ih=a+i\frac{b-a}{2n}
+\end{align*}
+for $0\leq i\leq 2n$
+\section[(Weighted) Gaussian Quadrature]{(Weighted) Gaussian Quadrature}
+\begin{align*}
+\int_{a}^{b}f(x)w(x)dx\approx \sum_{i=1}^nA_{i}f(x_i)
+\end{align*}
+where $A_i$ is quadrature weights and $x_i$ is nodes. Very general many options:\begin{align*}
+\int_{-1}^{1}e^x\cdot 1\\
+\int xe^{x}\frac{1}{x}\\
+\int 1\cdot e^x
+\end{align*}
+\textbf{Orthogonal Polynomial}\\
+Recall $\{P_i\}\subseteq P_n$ are orthogonal on $[a,b]$ with $w(x)$ if \begin{align*}
+<p_i,p_j>_{w}=\int_{a}^{b}p_i(x)p_j(x)w(x)dx
+\end{align*}
+\begin{thm}
+If $\{p_i\}^{n}_{i=0}\subseteq P_n$ is orthogonal and $deg(p_i)=i,$ then $p_i$ has exactly $i$ distinct  zeroes\end{thm}
+\example $\{1,x,\frac{3}{2},\frac{3}{2}(x^2-\frac{1}{3})\}$ and the first legrendre polynomial with $w(x)=1$ on $[-1,1]$.\\
+\hfill\\
+\textbf{Guass-Legrende quadrature}\\
+Fix $n$. Let $\{x_i\}_{i=1}^n$ be the $n$ zeros of the degree $n$ legendre polynomial $P_n(x).$\\
+Then, \begin{align*}
+\int_{-1}^{1}f(x)\cdot 1dx\approx \sum_{i=1}^n A_i\cdot f(x_i)
+\end{align*}
+with $\{A_i\}$ given by undetermined coefficients and the rule is exact for any $f\in P_{2n-1}$\\
+\hfill\\
+\example $\int_{-1}^{1}f(x)\cdot 1 dx$\\
+Gauss-Legrende with two nodes. Degree legrende polynomial is \begin{align*}
+\frac{3}{2}(x^2-\frac{1}{2})
+\end{align*}
+with zeros $x=\pm \sqrt{\frac{1}{3}},$ so \begin{align*}
+\int_{-1}^{1}f(x)dx\approx A_{1}f\left(-\frac{1}{\sqrt{3}} \right)+A_2f\left(\frac{1}{\sqrt{3}} \right)
+\end{align*}
+It will be exact for $f\in P_3$\\
+\hfill\\
+Force rule to be exact for $f=1,x$, we have \begin{align*}
+\implies 2&=\int_{-1}^{1}1 = A_1+A_2\\
+0&=\int_{-1}^{1}x= A_{1}f\left(-\frac{1}{\sqrt{3}} \right)+A_2f\left(\frac{1}{\sqrt{3}} \right)\\
+\implies A_1&=A_2=1
+\end{align*}
+For $x^2,$ check \begin{align*}
+\int_{-1}^{1}x^2=\frac{2}{3}=f\left(-\frac{1}{\sqrt{3}} \right)^2+f\left(\frac{1}{\sqrt{3}} \right)^2
+\end{align*}
+\textbf{Explicit quadrature weight formula}:\begin{align*}
+\int_{a}^{b}f(x)w(x)dx\approx \sum_{i=1}^n A_if(x_i)
+\end{align*}
+Let $P_{n-1}(x)=\sum_{i=1}^nf(x_i)l_i(x),$ where $L_i$ is the lagrange basis, be the interpolant through \begin{align*}
+\{(x_i,f(x_i))\}^n_{i=1}
+\end{align*}
+So \begin{align*}
+&\int_{a}^{b}f(x)w(x)dx\\
+\approx& \int_{a}^{b}P_{n-1}w(x)dx\\
+=&\sum_{i=1}^nf(x_i)\left(\int_{a}^{b}l_i(x)w(x) dx \right)
+\end{align*}
+And $\left(\int_{a}^{b}l_i(x)w(x) dx \right)$ is weights $A_i$, i.e $A+i=\int_{a}^{b}l_i(x)w(x)dx$\\
+\hfill\\
+\textbf{Composite Faussian Rules}\\
+\hfill\\
+\begin{align*}
+&\int_{a}^{b}f(x)w(x)dx\\
+=&\sum_{i=1}^n\int_{x_i}^{x_{i+1}}f(x)w(x)dx
+\end{align*}
+where \begin{align*}
+\int_{x_i}^{x_{i+1}}f(x)w(x)dx&=\frac{x_{i+1}-x_{i}}{2}\int_{-1}^{1}f(\phi(t))w(\phi(t))dt
+\end{align*}
+where $\phi(t)=\frac{x_i+x_{i+1}}{2}+\frac{x_{i+1}-x_{i}}{2}t$ and can approximate the $\int_{-1}^{1}$ integral with Gaussian rule.\begin{proof}
+Let $p\in P_{2n-1}$. Let $\{x_i\}^{n}_{i=1}$ be ther zeros of the degree $n$ orthogonal $p_n(x)$ on $[a,b]$ with $w(x).$ By long division \begin{align*}
+p(x)&=s(x)p_n(x)+r(x)
+\end{align*}
+ where $deg(s),deg(r)\leq n-1$. Also note $p(x_i)=r(x_i)$\\
+ then, integrate, \begin{align*}
+ \int_{a}^{b}p(x)w(x)dx &= \int_{a}^{b}s(x)p_n(x)+\int_{a}^{b}r(x)w(x)dx
+ \end{align*}
+ Note that $\int_{a}^{b}s(x)p_n(x)=0$ since $s(x)=\sum_{i=0}^{n-1}c_ip_i(x)$ where $p_i(x)$ is our orthogonal basis, and then use $<p_i,P_n>_w=0$\\
+ And note that $r(x)=\sum_{i=1}^nr(x_i)l_i(x)$ where $l_i(x)$ is the lagrange basis. \\
+ Therefore, we have \begin{align*}
+  \int_{a}^{b}p(x)w(x)dx &=\sum_{i=1}^np(x_i)\left(\int_{a}^{b}l_i(x)w(x)dx \right)
+ \end{align*}
+\end{proof}
+\chapter[Rowberg Integration]{Rowberg Intergration}
+Subdividing partition until error tolerance met on each subinterval.\\
+What we do is given $a,b$ we take the mid point $\frac{1}{a+b},$ and then take $\frac{a+\frac{a+b}{2}}{2}$ again, until we are satisified.\\
+\hfill\\
+\textbf{Fact:} \begin{align*}
+I(f)=\int_{a}^{b}(f)&=\frac{h}{2}\left(f(a)+f(b)+2\sum_{i=1}^nf(x_i) \right)+\sum_{i=1}^nc_ih^{2i}\\
+&=T(h)+c_1h^2+c_2h^4+c_3h^6+\cdots
+\end{align*}
+Each Richardson extrapolation gains a power of $2$ with $h$, and \begin{align*}
+c_i\sum f^{2i}(x_0)
+\end{align*}
+And the subinterval width will be \begin{align*}
+h_1&=b-a\\
+h_2&=\frac{h_1}{a}=\frac{b-a}{2}\\
+h_3&=\frac{h_1}{4}=\frac{b-a}{2^2}\\
+\vdots&=\vdots\\
+h_j&=\frac{b-a}{2^{j-1}}
+\end{align*}
+And we have \begin{align*}
+R_{1,1}&:=T(h_1)=\frac{h_1}{2}[f(a)+f(b)]\\
+R_{2,1}&:=T(h_2)=\frac{h_2}{2}[f(a)+f(b)+2f(a+h_2)]\\
+&=\frac{1}{2}R_{1,1}+h_2f(a+h_2)\\
+\vdots&=\vdots\\
+R_{j,i}&:=T(h_j)=\frac{1}{2}R_{j-1,1}+h_j\sum_{i=1}^{2^{j-2}}f(a+(2u-1)h_j)
+\end{align*}
+for $j\geq 2$. Also, \begin{align*}
+R_{2,2}&=\frac{2^2R_{2,1}-R_{1,1}}{2^2-1}\\
+&=\frac{2^{2}T\left(\frac{h_1}{2} \right)-T(h_1)}{2^2-1}
+\end{align*} Then the Table of Extrapolations is \begin{center}
+\begin{tabular}{|l|l|l|l|l|l|}
+\hline
+ &  &  &  &  &  \\ \hline
+$R_{1,1}$ &  &  &  &  &  \\ \hline
+$R_{2,1}$ & $R_{2,2}$ &  &  &  &  \\ \hline
+$R_{3,1}$ & $R_{3,2}$ &$R_{3,3}$  &  &  &  \\ \hline
+$\vdots$ &  &  &  &  &  \\ \hline
+$R_{j,1}$ &  &  &  &  &  \\ \hline
+\end{tabular}
+\end{center}
+The first column has composite trapeziod rules with error $O(h^2)$\\
+Second column has errors $O(h^4)$, and for third column error is $O(h^6)$\\
+\hfill\\
+ Also, \begin{align*}
+R_{2,2}&=\frac{2^2R_{2,1}-R_{1,1}}{2^2-1}\\
+&=\frac{2^{2}T\left(\frac{h_1}{2} \right)-T(h_1)}{2^2-1}\\
+R_{3,2}&=\frac{2^2R_{3,1}-R_{2,1}}{2^2-1}\\
+R_{3,3}&=\frac{2^4R_{3,2}-R_{2,2}}{2^4-1}
+\end{align*} 
+Here, $R_{j,i},$ j represents $T(h_j)$ is using subinterval width $h_j$, and $k$ will represent number of extrapolating.\\
+\hfill\\
+In general, \begin{align*}
+R_{j,k}=\frac{1}{2^{2k-2}}\left(2^{2k-2}R_{j,k-1}-R_{j-1,k-1} \right)
+\end{align*}
+Stopping Criteria: \begin{align*}
+|R_{j,j}-R_{j+1,j+1}|<TOL
+\end{align*}
+Then $R_{j+1,j+1}$ is the best approximation of $\int_{a}^{b}f$
+\chapter[Unknown]{Unknown}
+\section[Backward Euler Method]{Backward Euler Method}
+\begin{align*}
+\begin{cases}
+y=f(t,y(t)) & t\in [0,T]\\
+y(0)=y_0
+\end{cases}
+\end{align*}
+We approximate \begin{align*}
+y'(t)\approx \frac{y(t)-y(t-h)}{h}
+\end{align*}
+where $h=t_{i+1}-t_i$ is constant. Therefore, \begin{align*}
+y(t)&\approx y(t-h)+hf(t,y(t))\\
+\implies y(t_i)&\approx y(t_{i-1})+hf(t_i,y(t_i))
+\end{align*}
+Let $w_i\approx y(t_i)$, discrete approximating solution values. Then, \begin{align*}
+w_i&=w_{i-1}+hf(t_i,w_i)
+\end{align*}
+Then it give backward euler method as following \begin{align*}
+w_{i+1}&=w_i+hf(t_{i+1},w_{i+1})\\
+w_0&=y_0
+\end{align*}
+This is an implicit method, since we need to solve for $w_{i+1}$, set $z=w_{i+1}$, then we need to find root of \begin{align*}
+F(z)&=z-[w_i+hf(t_{i+1},z)]
+\end{align*}
+using newton, bisection, fzero
+\subsection[Local Truncation Error]{Local Truncation Error}
+Given \begin{align*}
+w_{i+1}-[w_i+hf(t_{i+1},w_{i+1})]\\
+\end{align*}
+Replace, we have \begin{align*}
+&y(t_i+h)-[y(t_i)+hy'(t_i+h)]\\
+=&y(t_i)+hy’(t_i)+\frac{h^2}{2}y''(\xi_i)-y(t_i)-h[y'(t_i)+hy''(\eta_i)]\\
+=&h^2[\frac{1}{2}y''(\xi_i)-y''(\eta_i)]\\
+=&O(h^2)
+\end{align*}
+Since local error is $O(h^2),$ global error is $O(h)$. Why local $O(h^p)$ becomes $O(h^{p-1})$ globally?\\
+Set \begin{align*}
+h&=\frac{T-t_0}{N}
+\end{align*}
+where $[t_0,T]$ ODE time interval and $N=$ number of time steps. Therefore, global error is apprixmately $N\cdot O(h^p)$, which is $\frac{T-t_0}{h}O(h^p)=O(h^{p-1})$\\
+\hfill\\
+\textbf{Stability?}\\
+Test equation $
+\begin{cases}
+y'=\lambda y\\
+y(0)=1
+\end{cases}$, where $\lambda<0$, Solution is $y(t)=e^{\lambda t}\to 0$ as $t\to \infty$.\\
+Apply Backward Euler,  we have \begin{align*}
+w_{i+1}&=w_i+hf(t_{i+1},w_{i+1})\\
+&=w_{i}+h(\lambda w_{i+1})\\
+\implies w_{i+1}&=\left(\frac{1}{1-h\lambda} \right)w_i=\cdots=\left(\frac{1}{1-h\lambda} \right)^iw_0
+\end{align*}
+As $i\to \infty,$ need \begin{align*}
+|\frac{1}{1-h\lambda}|<1
+\end{align*}
+so that $w_i\to 0$.
+since \begin{align*}
+\lim_{i\to \infty}c^i=0
+\end{align*}
+provided $|c|<i$\\
+ Recall $h>0$ is a positive constant. But this is true for any $h>0$, so backward euler is A-stable (abosolutely stable)
+ \section[Trapezoid Method]{Trapezoid Method}
+ Given \begin{align*}
+ y'&=f(t,y(t))\\
+ \int_{t_i}^{t_{i+1}}y'(t)dt&=\int_{t_i}^{t_{i+1}}f(t,y(t))dt\\
+ y(t_{i+1})-y(y_i)&=\int_{t_i}^{t_{i+1}}f(t,y(t))dt\\
+ \end{align*}
+ Note that \begin{align*}
+ \int_{t_i}^{t_{i+1}}f(t,y(t))dt&\approx \frac{h}{2}\left( f(t_i,y(t_i))+f(t_{i+1},y(t_{i+1}))\right)
+ \end{align*}
+ using trapezoid rule. And the method we have is the following \begin{align*}
+ \begin{cases}
+ w_{i+1}=w_i+\frac{h}{2}\left( f(t_i,w_i)+f(t_{i+1},w_{i+1})\right)\\
+ w_0=y_0
+ \end{cases}
+ \end{align*}
+ where $w_{i+1}=w_i+hf(t_i,w_i)$\\
+ This is implicit method, and one step. The local error is $O(h^3)$, and this is $A$ stable
+ \section[Forward Euler Method on Systems]{Forward Euler Method on Systems}
+ \begin{align*}
+ \vec{y}(t)=\begin{pmatrix}
+ y_1(t)\\
+ y_2(t)
+ \end{pmatrix}
+ \end{align*}
+$ \begin{cases}
+ \frac{d}{dt}\vec{y}(t)=\vec{f}(t,\vec{y}(t))\\
+ \vec{y}(t_0)=\vec{y_0}
+ \end{cases}$\\
+ Let $\vec{w_i}\approx \vec{y}(t_i),$ then $\begin{cases}
+ \vec{w_{i+1}}=\vec{w_i}+h\vec{f}(t_i,\vec{w_i})\\
+ \vec{w_0}=\vec{y_0}
+ \end{cases}$.\\
+  Or componentwise, for $k=1,2$, we have $\begin{cases}
+ \vec{w_{i+1}}^k=\vec{w_i}^k+h\vec{f}^k(t_i,\vec{w_i})\\
+ \vec{w_0}^k=\vec{y_0}^k
+ \end{cases}$, where $h=t_{i+1}-t_i$.\\
+ Also note that $\vec{w_i}^k_{i},$ i is the iteration index for time $t_i$ and $k$\\
+ \hfill\\
+ \example Suppose $\vec{f}(t,\vec{h})=\begin{pmatrix}
+ t+y^{(n)}(t)\\
+ y^{(1)}(t)y^{2}(t)
+ \end{pmatrix}
+ $ and $\vec{y_0}=\begin{bmatrix}
+ 2\\
+ 4
+ \end{bmatrix}$. \\
+ LEt $h=\frac{1}{2},$ and compute $\vec{w_1}=\vec{y}\left(\frac{1}{2} \right)$ using Forward Euler.\\
+ Then we have \begin{align*}
+ \vec{w_1}&=\vec{w_0}+\frac{1}{2}\vec{f}(0,\vec{w_0})\\
+ &=\begin{bmatrix}
+ 2\\
+ 4\\
+ \end{bmatrix}+\frac{1}{2}\begin{bmatrix}
+ 0+w_0^{1}\\
+ w_0^{(1)}w_0^{2}\\
+  \end{bmatrix}\\
+ &=\begin{bmatrix}
+ 2\\
+ 4\\
+ \end{bmatrix}+\frac{1}{2}\begin{pmatrix}
+ 2\\
+ 2(4)
+ \end{pmatrix}\\
+ &=\begin{bmatrix}
+ 3\\
+ 8\\
+ \end{bmatrix}
+ \end{align*}
+ Therefore, $\vec{y}\left(\frac{1}{2} \right)
+ \approx \begin{bmatrix}
+ 3\\
+ 8
+ \end{bmatrix}$
+ \section[Leapfrog Method]{Leapfrog Method}
+ \begin{align*}
+ \begin{cases}
+ y'=f(t,y(t))\\
+ y(0)=y_0
+ \end{cases}
+ \end{align*}
+ we are arrpximate \begin{align*}
+ y'(t)=\frac{y(t+h)-y(t-h)}{2h}+O(h')
+ \end{align*}
+ using Centered Differences.\\
+ We get \begin{align*}
+ y(t_i+h)\approx y(t_i-i)+2hf(t_i.y(t_i))
+ \end{align*}
+ So with $w_i\approx y(t_i),$ we get \begin{align*}
+ \begin{cases}
+ w_{i+1}=w_{i-1}+2hf(t_i.w_i)\\
+ w_0=y_0,w_1=y_0+hf(t_0,y_0)
+ \end{cases}
+ \end{align*}
+ where $w_1$ is obtained by other method\\
+ \hfill\\
+ \remark This is a two-step, explicit method with $O(h^3)$ local trunction error. So $O(h^2)$ global error\\
+ \hfill\\
+ \subsection[Stability]{Stability}
+ $\begin{cases}
+ y\lambda y\\
+ y(0)=1
+ \end{cases}$\\
+ With leapfrog, we get $w_{i+1}=w_{i-1}+2h(\lambda w_i)$. Assume $w_i=r^i$ and find $r$ such that this is a solution, we have \begin{align*}
+ r^{i+1}&=r^{i-1}+2h\lambda r^i\\
+ r&=r^{-1}+2h\lambda
+ \end{align*}
+ Solutions are \begin{align*}
+ r=r_{\pm} =-h\lambda\pm \sqrt{1+(h\lambda)^2}
+ \end{align*}
+ A general solution is \begin{align*}
+ w_i&=c_1r_{+}^{i}+c_2c^i
+ \end{align*}
+ for some $c_1,c_2$. Note that \begin{align*}
+ r_{\pm}=-h\lambda+\sqrt{1+(h\lambda)^2}>1 
+\end{align*}
+for any $h>0.$ So for any $h>0$, we have \begin{align*}
+w_i\to \infty
+\end{align*}
+Therefore Leapfrog is totally unstable\\
+
+
+\newpage
+For ODE45, the 4 in the name stands for having an order of 4 ODE solver, with global error $O(h^4)$ to get $z_i$, approximating values at $t_i$; And the 5 in the name stands for having an order of 5 solver, with global error $O(h^5)$ to get $y_i$, approximating value at $t_i$.\\
+
+Let $e_i = |z_i - y_i|$, if $e_i < $TOL, then timestep and the value $y_i$ is accepted, and proceed to $t_{i+1}$. \\
+
+\hfill\break\hfill\break
+\begin{defn}
+For an informal definition, an ODE is said to be stiff provided that explicit numerical solver require very small $h$ for stability. 
+\end{defn}
+
+\example 
+The following ODE is an example of stiff ODE:
+\begin{align*}
+\begin{cases}
+y' = y^2(1-y)\\
+y(0) = 10^{-6}
+\end{cases}
+\end{align*}
+ODE45 solver uses $10^6$ timesteps, and ODE15s uses 117 timesteps, while the ODE15s gives better solution. 
+
+\subsection*{Runge-Kutta Methods}
+1-stage RK method is one-step, explicit, first order, and not stable. For deriving the method, suppose we are given an ODE system
+\begin{align*}
+\begin{cases}
+y' = f(t,y(t)) \\
+y(t_0) = y_0
+\end{cases}
+\end{align*}
+We write $w_i \approx y(t_i)$. Suppose we can write $w_{i+1} = w_i + as_1$, where $s_1 = hf(t_i, w_i)$ is the state of the method. We are interested in finding a suitable constant value for $a$ such that the method has a smallest local truncation error. Consider we write the following:
+\begin{align*}
+w_{i+1} - \left( w_i + ah f(t_i,, w_i)\right) &= y(t_i + h) - \left( y(t_i) + ah y'(t_i)\right)
+\end{align*}
+comparing with Taylor expansion $y(t_i) + hy'(t_i) + \frac{h^2}{2}y''(\xi_i)$, and choosing $a=1$, we obtain the error term $(h^2/2)y''(\xi_i)$, and $w_{i+1} = w_i hf(t_i, w_i)$, which yields the forward Euler's method. \\
+
+The $2$-stage RK method is two-step, explicit, second order, and not stable. Assuming here that we have $w_{i+1} = w_i + as_1 + bs_2$, where $s_1 = hf(t_i, w_i)$, and $s_2 = hf(t_i + \alpha h, w_i + \beta s_i)$. Here we are interested in, using the two stages, finding suitable constants for $a,b, \alpha, \beta$ such that the method has a smallest local truncation error. Expanding we obtain:
+\begin{align*}
+w_{i+1} - &\left( w_i + ahf(t_i, w_i) + bhf(t_i+\alpha h , w_i + \beta hf (t_i, w_i))\right) \\
+&= y(t_i + h) - \left( y(t_i) + ahy'(t_i) + bhf(t_i+\alpha h, y(t_i) + \beta h y'(t_i))\right)
+\end{align*}
+Denoting the term $y(t_i + h) $ as (*) and the term $f(t_i+\alpha h, y(t_i) + \beta h y'(t_i))$ as (**), we can write:
+\begin{align*}
+\text{(*)} &= y(t_i) + hy'(t_i) + \frac{h^2}{2}y''(t_i) + O(h^3)\\
+\text{(**)}&= f(t_i,y(t_i)) + \alpha h f_t(t_i, y(t_i)) + \beta hy'(t_i) f_y(t_i, y(t_i)) + O(h^2)
+\end{align*}
+combining to solve for the appropriate $\alpha, \beta, a, b$, we obtain a system of equations:
+\begin{align*}
+\begin{cases}
+1-a-b = 0 \\
+1/2 - \alpha b = 0 \\
+1/2 - b\beta = 0
+\end{cases}
+\end{align*}
+that is there exists a set of infinitely many solutions for the system, for which a natural choice is $a = b= 1/2$, with $\alpha = \beta = 1$, yielding the explicit Trapezoid method. 
+
+
+\end{document}
+
