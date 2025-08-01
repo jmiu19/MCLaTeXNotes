@@ -1,0 +1,245 @@
+\documentclass[11pt]{book}
+
+%%%%%%%%%%%%%%Include Packages%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{xcolor}
+\usepackage{mathtools}
+\usepackage[a4paper, total={6in, 8in}, margin=1.25in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{paralist}
+\usepackage{rsfso}
+\usepackage{amsthm}
+\usepackage{wasysym}
+\usepackage[inline]{enumitem}   
+\usepackage{hyperref}
+\usepackage{tocloft}
+\usepackage{wrapfig}
+\usepackage{titlesec}
+\usepackage{colortbl}
+\usepackage{stackengine} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%Chapter Setting%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{gray75}{gray}{0.75}
+\newcommand{\hsp}{\hspace{20pt}}
+\titleformat{\chapter}[hang]{\Huge\bfseries}{\thechapter\hsp\textcolor{gray75}{$\mid$}\hsp}{0pt}{\Huge\bfseries}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%Theorem environments%%%%%%%%%%%%%%%%%%%
+\newtheoremstyle{break}
+  {\topsep}{\topsep}%
+  {\itshape}{}%
+  {\bfseries}{}%
+  {\newline}{}%
+\theoremstyle{break}
+\theoremstyle{break}
+\newtheorem{axiom}{Axiom}
+\newtheorem{thm}{Theorem}[section]
+\renewcommand{\thethm}{\arabic{section}.\arabic{thm}}
+\newtheorem{lem}{Lemma}[thm]
+\newtheorem{prop}[lem]{Proposition}
+\newtheorem{corL}{Corollary}[lem]
+\newtheorem{corT}[lem]{Corollary}
+\newtheorem{defn}{Definition}[corL]
+\newenvironment{indEnv}[1][Proof]
+  {\proof[#1]\leftskip=1cm\rightskip=1cm}
+  {\endproof}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%Integral%%%%%%%%%%%%%%%%%%%%%%%
+\def\upint{\mathchoice%
+    {\mkern13mu\overline{\vphantom{\intop}\mkern7mu}\mkern-20mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+  \int}
+\def\lowint{\mkern3mu\underline{\vphantom{\intop}\mkern7mu}\mkern-10mu\int}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\T}{\mathcal{T}}
+\newcommand{\M}{\mathcal{M}}
+\newcommand{\Symm}{\text{Symm}}
+\newcommand{\Alt}{\text{Alt}}
+\newcommand{\Int}{\text{Int}}
+\newcommand{\Bd}{\text{Bd}}
+\newcommand{\Power}{\mathcal{P}}
+\newcommand{\ee}[1]{\cdot 10^{#1}}
+\newcommand{\spa}{\text{span}}
+\newcommand{\sgn}{\text{sgn}}
+\newcommand{\degr}{\text{deg}}
+\newcommand{\pd}{\partial}
+\newcommand{\that}[1]{\widetilde{#1}}
+\newcommand{\lr}[1]{\left(#1\right)}
+\newcommand{\vmat}[1]{\begin{vmatrix} #1 \end{vmatrix}}
+\newcommand{\bmat}[1]{\begin{bmatrix} #1 \end{bmatrix}}
+\newcommand{\pmat}[1]{\begin{pmatrix} #1 \end{pmatrix}}
+\newcommand{\rref}{\xrightarrow{\text{row\ reduce}}}
+\newcommand{\txtarrow}[1]{\xrightarrow{\text{#1}}}
+\newcommand\oast{\stackMath\mathbin{\stackinset{c}{0ex}{c}{0ex}{\ast}{\Circle}}}
+
+
+\newcommand{\note}{\color{red}Note: \color{black}}
+\newcommand{\remark}{\color{blue}Remark: \color{black}}
+\newcommand{\example}{\color{green}Example: \color{black}}
+\newcommand{\exercise}{\color{green}Exercise: \color{black}}
+
+%%%%%%%%%%%%%%%%%%%%%%Roman Number%%%%%%%%%%%%%%%%%%%%%%%
+\makeatletter
+\newcommand*{\rom}[1]{\expandafter\@slowromancap\romannumeral #1@}
+\makeatother
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%table of contents%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setlength{\cftchapindent}{0em}
+\cftsetindents{section}{2em}{3em}
+
+\renewcommand\cfttoctitlefont{\hfill\huge\bfseries}
+\renewcommand\cftaftertoctitle{\hfill\mbox{}}
+
+\setcounter{tocdepth}{2}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%Footnotes%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand\blfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%Section%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\makeatletter
+\def\@seccntformat#1{%
+  \expandafter\ifx\csname c@#1\endcsname\c@section\else
+  \csname the#1\endcsname\quad
+  \fi}
+\makeatother
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Enumerate%%%%%%%%%%%%%%
+\makeatletter
+% This command ignores the optional argument 
+% for itemize and enumerate lists
+\newcommand{\inlineitem}[1][]{%
+\ifnum\enit@type=\tw@
+    {\descriptionlabel{#1}}
+  \hspace{\labelsep}%
+\else
+  \ifnum\enit@type=\z@
+       \refstepcounter{\@listctr}\fi
+    \quad\@itemlabel\hspace{\labelsep}%
+\fi}
+\makeatother
+\parindent=0pt
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\begin{document}
+
+	\begin{titlepage}
+		\begin{center}
+			\vspace*{1cm}
+			\Huge \color{red}
+				\textbf{Class Notes}\\
+			\vspace{0.5cm}			
+			\Large \color{black}
+				Math 591 - Differentiable Manifolds\\
+				Professor Ralf Spatzier\\	
+				University of Michigan\\
+			\vspace{2cm}
+
+%%			\includegraphics[scale=0.5]{hmm.pdf}
+			
+			
+			\vspace{4cm}
+			\LARGE
+				\textbf{Jinyan Miao}\\
+				\large \textbf{and his friends from UMich Honors Math}\\
+				\hfill\break
+				\LARGE Fall 2022\\
+			\vspace{1cm}
+
+		\vspace*{\fill}
+		\end{center}			
+	\end{titlepage}
+
+\newpage 
+\tableofcontents
+\addtocontents{toc}{~\hfill\textbf{Page}\par}
+
+\newpage
+\setcounter{page}{1}
+\vspace*{\fill}
+
+
+\newpage
+\chapter{Calculus}
+
+\section[Multivariable Calculus]{\color{red} Multivariable Calculus \color{black}}
+
+\begin{defn}
+$S^n$ is a $n-$sphere in $\R^{n+1}$ defined by:
+$$S^n \coloneqq \{ x \in \R^{n+1} \mid ||x||^2 = 1\}$$
+\end{defn}
+
+To differentiate, we just need a good local structure. 
+
+\begin{defn}
+A topological space $M$ is called an $n-$dimensional topological manifold provided that all $p \in M$ has a neighborhood $N$ which is homeomorphic to $\R^n$.
+\end{defn}
+
+\begin{defn}
+Let $X$ be a collection of subsets of a set $M$. $X$ is said to be locally finite provide that all $p \in M$ has a neighborhood $U$ such that $U$ only intersects finitely many $C \in X$.  
+\end{defn}
+
+\begin{defn}
+A topological space $M$ is said to be paracompact provided that every open cover $X$ of $M$ admits a finite subcover. 
+\end{defn}
+
+
+\begin{defn}
+A cover of a set $M$ is a collection $X$ of sets such that $\bigcup_{C \in X}C = M$
+\end{defn}
+
+\begin{defn}
+A subcover of $X$ is a cover $X^*$ such that every $U \in X^*$ is contained in some $U \in X$.
+\end{defn}
+
+\begin{defn}
+A cover $X$ is open provided that all $C \in X$ is open
+\end{defn}
+
+\begin{thm}
+Topological manifolds are paracompact
+\end{thm}
+
+\begin{defn}
+$M$ is said to be locally compact provided that all $p \in M$ and neighborhoods $U$ of $p$, there exists a neighborhood $V \subseteq U$ such that $\bar{V}\subseteq U$ is compact. 
+\end{defn}
+
+\begin{lem}
+Topological manifolds are locally compact
+\end{lem}
+
+\begin{defn}
+An exhaustion is a sequence of sets $K_n \subseteq K_{n+1}$ such that $\bigcup_n K_n = M$
+\end{defn}
+
+\begin{prop}
+A secound countable locally compact Hausdorff space admits an exhaustion by compact sets. 
+\end{prop}
+
+
+\end{document}

@@ -1,0 +1,287 @@
+\documentclass[11pt, onesided]{book}
+
+%%%%%%%%%%%%%%Include Packages%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{xcolor}
+\usepackage{mathtools}
+\usepackage[a4paper, total={6in, 8in}, margin=1.25in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{paralist}
+\usepackage{rsfso}
+\usepackage{amsthm}
+\usepackage{wasysym}
+\usepackage[inline]{enumitem}   
+\usepackage{hyperref}
+\usepackage{tocloft}
+\usepackage{wrapfig}
+\usepackage{titlesec}
+\usepackage{colortbl}
+\usepackage{stackengine} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%Chapter Setting%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{gray75}{gray}{0.75}
+\newcommand{\hsp}{\hspace{20pt}}
+\titleformat{\chapter}[hang]{\Huge\bfseries}{\thechapter\hsp\textcolor{gray75}{$\mid$}\hsp}{0pt}{\Huge\bfseries}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%Theorem environments%%%%%%%%%%%%%%%%%%%
+\newtheoremstyle{break}
+  {\topsep}{\topsep}%
+  {\itshape}{}%
+  {\bfseries}{}%
+  {\newline}{}%
+\theoremstyle{break}
+\theoremstyle{break}
+\newtheorem{axiom}{Axiom}
+\newtheorem{thm}{Theorem}[section]
+\renewcommand{\thethm}{\arabic{section}.\arabic{thm}}
+\newtheorem{lem}{Lemma}[thm]
+\newtheorem{cor}{Corollary}[thm]
+\newtheorem{defn}{Definition}[thm]
+\newenvironment{indEnv}[1][Proof]
+  {\proof[#1]\leftskip=1cm\rightskip=1cm}
+  {\endproof}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%Integral%%%%%%%%%%%%%%%%%%%%%%%
+\def\upint{\mathchoice%
+    {\mkern13mu\overline{\vphantom{\intop}\mkern7mu}\mkern-20mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+  \int}
+\def\lowint{\mkern3mu\underline{\vphantom{\intop}\mkern7mu}\mkern-10mu\int}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\T}{\mathcal{T}}
+\newcommand{\M}{\mathcal{M}}
+\newcommand{\Symm}{\text{Symm}}
+\newcommand{\Alt}{\text{Alt}}
+\newcommand{\Int}{\text{Int}}
+\newcommand{\Bd}{\text{Bd}}
+\newcommand{\Power}{\mathcal{P}}
+\newcommand{\ee}[1]{\cdot 10^{#1}}
+\newcommand{\spa}{\text{span}}
+\newcommand{\sgn}{\text{sgn}}
+\newcommand{\degr}{\text{deg}}
+\newcommand{\pd}{\partial}
+\newcommand{\that}[1]{\widetilde{#1}}
+\newcommand{\lr}[1]{\left(#1\right)}
+\newcommand{\vmat}[1]{\begin{vmatrix} #1 \end{vmatrix}}
+\newcommand{\bmat}[1]{\begin{bmatrix} #1 \end{bmatrix}}
+\newcommand{\pmat}[1]{\begin{pmatrix} #1 \end{pmatrix}}
+\newcommand{\rref}{\xrightarrow{\text{row\ reduce}}}
+\newcommand{\txtarrow}[1]{\xrightarrow{\text{#1}}}
+\newcommand\oast{\stackMath\mathbin{\stackinset{c}{0ex}{c}{0ex}{\ast}{\Circle}}}
+\newcommand{\txt}{Wald's \textit{General Relativity}}
+
+\newcommand{\note}{\color{red}Note: \color{black}}
+\newcommand{\remark}{\color{blue}Remark: \color{black}}
+\newcommand{\example}{\color{green}Example: \color{black}}
+\newcommand{\exercise}{\color{green}Exercise: \color{black}}
+
+%%%%%%%%%%%%%%%%%%%%%%Roman Number%%%%%%%%%%%%%%%%%%%%%%%
+\makeatletter
+\newcommand*{\rom}[1]{\expandafter\@slowromancap\romannumeral #1@}
+\makeatother
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%table of contents%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\setlength{\cftchapindent}{0em}
+%\cftsetindents{section}{2em}{3em}
+%
+%\renewcommand\cfttoctitlefont{\hfill\huge\bfseries}
+%\renewcommand\cftaftertoctitle{\hfill\mbox{}}
+%
+%\setcounter{tocdepth}{2}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%Footnotes%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand\blfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%Section%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\makeatletter
+\def\@seccntformat#1{%
+  \expandafter\ifx\csname c@#1\endcsname\c@section\else
+  \csname the#1\endcsname\quad
+  \fi}
+\makeatother
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Enumerate%%%%%%%%%%%%%%
+\makeatletter
+% This command ignores the optional argument 
+% for itemize and enumerate lists
+\newcommand{\inlineitem}[1][]{%
+\ifnum\enit@type=\tw@
+    {\descriptionlabel{#1}}
+  \hspace{\labelsep}%
+\else
+  \ifnum\enit@type=\z@
+       \refstepcounter{\@listctr}\fi
+    \quad\@itemlabel\hspace{\labelsep}%
+\fi}
+\makeatother
+\parindent=0pt
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\begin{document}
+
+	\begin{titlepage}
+		\begin{center}
+			\vspace*{0.5cm}
+			\Huge \color{red}
+				\textbf{Problems}\\
+			\vspace{0.5cm}			
+			\Large \color{black}
+			Physics 535 - General Relativity\\
+			Professor Leopoldo A. Pando Zayas
+			\vspace{1.5cm}
+
+			\includegraphics[scale=1.15]{hmm.pdf}
+			
+			
+			\vspace{2cm}
+			\LARGE
+				\textbf{Jinyan Miao}\\
+				\hfill\break
+				\LARGE Fall 2023\\
+			\vspace{1cm}
+
+		\vspace*{\fill}
+		\end{center}			
+	\end{titlepage}
+
+
+
+\tableofcontents
+\hfill\break
+\hfill\break
+\hfill\break
+ 
+
+\newpage
+Consider a metric
+\begin{align*}
+ds^2 = \frac{dr^2}{1-2\mu/r} + r^2(d\theta^2 + \sin^2(\theta) \, d\phi^2)\,,
+\end{align*}
+The area of a sphere of radius $R$ is then given by
+\begin{align*}
+\int \sqrt{\det(g)}\, dx_1\,dx_2\,\cdots dx_n = \int_0^\pi d\theta \, \int_{0}^{2\pi}(R^2 \sin(\theta))\, d\phi = 4\pi R^2\,.
+\end{align*}
+The radial distance between the sphere $r = 2\mu$ and the sphere $r = 3\mu$ is then given by
+\begin{align*}
+\int_{2\mu}^{3\mu} \frac{dr}{\sqrt{1- 2\mu/r}} = \left( r\sqrt{1- \frac{2\mu}{r}} + 2\mu \tanh^{-1}\left( \sqrt{1- \frac{2\mu}{r}}\right) \right)|^{r=3\mu}_{r = 2\mu} = (\sqrt{3} + \ln(2+\sqrt{3})) \mu
+\end{align*}
+The volume of a sphere, characterized by $r > 2\mu$, of radius $r = R$ is given by
+\begin{align*}
+V = \int_0^\pi \,d\theta \, \int_0^{2\pi}\, d\phi \int_{2\mu}^R \, dr\, \sqrt{\det(g)} = \int_0^\pi \sin(\theta) \, \int_0^{2\pi}\,d\phi \,\int_{2\mu}^R \frac{r^{5/2}}{\sqrt{r- 2\mu}}\,.
+\end{align*}
+
+\newpage
+The worldline of a particle is described by the parametric equations in some Lorentz frame
+\begin{align*}
+t(\lambda) = a\sinh(\lambda/a) \,,\qquad
+x(\lambda) = a\cosh(\lambda/a)\,,\qquad
+y(\lambda) = z(\lambda) = 0\,.
+\end{align*}
+The particle's four-velocity is given by
+\begin{align*}
+v^\mu = \frac{dx^\mu}{d\tau} = \left( \cosh(\lambda/a) \, \frac{d\lambda}{d\tau},\ \sinh(\lambda/a)\,\frac{d\lambda}{d\tau},\ 0,\ 0\right)\,.
+\end{align*}
+To show that $\lambda$ is the proper time along the worldline, we check that we have
+\begin{align*}
+-1 = g_{\mu\nu}v^\mu v^\nu = \left(
+-\cosh^2\left(\frac{\lambda}{a}\right) + \sin^2\left( \frac{\lambda}{a}\right)\right) \,\left( \frac{d\lambda}{d\tau}\right)^2\,,
+\end{align*}
+from which we see here
+\begin{align*}
+\frac{d\lambda}{d\tau} = \pm 1\,,
+\end{align*}
+taking $\lambda = \tau$ we see that the worldline is affinely parametrzied. \\
+
+Here we can find the acceleration of the worldline
+\begin{align*}
+\alpha^\mu = \frac{dv^\mu}{d\tau} = \left( \frac{1}{a}\sinh\left( \frac{\lambda}{a}\right),\ \frac{1}{a}\cosh\left( \frac{\lambda}{a}\right),\ 0,\ 0\right)\,.
+\end{align*}
+One thing to notice here is $\alpha^\mu$ is orthogonal to $v^\mu$, as we see here
+\begin{align*}
+0 = \frac{d}{d\tau}\left( g_{\mu\nu}v^\mu v^\nu\right) = 2g_{\mu\nu}\alpha^\mu v^\nu
+\end{align*}
+as we have $g_{\mu\nu}v^\mu v^\nu$. Note further here $\alpha^\mu$ is constant 
+\begin{align*}
+|\alpha^\mu|^2 = \frac{1}{a}\,.
+\end{align*}
+
+The usual velocity vector is given by
+\begin{align*}
+v_x = \frac{dx}{dt} = \frac{dx/d\tau}{dt/d\tau} = \tanh\left( \frac{\tau}{a}\right) = \frac{\sinh(\tau/a)}{\sqrt{\sinh^2(\tau/a) + 1}} = \frac{t/a}{\sqrt{(t/a)^2+1}}
+\end{align*}
+
+
+\newpage
+Consider a $2$-space with metric
+\begin{align*}
+ds^2 = \frac{dr^2 + r^2\, d\theta^2}{r^2 - a^2} - \frac{r^2 \, dr^2}{(r^2 - a^2)^2} =\frac{(dr^2 + r^2\, d\theta^2)(r^2 - a^2) - r^2 \,dr^2}{(r^2 - a^2)^2} =-\frac{a^2\, dr^2}{(r^2 - a^2)^2} + \frac{r^2\, d\theta^2}{r^2 - a^2}\,.
+\end{align*}
+
+For null geodesics, $ds^2 =0$, thus we have
+\begin{align*}
+0 = -\frac{a^2\, dr^2}{(r^2 - a^2)^2} + \frac{r^2\, d\theta^2}{r^2 - a^2}\,,
+\end{align*}
+or written in parameters
+\begin{align*}
+-\frac{a^2 \, \dot{r}^2}{(r^2 - a^2)^2} + \frac{r^2 \dot{\theta}^2}{r^2 - a^2} = 0\,.
+\end{align*}
+Note further that we have
+\begin{align*}
+\frac{dr}{d\theta} = \frac{\dot{r}}{\theta}\,,
+\end{align*}
+thus we have
+\begin{align*}
+a^2\left( \frac{dr}{d\theta}\right)^2 + a^2 r^2 = r^4\,.
+\end{align*}
+For finding the geodesics, we minimize the integral
+\begin{align*}
+\int \frac{1}{2}g_{\mu\nu}x^\mu x^\nu \, d\tau\,,
+\end{align*}
+where we employ Euler-Lagrange equation to minimize
+\begin{align*}
+\mathcal{L} = \frac{1}{2}\left( \frac{-a^2\dot{r}^2}{(r^2 -a^2)^2} + \frac{r^2 \dot{\theta}^2}{r^2 - a^2}\right)\,,
+\end{align*}
+we get
+\begin{align*}
+\frac{d}{dt}\frac{\pd \mathcal{L}}{\pd \dot{\theta}} = \frac{d}{dt}\left(\frac{r^2 \dot{\theta}}{r^2 - a^2}  \right)\coloneqq \frac{d}{dt}\, L = 0\,.
+\end{align*}
+
+For timelike geodesic, we can write
+\begin{align*}
+1 = \frac{a^2\, \dot{r}^2}{(r^2 - a^2)} - \frac{r^2\, \dot{\theta}^2}{r^2 - a^2}
+\end{align*}
+
+
+
+
+
+\end{document}
+
+

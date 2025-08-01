@@ -208,13 +208,12 @@
 \end{align*}
 \subsection*{Trigonometric functions}
 \begin{align*}
-\sin(2\theta) = 2\sin(\theta) \cos(\theta\,,\qquad
+\sin(2\theta) = 2\sin(\theta) \cos(\theta)\,,\qquad
 \cos(2\theta) = \cos^2(\theta) - \sin^2(\theta) = 2\cos^2(\theta)-1\,.
 \end{align*}
 \begin{align*}
 e^{iz} = \cos(z) + i\sin(z)\,,\qquad \sin(z) = \frac{e^{-z} - e^{-iz}}{2i}\,,\qquad \cos(z) = \frac{e^{iz} + e^{-iz}}{2}\,.
 \end{align*}
-\hfill\break
 \subsection*{Calculus}
 Integration by parts,
 \begin{align*}
@@ -230,11 +229,18 @@ For Lagrangian $\mathcal{L}(\vec{q}(t),\dot{\vec{q}}(t))$, minimizing $S = \int 
 \begin{align*}
 \frac{\pd \mathcal{L}}{\pd q^i} - \frac{d}{dt}\frac{\pd \mathcal{L}}{\pd \dot{q}^i} = 0\,,\qquad\qquad\text{for }i\in \N_n\,.
 \end{align*}
-
+Taylor expansion of $f(x)$ around $x = a$, 
+\begin{align*}
+f(x) =\sum_{n=0}^\infty \frac{f^{(n)}(a)}{n!}\, (x-a)^n =f(a) + \frac{f'(a)}{1!}(x-a) + \frac{f''(a)}{2!}(x-a)^2 + \frac{f'''(a)}{3!}(x-a)^3 + \cdots\,.
+\end{align*}
 
 \newpage
 \chapter{Preliminaries}
-\quad Any theory of gravity should be able to answer the problem of how gravitational interaction is characterized in a presence of a mass, and from Newton's point of view, gravitational potential $\phi$ is related to mass density $\rho$ by $\nabla^2 \phi = 4\pi G\rho$, while in General Relativity (GR), Einstein's Field Equation characterizes the gravitation interaction. Furthermore, the theory should also be able to determine the motion of particles that feels the gravity, and from Newton's point of view $-\nabla \phi = a$ gives the acceleration of the particle, while in GR, the motion of particles is characterized by geodesics in spacetime. 
+\quad Any theory of gravity should be able to answer the problem of how gravitational interaction is characterized in a presence of a mass, and from Newton's point of view, gravitational potential $\phi$ is related to mass density $\rho$ by $\nabla^2 \phi = 4\pi G\rho$, or expressed in the Gauss law,
+\begin{align*}
+\oint_S \vec{g}\cdot d\vec{s} = 4\pi Gm
+\end{align*}
+where $m$ is a mass enclosed by the surface $S$ and $\vec{g}$ is the gravitational field. While in General Relativity (GR), Einstein's Field Equation characterizes the gravitation interaction. Furthermore, the theory should also be able to determine the motion of particles that feels the gravity, and from Newton's point of view $-\nabla \phi = a$ gives the acceleration of the particle, while in GR, the motion of particles is characterized by geodesics in spacetime. 
 
 \section[$k$-Calculus]{\color{red}$k$-Calculus\color{black}}
 \textit{Here we will develop some geometric intuition for relativity and construct the picture of spacetime diagram.} \\
@@ -1560,11 +1566,9 @@ Thus integrating we obtain
 \begin{align*}
 t -t_0 = \frac{-2}{3\sqrt{2\mu}}\left( r^{3/2} - r_0^{3/2} + 6\mu r^{1/2} - 6\mu r_0^{1/2}\right) + 2\mu\ln\left( \frac{r^{1/2} + \sqrt{2\mu}}{r_0^{1/2}+\sqrt{2\mu}} \cdot \frac{r_0^{1/2} - \sqrt{2\mu}}{r^{1/2}-\sqrt{2\mu}} \right)\,,
 \end{align*}
-which does possesses singularity at $r = 2\mu$.  
-\newpage
+which does possesses singularity at $r = 2\mu$.  \\
 
-
-
+\subsection{Kruskal Extension}
 A manifold is said to be maximal provided that every geodesic emanating from an arbitrary point either can be extended to infinite values of its affine parameter in both directions in $\R$ or terminates at an intrinsic singularity in the spacetime manifold.  The manifold is said to be geodesically complete provided that the manifold is maximal and no geodesic ends at an intrinsic singularity.\\
 
 Using $\bar{t}$ definition (3.13), now if one defines
@@ -1694,7 +1698,7 @@ One can compute that we have
 \begin{align*}
 R^{abcd}R_{abcd} = \frac{8}{r^8}\left( 6m^2 r^2 - 12 mq^2 r + 7q^4\right)\,,
 \end{align*}
-thus the only spacetime singularity occurs at $r = 0$. On the other hand, we have coordinate singularity, arising from $f^{-1}$, where we have
+thus the only spacetime singularity occurs at $r = 0$. On the other hand, we have coordinate singularity, arising from $f^{-1}$ at
 \begin{align}
 r^2 - 2mr + q^2=0\,,
 \end{align}
@@ -1719,8 +1723,8 @@ where one can show that the particle can never reach $r=0$.
 
 
 
-\chapter{Gravitational Waves}
-\section[Linearized Field Equation]{\color{red}Linearized Field Equation\color{black}}
+\chapter{Experimental Observable}
+\section[Linearized Field Equation and Gravitation Waves]{\color{red}Linearized Field Equation and Gravitation Waves\color{black}}
 Here we work up to the first order of $\epsilon \ll 1$, with the metric of spacetime approximated by the Minkowski metric with small perturbation, 
 \begin{align*}
 g_{\mu\nu} = \eta_{\mu\nu} + \epsilon h_{\mu\nu}\,,\qquad\qquad
@@ -1839,18 +1843,26 @@ where we assume here $v^a = (1,0,0,0)$ and $\xi^a = (0,x,y,z)$. Thus combining w
 \end{align*}
 from which one can also reconstruct the gravitational waves.\\
 
-\section[Cosmology]{\color{red}Cosmology\color{black}}
-The \textbf{Cosmological Principle} states that the universe is isotropic and homogeneous. There exists a cosmic time $t$, such that at each $t_0$, the universe is isotropic and homogeneous. Furthermore, the Weyl's postulate states that we can use perfect fluid to describe the contents in the universe.\\
+\section[The Robertson-Walker Metric]{\color{red}The Robertson-Walker Metric\color{black}}
+The \textbf{Cosmological Principle} states that the universe is isotropic and homogeneous. There exists a cosmic time $t$, such that at each $t_0$, the universe is isotropic and homogeneous. Furthermore, the \textbf{Weyl's Postulate} states that the particles on the substratum lie in spacetime on a congruence of timelike geodesics, the substratum can be modeled as a perfect fluid.\\
 
-Here we can write
+Under the consideration of cosmological principle, here we can write
 \begin{align*}
-ds^2 - h_{\alpha\beta}\, dx^\alpha\, dx^\beta\,,
+ds^2 =dt^2 -  h_{\alpha\beta}\, dx^\alpha\, dx^\beta\,,
 \end{align*}
-where $h_{\alpha\beta} = S(t) \, g_{\alpha\beta}$ with $S(t)$ being a scale factor and $g_{\alpha\beta}$ being independent of time, for $\alpha,\beta \in \{1,2,3\}$. The principles that the universe is isotropic, homogeneous, and that $g_{\alpha\beta}$ being independent on time together imply that the spacetime has constant curvature. That is,
+where $h_{\alpha\beta} = S(t) \, g_{\alpha\beta}$ with $S(t)$ being a scale factor and $g_{\alpha\beta}$ being independent of time, for $\alpha,\beta \in \{1,2,3\}$. The principles that the universe is isotropic, homogeneous, and that $g_{\alpha\beta}$ being independent on time together imply that the spacetime has constant curvature. That is, with a constant $K$, we can write
 \begin{align*}
 R_{abcd} = K (g_{ac}g_{bd} - g_{ad}g_{bc})\,,
 \end{align*}
-which further implies a form of the metric
+yielding Ricci curvature
+\begin{align*}
+R_{ab} = 2K g_{ab}\,.
+\end{align*}
+Via the ansatz of the spatial part of the metric
+\begin{align*}
+d\sigma^2 = e^{\lambda} dr^2 + r^2 d\Omega^2\,,
+\end{align*}
+combining with the requirement of having constant curvature, one obtains a form of the Robertson-Walker metric
 \begin{align}
 ds^2 = dt^2 - R^2 \left( \frac{dr^2}{1-kr^2} + r^2 d\Omega^2\right)\,,
 \end{align}
@@ -1860,11 +1872,28 @@ For the case where $k=1$, we employ the change of coordinates that $r = \sin(\ch
 \begin{align*}
 dr = \cos(\chi) \, d\chi = \sqrt{1-r^2}\, d\chi\,,
 \end{align*}
-from which we see that the spatial part of the metric is the metric on the $3$-sphere,
+from which we see that the spatial part of the metric (4.3) is the metric on the $3$-sphere,
 \begin{align*}
 d\sigma^2 = d\chi^2 + \sin^2(\chi)\, d\Omega^2\,,
 \end{align*}
-up to a scaling factor. The stress-energy tensor for perfect fluid is
+up to a scaling factor. Similarly, for the case where $k=0$, one sees immediately that the spatial part of the metric (4.3) is that of the flat space.  For the case where $k = -1$, one can utilize $r = \sinh(\chi)$ to see that the spatial part of the metric (4.3) is the metric equipped on hyperbolic space. The form of metric used by cosmological observer is the one defined by $\chi$ instead of $r$. One would also like to write (4.3) as the following form
+\begin{align*}
+ds^2 = dt^2 - R^2\left( d\chi^2 + S(\chi)^2 \, d\Omega^2\right)\,.
+\end{align*}
+Here $S(\chi)=r$ is sometimes denoted as $S_\chi$, defined by
+\begin{align*}
+S(\chi)=r = \begin{cases}
+\sin(\chi) & k=1\\
+\chi & k=0\\
+\sinh(\chi) &k=-1
+\end{cases}\,. 
+\end{align*}
+For a point in space, its coordinate $\chi$ is usually referred as the comoving distance between the point and the spatial origin of the chart. We note here $S(\chi)$ can be written as a power series 
+\begin{align*}
+S(\chi) = \sum_{n=0}^\infty \frac{(-1)^{n}k^n \chi^{2n+1}}{(2n+1)!} = \chi - \frac{k\chi^3}{6} + \frac{k^2 \chi^5}{120} - \cdots\,.
+\end{align*}
+
+The stress-energy tensor for perfect fluid is
 \begin{align*}
 T_{ab} = (\rho+p) \, u_a u_b - pg_{ab}\,.
 \end{align*}
@@ -1877,18 +1906,21 @@ Assuming here $u^a= (1,0,0,0)$, we then have
 \frac{3(\dot{R}^2 + k)}{R^2} - \Lambda = 8\pi G\rho \,,\qquad
 \frac{2R\ddot{R}+ \dot{R}^2 + k}{R^2} - \Lambda = -8\pi G p\,,
 \end{align}
-by homogeneity and isotropy, we have further that $p$ and $\rho$ both being a function of time only. Here $\ddot{R}$ can be interpreted as the acceleration and $\dot{R}^2$ can be interpreted as the energy. Thus the first equation in (4.4) gives some form of energy conservation, and the second equation in (4.4) gives a form of equation of motion to describe the dynamics of the universe. Combining the two equations, one can obtain
+by homogeneity and isotropy, we have further that $p$ and $\rho$ both being a function of time only. Equations in (4.4) are the first and second Friedman equations, respectively.\\
+
+%Here $\ddot{R}$ can be interpreted as the acceleration and $\dot{R}^2$ can be interpreted as the energy.
+Here the first equation in (4.4) gives some form of energy conservation, and the second equation in (4.4) gives a form of equation of motion to describe the dynamics of the universe. Combining the two equations, one can obtain
 \begin{align*}
 \dot{\rho} + 3p \, \frac{\dot{R}}{R} = -\frac{3}{8\pi}\frac{\dot{R}}{R}\left(\frac{3\dot{R}^2}{R^2} + \frac{3k}{R^2}-\Lambda \right) = -3\rho \frac{\dot{R}}{R}\,,
 \end{align*}
 which can be further simplified using the first equation in (4.4),
-\begin{align}
-\frac{d}{dt}(\rho R^3) + p \, \frac{d}{dt}(R^3) = 0\,.
-\end{align}
-Consider a set of particles enclosing some volume $V$, that is $V \sim R^3(t)$. If we call the total mass-energy in the volume as $E = \rho V$, then (4.5) can be viewed as
 \begin{align*}
-dE  + p\, dV = 0\,,
+\frac{d}{dt}(\rho R^3) + p \, \frac{d}{dt}(R^3) = 0\,.
 \end{align*}
+Consider a set of particles enclosing some volume $V$. The particles move along with the substratum, that is $V \sim R^3(t)$. If we call the total mass-energy in the volume as $E = \rho V$, then (4.5) can be viewed as
+\begin{align}
+dE  + p\, dV = 0\,,
+\end{align}
 recovering the first law of thermodynamics, or conservation of energy. \\
 
 In the limit of dust, that is $p\ll \rho$, we can assume that $p = 0$, and thus the second equation in (4.4) gives
@@ -1901,11 +1933,119 @@ R(\dot{R}^2 + k) - \frac{\Lambda R^3}{3} &= \text{constant} \coloneqq C\,,
 \end{align}
 and using first equation in (4.4), we obtain
 \begin{align*}
-C = \frac{8}{3} \pi R^2  \rho\,.
+C = \frac{8}{3} \pi G\rho  R^3\,.
+\end{align*}
+Apart from a numerical factor, this is the energy content $E$ of a volume $V$ of the substratum and is constant immediately by (4.5) as $p=0$, which becomes a conservation of mass equation when $p$ vanishes. \\
+
+\subsection{Propagation of Light}
+Consider a radial null geodesics in the metric (4.3), 
+\begin{align*}
+ds^2 = 0 \,,\qquad\text{thus }
+\frac{dt}{R(t)} = \pm \frac{dr}{\sqrt{1- kr^2}}\,,
+\end{align*}
+with minus sign for approaching light ray and plus sign for receding light ray. For light arriving to an observer at present $t_0$ which left from an object far away at time $t_1$, we can write
+\begin{align*}
+\int_{t_1}^{t_0} \frac{dt}{R(t)} = -\int_{r_1}^0 \frac{dr}{\sqrt{1-kr^2}} \coloneqq f(r_1)\,,
+\end{align*}
+where we have
+\begin{align*}
+f(r_1) = \begin{cases}
+\sin^{-1}(r_1)  & k=1\\
+r_1 & k = 0\\
+\sinh^{-1}(r_1) & k=-1
+\end{cases}\,.
+\end{align*}
+Here we will use subscript $0$ to denote the arrival of signal and $1$ to denote the emission of signal. Now consider two successive light rays emitted at $t_1$ and $t_1 + dt$, received at $t_0$ and $t_0 + dt_0$, then we obtain
+\begin{align*}
+f(r_1) = \int_{t_1+dt_1}^{t_0 + dt_0} \frac{dt}{R(t)} = \int_{t_1}^{t_0}\frac{dt}{R(t)} = f(r_1)\,.
+\end{align*}
+Now assuming that $R(t)$ does not vary greatly over the intervals $dt_1$ and $dt_0$, one obtains
+\begin{align*}
+\frac{dt_0}{R(t_0)} = \frac{dt_1}{R(t_1)}\,.
+\end{align*}
+In an expanding universe, for $t_0 > t_1$, we have $R(t_0) > R(t_1)$, and thus we experience a redshift of the light, denoted as
+\begin{align*}
+1+ z = \frac{dt_0}{dt_1} = \frac{\nu_1}{\nu_0} = \frac{R(t_0)}{R(t_1)}\,,
+\end{align*}
+with $z$ called the redshift factor, $\nu_1$ and $\nu_0$ are the frequencies measured by the emitter and the observer. Taylor expanding for $t_1$ close to $t_0$, we obtain
+\begin{align*}
+1+z = \frac{R(t_0)}{R(t_0 - dt)} \approx \frac{R(t_0)}{R(t_0) - \dot{R}(t_0) \, dt} \approx 1 + \frac{\dot{R}(t_0)}{R(t_0)}\, dt\,.
+\end{align*}
+Thus we obtain
+\begin{align*}
+z \approx \dot{R}(t_0) \, r_1\,.
+\end{align*}
+That is, at any time, the redshift $z$ is proportional to the distance $r_1$ from the receiver. However, at this point $r_1$ has no physical meaning and we can not yet declare the above expression as the Hubble's Law. 
+
+\subsection{Measurement of Distance}
+Here we define the parameters
+\begin{align*}
+H(t) = \frac{\dot{R}(t)}{R(t)}\,,\qquad
+q(t) = -\frac{\ddot{R}(t)\, R(t)}{\dot{R}^2(t)}\,,
+\end{align*}
+where $H(t)$ is called the Hubble parameter and $q(t)$ is called the decceleration parameter.\\
+
+Now assume $dt = d\theta = d\phi = 0$ in the metric (4.3), which allows us to define the absolute distance, or the proper distance,
+\begin{align*}
+d_{\text{proper}} = R(t) \, \int_0^{r_1} \,\frac{dr}{\sqrt{1 - kr^2}}\,.
+\end{align*}
+Note that $d_{\text{proper}}$ is of no practical use unless one is able to construct a long enough ruler.\\
+
+One can also define the comoving distance using null geodesic, 
+\begin{align*}
+\chi = \int_{t_0}^{t_1} \frac{dt}{R(t)} =-\int_{r_1}^0 \frac{dr}{\sqrt{1-kr^2}} = f(r_1)\,,
+\end{align*}
+with $t_0$ being the time the light signal received by the observer and $t_1$ being the time the signal is sent from the object of interest. It is obvious here $\chi$ does not depend on time $t$. We observe that we have
+\begin{align*}
+d_{\text{proper}} = R(t)\, \chi\,. 
 \end{align*}
 
+For practical reason, we define the luminosity distance, which is useful when the intrinsic luminosity of a system is known. Given the energy radiated per unit time $L$ (also called the absolute luminosity) of the object of interest, and given the flux $F$  (the radiation received per unit area per unit time) by the observer, one defines the luminosity distance
+\begin{align*}
+d_L = \sqrt{\frac{L}{4\pi F}}\,.
+\end{align*}
+Rearranging we obtain
+\begin{align*}
+F = \frac{L}{4\pi d_L^2}\,.
+\end{align*}
+Accounting for the photon redshift and the longer time to receive the photon (because the photon has been redshifted) due to the expansion of the universe, the actual received flux $F$ is related to the flux $F_e$ in the case of non-expanding universe via
+\begin{align*}
+F = \frac{F_e}{(1+z)^2} = \frac{L}{4\pi\, R_0^2\, S(\chi)^2 }\frac{1}{(1+z)^2} \,,
+\end{align*}
+where we note that both the photon redshift and the increasing time it takes to receive the photon contribute a factor of $1/(1+z)$, and $r= S(\chi)$ is the coordinate position of the object of interest. Rearranging we obtain
+\begin{align*}
+d_L = R_0\, S(\chi) \, (1+z)\,.
+\end{align*}
 
-\newpage
+Here we will also define the angular diameter distance. Consider a light source of proper size $D$ located at $r=S(\chi)$ at time $t_1$, substending a spatial angle $\Delta \theta$ at the origin at $r= 0$ at time $t_0$. That is, the angle $\Delta \theta$ is measured using light signals sent from the two ends (the end points which substend the angle) of the source at $t_1$, received at time $t_0$. The proper size $D$ between the two ends of the object is related to $\Delta \theta$ by
+\begin{align*}
+R_1\, S(\chi)\,\Delta \theta = D\,.
+\end{align*} 
+The angular diameter distance is then defined by
+\begin{align*}
+d_A = \frac{D}{\Delta \theta} = R_1 S(\chi)\,.
+\end{align*}
+We observe that we have
+\begin{align*}
+d_A = d_L \, \frac{1}{(1+z)^2}\,.
+\end{align*}
+
+One other quantity that would be useful is the proper-motion distance $d_M$. Suppose at the time measurement is performed, the object of interest is moves a proper transverse distance $D$ with respect to an observer at the origin, the the proper transverse velocity is defined by
+\begin{align*}
+v = \frac{dD}{dt} = R_0\, S(\chi)\,\, \frac{d\theta}{dt}\,,
+\end{align*}
+and here $d_M$ is defined by
+\begin{align*}
+d_M = \frac{v}{d\theta/dt} = R_0\, S(\chi) \, = (1+z)\, d_A\,.
+\end{align*}
+With the definition of Hubble parameter, we arrive the Hubble's Law,
+\begin{align*}
+z \approx \dot{R}_0\, S(\chi) = H_0 \, R_0 \, S(\chi) = H_0 \, d_M
+\end{align*}
+\note In d'Inverso's definition, the definition of luminosity definition is $d_L = L/(4\pi F (1+z)^2)$, and thus by comparing with what we have discussed, $z\approx H_0 d_L$ in that case.
+
+
+\subsection{Fate of the Universe}
 From (4.6), we have obtained
 \begin{align*}
 \dot{R}^2 = \frac{C}{R} + \frac{1}{3}\Lambda R^2 - k\,,
@@ -1934,21 +2074,20 @@ R^3 = -\frac{3C}{2\Lambda}\left(1 - \cos(\sqrt{-3 \Lambda}\, t) \right)\,,
 \end{align}
 from which we see that $R \to 0$ at some $t \neq 0$, the universe initially expanded and then would collapse.\\
 
-\newpage
 \section[Modern Cosmology]{\color{red} Modern Cosmology\color{black}}
 Here we consider the perfect fluid,
 \begin{align*}
 T_{\mu\nu} = (\rho + p) u_\mu u_\nu + p g_{\mu\nu}\,,
 \end{align*}
 with small velocity $u_\mu = (1,0,0,0)$. Thus we see
-\begin{align*}
+\begin{align}
 T^\mu{}_\mu = -\rho + 3p\,.
-\end{align*}
+\end{align}
 Here we can compute, 
 \begin{align*}
 \nabla_\mu T^\mu{}_\nu = 0
 \end{align*}
-for $\gamma = 0$,
+for $\nu = 0$, we have
 \begin{align*}
 \pd_\mu T^\mu{}_0 + \Gamma^\mu{}_{\mu \lambda}T^\lambda{}_0 - \Gamma^\lambda{}_{\mu 0}T^\mu{}_\lambda = 0\,,
 \end{align*}
@@ -1964,17 +2103,21 @@ rearranging we obtain
 \begin{align*}
 \frac{dp}{\rho} = -3(1+w) \frac{dR}{R}\,,
 \end{align*}
-and thus $\rho \propto R^{-3(1+w)}$. For dust matter, $p =0$, and thus $w = 0$, so we have $\rho \propto R^{-3}$, which makes sense that spatial dimension is $3$. Furthermore, for radiation, 
+and thus we obtain
 \begin{align*}
-T_{\mu\nu} = F_\mu^\lambda F_{\mu\lambda} - \frac{1}{4}g_{\mu \nu}F^2\,,
+\rho \propto R^{-3(1+w)}\,.
+\end{align*} 
+For dust matter, $p_m =0$, and thus $w = 0$, so we have $\rho_m \propto R^{-3}$, which makes sense that spatial dimension is $3$. Furthermore, for radiation, 
+\begin{align*}
+T_{\mu\nu} = F_\mu{}^\lambda F_{\nu\lambda} - \frac{1}{4}g_{\mu \nu}F^2\,,
 \end{align*}
-one can compute that we have $T^\mu{}_\mu = 0$, thus $p_{\text{radiation}} = \rho_{\text{radiation}}/3$, $w = 1/3$, similar argument leads to $\rho_{\text{radiation}}\propto R^{-4}$, which makes sense as photon should redshift as the universe expands. Furthermore, for vacuum energy $p_\Lambda = -\rho_\Lambda$, and thus $w = -1$, in such case we have $\rho_\Lambda \propto 1$. \\
+one can compute that we have $T^\mu{}_\mu = 0$, thus for radiation, from (4.10), we have $p_{r} = \rho_{r}/3$, $w = 1/3$, similar argument leads to $\rho_{\text{r}}\propto R^{-4}$, which makes sense as photon should redshift as the universe expands. Furthermore, for vacuum energy, we have $p_\Lambda = -\rho_\Lambda$, and thus $w = -1$, in such case we have $\rho_\Lambda \propto 1$. \\
 
 Here we define the density parameter
 \begin{align*}
 \Omega = \frac{8\pi G}{3H^2} \rho\,,
 \end{align*}
-where we have, according to (4.6)
+where we have, according to (4.4),
 \begin{align*}
 H^2 = \left( \frac{\dot{R}}{R}\right)^2 = \frac{8\pi G\rho}{3} - \frac{k}{R^2}\,,
 \end{align*}
@@ -1994,32 +2137,58 @@ and thus $\Omega = \rho/ \rho_c$,  it then follows from (4.10) that we have
 \rho < \rho_c & k=-1
 \end{cases}\,.
 \end{align*}
-We further define
+The cosmological model of our universe may thus be fixed by specifying the quantities
+$H_0,\ \Omega_{m, 0},\ \Omega_{r, 0},\ \Omega_{\Lambda, 0}$, where the subscripts $0$ denotes the current values, $m$ denotes matter, $r$ denotes radiation, and $\Lambda$ denotes the vacuum energy. 
+%That is, we can write
+%\begin{align*}
+%\Omega_i = \frac{8\pi G}{3H^2}\rho_i\,,\qquad
+%H_0^2 =\frac{8\pi G}{3\Omega_{i,0}} \rho_i
+%\end{align*}
+%where $\rho_i$ is a function of time, and $i$ can be matter $m$, radiation $r$, or vacuum $\Lambda$. 
+In reality, we have roughly $\Omega_{m,0} \approx 0.3$, $\Omega_{\Lambda,0} \approx 0.7$, $\Omega_{r,0} \approx 5\cdot 10^{-5}$ at the 
+current time. We then can write the Friedman equation in the form
 \begin{align*}
-\Omega_i = \frac{8\pi G}{3H^2}\rho_i(t)\,,
+H^2 = \frac{8\pi G}{3}\sum_i \rho_i - \frac{k}{R^2}\,.
 \end{align*}
-where $i$ can be matter $m$, radiation $r$, or vacuum $\Lambda$, and in reality, we have roughly $\Omega_{m0} \approx 0.3$, $\Omega_{\Lambda0} \approx 0.7$, $\Omega_{r0} \approx 5\cdot 10^{-5}$ at the 
-current time. We then can write
+We can define similarly
 \begin{align*}
-H^2 = \frac{8\pi G}{3}\sum_i \rho_i - \frac{k}{R^2}\,,
+\Omega_{k,0} =-\frac{k}{(R_0\,H_0)^2}\,,
 \end{align*}
-and thus
+with $a$ defined by
 \begin{align*}
-\Omega= \sum_{i}\Omega_i = -\frac{k}{H^2R^2} 
+a(t) = \frac{R(t)}{R(t_0)} = (1+z)^{-1}\,.
 \end{align*}
-\textbf{ADD}
+As for matter $\rho = \rho_{m,0}a^{-3}$ follows from result above, similarly for radiation and vacuum energy, thus combining we obtain
+\begin{align*}
+H(t)^2 &= 
+8\pi G\rho_{r,0}a^{-4}/3 +
+8\pi G\rho_{m,0}a^{-3}/3 +
+8\pi G\rho_{\Lambda,0}/3
+- k/R(t)^2\\
+&= H_0^2 \Omega_{0,r}^2 a^{-4} +
+H_0^2 \Omega_{0,m}^2 a^{-3}  +
+H_0^2 \Omega_{0,\Lambda}^2 + 
+\Omega_{k,0}a^{-2}H_0^2
+\\
+&=H_0^2\left( \Omega_{m,0}a^{-3} + \Omega_{r,0}a^{-4} + \Omega_{\Lambda,0} + \Omega_{k,0}a^{-2}\right)\,.
+\end{align*}
+Here $H(t)$ defines the Hubble parameter. \\
 
 From $(1+z) = R(t_0)/R(t)$, we can write
 \begin{align*}
-dz = -\frac{R(t_0)}{R(t)} \frac{\dot{R}(t)\, dt}{R(t)} = -(1+z) \, H(z) \, dt\,,
+dz = -\frac{R(t_0)}{R(t)} \frac{\dot{R}(t)}{R(t)} \, dt= -(1+z) \, H(z) \, dt\,,
 \end{align*}
 and thus integrating we obtain
 \begin{align*}
 t_0-t
 &= \int_{t}^{t_0}dt = \int_0^z \frac{dz}{(1+z) \, H(z)} = \frac{1}{H_0}\int_0^z \frac{d\zeta}{(1+\zeta) \, H(\zeta)}\\
-&= \frac{1}{H_0}\int_0^z \frac{d\zeta}{1+\zeta} \frac{1}{\sqrt{\Omega_{m0}(1-\zeta)^3 + \Omega_{r0}(1+\zeta)^4 + \Omega_{\Lambda0} + \Omega_{k0}(1+\zeta)^2}}
+&= \frac{1}{H_0}\int_0^z \frac{d\zeta}{1+\zeta} \frac{1}{\sqrt{\Omega_{m,0}(1-\zeta)^3 + \Omega_{r,0}(1+\zeta)^4 + \Omega_{\Lambda,0} + \Omega_{k,0}(1+\zeta)^2}}
 \end{align*}
-and one finds that $t_0 \approx 13.5\,$G years to be the age of the universe. 
+and one finds that $t_0-t \approx 13.5\,$G years to be the age of the universe. If one computes with $\Omega_{m,0}$ and all other $\Omega_{i,0}$ vanishes, one obtains
+\begin{align*}
+t_0-t = \frac{2}{3}\frac{1}{H_0}\,.
+\end{align*}
+From dimensional analysis, we know that the age of the universe must be proportional to $1/H_0$, the question cosmologist shall answer is the precise coefficient. 
 
 
 

@@ -346,7 +346,7 @@ ${}$\qquad Now we proceed with the standard procedure in the MCMC methods to sam
 \item Let the normal distribution be the proposal distribution. That is, we draw a sample $|\delta \vec{p}| \in \mathcal{N}(0,\sigma)$ with $\sigma$ being chosen carefully.
 \item We define the acceptance criteria. If $\mathcal{L}(\vec{p}+\delta \vec{p}) \geq \mathcal{L}(\vec{p})$, we accept the proposed movement, so $\vec{p} \to \vec{p} + \delta \vec{p}$ with probability $1$. If $\mathcal{L}(\vec{p} + \delta \vec{p}) < \mathcal{L}(\vec{p})$, we accept the proposed movement with probability $\mathcal{L}(\vec{p}+\delta\vec{p})/\mathcal{L}(\vec{p})$, and otherwise reject the proposed movement and stay at the point $\vec{p}$.
 \end{enumerate} 
-This procedure is in fact the Metropolis-Hasting algorithm discussed in the previous section. The $\sigma$ in the proposal distribution is chosen based on analysis in {Ref.\ [3]}. \\
+This procedure is in fact the Metropolis-Hasting algorithm discussed in the previous section. The $\sigma$ in the proposal distribution is chosen based on analysis in {Ref.\ \cite{U21}}. \\
 
 ${}$\qquad In our analysis, we used 20 walkers with randomly selected starting points in the parameter space of interest, and a burn-in step of $40$. The walkers moved $2000$ steps after removing the burn-ins. Figure 2 shown in the following serves as a visualization of the position of the walkers in the 2000 steps, with the $40$ burn-in steps being omitted. We see that the walkers spend their time bouncing around the medium after the burn-ins, as expected from the theory of the Metropolis-Hastings algorithm.
 
